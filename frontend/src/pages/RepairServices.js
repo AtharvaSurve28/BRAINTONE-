@@ -15,7 +15,11 @@ import {
   ListItemIcon,
   ListItemText,
   Paper,
-  Chip
+  Chip,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions
 } from '@mui/material';
 import {
   Build,
@@ -50,6 +54,18 @@ import {
 import { Link } from 'react-router-dom';
 
 const RepairServices = () => {
+  const [detailsOpen, setDetailsOpen] = React.useState(false);
+  const [selectedServiceTitle, setSelectedServiceTitle] = React.useState('');
+
+  const openDetails = (title) => {
+    setSelectedServiceTitle(title || '');
+    setDetailsOpen(true);
+  };
+
+  const closeDetails = () => {
+    setDetailsOpen(false);
+  };
+
   const repairServices = [
     {
       icon: <ScreenRotation />,
@@ -226,6 +242,54 @@ const RepairServices = () => {
       bgcolor: '#f8f9fa',
       background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
     }}>
+      <Dialog
+        open={detailsOpen}
+        onClose={closeDetails}
+        aria-labelledby="repair-details-title"
+        maxWidth="sm"
+        fullWidth
+      >
+        <DialogTitle id="repair-details-title" sx={{ fontWeight: 800 }}>
+          {selectedServiceTitle ? `${selectedServiceTitle} — Details` : 'Repair Service Details'}
+        </DialogTitle>
+        <DialogContent dividers>
+          <Typography sx={{ mb: 2, fontWeight: 700 }}>
+            For more details visit Fort store and Vile Parle store:
+          </Typography>
+
+          <Box sx={{ mb: 2 }}>
+            <Typography sx={{ fontWeight: 800, color: '#e74c3c', mb: 0.5 }}>
+              Fort Store
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
+              1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
+            </Typography>
+            <Typography variant="body2" sx={{ fontWeight: 700 }}>
+              Phone: 081697 98826
+            </Typography>
+          </Box>
+
+          <Box>
+            <Typography sx={{ fontWeight: 800, color: '#3498db', mb: 0.5 }}>
+              Vile Parle Store
+            </Typography>
+            <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
+              1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
+            </Typography>
+            <Typography variant="body2" sx={{ fontWeight: 700 }}>
+              Phone: 092233 33357
+            </Typography>
+          </Box>
+        </DialogContent>
+        <DialogActions sx={{ p: 2 }}>
+          <Button component={Link} to="/contact" variant="contained" onClick={closeDetails}>
+            Contact Us
+          </Button>
+          <Button onClick={closeDetails} variant="outlined">
+            Close
+          </Button>
+        </DialogActions>
+      </Dialog>
      
      
       {/* Hero Section */}
@@ -607,6 +671,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Screen Replacement')}
             sx={{
               background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
               color: '#fff',
@@ -697,6 +762,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Keyboard Repair')}
             sx={{
               background: 'linear-gradient(90deg, #2980b9, #3498db)',
               color: '#fff',
@@ -787,6 +853,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Battery Replacement')}
             sx={{
               background: 'linear-gradient(90deg, #27ae60, #2ecc71)',
               color: '#fff',
@@ -877,6 +944,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Hard Drive & SSD')}
             sx={{
               background: 'linear-gradient(90deg, #8e44ad, #9b59b6)',
               color: '#fff',
@@ -967,6 +1035,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('RAM Upgrade')}
             sx={{
               background: 'linear-gradient(90deg, #f39c12, #f1c40f)',
               color: '#fff',
@@ -1057,6 +1126,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Overheating Issues')}
             sx={{
               background: 'linear-gradient(90deg, #00bcd4, #00ced1)',
               color: '#fff',
@@ -1147,6 +1217,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Software & OS Issues')}
             sx={{
               background: 'linear-gradient(90deg, #e91e63, #ff4081)',
               color: '#fff',
@@ -1237,6 +1308,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Motherboard Repair')}
             sx={{
               background: 'linear-gradient(90deg, #3f51b5, #5c6bc0)',
               color: '#fff',
@@ -1327,6 +1399,7 @@ const RepairServices = () => {
           <Button
             variant="contained"
             fullWidth
+            onClick={() => openDetails('Liquid Damage Repair')}
             sx={{
               background: 'linear-gradient(90deg, #009688, #26a69a)',
               color: '#fff',

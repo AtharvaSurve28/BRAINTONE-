@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { CssBaseline, ThemeProvider, createTheme, Box } from '@mui/material';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { CssBaseline, ThemeProvider, createTheme, Box, Fade } from '@mui/material';
 import HomePage from './pages/HomePage';
 import Laptops from './pages/Laptops';
 import SecondHand from './pages/SecondHand';
@@ -8,6 +8,8 @@ import Accessories from './pages/Accessories';
 import RepairServices from './pages/RepairServices';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
+import ScrollToTop from './ScrollToTop';
+import Navbar from './components/Navbar';
 import './App.css';
 
 const theme = createTheme({
@@ -22,21 +24,39 @@ const theme = createTheme({
   },
 });
 
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <Fade key={location.pathname} in timeout={350} appear>
+      <Box>
+        <Routes location={location}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/laptops" element={<Laptops />} />
+          <Route path="/second-hand" element={<SecondHand />} />
+          {/* Aliases / extra paths used in navbar & homepage */}
+          <Route path="/pre-owned-laptops" element={<SecondHand />} />
+          <Route path="/services/pre-owned-laptops" element={<SecondHand />} />
+          <Route path="/accessories" element={<Accessories />} />
+          <Route path="/accessories/:category" element={<Accessories />} />
+          <Route path="/repair" element={<RepairServices />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<Contact />} />
+        </Routes>
+      </Box>
+    </Fade>
+  );
+}
+
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
         <Box>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/laptops" element={<Laptops />} />
-            <Route path="/second-hand" element={<SecondHand />} />
-            <Route path="/accessories" element={<Accessories />} />
-            <Route path="/repair" element={<RepairServices />} />
-            <Route path="/about" element={<AboutUs />} />
-            <Route path="/contact" element={<Contact />} />
-          </Routes>
+          <Navbar />
+          <ScrollToTop />
+          <AnimatedRoutes />
         </Box>
       </Router>
     </ThemeProvider>

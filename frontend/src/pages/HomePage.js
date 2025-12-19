@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  AppBar,
-  Toolbar,
   Typography,
   Button,
   Box,
@@ -12,9 +10,6 @@ import {
   Divider,
   IconButton,
   Card,
-  Menu,
-  MenuItem,
-  Popover,
 } from '@mui/material';
 import ComputerIcon from '@mui/icons-material/Computer';
 import LaptopIcon from '@mui/icons-material/Laptop';
@@ -22,8 +17,6 @@ import BuildIcon from '@mui/icons-material/Build';
 import StoreIcon from '@mui/icons-material/Store';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
-import PhoneIcon from '@mui/icons-material/Phone';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -32,454 +25,14 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import GroupIcon from '@mui/icons-material/Group';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ChatIcon from '@mui/icons-material/Chat';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import PlaceIcon from '@mui/icons-material/Place';
+import PhoneIcon from '@mui/icons-material/Phone';
+import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
-  // State for Services dropdown
-  const [servicesAnchorEl, setServicesAnchorEl] = React.useState(null);
-  const [accessoriesAnchorEl, setAccessoriesAnchorEl] = React.useState(null);
-  
-  const servicesOpen = Boolean(servicesAnchorEl);
-  const accessoriesOpen = Boolean(accessoriesAnchorEl);
-
-  const handleServicesClick = (event) => {
-    setServicesAnchorEl(event.currentTarget);
-  };
-
-  const handleServicesClose = () => {
-    setServicesAnchorEl(null);
-  };
-
-  const handleAccessoriesClick = (event) => {
-    setAccessoriesAnchorEl(event.currentTarget);
-  };
-
-  const handleAccessoriesClose = () => {
-    setAccessoriesAnchorEl(null);
-  };
-
-  // Services menu items
-  const servicesItems = [
-    { label: 'New Laptops', to: '/laptops', icon: <LaptopIcon sx={{ mr: 1, fontSize: 20 }} /> },
-    { label: 'Pre-Owned Laptops', to: '/services/pre-owned-laptops', icon: <AutorenewIcon sx={{ mr: 1, fontSize: 20 }} /> },
-    { label: 'Repair Services', to: '/repair', icon: <BuildIcon sx={{ mr: 1, fontSize: 20 }} /> },
-  ];
-
-  // Accessories menu items
-  const accessoriesItems = [
-    { label: 'Laptop Bags', to: '/accessories/bags' },
-    { label: 'Laptop Chargers', to: '/accessories/chargers' },
-    { label: 'Laptop Stands', to: '/accessories/stands' },
-    { label: 'External Hard Drives', to: '/accessories/storage' },
-    { label: 'Laptop Cooling Pads', to: '/accessories/cooling' },
-    { label: 'Wireless Mice', to: '/accessories/mice' },
-    { label: 'Laptop Keyboards', to: '/accessories/keyboards' },
-    { label: 'Laptop Screen Protectors', to: '/accessories/protectors' },
-  ];
-
   return (
     <Box sx={{ overflowX: 'hidden' }}>
-      {/* Top Contact Bar */}
-      <Box sx={{ 
-        bgcolor: 'white', 
-        py: 2, 
-        borderBottom: '1px solid #e0e0e0',
-        position: 'relative',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '100%',
-          background: 'linear-gradient(90deg, #fff 0%, #f8f9fa 50%, #fff 100%)',
-          zIndex: 0,
-        }
-      }}>
-        <Container maxWidth="lg">
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            alignItems: 'center',
-            position: 'relative',
-            zIndex: 1
-          }}>
-            <Typography 
-              variant="h5" 
-              component={Link} 
-              to="/" 
-              sx={{ 
-                fontWeight: 800, 
-                color: '#e74c3c', 
-                textDecoration: 'none',
-                fontSize: '2rem',
-                letterSpacing: '0.5px',
-                background: 'linear-gradient(45deg, #e74c3c 30%, #c0392b 90%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              BRAINTONE
-            </Typography>
-            
-            <Box sx={{ display: 'flex', gap: 6, alignItems: 'center' }}>
-              <Stack direction="row" alignItems="center" spacing={1.5}>
-                <Box sx={{
-                  position: 'relative',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    top: -5,
-                    left: -5,
-                    right: -5,
-                    bottom: -5,
-                    borderRadius: '50%',
-                    background: 'radial-gradient(circle, rgba(231,76,60,0.1) 0%, transparent 70%)',
-                    animation: 'pulse 2s infinite',
-                  }
-                }}>
-                  <PhoneIcon sx={{ color: '#e74c3c', fontSize: 22, position: 'relative', zIndex: 1 }} />
-                </Box>
-                <Box>
-                  <Typography variant="body2" sx={{ fontSize: '0.9rem', fontWeight: 600, color: '#333' }}>
-                    Call Us
-                  </Typography>
-                  <Typography variant="body2" sx={{ fontSize: '0.9rem', color: '#666' }}>
-                    9821212912 / 9892001640
-                  </Typography>
-                </Box>
-              </Stack>
-              
-              <Stack direction="row" alignItems="flex-start" spacing={1.5}>
-                <AccessTimeIcon sx={{ color: '#e74c3c', fontSize: 22, mt: 0.3 }} />
-                <Box>
-                  <Typography variant="body2" sx={{ fontSize: '0.9rem', fontWeight: 600, color: '#333', mb: 0.3 }}>
-                    Opening Hours
-                  </Typography>
-                  <Typography variant="caption" sx={{ fontSize: '0.8rem', color: '#666', display: 'block' }}>
-                    Fort Store : Mon-Sat: 11:00 - 7:00pm
-                  </Typography>
-                  <Typography variant="caption" sx={{ fontSize: '0.8rem', color: '#666', display: 'block' }}>
-                    Ville Parle Store : Mon-Sat: 11:00 - 7:00pm
-                  </Typography>
-                </Box>
-              </Stack>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
-
-      {/* Main Navigation */}
-      <AppBar position="sticky" elevation={0} sx={{ 
-        bgcolor: '#fff', 
-        borderBottom: '1px solid #e0e0e0',
-        background: 'linear-gradient(180deg, #fff 0%, #f8f9fa 100%)',
-      }}>
-        <Container maxWidth="lg">
-          <Toolbar disableGutters sx={{ minHeight: 64, justifyContent: 'space-between' }}>
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 4, alignItems: 'center' }}>
-              {/* Home Button */}
-              <Button
-                component={Link}
-                to="/"
-                sx={{ 
-                  color: '#2c3e50', 
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  textTransform: 'uppercase',
-                  px: 0,
-                  minWidth: 'auto',
-                  position: 'relative',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: -2,
-                    left: 0,
-                    width: '0%',
-                    height: '2px',
-                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '100%',
-                  },
-                  '&:hover': { 
-                    color: '#e74c3c',
-                    backgroundColor: 'transparent',
-                  }
-                }}
-              >
-                HOME
-              </Button>
-
-              {/* Services Dropdown */}
-              <Box>
-                <Button
-                  onClick={handleServicesClick}
-                  endIcon={<KeyboardArrowDownIcon />}
-                  sx={{ 
-                    color: servicesOpen ? '#e74c3c' : '#2c3e50', 
-                    fontWeight: 600,
-                    fontSize: '0.875rem',
-                    textTransform: 'uppercase',
-                    px: 0,
-                    minWidth: 'auto',
-                    position: 'relative',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: -2,
-                      left: 0,
-                      width: servicesOpen ? '100%' : '0%',
-                      height: '2px',
-                      background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                      transition: 'width 0.3s ease',
-                    },
-                    '&:hover': { 
-                      color: '#e74c3c',
-                      backgroundColor: 'transparent',
-                    }
-                  }}
-                >
-                  SERVICES
-                </Button>
-                <Menu
-                  anchorEl={servicesAnchorEl}
-                  open={servicesOpen}
-                  onClose={handleServicesClose}
-                  PaperProps={{
-                    sx: {
-                      mt: 1.5,
-                      minWidth: 240,
-                      borderRadius: 2,
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-                      border: '1px solid rgba(231, 76, 60, 0.1)',
-                    }
-                  }}
-                >
-                  <Box sx={{ px: 2, py: 1, backgroundColor: 'rgba(231, 76, 60, 0.05)', borderBottom: '1px solid rgba(231, 76, 60, 0.1)' }}>
-                    <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#e74c3c' }}>
-                      Our Services
-                    </Typography>
-                  </Box>
-                  {servicesItems.map((item) => (
-                    <MenuItem 
-                      key={item.to}
-                      component={Link}
-                      to={item.to}
-                      onClick={handleServicesClose}
-                      sx={{ 
-                        py: 1.5,
-                        px: 2,
-                        transition: 'all 0.2s ease',
-                        '&:hover': {
-                          backgroundColor: 'rgba(231, 76, 60, 0.08)',
-                          transform: 'translateX(5px)',
-                        }
-                      }}
-                    >
-                      {item.icon}
-                      <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                        {item.label}
-                      </Typography>
-                    </MenuItem>
-                  ))}
-                </Menu>
-              </Box>
-
-              {/* Accessories Dropdown */}
-              <Box>
-                <Button
-                  onClick={handleAccessoriesClick}
-                  endIcon={<KeyboardArrowDownIcon />}
-                  sx={{ 
-                    color: accessoriesOpen ? '#e74c3c' : '#2c3e50', 
-                    fontWeight: 600,
-                    fontSize: '0.875rem',
-                    textTransform: 'uppercase',
-                    px: 0,
-                    minWidth: 'auto',
-                    position: 'relative',
-                    '&::after': {
-                      content: '""',
-                      position: 'absolute',
-                      bottom: -2,
-                      left: 0,
-                      width: accessoriesOpen ? '100%' : '0%',
-                      height: '2px',
-                      background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                      transition: 'width 0.3s ease',
-                    },
-                    '&:hover': { 
-                      color: '#e74c3c',
-                      backgroundColor: 'transparent',
-                    }
-                  }}
-                >
-                  ACCESSORIES
-                </Button>
-                <Popover
-                  anchorEl={accessoriesAnchorEl}
-                  open={accessoriesOpen}
-                  onClose={handleAccessoriesClose}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  PaperProps={{
-                    sx: {
-                      mt: 1.5,
-                      minWidth: 280,
-                      borderRadius: 2,
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-                      border: '1px solid rgba(231, 76, 60, 0.1)',
-                    }
-                  }}
-                >
-                  <Box sx={{ p: 0, maxHeight: 400, overflow: 'auto' }}>
-                    <Box sx={{ px: 2, py: 1.5, backgroundColor: 'rgba(231, 76, 60, 0.05)', borderBottom: '1px solid rgba(231, 76, 60, 0.1)' }}>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#e74c3c' }}>
-                        Laptop Accessories
-                      </Typography>
-                    </Box>
-                    <Grid container>
-                      {accessoriesItems.map((item, index) => (
-                        <Grid item xs={6} key={item.to}>
-                          <MenuItem 
-                            component={Link}
-                            to={item.to}
-                            onClick={handleAccessoriesClose}
-                            sx={{ 
-                              py: 1.5,
-                              px: 2,
-                              transition: 'all 0.2s ease',
-                              borderBottom: index < accessoriesItems.length - 2 ? '1px solid rgba(0,0,0,0.05)' : 'none',
-                              '&:hover': {
-                                backgroundColor: 'rgba(231, 76, 60, 0.08)',
-                              }
-                            }}
-                          >
-                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                              {item.label}
-                            </Typography>
-                          </MenuItem>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </Popover>
-              </Box>
-
-              {/* About Us */}
-              <Button
-                component={Link}
-                to="/about"
-                sx={{ 
-                  color: '#2c3e50', 
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  textTransform: 'uppercase',
-                  px: 0,
-                  minWidth: 'auto',
-                  position: 'relative',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: -2,
-                    left: 0,
-                    width: '0%',
-                    height: '2px',
-                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '100%',
-                  },
-                  '&:hover': { 
-                    color: '#e74c3c',
-                    backgroundColor: 'transparent',
-                  }
-                }}
-              >
-                ABOUT US
-              </Button>
-
-              {/* Contact */}
-              <Button
-                component={Link}
-                to="/contact"
-                sx={{ 
-                  color: '#2c3e50', 
-                  fontWeight: 600,
-                  fontSize: '0.875rem',
-                  textTransform: 'uppercase',
-                  px: 0,
-                  minWidth: 'auto',
-                  position: 'relative',
-                  '&::after': {
-                    content: '""',
-                    position: 'absolute',
-                    bottom: -2,
-                    left: 0,
-                    width: '0%',
-                    height: '2px',
-                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                    transition: 'width 0.3s ease',
-                  },
-                  '&:hover::after': {
-                    width: '100%',
-                  },
-                  '&:hover': { 
-                    color: '#e74c3c',
-                    backgroundColor: 'transparent',
-                  }
-                }}
-              >
-                CONTACT
-              </Button>
-            </Box>
-            
-            <Stack direction="row" spacing={1.5}>
-              <IconButton size="small" sx={{ 
-                color: '#555', 
-                background: 'linear-gradient(135deg, #f0f0f0 0%, #fff 100%)',
-                '&:hover': { 
-                  color: '#e74c3c',
-                  background: 'linear-gradient(135deg, #ffecec 0%, #fff 100%)',
-                }
-              }}>
-                <GitHubIcon />
-              </IconButton>
-              <IconButton size="small" sx={{ 
-                color: '#555', 
-                background: 'linear-gradient(135deg, #f0f0f0 0%, #fff 100%)',
-                '&:hover': { 
-                  color: '#0077b5',
-                  background: 'linear-gradient(135deg, #e3f2fd 0%, #fff 100%)',
-                }
-              }}>
-                <LinkedInIcon />
-              </IconButton>
-              <IconButton size="small" sx={{ 
-                color: '#555', 
-                background: 'linear-gradient(135deg, #f0f0f0 0%, #fff 100%)',
-                '&:hover': { 
-                  color: '#E4405F',
-                  background: 'linear-gradient(135deg, #ffe6ee 0%, #fff 100%)',
-                }
-              }}>
-                <InstagramIcon />
-              </IconButton>
-            </Stack>
-          </Toolbar>
-        </Container>
-      </AppBar>
-
       {/* Hero Section with Animated Gradient */}
       <Box
         sx={{
@@ -534,6 +87,8 @@ const HomePage = () => {
           <Button
             variant="contained"
             endIcon={<ArrowForwardIcon />}
+            component={Link}
+            to="/laptops"
             sx={{
               background: 'linear-gradient(45deg, #e74c3c 30%, #c0392b 90%)',
               px: 5,
@@ -1096,6 +651,8 @@ const HomePage = () => {
                   laptop that matches your specific requirements and enhances your productivity.
                 </Typography>
                 <Button
+                  component={Link}
+                  to="/laptops"
                   variant="contained"
                   sx={{
                     bgcolor: '#e74c3c',
@@ -1296,6 +853,8 @@ const HomePage = () => {
                   that's good for both your wallet and the environment.
                 </Typography>
                 <Button
+                  component={Link}
+                  to="/pre-owned-laptops"
                   variant="contained"
                   sx={{
                     bgcolor: '#e74c3c',
@@ -1391,6 +950,8 @@ const HomePage = () => {
                   Free diagnostics for all devices brought to our stores.
                 </Typography>
                 <Button
+                  component={Link}
+                  to="/repair"
                   variant="contained"
                   sx={{
                     bgcolor: '#e74c3c',
@@ -1620,6 +1181,8 @@ const HomePage = () => {
                   for years to come, potentially extending its usable life by 2-3 years.
                 </Typography>
                 <Button
+                  component={Link}
+                  to="/contact"
                   variant="contained"
                   sx={{
                     bgcolor: '#e74c3c',
@@ -2216,16 +1779,29 @@ const HomePage = () => {
               {row.map((label, idx) => {
                 const icons = [LaptopIcon, AutorenewIcon, BuildIcon, StoreIcon, ComputerIcon, StoreIcon];
                 const IconComponent = icons[rowIndex * 3 + idx];
+                const linkMap = {
+                  'New Laptops': '/laptops',
+                  'Second-hand Laptops': '/second-hand',
+                  'Repair of Laptops': '/repair',
+                  'Laptop Accessories': '/accessories',
+                  // No dedicated routes for these yet; send to Contact for now.
+                  'Video Games': '/contact',
+                  'And much more...': '/contact',
+                };
+                const to = linkMap[label] || '/contact';
                 
                 return (
                   <Grid item xs={12} sm={6} md={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box
+                      component={Link}
+                      to={to}
                       sx={{
                         width: '100%',
                         maxWidth: 380,
                         height: 100,
                         borderRadius: 2,
                         cursor: 'pointer',
+                        textDecoration: 'none',
                         transition: 'all 0.3s',
                         backdropFilter: 'blur(10px)',
                         backgroundColor: 'rgba(255, 255, 255, 0.15)',
@@ -2301,109 +1877,405 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      {/* Footer with Gradient */}
-      <Box component="footer" sx={{ 
-        bgcolor: '#1a252f', 
-        color: '#a0aec0', 
-        pt: 6, 
-        pb: 3,
-        position: 'relative',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '4px',
-          background: 'linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #e74c3c)',
-          backgroundSize: '300% 100%',
-          animation: 'shimmer 4s infinite linear',
-        }
-      }}>
+      {/* Footer (matches provided design) */}
+      <Box
+        component="footer"
+        sx={{
+          bgcolor: '#1a1a2e',
+          color: '#ffffff',
+          pt: 4,
+          pb: 3,
+          position: 'relative',
+          overflow: 'hidden',
+          borderTop: '4px solid #e74c3c',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            height: '4px',
+            background: 'linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #e74c3c)',
+            backgroundSize: '300% 100%',
+            animation: 'shimmer 4s infinite linear',
+          },
+        }}
+      >
         <Container maxWidth="lg">
-          <Grid container spacing={4}>
-            <Grid item xs={12} md={3}>
-              <Typography variant="h6" sx={{ 
-                color: '#e74c3c', 
-                fontWeight: 800, 
-                mb: 2,
-                background: 'linear-gradient(45deg, #e74c3c 30%, #ff7675 90%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}>
-                BRAINTONE
+          {/* Box 1: Visit Us Banner - Full Width */}
+          <Box
+            sx={{
+              mb: 3,
+              backgroundColor: 'rgba(231, 76, 60, 0.1)',
+              borderRadius: 2,
+              p: 3,
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid rgba(231, 76, 60, 0.2)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+              '&:hover': {
+                backgroundColor: 'rgba(231, 76, 60, 0.15)',
+                transform: 'translateY(-2px)',
+              },
+            }}
+          >
+            <Box sx={{ textAlign: 'center', width: '100%' }}>
+              <Typography
+                variant="h4"
+                sx={{
+                  color: '#ffffff',
+                  fontWeight: 700,
+                  mb: 1.5,
+                  fontSize: { xs: '1.5rem', md: '2rem' },
+                }}
+              >
+                Visit Us for Laptop Repairs
               </Typography>
-              <Typography variant="body2" sx={{ fontSize: '0.85rem', lineHeight: 1.6 }}>
-                Your trusted partner for laptops and tech services.
+              <Typography
+                variant="h6"
+                sx={{
+                  color: '#b0b0b0',
+                  fontWeight: 400,
+                  fontSize: { xs: '1rem', md: '1.2rem' },
+                  maxWidth: '800px',
+                  mx: 'auto',
+                }}
+              >
+                Walk into our store with your laptop for free diagnosis and expert repair services.
               </Typography>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="subtitle1" sx={{ color: '#fff', fontWeight: 700, mb: 2, fontSize: '0.95rem' }}>
-                Quick Links
-              </Typography>
-              <Stack spacing={0.5}>
-                {['Home', 'Laptops', 'Repairs', 'About Us'].map((link) => (
-                  <Typography key={link} variant="body2" sx={{ 
-                    fontSize: '0.85rem', 
-                    cursor: 'pointer', 
-                    '&:hover': { 
-                      color: '#e74c3c',
-                      transform: 'translateX(5px)',
-                      transition: 'all 0.3s ease'
-                    } 
-                  }}>
-                    {link}
-                  </Typography>
-                ))}
-              </Stack>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="subtitle1" sx={{ color: '#fff', fontWeight: 700, mb: 2, fontSize: '0.95rem' }}>
-                Contact
-              </Typography>
-              <Stack spacing={0.5}>
-                <Typography variant="body2" sx={{ fontSize: '0.85rem' }}>
-                  1st Floor, 17A, Bahubali Bldg, Flora Fountain, Fort, Mumbai
+            </Box>
+          </Box>
+
+          {/* Box 2: Fort Location - Full Width */}
+          <Box
+            sx={{
+              mb: 3,
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: 2,
+              p: 3,
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              border: '1px solid rgba(231, 76, 60, 0.2)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+              '&:hover': {
+                backgroundColor: 'rgba(231, 76, 60, 0.08)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
+              <Box
+                sx={{
+                  minWidth: 60,
+                  width: 60,
+                  height: 60,
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  color: '#e74c3c',
+                }}
+              >
+                <PlaceIcon sx={{ fontSize: 28 }} />
+              </Box>
+
+              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: '#e74c3c',
+                    fontWeight: 600,
+                    mb: 1,
+                    fontSize: { xs: '1.1rem', md: '1.3rem' },
+                  }}
+                >
+                  Fort Location
                 </Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.85rem' }}>contact@braintone.com</Typography>
-                <Typography variant="body2" sx={{ fontSize: '0.85rem' }}>+1 (234) 567-890</Typography>
-              </Stack>
-            </Grid>
-            <Grid item xs={12} md={3}>
-              <Typography variant="subtitle1" sx={{ color: '#fff', fontWeight: 700, mb: 2, fontSize: '0.95rem' }}>
-                Follow Us
-              </Typography>
-              <Stack direction="row" spacing={2}>
-                {[
-                  { icon: <GitHubIcon fontSize="small" />, color: '#333' },
-                  { icon: <LinkedInIcon fontSize="small" />, color: '#0077b5' },
-                  { icon: <InstagramIcon fontSize="small" />, color: '#E4405F' }
-                ].map((social, idx) => (
-                  <IconButton 
-                    key={idx}
-                    size="small" 
-                    sx={{ 
-                      color: '#a0aec0', 
-                      background: 'rgba(255,255,255,0.1)',
-                      '&:hover': { 
-                        color: social.color,
-                        background: 'rgba(255,255,255,0.2)',
-                        transform: 'translateY(-2px)',
-                      },
-                      transition: 'all 0.3s ease'
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#b0b0b0',
+                    lineHeight: 1.6,
+                    fontSize: { xs: '0.95rem', md: '1rem' },
+                    mb: 2,
+                  }}
+                >
+                  Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
+                </Typography>
+
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Box
+                    sx={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#3498db',
                     }}
                   >
-                    {social.icon}
-                  </IconButton>
-                ))}
-              </Stack>
-            </Grid>
-          </Grid>
-          <Divider sx={{ borderColor: 'rgba(255,255,255,0.1)', my: 3 }} />
-          <Typography variant="body2" align="center" sx={{ fontSize: '0.85rem' }}>
-            © 2024 Braintone Technology. All Rights Reserved.
-          </Typography>
+                    <PhoneIcon sx={{ fontSize: 18 }} />
+                  </Box>
+                  <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                    Phone: 081697 98826
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Box 3: Vile Parle Location - Full Width */}
+          <Box
+            sx={{
+              mb: 3,
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: 2,
+              p: 3,
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              border: '1px solid rgba(52, 152, 219, 0.2)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+              '&:hover': {
+                backgroundColor: 'rgba(52, 152, 219, 0.08)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
+              <Box
+                sx={{
+                  minWidth: 60,
+                  width: 60,
+                  height: 60,
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  flexShrink: 0,
+                  color: '#3498db',
+                }}
+              >
+                <PlaceIcon sx={{ fontSize: 28 }} />
+              </Box>
+
+              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: '#3498db',
+                    fontWeight: 600,
+                    mb: 1,
+                    fontSize: { xs: '1.1rem', md: '1.3rem' },
+                  }}
+                >
+                  Vile Parle Location
+                </Typography>
+
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: '#b0b0b0',
+                    lineHeight: 1.6,
+                    fontSize: { xs: '0.95rem', md: '1rem' },
+                    mb: 2,
+                  }}
+                >
+                  Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
+                </Typography>
+
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                  <Box
+                    sx={{
+                      width: 36,
+                      height: 36,
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: '#3498db',
+                    }}
+                  >
+                    <PhoneIcon sx={{ fontSize: 18 }} />
+                  </Box>
+                  <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                    Phone: 092233 33357
+                  </Typography>
+                </Box>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Box 4: Working Hours - Full Width */}
+          <Box
+            sx={{
+              mb: 3,
+              backgroundColor: 'rgba(46, 204, 113, 0.1)',
+              borderRadius: 2,
+              p: 3,
+              minHeight: '120px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid rgba(46, 204, 113, 0.2)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+              '&:hover': {
+                backgroundColor: 'rgba(46, 204, 113, 0.15)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(46, 204, 113, 0.1)',
+              },
+            }}
+          >
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', gap: 4 }}>
+              <Box
+                sx={{
+                  width: 70,
+                  height: 70,
+                  borderRadius: '50%',
+                  backgroundColor: 'rgba(46, 204, 113, 0.2)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  color: '#2ecc71',
+                }}
+              >
+                <AccessTimeIcon sx={{ fontSize: 32 }} />
+              </Box>
+
+              <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
+                <Typography
+                  variant="h5"
+                  sx={{
+                    color: '#2ecc71',
+                    fontWeight: 600,
+                    mb: 1,
+                    fontSize: { xs: '1.2rem', md: '1.4rem' },
+                  }}
+                >
+                  Working Hours
+                </Typography>
+                <Typography
+                  variant="h4"
+                  sx={{
+                    color: '#ffffff',
+                    fontWeight: 700,
+                    fontSize: { xs: '1.4rem', md: '1.8rem' },
+                  }}
+                >
+                  Mon-Sat: 11 AM - 7 PM
+                </Typography>
+                <Typography
+                  variant="body1"
+                  sx={{
+                    color: 'rgba(255,255,255,0.8)',
+                    mt: 1,
+                    fontSize: { xs: '0.9rem', md: '1rem' },
+                  }}
+                >
+                  Visit us during our business hours for immediate assistance
+                </Typography>
+              </Box>
+            </Box>
+          </Box>
+
+          {/* Box 5: Copyright/Brand - Full Width */}
+          <Box
+            sx={{
+              backgroundColor: 'rgba(255, 255, 255, 0.05)',
+              borderRadius: 2,
+              p: 3,
+              minHeight: '120px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              transition: 'all 0.3s ease',
+              width: '100%',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.08)',
+                transform: 'translateY(-2px)',
+                boxShadow: '0 8px 20px rgba(255, 255, 255, 0.1)',
+              },
+            }}
+          >
+            <Typography
+              variant="h3"
+              sx={{
+                color: '#ffffff',
+                fontWeight: 900,
+                mb: 2,
+                fontSize: { xs: '1.8rem', md: '2.5rem' },
+                background: 'linear-gradient(45deg, #e74c3c 30%, #ff7675 50%, #3498db 70%)',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                letterSpacing: '1px',
+              }}
+            >
+              BRAINTONE
+            </Typography>
+
+            <Divider
+              sx={{
+                width: '200px',
+                my: 2,
+                backgroundColor: 'rgba(231, 76, 60, 0.5)',
+                height: '2px',
+              }}
+            />
+
+            <Typography
+              variant="h6"
+              sx={{
+                color: '#b0b0b0',
+                mb: 1,
+                fontSize: { xs: '1rem', md: '1.1rem' },
+                textAlign: 'center',
+              }}
+            >
+              Expert Laptop Repair Services
+            </Typography>
+
+            <Typography
+              variant="body1"
+              sx={{
+                color: 'rgba(255,255,255,0.7)',
+                fontSize: { xs: '0.9rem', md: '1rem' },
+                textAlign: 'center',
+                mt: 1,
+              }}
+            >
+              © 2024 BRAINTONE. All rights reserved.
+            </Typography>
+          </Box>
+
+          {/* Bottom decorative line */}
+          <Box
+            sx={{
+              width: '100%',
+              height: '2px',
+              background: 'linear-gradient(90deg, transparent, #e74c3c 20%, #3498db 50%, #2ecc71 80%, transparent)',
+              mt: 4,
+              borderRadius: '2px',
+            }}
+          />
         </Container>
       </Box>
 
