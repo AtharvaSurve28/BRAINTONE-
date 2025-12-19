@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Divider } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import { keyframes } from '@emotion/react';
 import { ArrowForward } from '@mui/icons-material';
 
@@ -57,42 +57,62 @@ const bubbleFloat = keyframes`
 `;
 
 const Laptops = () => {
+  const navigate = useNavigate(); // Added useNavigate hook
+
   const brands = [
     {
       name: 'DELL',
-      image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop',
+      route: '/laptops/dell', // Added route
+      color: '#007DB8' // Dell blue color
     },
     {
       name: 'HP',
-      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop',
+      route: '/laptops/hp',
+      color: '#0096D6' // HP blue color
     },
     {
       name: 'Lenovo',
-      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop',
+      route: '/laptops/lenovo',
+      color: '#E2231A' // Lenovo red color
     },
     {
       name: 'ASUS',
-      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop',
+      route: '/laptops/asus',
+      color: '#000000' // ASUS black color
     },
     {
       name: 'Acer',
-      image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop',
+      route: '/laptops/acer',
+      color: '#83B81A' // Acer green color
     },
     {
       name: 'Apple',
-      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop',
+      route: '/laptops/apple',
+      color: '#000000' // Apple black color
     },
     {
       name: 'Razer',
-      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop',
+      route: '/laptops/razer',
+      color: '#44D62C' // Razer green color
     },
     {
       name: 'LG',
-      image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=400&h=300&fit=crop',
+      route: '/laptops/lg',
+      color: '#A50034' // LG red color
     },
     {
       name: 'Microsoft',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop'
+      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop',
+      route: '/laptops/microsoft',
+      color: '#737373' // Microsoft gray color
     }
   ];
 
@@ -113,6 +133,11 @@ const Laptops = () => {
   };
 
   const bubbles = generateBubbles();
+
+  // Function to handle brand click
+  const handleBrandClick = (brandRoute) => {
+    navigate(brandRoute);
+  };
 
   return (
     <Box sx={{ 
@@ -292,6 +317,7 @@ const Laptops = () => {
           {brands.map((brand, index) => (
             <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex' }}>
               <Card 
+                onClick={() => handleBrandClick(brand.route)} // Added onClick handler
                 sx={{ 
                   width: '100%',
                   height: '100%',
@@ -301,23 +327,28 @@ const Laptops = () => {
                   borderRadius: 3,
                   boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)', // Darker red shadow
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  border: '2px solid rgba(139, 0, 0, 0.2)', // Darker red border
+                  border: `2px solid ${brand.color}20`, // Brand color with transparency
                   overflow: 'hidden',
                   animation: `${bounceAnimation} 2s ease-in-out infinite`,
                   animationDelay: `${index * 0.2}s`, // Staggered animation
                   position: 'relative',
                   zIndex: 2,
+                  cursor: 'pointer', // Added cursor pointer
                   '&:hover': {
-                    boxShadow: '0 20px 50px rgba(139, 0, 0, 0.25)', // Darker red shadow
+                    boxShadow: `0 20px 50px ${brand.color}40`, // Brand color shadow on hover
                     transform: 'translateY(-15px) scale(1.05)',
-                    borderColor: '#8B0000', // Darker red on hover
+                    borderColor: brand.color, // Brand color on hover
                     animationPlayState: 'paused', // Pause animation on hover
                     '& .brand-image': {
                       transform: 'scale(1.15)',
                     },
                     '& .brand-name': {
-                      color: '#8B0000', // Darker red text on hover
+                      color: brand.color, // Brand color text on hover
                       transform: 'scale(1.05)',
+                    },
+                    '& .explore-text': {
+                      opacity: 1,
+                      transform: 'translateY(0)',
                     }
                   },
                   '&::before': {
@@ -327,7 +358,7 @@ const Laptops = () => {
                     left: 0,
                     right: 0,
                     bottom: 0,
-                    background: 'linear-gradient(135deg, rgba(139, 0, 0, 0.05) 0%, rgba(139, 0, 0, 0.02) 100%)',
+                    background: `linear-gradient(135deg, ${brand.color}05 0%, ${brand.color}02 100%)`,
                     borderRadius: 3,
                     zIndex: 1,
                   }
@@ -352,10 +383,34 @@ const Laptops = () => {
                       left: 0,
                       right: 0,
                       bottom: 0,
-                      background: 'linear-gradient(135deg, rgba(139, 0, 0, 0.1) 0%, rgba(139, 0, 0, 0) 100%)',
+                      background: `linear-gradient(135deg, ${brand.color}10 0%, ${brand.color}00 100%)`,
                     }
                   }}
                 >
+                  {/* Explore Button (Visible on hover) */}
+                  <Box
+                    className="explore-text"
+                    sx={{
+                      position: 'absolute',
+                      bottom: 20,
+                      left: '50%',
+                      transform: 'translateX(-50%) translateY(20px)',
+                      backgroundColor: brand.color,
+                      color: 'white',
+                      px: 3,
+                      py: 1,
+                      borderRadius: 2,
+                      fontSize: '0.9rem',
+                      fontWeight: 600,
+                      opacity: 0,
+                      transition: 'all 0.3s ease',
+                      zIndex: 3,
+                      boxShadow: `0 4px 15px ${brand.color}40`,
+                    }}
+                  >
+                    Explore {brand.name} Laptops →
+                  </Box>
+                  
                   <CardMedia
                     component="img"
                     image={brand.image}
@@ -393,7 +448,7 @@ const Laptops = () => {
                       left: 0,
                       right: 0,
                       height: '3px',
-                      background: 'linear-gradient(90deg, transparent, #8B0000, transparent)',
+                      background: `linear-gradient(90deg, transparent, ${brand.color}, transparent)`,
                     }
                   }}
                 >
