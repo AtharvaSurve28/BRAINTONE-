@@ -27,6 +27,7 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ChatIcon from '@mui/icons-material/Chat';
 import PlaceIcon from '@mui/icons-material/Place';
 import PhoneIcon from '@mui/icons-material/Phone';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Link } from 'react-router-dom';
 
@@ -1949,7 +1950,7 @@ const HomePage = () => {
             </Box>
           </Box>
 
-          {/* Box 2: Fort Location - Full Width */}
+          {/* Box 2: Fort Location - Full Width with Google Maps Link */}
           <Box
             sx={{
               mb: 3,
@@ -1966,8 +1967,10 @@ const HomePage = () => {
                 backgroundColor: 'rgba(231, 76, 60, 0.08)',
                 transform: 'translateY(-2px)',
                 boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                cursor: 'pointer',
               },
             }}
+            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai', '_blank', 'noopener,noreferrer')}
           >
             <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
               <Box
@@ -1988,17 +1991,26 @@ const HomePage = () => {
               </Box>
 
               <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#e74c3c',
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '1.1rem', md: '1.3rem' },
-                  }}
-                >
-                  Fort Location
-                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: '#e74c3c',
+                      fontWeight: 600,
+                      mb: 1,
+                      fontSize: { xs: '1.1rem', md: '1.3rem' },
+                    }}
+                  >
+                    Fort Location
+                  </Typography>
+                  <OpenInNewIcon 
+                    sx={{ 
+                      color: '#e74c3c',
+                      fontSize: '1.2rem',
+                      opacity: 0.7,
+                    }} 
+                  />
+                </Box>
 
                 <Typography
                   variant="body1"
@@ -2012,30 +2024,44 @@ const HomePage = () => {
                   Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
                 </Typography>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box
-                    sx={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Box
+                      sx={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#3498db',
+                      }}
+                    >
+                      <PhoneIcon sx={{ fontSize: 18 }} />
+                    </Box>
+                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                      Phone: 081697 98826
+                    </Typography>
+                  </Box>
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      color: '#e74c3c',
+                      fontWeight: 500,
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#3498db',
+                      gap: 0.5,
                     }}
                   >
-                    <PhoneIcon sx={{ fontSize: 18 }} />
-                  </Box>
-                  <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                    Phone: 081697 98826
+                    View on Maps
                   </Typography>
                 </Box>
               </Box>
             </Box>
           </Box>
 
-          {/* Box 3: Vile Parle Location - Full Width */}
+          {/* Box 3: Vile Parle Location - Full Width with Google Maps Link */}
           <Box
             sx={{
               mb: 3,
@@ -2052,8 +2078,10 @@ const HomePage = () => {
                 backgroundColor: 'rgba(52, 152, 219, 0.08)',
                 transform: 'translateY(-2px)',
                 boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
+                cursor: 'pointer',
               },
             }}
+            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai', '_blank', 'noopener,noreferrer')}
           >
             <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
               <Box
@@ -2074,17 +2102,26 @@ const HomePage = () => {
               </Box>
 
               <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#3498db',
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '1.1rem', md: '1.3rem' },
-                  }}
-                >
-                  Vile Parle Location
-                </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <Typography
+                    variant="h5"
+                    sx={{
+                      color: '#3498db',
+                      fontWeight: 600,
+                      mb: 1,
+                      fontSize: { xs: '1.1rem', md: '1.3rem' },
+                    }}
+                  >
+                    Vile Parle Location
+                  </Typography>
+                  <OpenInNewIcon 
+                    sx={{ 
+                      color: '#3498db',
+                      fontSize: '1.2rem',
+                      opacity: 0.7,
+                    }} 
+                  />
+                </Box>
 
                 <Typography
                   variant="body1"
@@ -2098,23 +2135,37 @@ const HomePage = () => {
                   Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
                 </Typography>
 
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                  <Box
-                    sx={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+                    <Box
+                      sx={{
+                        width: 36,
+                        height: 36,
+                        borderRadius: '50%',
+                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#3498db',
+                      }}
+                    >
+                      <PhoneIcon sx={{ fontSize: 18 }} />
+                    </Box>
+                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                      Phone: 092233 33357
+                    </Typography>
+                  </Box>
+                  <Typography 
+                    variant="body2" 
+                    sx={{ 
+                      color: '#3498db',
+                      fontWeight: 500,
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#3498db',
+                      gap: 0.5,
                     }}
                   >
-                    <PhoneIcon sx={{ fontSize: 18 }} />
-                  </Box>
-                  <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                    Phone: 092233 33357
+                    View on Maps
                   </Typography>
                 </Box>
               </Box>

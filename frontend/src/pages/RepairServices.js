@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
   Box,
   Container,
@@ -51,6 +50,7 @@ import {
   SupportAgent,
   Schedule as HistoryToggleOff
 } from '@mui/icons-material';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew'; // ADD THIS LINE
 import { Link } from 'react-router-dom';
 
 const RepairServices = () => {
@@ -254,7 +254,7 @@ const RepairServices = () => {
         </DialogTitle>
         <DialogContent dividers>
           <Typography sx={{ mb: 2, fontWeight: 700 }}>
-            For more details visit Fort store and Vile Parle store:
+            For more details visit our Fort store and Vile Parle store:
           </Typography>
 
           <Box sx={{ mb: 2 }}>
@@ -2155,8 +2155,8 @@ const RepairServices = () => {
 </Box>
 
       {/* Footer */}
-{/* Footer */}
-<Box component="footer" sx={{ 
+      {/* Footer */}
+      <Box component="footer" sx={{ 
   bgcolor: '#1a1a2e', 
   color: '#ffffff', 
   pt: 4, 
@@ -2222,7 +2222,7 @@ const RepairServices = () => {
       </Box>
     </Box>
 
-    {/* Box 2: Fort Location - Full Width */}
+    {/* Box 2: Fort Location - Full Width with Google Maps Link */}
     <Box sx={{ 
       mb: 3,
       backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -2238,8 +2238,11 @@ const RepairServices = () => {
         backgroundColor: 'rgba(231, 76, 60, 0.08)',
         transform: 'translateY(-2px)',
         boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-      }
-    }}>
+        cursor: 'pointer',
+      },
+    }}
+    onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai', '_blank', 'noopener,noreferrer')}
+    >
       <Box sx={{ 
         display: 'flex', 
         alignItems: 'flex-start', 
@@ -2262,17 +2265,26 @@ const RepairServices = () => {
         </Box>
         
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-          <Typography 
-            variant="h5" 
-            sx={{ 
-              color: '#e74c3c', 
-              fontWeight: 600,
-              mb: 1,
-              fontSize: { xs: '1.1rem', md: '1.3rem' }
-            }}
-          >
-            Fort Location
-          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <Typography 
+              variant="h5" 
+              sx={{ 
+                color: '#e74c3c', 
+                fontWeight: 600,
+                mb: 1,
+                fontSize: { xs: '1.1rem', md: '1.3rem' }
+              }}
+            >
+              Fort Location
+            </Typography>
+            <OpenInNewIcon 
+              sx={{ 
+                color: '#e74c3c',
+                fontSize: '1.2rem',
+                opacity: 0.7,
+              }} 
+            />
+          </Box>
           
           <Typography 
             variant="body1" 
@@ -2286,28 +2298,42 @@ const RepairServices = () => {
             Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
           </Typography>
           
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{
-              width: 36,
-              height: 36,
-              borderRadius: '50%',
-              backgroundColor: 'rgba(52, 152, 219, 0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#3498db'
-            }}>
-              <Phone sx={{ fontSize: 18 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Box sx={{
+                width: 36,
+                height: 36,
+                borderRadius: '50%',
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#3498db'
+              }}>
+                <Phone sx={{ fontSize: 18 }} />
+              </Box>
+              <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                Phone: 081697 98826
+              </Typography>
             </Box>
-            <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-              Phone: 081697 98826
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: '#e74c3c',
+                fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+              }}
+            >
+              View on Maps
             </Typography>
           </Box>
         </Box>
       </Box>
     </Box>
 
-    {/* Box 3: Vile Parle Location - Full Width */}
+    {/* Box 3: Vile Parle Location - Full Width with Google Maps Link */}
     <Box sx={{ 
       mb: 3,
       backgroundColor: 'rgba(255, 255, 255, 0.05)',
@@ -2323,8 +2349,11 @@ const RepairServices = () => {
         backgroundColor: 'rgba(52, 152, 219, 0.08)',
         transform: 'translateY(-2px)',
         boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
-      }
-    }}>
+        cursor: 'pointer',
+      },
+    }}
+    onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai', '_blank', 'noopener,noreferrer')}
+    >
       <Box sx={{ 
         display: 'flex', 
         alignItems: 'flex-start', 
@@ -2347,17 +2376,26 @@ const RepairServices = () => {
         </Box>
         
         <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-          <Typography 
-            variant="h5" 
-            sx={{ 
-              color: '#3498db', 
-              fontWeight: 600,
-              mb: 1,
-              fontSize: { xs: '1.1rem', md: '1.3rem' }
-            }}
-          >
-            Vile Parle Location
-          </Typography>
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <Typography 
+              variant="h5" 
+              sx={{ 
+                color: '#3498db', 
+                fontWeight: 600,
+                mb: 1,
+                fontSize: { xs: '1.1rem', md: '1.3rem' }
+              }}
+            >
+              Vile Parle Location
+            </Typography>
+            <OpenInNewIcon 
+              sx={{ 
+                color: '#3498db',
+                fontSize: '1.2rem',
+                opacity: 0.7,
+              }} 
+            />
+          </Box>
           
           <Typography 
             variant="body1" 
@@ -2371,21 +2409,35 @@ const RepairServices = () => {
             Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
           </Typography>
           
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-            <Box sx={{
-              width: 36,
-              height: 36,
-              borderRadius: '50%',
-              backgroundColor: 'rgba(52, 152, 219, 0.2)',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              color: '#3498db'
-            }}>
-              <Phone sx={{ fontSize: 18 }} />
+          <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <Box sx={{
+                width: 36,
+                height: 36,
+                borderRadius: '50%',
+                backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#3498db'
+              }}>
+                <Phone sx={{ fontSize: 18 }} />
+              </Box>
+              <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
+                Phone: 092233 33357
+              </Typography>
             </Box>
-            <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-              Phone: 092233 33357
+            <Typography 
+              variant="body2" 
+              sx={{ 
+                color: '#3498db',
+                fontWeight: 500,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 0.5,
+              }}
+            >
+              View on Maps
             </Typography>
           </Box>
         </Box>
@@ -2544,14 +2596,6 @@ const RepairServices = () => {
       borderRadius: '2px'
     }} />
   </Container>
-
-  {/* Add CSS Animations */}
-  <style jsx="true">{`
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
-  `}</style>
 </Box>
 
 

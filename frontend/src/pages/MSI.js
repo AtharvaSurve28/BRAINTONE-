@@ -44,10 +44,7 @@ import {
   Gamepad,
   Diamond,
   DeveloperMode,
-  Speed as SpeedIcon,
-  DesignServices,
-  Engineering,
-  MilitaryTech
+  Speed as SpeedIcon
 } from '@mui/icons-material';
 
 // Animations
@@ -80,370 +77,304 @@ const scrollLeftToRight = keyframes`
   }
 `;
 
-const Asus = () => {
+const MSI = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [selectedSeries, setSelectedSeries] = useState('ASUS VivoBook');
+  const [selectedSeries, setSelectedSeries] = useState('Katana Series');
 
-  // ASUS Series Data
-  const asusSeriesData = [
+  // MSI Series Data
+  const msiSeriesData = [
     {
-      name: 'ASUS VivoBook',
-      logoColor: '#0096D6', // Blue
-      description: 'Stylish everyday laptops for work and entertainment with excellent value for money.',
-      categories: ['Entry Level', 'Consumer', 'Commercial'],
+      name: 'Katana Series',
+      logoColor: '#0096D6', // HP Blue from original
+      description: 'Slim gaming laptops with excellent performance-to-price ratio for mainstream gamers.',
+      categories: ['Gaming', 'Premium'],
       
-      // Entry Level Models (₹10k - ₹32k)
-      entrylevel: [
-        {
-          id: 'asus-vivobook-15-x515',
-          name: 'VivoBook 15 X515',
-          types: ['Entry Level'],
-          price: '₹24,999',
-          specs: ['Intel Celeron N4500', '4GB DDR4', '256GB SSD', '15.6" HD Display', 'Windows 11 Home in S Mode'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Students, Basic Computing',
-          includedIn: ['Entry Level']
-        },
-        {
-          id: 'asus-vivobook-go-15',
-          name: 'VivoBook Go 15',
-          types: ['Entry Level'],
-          price: '₹29,999',
-          specs: ['AMD Athlon Silver 3050U', '8GB DDR4', '512GB SSD', '15.6" FHD', 'ErgoLift Hinge'],
-          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Home Users, Office Work',
-          includedIn: ['Entry Level']
-        }
-      ],
-      
-      // Consumer Models (₹33k - ₹50k)
-      consumer: [
-        {
-          id: 'asus-vivobook-15-oled',
-          name: 'VivoBook 15 OLED',
-          types: ['Consumer'],
-          price: '₹44,999',
-          specs: ['Intel i3-1215U', '8GB DDR4', '512GB SSD', '15.6" OLED Display', 'ASUS SonicMaster Audio'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Media Consumption',
-          includedIn: ['Consumer']
-        },
-        {
-          id: 'asus-vivobook-s14',
-          name: 'VivoBook S14',
-          types: ['Consumer', 'Commercial'],
-          price: '₹48,999',
-          specs: ['Intel i5-1235U', '8GB LPDDR5', '512GB SSD', '14" 2.8K OLED 90Hz', 'ASUS AI Noise Cancellation'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Commercial']
-        }
-      ],
-      
-      // Commercial Models (₹50k - ₹70k)
-      commercial: [
-        {
-          id: 'asus-vivobook-s14',
-          name: 'VivoBook S14',
-          types: ['Consumer', 'Commercial'],
-          price: '₹48,999',
-          specs: ['Intel i5-1235U', '8GB LPDDR5', '512GB SSD', '14" 2.8K OLED 90Hz', 'ASUS AI Noise Cancellation'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Commercial']
-        },
-        {
-          id: 'asus-vivobook-pro-15',
-          name: 'VivoBook Pro 15',
-          types: ['Commercial'],
-          price: '₹64,999',
-          specs: ['AMD Ryzen 7 5800H', '16GB DDR4', '1TB SSD', '15.6" OLED Display', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Content Creators',
-          includedIn: ['Commercial']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ROG',
-      logoColor: '#C53030', // Red
-      description: 'Republic of Gamers - Ultimate gaming machines with cutting-edge performance and design.',
-      categories: ['Consumer', 'Gaming', 'Premium'],
-      
-      // Consumer Models
-      consumer: [
-        {
-          id: 'asus-rog-zephyrus-g14',
-          name: 'ROG Zephyrus G14',
-          types: ['Consumer', 'Gaming'],
-          price: '₹89,999',
-          specs: ['AMD Ryzen 7 6800HS', '16GB DDR5', '1TB SSD', '14" QHD 120Hz', 'NVIDIA RTX 3060'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Portable Gaming',
-          includedIn: ['Consumer', 'Gaming']
-        },
-        {
-          id: 'asus-rog-flow-z13',
-          name: 'ROG Flow Z13',
-          types: ['Consumer'],
-          price: '₹1,19,999',
-          specs: ['Intel i9-12900H', '16GB LPDDR5', '1TB SSD', '13.4" 4K Touch', 'Detachable Gaming Tablet'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Gaming & Creativity',
-          includedIn: ['Consumer']
-        }
-      ],
-      
-      // Gaming Models
       gaming: [
         {
-          id: 'asus-rog-zephyrus-g14',
-          name: 'ROG Zephyrus G14',
-          types: ['Consumer', 'Gaming'],
+          id: 'msi-katana-15-b12v',
+          name: 'MSI Katana 15 B12V',
+          types: ['Gaming'],
           price: '₹89,999',
-          specs: ['AMD Ryzen 7 6800HS', '16GB DDR5', '1TB SSD', '14" QHD 120Hz', 'NVIDIA RTX 3060'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Portable Gaming',
-          includedIn: ['Consumer', 'Gaming']
+          specs: ['Intel i5-12450H', '16GB DDR5', '512GB NVMe SSD', '15.6" FHD 144Hz', 'RTX 4050 6GB'],
+          image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Entry-Level Gaming',
+          includedIn: ['Gaming']
         },
         {
-          id: 'asus-rog-strix-g16',
-          name: 'ROG Strix G16',
+          id: 'msi-katana-17-b13v',
+          name: 'MSI Katana 17 B13V',
           types: ['Gaming'],
-          price: '₹1,29,999',
-          specs: ['Intel i7-13650HX', '16GB DDR5', '1TB SSD', '16" QHD+ 240Hz', 'NVIDIA RTX 4060'],
-          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          price: '₹1,09,999',
+          specs: ['Intel i7-13620H', '16GB DDR5', '1TB NVMe SSD', '17.3" FHD 144Hz', 'RTX 4060 8GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
           bestFor: 'Mainstream Gaming',
           includedIn: ['Gaming']
         }
       ],
       
-      // Premium Models
       premium: [
         {
-          id: 'asus-rog-strix-scar-18',
-          name: 'ROG Strix Scar 18',
+          id: 'msi-katana-15-b13vgk',
+          name: 'MSI Katana 15 B13VGK',
           types: ['Gaming', 'Premium'],
-          price: '₹2,49,999',
-          specs: ['Intel i9-13980HX', '32GB DDR5', '2TB SSD', '18" QHD+ 240Hz Mini-LED', 'NVIDIA RTX 4090'],
+          price: '₹1,29,999',
+          specs: ['Intel i7-13620H', '32GB DDR5', '1TB NVMe SSD', '15.6" QHD 165Hz', 'RTX 4070 8GB'],
           image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Competitive Gaming',
+          bestFor: 'High-Performance Gaming',
           includedIn: ['Gaming', 'Premium']
-        },
-        {
-          id: 'asus-rog-zephyrus-duo-16',
-          name: 'ROG Zephyrus Duo 16',
-          types: ['Premium'],
-          price: '₹2,99,999',
-          specs: ['AMD Ryzen 9 7945HX', '64GB DDR5', '4TB SSD', 'Dual Screen: 16" + 14"', 'NVIDIA RTX 4090'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Content Creation & Gaming',
-          includedIn: ['Premium']
         }
       ]
     },
     {
-      name: 'ASUS TUF',
-      logoColor: '#8B5CF6', // Purple
-      description: 'TUF Gaming - Durable, reliable gaming laptops built to withstand intense gaming sessions.',
-      categories: ['Consumer', 'Gaming', 'Premium'],
+      name: 'G Series',
+      logoColor: '#6B7280', // Gray from original
+      description: 'Versatile laptops balancing work, creativity, and gaming for multi-purpose users.',
+      categories: ['Consumer', 'Mid-Range', 'Gaming'],
       
-      // Consumer Models
       consumer: [
         {
-          id: 'asus-tuf-gaming-f15',
-          name: 'TUF Gaming F15',
-          types: ['Consumer', 'Gaming'],
-          price: '₹69,999',
-          specs: ['Intel i5-11400H', '8GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Entry-Level Gaming',
-          includedIn: ['Consumer', 'Gaming']
+          id: 'msi-modern-14-c13m',
+          name: 'MSI Modern 14 C13M',
+          types: ['Consumer'],
+          price: '₹64,999',
+          specs: ['Intel i5-1340P', '16GB LPDDR5', '512GB SSD', '14" FHD IPS', 'Intel Iris Xe'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Everyday Productivity',
+          includedIn: ['Consumer']
         },
         {
-          id: 'asus-tuf-dash-f15',
-          name: 'TUF Dash F15',
-          types: ['Consumer'],
-          price: '₹84,999',
-          specs: ['Intel i7-12650H', '16GB DDR5', '1TB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3060'],
+          id: 'msi-summit-e16-flip',
+          name: 'MSI Summit E16 Flip',
+          types: ['Consumer', 'Mid-Range'],
+          price: '₹1,19,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB SSD', '16" QHD+ Touch', '360° Convertible'],
           image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Slim Gaming Laptop',
-          includedIn: ['Consumer']
+          bestFor: 'Creative Professionals',
+          includedIn: ['Consumer', 'Mid-Range']
         }
       ],
       
-      // Gaming Models
-      gaming: [
+      midrange: [
         {
-          id: 'asus-tuf-gaming-f15',
-          name: 'TUF Gaming F15',
-          types: ['Consumer', 'Gaming'],
-          price: '₹69,999',
-          specs: ['Intel i5-11400H', '8GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Entry-Level Gaming',
-          includedIn: ['Consumer', 'Gaming']
+          id: 'msi-prestige-14-evo',
+          name: 'MSI Prestige 14 Evo',
+          types: ['Mid-Range'],
+          price: '₹94,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB NVMe SSD', '14" QHD+ 90Hz', 'Intel Evo Certified'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Business Professionals',
+          includedIn: ['Mid-Range']
         },
         {
-          id: 'asus-tuf-gaming-a15',
-          name: 'TUF Gaming A15',
+          id: 'msi-summit-e16-flip',
+          name: 'MSI Summit E16 Flip',
+          types: ['Consumer', 'Mid-Range'],
+          price: '₹1,19,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB SSD', '16" QHD+ Touch', '360° Convertible'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Creative Professionals',
+          includedIn: ['Consumer', 'Mid-Range']
+        }
+      ],
+      
+      gaming: [
+        {
+          id: 'msi-gf63-thin-12uc',
+          name: 'MSI GF63 Thin 12UC',
           types: ['Gaming'],
-          price: '₹94,999',
-          specs: ['AMD Ryzen 7 6800H', '16GB DDR5', '1TB SSD', '15.6" FHD 300Hz', 'NVIDIA RTX 3070'],
+          price: '₹79,999',
+          specs: ['Intel i5-12450H', '8GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'RTX 3050 4GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Casual Gaming',
+          includedIn: ['Gaming']
+        },
+        {
+          id: 'msi-cyborg-15-a12v',
+          name: 'MSI Cyborg 15 A12V',
+          types: ['Gaming', 'Mid-Range'],
+          price: '₹1,04,999',
+          specs: ['Intel i7-12650H', '16GB DDR5', '1TB SSD', '15.6" FHD 144Hz', 'RTX 4060 8GB'],
           image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'High Refresh Rate Gaming',
+          bestFor: 'Mid-Range Gaming',
+          includedIn: ['Gaming', 'Mid-Range']
+        }
+      ]
+    },
+    {
+      name: 'Vector Series',
+      logoColor: '#8B5CF6', // Purple from original
+      description: 'Premium gaming laptops with extreme performance and advanced cooling for hardcore gamers.',
+      categories: ['Gaming', 'Premium'],
+      
+      gaming: [
+        {
+          id: 'msi-vector-gp68hx',
+          name: 'MSI Vector GP68HX',
+          types: ['Gaming'],
+          price: '₹1,49,999',
+          specs: ['Intel i7-13700HX', '16GB DDR5', '1TB NVMe SSD', '16" QHD+ 240Hz', 'RTX 4070 8GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'High-End Gaming',
+          includedIn: ['Gaming']
+        },
+        {
+          id: 'msi-vector-gp78hx',
+          name: 'MSI Vector GP78HX',
+          types: ['Gaming'],
+          price: '₹1,79,999',
+          specs: ['Intel i9-13980HX', '32GB DDR5', '2TB NVMe SSD', '17" QHD+ 240Hz', 'RTX 4080 12GB'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Extreme Gaming',
           includedIn: ['Gaming']
         }
       ],
       
-      // Premium Models
       premium: [
         {
-          id: 'asus-tuf-gaming-a17',
-          name: 'TUF Gaming A17',
+          id: 'msi-vector-gp78hx-13vi',
+          name: 'MSI Vector GP78HX 13VI',
           types: ['Gaming', 'Premium'],
-          price: '₹1,19,999',
-          specs: ['AMD Ryzen 9 7940HS', '32GB DDR5', '2TB SSD', '17.3" QHD 240Hz', 'NVIDIA RTX 4070'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Large Screen Gaming',
+          price: '₹1,99,999',
+          specs: ['Intel i9-13980HX', '64GB DDR5', '4TB NVMe SSD', '17" 4K Mini-LED', 'RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Professional Gamers',
           includedIn: ['Gaming', 'Premium']
         }
       ]
     },
     {
-      name: 'ASUS ExpertBook',
-      logoColor: '#6B7280', // Gray
-      description: 'Business laptops with enterprise-grade security, durability, and manageability features.',
-      categories: ['Entry Level', 'Commercial'],
+      name: 'Raider Series',
+      logoColor: '#0F766E', // Teal from original
+      description: 'Flagship gaming laptops with revolutionary design, premium build, and top-tier performance.',
+      categories: ['Gaming', 'Premium'],
       
-      // Entry Level Models
-      entrylevel: [
+      gaming: [
         {
-          id: 'asus-expertbook-b1',
-          name: 'ExpertBook B1',
-          types: ['Entry Level', 'Commercial'],
-          price: '₹39,999',
-          specs: ['Intel i3-1115G4', '8GB DDR4', '256GB SSD', '14" HD Display', 'Windows 11 Pro'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Small Businesses',
-          includedIn: ['Entry Level', 'Commercial']
-        },
-        {
-          id: 'asus-expertbook-b5',
-          name: 'ExpertBook B5',
-          types: ['Entry Level'],
-          price: '₹44,999',
-          specs: ['Intel i5-1135G7', '16GB DDR4', '512GB SSD', '14" FHD Anti-glare', 'Military-grade Durability'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Business Professionals',
-          includedIn: ['Entry Level']
-        }
-      ],
-      
-      // Commercial Models
-      commercial: [
-        {
-          id: 'asus-expertbook-b1',
-          name: 'ExpertBook B1',
-          types: ['Entry Level', 'Commercial'],
-          price: '₹39,999',
-          specs: ['Intel i3-1115G4', '8GB DDR4', '256GB SSD', '14" HD Display', 'Windows 11 Pro'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Small Businesses',
-          includedIn: ['Entry Level', 'Commercial']
-        },
-        {
-          id: 'asus-expertbook-b9',
-          name: 'ExpertBook B9',
-          types: ['Commercial'],
-          price: '₹1,24,999',
-          specs: ['Intel i7-1165G7 vPro', '16GB LPDDR4X', '1TB SSD', '14" FHD', 'ASUS Business Security'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Corporate Executives',
-          includedIn: ['Commercial']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ZenBook',
-      logoColor: '#0F766E', // Teal
-      description: 'Ultra-premium laptops with exquisite craftsmanship, innovative features, and stunning displays.',
-      categories: ['Consumer', 'Premium'],
-      
-      // Consumer Models
-      consumer: [
-        {
-          id: 'asus-zenbook-13-oled',
-          name: 'ZenBook 13 OLED',
-          types: ['Consumer'],
-          price: '₹74,999',
-          specs: ['AMD Ryzen 5 5600U', '8GB LPDDR4X', '512GB SSD', '13.3" OLED Display', 'NumberPad 2.0'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Ultra-portable Productivity',
-          includedIn: ['Consumer']
-        },
-        {
-          id: 'asus-zenbook-14-flip',
-          name: 'ZenBook 14 Flip OLED',
-          types: ['Consumer', 'Premium'],
-          price: '₹1,09,999',
-          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB SSD', '14" 2.8K OLED Touch', 'ASUS Pen 2.0 Included'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Premium']
-        }
-      ],
-      
-      // Premium Models
-      premium: [
-        {
-          id: 'asus-zenbook-14-flip',
-          name: 'ZenBook 14 Flip OLED',
-          types: ['Consumer', 'Premium'],
-          price: '₹1,09,999',
-          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB SSD', '14" 2.8K OLED Touch', 'ASUS Pen 2.0 Included'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Premium']
-        },
-        {
-          id: 'asus-zenbook-pro-duo-15',
-          name: 'ZenBook Pro Duo 15',
-          types: ['Premium'],
-          price: '₹2,19,999',
-          specs: ['Intel i9-12900H', '32GB DDR5', '2TB SSD', 'Dual Screen: 15.6" OLED + 14" ScreenPad Plus', 'NVIDIA RTX 3070 Ti'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Professional Content Creation',
-          includedIn: ['Premium']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ProArt',
-      logoColor: '#10B981', // Green
-      description: 'Creator-focused laptops with professional-grade color accuracy and workstation performance.',
-      categories: ['Premium'],
-      
-      premium: [
-        {
-          id: 'asus-proart-studiobook-16',
-          name: 'ProArt Studiobook 16',
-          types: ['Premium'],
-          price: '₹1,89,999',
-          specs: ['AMD Ryzen 9 5900HX', '32GB DDR4', '1TB SSD', '16" 4K OLED 100% DCI-P3', 'NVIDIA RTX 3070'],
+          id: 'msi-raider-ge68hx',
+          name: 'MSI Raider GE68HX',
+          types: ['Gaming'],
+          price: '₹1,69,999',
+          specs: ['Intel i7-13700HX', '32GB DDR5', '2TB NVMe SSD', '16" QHD+ 240Hz', 'RTX 4070 8GB'],
           image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Professional Artists & Designers',
-          includedIn: ['Premium']
+          bestFor: 'Enthusiast Gaming',
+          includedIn: ['Gaming']
         },
         {
-          id: 'asus-proart-studiobook-pro-16',
-          name: 'ProArt Studiobook Pro 16',
-          types: ['Premium'],
-          price: '₹2,49,999',
-          specs: ['Intel i9-12900H', '64GB DDR5', '2TB SSD', '16" 4K OLED 120Hz', 'NVIDIA RTX A5000'],
+          id: 'msi-raider-ge78hx',
+          name: 'MSI Raider GE78HX',
+          types: ['Gaming'],
+          price: '₹2,19,999',
+          specs: ['Intel i9-13980HX', '64GB DDR5', '4TB NVMe SSD', '17" 4K 144Hz', 'RTX 4090 16GB'],
           image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'CAD, 3D Modeling, Animation',
+          bestFor: 'Ultimate Gaming',
+          includedIn: ['Gaming']
+        }
+      ],
+      
+      premium: [
+        {
+          id: 'msi-raider-ge78hx-13vi',
+          name: 'MSI Raider GE78HX 13VI',
+          types: ['Gaming', 'Premium'],
+          price: '₹2,49,999',
+          specs: ['Intel i9-13980HX', '96GB DDR5', '8TB NVMe SSD', '17" 4K Mini-LED 144Hz', 'RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Content Creators & Pro Gamers',
+          includedIn: ['Gaming', 'Premium']
+        }
+      ]
+    },
+    {
+      name: 'Titan Series',
+      logoColor: '#C53030', // Red from original
+      description: 'Ultimate desktop replacement laptops with extreme performance for professionals and enthusiasts.',
+      categories: ['Gaming', 'Premium'],
+      
+      gaming: [
+        {
+          id: 'msi-titan-gt77-hx',
+          name: 'MSI Titan GT77 HX',
+          types: ['Gaming'],
+          price: '₹2,99,999',
+          specs: ['Intel i9-13980HX', '128GB DDR5', '8TB NVMe SSD (4x2TB)', '17.3" 4K 144Hz Mini-LED', 'RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Extreme Desktop Replacement',
+          includedIn: ['Gaming']
+        }
+      ],
+      
+      premium: [
+        {
+          id: 'msi-titan-gt77-hx-13vi',
+          name: 'MSI Titan GT77 HX 13VI',
+          types: ['Gaming', 'Premium'],
+          price: '₹3,49,999',
+          specs: ['Intel i9-13980HX', '128GB DDR5', '16TB NVMe SSD (4x4TB)', '17.3" 4K 144Hz Mini-LED', 'RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Professional Content Creation',
+          includedIn: ['Gaming', 'Premium']
+        },
+        {
+          id: 'msi-titan-gt77-hx-13vis',
+          name: 'MSI Titan GT77 HX 13VIS Limited',
+          types: ['Premium'],
+          price: '₹4,99,999',
+          specs: ['Intel i9-13980HX', '128GB DDR5', '24TB NVMe SSD', '17.3" 4K Mini-LED 144Hz', 'Dual RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Server-Level Performance',
+          includedIn: ['Premium']
+        }
+      ]
+    },
+    {
+      name: 'MSI Gaming Series',
+      logoColor: '#10B981', // Green from original
+      description: 'Ultimate gaming machines with desktop-level performance and advanced cooling.',
+      categories: ['Gaming', 'Premium'],
+      
+      gaming: [
+        {
+          id: 'msi-gaming-16-wd0000tx',
+          name: 'MSI Gaming 16',
+          types: ['Gaming'],
+          price: '₹1,24,999',
+          specs: ['Intel i7-13700HX', '16GB DDR5', '1TB NVMe SSD', '16.1" QHD 165Hz', 'RTX 4060 8GB'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Competitive Gaming',
+          includedIn: ['Gaming']
+        },
+        {
+          id: 'msi-gaming-17-ck2000tx',
+          name: 'MSI Gaming 17',
+          types: ['Gaming'],
+          price: '₹1,49,999',
+          specs: ['Intel i9-13900HX', '32GB DDR5', '2TB NVMe SSD', '17.3" QHD 240Hz', 'RTX 4080 12GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Esports Professionals',
+          includedIn: ['Gaming']
+        }
+      ],
+      
+      premium: [
+        {
+          id: 'msi-gaming-17-ck2000tx',
+          name: 'MSI Gaming 17',
+          types: ['Gaming', 'Premium'],
+          price: '₹1,49,999',
+          specs: ['Intel i9-13900HX', '32GB DDR5', '2TB NVMe SSD', '17.3" QHD 240Hz', 'RTX 4080 12GB'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Esports Professionals',
+          includedIn: ['Gaming', 'Premium']
+        },
+        {
+          id: 'msi-gaming-transcend-16',
+          name: 'MSI Gaming Transcend 16',
+          types: ['Premium'],
+          price: '₹1,79,999',
+          specs: ['Intel i9-13900HX', '64GB DDR5', '4TB NVMe SSD', '16" Mini-LED 240Hz', 'RTX 4090 16GB'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Extreme Gaming',
           includedIn: ['Premium']
         }
       ]
@@ -497,13 +428,16 @@ const Asus = () => {
   ];
 
   // Get selected series data
-  const selectedSeriesData = asusSeriesData.find(series => series.name === selectedSeries);
+  const selectedSeriesData = msiSeriesData.find(series => series.name === selectedSeries);
 
-  // Function to render Entry Level section
+  // Function to render Entry Level section (using same structure as HP code)
   const renderEntryLevelSection = () => {
-    const entryLevelModels = selectedSeriesData?.entrylevel || [];
+    // For MSI, we'll use Gaming as the main section since MSI focuses on gaming
+    const gamingModels = selectedSeriesData?.gaming || [];
     
-    if (entryLevelModels.length === 0) return null;
+    if (gamingModels.length === 0) return null;
+
+    const category = categories.find(c => c.name === 'Gaming');
 
     return (
       <Paper
@@ -513,19 +447,19 @@ const Asus = () => {
           p: 4,
           borderRadius: 2,
           border: '2px solid',
-          borderColor: alpha('#3B82F6', 0.3),
-          backgroundColor: alpha('#3B82F6', 0.05),
+          borderColor: alpha(category.color, 0.3),
+          backgroundColor: alpha(category.color, 0.05),
           position: 'relative',
           overflow: 'hidden'
         }}
       >
-        {/* Entry Level Header */}
+        {/* Gaming Header */}
         <Typography variant="h4" sx={{ 
           fontWeight: 800, 
-          color: '#3B82F6',
+          color: category.color,
           mb: 1
         }}>
-          Entry Level LAPTOPS
+          GAMING LAPTOPS
         </Typography>
         
         <Typography variant="body1" sx={{ 
@@ -533,24 +467,24 @@ const Asus = () => {
           mb: 3,
           fontSize: '1.1rem'
         }}>
-          Basic performance, essential tasks. Price: ₹10,000-35,000
+          High-performance gaming with dedicated GPUs and high-refresh displays. Price: ₹70,000+
         </Typography>
         
         <Divider sx={{ mb: 4 }} />
 
-        {/* Entry Level Models List */}
+        {/* Gaming Models List */}
         <Box sx={{ mb: 3 }}>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#1e293b' }}>
-            Entry Level Models
+            Gaming Models
           </Typography>
           <Stack direction="row" spacing={2} sx={{ flexWrap: 'wrap', mb: 3 }}>
-            {entryLevelModels.map((model, index) => (
+            {gamingModels.map((model, index) => (
               <Chip
                 key={index}
                 label={model.name}
                 sx={{
-                  backgroundColor: alpha('#3B82F6', 0.1),
-                  color: '#3B82F6',
+                  backgroundColor: alpha(category.color, 0.1),
+                  color: category.color,
                   fontWeight: 600,
                   fontSize: '0.9rem',
                   py: 1.5
@@ -560,16 +494,16 @@ const Asus = () => {
           </Stack>
         </Box>
 
-        {/* Entry Level Models Grid */}
+        {/* Gaming Models Grid */}
         <Grid container spacing={3}>
-          {entryLevelModels.slice(0, 3).map((model, index) => (
+          {gamingModels.slice(0, 3).map((model, index) => (
             <Grid item xs={12} md={4} key={index}>
               <Card sx={{ 
                 height: '100%',
                 borderRadius: 2,
                 boxShadow: 2,
                 border: '1px solid',
-                borderColor: alpha('#3B82F6', 0.2),
+                borderColor: alpha(category.color, 0.2),
                 '&:hover': { 
                   boxShadow: 6,
                   transform: 'translateY(-4px)',
@@ -597,7 +531,7 @@ const Asus = () => {
                   
                   {/* Price */}
                   <Typography variant="h4" sx={{ 
-                    color: '#3B82F6',
+                    color: category.color,
                     fontWeight: 900,
                     mb: 2
                   }}>
@@ -608,8 +542,8 @@ const Asus = () => {
                   
                   {/* Best For */}
                   <Typography variant="body1" sx={{ 
-                    color: '#3B82F6',
-                    backgroundColor: alpha('#3B82F6', 0.1),
+                    color: category.color,
+                    backgroundColor: alpha(category.color, 0.1),
                     p: 1.5,
                     borderRadius: 1,
                     mb: 3,
@@ -639,7 +573,7 @@ const Asus = () => {
                             width: 6,
                             height: 6,
                             borderRadius: '50%',
-                            backgroundColor: '#3B82F6'
+                            backgroundColor: category.color
                           }}
                         />
                         {spec}
@@ -652,17 +586,17 @@ const Asus = () => {
                   {/* View Details Button */}
                   <Button
                     component={Link}
-                    to={`/product/asus/${model.id}`}
+                    to={`/product/msi/${model.id}`}
                     variant="contained"
                     fullWidth
                     sx={{
-                      backgroundColor: '#3B82F6',
+                      backgroundColor: category.color,
                       color: 'white',
                       fontWeight: 700,
                       py: 1.5,
                       fontSize: '1rem',
                       '&:hover': {
-                        backgroundColor: '#2563EB'
+                        backgroundColor: '#DC2626'
                       }
                     }}
                   >
@@ -677,13 +611,13 @@ const Asus = () => {
     );
   };
 
-  // Render category section (for other categories)
+  // Render category section (for other categories) - Using EXACT same function structure as HP
   const renderCategorySection = (categoryName) => {
     const category = categories.find(c => c.name === categoryName);
     const categoryKey = categoryName.toLowerCase().replace(/[ -]/g, '');
     const models = selectedSeriesData?.[categoryKey] || [];
     
-    if (models.length === 0 || categoryName === 'Entry Level') return null;
+    if (models.length === 0 || categoryName === 'Gaming') return null;
 
     return (
       <Paper
@@ -840,7 +774,7 @@ const Asus = () => {
                   {/* View Details Button */}
                   <Button
                     component={Link}
-                    to={`/product/asus/${model.id}`}
+                    to={`/product/msi/${model.id}`}
                     variant="outlined"
                     fullWidth
                     endIcon={<ArrowForward />}
@@ -873,7 +807,7 @@ const Asus = () => {
       overflow: 'hidden',
       position: 'relative'
     }}>
-      {/* Hero Header */}
+      {/* Hero Header - Using EXACT same structure as HP */}
       <Box sx={{
         minHeight: '30vh',
         display: 'flex',
@@ -881,7 +815,7 @@ const Asus = () => {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(#000000 , #FF0000 100%)',
+        background: 'linear-gradient(#FF0000 100%)',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -907,7 +841,7 @@ const Asus = () => {
               mb: 2
             }}
           >
-            ASUS Laptop Series
+            MSI Laptop Series
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 2 }}>
             Organized by Levels and Categories
@@ -918,7 +852,7 @@ const Asus = () => {
 
       {/* Main Content */}
       <Container maxWidth="lg" sx={{ py: 6 }}>
-        {/* Series Selection Tabs */}
+        {/* Series Selection Tabs - Using EXACT same structure as HP */}
         <Paper sx={{ mb: 4, borderRadius: 2, p: 2 }}>
           <Tabs
             value={selectedSeries}
@@ -932,7 +866,7 @@ const Asus = () => {
               }
             }}
           >
-            {asusSeriesData.map((series) => (
+            {msiSeriesData.map((series) => (
               <Tab
                 key={series.name}
                 label={series.name}
@@ -950,7 +884,7 @@ const Asus = () => {
           </Tabs>
         </Paper>
 
-        {/* Selected Series Header */}
+        {/* Selected Series Header - Using EXACT same structure as HP */}
         {selectedSeriesData && (
           <Paper sx={{ mb: 4, p: 3, borderRadius: 3, backgroundColor: alpha(selectedSeriesData.logoColor, 0.05) }}>
             <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
@@ -988,7 +922,7 @@ const Asus = () => {
           </Paper>
         )}
 
-        {/* Scrolling Red Message */}
+        {/* Scrolling Red Message - Using EXACT same structure as HP */}
         <Box
           sx={{
             position: 'relative',
@@ -1038,7 +972,7 @@ const Asus = () => {
           </Box>
         </Box>
 
-        {/* Entry Level Section */}
+        {/* Gaming Section (Replaces Entry Level Section for MSI) */}
         {renderEntryLevelSection()}
 
         {/* Other Category Sections */}
@@ -1047,15 +981,14 @@ const Asus = () => {
             {renderCategorySection('Mid-Range')}
             {renderCategorySection('Consumer')}
             {renderCategorySection('Commercial')}
-            {renderCategorySection('Gaming')}
             {renderCategorySection('Premium')}
           </>
         )}
 
-        {/* Legend Explanation */}
+        {/* Legend Explanation - Using EXACT same structure as HP */}
         <Paper sx={{ mt: 6, p: 3, borderRadius: 3, backgroundColor: '#f8fafc' }}>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#1e293b' }}>
-            📋 ASUS Laptop Categories Explained
+            📋 MSI Laptop Categories Explained
           </Typography>
           <Grid container spacing={2}>
             {categories.map((category) => (
@@ -1086,47 +1019,46 @@ const Asus = () => {
             ))}
           </Grid>
           <Typography variant="body2" sx={{ mt: 2, color: '#64748b', fontStyle: 'italic' }}>
-            Note: ASUS offers comprehensive laptop lineup from entry-level VivoBooks to premium ROG gaming machines.
-            Each series targets specific user needs with optimized features.
+            Note: MSI laptops are primarily gaming-focused but can appear in multiple categories based on their features and price range.
           </Typography>
         </Paper>
 
-        {/* ASUS Brand Features */}
+        {/* MSI Brand Features - Using same structure but MSI-specific content */}
         <Paper sx={{ mt: 4, p: 3, borderRadius: 3, backgroundColor: alpha('#0096D6', 0.05) }}>
           <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#0096D6' }}>
-            🏆 Why Choose ASUS Laptops?
+            🏆 Why Choose MSI Laptops?
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <MilitaryTech sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <FlashOn sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Military-Grade Durability
+                  Cooler Boost Technology
                 </Typography>
                 <Typography variant="body2">
-                  MIL-STD-810H certified for extreme conditions
+                  Advanced thermal solutions for maximum gaming performance
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <DesignServices sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <Gamepad sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Innovative Design
+                  Gaming-Optimized
                 </Typography>
                 <Typography variant="body2">
-                  ErgoLift hinge, NumberPad, ScreenPad Plus features
+                  Features designed specifically for gamers and enthusiasts
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <Engineering sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <Diamond sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Advanced Cooling
+                  Premium Build
                 </Typography>
                 <Typography variant="body2">
-                  ROG Intelligent Cooling, ASUS IceCool technology
+                  High-quality materials and attention to detail
                 </Typography>
               </Box>
             </Grid>
@@ -1134,46 +1066,11 @@ const Asus = () => {
               <Box sx={{ textAlign: 'center', p: 2 }}>
                 <TrendingUp sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Performance Optimized
+                  Performance
                 </Typography>
                 <Typography variant="body2">
-                  ASUS AI Suite, Armoury Crate for performance tuning
+                  Optimized for gaming, content creation, and productivity
                 </Typography>
-              </Box>
-            </Grid>
-          </Grid>
-        </Paper>
-
-        {/* ASUS Series Comparison */}
-        <Paper sx={{ mt: 4, p: 3, borderRadius: 3, backgroundColor: alpha('#C53030', 0.05) }}>
-          <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#C53030' }}>
-            🎮 ASUS Gaming & Creator Series
-          </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ p: 2, backgroundColor: alpha('#C53030', 0.05), borderRadius: 2, height: '100%' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#C53030', mb: 2 }}>
-                  ROG (Republic of Gamers)
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                  Premium gaming laptops with cutting-edge technology, RGB lighting, and extreme performance for competitive gamers.
-                </Typography>
-                <Chip label="Gaming" size="small" sx={{ backgroundColor: alpha('#EF4444', 0.1), color: '#EF4444', mr: 1 }} />
-                <Chip label="Premium" size="small" sx={{ backgroundColor: alpha('#8B5CF6', 0.1), color: '#8B5CF6', mr: 1 }} />
-                <Chip label="Consumer" size="small" sx={{ backgroundColor: alpha('#10B981', 0.1), color: '#10B981' }} />
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ p: 2, backgroundColor: alpha('#0F766E', 0.05), borderRadius: 2, height: '100%' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F766E', mb: 2 }}>
-                  ZenBook & ProArt
-                </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                  Premium ultrabooks and creator laptops with exquisite design, OLED displays, and professional-grade features.
-                </Typography>
-                <Chip label="Premium" size="small" sx={{ backgroundColor: alpha('#8B5CF6', 0.1), color: '#8B5CF6', mr: 1 }} />
-                <Chip label="Consumer" size="small" sx={{ backgroundColor: alpha('#10B981', 0.1), color: '#10B981', mr: 1 }} />
-                <Chip label="Professional" size="small" sx={{ backgroundColor: alpha('#6366F1', 0.1), color: '#6366F1' }} />
               </Box>
             </Grid>
           </Grid>
@@ -1183,4 +1080,4 @@ const Asus = () => {
   );
 };
 
-export default Asus;
+export default MSI;

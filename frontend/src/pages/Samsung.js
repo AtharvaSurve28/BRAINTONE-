@@ -40,14 +40,14 @@ import {
   Palette,
   Shield,
   TrendingUp,
-  FlashOn,
-  Gamepad,
-  Diamond,
-  DeveloperMode,
-  Speed as SpeedIcon,
-  DesignServices,
-  Engineering,
-  MilitaryTech
+  Smartphone,
+  Tablet,
+  Devices,
+  SmartDisplay,
+  ConnectedTv,
+  PhoneAndroid,
+  Laptop,
+  CameraAlt
 } from '@mui/icons-material';
 
 // Animations
@@ -80,370 +80,358 @@ const scrollLeftToRight = keyframes`
   }
 `;
 
-const Asus = () => {
+const Samsung = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
-  const [selectedSeries, setSelectedSeries] = useState('ASUS VivoBook');
+  const [selectedSeries, setSelectedSeries] = useState('Galaxy Book Series');
 
-  // ASUS Series Data
-  const asusSeriesData = [
+  // Samsung Series Data
+  const samsungSeriesData = [
     {
-      name: 'ASUS VivoBook',
-      logoColor: '#0096D6', // Blue
-      description: 'Stylish everyday laptops for work and entertainment with excellent value for money.',
-      categories: ['Entry Level', 'Consumer', 'Commercial'],
-      
-      // Entry Level Models (₹10k - ₹32k)
-      entrylevel: [
-        {
-          id: 'asus-vivobook-15-x515',
-          name: 'VivoBook 15 X515',
-          types: ['Entry Level'],
-          price: '₹24,999',
-          specs: ['Intel Celeron N4500', '4GB DDR4', '256GB SSD', '15.6" HD Display', 'Windows 11 Home in S Mode'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Students, Basic Computing',
-          includedIn: ['Entry Level']
-        },
-        {
-          id: 'asus-vivobook-go-15',
-          name: 'VivoBook Go 15',
-          types: ['Entry Level'],
-          price: '₹29,999',
-          specs: ['AMD Athlon Silver 3050U', '8GB DDR4', '512GB SSD', '15.6" FHD', 'ErgoLift Hinge'],
-          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Home Users, Office Work',
-          includedIn: ['Entry Level']
-        }
-      ],
-      
-      // Consumer Models (₹33k - ₹50k)
-      consumer: [
-        {
-          id: 'asus-vivobook-15-oled',
-          name: 'VivoBook 15 OLED',
-          types: ['Consumer'],
-          price: '₹44,999',
-          specs: ['Intel i3-1215U', '8GB DDR4', '512GB SSD', '15.6" OLED Display', 'ASUS SonicMaster Audio'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Media Consumption',
-          includedIn: ['Consumer']
-        },
-        {
-          id: 'asus-vivobook-s14',
-          name: 'VivoBook S14',
-          types: ['Consumer', 'Commercial'],
-          price: '₹48,999',
-          specs: ['Intel i5-1235U', '8GB LPDDR5', '512GB SSD', '14" 2.8K OLED 90Hz', 'ASUS AI Noise Cancellation'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Commercial']
-        }
-      ],
-      
-      // Commercial Models (₹50k - ₹70k)
-      commercial: [
-        {
-          id: 'asus-vivobook-s14',
-          name: 'VivoBook S14',
-          types: ['Consumer', 'Commercial'],
-          price: '₹48,999',
-          specs: ['Intel i5-1235U', '8GB LPDDR5', '512GB SSD', '14" 2.8K OLED 90Hz', 'ASUS AI Noise Cancellation'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Commercial']
-        },
-        {
-          id: 'asus-vivobook-pro-15',
-          name: 'VivoBook Pro 15',
-          types: ['Commercial'],
-          price: '₹64,999',
-          specs: ['AMD Ryzen 7 5800H', '16GB DDR4', '1TB SSD', '15.6" OLED Display', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Content Creators',
-          includedIn: ['Commercial']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ROG',
-      logoColor: '#C53030', // Red
-      description: 'Republic of Gamers - Ultimate gaming machines with cutting-edge performance and design.',
-      categories: ['Consumer', 'Gaming', 'Premium'],
-      
-      // Consumer Models
-      consumer: [
-        {
-          id: 'asus-rog-zephyrus-g14',
-          name: 'ROG Zephyrus G14',
-          types: ['Consumer', 'Gaming'],
-          price: '₹89,999',
-          specs: ['AMD Ryzen 7 6800HS', '16GB DDR5', '1TB SSD', '14" QHD 120Hz', 'NVIDIA RTX 3060'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Portable Gaming',
-          includedIn: ['Consumer', 'Gaming']
-        },
-        {
-          id: 'asus-rog-flow-z13',
-          name: 'ROG Flow Z13',
-          types: ['Consumer'],
-          price: '₹1,19,999',
-          specs: ['Intel i9-12900H', '16GB LPDDR5', '1TB SSD', '13.4" 4K Touch', 'Detachable Gaming Tablet'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Gaming & Creativity',
-          includedIn: ['Consumer']
-        }
-      ],
-      
-      // Gaming Models
-      gaming: [
-        {
-          id: 'asus-rog-zephyrus-g14',
-          name: 'ROG Zephyrus G14',
-          types: ['Consumer', 'Gaming'],
-          price: '₹89,999',
-          specs: ['AMD Ryzen 7 6800HS', '16GB DDR5', '1TB SSD', '14" QHD 120Hz', 'NVIDIA RTX 3060'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Portable Gaming',
-          includedIn: ['Consumer', 'Gaming']
-        },
-        {
-          id: 'asus-rog-strix-g16',
-          name: 'ROG Strix G16',
-          types: ['Gaming'],
-          price: '₹1,29,999',
-          specs: ['Intel i7-13650HX', '16GB DDR5', '1TB SSD', '16" QHD+ 240Hz', 'NVIDIA RTX 4060'],
-          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Mainstream Gaming',
-          includedIn: ['Gaming']
-        }
-      ],
-      
-      // Premium Models
-      premium: [
-        {
-          id: 'asus-rog-strix-scar-18',
-          name: 'ROG Strix Scar 18',
-          types: ['Gaming', 'Premium'],
-          price: '₹2,49,999',
-          specs: ['Intel i9-13980HX', '32GB DDR5', '2TB SSD', '18" QHD+ 240Hz Mini-LED', 'NVIDIA RTX 4090'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Competitive Gaming',
-          includedIn: ['Gaming', 'Premium']
-        },
-        {
-          id: 'asus-rog-zephyrus-duo-16',
-          name: 'ROG Zephyrus Duo 16',
-          types: ['Premium'],
-          price: '₹2,99,999',
-          specs: ['AMD Ryzen 9 7945HX', '64GB DDR5', '4TB SSD', 'Dual Screen: 16" + 14"', 'NVIDIA RTX 4090'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Content Creation & Gaming',
-          includedIn: ['Premium']
-        }
-      ]
-    },
-    {
-      name: 'ASUS TUF',
-      logoColor: '#8B5CF6', // Purple
-      description: 'TUF Gaming - Durable, reliable gaming laptops built to withstand intense gaming sessions.',
-      categories: ['Consumer', 'Gaming', 'Premium'],
-      
-      // Consumer Models
-      consumer: [
-        {
-          id: 'asus-tuf-gaming-f15',
-          name: 'TUF Gaming F15',
-          types: ['Consumer', 'Gaming'],
-          price: '₹69,999',
-          specs: ['Intel i5-11400H', '8GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Entry-Level Gaming',
-          includedIn: ['Consumer', 'Gaming']
-        },
-        {
-          id: 'asus-tuf-dash-f15',
-          name: 'TUF Dash F15',
-          types: ['Consumer'],
-          price: '₹84,999',
-          specs: ['Intel i7-12650H', '16GB DDR5', '1TB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3060'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Slim Gaming Laptop',
-          includedIn: ['Consumer']
-        }
-      ],
-      
-      // Gaming Models
-      gaming: [
-        {
-          id: 'asus-tuf-gaming-f15',
-          name: 'TUF Gaming F15',
-          types: ['Consumer', 'Gaming'],
-          price: '₹69,999',
-          specs: ['Intel i5-11400H', '8GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3050'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Entry-Level Gaming',
-          includedIn: ['Consumer', 'Gaming']
-        },
-        {
-          id: 'asus-tuf-gaming-a15',
-          name: 'TUF Gaming A15',
-          types: ['Gaming'],
-          price: '₹94,999',
-          specs: ['AMD Ryzen 7 6800H', '16GB DDR5', '1TB SSD', '15.6" FHD 300Hz', 'NVIDIA RTX 3070'],
-          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'High Refresh Rate Gaming',
-          includedIn: ['Gaming']
-        }
-      ],
-      
-      // Premium Models
-      premium: [
-        {
-          id: 'asus-tuf-gaming-a17',
-          name: 'TUF Gaming A17',
-          types: ['Gaming', 'Premium'],
-          price: '₹1,19,999',
-          specs: ['AMD Ryzen 9 7940HS', '32GB DDR5', '2TB SSD', '17.3" QHD 240Hz', 'NVIDIA RTX 4070'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Large Screen Gaming',
-          includedIn: ['Gaming', 'Premium']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ExpertBook',
-      logoColor: '#6B7280', // Gray
-      description: 'Business laptops with enterprise-grade security, durability, and manageability features.',
-      categories: ['Entry Level', 'Commercial'],
+      name: 'Galaxy Book Series',
+      logoColor: '#0096D6', // Samsung Blue
+      description: 'Versatile laptops designed for productivity, creativity, and seamless ecosystem integration.',
+      categories: ['Entry Level', 'Consumer', 'Mid-Range', 'Commercial', 'Premium'],
       
       // Entry Level Models
       entrylevel: [
         {
-          id: 'asus-expertbook-b1',
-          name: 'ExpertBook B1',
-          types: ['Entry Level', 'Commercial'],
-          price: '₹39,999',
-          specs: ['Intel i3-1115G4', '8GB DDR4', '256GB SSD', '14" HD Display', 'Windows 11 Pro'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Small Businesses',
-          includedIn: ['Entry Level', 'Commercial']
+          id: 'samsung-galaxy-book-go',
+          name: 'Galaxy Book Go',
+          types: ['Entry Level'],
+          price: '₹29,999',
+          specs: ['Qualcomm Snapdragon 7c', '4GB LPDDR4X', '128GB eUFS', '14" FHD Display', 'Windows 11 in S Mode'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Basic Computing, Students',
+          includedIn: ['Entry Level']
         },
         {
-          id: 'asus-expertbook-b5',
-          name: 'ExpertBook B5',
-          types: ['Entry Level'],
-          price: '₹44,999',
-          specs: ['Intel i5-1135G7', '16GB DDR4', '512GB SSD', '14" FHD Anti-glare', 'Military-grade Durability'],
+          id: 'samsung-galaxy-book2-go',
+          name: 'Galaxy Book2 Go',
+          types: ['Entry Level', 'Consumer'],
+          price: '₹34,999',
+          specs: ['Snapdragon 7c Gen 2', '8GB RAM', '256GB SSD', '14" FHD', '22+ hours battery'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Mobile Professionals',
+          includedIn: ['Entry Level', 'Consumer']
+        }
+      ],
+      
+      // Consumer Models
+      consumer: [
+        {
+          id: 'samsung-galaxy-book2-go',
+          name: 'Galaxy Book2 Go',
+          types: ['Entry Level', 'Consumer'],
+          price: '₹34,999',
+          specs: ['Snapdragon 7c Gen 2', '8GB RAM', '256GB SSD', '14" FHD', '22+ hours battery'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Mobile Professionals',
+          includedIn: ['Entry Level', 'Consumer']
+        },
+        {
+          id: 'samsung-galaxy-book2-360',
+          name: 'Galaxy Book2 360',
+          types: ['Consumer', 'Mid-Range'],
+          price: '₹64,999',
+          specs: ['Intel i5-1235U', '8GB LPDDR4X', '512GB SSD', '13.3" FHD AMOLED Touch', 'S Pen Included'],
           image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Business Professionals',
-          includedIn: ['Entry Level']
+          bestFor: 'Creative Professionals',
+          includedIn: ['Consumer', 'Mid-Range']
+        }
+      ],
+      
+      // Mid-Range Models
+      midrange: [
+        {
+          id: 'samsung-galaxy-book2-360',
+          name: 'Galaxy Book2 360',
+          types: ['Consumer', 'Mid-Range'],
+          price: '₹64,999',
+          specs: ['Intel i5-1235U', '8GB LPDDR4X', '512GB SSD', '13.3" FHD AMOLED Touch', 'S Pen Included'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Creative Professionals',
+          includedIn: ['Consumer', 'Mid-Range']
+        },
+        {
+          id: 'samsung-galaxy-book2-pro-360',
+          name: 'Galaxy Book2 Pro 360',
+          types: ['Mid-Range', 'Commercial'],
+          price: '₹89,999',
+          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB NVMe SSD', '15.6" AMOLED Touch', 'Intel Evo Platform'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Business & Creative Work',
+          includedIn: ['Mid-Range', 'Commercial']
         }
       ],
       
       // Commercial Models
       commercial: [
         {
-          id: 'asus-expertbook-b1',
-          name: 'ExpertBook B1',
-          types: ['Entry Level', 'Commercial'],
-          price: '₹39,999',
-          specs: ['Intel i3-1115G4', '8GB DDR4', '256GB SSD', '14" HD Display', 'Windows 11 Pro'],
+          id: 'samsung-galaxy-book2-pro-360',
+          name: 'Galaxy Book2 Pro 360',
+          types: ['Mid-Range', 'Commercial'],
+          price: '₹89,999',
+          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB NVMe SSD', '15.6" AMOLED Touch', 'Intel Evo Platform'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Business & Creative Work',
+          includedIn: ['Mid-Range', 'Commercial']
+        },
+        {
+          id: 'samsung-galaxy-book3-ultra',
+          name: 'Galaxy Book3 Ultra',
+          types: ['Commercial', 'Premium'],
+          price: '₹1,39,999',
+          specs: ['Intel i7-13700H', '16GB LPDDR5', '512GB SSD', '16" Dynamic AMOLED 2X', 'NVIDIA RTX 4050'],
           image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Small Businesses',
-          includedIn: ['Entry Level', 'Commercial']
-        },
-        {
-          id: 'asus-expertbook-b9',
-          name: 'ExpertBook B9',
-          types: ['Commercial'],
-          price: '₹1,24,999',
-          specs: ['Intel i7-1165G7 vPro', '16GB LPDDR4X', '1TB SSD', '14" FHD', 'ASUS Business Security'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Corporate Executives',
-          includedIn: ['Commercial']
-        }
-      ]
-    },
-    {
-      name: 'ASUS ZenBook',
-      logoColor: '#0F766E', // Teal
-      description: 'Ultra-premium laptops with exquisite craftsmanship, innovative features, and stunning displays.',
-      categories: ['Consumer', 'Premium'],
-      
-      // Consumer Models
-      consumer: [
-        {
-          id: 'asus-zenbook-13-oled',
-          name: 'ZenBook 13 OLED',
-          types: ['Consumer'],
-          price: '₹74,999',
-          specs: ['AMD Ryzen 5 5600U', '8GB LPDDR4X', '512GB SSD', '13.3" OLED Display', 'NumberPad 2.0'],
-          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Ultra-portable Productivity',
-          includedIn: ['Consumer']
-        },
-        {
-          id: 'asus-zenbook-14-flip',
-          name: 'ZenBook 14 Flip OLED',
-          types: ['Consumer', 'Premium'],
-          price: '₹1,09,999',
-          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB SSD', '14" 2.8K OLED Touch', 'ASUS Pen 2.0 Included'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Premium']
+          bestFor: 'Enterprise Professionals',
+          includedIn: ['Commercial', 'Premium']
         }
       ],
       
       // Premium Models
       premium: [
         {
-          id: 'asus-zenbook-14-flip',
-          name: 'ZenBook 14 Flip OLED',
-          types: ['Consumer', 'Premium'],
-          price: '₹1,09,999',
-          specs: ['Intel i7-1260P', '16GB LPDDR5', '1TB SSD', '14" 2.8K OLED Touch', 'ASUS Pen 2.0 Included'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Creative Professionals',
-          includedIn: ['Consumer', 'Premium']
+          id: 'samsung-galaxy-book3-ultra',
+          name: 'Galaxy Book3 Ultra',
+          types: ['Commercial', 'Premium'],
+          price: '₹1,39,999',
+          specs: ['Intel i7-13700H', '16GB LPDDR5', '512GB SSD', '16" Dynamic AMOLED 2X', 'NVIDIA RTX 4050'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Enterprise Professionals',
+          includedIn: ['Commercial', 'Premium']
         },
         {
-          id: 'asus-zenbook-pro-duo-15',
-          name: 'ZenBook Pro Duo 15',
+          id: 'samsung-galaxy-book3-pro-360',
+          name: 'Galaxy Book3 Pro 360',
           types: ['Premium'],
-          price: '₹2,19,999',
-          specs: ['Intel i9-12900H', '32GB DDR5', '2TB SSD', 'Dual Screen: 15.6" OLED + 14" ScreenPad Plus', 'NVIDIA RTX 3070 Ti'],
-          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Professional Content Creation',
+          price: '₹1,29,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB NVMe SSD', '16" 3K AMOLED Touch', 'S Pen Pro Included'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Premium Content Creation',
           includedIn: ['Premium']
         }
       ]
     },
     {
-      name: 'ASUS ProArt',
+      name: 'Galaxy Book Go Series',
+      logoColor: '#6B7280', // Gray
+      description: 'Lightweight, always-connected laptops powered by Snapdragon for exceptional battery life.',
+      categories: ['Entry Level', 'Consumer'],
+      
+      entrylevel: [
+        {
+          id: 'samsung-galaxy-book-go-np340',
+          name: 'Galaxy Book Go NP340',
+          types: ['Entry Level'],
+          price: '₹26,999',
+          specs: ['Snapdragon 7c Gen 1', '4GB RAM', '128GB eMMC', '14" HD Display', 'Windows 11 Home in S Mode'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'First-time Users, Students',
+          includedIn: ['Entry Level']
+        },
+        {
+          id: 'samsung-galaxy-book-go-5g',
+          name: 'Galaxy Book Go 5G',
+          types: ['Entry Level', 'Consumer'],
+          price: '₹41,999',
+          specs: ['Snapdragon 8cx Gen 2', '8GB RAM', '256GB SSD', '14" FHD', '5G Connectivity'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Mobile Connectivity',
+          includedIn: ['Entry Level', 'Consumer']
+        }
+      ],
+      
+      consumer: [
+        {
+          id: 'samsung-galaxy-book-go-5g',
+          name: 'Galaxy Book Go 5G',
+          types: ['Entry Level', 'Consumer'],
+          price: '₹41,999',
+          specs: ['Snapdragon 8cx Gen 2', '8GB RAM', '256GB SSD', '14" FHD', '5G Connectivity'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Mobile Connectivity',
+          includedIn: ['Entry Level', 'Consumer']
+        }
+      ]
+    },
+    {
+      name: 'Galaxy Book2 Series',
+      logoColor: '#8B5CF6', // Purple
+      description: 'Convertible laptops with AMOLED displays and S Pen support for ultimate creativity.',
+      categories: ['Consumer', 'Mid-Range', 'Commercial'],
+      
+      consumer: [
+        {
+          id: 'samsung-galaxy-book2-360-13',
+          name: 'Galaxy Book2 360 13"',
+          types: ['Consumer'],
+          price: '₹59,999',
+          specs: ['Intel i5-1235U', '8GB RAM', '256GB SSD', '13.3" FHD AMOLED', '360° Convertible'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Students, Creative Work',
+          includedIn: ['Consumer']
+        }
+      ],
+      
+      midrange: [
+        {
+          id: 'samsung-galaxy-book2-pro',
+          name: 'Galaxy Book2 Pro',
+          types: ['Mid-Range'],
+          price: '₹74,999',
+          specs: ['Intel i5-1240P', '16GB LPDDR5', '512GB SSD', '13.3" FHD AMOLED', 'Intel Iris Xe'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Professional Work',
+          includedIn: ['Mid-Range']
+        },
+        {
+          id: 'samsung-galaxy-book2-pro-360-13',
+          name: 'Galaxy Book2 Pro 360 13"',
+          types: ['Mid-Range', 'Consumer'],
+          price: '₹82,999',
+          specs: ['Intel i7-1260P', '16GB RAM', '512GB SSD', '13.3" FHD AMOLED Touch', 'S Pen'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Creative Professionals',
+          includedIn: ['Mid-Range', 'Consumer']
+        }
+      ],
+      
+      commercial: [
+        {
+          id: 'samsung-galaxy-book2-business',
+          name: 'Galaxy Book2 Business',
+          types: ['Commercial'],
+          price: '₹94,999',
+          specs: ['Intel i7-1260P vPro', '16GB RAM', '512GB SSD', '15.6" FHD', 'Windows 11 Pro'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Corporate Deployments',
+          includedIn: ['Commercial']
+        }
+      ]
+    },
+    {
+      name: 'Galaxy Book3 Series',
+      logoColor: '#0F766E', // Teal
+      description: 'Premium laptops with cutting-edge displays and performance for professionals.',
+      categories: ['Mid-Range', 'Commercial', 'Premium'],
+      
+      midrange: [
+        {
+          id: 'samsung-galaxy-book3',
+          name: 'Galaxy Book3',
+          types: ['Mid-Range'],
+          price: '₹69,999',
+          specs: ['Intel i5-1340P', '8GB LPDDR5', '512GB SSD', '15.6" FHD Display', 'Windows 11 Home'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Everyday Productivity',
+          includedIn: ['Mid-Range']
+        },
+        {
+          id: 'samsung-galaxy-book3-360',
+          name: 'Galaxy Book3 360',
+          types: ['Mid-Range', 'Consumer'],
+          price: '₹84,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '512GB SSD', '15.6" FHD AMOLED Touch', 'S Pen'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Versatile Computing',
+          includedIn: ['Mid-Range', 'Consumer']
+        }
+      ],
+      
+      commercial: [
+        {
+          id: 'samsung-galaxy-book3-pro',
+          name: 'Galaxy Book3 Pro',
+          types: ['Commercial'],
+          price: '₹1,04,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB SSD', '14" AMOLED 90Hz', 'Intel Evo Certified'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Business Professionals',
+          includedIn: ['Commercial']
+        }
+      ],
+      
+      premium: [
+        {
+          id: 'samsung-galaxy-book3-pro-360',
+          name: 'Galaxy Book3 Pro 360',
+          types: ['Premium'],
+          price: '₹1,29,999',
+          specs: ['Intel i7-1360P', '16GB LPDDR5', '1TB NVMe SSD', '16" 3K AMOLED Touch', 'S Pen Pro Included'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Premium Content Creation',
+          includedIn: ['Premium']
+        },
+        {
+          id: 'samsung-galaxy-book3-ultra-premium',
+          name: 'Galaxy Book3 Ultra',
+          types: ['Premium'],
+          price: '₹1,69,999',
+          specs: ['Intel i9-13900H', '32GB LPDDR5', '1TB NVMe SSD', '16" 3K AMOLED 120Hz', 'NVIDIA RTX 4070'],
+          image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Professional Creators',
+          includedIn: ['Premium']
+        }
+      ]
+    },
+    {
+      name: 'Galaxy Book Pro Series',
+      logoColor: '#C53030', // Red
+      description: 'Ultra-thin and light laptops with AMOLED displays for premium mobile computing.',
+      categories: ['Mid-Range', 'Premium'],
+      
+      midrange: [
+        {
+          id: 'samsung-galaxy-book-pro-13',
+          name: 'Galaxy Book Pro 13"',
+          types: ['Mid-Range'],
+          price: '₹79,999',
+          specs: ['Intel i5-1135G7', '8GB LPDDR4X', '512GB SSD', '13.3" FHD AMOLED', 'Intel Iris Xe'],
+          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Portable Professionals',
+          includedIn: ['Mid-Range']
+        }
+      ],
+      
+      premium: [
+        {
+          id: 'samsung-galaxy-book-pro-360-15',
+          name: 'Galaxy Book Pro 360 15"',
+          types: ['Premium'],
+          price: '₹1,19,999',
+          specs: ['Intel i7-1165G7', '16GB LPDDR4X', '1TB SSD', '15.6" FHD AMOLED Touch', 'S Pen Included'],
+          image: 'https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Executive Professionals',
+          includedIn: ['Premium']
+        }
+      ]
+    },
+    {
+      name: 'Galaxy Book Odyssey Series',
       logoColor: '#10B981', // Green
-      description: 'Creator-focused laptops with professional-grade color accuracy and workstation performance.',
+      description: 'Powerful laptops designed for gaming and intensive creative workloads.',
       categories: ['Premium'],
       
       premium: [
         {
-          id: 'asus-proart-studiobook-16',
-          name: 'ProArt Studiobook 16',
+          id: 'samsung-galaxy-book-odyssey',
+          name: 'Galaxy Book Odyssey',
           types: ['Premium'],
-          price: '₹1,89,999',
-          specs: ['AMD Ryzen 9 5900HX', '32GB DDR4', '1TB SSD', '16" 4K OLED 100% DCI-P3', 'NVIDIA RTX 3070'],
-          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'Professional Artists & Designers',
+          price: '₹1,49,999',
+          specs: ['Intel i7-11800H', '16GB DDR4', '512GB SSD', '15.6" FHD 144Hz', 'NVIDIA RTX 3050 Ti'],
+          image: 'https://images.unsplash.com/photo-1587614382346-4ec70e388b28?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Gaming & Content Creation',
           includedIn: ['Premium']
         },
         {
-          id: 'asus-proart-studiobook-pro-16',
-          name: 'ProArt Studiobook Pro 16',
+          id: 'samsung-galaxy-book-odyssey-pro',
+          name: 'Galaxy Book Odyssey Pro',
           types: ['Premium'],
-          price: '₹2,49,999',
-          specs: ['Intel i9-12900H', '64GB DDR5', '2TB SSD', '16" 4K OLED 120Hz', 'NVIDIA RTX A5000'],
-          image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop&auto=format',
-          bestFor: 'CAD, 3D Modeling, Animation',
+          price: '₹1,89,999',
+          specs: ['Intel i9-11900H', '32GB DDR4', '1TB SSD', '15.6" QHD 165Hz', 'NVIDIA RTX 3070'],
+          image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop&auto=format',
+          bestFor: 'Professional Gaming',
           includedIn: ['Premium']
         }
       ]
@@ -497,7 +485,7 @@ const Asus = () => {
   ];
 
   // Get selected series data
-  const selectedSeriesData = asusSeriesData.find(series => series.name === selectedSeries);
+  const selectedSeriesData = samsungSeriesData.find(series => series.name === selectedSeries);
 
   // Function to render Entry Level section
   const renderEntryLevelSection = () => {
@@ -652,7 +640,7 @@ const Asus = () => {
                   {/* View Details Button */}
                   <Button
                     component={Link}
-                    to={`/product/asus/${model.id}`}
+                    to={`/product/samsung/${model.id}`}
                     variant="contained"
                     fullWidth
                     sx={{
@@ -840,7 +828,7 @@ const Asus = () => {
                   {/* View Details Button */}
                   <Button
                     component={Link}
-                    to={`/product/asus/${model.id}`}
+                    to={`/product/samsung/${model.id}`}
                     variant="outlined"
                     fullWidth
                     endIcon={<ArrowForward />}
@@ -881,7 +869,7 @@ const Asus = () => {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(#000000 , #FF0000 100%)',
+        background: 'linear-gradient(#1428A0 , #1D4ED8 100%)',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -907,7 +895,7 @@ const Asus = () => {
               mb: 2
             }}
           >
-            ASUS Laptop Series
+            Samsung Laptop Series
           </Typography>
           <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 2 }}>
             Organized by Levels and Categories
@@ -932,7 +920,7 @@ const Asus = () => {
               }
             }}
           >
-            {asusSeriesData.map((series) => (
+            {samsungSeriesData.map((series) => (
               <Tab
                 key={series.name}
                 label={series.name}
@@ -1055,7 +1043,7 @@ const Asus = () => {
         {/* Legend Explanation */}
         <Paper sx={{ mt: 6, p: 3, borderRadius: 3, backgroundColor: '#f8fafc' }}>
           <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#1e293b' }}>
-            📋 ASUS Laptop Categories Explained
+            📋 Samsung Laptop Categories Explained
           </Typography>
           <Grid container spacing={2}>
             {categories.map((category) => (
@@ -1086,47 +1074,47 @@ const Asus = () => {
             ))}
           </Grid>
           <Typography variant="body2" sx={{ mt: 2, color: '#64748b', fontStyle: 'italic' }}>
-            Note: ASUS offers comprehensive laptop lineup from entry-level VivoBooks to premium ROG gaming machines.
-            Each series targets specific user needs with optimized features.
+            Note: Samsung laptops can appear in multiple categories based on their features and price range.
+            Galaxy Book series offers comprehensive coverage from entry-level to premium devices.
           </Typography>
         </Paper>
 
-        {/* ASUS Brand Features */}
+        {/* Samsung Brand Features */}
         <Paper sx={{ mt: 4, p: 3, borderRadius: 3, backgroundColor: alpha('#0096D6', 0.05) }}>
           <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#0096D6' }}>
-            🏆 Why Choose ASUS Laptops?
+            🏆 Why Choose Samsung Laptops?
           </Typography>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <MilitaryTech sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <Devices sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Military-Grade Durability
+                  Samsung Ecosystem
                 </Typography>
                 <Typography variant="body2">
-                  MIL-STD-810H certified for extreme conditions
+                  Seamless integration with Galaxy phones, tablets, and wearables
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <DesignServices sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <SmartDisplay sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Innovative Design
+                  AMOLED Displays
                 </Typography>
                 <Typography variant="body2">
-                  ErgoLift hinge, NumberPad, ScreenPad Plus features
+                  Industry-leading AMOLED screens with vibrant colors and deep blacks
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} sm={6} md={3}>
               <Box sx={{ textAlign: 'center', p: 2 }}>
-                <Engineering sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
+                <CameraAlt sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Advanced Cooling
+                  S Pen Integration
                 </Typography>
                 <Typography variant="body2">
-                  ROG Intelligent Cooling, ASUS IceCool technology
+                  Precision stylus for drawing, note-taking, and creative work
                 </Typography>
               </Box>
             </Grid>
@@ -1134,46 +1122,50 @@ const Asus = () => {
               <Box sx={{ textAlign: 'center', p: 2 }}>
                 <TrendingUp sx={{ fontSize: 40, color: '#0096D6', mb: 1 }} />
                 <Typography variant="h6" sx={{ fontWeight: 600, mb: 1 }}>
-                  Performance Optimized
+                  Long Battery Life
                 </Typography>
                 <Typography variant="body2">
-                  ASUS AI Suite, Armoury Crate for performance tuning
+                  Optimized power efficiency with fast charging support
                 </Typography>
               </Box>
             </Grid>
           </Grid>
         </Paper>
 
-        {/* ASUS Series Comparison */}
-        <Paper sx={{ mt: 4, p: 3, borderRadius: 3, backgroundColor: alpha('#C53030', 0.05) }}>
-          <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#C53030' }}>
-            🎮 ASUS Gaming & Creator Series
+        {/* Samsung Galaxy Ecosystem Integration */}
+        <Paper sx={{ mt: 4, p: 3, borderRadius: 3, backgroundColor: alpha('#8B5CF6', 0.05) }}>
+          <Typography variant="h5" sx={{ fontWeight: 700, mb: 3, color: '#8B5CF6' }}>
+            🌐 Samsung Galaxy Ecosystem Features
           </Typography>
           <Grid container spacing={2}>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ p: 2, backgroundColor: alpha('#C53030', 0.05), borderRadius: 2, height: '100%' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#C53030', mb: 2 }}>
-                  ROG (Republic of Gamers)
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ textAlign: 'center', p: 2 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: '#8B5CF6' }}>
+                  Quick Share
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                  Premium gaming laptops with cutting-edge technology, RGB lighting, and extreme performance for competitive gamers.
+                <Typography variant="body2">
+                  Instantly share files between Galaxy devices
                 </Typography>
-                <Chip label="Gaming" size="small" sx={{ backgroundColor: alpha('#EF4444', 0.1), color: '#EF4444', mr: 1 }} />
-                <Chip label="Premium" size="small" sx={{ backgroundColor: alpha('#8B5CF6', 0.1), color: '#8B5CF6', mr: 1 }} />
-                <Chip label="Consumer" size="small" sx={{ backgroundColor: alpha('#10B981', 0.1), color: '#10B981' }} />
               </Box>
             </Grid>
-            <Grid item xs={12} md={6}>
-              <Box sx={{ p: 2, backgroundColor: alpha('#0F766E', 0.05), borderRadius: 2, height: '100%' }}>
-                <Typography variant="h6" sx={{ fontWeight: 700, color: '#0F766E', mb: 2 }}>
-                  ZenBook & ProArt
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ textAlign: 'center', p: 2 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: '#8B5CF6' }}>
+                  Second Screen
                 </Typography>
-                <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-                  Premium ultrabooks and creator laptops with exquisite design, OLED displays, and professional-grade features.
+                <Typography variant="body2">
+                  Use your Galaxy tablet as a second monitor
                 </Typography>
-                <Chip label="Premium" size="small" sx={{ backgroundColor: alpha('#8B5CF6', 0.1), color: '#8B5CF6', mr: 1 }} />
-                <Chip label="Consumer" size="small" sx={{ backgroundColor: alpha('#10B981', 0.1), color: '#10B981', mr: 1 }} />
-                <Chip label="Professional" size="small" sx={{ backgroundColor: alpha('#6366F1', 0.1), color: '#6366F1' }} />
+              </Box>
+            </Grid>
+            <Grid item xs={12} sm={4}>
+              <Box sx={{ textAlign: 'center', p: 2 }}>
+                <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: '#8B5CF6' }}>
+                  Samsung Flow
+                </Typography>
+                <Typography variant="body2">
+                  Continuity between phone and laptop
+                </Typography>
               </Box>
             </Grid>
           </Grid>
@@ -1183,4 +1175,4 @@ const Asus = () => {
   );
 };
 
-export default Asus;
+export default Samsung;

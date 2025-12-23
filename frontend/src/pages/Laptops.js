@@ -63,56 +63,56 @@ const Laptops = () => {
     {
       name: 'DELL',
       image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop',
-      route: '/laptops/dell', // Added route
-      color: '#007DB8' // Dell blue color
+      route: '/laptops/dell',
+      color: '#E2231A'
     },
     {
       name: 'HP',
       image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop',
       route: '/laptops/hp',
-      color: '#0096D6' // HP blue color
+      color: '#E2231A'
     },
     {
       name: 'Lenovo',
       image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop',
       route: '/laptops/lenovo',
-      color: '#E2231A' // Lenovo red color
+      color: '#E2231A'
     },
     {
       name: 'ASUS',
       image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop',
       route: '/laptops/asus',
-      color: '#000000' // ASUS black color
+      color: '#E2231A'
     },
     {
       name: 'Acer',
       image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop',
       route: '/laptops/acer',
-      color: '#83B81A' // Acer green color
+      color: '#E2231A'
     },
     {
       name: 'Apple',
       image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop',
       route: '/laptops/apple',
-      color: '#000000' // Apple black color
+      color: '#E2231A'
     },
     {
-      name: 'Razer',
-      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop',
-      route: '/laptops/razer',
-      color: '#44D62C' // Razer green color
+      name: 'MSI',
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop', // Changed to MSI laptop image
+      route: '/laptops/msi',
+      color: '#E2231A' // MSI red color
     },
     {
-      name: 'LG',
-      image: 'https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?w=400&h=300&fit=crop',
-      route: '/laptops/lg',
-      color: '#A50034' // LG red color
+      name: 'Samsung Galaxy',
+      image: 'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=400&h=300&fit=crop', // Changed to Samsung laptop image
+      route: '/laptops/samsung',
+      color: '#E2231A' // Samsung blue color
     },
     {
       name: 'Microsoft',
       image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop',
       route: '/laptops/microsoft',
-      color: '#737373' // Microsoft gray color
+      color: '#E2231A'
     }
   ];
 

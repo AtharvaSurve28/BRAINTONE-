@@ -10,8 +10,6 @@ import {
   IconButton,
   Menu,
   MenuItem,
-  Popover,
-  Grid,
 } from '@mui/material';
 import ComputerIcon from '@mui/icons-material/Computer';
 import LaptopIcon from '@mui/icons-material/Laptop';
@@ -30,12 +28,10 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 
 export default function Navbar() {
   const location = useLocation();
-  // State for Services dropdown
+  // State for Services dropdown only
   const [servicesAnchorEl, setServicesAnchorEl] = React.useState(null);
-  const [accessoriesAnchorEl, setAccessoriesAnchorEl] = React.useState(null);
-
+  
   const servicesOpen = Boolean(servicesAnchorEl);
-  const accessoriesOpen = Boolean(accessoriesAnchorEl);
 
   const isServicesActive =
     location.pathname === '/laptops' ||
@@ -44,7 +40,7 @@ export default function Navbar() {
     location.pathname === '/services/pre-owned-laptops' ||
     location.pathname === '/repair';
 
-  const isAccessoriesActive = location.pathname === '/accessories' || location.pathname.startsWith('/accessories/');
+  const isAccessoriesActive = location.pathname === '/accessories';
 
   const navLinkSx = (isActive) => ({
     color: isActive ? '#e74c3c' : '#2c3e50',
@@ -81,31 +77,11 @@ export default function Navbar() {
     setServicesAnchorEl(null);
   };
 
-  const handleAccessoriesClick = (event) => {
-    setAccessoriesAnchorEl(event.currentTarget);
-  };
-
-  const handleAccessoriesClose = () => {
-    setAccessoriesAnchorEl(null);
-  };
-
   // Services menu items
   const servicesItems = [
     { label: 'New Laptops', to: '/laptops', icon: <LaptopIcon sx={{ mr: 1, fontSize: 20 }} /> },
     { label: 'Pre-Owned Laptops', to: '/services/pre-owned-laptops', icon: <AutorenewIcon sx={{ mr: 1, fontSize: 20 }} /> },
     { label: 'Repair Services', to: '/repair', icon: <BuildIcon sx={{ mr: 1, fontSize: 20 }} /> },
-  ];
-
-  // Accessories menu items
-  const accessoriesItems = [
-    { label: 'Laptop Bags', to: '/accessories/bags' },
-    { label: 'Laptop Chargers', to: '/accessories/chargers' },
-    { label: 'Laptop Stands', to: '/accessories/stands' },
-    { label: 'External Hard Drives', to: '/accessories/storage' },
-    { label: 'Laptop Cooling Pads', to: '/accessories/cooling' },
-    { label: 'Wireless Mice', to: '/accessories/mice' },
-    { label: 'Laptop Keyboards', to: '/accessories/keyboards' },
-    { label: 'Laptop Screen Protectors', to: '/accessories/protectors' },
   ];
 
   return (
@@ -285,73 +261,15 @@ export default function Navbar() {
                 </Menu>
               </Box>
 
-              {/* Accessories Dropdown */}
-              <Box>
-                <Button
-                  onMouseEnter={handleAccessoriesClick}
-                  endIcon={<KeyboardArrowDownIcon />}
-                  sx={{
-                    ...navLinkSx(isAccessoriesActive || accessoriesOpen),
-                  }}
-                >
-                  ACCESSORIES
-                </Button>
-                <Popover
-                  anchorEl={accessoriesAnchorEl}
-                  open={accessoriesOpen}
-                  onClose={handleAccessoriesClose}
-                  slotProps={{ paper: { onMouseLeave: handleAccessoriesClose } }}
-                  anchorOrigin={{
-                    vertical: 'bottom',
-                    horizontal: 'left',
-                  }}
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'left',
-                  }}
-                  PaperProps={{
-                    sx: {
-                      mt: 1.5,
-                      minWidth: 280,
-                      borderRadius: 2,
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.2)',
-                      border: '1px solid rgba(231, 76, 60, 0.1)',
-                    },
-                  }}
-                >
-                  <Box sx={{ p: 0, maxHeight: 400, overflow: 'auto' }}>
-                    <Box sx={{ px: 2, py: 1.5, backgroundColor: 'rgba(231, 76, 60, 0.05)', borderBottom: '1px solid rgba(231, 76, 60, 0.1)' }}>
-                      <Typography variant="subtitle2" sx={{ fontWeight: 700, color: '#e74c3c' }}>
-                        Laptop Accessories
-                      </Typography>
-                    </Box>
-                    <Grid container>
-                      {accessoriesItems.map((item, index) => (
-                        <Grid item xs={6} key={item.to}>
-                          <MenuItem
-                            component={Link}
-                            to={item.to}
-                            onClick={handleAccessoriesClose}
-                            sx={{
-                              py: 1.5,
-                              px: 2,
-                              transition: 'all 0.2s ease',
-                              borderBottom: index < accessoriesItems.length - 2 ? '1px solid rgba(0,0,0,0.05)' : 'none',
-                              '&:hover': {
-                                backgroundColor: 'rgba(231, 76, 60, 0.08)',
-                              },
-                            }}
-                          >
-                            <Typography variant="body2" sx={{ fontWeight: 500 }}>
-                              {item.label}
-                            </Typography>
-                          </MenuItem>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  </Box>
-                </Popover>
-              </Box>
+              {/* Accessories - Single Page Link */}
+              <Button
+                component={NavLink}
+                to="/accessories"
+                end
+                sx={({ isActive }) => navLinkSx(isActive)}
+              >
+                ACCESSORIES
+              </Button>
 
               {/* About Us */}
               <Button
