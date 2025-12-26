@@ -188,7 +188,7 @@ const Laptops = () => {
         justifyContent: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, #8B0000 0%, #A52A2A 50%, #8B0000 100%)', // Darker red gradient
+        background: '#8B0000', // Darker red gradient
         '&::before': {
           content: '""',
           position: 'absolute',

@@ -362,73 +362,51 @@ const Accessories = () => {
 
   const bubbles = generateBubbles();
 
-  // Card Component with FIXED HEIGHT for all boxes
+  // Card Component with IDENTICAL SIZE for all boxes
   const AccessoryCard = ({ accessory, index }) => (
-    <Box sx={{ 
-      height: '400px', // FIXED HEIGHT FOR ALL BOXES
-      width: '100%',
-      display: 'flex',
-    }}>
-      <Card 
-        onClick={() => handleOpenModal(accessory)}
-        sx={{ 
-          width: '100%',
-          height: '100%',
-          display: 'flex',
-          flexDirection: 'column',
-          backgroundColor: '#ffffff',
-          borderRadius: 3,
-          boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
-          transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-          border: `2px solid ${accessory.color}20`,
-          overflow: 'hidden',
-          animation: `${bounceAnimation} 2s ease-in-out infinite`,
-          animationDelay: `${index * 0.2}s`,
-          position: 'relative',
-          zIndex: 2,
-          cursor: 'pointer',
-          '&:hover': {
-            boxShadow: `0 20px 50px ${accessory.color}40`,
-            transform: 'translateY(-15px) scale(1.05)',
-            borderColor: accessory.color,
-            animationPlayState: 'paused',
-            '& .accessory-image': {
-              transform: 'scale(1.15)',
-            },
-            '& .accessory-name': {
-              color: accessory.color,
-              transform: 'scale(1.05)',
-            },
-            '& .explore-text': {
-              opacity: 1,
-              transform: 'translateY(0)',
-            }
-          },
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: `linear-gradient(135deg, ${accessory.color}05 0%, ${accessory.color}02 100%)`,
-            borderRadius: 3,
-            zIndex: 1,
-          }
-        }}
-      >
-        {/* Image Container - FIXED HEIGHT */}
-        <Box
-          sx={{
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            p: 4,
+    <Grid item xs={12} sm={6} md={4} key={accessory.id}>
+      <Box sx={{ 
+        height: '450px', // IDENTICAL HEIGHT FOR ALL BOXES
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+      }}>
+        <Card 
+          onClick={() => handleOpenModal(accessory)}
+          sx={{ 
+            width: '100%',
+            maxWidth: '350px', // FIXED MAX WIDTH for consistency
+            height: '100%',
             display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '220px', // FIXED HEIGHT
-            position: 'relative',
+            flexDirection: 'column',
+            backgroundColor: '#ffffff',
+            borderRadius: 3,
+            boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
+            transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+            border: `2px solid ${accessory.color}20`,
             overflow: 'hidden',
+            animation: `${bounceAnimation} 2s ease-in-out infinite`,
+            animationDelay: `${index * 0.2}s`,
+            position: 'relative',
             zIndex: 2,
+            cursor: 'pointer',
+            '&:hover': {
+              boxShadow: `0 20px 50px ${accessory.color}40`,
+              transform: 'translateY(-15px) scale(1.05)',
+              borderColor: accessory.color,
+              animationPlayState: 'paused',
+              '& .accessory-image': {
+                transform: 'scale(1.15)',
+              },
+              '& .accessory-name': {
+                color: accessory.color,
+                transform: 'scale(1.05)',
+              },
+              '& .explore-text': {
+                opacity: 1,
+                transform: 'translateY(0)',
+              }
+            },
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -436,145 +414,186 @@ const Accessories = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: `linear-gradient(135deg, ${accessory.color}10 0%, ${accessory.color}00 100%)`,
+              background: `linear-gradient(135deg, ${accessory.color}05 0%, ${accessory.color}02 100%)`,
+              borderRadius: 3,
+              zIndex: 1,
             }
           }}
         >
-          {/* Explore Button (Visible on hover) */}
+          {/* Image Container - IDENTICAL HEIGHT for all */}
           <Box
-            className="explore-text"
             sx={{
-              position: 'absolute',
-              bottom: 20,
-              left: '50%',
-              transform: 'translateX(-50%) translateY(20px)',
-              backgroundColor: accessory.color,
-              color: 'white',
-              px: 3,
-              py: 1,
-              borderRadius: 2,
-              fontSize: '0.9rem',
-              fontWeight: 600,
-              opacity: 0,
-              transition: 'all 0.3s ease',
-              zIndex: 3,
-              boxShadow: `0 4px 15px ${accessory.color}40`,
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              p: 4,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              height: '250px', // IDENTICAL HEIGHT
+              position: 'relative',
+              overflow: 'hidden',
+              zIndex: 2,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: `linear-gradient(135deg, ${accessory.color}10 0%, ${accessory.color}00 100%)`,
+              }
             }}
           >
-            View Details →
-          </Box>
-          
-          <CardMedia
-            component="img"
-            image={accessory.image}
-            alt={accessory.name}
-            className="accessory-image"
-            sx={{
-              maxWidth: '80%',
-              maxHeight: '140px',
-              objectFit: 'contain',
-              transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-              zIndex: 2,
-              position: 'relative',
-              filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
-            }}
-          />
-        </Box>
-        
-        {/* Card Content - FIXED HEIGHT */}
-        <CardContent 
-          sx={{ 
-            textAlign: 'center',
-            backgroundColor: 'rgba(255, 255, 255, 0.95)',
-            py: 3,
-            px: 3,
-            height: '180px', // FIXED HEIGHT
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            flexGrow: 1,
-            position: 'relative',
-            zIndex: 2,
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '3px',
-              background: `linear-gradient(90deg, transparent, ${accessory.color}, transparent)`,
-            }
-          }}
-        >
-          {/* Title with fixed height */}
-          <Box sx={{ 
-            minHeight: '60px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            <Typography 
-              variant="h5"
-              className="accessory-name"
+            {/* Explore Button (Visible on hover) */}
+            <Box
+              className="explore-text"
               sx={{
-                fontWeight: 800,
-                color: '#333333',
-                fontSize: '1.5rem',
-                transition: 'all 0.4s ease',
-                letterSpacing: '-0.5px',
-                textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                lineHeight: 1.2,
-              }}
-            >
-              {accessory.name}
-            </Typography>
-          </Box>
-          
-          {/* Description with fixed height */}
-          <Box sx={{ 
-            minHeight: '50px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }}>
-            <Typography 
-              variant="body2"
-              sx={{
-                color: '#666',
+                position: 'absolute',
+                bottom: 20,
+                left: '50%',
+                transform: 'translateX(-50%) translateY(20px)',
+                backgroundColor: accessory.color,
+                color: 'white',
+                px: 3,
+                py: 1,
+                borderRadius: 2,
                 fontSize: '0.9rem',
-                lineHeight: 1.4,
+                fontWeight: 600,
+                opacity: 0,
+                transition: 'all 0.3s ease',
+                zIndex: 3,
+                boxShadow: `0 4px 15px ${accessory.color}40`,
               }}
             >
-              {accessory.description}
-            </Typography>
+              View Details →
+            </Box>
+            
+            <CardMedia
+              component="img"
+              image={accessory.image}
+              alt={accessory.name}
+              className="accessory-image"
+              sx={{
+                maxWidth: '80%',
+                maxHeight: '160px', // IDENTICAL IMAGE HEIGHT
+                minHeight: '160px', // Ensures minimum height
+                objectFit: 'contain',
+                transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                zIndex: 2,
+                position: 'relative',
+                filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+              }}
+            />
           </Box>
           
-          {/* Price section */}
-          <Box>
-            <Typography 
-              variant="body2"
-              color="text.secondary"
-              sx={{
-                fontSize: '0.85rem',
-                mb: 0.5,
-              }}
-            >
-              Starting from
-            </Typography>
-            <Typography 
-              variant="h6"
-              sx={{
-                fontWeight: 700,
-                color: accessory.color,
-                fontSize: '1.4rem',
-              }}
-            >
-              {accessory.startingPrice}
-            </Typography>
-          </Box>
-        </CardContent>
-      </Card>
-    </Box>
+          {/* Card Content - IDENTICAL HEIGHT for all */}
+          <CardContent 
+            sx={{ 
+              textAlign: 'center',
+              backgroundColor: 'rgba(255, 255, 255, 0.95)',
+              py: 3,
+              px: 3,
+              height: '200px', // IDENTICAL HEIGHT
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              position: 'relative',
+              zIndex: 2,
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                height: '3px',
+                background: `linear-gradient(90deg, transparent, ${accessory.color}, transparent)`,
+              }
+            }}
+          >
+            {/* Title with fixed height */}
+            <Box sx={{ 
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              <Typography 
+                variant="h5"
+                className="accessory-name"
+                sx={{
+                  fontWeight: 800,
+                  color: '#333333',
+                  fontSize: '1.4rem',
+                  transition: 'all 0.4s ease',
+                  letterSpacing: '-0.5px',
+                  textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                  lineHeight: 1.2,
+                  display: '-webkit-box',
+                  WebkitLineClamp: 2,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                }}
+              >
+                {accessory.name}
+              </Typography>
+            </Box>
+            
+            {/* Description with fixed height */}
+            <Box sx={{ 
+              height: '60px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              overflow: 'hidden'
+            }}>
+              <Typography 
+                variant="body2"
+                sx={{
+                  color: '#666',
+                  fontSize: '0.85rem',
+                  lineHeight: 1.4,
+                  display: '-webkit-box',
+                  WebkitLineClamp: 3,
+                  WebkitBoxOrient: 'vertical',
+                  overflow: 'hidden',
+                }}
+              >
+                {accessory.description}
+              </Typography>
+            </Box>
+            
+            {/* Price section */}
+            <Box sx={{ 
+              height: '50px',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center'
+            }}>
+              <Typography 
+                variant="body2"
+                color="text.secondary"
+                sx={{
+                  fontSize: '0.85rem',
+                  mb: 0.5,
+                }}
+              >
+                Starting from
+              </Typography>
+              <Typography 
+                variant="h6"
+                sx={{
+                  fontWeight: 700,
+                  color: accessory.color,
+                  fontSize: '1.4rem',
+                }}
+              >
+                {accessory.startingPrice}
+              </Typography>
+            </Box>
+          </CardContent>
+        </Card>
+      </Box>
+    </Grid>
   );
 
   return (
@@ -747,14 +766,26 @@ const Accessories = () => {
         }} />
       </Box>
 
-      {/* Accessories Cards Section with continuous bouncing - ALL 12 BOXES SAME SIZE */}
-      <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
-        {/* Accessories Grid - All boxes continuously bouncing and SAME SIZE */}
-        <Grid container spacing={4} justifyContent="center">
+      {/* Accessories Cards Section - ALL IDENTICAL SIZES */}
+      <Container maxWidth="lg" sx={{ 
+        py: 8, 
+        position: 'relative', 
+        zIndex: 1,
+      }}>
+        {/* Accessories Grid - All boxes identical */}
+        <Grid 
+          container 
+          spacing={4} 
+          justifyContent="center"
+          sx={{ 
+            '& > .MuiGrid-item': {
+              display: 'flex',
+              justifyContent: 'center',
+            }
+          }}
+        >
           {accessories.map((accessory, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex' }}>
-              <AccessoryCard accessory={accessory} index={index} />
-            </Grid>
+            <AccessoryCard key={accessory.id} accessory={accessory} index={index} />
           ))}
         </Grid>
 
@@ -1517,4 +1548,3 @@ const Accessories = () => {
 };
 
 export default Accessories;
-
