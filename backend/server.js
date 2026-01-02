@@ -18,12 +18,14 @@ const laptopRoutes = require('./routes/laptops');
 const secondhandRoutes = require('./routes/secondhand');
 const accessoryRoutes = require('./routes/accessories');
 const repairRoutes = require('./routes/repairs');
+const adminRoutes = require('./routes/admin');
 
 // Use Routes
 app.use('/api/laptops', laptopRoutes);
 app.use('/api/secondhand', secondhandRoutes);
 app.use('/api/accessories', accessoryRoutes);
 app.use('/api/repairs', repairRoutes);
+app.use('/api/admin', adminRoutes);
 
 // Test Route
 app.get('/', (req, res) => {

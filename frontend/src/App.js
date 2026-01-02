@@ -23,6 +23,12 @@ import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
+
+// Admin Pages
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import LaptopForm from './pages/admin/LaptopForm';
+
 import './App.css';
 
 const theme = createTheme({
@@ -67,9 +73,29 @@ function AnimatedRoutes() {
           <Route path="/repair" element={<RepairServices />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/admin/laptops/new" element={<LaptopForm />} />
+          <Route path="/admin/laptops/edit/:id" element={<LaptopForm />} />
+          
         </Routes>
       </Box>
     </Fade>
+  );
+}
+
+function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
+  return (
+    <Box>
+      {!isAdminRoute && <Navbar />}
+      <ScrollToTop />
+      <AnimatedRoutes />
+    </Box>
   );
 }
 
@@ -78,11 +104,7 @@ function App() {
     <ThemeProvider theme={theme}>
       <CssBaseline />
       <Router>
-        <Box>
-          <Navbar />
-          <ScrollToTop />
-          <AnimatedRoutes />
-        </Box>
+        <AppContent />
       </Router>
     </ThemeProvider>
   );
