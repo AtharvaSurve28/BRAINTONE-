@@ -18,7 +18,12 @@ import {
   Dialog,
   DialogTitle,
   DialogContent,
-  DialogActions
+  DialogActions,
+  Modal,
+  IconButton,
+  TextField,
+  Alert,
+  Snackbar
 } from '@mui/material';
 import {
   Build,
@@ -48,14 +53,32 @@ import {
   Security,
   LocalShipping,
   SupportAgent,
-  Schedule as HistoryToggleOff
+  Schedule as HistoryToggleOff,
+  Close
 } from '@mui/icons-material';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew'; // ADD THIS LINE
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Link } from 'react-router-dom';
 
 const RepairServices = () => {
   const [detailsOpen, setDetailsOpen] = React.useState(false);
+  const [personalRepairModalOpen, setPersonalRepairModalOpen] = React.useState(false);
   const [selectedServiceTitle, setSelectedServiceTitle] = React.useState('');
+  
+  // Form state for personal repair modal
+  const [formData, setFormData] = React.useState({
+    name: '',
+    mobile: '',
+    address: '',
+    laptopBrand: '',
+    laptopModel: '',
+    laptopIssue: '',
+    preferredDate: '',
+    preferredTime: '',
+  });
+  
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState('');
+  const [snackbarSeverity, setSnackbarSeverity] = React.useState('success');
 
   const openDetails = (title) => {
     setSelectedServiceTitle(title || '');
@@ -64,6 +87,82 @@ const RepairServices = () => {
 
   const closeDetails = () => {
     setDetailsOpen(false);
+  };
+
+  const openPersonalRepairModal = () => {
+    setPersonalRepairModalOpen(true);
+  };
+
+  const closePersonalRepairModal = () => {
+    setPersonalRepairModalOpen(false);
+    // Reset form data
+    setFormData({
+      name: '',
+      mobile: '',
+      address: '',
+      laptopBrand: '',
+      laptopModel: '',
+      laptopIssue: '',
+      preferredDate: '',
+      preferredTime: '',
+    });
+  };
+
+  const handleFormChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbarOpen(false);
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    
+    // Validate required fields
+    if (!formData.name || !formData.mobile || !formData.address || !formData.laptopIssue) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Please fill in all required fields: Name, Mobile, Address, and Laptop Issue');
+      setSnackbarOpen(true);
+      return;
+    }
+
+    // Prepare WhatsApp message
+    const whatsappNumber = "9082671687";
+    
+    // Format the message for WhatsApp
+    const whatsappMessage = `*New Personal Repair Service Request from BRAINTONE*%0A%0A
+*👤 Customer Details:*%0A
+• *Name:* ${formData.name}%0A
+• *Mobile:* ${formData.mobile}%0A
+• *Address:* ${formData.address}%0A%0A
+*💻 Laptop Details:*%0A
+• *Brand:* ${formData.laptopBrand || 'Not specified'}%0A
+• *Model:* ${formData.laptopModel || 'Not specified'}%0A
+• *Issue:* ${formData.laptopIssue}%0A%0A
+*📅 Pickup Preferences:*%0A
+• *Date:* ${formData.preferredDate || 'Not specified'}%0A
+• *Time:* ${formData.preferredTime || 'Not specified'}`;
+
+    // Create WhatsApp URL
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
+    
+    // Open WhatsApp in new tab
+    window.open(whatsappUrl, '_blank');
+    
+    // Show success message
+    setSnackbarSeverity('success');
+    setSnackbarMessage('Opening WhatsApp to send your repair request...');
+    setSnackbarOpen(true);
+    
+    // Close modal after a delay
+    setTimeout(() => {
+      closePersonalRepairModal();
+    }, 1500);
   };
 
   const repairServices = [
@@ -242,6 +341,291 @@ const RepairServices = () => {
       bgcolor: '#f8f9fa',
       background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
     }}>
+      {/* Personal Repair Service Modal */}
+      <Modal
+        open={personalRepairModalOpen}
+        onClose={closePersonalRepairModal}
+        aria-labelledby="personal-repair-modal"
+      >
+        <Box sx={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: { xs: '90%', sm: '80%', md: '600px' },
+          maxHeight: '90vh',
+          overflow: 'auto',
+          bgcolor: 'background.paper',
+          borderRadius: '12px',
+          boxShadow: '0 20px 60px rgba(231, 76, 60, 0.3)',
+          p: 0,
+        }}>
+          {/* Modal Header */}
+          <Box sx={{
+            p: 3,
+            background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+            color: 'white',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            borderTopLeftRadius: '12px',
+            borderTopRightRadius: '12px',
+          }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+              <LocalShipping sx={{ fontSize: 32 }} />
+              <Typography variant="h5" sx={{ fontWeight: 700 }}>
+                Book Personal Repair Service
+              </Typography>
+            </Box>
+            <IconButton onClick={closePersonalRepairModal} sx={{ color: 'white' }}>
+              <Close />
+            </IconButton>
+          </Box>
+
+          {/* Modal Content */}
+          <Box sx={{ p: 4 }}>
+            <Typography variant="body1" sx={{ mb: 4, color: '#7f8c8d', textAlign: 'center' }}>
+              Fill out the form below to schedule a repair service for your laptop. 
+              Our technician will contact you to confirm the details.
+            </Typography>
+
+            {/* Display WhatsApp Number */}
+            <Box sx={{ 
+              mb: 4, 
+              p: 2, 
+              bgcolor: 'rgba(37, 211, 102, 0.1)', 
+              borderRadius: '8px',
+              textAlign: 'center'
+            }}>
+              <Typography variant="body2" sx={{ 
+                color: '#25D366', 
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 1
+              }}>
+                <img 
+                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png" 
+                  alt="WhatsApp" 
+                  style={{ width: '20px', height: '20px' }} 
+                />
+                Your request will be sent to WhatsApp: 9082671687
+              </Typography>
+            </Box>
+
+            {/* Customer Details */}
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" sx={{ 
+                mb: 3, 
+                color: '#e74c3c', 
+                borderBottom: '2px solid #ffecec', 
+                pb: 1,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}>
+                <span>👤</span> Customer Details
+              </Typography>
+              
+              <Stack spacing={3}>
+                <TextField
+                  fullWidth
+                  label="Full Name *"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleFormChange}
+                  required
+                  variant="outlined"
+                />
+                
+                <TextField
+                  fullWidth
+                  label="Mobile Number *"
+                  name="mobile"
+                  value={formData.mobile}
+                  onChange={handleFormChange}
+                  required
+                  variant="outlined"
+                  type="tel"
+                />
+                
+                <TextField
+                  fullWidth
+                  label="Full Address *"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleFormChange}
+                  required
+                  multiline
+                  rows={3}
+                  variant="outlined"
+                />
+              </Stack>
+            </Box>
+
+            {/* Laptop Details */}
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" sx={{ 
+                mb: 3, 
+                color: '#e74c3c', 
+                borderBottom: '2px solid #ffecec', 
+                pb: 1,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}>
+                <span>💻</span> Laptop Details
+              </Typography>
+              
+              <Stack spacing={3}>
+                <TextField
+                  fullWidth
+                  label="Laptop Brand"
+                  name="laptopBrand"
+                  value={formData.laptopBrand}
+                  onChange={handleFormChange}
+                  variant="outlined"
+                />
+                
+                <TextField
+                  fullWidth
+                  label="Laptop Model"
+                  name="laptopModel"
+                  value={formData.laptopModel}
+                  onChange={handleFormChange}
+                  variant="outlined"
+                />
+                
+                <TextField
+                  fullWidth
+                  label="Laptop Issue *"
+                  name="laptopIssue"
+                  value={formData.laptopIssue}
+                  onChange={handleFormChange}
+                  required
+                  multiline
+                  rows={3}
+                  variant="outlined"
+                />
+              </Stack>
+            </Box>
+
+            {/* Pickup Preferences */}
+            <Box sx={{ mb: 4 }}>
+              <Typography variant="h6" sx={{ 
+                mb: 3, 
+                color: '#e74c3c', 
+                borderBottom: '2px solid #ffecec', 
+                pb: 1,
+                fontWeight: 600,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 1
+              }}>
+                <span>📅</span> Pickup Preferences
+              </Typography>
+              
+              <Stack spacing={3}>
+                <TextField
+                  fullWidth
+                  label="Preferred Date"
+                  name="preferredDate"
+                  value={formData.preferredDate}
+                  onChange={handleFormChange}
+                  type="date"
+                  variant="outlined"
+                  InputLabelProps={{ shrink: true }}
+                />
+                
+                <TextField
+                  fullWidth
+                  label="Preferred Time"
+                  name="preferredTime"
+                  value={formData.preferredTime}
+                  onChange={handleFormChange}
+                  variant="outlined"
+                />
+              </Stack>
+            </Box>
+
+            {/* Terms and WhatsApp Button */}
+            <Box sx={{ 
+              mt: 4, 
+              p: 3, 
+              bgcolor: '#ffecec', 
+              borderRadius: '8px',
+              mb: 4
+            }}>
+              <Typography variant="body2" sx={{ 
+                mb: 2, 
+                color: '#e74c3c', 
+                fontWeight: 600
+              }}>
+                ⚡ What happens next?
+              </Typography>
+              <Stack spacing={1.5}>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
+                  Submit this form
+                </Typography>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
+                  We'll contact you on WhatsApp (9082671687) to confirm
+                </Typography>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
+                  Schedule repair at your preferred time
+                </Typography>
+              </Stack>
+            </Box>
+
+            {/* Submit Button */}
+            <Box sx={{ 
+              display: 'flex', 
+              justifyContent: 'center', 
+              gap: 2,
+              mt: 4
+            }}>
+              <Button
+                variant="outlined"
+                onClick={closePersonalRepairModal}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  borderColor: '#e74c3c',
+                  color: '#e74c3c',
+                  fontWeight: 600,
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleSubmit}
+                startIcon={<img 
+                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png" 
+                  alt="WhatsApp" 
+                  style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} 
+                />}
+                sx={{
+                  px: 4,
+                  py: 1.5,
+                  background: 'linear-gradient(135deg, #25D366 0%, #128C7E 100%)',
+                  color: 'white',
+                  fontWeight: 700,
+                }}
+              >
+                Send to WhatsApp
+              </Button>
+            </Box>
+          </Box>
+        </Box>
+      </Modal>
+
+      {/* Existing Details Dialog */}
       <Dialog
         open={detailsOpen}
         onClose={closeDetails}
@@ -282,6 +666,20 @@ const RepairServices = () => {
           </Box>
         </DialogContent>
         <DialogActions sx={{ p: 2 }}>
+          <Button
+            variant="contained"
+            onClick={openPersonalRepairModal}
+            sx={{
+              background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+              color: 'white',
+              fontWeight: 600,
+              '&:hover': {
+                background: 'linear-gradient(135deg, #c0392b 0%, #a93226 100%)',
+              },
+            }}
+          >
+            Book a Personal Repair Service
+          </Button>
           <Button component={Link} to="/contact" variant="contained" onClick={closeDetails}>
             Contact Us
           </Button>
@@ -290,7 +688,6 @@ const RepairServices = () => {
           </Button>
         </DialogActions>
       </Dialog>
-     
      
       {/* Hero Section */}
 <Box

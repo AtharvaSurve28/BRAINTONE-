@@ -11,9 +11,8 @@ import Lenovo from './pages/Lenovo';
 import Asus from './pages/Asus';
 import Acer from './pages/Acer';
 import Apple from './pages/Apple';
-// Removed Razer and LG imports
-import MSI from './pages/MSI'; // New import
-import Samsung from './pages/Samsung'; // New import
+import MSI from './pages/MSI';
+import Samsung from './pages/Samsung';
 import Microsoft from './pages/Microsoft';
 
 import SecondHand from './pages/SecondHand';
@@ -23,6 +22,7 @@ import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
+import FloatingChatButton from './components/FloatingChatButton'; // Import the new component
 
 // Admin Pages
 import AdminLogin from './pages/admin/AdminLogin';
@@ -60,9 +60,8 @@ function AnimatedRoutes() {
           <Route path="/laptops/asus" element={<Asus />} />
           <Route path="/laptops/acer" element={<Acer />} />
           <Route path="/laptops/apple" element={<Apple />} />
-          {/* Removed Razer and LG routes */}
-          <Route path="/laptops/msi" element={<MSI />} /> {/* New route */}
-          <Route path="/laptops/samsung" element={<Samsung />} /> {/* New route */}
+          <Route path="/laptops/msi" element={<MSI />} />
+          <Route path="/laptops/samsung" element={<Samsung />} />
           <Route path="/laptops/microsoft" element={<Microsoft />} />
           
           <Route path="/second-hand" element={<SecondHand />} />
@@ -95,6 +94,9 @@ function AppContent() {
       {!isAdminRoute && <Navbar />}
       <ScrollToTop />
       <AnimatedRoutes />
+      
+      {/* Add Floating Chat Button to all non-admin pages */}
+      {!isAdminRoute && <FloatingChatButton />}
     </Box>
   );
 }

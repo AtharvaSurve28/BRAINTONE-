@@ -2330,32 +2330,6 @@ const HomePage = () => {
         </Container>
       </Box>
 
-      {/* Floating Chat Button with Animation */}
-      <Box
-        sx={{
-          position: 'fixed',
-          bottom: 24,
-          right: 24,
-          width: 56,
-          height: 56,
-          borderRadius: '50%',
-          background: 'linear-gradient(45deg, #e74c3c 30%, #c0392b 90%)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          cursor: 'pointer',
-          boxShadow: '0 4px 20px rgba(231,76,60,0.4)',
-          zIndex: 1000,
-          animation: 'float 3s ease-in-out infinite',
-          '&:hover': { 
-            background: 'linear-gradient(45deg, #c0392b 30%, #a93226 90%)',
-            transform: 'scale(1.1)',
-          },
-          transition: 'all 0.3s ease',
-        }}
-      >
-        <ChatIcon sx={{ color: '#fff', fontSize: 28 }} />
-      </Box>
 
       {/* Add CSS Animations */}
       <style jsx="true">{`

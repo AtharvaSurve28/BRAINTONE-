@@ -23,7 +23,7 @@ import {
   DialogActions,
   IconButton
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
+import { Link, useNavigate } from 'react-router-dom';
 import { keyframes } from '@emotion/react';
 import {
   Memory,
@@ -72,50 +72,75 @@ const getBrandName = (brandId) => {
   return brands[brandId] || brandId.toUpperCase();
 };
 
+// Get brand accent color for series tabs
+const getBrandAccentColor = (brandId) => {
+  const brandColors = {
+    'dell': '#007DB8', // Dell blue
+    'hp': '#0096D6', // HP blue
+    'lenovo': '#E2231A', // Lenovo red
+    'asus': '#B71C1C', // ASUS red (from gradient)
+    'acer': '#83B81A', // Acer green
+    'apple': '#000000', // Apple black
+    'msi': '#FF0000', // MSI red
+    'samsung': '#1428A0', // Samsung blue
+    'microsoft': '#0078D4' // Microsoft blue
+  };
+  return brandColors[brandId] || '#007DB8';
+};
+
 // Brand-specific colors for hero header
 const getBrandColors = (brandId) => {
   const brandColors = {
     'dell': {
       gradient: 'linear-gradient(135deg, #007DB8 0%, #005A8A 50%, #003B5C 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #90E0EF, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #90E0EF, #FFFFFF)',
+      accentColor: '#007DB8'
     },
     'hp': {
       gradient: 'linear-gradient(135deg, #0096D6 0%, #0077B3 50%, #005A8A 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)',
+      accentColor: '#0096D6'
     },
     'lenovo': {
       gradient: 'linear-gradient(135deg, #E2231A 0%, #B71C1C 50%, #8B0000 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #FFCDD2, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #FFCDD2, #FFFFFF)',
+      accentColor: '#E2231A'
     },
     'asus': {
-      gradient: 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #2D2D2D 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #E0E0E0, #FFFFFF)'
+      gradient: 'linear-gradient(135deg, #B71C1C 0%, #8B0000 50%, #660000 100%)',
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #FFCDD2, #FFFFFF)',
+      accentColor: '#B71C1C'
     },
     'acer': {
       gradient: 'linear-gradient(135deg, #83B81A 0%, #6A9A15 50%, #4A6B0F 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #E8F5E9, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #E8F5E9, #FFFFFF)',
+      accentColor: '#83B81A'
     },
     'apple': {
       gradient: 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #2D2D2D 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #E0E0E0, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #E0E0E0, #FFFFFF)',
+      accentColor: '#000000'
     },
     'msi': {
       gradient: 'linear-gradient(135deg, #FF0000 0%, #CC0000 50%, #990000 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #FFCDD2, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #FFCDD2, #FFFFFF)',
+      accentColor: '#FF0000'
     },
     'samsung': {
       gradient: 'linear-gradient(135deg, #1428A0 0%, #0F1F7A 50%, #0A1554 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #C5CAE9, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #C5CAE9, #FFFFFF)',
+      accentColor: '#1428A0'
     },
     'microsoft': {
       gradient: 'linear-gradient(135deg, #0078D4 0%, #005A9E 50%, #003D6B 100%)',
-      textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)'
+      textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)',
+      accentColor: '#0078D4'
     }
   };
-  return brandColors[brandId] || brandColors['dell']; // Default to Dell colors
+  return brandColors[brandId] || brandColors['dell'];
 };
 
-// Category definitions - ALL 6 CATEGORIES
+// Category definitions
 const categories = [
   {
     name: 'Entry Level',
@@ -129,7 +154,7 @@ const categories = [
     name: 'Mid-Range',
     description: 'Balanced performance for work & media. Price: ₹33,000-50,000',
     icon: <DisplaySettings />,
-    color: '#F59E0B',
+    color: '#800000',
     priceRange: '₹33,000-50,000',
     key: 'midrange'
   },
@@ -161,7 +186,7 @@ const categories = [
     name: 'Premium',
     description: 'Top-tier performance, best displays, premium build. Price: ₹70,000+',
     icon: <WorkspacePremium />,
-    color: '#8B5CF6',
+    color: '#F59E0B',
     priceRange: '₹70,000+',
     key: 'premium'
   }
@@ -169,7 +194,7 @@ const categories = [
 
 // Laptop Details Modal Component
 const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
-  const navigate = useNavigate(); // Added navigate hook
+  const navigate = useNavigate();
   
   if (!laptop) return null;
 
@@ -217,8 +242,8 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
   ];
 
   const handleContactClick = () => {
-    onClose(); // Close the modal first
-    navigate('/contact'); // Navigate to contact page
+    onClose();
+    navigate('/contact');
   };
 
   return (
@@ -352,7 +377,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
             </Grid>
           </Paper>
 
-          {/* Services - UPDATED WITH EQUAL SIZE BOXES */}
+          {/* Services */}
           <Paper elevation={0} sx={{ p: 3, mb: 3, backgroundColor: alpha('#000000', 0.02) }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
               🛡️ Our Services
@@ -365,7 +390,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
                     sx={{ 
                       p: 2,
                       height: '100%',
-                      minHeight: 180, // Fixed height for equal boxes
+                      minHeight: 180,
                       display: 'flex',
                       flexDirection: 'column',
                       alignItems: 'center',
@@ -475,7 +500,6 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
         </Box>
       </DialogContent>
 
-      {/* UPDATED: DialogActions with Contact Us button linking to contact page */}
       <DialogActions sx={{ 
         p: 2.5,
         backgroundColor: alpha('#000000', 0.02),
@@ -502,7 +526,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
             <Button
               variant="contained"
               fullWidth
-              onClick={handleContactClick} // UPDATED: Now links to contact page
+              onClick={handleContactClick}
               sx={{
                 backgroundColor: category?.color || '#3B82F6',
                 color: 'white',
@@ -531,7 +555,6 @@ const DynamicBrandTemplate = ({ brandId }) => {
   const [loading, setLoading] = useState(true);
   const [expandedCategories, setExpandedCategories] = useState({});
   
-  // Modal states
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLaptop, setSelectedLaptop] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -573,7 +596,6 @@ const DynamicBrandTemplate = ({ brandId }) => {
 
   const handleSeriesChange = (event, newValue) => {
     setSelectedSeries(newValue);
-    // Reset expanded categories when series changes
     setExpandedCategories({});
   };
 
@@ -584,7 +606,6 @@ const DynamicBrandTemplate = ({ brandId }) => {
     }));
   };
 
-  // Modal handlers
   const handleOpenModal = (laptop, category) => {
     setSelectedLaptop(laptop);
     setSelectedCategory(category);
@@ -597,7 +618,6 @@ const DynamicBrandTemplate = ({ brandId }) => {
     setSelectedCategory(null);
   };
 
-  // Find selected series data
   const selectedSeriesData = brandData?.series?.find(series => series.name === selectedSeries) || {};
 
   if (loading) {
@@ -621,161 +641,141 @@ const DynamicBrandTemplate = ({ brandId }) => {
     );
   };
 
-  // Function to render ALL category sections
   const renderCategorySection = (category) => {
     const laptops = selectedSeriesData[category.key] || [];
     const hasLaptops = laptops.length > 0;
     const isExpanded = expandedCategories[category.key] || false;
     const displayLaptops = isExpanded ? laptops : laptops.slice(0, 3);
     
+    if (!hasLaptops) return null;
+
     return (
-      <Paper
-        elevation={0}
-        sx={{
-          mb: 4,
-          p: 3,
-          borderRadius: 3,
-          border: `2px solid ${alpha(category.color, hasLaptops ? 0.3 : 0.1)}`,
-          backgroundColor: alpha(category.color, hasLaptops ? 0.05 : 0.02),
-          opacity: hasLaptops ? 1 : 0.7,
-          transition: 'all 0.3s ease'
-        }}
-      >
-        {/* Category Header */}
-        <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
+      <Box sx={{ mb: 10, mt: 10 }}>
+        {/* Clean Category Header */}
+        <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
           <Box sx={{
-            width: 40,
-            height: 40,
+            width: 48,
+            height: 48,
             borderRadius: 2,
-            backgroundColor: alpha(category.color, hasLaptops ? 0.2 : 0.1),
+            backgroundColor: alpha(category.color, 0.1),
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            mr: 2,
-            color: category.color
+            color: category.color,
+            border: `2px solid ${alpha(category.color, 0.2)}`
           }}>
             {category.icon}
           </Box>
           <Box>
-            <Typography variant="h5" sx={{ 
+            <Typography variant="h4" sx={{ 
               fontWeight: 700, 
               color: category.color,
-              opacity: hasLaptops ? 1 : 0.7
+              mb: 0.5
             }}>
-              {category.name} LAPTOPS
-              {hasLaptops && ` (${laptops.length})`}
+              {category.name} Laptops
+              <Typography component="span" variant="h6" sx={{ 
+                fontWeight: 600, 
+                color: 'text.secondary',
+                ml: 1
+              }}>
+                ({laptops.length} models)
+              </Typography>
             </Typography>
-            <Typography variant="body2" sx={{ 
+            <Typography variant="body1" sx={{ 
               color: 'text.secondary',
-              opacity: hasLaptops ? 1 : 0.7
+              fontSize: '1.1rem'
             }}>
-              {category.description} | {category.priceRange}
+              {category.description} | Price range: {category.priceRange}
             </Typography>
           </Box>
         </Box>
 
-        {/* Show message if no laptops */}
-        {!hasLaptops ? (
-          <Box sx={{ textAlign: 'center', py: 4 }}>
-            <Typography variant="body1" sx={{ 
-              color: 'text.secondary', 
-              fontStyle: 'italic',
-              opacity: 0.7
-            }}>
-              No {category.name} laptops available in {selectedSeriesData.displayName || selectedSeries} series.
-            </Typography>
-            <Typography variant="body2" sx={{ 
-              color: 'text.secondary', 
-              mt: 1,
-              opacity: 0.7
-            }}>
-              Check other series or visit our store for more options.
-            </Typography>
-          </Box>
-        ) : (
-          <Box sx={{
-            display: 'grid',
-            gridTemplateColumns: {
-              xs: '1fr',
-              sm: 'repeat(2, 1fr)',
-              md: 'repeat(3, 1fr)',
-              lg: 'repeat(4, 1fr)'
-            },
-            gap: 2,
-            width: '100%',
-            alignItems: 'stretch'
-          }}>
-            {displayLaptops.map((laptop, index) => (
-              <Card
-                key={laptop.id || index}
+        {/* Laptop Grid */}
+        <Box sx={{
+          display: 'grid',
+          gridTemplateColumns: {
+            xs: '1fr',
+            sm: 'repeat(2, 1fr)',
+            md: 'repeat(3, 1fr)',
+            lg: 'repeat(4, 1fr)'
+          },
+          gap: 3,
+          width: '100%',
+          alignItems: 'stretch'
+        }}>
+          {displayLaptops.map((laptop, index) => (
+            <Card
+              key={laptop.id || index}
+              sx={{
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                borderRadius: 2,
+                overflow: 'hidden',
+                border: `1px solid ${alpha('#e0e0e0', 0.8)}`,
+                transition: 'all 0.3s ease',
+                boxSizing: 'border-box',
+                minWidth: 0,
+                maxWidth: '100%',
+                minHeight: 480,
+                backgroundColor: '#ffffff',
+                '&:hover': {
+                  transform: 'translateY(-8px)',
+                  boxShadow: `0 12px 28px ${alpha(category.color, 0.15)}`,
+                  borderColor: alpha(category.color, 0.3)
+                }
+              }}
+            >
+              <CardMedia
+                component="img"
+                image={laptop.image}
+                alt={laptop.name}
                 sx={{
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  border: `1px solid ${alpha(category.color, 0.2)}`,
-                  transition: 'all 0.3s ease',
-                  boxSizing: 'border-box',
-                  minWidth: 0,
-                  maxWidth: '100%',
-                  minHeight: 480,
-                  '&:hover': {
-                    transform: 'translateY(-4px)',
-                    boxShadow: `0 8px 25px ${alpha(category.color, 0.15)}`
-                  }
+                  height: 160,
+                  objectFit: 'cover',
+                  width: '100%',
+                  flexShrink: 0
                 }}
-              >
-                {/* Image */}
-                <CardMedia
-                  component="img"
-                  image={laptop.image}
-                  alt={laptop.name}
-                  sx={{
-                    height: 160,
-                    objectFit: 'cover',
-                    width: '100%',
-                    flexShrink: 0
-                  }}
-                />
+              />
 
-                <CardContent sx={{ 
-                  flex: '1 0 auto',
-                  p: 2,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  minHeight: 0
-                }}>
-                  {/* Name and Price */}
-                  <Box sx={{ mb: 1.5 }}>
-                    <Typography variant="h6" sx={{ 
-                      fontWeight: 700,
-                      fontSize: '1rem',
-                      lineHeight: 1.3,
-                      mb: 0.5
-                    }}>
-                      {laptop.name}
-                    </Typography>
-                    <Typography variant="h6" sx={{ 
-                      fontWeight: 800, 
-                      color: category.color,
-                      fontSize: '1.1rem'
-                    }}>
-                      {laptop.price}
-                    </Typography>
-                  </Box>
+              <CardContent sx={{ 
+                flex: '1 0 auto',
+                p: 2.5,
+                display: 'flex',
+                flexDirection: 'column',
+                minHeight: 0
+              }}>
+                {/* Name and Price */}
+                <Box sx={{ mb: 1.5 }}>
+                  <Typography variant="h6" sx={{ 
+                    fontWeight: 700,
+                    fontSize: '1rem',
+                    lineHeight: 1.3,
+                    mb: 0.5,
+                    color: '#1a1a1a'
+                  }}>
+                    {laptop.name}
+                  </Typography>
+                  <Typography variant="h5" sx={{ 
+                    fontWeight: 800, 
+                    color: category.color,
+                    fontSize: '1.25rem'
+                  }}>
+                    {laptop.price}
+                  </Typography>
+                </Box>
 
-                  {/* Best For */}
+                {/* Best For */}
+                <Box sx={{ mb: 2 }}>
                   <Typography
                     variant="caption"
                     sx={{
                       display: 'block',
                       color: category.color,
                       backgroundColor: alpha(category.color, 0.1),
-                      px: 1,
-                      py: 0.5,
+                      px: 1.5,
+                      py: 0.75,
                       borderRadius: 1,
-                      mb: 1.5,
                       fontWeight: 600,
                       fontSize: '0.75rem',
                       lineHeight: 1.2
@@ -783,110 +783,127 @@ const DynamicBrandTemplate = ({ brandId }) => {
                   >
                     ⭐ Best for: {laptop.bestFor}
                   </Typography>
+                </Box>
 
-                  {/* Specs Container */}
-                  <Box sx={{ 
-                    flex: 1,
-                    mb: 2,
-                    minHeight: 0
-                  }}>
-                    {laptop.specs?.map((spec, specIndex) => (
-                      <Typography
-                        key={specIndex}
-                        variant="body2"
-                        sx={{
-                          color: 'text.secondary',
-                          mb: 0.5,
-                          fontSize: '0.8rem',
-                          display: 'flex',
-                          alignItems: 'flex-start',
-                          gap: 0.5,
-                          lineHeight: 1.3
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            width: 3,
-                            height: 3,
-                            borderRadius: '50%',
-                            backgroundColor: alpha(category.color, 0.6),
-                            flexShrink: 0,
-                            mt: 0.75
-                          }}
-                        />
-                        <span>{spec}</span>
-                      </Typography>
-                    ))}
-                  </Box>
-
-                  {/* View Details Button - Opens Modal */}
-                  <Box sx={{ 
-                    mt: 'auto',
-                    pt: 1.5,
-                    flexShrink: 0
-                  }}>
-                    <Button
-                      variant="outlined"
-                      fullWidth
-                      size="small"
-                      endIcon={<ArrowForward />}
-                      onClick={() => handleOpenModal(laptop, category)}
+                {/* Specs Container */}
+                <Box sx={{ 
+                  flex: 1,
+                  mb: 2,
+                  minHeight: 0
+                }}>
+                  {laptop.specs?.map((spec, specIndex) => (
+                    <Typography
+                      key={specIndex}
+                      variant="body2"
                       sx={{
-                        borderColor: alpha(category.color, 0.5),
-                        color: category.color,
-                        fontWeight: 600,
+                        color: '#666666',
+                        mb: 0.75,
                         fontSize: '0.85rem',
-                        py: 0.75,
-                        '&:hover': {
-                          borderColor: category.color,
-                          backgroundColor: alpha(category.color, 0.04)
-                        }
+                        display: 'flex',
+                        alignItems: 'flex-start',
+                        gap: 0.75,
+                        lineHeight: 1.4
                       }}
                     >
-                      View Details
-                    </Button>
-                  </Box>
-                </CardContent>
-              </Card>
-            ))}
-          </Box>
-        )}
+                      <Box
+                        sx={{
+                          width: 4,
+                          height: 4,
+                          borderRadius: '50%',
+                          backgroundColor: alpha(category.color, 0.8),
+                          flexShrink: 0,
+                          mt: 0.75
+                        }}
+                      />
+                      <span>{spec}</span>
+                    </Typography>
+                  ))}
+                </Box>
+
+                {/* View Details Button */}
+                <Box sx={{ 
+                  mt: 'auto',
+                  pt: 1.5,
+                  flexShrink: 0
+                }}>
+                  <Button
+                    variant="contained"
+                    fullWidth
+                    size="medium"
+                    endIcon={<ArrowForward />}
+                    onClick={() => handleOpenModal(laptop, category)}
+                    sx={{
+                      backgroundColor: category.color,
+                      color: '#ffffff',
+                      fontWeight: 600,
+                      fontSize: '0.9rem',
+                      py: 1,
+                      borderRadius: 1,
+                      textTransform: 'none',
+                      '&:hover': {
+                        backgroundColor: category.color,
+                        opacity: 0.9,
+                        transform: 'translateY(-2px)',
+                        boxShadow: `0 6px 16px ${alpha(category.color, 0.3)}`
+                      }
+                    }}
+                  >
+                    View Full Details
+                  </Button>
+                </Box>
+              </CardContent>
+            </Card>
+          ))}
+        </Box>
         
         {/* Show "View All" / "Show Less" button if more than 3 laptops */}
         {laptops.length > 3 && (
-          <Box sx={{ textAlign: 'center', mt: 3 }}>
+          <Box sx={{ textAlign: 'center', mt: 4 }}>
             <Button
-              variant="text"
-              size="small"
+              variant="outlined"
+              size="large"
               onClick={() => toggleCategoryExpansion(category.key)}
               sx={{ 
                 color: category.color, 
+                borderColor: alpha(category.color, 0.4),
                 fontWeight: 600,
-                fontSize: '0.9rem',
+                fontSize: '0.95rem',
+                px: 4,
+                py: 1.5,
+                borderRadius: 2,
+                textTransform: 'none',
                 '&:hover': {
-                  backgroundColor: alpha(category.color, 0.1)
+                  borderColor: category.color,
+                  backgroundColor: alpha(category.color, 0.05),
+                  transform: 'translateY(-2px)'
                 }
               }}
             >
               {isExpanded 
-                ? `Show less (Show only 3 of ${laptops.length})` 
-                : `View all ${laptops.length} ${category.name} laptops →`}
+                ? `Show Less (3 of ${laptops.length})` 
+                : `View All ${laptops.length} Models`}
+              <ArrowForward sx={{ 
+                ml: 1, 
+                transform: isExpanded ? 'rotate(-90deg)' : 'rotate(0deg)',
+                transition: 'transform 0.3s ease'
+              }} />
             </Button>
           </Box>
         )}
-      </Paper>
+      </Box>
     );
   };
 
   const brandColors = getBrandColors(brandId);
+  const brandAccentColor = getBrandAccentColor(brandId);
 
   return (
     <Box sx={{
       minHeight: '100vh',
-      backgroundColor: '#ffffff',
+      backgroundColor: '#f9fafb',
       overflow: 'hidden'
     }}>
-      {/* Hero Header */}
+      {/* Hero Header - BRAND SPECIFIC */}
       <Box sx={{
         minHeight: '30vh',
         display: 'flex',
@@ -936,110 +953,163 @@ const DynamicBrandTemplate = ({ brandId }) => {
       </Box>
 
       {/* Main Content */}
-      <Container maxWidth="lg" sx={{ py: 6 }}>
-        {/* Series Selection Tabs */}
+      <Container maxWidth="lg" sx={{ 
+        py: 6,
+        backgroundColor: '#ffffff',
+        borderRadius: 3,
+        mt: -3,
+        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        position: 'relative',
+        zIndex: 1
+      }}>
+        {/* Series Selection Tabs - DARK BLACK DEFAULT, BRAND COLOR WHEN SELECTED */}
         {brandData.series && brandData.series.length > 0 && (
-          <Paper sx={{ mb: 4, borderRadius: 2, p: 2 }}>
-            <Tabs
-              value={selectedSeries}
-              onChange={handleSeriesChange}
-              variant="scrollable"
-              scrollButtons="auto"
-              sx={{
-                '& .MuiTab-root': {
-                  fontWeight: 600,
-                  fontSize: '0.9rem'
-                }
+          <Box sx={{ mb: 6 }}>
+            <Typography variant="h6" sx={{ 
+              fontWeight: 700,
+              mb: 3,
+              color: '#000000',
+              fontSize: '1.1rem',
+              letterSpacing: '0.5px'
+            }}>
+              SELECT SERIES:
+            </Typography>
+            
+            <Paper 
+              elevation={0}
+              sx={{ 
+                borderRadius: 2,
+                p: 1,
+                backgroundColor: '#f8f9fa',
+                border: '1px solid #e9ecef'
               }}
             >
-              {brandData.series.map((series) => (
-                <Tab
-                  key={series.name}
-                  label={series.displayName}
-                  value={series.name}
-                  sx={{
-                    color: series.logoColor || '#666666',
-                    '&.Mui-selected': {
-                      color: series.logoColor || '#666666',
-                      backgroundColor: alpha(series.logoColor || '#666666', 0.1),
-                      borderRadius: 1
+              <Tabs
+                value={selectedSeries}
+                onChange={handleSeriesChange}
+                variant="scrollable"
+                scrollButtons="auto"
+                sx={{
+                  minHeight: 48,
+                  '& .MuiTabs-scroller': {
+                    paddingBottom: '4px'
+                  },
+                  '& .MuiTabs-indicator': {
+                    backgroundColor: brandAccentColor,
+                    height: 3,
+                    borderRadius: 2
+                  },
+                  '& .MuiTab-root': {
+                    fontWeight: 600,
+                    fontSize: '0.95rem',
+                    textTransform: 'none',
+                    minHeight: 48,
+                    padding: '8px 20px',
+                    transition: 'all 0.2s ease',
+                    borderBottom: '3px solid transparent',
+                    color: '#000000', // DEFAULT: All tabs are dark black
+                    '&:hover': {
+                      backgroundColor: alpha(brandAccentColor, 0.05),
+                      borderBottom: `3px solid ${alpha(brandAccentColor, 0.2)}`,
+                      color: brandAccentColor // Hover: Change to brand color
                     }
-                  }}
-                />
-              ))}
-            </Tabs>
-          </Paper>
+                  },
+                  '& .Mui-selected': {
+                    color: `${brandAccentColor} !important`, // SELECTED: Only selected tab gets brand color
+                    fontWeight: 700
+                  }
+                }}
+              >
+                {brandData.series.map((series) => (
+                  <Tab
+                    key={series.name}
+                    label={series.displayName}
+                    value={series.name}
+                  />
+                ))}
+              </Tabs>
+            </Paper>
+          </Box>
         )}
 
-        {/* Selected Series Header */}
+        {/* Selected Series Header - BRAND COLOR THEME */}
         {selectedSeriesData && (
-          <Paper sx={{ 
-            mb: 4, 
-            p: 3, 
-            borderRadius: 3, 
-            backgroundColor: alpha(
-              selectedSeriesData.logoColor || '#666666', 
-              0.05
-            ) 
+          <Box sx={{ 
+            mb: 6, 
+            p: 4, 
+            borderRadius: 2,
+            backgroundColor: '#f8f9fa',
+            borderLeft: `4px solid ${brandAccentColor}`,
+            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
           }}>
-            <Box sx={{ display: 'flex', alignItems: 'center', mb: 2 }}>
-              <Box sx={{
-                width: 8,
-                height: 40,
-                backgroundColor: selectedSeriesData.logoColor || '#666666',
-                borderRadius: 1,
-                mr: 2
-              }} />
-              <Typography variant="h4" sx={{ 
-                fontWeight: 800, 
-                color: selectedSeriesData.logoColor || '#666666'
-              }}>
-                {selectedSeriesData.displayName || selectedSeries} Series
-              </Typography>
-            </Box>
-            <Typography variant="body1" sx={{ color: 'text.secondary', fontSize: '1.1rem' }}>
-              {selectedSeriesData.description || `${selectedSeriesData.displayName} series laptops`}
+            <Typography variant="h3" sx={{ 
+              fontWeight: 800, 
+              color: '#000000',
+              mb: 1.5,
+              fontSize: { xs: '2rem', md: '2.5rem' }
+            }}>
+              {selectedSeriesData.displayName || selectedSeries} Series
+            </Typography>
+            <Typography variant="body1" sx={{ 
+              color: '#495057', 
+              fontSize: '1.1rem',
+              lineHeight: 1.6,
+              mb: 2
+            }}>
+              {selectedSeriesData.description || `${selectedSeriesData.displayName} series laptops designed for optimal performance and reliability.`}
             </Typography>
             
             {/* Series Categories */}
-            <Stack direction="row" spacing={1} sx={{ mt: 2, flexWrap: 'wrap' }}>
+            <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: 'wrap' }}>
+              <Typography variant="body2" sx={{ 
+                fontWeight: 600, 
+                color: '#000000',
+                mr: 1
+              }}>
+                Available in:
+              </Typography>
               {selectedSeriesData.categories?.map((category) => {
                 const cat = categories.find(c => c.name === category);
                 return cat ? (
                   <Chip
                     key={category}
-                    icon={cat.icon}
                     label={category}
-                    size="small"
+                    size="medium"
                     sx={{
                       backgroundColor: alpha(cat.color, 0.1),
                       color: cat.color,
-                      fontWeight: 600
+                      fontWeight: 600,
+                      border: `1px solid ${alpha(cat.color, 0.3)}`,
+                      '&:hover': {
+                        backgroundColor: alpha(cat.color, 0.2),
+                        transform: 'translateY(-1px)'
+                      }
                     }}
                   />
                 ) : (
                   <Chip
                     key={category}
                     label={category}
-                    size="small"
+                    size="medium"
                     sx={{
-                      backgroundColor: alpha('#666666', 0.1),
-                      color: '#666666',
-                      fontWeight: 600
+                      backgroundColor: alpha('#000000', 0.05),
+                      color: '#000000',
+                      fontWeight: 600,
+                      border: `1px solid ${alpha('#000000', 0.2)}`
                     }}
                   />
                 );
               })}
             </Stack>
-          </Paper>
+          </Box>
         )}
 
-        {/* Warning Message */}
+        {/* Warning Message - WITH MOVING ANIMATION */}
         <Box
           sx={{
             position: 'relative',
             overflow: 'hidden',
-            mb: 4,
+            mb: 6,
             py: 1.5,
             backgroundColor: alpha('#ff0000', 0.08),
             borderRadius: 2,
@@ -1058,7 +1128,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
                 px: 2
               }}
             >
-              ⚠️ Note: we have posted limited models on this site. To explore more visit our store. ⚠️
+              ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
             </Typography>
             <Typography
               variant="body1"
@@ -1072,54 +1142,95 @@ const DynamicBrandTemplate = ({ brandId }) => {
                 animationDelay: '-10s'
               }}
             >
-              ⚠️ Note: we have posted limited models on this site. To explore more visit our store. ⚠️
+              ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
             </Typography>
           </Box>
         </Box>
 
-        {/* Render ONLY categories that actually have laptops */}
+        {/* Categories with Laptops - Increased spacing between them */}
         {categories
           .filter((category) => (selectedSeriesData[category.key] || []).length > 0)
           .map((category) => renderCategorySection(category))}
 
         {/* Legend Explanation */}
-        <Paper sx={{ mt: 6, p: 3, borderRadius: 3, backgroundColor: '#f8fafc' }}>
-          <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#1e293b' }}>
-            📋 Category Legend
+        <Box sx={{ 
+          mt: 12,
+          pt: 8,
+          borderTop: `1px solid ${alpha('#000000', 0.1)}`
+        }}>
+          <Typography variant="h5" sx={{ 
+            fontWeight: 700, 
+            mb: 6,
+            color: '#1f2937'
+          }}>
+            Category Guide
           </Typography>
-          <Grid container spacing={2}>
+          <Grid container spacing={3}>
             {categories.map((category) => (
-              <Grid item xs={12} sm={6} md={2} key={category.name}>
+              <Grid item xs={12} sm={6} md={4} key={category.name}>
                 <Box sx={{ 
                   display: 'flex', 
                   alignItems: 'center', 
-                  mb: 1,
-                  p: 1,
-                  borderRadius: 1,
-                  backgroundColor: alpha(category.color, 0.05)
+                  mb: 2,
+                  p: 2,
+                  borderRadius: 2,
+                  backgroundColor: alpha('#f9fafb', 0.8),
+                  border: `1px solid ${alpha('#e5e7eb', 0.8)}`,
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    backgroundColor: '#ffffff',
+                    borderColor: alpha(category.color, 0.3),
+                    transform: 'translateY(-2px)',
+                    boxShadow: `0 4px 12px ${alpha(category.color, 0.1)}`
+                  }
                 }}>
                   <Box sx={{
-                    width: 12,
-                    height: 12,
-                    borderRadius: '50%',
-                    backgroundColor: category.color,
-                    mr: 1
-                  }} />
-                  <Typography variant="body2" sx={{ fontWeight: 600 }}>
-                    {category.name}
-                  </Typography>
+                    width: 40,
+                    height: 40,
+                    borderRadius: 2,
+                    backgroundColor: alpha(category.color, 0.1),
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    mr: 2,
+                    color: category.color,
+                    border: `1px solid ${alpha(category.color, 0.2)}`
+                  }}>
+                    {category.icon}
+                  </Box>
+                  <Box>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827' }}>
+                      {category.name}
+                    </Typography>
+                    <Typography variant="caption" sx={{ 
+                      color: '#6b7280', 
+                      display: 'block'
+                    }}>
+                      {category.description}
+                    </Typography>
+                    <Typography variant="caption" sx={{ 
+                      color: category.color, 
+                      fontWeight: 600,
+                      display: 'block',
+                      mt: 0.5
+                    }}>
+                      {category.priceRange}
+                    </Typography>
+                  </Box>
                 </Box>
-                <Typography variant="caption" sx={{ color: 'text.secondary', display: 'block' }}>
-                  {category.description}
-                </Typography>
               </Grid>
             ))}
           </Grid>
-          <Typography variant="body2" sx={{ mt: 2, color: '#64748b', fontStyle: 'italic' }}>
-            Note: Laptops can appear in multiple categories if they meet the criteria for those categories.
-            For example, a laptop in ₹33,000-50,000 range can appear in Consumer, Commercial, and Mid-Range categories.
+          <Typography variant="body2" sx={{ 
+            mt: 6,
+            color: '#6b7280', 
+            fontStyle: 'italic',
+            textAlign: 'center',
+            px: 2
+          }}>
+            Laptops may appear in multiple categories based on their specifications and suitability for different use cases.
           </Typography>
-        </Paper>
+        </Box>
       </Container>
 
       {/* Laptop Details Modal Popup */}
