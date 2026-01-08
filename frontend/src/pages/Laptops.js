@@ -181,92 +181,96 @@ const Laptops = () => {
       </Box>
 
       {/* MODIFIED TOP BRANDS HERO SECTION - DARKER RED */}
-      <Box sx={{ 
-        minHeight: '70vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-        background: '#8B0000', // Darker red gradient
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.12) 0%, transparent 60%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 60%)',
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '5px', // Slightly thicker
-          background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-          backgroundSize: '400% 100%',
-          animation: `${shimmer} 6s linear infinite`, // Slower shimmer
-        }
-      }}>
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 10 }}>
-          <Typography 
-            variant="h1"
-            sx={{
-              textAlign: 'center',
-              fontWeight: 900,
-              fontSize: { xs: '2.8rem', md: '5rem' }, // Slightly larger
-              letterSpacing: '-1.5px',
-              background: 'linear-gradient(90deg,rgb(253, 141, 141), #FFFF00,rgb(253, 117, 117))', // Gold gradient
-              backgroundSize: '300% 300%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: `${gradientText} 10s ease infinite, ${floatAnimation} 4s ease-in-out infinite`,
-              lineHeight: 1.1,
-              textShadow: '0 6px 12px rgba(0,0,0,0.4)',
-              mb: 3,
-            }}
-          >
-            Our Top Brands
-          </Typography>
-          
-          <Divider sx={{ 
-            width: '150px', 
-            height: '4px', 
-            background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
-            backgroundSize: '300% 100%',
-            mx: 'auto', 
-            mb: 5,
-            animation: `${shimmer} 4s linear infinite`,
-            borderRadius: '2px',
-          }} />
-          
-          <Typography 
-            variant="h5"
-            sx={{
-              textAlign: 'center',
-              color: 'rgba(255, 255, 255, 0.95)',
-              mt: 3,
-              fontWeight: 400,
-              fontSize: '1.4rem',
-              maxWidth: '700px',
-              mx: 'auto',
-              lineHeight: 1.7,
-              background: 'linear-gradient(45deg, #FFECB3, #FFFFFF, #FFECB3)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: `${gradientText} 8s ease infinite`,
-              letterSpacing: '0.3px',
-              mb: 6,
-            }}
-          >
-            Premium laptops and desktops from world-leading manufacturers
-          </Typography>
-        </Container>
+{/* MODIFIED TOP BRANDS HERO SECTION - CLEAN BACKGROUND IMAGE */}
+<Box sx={{ 
+  position: 'relative',
+  color: 'white',
+  py: { xs: 6, md: 8 },
+  textAlign: 'center',
+  overflow: 'hidden',
+  minHeight: '40vh',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: 'url(https://www.electronicsbazaar.com/pub/media/magefan_blog/image_322.png)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center 25%',
+    backgroundRepeat: 'no-repeat',
+    filter: 'brightness(0.4)',
+    zIndex: 0,
+    transform: 'scale(1.05)',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '5px',
+    background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+    backgroundSize: '400% 100%',
+    animation: `${shimmer} 6s linear infinite`,
+    zIndex: 1,
+  }
+}}>
+  
+  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
+    <Typography 
+      variant="h1"
+      sx={{
+        textAlign: 'center',
+        fontWeight: 900,
+        fontSize: { xs: '2.5rem', md: '4rem' },
+        letterSpacing: '-1.5px',
+        color: 'white',
+        textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+        lineHeight: 1.1,
+        mb: 2,
+        animation: `${floatAnimation} 4s ease-in-out infinite`,
+      }}
+    >
+      Our Top Brands
+    </Typography>
+    
+    <Divider sx={{ 
+      width: '120px', 
+      height: '4px', 
+      background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
+      backgroundSize: '300% 100%',
+      mx: 'auto', 
+      mb: 3,
+      animation: `${shimmer} 4s linear infinite`,
+      borderRadius: '2px',
+    }} />
+    
+    <Typography 
+      variant="h5"
+      sx={{
+        textAlign: 'center',
+        color: 'rgba(255, 255, 255, 0.95)',
+        fontWeight: 400,
+        fontSize: '1.2rem',
+        maxWidth: '700px',
+        mx: 'auto',
+        lineHeight: 1.6,
+        textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+        letterSpacing: '0.3px',
+        backgroundColor: 'rgba(0,0,0,0.3)',
+        padding: '8px 16px',
+        borderRadius: '8px',
+        backdropFilter: 'blur(4px)',
+      }}
+    >
+      Premium laptops and desktops from world-leading manufacturers
+    </Typography>
+  </Container>
 
         {/* Floating decorative elements - darker */}
         <Box sx={{

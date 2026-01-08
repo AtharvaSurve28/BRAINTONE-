@@ -125,11 +125,6 @@ const Contact = () => {
           0%, 100% { opacity: 1; }
           50% { opacity: 0.7; }
         }
-        @keyframes gradientText {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
         @keyframes bounce {
           0%, 100% { transform: translateY(0); }
           50% { transform: translateY(-10px); }
@@ -144,12 +139,11 @@ const Contact = () => {
         }
       `}</style>
 
-      {/* Header with Fade In - RED THEME with Gradient Text */}
+      {/* Header with Background Image */}
       <Fade in={true} timeout={1000}>
         <Box
           sx={{
             position: 'relative',
-            background: 'linear-gradient(135deg, #8B0000 0%, #c0392b 50%, #e74c3c 100%)',
             color: 'white',
             py: 12,
             textAlign: 'center',
@@ -161,9 +155,11 @@ const Contact = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%)',
-              animation: 'gradientText 3s infinite linear',
-              backgroundSize: '200% 100%',
+              backgroundImage: 'url("https://www.shutterstock.com/image-photo/customer-service-call-center-contact-600nw-2493101023.jpg")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'brightness(0.4)',
+              zIndex: 0,
             }
           }}
         >
@@ -175,13 +171,8 @@ const Contact = () => {
                   fontWeight: 900, 
                   mb: 3, 
                   fontSize: { xs: '2.5rem', md: '3.8rem' },
-                  background: 'linear-gradient(45deg, #ffffff 0%, #ffcccc 30%, #ffffff 50%, #ffcccc 70%, #ffffff 100%)',
-                  backgroundSize: '300% 300%',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                  animation: 'gradientText 4s ease infinite',
-                  textShadow: '0 4px 12px rgba(139, 0, 0, 0.4)',
+                  color: 'white',
+                  textShadow: '0 4px 12px rgba(0,0,0,0.5)',
                   letterSpacing: '1px',
                 }}
               >
@@ -192,11 +183,11 @@ const Contact = () => {
               <Typography 
                 variant="h5" 
                 sx={{ 
-                  opacity: 0.95,
                   fontWeight: 600,
                   mb: 2,
                   fontSize: { xs: '1.3rem', md: '1.8rem' },
-                  textShadow: '0 2px 8px rgba(139, 0, 0, 0.3)',
+                  color: 'white',
+                  textShadow: '0 2px 8px rgba(0,0,0,0.5)',
                   maxWidth: '800px',
                   mx: 'auto',
                 }}
@@ -206,11 +197,12 @@ const Contact = () => {
             </Slide>
             <Slide direction="up" in={true} timeout={1200}>
               <Typography variant="h6" sx={{ 
-                opacity: 0.9,
                 maxWidth: '700px',
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.2rem' },
                 fontWeight: 400,
+                color: 'white',
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
               }}>
                 We're here to help and answer any questions you might have
               </Typography>
@@ -240,7 +232,6 @@ const Contact = () => {
                 height: '4px',
                 background: 'linear-gradient(90deg, #e74c3c, #c0392b, #8B0000)',
                 borderRadius: '2px',
-                animation: 'gradientText 2s ease infinite',
               }
             }}
           >
@@ -288,7 +279,6 @@ const Contact = () => {
                     right: 0,
                     height: '4px',
                     background: `linear-gradient(90deg, ${info.color}, ${info.color}80)`,
-                    animation: 'gradientText 2s infinite linear',
                   },
                   '&:hover': info.link ? {
                     transform: 'translateY(-12px) scale(1.05)',
@@ -365,7 +355,6 @@ const Contact = () => {
                 height: '4px',
                 background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
                 borderRadius: '2px',
-                animation: 'gradientText 2s ease infinite',
               }
             }}
           >
@@ -406,7 +395,6 @@ const Contact = () => {
                     right: 0,
                     height: '4px',
                     background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                    animation: 'gradientText 2s infinite linear',
                   },
                   '&:hover': {
                     transform: 'translateY(-15px) scale(1.05)',
@@ -483,7 +471,6 @@ const Contact = () => {
                     right: 0,
                     height: '4px',
                     background: 'linear-gradient(90deg, #c0392b, #8B0000)',
-                    animation: 'gradientText 2s infinite linear',
                   },
                   '&:hover': {
                     transform: 'translateY(-15px) scale(1.05)',
@@ -530,13 +517,12 @@ const Contact = () => {
         </Container>
       </Fade>
 
-      {/* Footer with Slide In - RED THEME with Gradient Text */}
+      {/* Footer with Background Image */}
       <Slide direction="up" in={true} timeout={1000}>
         <Box
           component="footer"
           sx={{
             position: 'relative',
-            background: 'linear-gradient(135deg, #8B0000 0%, #c0392b 50%, #e74c3c 100%)',
             color: 'white',
             py: 8,
             mt: 8,
@@ -548,9 +534,11 @@ const Contact = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              background: 'linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%)',
-              animation: 'gradientText 3s infinite linear',
-              backgroundSize: '200% 100%',
+              backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'brightness(0.4)',
+              zIndex: 0,
             }
           }}
         >
@@ -562,13 +550,8 @@ const Contact = () => {
                 fontWeight: 900, 
                 mb: 3, 
                 fontSize: { xs: '2.5rem', md: '3.5rem' },
-                background: 'linear-gradient(45deg, #ffffff 0%, #ffcccc 30%, #ffffff 50%, #ffcccc 70%, #ffffff 100%)',
-                backgroundSize: '300% 300%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'gradientText 4s ease infinite',
-                textShadow: '0 4px 12px rgba(139, 0, 0, 0.4)',
+                color: 'white',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
                 letterSpacing: '1px',
               }}
             >
@@ -581,7 +564,8 @@ const Contact = () => {
                 fontSize: { xs: '1.2rem', md: '1.6rem' }, 
                 mb: 2,
                 fontWeight: 600,
-                textShadow: '0 2px 8px rgba(139, 0, 0, 0.3)',
+                color: 'white',
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
               }}
             >
               Expert Laptop Services Since 1998
@@ -593,6 +577,8 @@ const Contact = () => {
                 fontSize: '1.1rem', 
                 mb: 1,
                 fontWeight: 500,
+                color: 'white',
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
               }}
             >
               © {new Date().getFullYear()} Braintone. All rights reserved.
@@ -602,9 +588,10 @@ const Contact = () => {
               align="center" 
               sx={{ 
                 fontSize: '1rem', 
-                mt: 2, 
-                opacity: 0.9,
+                mt: 2,
                 fontWeight: 500,
+                color: 'white',
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
               }}
             >
               Mon-Sat: 11AM - 7PM

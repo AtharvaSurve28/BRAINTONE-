@@ -690,52 +690,65 @@ const RepairServices = () => {
       </Dialog>
      
       {/* Hero Section */}
-<Box
-  sx={{
-    minHeight: '70vh',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'relative',
-    overflow: 'hidden',
-    background: '#8B0000', // Dark red background
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      background: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 0%, transparent 50%)',
-    },
-    '&::after': {
-      content: '""',
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      height: '4px',
-      background: 'linear-gradient(90deg, #FF0000, #00FF00, #0000FF, #FF00FF, #FFFF00, #FF0000)',
-      backgroundSize: '400% 100%',
-      animation: 'shimmer 4s linear infinite',
+{/* Hero Section - Clean Background Image */}
+<Box sx={{ 
+  position: 'relative',
+  color: 'white',
+  py: { xs: 6.5, md: 8.5 },
+  textAlign: 'center',
+  overflow: 'hidden',
+  minHeight: { xs: '53vh', md: '43vh' },
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: 'url(https://images.ctfassets.net/16nm6vz43ids/7g9t8d7WaVz7BM1L9RmrCl/9f42265945660d42d58111bf3e169aab/Repair_or_replace_laptop.png?fm=webp&q=65)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center 25%',
+    backgroundRepeat: 'no-repeat',
+    filter: 'brightness(0.4)',
+    zIndex: 0,
+    transform: 'scale(1.05)',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '4px',
+    background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+    backgroundSize: '400% 100%',
+    animation: 'shimmer 6s linear infinite',
+    zIndex: 1,
+  }
+}}>
+  
+  {/* Add CSS keyframes directly */}
+  <style>{`
+    @keyframes shimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 400% 0%; }
     }
-  }}
->
-  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, textAlign: 'center', py: 8 }}>
+  `}</style>
+  
+  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
     <Typography 
-      variant="h1" 
-      sx={{ 
-        fontWeight: 800, 
-        mb: 3,
-        fontSize: { xs: '2.5rem', md: '4rem' },
-        background: 'linear-gradient(45deg, #FFD700, #FFFFFF, #87CEEB, #FFD700)',
-        backgroundSize: '300% 300%',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        animation: 'gradientText 8s ease infinite',
-        lineHeight: 1.2,
-        textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+      variant="h1"
+      sx={{
+        textAlign: 'center',
+        fontWeight: 800,
+        fontSize: { xs: '2.3rem', md: '3.1rem' },
+        color: 'white',
+        textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+        lineHeight: 1.1,
+        mb: 2.5,
         letterSpacing: '0.5px',
       }}
     >
@@ -743,56 +756,51 @@ const RepairServices = () => {
     </Typography>
     
     <Divider sx={{ 
-      width: '120px', 
+      width: '100px', 
       height: '3px', 
-      background: 'linear-gradient(90deg, #FF0000, #00FF00, #0000FF, #FF0000)',
+      background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
       backgroundSize: '300% 100%',
       mx: 'auto', 
-      mb: 4,
-      animation: 'shimmer 3s linear infinite',
+      mb: 3.5,
+      animation: 'shimmer 4s linear infinite',
       borderRadius: '2px',
     }} />
     
     <Typography 
-      variant="h5" 
-      sx={{ 
-        mb: 5, 
-        fontSize: '1.3rem',
+      variant="h5"
+      sx={{
+        textAlign: 'center',
+        color: 'rgba(255, 255, 255, 0.95)',
+        fontWeight: 400,
+        fontSize: { xs: '1.05rem', md: '1.25rem' },
         maxWidth: '800px',
         mx: 'auto',
-        lineHeight: 1.6,
-        background: 'linear-gradient(45deg, #FFFFFF, #E0E0E0, #FFFFFF)',
-        backgroundSize: '200% 200%',
-        WebkitBackgroundClip: 'text',
-        WebkitTextFillColor: 'transparent',
-        backgroundClip: 'text',
-        animation: 'gradientText 6s ease infinite',
-        fontWeight: 400,
-        letterSpacing: '0.2px',
+        lineHeight: 1.45,
+        textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+        letterSpacing: '0.23px',
+        mb: 4,
       }}
     >
-      From screen replacements to software bases, our certified technicians will get your device back in top shape with fast, reliable, and affordable inputs.
+      From screen replacements to software fixes, our certified technicians will get your device back in top shape with fast, reliable, and affordable repairs.
     </Typography>
     
     <Button
       variant="contained"
       component={Link}
       to="/contact"
-      endIcon={<ArrowForward />}
       sx={{
-        background: 'linear-gradient(45deg, #FFFFFF 0%, #F5F5F5 50%, #FFFFFF 100%)',
-        backgroundSize: '200% 200%',
+        backgroundColor: 'rgba(255, 255, 255, 0.9)',
         color: '#8B0000',
-        px: 6,
-        py: 2.5,
-        fontSize: '1.1rem',
+        px: 5,
+        py: 1.8,
+        fontSize: '1rem',
         textTransform: 'none',
         fontWeight: 700,
         borderRadius: 2,
         position: 'relative',
         overflow: 'hidden',
         boxShadow: '0 8px 25px rgba(0,0,0,0.3)',
-        animation: 'gradientButton 4s ease infinite',
+        backdropFilter: 'blur(4px)',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -810,6 +818,7 @@ const RepairServices = () => {
           color: '#600000',
           transform: 'translateY(-4px)',
           boxShadow: '0 12px 35px rgba(0,0,0,0.4)',
+          backgroundColor: 'rgba(255, 255, 255, 1)',
         },
         transition: 'all 0.3s ease',
       }}
@@ -817,26 +826,6 @@ const RepairServices = () => {
       Get Started
     </Button>
   </Container>
-
-  {/* Add CSS Animations */}
-  <style jsx="true">{`
-    @keyframes shimmer {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 400% 0%; }
-    }
-    
-    @keyframes gradientText {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-    
-    @keyframes gradientButton {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-  `}</style>
 </Box>
 
       {/* Our Repair Services Section */}

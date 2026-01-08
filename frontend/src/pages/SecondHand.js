@@ -598,156 +598,166 @@ const SecondHand = () => {
 
   return (
     <>
-      {/* Hero Section - Dark Red Background */}
-      <Box sx={{ 
-        bgcolor: '#8B0000',
+
+  
+{/* Hero Section - Clean Background Image - Very Little Short */}
+<Box sx={{ 
+  position: 'relative',
+  color: 'white',
+  py: { xs: 6.5, md: 8.5 },
+  textAlign: 'center',
+  overflow: 'hidden',
+  minHeight: { xs: '53vh', md: '43vh' },
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center 25%',
+    backgroundRepeat: 'no-repeat',
+    filter: 'brightness(0.4)',
+    zIndex: 0,
+    transform: 'scale(1.05)',
+  },
+  '&::after': {
+    content: '""',
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: '4px',
+    background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+    backgroundSize: '400% 100%',
+    animation: 'shimmer 6s linear infinite',
+    zIndex: 1,
+  }
+}}>
+  
+  {/* Add CSS keyframes directly */}
+  <style>{`
+    @keyframes shimmer {
+      0% { background-position: 0% 0%; }
+      100% { background-position: 400% 0%; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-9px); }
+    }
+  `}</style>
+  
+  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
+    <Typography 
+      variant="h1"
+      sx={{
+        textAlign: 'center',
+        fontWeight: 900,
+        fontSize: { xs: '2.3rem', md: '3.1rem' },
+        letterSpacing: '-1.1px',
         color: 'white',
-        py: { xs: 10, md: 14 },
-        position: 'relative',
-        overflow: 'hidden',
-        minHeight: { xs: '70vh', md: '60vh' },
-        display: 'flex',
-        alignItems: 'center',
-        animation: 'heroPulse 6s ease-in-out infinite',
-        '@keyframes heroPulse': {
-          '0%, 100%': {
-            backgroundColor: '#8B0000',
+        textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+        lineHeight: 1.1,
+        mb: 2.5,
+        animation: 'float 4s ease-in-out infinite',
+      }}
+    >
+      Certified Pre-Owned Laptops
+    </Typography>
+    
+    <Typography 
+      variant="h5"
+      sx={{
+        textAlign: 'center',
+        color: 'rgba(255, 255, 255, 0.95)',
+        fontWeight: 400,
+        fontSize: { xs: '1.05rem', md: '1.25rem' },
+        maxWidth: '800px',
+        mx: 'auto',
+        lineHeight: 1.45,
+        textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+        letterSpacing: '0.23px',
+        mb: 3.5,
+      }}
+    >
+      Professionally tested refurbished laptops with warranty
+    </Typography>
+    
+    {/* Features Chips - Slightly smaller */}
+    <Stack 
+      direction={{ xs: 'column', sm: 'row' }} 
+      spacing={1.8} 
+      sx={{ 
+        justifyContent: 'center',
+        maxWidth: '730px',
+        mx: 'auto',
+      }}
+    >
+      <Chip 
+        icon={<CheckCircleIcon />} 
+        label="10-Point Quality Check" 
+        sx={{ 
+          bgcolor: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '0.93rem',
+          py: 1.3,
+          px: 1.8,
+          animation: 'float 3s ease-in-out infinite',
+          '& .MuiChip-icon': {
+            color: '#FFD700',
+            fontSize: '1.1rem',
           },
-          '50%': {
-            backgroundColor: '#A52A2A',
+          backdropFilter: 'blur(4px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }} 
+      />
+      <Chip 
+        icon={<CheckCircleIcon />} 
+        label="Warranty Included" 
+        sx={{ 
+          bgcolor: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '0.93rem',
+          py: 1.3,
+          px: 1.8,
+          animation: 'float 3s ease-in-out infinite 0.5s',
+          '& .MuiChip-icon': {
+            color: '#FFD700',
+            fontSize: '1.1rem',
           },
-        },
-      }}>
-        <Container maxWidth="lg">
-          <Box sx={{ textAlign: 'center' }}>
-            {/* Gradient Text */}
-            <Typography 
-              variant="h1" 
-              component="h1" 
-              sx={{ 
-                fontSize: { xs: '2.75rem', md: '4rem' },
-                fontWeight: 'bold',
-                mb: 4,
-                lineHeight: 1.2,
-                background: 'linear-gradient(90deg, #FF0000, #FFFF00, #FF0000)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                backgroundSize: '300% 300%',
-                animation: 'gradient 8s ease infinite',
-                '@keyframes gradient': {
-                  '0%': { backgroundPosition: '0% 50%' },
-                  '50%': { backgroundPosition: '100% 50%' },
-                  '100%': { backgroundPosition: '0% 50%' },
-                }
-              }}
-            >
-              Certified Pre-Owned Laptops
-            </Typography>
-            
-            <Typography 
-              variant="h5" 
-              sx={{ 
-                mb: 5,
-                opacity: 0.9,
-                lineHeight: 1.6,
-                maxWidth: '800px',
-                mx: 'auto',
-                fontSize: { xs: '1.25rem', md: '1.5rem' },
-              }}
-            >
-              Find the perfect refurbished laptop for your needs and budget. Every device is professionally tested and comes with warranty.
-            </Typography>
-            
-            {/* Features Chips */}
-            <Stack 
-              direction={{ xs: 'column', sm: 'row' }} 
-              spacing={2} 
-              sx={{ 
-                justifyContent: 'center',
-                maxWidth: '800px',
-                mx: 'auto',
-              }}
-            >
-              <Chip 
-                icon={<CheckCircleIcon />} 
-                label="10-Point Quality Check" 
-                sx={{ 
-                  bgcolor: '#A52A2A',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontSize: '1rem',
-                  py: 2,
-                  px: 2,
-                  animation: 'chipBounce 3s ease-in-out infinite',
-                  '& .MuiChip-icon': {
-                    color: '#FFD700',
-                    fontSize: '1.25rem',
-                  },
-                  '@keyframes chipBounce': {
-                    '0%, 100%': {
-                      transform: 'translateY(0)',
-                    },
-                    '50%': {
-                      transform: 'translateY(-5px)',
-                    },
-                  }
-                }} 
-              />
-              <Chip 
-                icon={<CheckCircleIcon />} 
-                label="Warranty Included" 
-                sx={{ 
-                  bgcolor: '#A52A2A',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontSize: '1rem',
-                  py: 2,
-                  px: 2,
-                  animation: 'chipBounce 3s ease-in-out infinite 0.5s',
-                  '& .MuiChip-icon': {
-                    color: '#FFD700',
-                    fontSize: '1.25rem',
-                  },
-                  '@keyframes chipBounce': {
-                    '0%, 100%': {
-                      transform: 'translateY(0)',
-                    },
-                    '50%': {
-                      transform: 'translateY(-5px)',
-                    },
-                  }
-                }} 
-              />
-              <Chip 
-                icon={<CheckCircleIcon />} 
-                label="Money-Back Guarantee" 
-                sx={{ 
-                  bgcolor: '#A52A2A',
-                  color: 'white',
-                  fontWeight: 'bold',
-                  fontSize: '1rem',
-                  py: 2,
-                  px: 2,
-                  animation: 'chipBounce 3s ease-in-out infinite 1s',
-                  '& .MuiChip-icon': {
-                    color: '#FFD700',
-                    fontSize: '1.25rem',
-                  },
-                  '@keyframes chipBounce': {
-                    '0%, 100%': {
-                      transform: 'translateY(0)',
-                    },
-                    '50%': {
-                      transform: 'translateY(-5px)',
-                    },
-                  }
-                }} 
-              />
-            </Stack>
-          </Box>
-        </Container>
-      </Box>
+          backdropFilter: 'blur(4px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }} 
+      />
+      <Chip 
+        icon={<CheckCircleIcon />} 
+        label="Money-Back Guarantee" 
+        sx={{ 
+          bgcolor: 'rgba(0, 0, 0, 0.5)',
+          color: 'white',
+          fontWeight: 'bold',
+          fontSize: '0.93rem',
+          py: 1.3,
+          px: 1.8,
+          animation: 'float 3s ease-in-out infinite 1s',
+          '& .MuiChip-icon': {
+            color: '#FFD700',
+            fontSize: '1.1rem',
+          },
+          backdropFilter: 'blur(4px)',
+          border: '1px solid rgba(255, 255, 255, 0.2)',
+        }} 
+      />
+    </Stack>
+  </Container>
+</Box>
 
       {/* Main Content with Bubble Background */}
       <Box sx={{ 

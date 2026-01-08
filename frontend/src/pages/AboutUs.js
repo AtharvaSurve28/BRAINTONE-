@@ -331,69 +331,68 @@ const AboutUs = () => {
         zIndex: 0,
       }
     }}>
-      {/* Hero Section */}
-      <Box sx={{ 
-        py: 12,
-        background: 'linear-gradient(135deg, #8B0000 0%, #c0392b 50%, #e74c3c 100%)',
+      
+  {/* Hero Section */}
+<Box sx={{ 
+  py: 12,
+  position: 'relative',
+  overflow: 'hidden',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    filter: 'brightness(0.4)',
+    zIndex: 0,
+  },
+}}>
+  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+    <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
+      <Typography variant="h2" sx={{ 
+        fontWeight: 800, 
+        fontSize: { xs: '2.5rem', md: '3.5rem' },
+        textShadow: '0 4px 8px rgba(0,0,0,0.3)',
         color: 'white',
-        position: 'relative',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at 30% 20%, rgba(255, 69, 69, 0.3) 0%, transparent 40%), radial-gradient(circle at 70% 80%, rgba(255, 0, 0, 0.2) 0%, transparent 50%)',
-          animation: 'pulseRed 6s ease-in-out infinite',
-        },
       }}>
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
-            <Typography variant="h2" sx={{ 
-              fontWeight: 800, 
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
-              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
-              background: 'linear-gradient(45deg, #FFD700, #FFFFFF, #FF6B6B, #FFD700)',
-              backgroundSize: '300% 300%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              animation: 'gradientText 8s ease infinite',
-            }}>
-              About Braintone Computers
-            </Typography>
-            
-            <Box sx={{ 
-              width: '100px', 
-              height: '4px', 
-              background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientMove 2s linear infinite',
-              borderRadius: '2px',
-            }} />
-            
-            <Typography variant="h5" sx={{ 
-              maxWidth: '900px',
-              lineHeight: 1.6,
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-              fontWeight: 400,
-              fontSize: { xs: '1.1rem', md: '1.3rem' }
-            }}>
-              Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware, 
-              Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive 
-              technology solutions from sales to support with 26+ years of experience.
-            </Typography>
-            
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
-              <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-            </Box>
-          </Stack>
-        </Container>
+        About Braintone Computers
+      </Typography>
+      
+      <Box sx={{ 
+        width: '100px', 
+        height: '4px', 
+        background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
+        backgroundSize: '200% 100%',
+        animation: 'gradientMove 2s linear infinite',
+        borderRadius: '2px',
+      }} />
+      
+      <Typography variant="h5" sx={{ 
+        maxWidth: '900px',
+        lineHeight: 1.6,
+        textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+        fontWeight: 400,
+        fontSize: { xs: '1.1rem', md: '1.3rem' },
+        color: 'white',
+      }}>
+        Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware, 
+        Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive 
+        technology solutions from sales to support with 26+ years of experience.
+      </Typography>
+      
+      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
+        <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+        <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+        <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+        <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
       </Box>
+    </Stack>
+  </Container>
+</Box>
 
       {/* Stats Section */}
       <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1 }}>
