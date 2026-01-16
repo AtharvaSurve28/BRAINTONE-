@@ -1230,500 +1230,500 @@ const HomePage = () => {
       }} />
 
       {/* Results and Feedbacks Section */}
-      {/* Results and Feedbacks Section */}
-      <Box sx={{ 
-        py: 8, 
+ {/* Results and Feedbacks Section */}
+<Box sx={{
+py: 8,
+position: 'relative',
+overflow: 'hidden',
+'&::before': {
+content: '""',
+position: 'absolute',
+top: 0,
+left: 0,
+right: 0,
+bottom: 0,
+background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
+},
+'&::after': {
+content: '""',
+position: 'absolute',
+top: '-50%',
+left: '-50%',
+width: '200%',
+height: '200%',
+background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
+animation: 'rotate 20s linear infinite',
+zIndex: 0,
+}
+}}>
+<Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+<Box sx={{ textAlign: 'center', mb: 6 }}>
+<Typography
+variant="h2"
+sx={{
+fontWeight: 700,
+mb: 2,
+fontSize: { xs: '2rem', md: '2.5rem' },
+color: '#2c3e50'
+}}
+>
+Results and Feedbacks
+</Typography>
+<Typography
+variant="subtitle1"
+color="text.secondary"
+sx={{
+fontSize: '1.1rem',
+lineHeight: 1.6,
+maxWidth: 600,
+mx: 'auto',
+mb: 4
+}}
+>
+Trusted by customers for reliable laptops and expert repairs.
+</Typography>
+</Box>
+
+       {/* Feedback Slider Container */}
+       <Box sx={{ 
         position: 'relative',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
+        maxWidth: 1200,
+        mx: 'auto',
+        mb: 6,
+        overflow: 'hidden'
+      }}>
+        {/* Feedback Cards Grid - Auto Scroll Slider */}
+        <Box sx={{
+          display: 'flex',
+          gap: 4,
+          animation: 'slide 60s linear infinite',
+          '&:hover': {
+            animationPlayState: 'paused'
+          },
+          '@keyframes slide': {
+            '0%': { transform: 'translateX(0)' },
+            '100%': { transform: 'translateX(-50%)' }
+          }
+        }}>
+          {/* First set of 6 feedbacks */}
+          {[
+            {
+              id: 1,
+              text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
+              author: "Priya Sharma",
+              role: "Graphic Designer",
+              initials: "PS"
+            },
+            {
+              id: 2,
+              text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
+              author: "Arjun Patel",
+              role: "University Student",
+              initials: "AP"
+            },
+            {
+              id: 3,
+              text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
+              author: "Ananya Reddy",
+              role: "Startup Founder",
+              initials: "AR"
+            },
+            {
+              id: 4,
+              text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
+              author: "Rohan Singh",
+              role: "Software Developer",
+              initials: "RS"
+            },
+            {
+              id: 5,
+              text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
+              author: "Neha Kapoor",
+              role: "Graduate Student",
+              initials: "NK"
+            },
+            {
+              id: 6,
+              text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
+              author: "Vikram Mehta",
+              role: "IT Manager",
+              initials: "VM"
+            }
+          ].map((feedback) => (
+            <Box
+              key={feedback.id}
+              sx={{
+                flex: '0 0 calc(33.333% - 32px)',
+                minWidth: { xs: '85%', sm: '45%', md: '30%' }
+              }}
+            >
+              <Box
+                sx={{
+                  p: 4,
+                  borderRadius: 4,
+                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  border: '1px solid rgba(231, 76, 60, 0.1)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
+                    borderColor: 'rgba(231, 76, 60, 0.3)'
+                  },
+                  '&::before': {
+                    content: '"\\201C"',
+                    position: 'absolute',
+                    top: 20,
+                    left: 20,
+                    fontSize: '4rem',
+                    color: 'rgba(231, 76, 60, 0.1)',
+                    fontFamily: 'serif',
+                    lineHeight: 1,
+                  }
+                }}
+              >
+                {/* Quote Icon */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 16,
+                    right: 16,
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#e74c3c'
+                  }}
+                >
+                  <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
+                </Box>
+
+                {/* Feedback Text */}
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '0.95rem',
+                    lineHeight: 1.7,
+                    color: '#2c3e50',
+                    mb: 4,
+                    fontStyle: 'italic',
+                    position: 'relative',
+                    zIndex: 1,
+                    flex: 1
+                  }}
+                >
+                  "{feedback.text}"
+                </Typography>
+
+                {/* Profile Section */}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 3,
+                    pt: 3,
+                    borderTop: '1px solid rgba(231, 76, 60, 0.1)',
+                    position: 'relative',
+                    zIndex: 1
+                  }}
+                >
+                  {/* Round Profile */}
+                  <Box
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                      fontWeight: 700,
+                      fontSize: '1.25rem',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
+                      position: 'relative',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: -2,
+                        left: -2,
+                        right: -2,
+                        bottom: -2,
+                        borderRadius: '50%',
+                        border: '2px solid rgba(231, 76, 60, 0.2)',
+                      }
+                    }}
+                  >
+                    {feedback.initials}
+                  </Box>
+
+                  {/* Author Info */}
+                  <Box sx={{ flex: 1 }}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        color: '#e74c3c',
+                        fontSize: '1.1rem',
+                        mb: 0.5
+                      }}
+                    >
+                      {feedback.author}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: '#666',
+                        fontSize: '0.9rem'
+                      }}
+                    >
+                      {feedback.role}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          ))}
+          
+          {/* Duplicate set for seamless scrolling */}
+          {[
+            {
+              id: 7,
+              text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
+              author: "Priya Sharma",
+              role: "Graphic Designer",
+              initials: "PS"
+            },
+            {
+              id: 8,
+              text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
+              author: "Arjun Patel",
+              role: "University Student",
+              initials: "AP"
+            },
+            {
+              id: 9,
+              text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
+              author: "Ananya Reddy",
+              role: "Startup Founder",
+              initials: "AR"
+            },
+            {
+              id: 10,
+              text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
+              author: "Rohan Singh",
+              role: "Software Developer",
+              initials: "RS"
+            },
+            {
+              id: 11,
+              text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
+              author: "Neha Kapoor",
+              role: "Graduate Student",
+              initials: "NK"
+            },
+            {
+              id: 12,
+              text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
+              author: "Vikram Mehta",
+              role: "IT Manager",
+              initials: "VM"
+            }
+          ].map((feedback) => (
+            <Box
+              key={feedback.id}
+              sx={{
+                flex: '0 0 calc(33.333% - 32px)',
+                minWidth: { xs: '85%', sm: '45%', md: '30%' }
+              }}
+            >
+              <Box
+                sx={{
+                  p: 4,
+                  borderRadius: 4,
+                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                  border: '1px solid rgba(231, 76, 60, 0.1)',
+                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
+                    borderColor: 'rgba(231, 76, 60, 0.3)'
+                  },
+                  '&::before': {
+                    content: '"\\201C"',
+                    position: 'absolute',
+                    top: 20,
+                    left: 20,
+                    fontSize: '4rem',
+                    color: 'rgba(231, 76, 60, 0.1)',
+                    fontFamily: 'serif',
+                    lineHeight: 1,
+                  }
+                }}
+              >
+                {/* Quote Icon */}
+                <Box
+                  sx={{
+                    position: 'absolute',
+                    top: 16,
+                    right: 16,
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: '#e74c3c'
+                  }}
+                >
+                  <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
+                </Box>
+
+                {/* Feedback Text */}
+                <Typography
+                  variant="body1"
+                  sx={{
+                    fontSize: '0.95rem',
+                    lineHeight: 1.7,
+                    color: '#2c3e50',
+                    mb: 4,
+                    fontStyle: 'italic',
+                    position: 'relative',
+                    zIndex: 1,
+                    flex: 1
+                  }}
+                >
+                  "{feedback.text}"
+                </Typography>
+
+                {/* Profile Section */}
+                <Box
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 3,
+                    pt: 3,
+                    borderTop: '1px solid rgba(231, 76, 60, 0.1)',
+                    position: 'relative',
+                    zIndex: 1
+                  }}
+                >
+                  {/* Round Profile */}
+                  <Box
+                    sx={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      color: 'white',
+                      fontWeight: 700,
+                      fontSize: '1.25rem',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
+                      position: 'relative',
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: -2,
+                        left: -2,
+                        right: -2,
+                        bottom: -2,
+                        borderRadius: '50%',
+                        border: '2px solid rgba(231, 76, 60, 0.2)',
+                      }
+                    }}
+                  >
+                    {feedback.initials}
+                  </Box>
+
+                  {/* Author Info */}
+                  <Box sx={{ flex: 1 }}>
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        color: '#e74c3c',
+                        fontSize: '1.1rem',
+                        mb: 0.5
+                      }}
+                    >
+                      {feedback.author}
+                    </Typography>
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: '#666',
+                        fontSize: '0.9rem'
+                      }}
+                    >
+                      {feedback.role}
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+          ))}
+        </Box>
+
+        {/* Gradient Overlays */}
+        <Box sx={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
-          bottom: 0,
-          background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          top: '-50%',
-          left: '-50%',
-          width: '200%',
-          height: '200%',
-          background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
-          animation: 'rotate 20s linear infinite',
-          zIndex: 0,
-        }
-      }}>
-        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 700, 
-                mb: 2,
-                fontSize: { xs: '2rem', md: '2.5rem' },
-                color: '#2c3e50'
-              }}
-            >
-              Results and Feedbacks
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              color="text.secondary"
-              sx={{ 
-                fontSize: '1.1rem', 
-                lineHeight: 1.6,
-                maxWidth: 600,
-                mx: 'auto',
-                mb: 4
-              }}
-            >
-              Trusted by customers for reliable laptops and expert repairs.
-            </Typography>
-          </Box>
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 1,
+          background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(255,255,255,1) 100%)',
+        }} />
 
-          {/* Feedback Slider Container */}
-          <Box sx={{ 
-            position: 'relative',
-            maxWidth: 1200,
-            mx: 'auto',
-            mb: 6,
-            overflow: 'hidden'
-          }}>
-            {/* Feedback Cards Grid - Auto Scroll Slider */}
-            <Box sx={{
-              display: 'flex',
-              gap: 4,
-              animation: 'slide 60s linear infinite',
-              '&:hover': {
-                animationPlayState: 'paused'
-              },
-              '@keyframes slide': {
-                '0%': { transform: 'translateX(0)' },
-                '100%': { transform: 'translateX(-50%)' }
-              }
-            }}>
-              {/* First set of 6 feedbacks */}
-              {[
-                {
-                  id: 1,
-                  text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-                  author: "Jane Doe",
-                  role: "Graphic Designer",
-                  initials: "JD"
-                },
-                {
-                  id: 2,
-                  text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-                  author: "John Smith",
-                  role: "University Student",
-                  initials: "JS"
-                },
-                {
-                  id: 3,
-                  text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-                  author: "Sarah Lee",
-                  role: "Startup Founder",
-                  initials: "SL"
-                },
-                {
-                  id: 4,
-                  text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-                  author: "Michael Chen",
-                  role: "Software Developer",
-                  initials: "MC"
-                },
-                {
-                  id: 5,
-                  text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-                  author: "Alex Johnson",
-                  role: "Graduate Student",
-                  initials: "AJ"
-                },
-                {
-                  id: 6,
-                  text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-                  author: "David Wilson",
-                  role: "IT Manager",
-                  initials: "DW"
+        {/* Navigation Dots */}
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'center', 
+          mt: 4,
+          gap: 1.5
+        }}>
+          {[1, 2, 3, 4, 5, 6].map((dot) => (
+            <Box
+              key={dot}
+              sx={{
+                width: 10,
+                height: 10,
+                borderRadius: '50%',
+                backgroundColor: dot === 1 ? '#e74c3c' : '#ddd',
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                '&:hover': {
+                  backgroundColor: dot === 1 ? '#c0392b' : '#bbb',
+                  transform: 'scale(1.2)'
                 }
-              ].map((feedback) => (
-                <Box
-                  key={feedback.id}
-                  sx={{
-                    flex: '0 0 calc(33.333% - 32px)',
-                    minWidth: { xs: '85%', sm: '45%', md: '30%' }
-                  }}
-                >
-                  <Box
-                    sx={{
-                      p: 4,
-                      borderRadius: 4,
-                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                      border: '1px solid rgba(231, 76, 60, 0.1)',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                        borderColor: 'rgba(231, 76, 60, 0.3)'
-                      },
-                      '&::before': {
-                        content: '"\\201C"',
-                        position: 'absolute',
-                        top: 20,
-                        left: 20,
-                        fontSize: '4rem',
-                        color: 'rgba(231, 76, 60, 0.1)',
-                        fontFamily: 'serif',
-                        lineHeight: 1,
-                      }
-                    }}
-                  >
-                    {/* Quote Icon */}
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        top: 16,
-                        right: 16,
-                        width: 40,
-                        height: 40,
-                        borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#e74c3c'
-                      }}
-                    >
-                      <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                    </Box>
-
-                    {/* Feedback Text */}
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: '0.95rem',
-                        lineHeight: 1.7,
-                        color: '#2c3e50',
-                        mb: 4,
-                        fontStyle: 'italic',
-                        position: 'relative',
-                        zIndex: 1,
-                        flex: 1
-                      }}
-                    >
-                      "{feedback.text}"
-                    </Typography>
-
-                    {/* Profile Section */}
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 3,
-                        pt: 3,
-                        borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                        position: 'relative',
-                        zIndex: 1
-                      }}
-                    >
-                      {/* Round Profile */}
-                      <Box
-                        sx={{
-                          width: 60,
-                          height: 60,
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'white',
-                          fontWeight: 700,
-                          fontSize: '1.25rem',
-                          flexShrink: 0,
-                          boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                          position: 'relative',
-                          '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            top: -2,
-                            left: -2,
-                            right: -2,
-                            bottom: -2,
-                            borderRadius: '50%',
-                            border: '2px solid rgba(231, 76, 60, 0.2)',
-                          }
-                        }}
-                      >
-                        {feedback.initials}
-                      </Box>
-
-                      {/* Author Info */}
-                      <Box sx={{ flex: 1 }}>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: 700,
-                            color: '#e74c3c',
-                            fontSize: '1.1rem',
-                            mb: 0.5
-                          }}
-                        >
-                          {feedback.author}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color: '#666',
-                            fontSize: '0.9rem'
-                          }}
-                        >
-                          {feedback.role}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              ))}
-              
-              {/* Duplicate set for seamless scrolling */}
-              {[
-                {
-                  id: 7,
-                  text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-                  author: "Jane Doe",
-                  role: "Graphic Designer",
-                  initials: "JD"
-                },
-                {
-                  id: 8,
-                  text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-                  author: "John Smith",
-                  role: "University Student",
-                  initials: "JS"
-                },
-                {
-                  id: 9,
-                  text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-                  author: "Sarah Lee",
-                  role: "Startup Founder",
-                  initials: "SL"
-                },
-                {
-                  id: 10,
-                  text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-                  author: "Michael Chen",
-                  role: "Software Developer",
-                  initials: "MC"
-                },
-                {
-                  id: 11,
-                  text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-                  author: "Alex Johnson",
-                  role: "Graduate Student",
-                  initials: "AJ"
-                },
-                {
-                  id: 12,
-                  text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-                  author: "David Wilson",
-                  role: "IT Manager",
-                  initials: "DW"
-                }
-              ].map((feedback) => (
-                <Box
-                  key={feedback.id}
-                  sx={{
-                    flex: '0 0 calc(33.333% - 32px)',
-                    minWidth: { xs: '85%', sm: '45%', md: '30%' }
-                  }}
-                >
-                  <Box
-                    sx={{
-                      p: 4,
-                      borderRadius: 4,
-                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                      border: '1px solid rgba(231, 76, 60, 0.1)',
-                      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                      height: '100%',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        transform: 'translateY(-8px)',
-                        boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                        borderColor: 'rgba(231, 76, 60, 0.3)'
-                      },
-                      '&::before': {
-                        content: '"\\201C"',
-                        position: 'absolute',
-                        top: 20,
-                        left: 20,
-                        fontSize: '4rem',
-                        color: 'rgba(231, 76, 60, 0.1)',
-                        fontFamily: 'serif',
-                        lineHeight: 1,
-                      }
-                    }}
-                  >
-                    {/* Quote Icon */}
-                    <Box
-                      sx={{
-                        position: 'absolute',
-                        top: 16,
-                        right: 16,
-                        width: 40,
-                        height: 40,
-                        borderRadius: '50%',
-                        background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#e74c3c'
-                      }}
-                    >
-                      <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                    </Box>
-
-                    {/* Feedback Text */}
-                    <Typography
-                      variant="body1"
-                      sx={{
-                        fontSize: '0.95rem',
-                        lineHeight: 1.7,
-                        color: '#2c3e50',
-                        mb: 4,
-                        fontStyle: 'italic',
-                        position: 'relative',
-                        zIndex: 1,
-                        flex: 1
-                      }}
-                    >
-                      "{feedback.text}"
-                    </Typography>
-
-                    {/* Profile Section */}
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: 3,
-                        pt: 3,
-                        borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                        position: 'relative',
-                        zIndex: 1
-                      }}
-                    >
-                      {/* Round Profile */}
-                      <Box
-                        sx={{
-                          width: 60,
-                          height: 60,
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: 'white',
-                          fontWeight: 700,
-                          fontSize: '1.25rem',
-                          flexShrink: 0,
-                          boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                          position: 'relative',
-                          '&::before': {
-                            content: '""',
-                            position: 'absolute',
-                            top: -2,
-                            left: -2,
-                            right: -2,
-                            bottom: -2,
-                            borderRadius: '50%',
-                            border: '2px solid rgba(231, 76, 60, 0.2)',
-                          }
-                        }}
-                      >
-                        {feedback.initials}
-                      </Box>
-
-                      {/* Author Info */}
-                      <Box sx={{ flex: 1 }}>
-                        <Typography
-                          variant="h6"
-                          sx={{
-                            fontWeight: 700,
-                            color: '#e74c3c',
-                            fontSize: '1.1rem',
-                            mb: 0.5
-                          }}
-                        >
-                          {feedback.author}
-                        </Typography>
-                        <Typography
-                          variant="body2"
-                          sx={{
-                            color: '#666',
-                            fontSize: '0.9rem'
-                          }}
-                        >
-                          {feedback.role}
-                        </Typography>
-                      </Box>
-                    </Box>
-                  </Box>
-                </Box>
-              ))}
-            </Box>
-
-            {/* Gradient Overlays */}
-            <Box sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              height: '100%',
-              pointerEvents: 'none',
-              zIndex: 1,
-              background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(255,255,255,1) 100%)',
-            }} />
-
-            {/* Navigation Dots */}
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
-              mt: 4,
-              gap: 1.5
-            }}>
-              {[1, 2, 3, 4, 5, 6].map((dot) => (
-                <Box
-                  key={dot}
-                  sx={{
-                    width: 10,
-                    height: 10,
-                    borderRadius: '50%',
-                    backgroundColor: dot === 1 ? '#e74c3c' : '#ddd',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      backgroundColor: dot === 1 ? '#c0392b' : '#bbb',
-                      transform: 'scale(1.2)'
-                    }
-                  }}
-                />
-              ))}
-            </Box>
-          </Box>
-        </Container>
+              }}
+            />
+          ))}
+        </Box>
       </Box>
+    </Container>
+  </Box>
 
       {/* Ready to Find Section */}
       <Box sx={{ 

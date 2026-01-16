@@ -62,37 +62,37 @@ const Laptops = () => {
   const brands = [
     {
       name: 'DELL',
-      image: 'https://images.unsplash.com/photo-1593642632823-8f785ba67e45?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop',
       route: '/laptops/dell',
       color: '#E2231A'
     },
     {
       name: 'HP',
-      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1663354027456-ce6a7e07d212?w=400&h=300&fit=crop',
       route: '/laptops/hp',
       color: '#E2231A'
     },
     {
       name: 'Lenovo',
-      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1763162410742-1d0097cea556?w=400&h=300&fit=crop',
       route: '/laptops/lenovo',
       color: '#E2231A'
     },
     {
       name: 'ASUS',
-      image: 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1698512475058-7975102960b6?w=400&h=300&fit=crop',
       route: '/laptops/asus',
       color: '#E2231A'
     },
     {
       name: 'Acer',
-      image: 'https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1525972183131-2f5c48254ec4?w=400&h=300&fit=crop',
       route: '/laptops/acer',
       color: '#E2231A'
     },
     {
       name: 'Apple',
-      image: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1658124974726-d96bc44783cf?w=400&h=300&fit=crop',
       route: '/laptops/apple',
       color: '#E2231A'
     },
@@ -104,13 +104,13 @@ const Laptops = () => {
     },
     {
       name: 'Samsung Galaxy',
-      image: 'https://images.unsplash.com/photo-1610945264803-c22b62d2a7b3?w=400&h=300&fit=crop', // Changed to Samsung laptop image
+      image: 'https://images.unsplash.com/photo-1522202222206-b75023c48f4f?w=400&h=300&fit=crop', // Changed to Samsung laptop image
       route: '/laptops/samsung',
       color: '#E2231A' // Samsung blue color
     },
     {
       name: 'Microsoft',
-      image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=400&h=300&fit=crop',
       route: '/laptops/microsoft',
       color: '#E2231A'
     }
@@ -324,7 +324,7 @@ const Laptops = () => {
                 onClick={() => handleBrandClick(brand.route)} // Added onClick handler
                 sx={{ 
                   width: '100%',
-                  height: '100%',
+                  height: 420,
                   display: 'flex',
                   flexDirection: 'column',
                   backgroundColor: '#ffffff',
@@ -372,14 +372,12 @@ const Laptops = () => {
                 <Box
                   sx={{
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    p: 4,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: 250,
+                    p: 0,
+                    height: 250,
                     position: 'relative',
                     overflow: 'hidden',
                     zIndex: 2,
+                    borderBottom: `3px solid ${brand.color}`,
                     '&::before': {
                       content: '""',
                       position: 'absolute',
@@ -421,13 +419,13 @@ const Laptops = () => {
                     alt={brand.name}
                     className="brand-image"
                     sx={{
-                      maxWidth: '80%',
-                      maxHeight: 180,
-                      objectFit: 'contain',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
                       transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                       zIndex: 2,
                       position: 'relative',
-                      filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+                      display: 'block',
                     }}
                   />
                 </Box>
@@ -445,15 +443,6 @@ const Laptops = () => {
                     justifyContent: 'center',
                     position: 'relative',
                     zIndex: 2,
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '3px',
-                      background: `linear-gradient(90deg, transparent, ${brand.color}, transparent)`,
-                    }
                   }}
                 >
                   <Typography 

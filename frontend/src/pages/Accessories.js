@@ -97,7 +97,7 @@ const Accessories = () => {
       id: 1,
       name: 'Laptop Battery',
       description: 'Original & compatible replacement batteries',
-      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop',
+      image: 'https://lapgadgets.in/wp-content/uploads/2024/02/Compatible-Battery-for-Dell-Latitude-E5540.webp?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹1,500',
       specs: [
@@ -116,7 +116,7 @@ const Accessories = () => {
       id: 2,
       name: 'Laptop Chargers',
       description: 'Genuine & universal charging solutions',
-      image: 'https://images.unsplash.com/photo-1561336313-0bd5e0b27ec8?w=400&h=300&fit=crop',
+      image: 'https://laptopgallery.co.in/wp-content/uploads/2021/06/111-2.jpg?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹800',
       specs: [
@@ -135,7 +135,7 @@ const Accessories = () => {
       id: 3,
       name: 'Cooling Fan',
       description: 'Laptop cooling pads & vacuum coolers',
-      image: 'https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop',
+      image: 'https://www.level1.com/media/catalog/product/cache/5dd1050e303ccd126a15d8279a1aa7f2/2/5/25dad2276d80e2517732922f27aff51fc50be6e5_THYIA02B_V1_product_01_high_1.jpg?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹900',
       specs: [
@@ -154,7 +154,7 @@ const Accessories = () => {
       id: 4,
       name: 'Gaming Mouse',
       description: 'High-precision gaming & productivity mice',
-      image: 'https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1651599732956-88af9a1f2810?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹1,200',
       specs: [
@@ -173,7 +173,7 @@ const Accessories = () => {
       id: 5,
       name: 'Laptop Skins',
       description: 'Premium vinyl skins for protection & style',
-      image: 'https://images.unsplash.com/photo-1597423244036-ef5026dff48c?w=400&h=300&fit=crop',
+      image: 'https://www.wrapcart.com/cdn/shop/files/17_ce3f0362-2e3c-4ce7-9b3c-6afba5cce721.jpg?v=1732617626&w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹600',
       specs: [
@@ -192,7 +192,7 @@ const Accessories = () => {
       id: 6,
       name: 'Hard Shell Covers',
       description: 'Durable hard covers for MacBooks',
-      image: 'https://images.unsplash.com/photo-1593081891731-f1d0cdf0d491?w=400&h=300&fit=crop',
+      image: 'https://i5.walmartimages.com/seo/Case-MacBook-Air-15-Inch-2024-2023-Model-A3114-A2941-M3-M2-Chip-Touch-ID-Laptop-Hard-Shell-Cover-Fold-Kickstand-Keyboard-Skin-Screen-Protector-Camera_b44b8ffc-989e-4ca8-ba10-6296b067abd1.8088c012601f3545892580c6b1bdcaa1.jpeg?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹1,800',
       specs: [
@@ -249,7 +249,7 @@ const Accessories = () => {
       id: 9,
       name: 'Laptop Sleeves',
       description: 'Slim protective sleeves',
-      image: 'https://images.unsplash.com/photo-1581094794329-c8112a89af12?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1689757855413-9e366c2011f1?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹800',
       specs: [
@@ -268,7 +268,7 @@ const Accessories = () => {
       id: 10,
       name: 'Laptop Stands',
       description: 'Ergonomic adjustable stands',
-      image: 'https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=400&h=300&fit=crop',
+      image: 'https://plus.unsplash.com/premium_photo-1683736986821-e4662912a70d?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹1,500',
       specs: [
@@ -287,7 +287,7 @@ const Accessories = () => {
       id: 11,
       name: 'Docking Station',
       description: 'Multi-port connectivity hubs',
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop',
+      image: 'https://i.pcmag.com/imagery/roundup-products/07iEy3TBpdO7Tk5FQBsvZz9.fit_lim.size_1050x591.v1731970422.jpg?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹3,500',
       specs: [
@@ -306,7 +306,7 @@ const Accessories = () => {
       id: 12,
       name: 'USB-C Hubs',
       description: 'Multi-port adapters & converters',
-      image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=400&h=300&fit=crop',
+      image: 'https://www.conceptronic.net/media/catalog/product/cache/5dd1050e303ccd126a15d8279a1aa7f2/b/2/b27d4e5f7a4cfd2aa829ec12ff0f10f8243c0596_HUBBIES13G_V1_product_01_high_1.jpg?w=400&h=300&fit=crop',
       color: '#E2231A',
       startingPrice: '₹1,800',
       specs: [
@@ -486,14 +486,14 @@ const Accessories = () => {
       {/* Accessories Cards Section - USING EXACT SAME LAYOUT as laptops */}
       <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
         {/* Accessories Grid - EXACT SAME as laptops grid */}
-        <Grid container spacing={4} justifyContent="center">
+        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
           {accessories.map((accessory, index) => (
             <Grid item xs={12} sm={6} md={4} key={accessory.id} sx={{ display: 'flex' }}>
               <Card 
                 onClick={() => handleOpenModal(accessory)}
                 sx={{ 
                   width: '100%',
-                  height: '100%',
+                  height: 420,
                   display: 'flex',
                   flexDirection: 'column',
                   backgroundColor: '#ffffff',
@@ -541,14 +541,12 @@ const Accessories = () => {
                 <Box
                   sx={{
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    p: 4,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    minHeight: 250,
+                    p: 0,
+                    height: 250,
                     position: 'relative',
                     overflow: 'hidden',
                     zIndex: 2,
+                    borderBottom: `3px solid ${accessory.color}`,
                     '&::before': {
                       content: '""',
                       position: 'absolute',
@@ -590,13 +588,13 @@ const Accessories = () => {
                     alt={accessory.name}
                     className="accessory-image"
                     sx={{
-                      maxWidth: '80%',
-                      maxHeight: 180,
-                      objectFit: 'contain',
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
                       transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
                       zIndex: 2,
                       position: 'relative',
-                      filter: 'drop-shadow(0 4px 8px rgba(0,0,0,0.2))',
+                      display: 'block',
                     }}
                   />
                 </Box>
@@ -606,7 +604,7 @@ const Accessories = () => {
                   sx={{ 
                     textAlign: 'center',
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    py: 4,
+                    py: 3,
                     px: 3,
                     flexGrow: 1,
                     display: 'flex',
@@ -651,6 +649,7 @@ const Accessories = () => {
                       fontSize: '0.95rem',
                       lineHeight: 1.5,
                       mb: 2,
+                      minHeight: '3em', // reserve ~2 lines so all cards align
                       display: '-webkit-box',
                       WebkitLineClamp: 2,
                       WebkitBoxOrient: 'vertical',

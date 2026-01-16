@@ -69,16 +69,16 @@ const Contact = () => {
     {
       icon: Instagram,
       title: 'Instagram',
-      value: '@braintone.in',
+      value: 'braintone.technology',
       color: '#E1306C',
-      link: 'https://instagram.com/braintone.in',
+      link: 'https://www.instagram.com/braintone.technology/',
     },
     {
       icon: Twitter,
       title: 'Twitter',
-      value: '@BraintoneMumbai',
+      value: '@BraintoneL1707',
       color: '#1DA1F2',
-      link: 'https://twitter.com/BraintoneMumbai',
+      link: 'https://x.com/BraintoneL1707',
     },
     {
       icon: Facebook,
@@ -518,87 +518,75 @@ const Contact = () => {
       </Fade>
 
       {/* Footer with Background Image */}
-      <Slide direction="up" in={true} timeout={1000}>
-        <Box
-          component="footer"
-          sx={{
-            position: 'relative',
-            color: 'white',
-            py: 8,
-            mt: 8,
-            overflow: 'hidden',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
-              backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'brightness(0.4)',
-              zIndex: 0,
-            }
-          }}
-        >
-          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-            <Typography 
-              variant="h2" 
-              align="center" 
-              sx={{ 
-                fontWeight: 900, 
-                mb: 3, 
-                fontSize: { xs: '2.5rem', md: '3.5rem' },
-                color: 'white',
-                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                letterSpacing: '1px',
-              }}
-            >
-              BRAINTONE
-            </Typography>
-            <Typography 
-              variant="h5" 
-              align="center" 
-              sx={{ 
-                fontSize: { xs: '1.2rem', md: '1.6rem' }, 
-                mb: 2,
-                fontWeight: 600,
-                color: 'white',
-                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-              }}
-            >
-              Expert Laptop Services Since 1998
-            </Typography>
-            <Typography 
-              variant="body1" 
-              align="center" 
-              sx={{ 
-                fontSize: '1.1rem', 
-                mb: 1,
-                fontWeight: 500,
-                color: 'white',
-                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-              }}
-            >
-              © {new Date().getFullYear()} Braintone. All rights reserved.
-            </Typography>
-            <Typography 
-              variant="body1" 
-              align="center" 
-              sx={{ 
-                fontSize: '1rem', 
-                mt: 2,
-                fontWeight: 500,
-                color: 'white',
-                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-              }}
-            >
-              Mon-Sat: 11AM - 7PM
-            </Typography>
-          </Container>
-        </Box>
-      </Slide>
+{/* Footer with Midnight Navy Background */}
+<Slide direction="up" in={true} timeout={1000}>
+  <Box
+    component="footer"
+    sx={{
+      position: 'relative',
+      // Removed image and replaced with the custom color
+      bgcolor: '#1E1B2E', 
+      color: 'white',
+      py: 8,
+      mt: 8,
+      overflow: 'hidden',
+      // Subtle top border to separate it from the white body
+      borderTop: '1px solid rgba(255,255,255,0.1)',
+    }}
+  >
+    <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+      <Typography 
+        variant="h2" 
+        align="center" 
+        sx={{ 
+          fontWeight: 900, 
+          mb: 3, 
+          fontSize: { xs: '2.5rem', md: '3.5rem' },
+          color: '#e74c3c', // Explicit white color
+          letterSpacing: '1px',
+        }}
+      >
+        BRAINTONE
+      </Typography>
+      <Typography 
+        variant="h5" 
+        align="center" 
+        sx={{ 
+          fontSize: { xs: '1.2rem', md: '1.6rem' }, 
+          mb: 2,
+          fontWeight: 600,
+          color: 'white', // Explicit white color
+        }}
+      >
+        Expert Laptop Services Since 1998
+      </Typography>
+      <Typography 
+        variant="body1" 
+        align="center" 
+        sx={{ 
+          fontSize: '1.1rem', 
+          mb: 1,
+          fontWeight: 500,
+          color: 'rgba(255, 255, 255, 0.9)', // Slightly softer white for body text
+        }}
+      >
+        © {new Date().getFullYear()} Braintone. All rights reserved.
+      </Typography>
+      <Typography 
+        variant="body1" 
+        align="center" 
+        sx={{ 
+          fontSize: '1rem', 
+          mt: 2,
+          fontWeight: 500,
+          color: 'rgba(255, 255, 255, 0.8)', // Slightly transparent white
+        }}
+      >
+        Mon-Sat: 11AM - 7PM
+      </Typography>
+    </Container>
+  </Box>
+</Slide>
     </Box>
   );
 };
