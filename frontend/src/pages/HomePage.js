@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   Typography,
   Button,
@@ -32,9 +32,31 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Link } from 'react-router-dom';
 
 const HomePage = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Array of background images - your image first, then others
+  const backgroundImages = [
+    'https://www.shutterstock.com/image-photo/laptop-report-friends-learning-library-600nw-2475778113.jpg', // Your image first - ADDED SLASH
+    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Laptop workspace
+    'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80', // Laptop repair
+    'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D', // Modern laptops
+    'https://thumbs.dreamstime.com/b/computer-peripherals-laptop-accessories-composition-white-wooden-board-47590141.jpg',
+    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2042&q=80', // Tech workspace
+  ];
+
+  useEffect(() => {
+    // Auto-rotate images every 3 seconds
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+    }, 3000);
+
+    // Clear interval on component unmount
+    return () => clearInterval(interval);
+  }, [backgroundImages.length]);
+
   return (
     <Box sx={{ overflowX: 'hidden' }}>
-      {/* Hero Section with Animated Gradient */}
+      {/* Hero Section with Rotating Background Images */}
       <Box
         sx={{
           minHeight: 'calc(100vh - 120px)',
@@ -44,20 +66,76 @@ const HomePage = () => {
           textAlign: 'center',
           position: 'relative',
           overflow: 'hidden',
-          background: 'linear-gradient(-45deg, #4a5568, #2d3748, #1a202c, #4a5568)',
-          backgroundSize: '400% 400%',
-          animation: 'gradient 15s ease infinite',
-          '&::before': {
-            content: '""',
+          background: '#1a202c', // Fallback color
+        }}
+      >
+        {/* Background Images Container */}
+        <Box
+          sx={{
             position: 'absolute',
             top: 0,
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'radial-gradient(circle at 20% 50%, rgba(231,76,60,0.1) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(52,152,219,0.1) 0%, transparent 50%)',
-          }
-        }}
-      >
+            zIndex: 0,
+          }}
+        >
+          {/* All background images stacked with opacity transitions */}
+          {backgroundImages.map((image, index) => (
+            <Box
+              key={index}
+              sx={{
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                backgroundImage: `url(${image})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                opacity: index === currentImageIndex ? 1 : 0,
+                transition: 'opacity 1.5s ease-in-out',
+                transform: 'scale(1.05)', // Slight zoom for better coverage
+                // Less dark overlay for better visibility
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  background: 'linear-gradient(135deg, rgba(26, 32, 44, 0.7) 0%, rgba(45, 55, 72, 0.6) 50%, rgba(74, 85, 104, 0.7) 100%)',
+                },
+              }}
+            />
+          ))}
+          
+          {/* Animated gradient overlay - more subtle */}
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              background: 'linear-gradient(-45deg, rgba(74, 85, 104, 0.2), rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2), rgba(74, 85, 104, 0.2))',
+              backgroundSize: '400% 400%',
+              animation: 'gradient 15s ease infinite',
+              // More subtle highlights for better image visibility
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
+                background: 'radial-gradient(circle at 20% 50%, rgba(231,76,60,0.05) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(52,152,219,0.05) 0%, transparent 50%)',
+              },
+            }}
+          />
+        </Box>
+
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <Typography 
             variant="h2" 
@@ -68,6 +146,7 @@ const HomePage = () => {
               background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
+              textShadow: '0 2px 10px rgba(0,0,0,0.3)', // Added shadow for better contrast
             }}
           >
             Premium Laptops & Expert Repair Services
@@ -80,7 +159,8 @@ const HomePage = () => {
               maxWidth: '700px',
               mx: 'auto',
               lineHeight: 1.6,
-              color: 'rgba(255,255,255,0.9)'
+              color: 'rgba(255,255,255,0.95)', // Brighter text
+              textShadow: '0 1px 5px rgba(0,0,0,0.3)', // Added shadow
             }}
           >
             High-quality new and pre-owned laptops with expert repair services to meet all your needs
@@ -99,6 +179,7 @@ const HomePage = () => {
               fontWeight: 600,
               position: 'relative',
               overflow: 'hidden',
+              boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)', // Added shadow
               '&::before': {
                 content: '""',
                 position: 'absolute',
@@ -114,12 +195,50 @@ const HomePage = () => {
               },
               '&:hover': { 
                 background: 'linear-gradient(45deg, #c0392b 30%, #a93226 90%)',
+                boxShadow: '0 6px 20px rgba(231, 76, 60, 0.4)', // Enhanced shadow on hover
               },
             }}
           >
             Explore Our Products
           </Button>
+
+          {/* Image indicators (dots) */}
+          <Stack 
+            direction="row" 
+            spacing={1} 
+            justifyContent="center" 
+            sx={{ mt: 4 }}
+          >
+            {backgroundImages.map((_, index) => (
+              <Box
+                key={index}
+                sx={{
+                  width: 10,
+                  height: 10,
+                  borderRadius: '50%',
+                  backgroundColor: index === currentImageIndex ? '#e74c3c' : 'rgba(255,255,255,0.4)', // Brighter dots
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  boxShadow: '0 0 5px rgba(0,0,0,0.2)',
+                  '&:hover': {
+                    backgroundColor: index === currentImageIndex ? '#c0392b' : 'rgba(255,255,255,0.7)',
+                    transform: 'scale(1.2)',
+                  }
+                }}
+                onClick={() => setCurrentImageIndex(index)}
+              />
+            ))}
+          </Stack>
         </Container>
+        
+        {/* Add CSS animations */}
+        <style>{`
+          @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+          }
+        `}</style>
       </Box>
 
       {/* Find the Perfect Laptop - with Gradient Background */}
