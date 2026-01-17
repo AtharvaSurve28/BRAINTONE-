@@ -1,6 +1,15 @@
+// backend/middleware/auth.js - SAFE VERSION
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || '7cc4b86902f6d128f81a7230964c2016f97c01aa21979f0a28e4e6c5c4517881';
+// NO DEFAULT VALUE - Force environment variable
+const JWT_SECRET = process.env.JWT_SECRET;
+
+// Validate on startup
+if (!JWT_SECRET) {
+  console.error('FATAL: JWT_SECRET environment variable is not set');
+  // In production, you might want to exit:
+  // process.exit(1);
+}
 
 // Auth middleware
 const authMiddleware = (req, res, next) => {
@@ -19,5 +28,6 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-module.exports = { authMiddleware, JWT_SECRET };
+module.exports = { authMiddleware };
+
 
