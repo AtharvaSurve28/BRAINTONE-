@@ -15,7 +15,6 @@ import {
   InputAdornment,
   Alert,
   Snackbar,
-  Tooltip,
 } from '@mui/material';
 import ChatIcon from '@mui/icons-material/Chat';
 import CloseIcon from '@mui/icons-material/Close';
@@ -26,6 +25,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 const FloatingChatButton = () => {
   const [open, setOpen] = useState(false);
@@ -43,17 +43,20 @@ const FloatingChatButton = () => {
     message: '',
   });
 
+  // YOUR BUSINESS WHATSAPP NUMBER - Message will be sent TO this number
+  const BUSINESS_WHATSAPP_NUMBER = "919082014406"; // India: 91 + 9082014406
+
   // Tooltip animation effect
   useEffect(() => {
     const tooltipInterval = setInterval(() => {
       // Show tooltip for 2 seconds
       setShowTooltip(true);
-      
+
       // Hide after 2 seconds
       const hideTimeout = setTimeout(() => {
         setShowTooltip(false);
       }, 2000);
-      
+
       // Clear hide timeout when component unmounts
       return () => clearTimeout(hideTimeout);
     }, 5000); // Show every 5 seconds (2 seconds visible + 3 seconds hidden)
@@ -73,7 +76,7 @@ const FloatingChatButton = () => {
     setOpen(true);
     setShowTooltip(false); // Hide tooltip when modal opens
   };
-  
+
   const handleClose = () => {
     setOpen(false);
     // Reset form on close
@@ -102,7 +105,7 @@ const FloatingChatButton = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
+
     // Validate required fields
     if (!formData.name || !formData.email || !formData.phone) {
       setSnackbarSeverity('error');
@@ -111,32 +114,48 @@ const FloatingChatButton = () => {
       return;
     }
 
-    // Prepare WhatsApp message
-    const whatsappNumber = "9082671687"; // Replace with your WhatsApp number
-    
+    // Validate phone number (only digits)
+    const phoneDigits = formData.phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Please enter a valid phone number (at least 10 digits)');
+      setSnackbarOpen(true);
+      return;
+    }
+
     // Format the message for WhatsApp
-    const whatsappMessage = `*New Appointment Request from BRAINTONE Website*%0A%0A
-*👤 Customer Details:*%0A
+    const whatsappMessage = `*📋 NEW APPOINTMENT REQUEST - BRAINTONE*%0A%0A
+*👤 CUSTOMER DETAILS:*%0A
 • *Name:* ${formData.name}%0A
 • *Email:* ${formData.email}%0A
 • *Phone:* ${formData.phone}%0A
 • *Address:* ${formData.address || 'Not provided'}%0A%0A
-*📅 Appointment Details:*%0A
+*📅 APPOINTMENT DETAILS:*%0A
 • *Date:* ${formData.appointmentDate || 'Not specified'}%0A
 • *Time:* ${formData.appointmentTime || 'Not specified'}%0A%0A
-*💬 Message:*%0A${formData.message || 'No additional message'}`;
+*💬 MESSAGE:*%0A${formData.message || 'No additional message'}%0A%0A
+*🕒 Submitted:* ${new Date().toLocaleString()}`;
 
-    // Create WhatsApp URL
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-    
+    // Create WhatsApp URL - Message will be sent TO your business number
+    const whatsappUrl = `https://wa.me/${BUSINESS_WHATSAPP_NUMBER}?text=${whatsappMessage}`;
+
     // Open WhatsApp in new tab
-    window.open(whatsappUrl, '_blank');
-    
-    // Show success message
-    setSnackbarSeverity('success');
-    setSnackbarMessage('Opening WhatsApp to send your appointment request...');
-    setSnackbarOpen(true);
-    
+    const newWindow = window.open(whatsappUrl, '_blank');
+
+    // Check if popup was blocked
+    if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+      // Popup was blocked
+      setSnackbarSeverity('warning');
+      setSnackbarMessage('Popup blocked! Please click this link to send message: ' +
+        `<a href="${whatsappUrl}" target="_blank" style="color: white; text-decoration: underline;">Open WhatsApp</a>`);
+      setSnackbarOpen(true);
+    } else {
+      // Popup opened successfully
+      setSnackbarSeverity('success');
+      setSnackbarMessage('Opening WhatsApp to send appointment request to BRAINTONE...');
+      setSnackbarOpen(true);
+    }
+
     // Reset form
     setFormData({
       name: '',
@@ -147,7 +166,7 @@ const FloatingChatButton = () => {
       appointmentTime: '',
       message: '',
     });
-    
+
     // Close modal after a delay
     setTimeout(() => {
       handleClose();
@@ -214,7 +233,7 @@ const FloatingChatButton = () => {
                   lineHeight: 1.2,
                 }}
               >
-                📅 To book an Personal appointment, click here!
+                📅 Book Appointment / Contact Us
               </Typography>
             </Box>
           </Paper>
@@ -240,6 +259,18 @@ const FloatingChatButton = () => {
           <ChatIcon sx={{ fontSize: 28 }} />
         </IconButton>
       </Box>
+
+      {/* Add CSS animation for floating effect */}
+      <style jsx global>{`
+        @keyframes float {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
+        }
+      `}</style>
 
       {/* Chat Modal */}
       <Modal
@@ -281,7 +312,7 @@ const FloatingChatButton = () => {
               }}
             >
               <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                <ChatIcon sx={{ fontSize: 32 }} />
+                <WhatsAppIcon sx={{ fontSize: 32 }} />
                 <Typography variant="h5" sx={{ fontWeight: 700 }}>
                   Book Appointment / Contact Us
                 </Typography>
@@ -301,6 +332,7 @@ const FloatingChatButton = () => {
                   bgcolor: 'rgba(37, 211, 102, 0.1)',
                   borderRadius: '8px',
                   textAlign: 'center',
+                  border: '1px solid rgba(37, 211, 102, 0.3)',
                 }}
               >
                 <Typography
@@ -315,12 +347,8 @@ const FloatingChatButton = () => {
                     flexWrap: 'wrap',
                   }}
                 >
-                  <img
-                    src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
-                    alt="WhatsApp"
-                    style={{ width: '20px', height: '20px' }}
-                  />
-                  Your request will be sent to WhatsApp: 9082671687
+                  <WhatsAppIcon sx={{ fontSize: 20 }} />
+                  Your appointment request will be sent to BRAINTONE WhatsApp: +91 90820 14406
                 </Typography>
               </Box>
 
@@ -341,7 +369,7 @@ const FloatingChatButton = () => {
                     }}
                   >
                     <PersonIcon sx={{ fontSize: 20 }} />
-                    Customer Details
+                    Your Details
                   </Typography>
 
                   <Stack spacing={3}>
@@ -353,6 +381,7 @@ const FloatingChatButton = () => {
                       onChange={handleChange}
                       required
                       variant="outlined"
+                      placeholder="Enter your full name"
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -373,6 +402,7 @@ const FloatingChatButton = () => {
                           onChange={handleChange}
                           required
                           variant="outlined"
+                          placeholder="example@email.com"
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
@@ -392,6 +422,7 @@ const FloatingChatButton = () => {
                           onChange={handleChange}
                           required
                           variant="outlined"
+                          placeholder="98XXX XXXXX"
                           InputProps={{
                             startAdornment: (
                               <InputAdornment position="start">
@@ -412,6 +443,7 @@ const FloatingChatButton = () => {
                       multiline
                       rows={3}
                       variant="outlined"
+                      placeholder="Your complete address for service"
                       InputProps={{
                         startAdornment: (
                           <InputAdornment position="start">
@@ -446,7 +478,7 @@ const FloatingChatButton = () => {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Appointment Date"
+                        label="Preferred Date"
                         name="appointmentDate"
                         type="date"
                         value={formData.appointmentDate}
@@ -468,7 +500,7 @@ const FloatingChatButton = () => {
                     <Grid item xs={12} sm={6}>
                       <TextField
                         fullWidth
-                        label="Appointment Time"
+                        label="Preferred Time"
                         name="appointmentTime"
                         type="time"
                         value={formData.appointmentTime}
@@ -503,19 +535,23 @@ const FloatingChatButton = () => {
                     }}
                   >
                     <ChatIcon sx={{ fontSize: 20 }} />
-                    Additional Message
+                    Additional Information
                   </Typography>
 
                   <TextField
                     fullWidth
-                    label="Your Message"
+                    label="Describe your requirements"
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
                     multiline
                     rows={4}
                     variant="outlined"
-                    placeholder="Please describe your requirements, laptop issues, or any special requests..."
+                    placeholder="Please describe:
+• Type of laptop/service needed
+• Specific issues/problems
+• Urgency level
+• Any special requests"
                   />
                 </Box>
 
@@ -554,11 +590,11 @@ const FloatingChatButton = () => {
                     </Typography>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                       <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      3. WhatsApp will open with your message
+                      3. WhatsApp will open with your message to BRAINTONE
                     </Typography>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
                       <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      4. Just press send to complete your request
+                      4. Just press send and we'll contact you shortly
                     </Typography>
                   </Stack>
                 </Box>
@@ -581,6 +617,10 @@ const FloatingChatButton = () => {
                       borderColor: '#e74c3c',
                       color: '#e74c3c',
                       fontWeight: 600,
+                      '&:hover': {
+                        borderColor: '#c0392b',
+                        backgroundColor: 'rgba(231, 76, 60, 0.04)',
+                      },
                     }}
                   >
                     Cancel
@@ -589,11 +629,7 @@ const FloatingChatButton = () => {
                     type="submit"
                     variant="contained"
                     startIcon={
-                      <img
-                        src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
-                        alt="WhatsApp"
-                        style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }}
-                      />
+                      <WhatsAppIcon sx={{ color: 'white' }} />
                     }
                     sx={{
                       px: 4,
@@ -603,10 +639,13 @@ const FloatingChatButton = () => {
                       fontWeight: 700,
                       '&:hover': {
                         background: 'linear-gradient(135deg, #1da851 0%, #0f6d5e 100%)',
+                        transform: 'translateY(-2px)',
+                        boxShadow: '0 8px 25px rgba(37, 211, 102, 0.4)',
                       },
+                      transition: 'all 0.3s ease',
                     }}
                   >
-                    Send to WhatsApp
+                    Send to BRAINTONE WhatsApp
                   </Button>
                 </Box>
               </form>
@@ -629,9 +668,17 @@ const FloatingChatButton = () => {
             width: '100%',
             backgroundColor: snackbarSeverity === 'success' ? '#25D366' : '#e74c3c',
             color: 'white',
+            '& .MuiAlert-icon': {
+              color: 'white',
+            },
+          }}
+          iconMapping={{
+            success: <WhatsAppIcon />,
+            error: <CloseIcon />,
+            warning: <WhatsAppIcon />,
           }}
         >
-          {snackbarMessage}
+          <div dangerouslySetInnerHTML={{ __html: snackbarMessage }} />
         </Alert>
       </Snackbar>
     </>

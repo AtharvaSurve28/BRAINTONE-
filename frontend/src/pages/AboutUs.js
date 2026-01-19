@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
-import { 
-  Box, 
-  Container, 
-  Typography, 
-  Grid, 
-  Card, 
-  CardContent, 
-  Tabs, 
-  Tab, 
-  Stack, 
+import {
+  Box,
+  Container,
+  Typography,
+  Grid,
+  Card,
+  CardContent,
+  Tabs,
+  Tab,
+  Stack,
   IconButton,
   Button,
   Divider,
@@ -22,14 +22,14 @@ import {
   Select,
   MenuItem
 } from '@mui/material';
-import { 
-  People, 
-  Visibility, 
-  EmojiObjects, 
-  Favorite, 
-  TrendingUp, 
-  CheckCircle, 
-  WorkOutline, 
+import {
+  People,
+  Visibility,
+  EmojiObjects,
+  Favorite,
+  TrendingUp,
+  CheckCircle,
+  WorkOutline,
   EmojiEvents,
   MailOutline,
   Phone,
@@ -66,6 +66,7 @@ import {
   CalendarToday
 } from '@mui/icons-material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Footer from '../components/Footer';
 
 
 const AboutUs = () => {
@@ -129,16 +130,16 @@ const AboutUs = () => {
 
     // Encode message for WhatsApp URL
     const encodedMessage = encodeURIComponent(whatsappMessage);
-    const whatsappNumber = '919082671687'; // Updated number with country code 91 for India
-    
+    const whatsappNumber = '919082014406'; // Updated number with country code 91 for India
+
     // Open WhatsApp
     window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
-    
+
     // Show success message
-    setSnackbarMessage('Opening WhatsApp to send your request to 9082671687...');
+    setSnackbarMessage('Opening WhatsApp to send your request to 90820 14406...');
     setSnackbarSeverity('success');
     setSnackbarOpen(true);
-    
+
     // Close modal and reset form
     setDoorstepModalOpen(false);
     setFormData({
@@ -232,7 +233,7 @@ const AboutUs = () => {
 
   const fortAddress = "1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001";
   const fortPhone = "081697 98826";
-  
+
   const villeParleAddress = "1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056";
   const villeParlePhone = "092233 33357";
 
@@ -306,17 +307,17 @@ const AboutUs = () => {
   ];
 
   const services = [
-    'Workstations', 'Servers', 'Routers', 'Backups', 'Firewalls', 
-    'Switches', 'Security', 'VPN Connections', 'Anti-Virus', 
+    'Workstations', 'Servers', 'Routers', 'Backups', 'Firewalls',
+    'Switches', 'Security', 'VPN Connections', 'Anti-Virus',
     'Spam/Spyware', 'Upgrades', 'Wireless Networks', 'Technology Planning',
-    'Networking (LAN & WAN)', 'Web Designing & Hosting', 
+    'Networking (LAN & WAN)', 'Web Designing & Hosting',
     'Security & Surveillance Solutions', 'Office Automation Solutions',
     'Total Infrastructure Management', 'Project Consulting'
   ];
 
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
+    <Box sx={{
+      minHeight: '100vh',
       bgcolor: '#fafafa',
       overflow: 'hidden',
       position: 'relative',
@@ -331,76 +332,76 @@ const AboutUs = () => {
         zIndex: 0,
       }
     }}>
-      
-  {/* Hero Section */}
-<Box sx={{ 
-  py: 12,
-  position: 'relative',
-  overflow: 'hidden',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    filter: 'brightness(0.4)',
-    zIndex: 0,
-  },
-}}>
-  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-    <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
-      <Typography variant="h2" sx={{ 
-        fontWeight: 800, 
-        fontSize: { xs: '2.5rem', md: '3.5rem' },
-        textShadow: '0 4px 8px rgba(0,0,0,0.3)',
-        color: 'white',
+
+      {/* Hero Section */}
+      <Box sx={{
+        py: 12,
+        position: 'relative',
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'brightness(0.4)',
+          zIndex: 0,
+        },
       }}>
-        About Braintone Computers
-      </Typography>
-      
-      <Box sx={{ 
-        width: '100px', 
-        height: '4px', 
-        background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
-        backgroundSize: '200% 100%',
-        animation: 'gradientMove 2s linear infinite',
-        borderRadius: '2px',
-      }} />
-      
-      <Typography variant="h5" sx={{ 
-        maxWidth: '900px',
-        lineHeight: 1.6,
-        textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-        fontWeight: 400,
-        fontSize: { xs: '1.1rem', md: '1.3rem' },
-        color: 'white',
-      }}>
-        Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware, 
-        Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive 
-        technology solutions from sales to support with 26+ years of experience.
-      </Typography>
-      
-      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
-        <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-        <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-        <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-        <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+          <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
+            <Typography variant="h2" sx={{
+              fontWeight: 800,
+              fontSize: { xs: '2.5rem', md: '3.5rem' },
+              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+              color: 'white',
+            }}>
+              About Braintone Computers
+            </Typography>
+
+            <Box sx={{
+              width: '100px',
+              height: '4px',
+              background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
+              backgroundSize: '200% 100%',
+              animation: 'gradientMove 2s linear infinite',
+              borderRadius: '2px',
+            }} />
+
+            <Typography variant="h5" sx={{
+              maxWidth: '900px',
+              lineHeight: 1.6,
+              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+              fontWeight: 400,
+              fontSize: { xs: '1.1rem', md: '1.3rem' },
+              color: 'white',
+            }}>
+              Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware,
+              Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive
+              technology solutions from sales to support with 26+ years of experience.
+            </Typography>
+
+            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
+              <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+              <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+              <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+              <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+            </Box>
+          </Stack>
+        </Container>
       </Box>
-    </Stack>
-  </Container>
-</Box>
 
       {/* Stats Section */}
       <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1 }}>
         <Grid container spacing={3} justifyContent="center">
           {stats.map((stat, index) => (
             <Grid item xs={6} sm={3} key={index}>
-              <Card sx={{ 
-                textAlign: 'center', 
+              <Card sx={{
+                textAlign: 'center',
                 p: 3,
                 boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
                 transition: 'all 0.3s ease',
@@ -425,16 +426,16 @@ const AboutUs = () => {
                 },
               }}>
                 <stat.icon sx={{ fontSize: 48, color: stat.color, mb: 1, animation: 'pulse 3s ease-in-out infinite' }} />
-                <Typography variant="h4" sx={{ 
-                  fontWeight: 800, 
-                  mb: 1, 
+                <Typography variant="h4" sx={{
+                  fontWeight: 800,
+                  mb: 1,
                   color: '#e74c3c',
                   fontSize: { xs: '1.8rem', md: '2.2rem' }
                 }}>
                   {stat.value}
                 </Typography>
-                <Typography variant="body2" sx={{ 
-                  color: '#7f8c8d', 
+                <Typography variant="body2" sx={{
+                  color: '#7f8c8d',
                   fontWeight: 600,
                   fontSize: '0.9rem'
                 }}>
@@ -448,22 +449,22 @@ const AboutUs = () => {
 
       {/* Company Overview, Vision, Reasons to Buy Tabs */}
       <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
-        <Box sx={{ 
-          borderBottom: 1, 
-          borderColor: 'divider', 
+        <Box sx={{
+          borderBottom: 1,
+          borderColor: 'divider',
           mb: 4,
           background: 'linear-gradient(to right, transparent, rgba(231, 76, 60, 0.1), transparent)',
           py: 1,
           borderRadius: 1
         }}>
-          <Tabs 
-            value={activeTab} 
-            onChange={handleTabChange} 
+          <Tabs
+            value={activeTab}
+            onChange={handleTabChange}
             centered
             sx={{
               '& .MuiTab-root': {
-                textTransform: 'none', 
-                fontWeight: 600, 
+                textTransform: 'none',
+                fontWeight: 600,
                 fontSize: '16px',
                 color: '#7f8c8d',
                 '&.Mui-selected': {
@@ -484,9 +485,9 @@ const AboutUs = () => {
         </Box>
 
         {activeTab === 0 && (
-          <Card sx={{ 
-            p: { xs: 4, md: 6 }, 
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)', 
+          <Card sx={{
+            p: { xs: 4, md: 6 },
+            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
             background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
             border: '1px solid rgba(231, 76, 60, 0.1)',
             borderRadius: 3,
@@ -525,54 +526,54 @@ const AboutUs = () => {
                     Company Overview
                   </Typography>
                 </Box>
-                
-                <Typography variant="body1" sx={{ 
-                  mb: 3, 
-                  lineHeight: 1.8, 
-                  fontSize: '1.1rem', 
+
+                <Typography variant="body1" sx={{
+                  mb: 3,
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
                   color: '#34495e',
                   textAlign: 'justify'
                 }}>
-                  <strong>Braintone Technology Pvt Ltd.</strong> was formed in Mumbai in 1998. We are a company providing 
-                  IT Hardware, Office Automation, Audio Video Solutions & IT Software Solutions ranging from sales of 
-                  Laptops, Desktops, Servers, Public Address Systems, Projectors, Projector Screens and Total Networking 
+                  <strong>Braintone Technology Pvt Ltd.</strong> was formed in Mumbai in 1998. We are a company providing
+                  IT Hardware, Office Automation, Audio Video Solutions & IT Software Solutions ranging from sales of
+                  Laptops, Desktops, Servers, Public Address Systems, Projectors, Projector Screens and Total Networking
                   & Security Products at very competitive and affordable prices.
                 </Typography>
-                
-                <Typography variant="body1" sx={{ 
-                  mb: 3, 
-                  lineHeight: 1.8, 
-                  fontSize: '1.1rem', 
+
+                <Typography variant="body1" sx={{
+                  mb: 3,
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
                   color: '#34495e',
                   textAlign: 'justify'
                 }}>
-                  Braintone understands the complexities of a business's infrastructure and how vital it is to the 
-                  business operations. A network that is not running properly or is down can result in a loss of 
-                  productivity or revenue. Braintone recognizes the importance of a company's network and responds 
+                  Braintone understands the complexities of a business's infrastructure and how vital it is to the
+                  business operations. A network that is not running properly or is down can result in a loss of
+                  productivity or revenue. Braintone recognizes the importance of a company's network and responds
                   promptly and accordingly.
                 </Typography>
-                
+
                 <Box sx={{ mb: 4 }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
                     Our Certified Professionals
                   </Typography>
-                  <Typography variant="body1" sx={{ 
-                    mb: 2, 
-                    lineHeight: 1.8, 
-                    fontSize: '1.1rem', 
+                  <Typography variant="body1" sx={{
+                    mb: 2,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
                     color: '#34495e',
                     textAlign: 'justify'
                   }}>
-                    Our certified professionals are the best in their field, with extensive experience implementing 
-                    dozens of computer networks for small businesses to large corporations. Whether you have 4 computers 
-                    or 400 on a network, our specialists can assist you in all aspects of hardware installation, 
+                    Our certified professionals are the best in their field, with extensive experience implementing
+                    dozens of computer networks for small businesses to large corporations. Whether you have 4 computers
+                    or 400 on a network, our specialists can assist you in all aspects of hardware installation,
                     networking, and troubleshooting.
                   </Typography>
                 </Box>
-                
-                <Box sx={{ 
-                  p: 2, 
-                  bgcolor: 'rgba(231, 76, 60, 0.05)', 
+
+                <Box sx={{
+                  p: 2,
+                  bgcolor: 'rgba(231, 76, 60, 0.05)',
                   borderRadius: 2,
                   borderLeft: '4px solid #e74c3c',
                   mb: 3
@@ -590,11 +591,11 @@ const AboutUs = () => {
                     ))}
                   </Grid>
                 </Box>
-                
-                <Typography variant="body1" sx={{ 
-                  mb: 3, 
-                  lineHeight: 1.8, 
-                  fontSize: '1.1rem', 
+
+                <Typography variant="body1" sx={{
+                  mb: 3,
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
                   color: '#34495e',
                   textAlign: 'justify',
                   fontStyle: 'italic',
@@ -603,16 +604,16 @@ const AboutUs = () => {
                   py: 1,
                   bgcolor: 'rgba(231, 76, 60, 0.05)'
                 }}>
-                  "We take pride in our quick, responsive service to our clients and their computing needs. 
-                  Braintone Technology Pvt Ltd has been installing and supporting systems for over 26 years. 
-                  We are Systems Integrators with wide experience of providing efficient and workable hardware 
+                  "We take pride in our quick, responsive service to our clients and their computing needs.
+                  Braintone Technology Pvt Ltd has been installing and supporting systems for over 26 years.
+                  We are Systems Integrators with wide experience of providing efficient and workable hardware
                   and software solutions."
                 </Typography>
               </Grid>
               <Grid item xs={12} md={6}>
-                <Box sx={{ 
-                  display: 'flex', 
-                  justifyContent: 'center', 
+                <Box sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
                   height: '100%'
                 }}>
@@ -628,20 +629,20 @@ const AboutUs = () => {
                     }}
                   />
                 </Box>
-                
+
                 <Box sx={{ mt: 4 }}>
                   <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#2c3e50' }}>
                     Technical Expertise
                   </Typography>
-                  <Typography variant="body1" sx={{ 
-                    lineHeight: 1.8, 
-                    fontSize: '1rem', 
+                  <Typography variant="body1" sx={{
+                    lineHeight: 1.8,
+                    fontSize: '1rem',
                     color: '#34495e',
                     textAlign: 'justify'
                   }}>
-                    Our special blend of software, hardware and systems people helps to ensure projects arrive 
-                    on time and to budget. Wherever high level technical skills are required, Braintone can 
-                    usually do the job. Once a system is installed, we are able to support it throughout 
+                    Our special blend of software, hardware and systems people helps to ensure projects arrive
+                    on time and to budget. Wherever high level technical skills are required, Braintone can
+                    usually do the job. Once a system is installed, we are able to support it throughout
                     Mumbai, Maharashtra and India.
                   </Typography>
                 </Box>
@@ -651,9 +652,9 @@ const AboutUs = () => {
         )}
 
         {activeTab === 1 && (
-          <Card sx={{ 
-            p: { xs: 4, md: 6 }, 
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)', 
+          <Card sx={{
+            p: { xs: 4, md: 6 },
+            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
             background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
             border: '1px solid rgba(231, 76, 60, 0.1)',
             borderRadius: 3,
@@ -674,9 +675,9 @@ const AboutUs = () => {
           }}>
             <Grid container spacing={4} alignItems="center">
               <Grid item xs={12} md={6}>
-                <Box sx={{ 
-                  display: 'flex', 
-                  justifyContent: 'center', 
+                <Box sx={{
+                  display: 'flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
                   height: '100%'
                 }}>
@@ -712,35 +713,35 @@ const AboutUs = () => {
                     Our Vision
                   </Typography>
                 </Box>
-                <Typography variant="body1" sx={{ 
-                  mb: 3, 
-                  lineHeight: 1.8, 
-                  fontSize: '1.1rem', 
+                <Typography variant="body1" sx={{
+                  mb: 3,
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
                   color: '#34495e',
                   textAlign: 'justify'
                 }}>
-                  To become India's most trusted and comprehensive technology partner, recognized for excellence 
-                  in IT hardware sales, networking solutions, and professional support services. We envision a 
-                  future where technology barriers are eliminated, and every business has access to reliable 
+                  To become India's most trusted and comprehensive technology partner, recognized for excellence
+                  in IT hardware sales, networking solutions, and professional support services. We envision a
+                  future where technology barriers are eliminated, and every business has access to reliable
                   computing power that empowers growth and innovation.
                 </Typography>
-                
-                <Typography variant="body1" sx={{ 
-                  mb: 3, 
-                  lineHeight: 1.8, 
-                  fontSize: '1.1rem', 
+
+                <Typography variant="body1" sx={{
+                  mb: 3,
+                  lineHeight: 1.8,
+                  fontSize: '1.1rem',
                   color: '#34495e',
                   textAlign: 'justify'
                 }}>
-                  By 2030, we aim to expand our footprint across India while maintaining the personalized 
-                  service and community focus that has defined our success since 1998. We're committed to 
-                  sustainable technology practices, including responsible e-waste management and promoting 
+                  By 2030, we aim to expand our footprint across India while maintaining the personalized
+                  service and community focus that has defined our success since 1998. We're committed to
+                  sustainable technology practices, including responsible e-waste management and promoting
                   energy-efficient solutions.
                 </Typography>
-                
-                <Box sx={{ 
-                  p: 2, 
-                  bgcolor: 'rgba(231, 76, 60, 0.05)', 
+
+                <Box sx={{
+                  p: 2,
+                  bgcolor: 'rgba(231, 76, 60, 0.05)',
                   borderRadius: 2,
                   borderLeft: '4px solid #c0392b'
                 }}>
@@ -768,9 +769,9 @@ const AboutUs = () => {
         )}
 
         {activeTab === 2 && (
-          <Card sx={{ 
-            p: { xs: 4, md: 6 }, 
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)', 
+          <Card sx={{
+            p: { xs: 4, md: 6 },
+            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
             background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
             border: '1px solid rgba(231, 76, 60, 0.1)',
             borderRadius: 3,
@@ -812,15 +813,15 @@ const AboutUs = () => {
                 Discover why thousands of customers trust Braintone for their technology needs
               </Typography>
             </Box>
-            
-            <Box sx={{ 
+
+            <Box sx={{
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
               gap: 3,
               mb: 4
             }}>
               {reasonsToBuy.map((reason, index) => (
-                <Box 
+                <Box
                   key={index}
                   sx={{
                     p: 3,
@@ -835,15 +836,15 @@ const AboutUs = () => {
                     borderRadius: '8px',
                     transition: 'all 0.3s ease',
                     animation: `bounce 2s ease-in-out infinite ${index * 0.1}s`,
-                    '&:hover': { 
+                    '&:hover': {
                       boxShadow: '0 15px 30px rgba(231, 76, 60, 0.25)',
                       transform: 'translateY(-5px)',
                     },
                   }}
                 >
-                  <Box sx={{ 
-                    display: 'flex', 
-                    alignItems: 'flex-start', 
+                  <Box sx={{
+                    display: 'flex',
+                    alignItems: 'flex-start',
                     gap: 2,
                     mb: 2,
                     minHeight: '30px',
@@ -861,8 +862,8 @@ const AboutUs = () => {
                       {React.cloneElement(reason.icon, { sx: { fontSize: 20, color: 'white' } })}
                     </Box>
                     <Box sx={{ flex: 1 }}>
-                      <Typography variant="h6" sx={{ 
-                        fontWeight: 700, 
+                      <Typography variant="h6" sx={{
+                        fontWeight: 700,
                         color: '#e74c3c',
                         fontSize: '1rem',
                         lineHeight: 1.2,
@@ -872,9 +873,9 @@ const AboutUs = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  
-                  <Typography variant="body2" sx={{ 
-                    color: '#7f8c8d', 
+
+                  <Typography variant="body2" sx={{
+                    color: '#7f8c8d',
                     lineHeight: 1.5,
                     fontSize: '0.85rem',
                     flex: 1,
@@ -898,11 +899,11 @@ const AboutUs = () => {
                 </Box>
               ))}
             </Box>
-            
-            <Box sx={{ 
-              mt: 6, 
-              p: 3, 
-              bgcolor: 'rgba(52, 152, 219, 0.05)', 
+
+            <Box sx={{
+              mt: 6,
+              p: 3,
+              bgcolor: 'rgba(52, 152, 219, 0.05)',
               borderRadius: 2,
               border: '1px solid rgba(52, 152, 219, 0.2)',
               textAlign: 'center'
@@ -911,8 +912,8 @@ const AboutUs = () => {
                 Complete Business Systems
               </Typography>
               <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6 }}>
-                Complete Business Systems prides itself on the high technical ability of its staff. 
-                We maintain a full complement of skills to allow even the most demanding project to be undertaken. 
+                Complete Business Systems prides itself on the high technical ability of its staff.
+                We maintain a full complement of skills to allow even the most demanding project to be undertaken.
                 Our expertise covers everything from basic workstations to complex enterprise network solutions.
               </Typography>
             </Box>
@@ -921,15 +922,15 @@ const AboutUs = () => {
       </Container>
 
       {/* What We Offer Section */}
-      <Box sx={{ 
+      <Box sx={{
         background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
         py: 10,
         position: 'relative',
         overflow: 'hidden',
       }}>
         <Container maxWidth="lg">
-          <Typography variant="h3" align="center" sx={{ 
-            fontWeight: 800, 
+          <Typography variant="h3" align="center" sx={{
+            fontWeight: 800,
             mb: 2,
             color: '#2c3e50',
             position: 'relative',
@@ -951,15 +952,15 @@ const AboutUs = () => {
           }}>
             Our Comprehensive Services
           </Typography>
-          <Typography variant="h6" align="center" sx={{ 
-            color: '#7f8c8d', 
+          <Typography variant="h6" align="center" sx={{
+            color: '#7f8c8d',
             mb: 6,
             fontWeight: 500,
             animation: 'fadeInUp 1s ease 0.2s both'
           }}>
             Complete solutions for all your computing needs - sales, service, and support
           </Typography>
-          
+
           <Box sx={{
             display: 'flex',
             flexDirection: 'column',
@@ -1027,26 +1028,26 @@ const AboutUs = () => {
                 >
                   <Laptop sx={{ fontSize: 40, color: '#e74c3c' }} />
                 </Box>
-                
+
                 <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{ 
-                    fontWeight: 700, 
+                  <Typography variant="h5" sx={{
+                    fontWeight: 700,
                     mb: 1.5,
                     color: '#2c3e50',
                     fontSize: '1.4rem'
                   }}>
                     New Laptops
                   </Typography>
-                  
-                  <Typography variant="body1" sx={{ 
-                    color: '#7f8c8d', 
+
+                  <Typography variant="body1" sx={{
+                    color: '#7f8c8d',
                     lineHeight: 1.6,
                     fontSize: '1rem',
                     mb: 3
                   }}>
                     Latest models from top brands like Dell, HP, Lenovo, Asus, and Apple
                   </Typography>
-                  
+
                   <Stack spacing={1.5}>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Latest models from top brands
@@ -1059,7 +1060,7 @@ const AboutUs = () => {
                     </Typography>
                   </Stack>
                 </Box>
-                
+
                 <Box sx={{
                   position: 'absolute',
                   top: 20,
@@ -1134,26 +1135,26 @@ const AboutUs = () => {
                 >
                   <ShoppingCart sx={{ fontSize: 40, color: '#c0392b' }} />
                 </Box>
-                
+
                 <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{ 
-                    fontWeight: 700, 
+                  <Typography variant="h5" sx={{
+                    fontWeight: 700,
                     mb: 1.5,
                     color: '#2c3e50',
                     fontSize: '1.4rem'
                   }}>
                     Pre-Owned Laptops
                   </Typography>
-                  
-                  <Typography variant="body1" sx={{ 
-                    color: '#7f8c8d', 
+
+                  <Typography variant="body1" sx={{
+                    color: '#7f8c8d',
                     lineHeight: 1.6,
                     fontSize: '1rem',
                     mb: 3
                   }}>
                     Quality tested, certified pre-owned laptops with warranty
                   </Typography>
-                  
+
                   <Stack spacing={1.5}>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Thorough quality testing
@@ -1166,7 +1167,7 @@ const AboutUs = () => {
                     </Typography>
                   </Stack>
                 </Box>
-                
+
                 <Box sx={{
                   position: 'absolute',
                   top: 20,
@@ -1188,7 +1189,7 @@ const AboutUs = () => {
                 </Box>
               </Box>
             </Box>
-            
+
             <Box sx={{
               display: 'grid',
               gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
@@ -1250,26 +1251,26 @@ const AboutUs = () => {
                 >
                   <Build sx={{ fontSize: 40, color: '#d35400' }} />
                 </Box>
-                
+
                 <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{ 
-                    fontWeight: 700, 
+                  <Typography variant="h5" sx={{
+                    fontWeight: 700,
                     mb: 1.5,
                     color: '#2c3e50',
                     fontSize: '1.4rem'
                   }}>
                     Repair Services
                   </Typography>
-                  
-                  <Typography variant="body1" sx={{ 
-                    color: '#7f8c8d', 
+
+                  <Typography variant="body1" sx={{
+                    color: '#7f8c8d',
                     lineHeight: 1.6,
                     fontSize: '1rem',
                     mb: 3
                   }}>
                     Comprehensive repair services for all laptop brands and models
                   </Typography>
-                  
+
                   <Stack spacing={1.5}>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> All brands & models
@@ -1282,7 +1283,7 @@ const AboutUs = () => {
                     </Typography>
                   </Stack>
                 </Box>
-                
+
                 <Box sx={{
                   position: 'absolute',
                   top: 20,
@@ -1358,26 +1359,26 @@ const AboutUs = () => {
                 >
                   <LocalShipping sx={{ fontSize: 40, color: '#e67e22' }} />
                 </Box>
-                
+
                 <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{ 
-                    fontWeight: 700, 
+                  <Typography variant="h5" sx={{
+                    fontWeight: 700,
                     mb: 1.5,
                     color: '#2c3e50',
                     fontSize: '1.4rem'
                   }}>
                     Doorstep Service
                   </Typography>
-                  
-                  <Typography variant="body1" sx={{ 
-                    color: '#7f8c8d', 
+
+                  <Typography variant="body1" sx={{
+                    color: '#7f8c8d',
                     lineHeight: 1.6,
                     fontSize: '1rem',
                     mb: 3
                   }}>
                     Book free pickup & delivery for laptop repairs across Mumbai
                   </Typography>
-                  
+
                   <Stack spacing={1.5}>
                     <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                       <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Free pickup & delivery
@@ -1390,7 +1391,7 @@ const AboutUs = () => {
                     </Typography>
                   </Stack>
                 </Box>
-                
+
                 <Box sx={{
                   position: 'absolute',
                   top: 20,
@@ -1460,41 +1461,41 @@ const AboutUs = () => {
           {/* Modal Content */}
           <Box sx={{ p: 4 }}>
             <Typography variant="body1" sx={{ mb: 4, color: '#7f8c8d', textAlign: 'center' }}>
-              Fill out the form below to schedule a free pickup for your laptop repair. 
+              Fill out the form below to schedule a free pickup for your laptop repair.
               Our technician will contact you to confirm the details.
             </Typography>
 
             {/* Display WhatsApp Number */}
-            <Box sx={{ 
-              mb: 4, 
-              p: 2, 
-              bgcolor: 'rgba(37, 211, 102, 0.1)', 
+            <Box sx={{
+              mb: 4,
+              p: 2,
+              bgcolor: 'rgba(37, 211, 102, 0.1)',
               borderRadius: '8px',
               textAlign: 'center'
             }}>
-              <Typography variant="body2" sx={{ 
-                color: '#25D366', 
+              <Typography variant="body2" sx={{
+                color: '#25D366',
                 fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 gap: 1
               }}>
-                <img 
-                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png" 
-                  alt="WhatsApp" 
-                  style={{ width: '20px', height: '20px' }} 
+                <img
+                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
+                  alt="WhatsApp"
+                  style={{ width: '20px', height: '20px' }}
                 />
-                Your request will be sent to WhatsApp: 9082671687
+                Your request will be sent to WhatsApp: 90820 14406
               </Typography>
             </Box>
 
             {/* Customer Details */}
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ 
-                mb: 3, 
-                color: '#e74c3c', 
-                borderBottom: '2px solid #ffecec', 
+              <Typography variant="h6" sx={{
+                mb: 3,
+                color: '#e74c3c',
+                borderBottom: '2px solid #ffecec',
                 pb: 1,
                 fontWeight: 600,
                 display: 'flex',
@@ -1503,7 +1504,7 @@ const AboutUs = () => {
               }}>
                 <span>👤</span> Customer Details
               </Typography>
-              
+
               <Stack spacing={3}>
                 <TextField
                   fullWidth
@@ -1514,7 +1515,7 @@ const AboutUs = () => {
                   required
                   variant="outlined"
                 />
-                
+
                 <TextField
                   fullWidth
                   label="Mobile Number *"
@@ -1525,7 +1526,7 @@ const AboutUs = () => {
                   variant="outlined"
                   type="tel"
                 />
-                
+
                 <TextField
                   fullWidth
                   label="Full Address *"
@@ -1542,10 +1543,10 @@ const AboutUs = () => {
 
             {/* Laptop Details */}
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ 
-                mb: 3, 
-                color: '#e74c3c', 
-                borderBottom: '2px solid #ffecec', 
+              <Typography variant="h6" sx={{
+                mb: 3,
+                color: '#e74c3c',
+                borderBottom: '2px solid #ffecec',
                 pb: 1,
                 fontWeight: 600,
                 display: 'flex',
@@ -1554,7 +1555,7 @@ const AboutUs = () => {
               }}>
                 <span>💻</span> Laptop Details
               </Typography>
-              
+
               <Stack spacing={3}>
                 <TextField
                   fullWidth
@@ -1564,7 +1565,7 @@ const AboutUs = () => {
                   onChange={handleFormChange}
                   variant="outlined"
                 />
-                
+
                 <TextField
                   fullWidth
                   label="Laptop Model"
@@ -1573,7 +1574,7 @@ const AboutUs = () => {
                   onChange={handleFormChange}
                   variant="outlined"
                 />
-                
+
                 <TextField
                   fullWidth
                   label="Laptop Issue *"
@@ -1590,10 +1591,10 @@ const AboutUs = () => {
 
             {/* Pickup Preferences */}
             <Box sx={{ mb: 4 }}>
-              <Typography variant="h6" sx={{ 
-                mb: 3, 
-                color: '#e74c3c', 
-                borderBottom: '2px solid #ffecec', 
+              <Typography variant="h6" sx={{
+                mb: 3,
+                color: '#e74c3c',
+                borderBottom: '2px solid #ffecec',
                 pb: 1,
                 fontWeight: 600,
                 display: 'flex',
@@ -1602,7 +1603,7 @@ const AboutUs = () => {
               }}>
                 <span>📅</span> Pickup Preferences
               </Typography>
-              
+
               <Stack spacing={3}>
                 <TextField
                   fullWidth
@@ -1614,7 +1615,7 @@ const AboutUs = () => {
                   variant="outlined"
                   InputLabelProps={{ shrink: true }}
                 />
-                
+
                 <TextField
                   fullWidth
                   label="Preferred Time"
@@ -1627,40 +1628,40 @@ const AboutUs = () => {
             </Box>
 
             {/* Terms and WhatsApp Button */}
-            <Box sx={{ 
-              mt: 4, 
-              p: 3, 
-              bgcolor: '#ffecec', 
+            <Box sx={{
+              mt: 4,
+              p: 3,
+              bgcolor: '#ffecec',
               borderRadius: '8px',
               mb: 4
             }}>
-              <Typography variant="body2" sx={{ 
-                mb: 2, 
-                color: '#e74c3c', 
+              <Typography variant="body2" sx={{
+                mb: 2,
+                color: '#e74c3c',
                 fontWeight: 600
               }}>
                 ⚡ What happens next?
               </Typography>
               <Stack spacing={1.5}>
                 <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
                   Submit this form
                 </Typography>
                 <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
-                  We'll contact you on WhatsApp (9082671687) to confirm
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
+                  We'll contact you on WhatsApp (90820 14406) to confirm
                 </Typography>
                 <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 
+                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
                   Free pickup scheduled from your address
                 </Typography>
               </Stack>
             </Box>
 
             {/* Submit Button */}
-            <Box sx={{ 
-              display: 'flex', 
-              justifyContent: 'center', 
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
               gap: 2,
               mt: 4
             }}>
@@ -1680,10 +1681,10 @@ const AboutUs = () => {
               <Button
                 variant="contained"
                 onClick={handleSubmit}
-                startIcon={<img 
-                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png" 
-                  alt="WhatsApp" 
-                  style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }} 
+                startIcon={<img
+                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
+                  alt="WhatsApp"
+                  style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }}
                 />}
                 sx={{
                   px: 4,
@@ -1693,7 +1694,7 @@ const AboutUs = () => {
                   fontWeight: 700,
                 }}
               >
-                Send to 9082671687
+                Send to 90820 14406
               </Button>
             </Box>
           </Box>
@@ -1707,10 +1708,10 @@ const AboutUs = () => {
         onClose={handleCloseSnackbar}
         anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
       >
-        <Alert 
-          onClose={handleCloseSnackbar} 
+        <Alert
+          onClose={handleCloseSnackbar}
           severity={snackbarSeverity}
-          sx={{ 
+          sx={{
             width: '100%',
             backgroundColor: snackbarSeverity === 'success' ? '#2ecc71' : '#e74c3c',
             color: 'white'
@@ -1722,8 +1723,8 @@ const AboutUs = () => {
 
       {/* Our Journey Section */}
       <Container maxWidth="md" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
-        <Typography variant="h3" align="center" sx={{ 
-          fontWeight: 800, 
+        <Typography variant="h3" align="center" sx={{
+          fontWeight: 800,
           mb: 2,
           background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
           WebkitBackgroundClip: 'text',
@@ -1732,15 +1733,15 @@ const AboutUs = () => {
         }}>
           Our 26+ Year Journey
         </Typography>
-        <Typography variant="h6" align="center" sx={{ 
-          color: '#7f8c8d', 
+        <Typography variant="h6" align="center" sx={{
+          color: '#7f8c8d',
           mb: 6,
           fontWeight: 500,
           animation: 'fadeInUp 1s ease 0.2s both'
         }}>
           From a small computer store to Mumbai's trusted technology partner
         </Typography>
-        
+
         <Box sx={{ position: 'relative' }}>
           {/* Timeline Line */}
           <Box sx={{
@@ -1752,10 +1753,10 @@ const AboutUs = () => {
             background: 'linear-gradient(to bottom, #e74c3c, #c0392b)',
             display: { xs: 'none', md: 'block' }
           }} />
-          
+
           {milestones.map((milestone, index) => (
-            <Box key={index} sx={{ 
-              display: 'flex', 
+            <Box key={index} sx={{
+              display: 'flex',
               flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
               alignItems: 'center',
               mb: 4,
@@ -1775,7 +1776,7 @@ const AboutUs = () => {
                 flexShrink: 0,
                 animation: 'pulse 2s ease-in-out infinite'
               }} />
-              
+
               <Card
                 sx={{
                   p: 3,
@@ -1784,7 +1785,7 @@ const AboutUs = () => {
                   background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                   border: '1px solid rgba(231, 76, 60, 0.1)',
                   flex: 1,
-                  '&:hover': { 
+                  '&:hover': {
                     boxShadow: '0 12px 28px rgba(231, 76, 60, 0.25)',
                     transform: 'translateY(-5px)',
                   },
@@ -1805,715 +1806,201 @@ const AboutUs = () => {
         </Box>
       </Container>
 
-   {/* Meet Our Team Section */}
-<Box sx={{ 
-  background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
-  py: 10,
-  position: 'relative',
-  overflow: 'hidden',
-}}>
-  <Container maxWidth="lg">
-    <Typography variant="h3" align="center" sx={{ 
-      fontWeight: 800, 
-      mb: 2,
-      color: '#2c3e50',
-      position: 'relative',
-      display: 'inline-block',
-      left: '50%',
-      transform: 'translateX(-50%)',
-      animation: 'fadeInUp 1s ease',
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        bottom: -10,
-        left: '50%',
-        transform: 'translateX(-50%)',
-        width: 80,
-        height: 4,
-        background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-        borderRadius: 2,
-      }
-    }}>
-      Meet Our Expert Team
-    </Typography>
-    <Typography variant="h6" align="center" sx={{ 
-      color: '#7f8c8d', 
-      mb: 6,
-      fontWeight: 500,
-      animation: 'fadeInUp 1s ease 0.2s both'
-    }}>
-      Dedicated professionals with decades of combined experience in the technology industry
-    </Typography>
-    
-    <Box sx={{
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      gap: 3,
-    }}>
+      {/* Meet Our Team Section */}
       <Box sx={{
-        display: 'grid',
-        gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr 1fr' },
-        gap: 3,
-        width: '100%',
-        maxWidth: { xs: '400px', sm: '800px', md: '1200px' },
-        justifyContent: 'center',
-      }}>
-        {team.map((member, index) => (
-          <Box
-            key={index}
-            sx={{
-              p: 3,
-              height: '360px',
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              textAlign: 'center',
-              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-              border: '1px solid rgba(231, 76, 60, 0.1)',
-              boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-              borderRadius: '12px',
-              transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-              animation: `fadeInUp 1s ease ${0.4 + index * 0.1}s both, bounce 2s ease-in-out infinite ${index * 0.1}s`,
-              position: 'relative',
-              overflow: 'hidden',
-              '&:hover': {
-                transform: 'translateY(-10px) scale(1.02)',
-                boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                borderColor: 'rgba(231, 76, 60, 0.3)',
-                '& .member-image': {
-                  transform: 'scale(1.05)',
-                }
-              },
-            }}
-          >
-            {/* Member Image Container */}
-            <Box sx={{ 
-              position: 'relative',
-              width: '120px',
-              height: '120px',
-              mb: 3,
-              overflow: 'hidden',
-              borderRadius: '50%',
-              border: '3px solid white',
-              boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-              background: '#ffecec',
-            }}>
-              <img
-                src={member.image}
-                alt={member.name}
-                className="member-image"
-                style={{ 
-                  width: '100%', 
-                  height: '100%', 
-                  objectFit: 'cover',
-                  transition: 'transform 0.4s ease'
-                }}
-              />
-              <Box sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                background: 'linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.2))',
-                borderRadius: '50%',
-              }} />
-            </Box>
-            
-            {/* Member Info */}
-            <Box sx={{ 
-              flex: 1, 
-              width: '100%',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-            }}>
-              <Typography variant="h5" sx={{ 
-                fontWeight: 700, 
-                mb: 1,
-                color: '#2c3e50',
-                fontSize: '1.2rem',
-                lineHeight: 1.3
-              }}>
-                {member.name}
-              </Typography>
-              
-              <Typography variant="body1" sx={{ 
-                color: '#e74c3c', 
-                fontWeight: 700,
-                mb: 3,
-                fontSize: '0.9rem',
-                textTransform: 'uppercase',
-                letterSpacing: '0.5px'
-              }}>
-                {member.role}
-              </Typography>
-              
-              <Typography variant="body2" sx={{ 
-                color: '#7f8c8d', 
-                lineHeight: 1.6,
-                fontSize: '0.9rem',
-                flex: 1
-              }}>
-                {member.description}
-              </Typography>
-            </Box>
-            
-            {/* Decorative Element */}
-            <Box sx={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '4px',
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-            }} />
-          </Box>
-        ))}
-      </Box>
-    </Box>
-    
-    {/* Team Description */}
-    <Box sx={{ 
-      mt: 6, 
-      p: 4, 
-      bgcolor: 'rgba(231, 76, 60, 0.05)', 
-      borderRadius: 2,
-      border: '1px solid rgba(231, 76, 60, 0.2)',
-      textAlign: 'center'
-    }}>
-      <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
-        Our Team Philosophy
-      </Typography>
-      <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6, mb: 2 }}>
-        Each member of our team brings unique expertise and dedication to providing exceptional service. 
-        With a combined experience of over 80 years in the technology industry, we're committed to 
-        delivering solutions that exceed your expectations.
-      </Typography>
-      <Typography variant="body2" sx={{ color: '#7f8c8d', fontStyle: 'italic' }}>
-        "Our strength lies in our team's diversity, expertise, and shared commitment to customer satisfaction."
-      </Typography>
-    </Box>
-  </Container>
-</Box>
-
-      {/* CTA Section with Contact Info */}
-      <Box component="footer" sx={{ 
-        bgcolor: '#1a1a2e', 
-        color: '#ffffff', 
-        pt: 8, 
-        pb: 3,
+        background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+        py: 10,
         position: 'relative',
         overflow: 'hidden',
-        borderTop: '4px solid #e74c3c',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          height: '4px',
-          background: 'linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #e74c3c)',
-          backgroundSize: '300% 100%',
-          animation: 'shimmer 4s infinite linear',
-        }
       }}>
         <Container maxWidth="lg">
-          {/* Intro Section */}
-          <Box sx={{ textAlign: 'center', mb: 6 }}>
-            <Typography variant="h3" sx={{ 
-              fontWeight: 800,
-              textShadow: '0 2px 10px rgba(0,0,0,0.3)',
-              mb: 2
-            }}>
-              Experience the Braintone Difference
-            </Typography>
-            
-            <Typography variant="h6" sx={{ 
-              opacity: 0.95,
-              maxWidth: '800px',
-              mx: 'auto',
-              textShadow: '0 1px 3px rgba(0,0,0,0.3)',
-              fontWeight: 400,
-              mb: 4,
-              lineHeight: 1.6
-            }}>
-              Join 25,000+ satisfied customers who trust Braintone for their technology needs. 
-              Whether you're buying IT hardware, setting up a network, or need expert technical 
-              support, we're here to help with 26+ years of experience behind us.
-            </Typography>
-          </Box>
-
-          {/* Box 1: Visit Us Banner - Full Width */}
-          <Box sx={{ 
-            mb: 3,
-            backgroundColor: 'rgba(231, 76, 60, 0.1)',
-            borderRadius: 2,
-            p: 3,
-            minHeight: '120px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid rgba(231, 76, 60, 0.2)',
-            transition: 'all 0.3s ease',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: 'rgba(231, 76, 60, 0.15)',
-              transform: 'translateY(-2px)',
+          <Typography variant="h3" align="center" sx={{
+            fontWeight: 800,
+            mb: 2,
+            color: '#2c3e50',
+            position: 'relative',
+            display: 'inline-block',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            animation: 'fadeInUp 1s ease',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: -10,
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: 80,
+              height: 4,
+              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+              borderRadius: 2,
             }
           }}>
-            <Box sx={{ textAlign: 'center', width: '100%' }}>
-              <Typography 
-                variant="h4" 
-                sx={{ 
-                  color: '#ffffff', 
-                  fontWeight: 700, 
-                  mb: 1.5,
-                  fontSize: { xs: '1.5rem', md: '2rem' }
-                }}
-              >
-                Visit Us for Complete IT Solutions
-              </Typography>
-              <Typography 
-                variant="h6" 
-                sx={{ 
-                  color: '#b0b0b0', 
-                  fontWeight: 400,
-                  fontSize: { xs: '1rem', md: '1.2rem' },
-                  maxWidth: '800px',
-                  mx: 'auto'
-                }}
-              >
-                Walk into our store for IT hardware, network setup, repair services and expert consultation.
-              </Typography>
-            </Box>
-          </Box>
-
-          {/* Box 2: Fort Location - Full Width with Google Maps Link */}
-          <Box sx={{ 
-            mb: 3,
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            borderRadius: 2,
-            p: 3,
-            minHeight: '120px',
-            display: 'flex',
-            alignItems: 'center',
-            border: '1px solid rgba(231, 76, 60, 0.2)',
-            transition: 'all 0.3s ease',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: 'rgba(231, 76, 60, 0.08)',
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-              cursor: 'pointer',
-            },
-          }}
-          onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai', '_blank', 'noopener,noreferrer')}
-          >
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'flex-start', 
-              width: '100%',
-              gap: 3
-            }}>
-              <Box sx={{
-                minWidth: 60,
-                width: 60,
-                height: 60,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: '#e74c3c'
-              }}>
-                <Place sx={{ fontSize: 28 }} />
-              </Box>
-              
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography 
-                    variant="h5" 
-                    sx={{ 
-                      color: '#e74c3c', 
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' }
-                    }}
-                  >
-                    Fort Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-                
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: '#b0b0b0', 
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2
-                  }}
-                >
-                  Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
-                </Typography>
-                
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box sx={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#3498db'
-                    }}>
-                      <Phone sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 081697 98826
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Box 3: Vile Parle Location - Full Width with Google Maps Link */}
-          <Box sx={{ 
-            mb: 3,
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            borderRadius: 2,
-            p: 3,
-            minHeight: '120px',
-            display: 'flex',
-            alignItems: 'center',
-            border: '1px solid rgba(52, 152, 219, 0.2)',
-            transition: 'all 0.3s ease',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: 'rgba(52, 152, 219, 0.08)',
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
-              cursor: 'pointer',
-            },
-          }}
-          onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai', '_blank', 'noopener,noreferrer')}
-          >
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'flex-start', 
-              width: '100%',
-              gap: 3
-            }}>
-              <Box sx={{
-                minWidth: 60,
-                width: 60,
-                height: 60,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                flexShrink: 0,
-                color: '#3498db'
-              }}>
-                <Place sx={{ fontSize: 28 }} />
-              </Box>
-              
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography 
-                    variant="h5" 
-                    sx={{ 
-                      color: '#3498db', 
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' }
-                    }}
-                  >
-                    Vile Parle Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#3498db',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-                
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: '#b0b0b0', 
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2
-                  }}
-                >
-                  Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
-                </Typography>
-                
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box sx={{
-                      width: 36,
-                      height: 36,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: '#3498db'
-                    }}>
-                      <Phone sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 092233 33357
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#3498db',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Box 4: Working Hours - Full Width */}
-          <Box sx={{ 
-            mb: 3,
-            backgroundColor: 'rgba(46, 204, 113, 0.1)',
-            borderRadius: 2,
-            p: 3,
-            minHeight: '120px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid rgba(46, 204, 113, 0.2)',
-            transition: 'all 0.3s ease',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: 'rgba(46, 204, 113, 0.15)',
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 20px rgba(46, 204, 113, 0.1)',
-            }
+            Meet Our Expert Team
+          </Typography>
+          <Typography variant="h6" align="center" sx={{
+            color: '#7f8c8d',
+            mb: 6,
+            fontWeight: 500,
+            animation: 'fadeInUp 1s ease 0.2s both'
           }}>
-            <Box sx={{ 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              width: '100%',
-              gap: 4
-            }}>
-              <Box sx={{
-                width: 70,
-                height: 70,
-                borderRadius: '50%',
-                backgroundColor: 'rgba(46, 204, 113, 0.2)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#2ecc71'
-              }}>
-                <AccessTime sx={{ fontSize: 32 }} />
-              </Box>
-              
-              <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
-                <Typography 
-                  variant="h5" 
-                  sx={{ 
-                    color: '#2ecc71', 
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '1.2rem', md: '1.4rem' }
-                  }}
-                >
-                  Working Hours
-                </Typography>
-                <Typography 
-                  variant="h4" 
-                  sx={{ 
-                    color: '#ffffff', 
-                    fontWeight: 700,
-                    fontSize: { xs: '1.4rem', md: '1.8rem' }
-                  }}
-                >
-                  Mon-Sat: 11 AM - 7 PM
-                </Typography>
-                <Typography 
-                  variant="body1" 
-                  sx={{ 
-                    color: 'rgba(255,255,255,0.8)', 
-                    mt: 1,
-                    fontSize: { xs: '0.9rem', md: '1rem' }
-                  }}
-                >
-                  Visit us during our business hours for immediate assistance
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
+            Dedicated professionals with decades of combined experience in the technology industry
+          </Typography>
 
-          {/* Box 5: Copyright/Brand - Full Width */}
-          <Box sx={{ 
-            backgroundColor: 'rgba(255, 255, 255, 0.05)',
-            borderRadius: 2,
-            p: 3,
-            minHeight: '120px',
+          <Box sx={{
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center',
-            border: '1px solid rgba(255, 255, 255, 0.1)',
-            transition: 'all 0.3s ease',
-            width: '100%',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
-              transform: 'translateY(-2px)',
-              boxShadow: '0 8px 20px rgba(255, 255, 255, 0.1)',
-            }
+            gap: 3,
           }}>
-            <Typography 
-              variant="h3" 
-              sx={{ 
-                color: '#ffffff', 
-                fontWeight: 900, 
-                mb: 2,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                background: 'linear-gradient(45deg, #e74c3c 30%, #ff7675 50%, #3498db 70%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                letterSpacing: '1px'
-              }}
-            >
-              BRAINTONE
-            </Typography>
-            
-            <Divider sx={{ 
-              width: '200px', 
-              my: 2, 
-              backgroundColor: 'rgba(231, 76, 60, 0.5)',
-              height: '2px'
-            }} />
-            
-            <Typography 
-              variant="h6" 
-              sx={{ 
-                color: '#b0b0b0', 
-                mb: 1,
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                textAlign: 'center'
-              }}
-            >
-              Complete IT Solutions & Services
-            </Typography>
-            
-            <Typography 
-              variant="body1" 
-              sx={{ 
-                color: 'rgba(255,255,255,0.7)', 
-                fontSize: { xs: '0.9rem', md: '1rem' },
-                textAlign: 'center',
-                mt: 1
-              }}
-            >
-              © 2024 BRAINTONE Technology Pvt Ltd. All rights reserved.
-            </Typography>
+            <Box sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr 1fr' },
+              gap: 3,
+              width: '100%',
+              maxWidth: { xs: '400px', sm: '800px', md: '1200px' },
+              justifyContent: 'center',
+            }}>
+              {team.map((member, index) => (
+                <Box
+                  key={index}
+                  sx={{
+                    p: 3,
+                    height: '360px',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    border: '1px solid rgba(231, 76, 60, 0.1)',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    animation: `fadeInUp 1s ease ${0.4 + index * 0.1}s both, bounce 2s ease-in-out infinite ${index * 0.1}s`,
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      transform: 'translateY(-10px) scale(1.02)',
+                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                      borderColor: 'rgba(231, 76, 60, 0.3)',
+                      '& .member-image': {
+                        transform: 'scale(1.05)',
+                      }
+                    },
+                  }}
+                >
+                  {/* Member Image Container */}
+                  <Box sx={{
+                    position: 'relative',
+                    width: '120px',
+                    height: '120px',
+                    mb: 3,
+                    overflow: 'hidden',
+                    borderRadius: '50%',
+                    border: '3px solid white',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                    background: '#ffecec',
+                  }}>
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="member-image"
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.4s ease'
+                      }}
+                    />
+                    <Box sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      background: 'linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.2))',
+                      borderRadius: '50%',
+                    }} />
+                  </Box>
+
+                  {/* Member Info */}
+                  <Box sx={{
+                    flex: 1,
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                  }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 700,
+                      mb: 1,
+                      color: '#2c3e50',
+                      fontSize: '1.2rem',
+                      lineHeight: 1.3
+                    }}>
+                      {member.name}
+                    </Typography>
+
+                    <Typography variant="body1" sx={{
+                      color: '#e74c3c',
+                      fontWeight: 700,
+                      mb: 3,
+                      fontSize: '0.9rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.5px'
+                    }}>
+                      {member.role}
+                    </Typography>
+
+                    <Typography variant="body2" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.6,
+                      fontSize: '0.9rem',
+                      flex: 1
+                    }}>
+                      {member.description}
+                    </Typography>
+                  </Box>
+
+                  {/* Decorative Element */}
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+                  }} />
+                </Box>
+              ))}
+            </Box>
           </Box>
 
-          {/* Bottom decorative line */}
-          <Box sx={{ 
-            width: '100%', 
-            height: '2px', 
-            background: 'linear-gradient(90deg, transparent, #e74c3c 20%, #3498db 50%, #2ecc71 80%, transparent)',
-            mt: 4,
-            borderRadius: '2px'
-          }} />
+          {/* Team Description */}
+          <Box sx={{
+            mt: 6,
+            p: 4,
+            bgcolor: 'rgba(231, 76, 60, 0.05)',
+            borderRadius: 2,
+            border: '1px solid rgba(231, 76, 60, 0.2)',
+            textAlign: 'center'
+          }}>
+            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
+              Our Team Philosophy
+            </Typography>
+            <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6, mb: 2 }}>
+              Each member of our team brings unique expertise and dedication to providing exceptional service.
+              With a combined experience of over 80 years in the technology industry, we're committed to
+              delivering solutions that exceed your expectations.
+            </Typography>
+            <Typography variant="body2" sx={{ color: '#7f8c8d', fontStyle: 'italic' }}>
+              "Our strength lies in our team's diversity, expertise, and shared commitment to customer satisfaction."
+            </Typography>
+          </Box>
         </Container>
-
-        {/* Add CSS Animations */}
-        <style jsx="true">{`
-          @keyframes shimmer {
-            0% { background-position: -200% 0; }
-            100% { background-position: 200% 0; }
-          }
-        `}</style>
       </Box>
 
-      {/* Add CSS Animations */}
-      <style jsx="true">{`
-        @keyframes pulseRed {
-          0%, 100% { opacity: 0.7; }
-          50% { opacity: 1; }
-        }
-        
-        @keyframes gradientText {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes gradientMove {
-          0% { background-position: 0% 50%; }
-          100% { background-position: 200% 50%; }
-        }
-        
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        
-        @keyframes bounce {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-        
-        @keyframes pulse {
-          0%, 100% { transform: scale(1); }
-          50% { transform: scale(1.05); }
-        }
-      `}</style>
+      <Footer fullFooter={true} />
     </Box>
   );
 };

@@ -38,6 +38,7 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Footer from '../components/Footer';
 
 const SecondHand = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -362,14 +363,14 @@ const SecondHand = () => {
   );
 
   const CategoryCard = ({ category }) => (
-    <Box sx={{ 
+    <Box sx={{
       position: 'relative',
       width: '100%',
       maxWidth: '400px',
       height: '340px',
     }}>
-      <Card 
-        sx={{ 
+      <Card
+        sx={{
           height: '320px',
           width: '100%',
           minWidth: '300px',
@@ -402,9 +403,9 @@ const SecondHand = () => {
           },
         }}
       >
-        <CardActionArea 
-          onClick={() => handleOpenModal(category)} 
-          sx={{ 
+        <CardActionArea
+          onClick={() => handleOpenModal(category)}
+          sx={{
             flexGrow: 1,
             display: 'flex',
             flexDirection: 'column',
@@ -413,16 +414,16 @@ const SecondHand = () => {
           }}
         >
           {/* Color bar at top */}
-          <Box sx={{ 
+          <Box sx={{
             height: '10px',
             width: '100%',
             bgcolor: category.color,
             position: 'relative',
             zIndex: 2,
           }} />
-          
-          <CardContent sx={{ 
-            p: 4, 
+
+          <CardContent sx={{
+            p: 4,
             textAlign: 'center',
             flexGrow: 1,
             display: 'flex',
@@ -434,9 +435,9 @@ const SecondHand = () => {
           }}>
             {/* Icon and Title Section */}
             <Box>
-              <Box sx={{ 
-                display: 'flex', 
-                justifyContent: 'center', 
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
                 mb: 3,
                 color: category.color,
                 position: 'relative',
@@ -483,12 +484,12 @@ const SecondHand = () => {
               }}>
                 {category.icon}
               </Box>
-              <Typography 
-                variant="h5" 
-                component="h2" 
-                gutterBottom 
+              <Typography
+                variant="h5"
+                component="h2"
+                gutterBottom
                 fontWeight="bold"
-                sx={{ 
+                sx={{
                   minHeight: '72px',
                   display: 'flex',
                   alignItems: 'center',
@@ -501,11 +502,11 @@ const SecondHand = () => {
               >
                 {category.title}
               </Typography>
-              <Typography 
-                variant="body1" 
-                color="text.secondary" 
+              <Typography
+                variant="body1"
+                color="text.secondary"
                 gutterBottom
-                sx={{ 
+                sx={{
                   fontSize: '1rem',
                   position: 'relative',
                   zIndex: 2,
@@ -516,24 +517,24 @@ const SecondHand = () => {
             </Box>
 
             {/* Price Section */}
-            <Box sx={{ 
-              mt: 'auto', 
+            <Box sx={{
+              mt: 'auto',
               pt: 2,
               position: 'relative',
               zIndex: 2,
             }}>
-              <Typography 
-                variant="body1" 
-                color="text.secondary" 
+              <Typography
+                variant="body1"
+                color="text.secondary"
                 gutterBottom
                 sx={{ fontSize: '1rem' }}
               >
                 Starting from
               </Typography>
-              <Typography 
-                variant="h4" 
+              <Typography
+                variant="h4"
                 fontWeight="bold"
-                sx={{ 
+                sx={{
                   color: category.color,
                   fontSize: { xs: '1.75rem', md: '2rem' },
                   animation: 'priceGlow 2s ease-in-out infinite',
@@ -550,7 +551,7 @@ const SecondHand = () => {
               >
                 {category.startingPrice}
               </Typography>
-              
+
               {/* 1 Month Warranty Badge */}
               <Box
                 sx={{
@@ -575,11 +576,11 @@ const SecondHand = () => {
                   }
                 }}
               >
-                <CheckCircleIcon 
-                  sx={{ 
+                <CheckCircleIcon
+                  sx={{
                     fontSize: '0.9rem',
                     color: category.color,
-                  }} 
+                  }}
                 />
                 <Typography
                   variant="caption"
@@ -599,49 +600,49 @@ const SecondHand = () => {
   return (
     <>
 
-  
-{/* Hero Section - Clean Background Image - Very Little Short */}
-<Box sx={{ 
-  position: 'relative',
-  color: 'white',
-  py: { xs: 6.5, md: 8.5 },
-  textAlign: 'center',
-  overflow: 'hidden',
-  minHeight: { xs: '53vh', md: '43vh' },
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 25%',
-    backgroundRepeat: 'no-repeat',
-    filter: 'brightness(0.4)',
-    zIndex: 0,
-    transform: 'scale(1.05)',
-  },
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: '4px',
-    background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-    backgroundSize: '400% 100%',
-    animation: 'shimmer 6s linear infinite',
-    zIndex: 1,
-  }
-}}>
-  
-  {/* Add CSS keyframes directly */}
-  <style>{`
+
+      {/* Hero Section - Clean Background Image - Very Little Short */}
+      <Box sx={{
+        position: 'relative',
+        color: 'white',
+        py: { xs: 6.5, md: 8.5 },
+        textAlign: 'center',
+        overflow: 'hidden',
+        minHeight: { xs: '53vh', md: '43vh' },
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 25%',
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.4)',
+          zIndex: 0,
+          transform: 'scale(1.05)',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '4px',
+          background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+          backgroundSize: '400% 100%',
+          animation: 'shimmer 6s linear infinite',
+          zIndex: 1,
+        }
+      }}>
+
+        {/* Add CSS keyframes directly */}
+        <style>{`
     @keyframes shimmer {
       0% { background-position: 0% 0%; }
       100% { background-position: 400% 0%; }
@@ -651,116 +652,116 @@ const SecondHand = () => {
       50% { transform: translateY(-9px); }
     }
   `}</style>
-  
-  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
-    <Typography 
-      variant="h1"
-      sx={{
-        textAlign: 'center',
-        fontWeight: 900,
-        fontSize: { xs: '2.3rem', md: '3.1rem' },
-        letterSpacing: '-1.1px',
-        color: 'white',
-        textShadow: '0 4px 12px rgba(0,0,0,0.7)',
-        lineHeight: 1.1,
-        mb: 2.5,
-        animation: 'float 4s ease-in-out infinite',
-      }}
-    >
-      Certified Pre-Owned Laptops
-    </Typography>
-    
-    <Typography 
-      variant="h5"
-      sx={{
-        textAlign: 'center',
-        color: 'rgba(255, 255, 255, 0.95)',
-        fontWeight: 400,
-        fontSize: { xs: '1.05rem', md: '1.25rem' },
-        maxWidth: '800px',
-        mx: 'auto',
-        lineHeight: 1.45,
-        textShadow: '0 2px 8px rgba(0,0,0,0.7)',
-        letterSpacing: '0.23px',
-        mb: 3.5,
-      }}
-    >
-      Professionally tested refurbished laptops with warranty
-    </Typography>
-    
-    {/* Features Chips - Slightly smaller */}
-    <Stack 
-      direction={{ xs: 'column', sm: 'row' }} 
-      spacing={1.8} 
-      sx={{ 
-        justifyContent: 'center',
-        maxWidth: '730px',
-        mx: 'auto',
-      }}
-    >
-      <Chip 
-        icon={<CheckCircleIcon />} 
-        label="10-Point Quality Check" 
-        sx={{ 
-          bgcolor: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '0.93rem',
-          py: 1.3,
-          px: 1.8,
-          animation: 'float 3s ease-in-out infinite',
-          '& .MuiChip-icon': {
-            color: '#FFD700',
-            fontSize: '1.1rem',
-          },
-          backdropFilter: 'blur(4px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-        }} 
-      />
-      <Chip 
-        icon={<CheckCircleIcon />} 
-        label="Warranty Included" 
-        sx={{ 
-          bgcolor: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '0.93rem',
-          py: 1.3,
-          px: 1.8,
-          animation: 'float 3s ease-in-out infinite 0.5s',
-          '& .MuiChip-icon': {
-            color: '#FFD700',
-            fontSize: '1.1rem',
-          },
-          backdropFilter: 'blur(4px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-        }} 
-      />
-      <Chip 
-        icon={<CheckCircleIcon />} 
-        label="Money-Back Guarantee" 
-        sx={{ 
-          bgcolor: 'rgba(0, 0, 0, 0.5)',
-          color: 'white',
-          fontWeight: 'bold',
-          fontSize: '0.93rem',
-          py: 1.3,
-          px: 1.8,
-          animation: 'float 3s ease-in-out infinite 1s',
-          '& .MuiChip-icon': {
-            color: '#FFD700',
-            fontSize: '1.1rem',
-          },
-          backdropFilter: 'blur(4px)',
-          border: '1px solid rgba(255, 255, 255, 0.2)',
-        }} 
-      />
-    </Stack>
-  </Container>
-</Box>
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
+          <Typography
+            variant="h1"
+            sx={{
+              textAlign: 'center',
+              fontWeight: 900,
+              fontSize: { xs: '2.3rem', md: '3.1rem' },
+              letterSpacing: '-1.1px',
+              color: 'white',
+              textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+              lineHeight: 1.1,
+              mb: 2.5,
+              animation: 'float 4s ease-in-out infinite',
+            }}
+          >
+            Certified Pre-Owned Laptops
+          </Typography>
+
+          <Typography
+            variant="h5"
+            sx={{
+              textAlign: 'center',
+              color: 'rgba(255, 255, 255, 0.95)',
+              fontWeight: 400,
+              fontSize: { xs: '1.05rem', md: '1.25rem' },
+              maxWidth: '800px',
+              mx: 'auto',
+              lineHeight: 1.45,
+              textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+              letterSpacing: '0.23px',
+              mb: 3.5,
+            }}
+          >
+            Professionally tested refurbished laptops with warranty
+          </Typography>
+
+          {/* Features Chips - Slightly smaller */}
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={1.8}
+            sx={{
+              justifyContent: 'center',
+              maxWidth: '730px',
+              mx: 'auto',
+            }}
+          >
+            <Chip
+              icon={<CheckCircleIcon />}
+              label="10-Point Quality Check"
+              sx={{
+                bgcolor: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: '0.93rem',
+                py: 1.3,
+                px: 1.8,
+                animation: 'float 3s ease-in-out infinite',
+                '& .MuiChip-icon': {
+                  color: '#FFD700',
+                  fontSize: '1.1rem',
+                },
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+              }}
+            />
+            <Chip
+              icon={<CheckCircleIcon />}
+              label="Warranty Included"
+              sx={{
+                bgcolor: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: '0.93rem',
+                py: 1.3,
+                px: 1.8,
+                animation: 'float 3s ease-in-out infinite 0.5s',
+                '& .MuiChip-icon': {
+                  color: '#FFD700',
+                  fontSize: '1.1rem',
+                },
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+              }}
+            />
+            <Chip
+              icon={<CheckCircleIcon />}
+              label="Money-Back Guarantee"
+              sx={{
+                bgcolor: 'rgba(0, 0, 0, 0.5)',
+                color: 'white',
+                fontWeight: 'bold',
+                fontSize: '0.93rem',
+                py: 1.3,
+                px: 1.8,
+                animation: 'float 3s ease-in-out infinite 1s',
+                '& .MuiChip-icon': {
+                  color: '#FFD700',
+                  fontSize: '1.1rem',
+                },
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(255, 255, 255, 0.2)',
+              }}
+            />
+          </Stack>
+        </Container>
+      </Box>
 
       {/* Main Content with Bubble Background */}
-      <Box sx={{ 
+      <Box sx={{
         position: 'relative',
         bgcolor: 'white',
         minHeight: '100vh',
@@ -768,29 +769,29 @@ const SecondHand = () => {
       }}>
         {/* White Background Bubble Effect */}
         <WhiteBackgroundBubbles />
-        
-        <Container 
-          maxWidth="lg" 
-          sx={{ 
+
+        <Container
+          maxWidth="lg"
+          sx={{
             py: 8,
             position: 'relative',
             zIndex: 1,
           }}
         >
           {/* Category Grid Section */}
-          <Box sx={{ 
+          <Box sx={{
             mb: 10,
             position: 'relative',
             zIndex: 2,
           }}>
-            <Typography 
+            <Typography
               variant="h2"
-              component="h2" 
-              textAlign="center" 
+              component="h2"
+              textAlign="center"
               gutterBottom
               fontWeight="bold"
               color="#8B0000"
-              sx={{ 
+              sx={{
                 mb: 2,
                 fontSize: { xs: '2.25rem', md: '3rem' },
                 animation: 'titleGlow 3s ease-in-out infinite',
@@ -808,13 +809,13 @@ const SecondHand = () => {
             >
               Browse By Category
             </Typography>
-            <Typography 
-              variant="h5" 
-              textAlign="center" 
+            <Typography
+              variant="h5"
+              textAlign="center"
               color="text.secondary"
-              sx={{ 
-                mb: 8, 
-                maxWidth: 700, 
+              sx={{
+                mb: 8,
+                maxWidth: 700,
                 mx: 'auto',
                 fontSize: { xs: '1.25rem', md: '1.5rem' },
                 position: 'relative',
@@ -823,12 +824,12 @@ const SecondHand = () => {
             >
               Select a category to explore our certified pre-owned laptops
             </Typography>
-            
+
             {/* First Row - 3 boxes horizontally */}
-            <Grid 
-              container 
+            <Grid
+              container
               spacing={4}
-              sx={{ 
+              sx={{
                 mb: 6,
                 justifyContent: 'center',
                 position: 'relative',
@@ -836,11 +837,11 @@ const SecondHand = () => {
               }}
             >
               {categories.slice(0, 3).map((category, index) => (
-                <Grid 
-                  item 
-                  xs={12} 
-                  sm={6} 
-                  md={4} 
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
                   key={category.id}
                   sx={{
                     display: 'flex',
@@ -862,23 +863,23 @@ const SecondHand = () => {
                 </Grid>
               ))}
             </Grid>
-            
+
             {/* Second Row - 3 boxes horizontally */}
-            <Grid 
-              container 
+            <Grid
+              container
               spacing={4}
-              sx={{ 
+              sx={{
                 justifyContent: 'center',
                 position: 'relative',
                 zIndex: 2,
               }}
             >
               {categories.slice(3, 6).map((category, index) => (
-                <Grid 
-                  item 
-                  xs={12} 
-                  sm={6} 
-                  md={4} 
+                <Grid
+                  item
+                  xs={12}
+                  sm={6}
+                  md={4}
                   key={category.id}
                   sx={{
                     display: 'flex',
@@ -1029,12 +1030,12 @@ const SecondHand = () => {
                   >
                     Fort Location
                   </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
+                  <OpenInNewIcon
+                    sx={{
                       color: '#e74c3c',
                       fontSize: '1.2rem',
                       opacity: 0.7,
-                    }} 
+                    }}
                   />
                 </Box>
 
@@ -1070,9 +1071,9 @@ const SecondHand = () => {
                       Phone: 081697 98826
                     </Typography>
                   </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
+                  <Typography
+                    variant="body2"
+                    sx={{
                       color: '#e74c3c',
                       fontWeight: 500,
                       display: 'flex',
@@ -1140,12 +1141,12 @@ const SecondHand = () => {
                   >
                     Vile Parle Location
                   </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
+                  <OpenInNewIcon
+                    sx={{
                       color: '#3498db',
                       fontSize: '1.2rem',
                       opacity: 0.7,
-                    }} 
+                    }}
                   />
                 </Box>
 
@@ -1181,9 +1182,9 @@ const SecondHand = () => {
                       Phone: 092233 33357
                     </Typography>
                   </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
+                  <Typography
+                    variant="body2"
+                    sx={{
                       color: '#3498db',
                       fontWeight: 500,
                       display: 'flex',
@@ -1391,8 +1392,8 @@ const SecondHand = () => {
           {selectedCategory && (
             <>
               {/* Modal Header */}
-              <Box sx={{ 
-                p: 4, 
+              <Box sx={{
+                p: 4,
                 bgcolor: selectedCategory.color,
                 color: selectedCategory.textColor,
                 borderTopLeftRadius: 12,
@@ -1402,7 +1403,7 @@ const SecondHand = () => {
               }}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', position: 'relative', zIndex: 2 }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box sx={{ 
+                    <Box sx={{
                       bgcolor: alpha('#fff', 0.2),
                       p: 1,
                       borderRadius: 2,
@@ -1430,9 +1431,9 @@ const SecondHand = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  <IconButton 
-                    onClick={handleCloseModal} 
-                    sx={{ 
+                  <IconButton
+                    onClick={handleCloseModal}
+                    sx={{
                       color: selectedCategory.textColor,
                       bgcolor: alpha('#000', 0.1),
                       animation: 'closeBounce 2s ease-in-out infinite',
@@ -1458,8 +1459,8 @@ const SecondHand = () => {
               {/* Modal Content */}
               <Box sx={{ p: 4 }}>
                 {/* Price Highlight */}
-                <Box sx={{ 
-                  textAlign: 'center', 
+                <Box sx={{
+                  textAlign: 'center',
                   mb: 5,
                   p: 4,
                   bgcolor: alpha(selectedCategory.color, 0.1),
@@ -1492,9 +1493,9 @@ const SecondHand = () => {
                     </Typography>
                     <List>
                       {selectedCategory.specs.map((spec, index) => (
-                        <ListItem 
-                          key={index} 
-                          sx={{ 
+                        <ListItem
+                          key={index}
+                          sx={{
                             px: 0,
                             animation: `listItemFade 0.5s ease-out ${index * 0.1}s both`,
                             '@keyframes listItemFade': {
@@ -1510,8 +1511,8 @@ const SecondHand = () => {
                           }}
                         >
                           <ListItemIcon>
-                            <CheckCircleIcon 
-                              sx={{ 
+                            <CheckCircleIcon
+                              sx={{
                                 color: selectedCategory.color,
                                 animation: `checkPulse 2s ease-in-out ${index * 0.3}s infinite`,
                                 '@keyframes checkPulse': {
@@ -1522,11 +1523,11 @@ const SecondHand = () => {
                                     transform: 'scale(1.2)',
                                   },
                                 }
-                              }} 
+                              }}
                             />
                           </ListItemIcon>
-                          <ListItemText 
-                            primary={spec} 
+                          <ListItemText
+                            primary={spec}
                             primaryTypographyProps={{ fontWeight: 'medium' }}
                           />
                         </ListItem>
@@ -1559,14 +1560,14 @@ const SecondHand = () => {
                 </Grid>
 
                 {/* Warranty Section */}
-                <Box sx={{ 
+                <Box sx={{
                   mt: 4,
                   display: 'flex',
                   justifyContent: 'center',
                   mb: 5,
                 }}>
-                  <Box sx={{ 
-                    p: 4, 
+                  <Box sx={{
+                    p: 4,
                     bgcolor: selectedCategory.color,
                     borderRadius: 3,
                     color: selectedCategory.textColor,
@@ -1611,7 +1612,7 @@ const SecondHand = () => {
                     onClick={handleContactButton}
                     size="large"
                     startIcon={<ContactPhoneIcon />}
-                    sx={{ 
+                    sx={{
                       px: 6,
                       py: 1.5,
                       bgcolor: '#4CAF50',
@@ -1647,13 +1648,13 @@ const SecondHand = () => {
                   <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
                     See and feel the quality of our certified pre-owned laptops in person
                   </Typography>
-                  
+
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mb: 4 }}>
                     <Button
                       variant="outlined"
                       startIcon={<PlaceIcon />}
                       onClick={() => openGoogleMaps('fort')}
-                      sx={{ 
+                      sx={{
                         color: '#e74c3c',
                         borderColor: '#e74c3c',
                         '&:hover': {
@@ -1668,7 +1669,7 @@ const SecondHand = () => {
                       variant="outlined"
                       startIcon={<PlaceIcon />}
                       onClick={() => openGoogleMaps('vileParle')}
-                      sx={{ 
+                      sx={{
                         color: '#3498db',
                         borderColor: '#3498db',
                         '&:hover': {
@@ -1680,12 +1681,12 @@ const SecondHand = () => {
                       Vile Parle Location
                     </Button>
                   </Stack>
-                  
+
                   <Button
                     variant="contained"
                     onClick={handleCloseModal}
                     size="large"
-                    sx={{ 
+                    sx={{
                       px: 6,
                       py: 1.5,
                       bgcolor: '#8B0000',
@@ -1704,6 +1705,7 @@ const SecondHand = () => {
           )}
         </Paper>
       </Modal>
+      <Footer fullFooter={true} />
     </>
   );
 };

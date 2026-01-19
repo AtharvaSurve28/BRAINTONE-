@@ -30,10 +30,11 @@ import PhoneIcon from '@mui/icons-material/Phone';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Link } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
+
   // Array of background images - your image first, then others
   const backgroundImages = [
     'https://www.shutterstock.com/image-photo/laptop-report-friends-learning-library-600nw-2475778113.jpg', // Your image first - ADDED SLASH
@@ -110,7 +111,7 @@ const HomePage = () => {
               }}
             />
           ))}
-          
+
           {/* Animated gradient overlay - more subtle */}
           <Box
             sx={{
@@ -137,10 +138,10 @@ const HomePage = () => {
         </Box>
 
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
-          <Typography 
-            variant="h2" 
-            sx={{ 
-              fontWeight: 700, 
+          <Typography
+            variant="h2"
+            sx={{
+              fontWeight: 700,
               mb: 3,
               fontSize: { xs: '2rem', md: '3rem' },
               background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
@@ -151,10 +152,10 @@ const HomePage = () => {
           >
             Premium Laptops & Expert Repair Services
           </Typography>
-          <Typography 
-            variant="h6" 
-            sx={{ 
-              mb: 5, 
+          <Typography
+            variant="h6"
+            sx={{
+              mb: 5,
               fontSize: '1.1rem',
               maxWidth: '700px',
               mx: 'auto',
@@ -193,7 +194,7 @@ const HomePage = () => {
               '&:hover::before': {
                 left: '100%',
               },
-              '&:hover': { 
+              '&:hover': {
                 background: 'linear-gradient(45deg, #c0392b 30%, #a93226 90%)',
                 boxShadow: '0 6px 20px rgba(231, 76, 60, 0.4)', // Enhanced shadow on hover
               },
@@ -203,10 +204,10 @@ const HomePage = () => {
           </Button>
 
           {/* Image indicators (dots) */}
-          <Stack 
-            direction="row" 
-            spacing={1} 
-            justifyContent="center" 
+          <Stack
+            direction="row"
+            spacing={1}
+            justifyContent="center"
             sx={{ mt: 4 }}
           >
             {backgroundImages.map((_, index) => (
@@ -230,7 +231,7 @@ const HomePage = () => {
             ))}
           </Stack>
         </Container>
-        
+
         {/* Add CSS animations */}
         <style>{`
           @keyframes gradient {
@@ -242,8 +243,8 @@ const HomePage = () => {
       </Box>
 
       {/* Find the Perfect Laptop - with Gradient Background */}
-{/* Find the Perfect Laptop - WITH COMPLETE MOTION BACKGROUND EFFECTS */}
-<Box sx={{ 
+      {/* Find the Perfect Laptop - WITH COMPLETE MOTION BACKGROUND EFFECTS */}
+      <Box sx={{
         py: 8,
         position: 'relative',
         overflow: 'hidden',
@@ -283,14 +284,14 @@ const HomePage = () => {
           animation: 'rotate 20s linear infinite',
           zIndex: 0,
         }} />
-        
+
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Typography 
-            variant="h4" 
-            align="center" 
-            sx={{ 
-              fontWeight: 700, 
-              mb: 1.5, 
+          <Typography
+            variant="h4"
+            align="center"
+            sx={{
+              fontWeight: 700,
+              mb: 1.5,
               color: '#2d3748',
               position: 'relative',
               '&::after': {
@@ -308,10 +309,10 @@ const HomePage = () => {
           >
             Find the Perfect Laptop
           </Typography>
-          <Typography 
-            variant="body1" 
-            align="center" 
-            color="text.secondary" 
+          <Typography
+            variant="body1"
+            align="center"
+            color="text.secondary"
             sx={{ maxWidth: 700, mx: 'auto', mb: 6 }}
           >
             Whether you're looking for the latest models or a budget-friendly option, we have a laptop for every need and budget.
@@ -347,12 +348,12 @@ const HomePage = () => {
                 link: '/repair',
               },
             ].map((card, idx) => (
-              <Box 
+              <Box
                 key={idx}
-                component={Link} 
-                to={card.link} 
-                sx={{ 
-                  textDecoration: 'none', 
+                component={Link}
+                to={card.link}
+                sx={{
+                  textDecoration: 'none',
                   flex: 1,
                   display: 'block',
                 }}
@@ -377,7 +378,7 @@ const HomePage = () => {
                       height: '4px',
                       background: card.iconBg,
                     },
-                    '&:hover': { 
+                    '&:hover': {
                       transform: 'translateY(-8px)',
                       boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
                       cursor: 'pointer',
@@ -418,7 +419,7 @@ const HomePage = () => {
                     sx={{
                       background: card.iconBg,
                       color: card.iconColor,
-                      '&:hover': { 
+                      '&:hover': {
                         background: 'linear-gradient(135deg, #ddd, #fff)',
                         transform: 'translateY(-2px)',
                       },
@@ -442,7 +443,7 @@ const HomePage = () => {
 
 
       {/* Thin Border Separator between Find Laptop and One-Stop Shop sections */}
-      <Box sx={{ 
+      <Box sx={{
         position: 'relative',
         height: '1px',
         background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
@@ -461,7 +462,7 @@ const HomePage = () => {
       }} />
 
       {/* One-Stop Shop – EXACTLY LIKE THE SECOND IMAGE with Gradient Background */}
-      <Box sx={{ 
+      <Box sx={{
         py: 10,
         position: 'relative',
         overflow: 'hidden',
@@ -488,7 +489,7 @@ const HomePage = () => {
       }}>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
           <Grid container spacing={6} alignItems="center">
-            
+
             {/* LEFT SIDE — Title + Paragraph + Bullet Points */}
             <Grid item xs={12} md={6}>
               <Box sx={{ pr: 4 }}>
@@ -549,9 +550,9 @@ const HomePage = () => {
             </Grid>
 
             {/* RIGHT SIDE — BOX */}
-            <Grid 
-              item 
-              xs={12} 
+            <Grid
+              item
+              xs={12}
               md={6}
               sx={{ display: "flex", justifyContent: "center" }}
             >
@@ -630,7 +631,7 @@ const HomePage = () => {
       </Box>
 
       {/* Thin Border Separator between One-Stop Shop and All About BRAINTONE sections */}
-      <Box sx={{ 
+      <Box sx={{
         position: 'relative',
         height: '1px',
         background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
@@ -650,8 +651,8 @@ const HomePage = () => {
 
       {/* All About BRAINTONE - WITH EXACT SAME BACKGROUND MOTION EFFECTS */}
       {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
-      <Box sx={{ 
-        py: 8, 
+      <Box sx={{
+        py: 8,
         position: 'relative',
         overflow: 'hidden',
         '&::before': {
@@ -677,10 +678,10 @@ const HomePage = () => {
       }}>
         <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
           <Box sx={{ textAlign: 'center', mb: 8 }}>
-            <Typography 
-              variant="h2" 
-              sx={{ 
-                fontWeight: 700, 
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 700,
                 mb: 3,
                 fontSize: { xs: '2rem', md: '2.5rem' },
                 color: '#2c3e50'
@@ -691,8 +692,8 @@ const HomePage = () => {
             <Typography
               variant="subtitle1"
               color="text.secondary"
-              sx={{ 
-                fontSize: '1.1rem', 
+              sx={{
+                fontSize: '1.1rem',
                 lineHeight: 1.8,
                 maxWidth: 800,
                 mx: 'auto',
@@ -707,8 +708,8 @@ const HomePage = () => {
 
           {/* Section 1: New Laptop Collection - Text Left, Image Right */}
           <Container maxWidth="xl" sx={{ py: { xs: 4, md: 8 } }}>
-            <Box sx={{ 
-              display: 'flex', 
+            <Box sx={{
+              display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
               gap: { xs: 4, md: 8 },
@@ -716,10 +717,10 @@ const HomePage = () => {
             }}>
               {/* Text Content - LEFT */}
               <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
-                <Typography 
-                  variant="h3" 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
                     mb: 3,
                     fontSize: { xs: '1.75rem', md: '2.25rem' },
                     lineHeight: 1.2,
@@ -731,27 +732,27 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Discover cutting-edge technology with our extensive range of brand-new laptops. 
-                  From high-performance gaming rigs designed for immersive experiences to 
-                  ultra-portable notebooks perfect for professionals on the go, we stock 
+                  Discover cutting-edge technology with our extensive range of brand-new laptops.
+                  From high-performance gaming rigs designed for immersive experiences to
+                  ultra-portable notebooks perfect for professionals on the go, we stock
                   the latest models from leading brands like Dell, HP, Lenovo, Apple, and Asus.
                 </Typography>
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Our collection includes laptops for every need and budget: 
+                  Our collection includes laptops for every need and budget:
                   • Business laptops with enhanced security features
                   • Creative workstations with powerful graphics capabilities
                   • Everyday use laptops with optimal performance
@@ -760,14 +761,14 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 4, 
+                  sx={{
+                    mb: 4,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Each device is carefully selected to ensure you get the best in speed, design, 
-                  and reliability. We provide expert guidance to help you choose the perfect 
+                  Each device is carefully selected to ensure you get the best in speed, design,
+                  and reliability. We provide expert guidance to help you choose the perfect
                   laptop that matches your specific requirements and enhances your productivity.
                 </Typography>
                 <Button
@@ -777,7 +778,7 @@ const HomePage = () => {
                   sx={{
                     bgcolor: '#e74c3c',
                     color: '#fff',
-                    '&:hover': { 
+                    '&:hover': {
                       bgcolor: '#c0392b',
                       transform: 'translateY(-2px)'
                     },
@@ -796,8 +797,8 @@ const HomePage = () => {
               </Box>
 
               {/* Image - RIGHT with Auto-Flip Effect */}
-              <Box sx={{ 
-                flex: 1, 
+              <Box sx={{
+                flex: 1,
                 width: '100%',
                 perspective: '1000px',
               }}>
@@ -867,16 +868,16 @@ const HomePage = () => {
             <Divider sx={{ my: { xs: 6, md: 8 } }} />
 
             {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
-            <Box sx={{ 
-              display: 'flex', 
+            <Box sx={{
+              display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
               gap: { xs: 4, md: 8 },
               mb: { xs: 8, md: 12 }
             }}>
               {/* Image - LEFT with Auto-Pulse Effect */}
-              <Box sx={{ 
-                flex: 1, 
+              <Box sx={{
+                flex: 1,
                 width: '100%',
                 order: { xs: 1, md: 1 },
               }}>
@@ -911,15 +912,15 @@ const HomePage = () => {
               </Box>
 
               {/* Text Content - RIGHT */}
-              <Box sx={{ 
+              <Box sx={{
                 flex: 1,
                 order: { xs: 2, md: 2 },
                 minHeight: { md: 400 }
               }}>
-                <Typography 
-                  variant="h3" 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
                     mb: 3,
                     fontSize: { xs: '1.75rem', md: '2.25rem' },
                     lineHeight: 1.2,
@@ -931,22 +932,22 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Get the performance you need at a price you'll love with our extensive range 
-                  of certified pre-owned laptops. Each device in our pre-owned collection undergoes 
-                  a rigorous 25-point inspection and refurbishment process to guarantee it meets 
+                  Get the performance you need at a price you'll love with our extensive range
+                  of certified pre-owned laptops. Each device in our pre-owned collection undergoes
+                  a rigorous 25-point inspection and refurbishment process to guarantee it meets
                   our exacting standards for quality and reliability.
                 </Typography>
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
@@ -961,15 +962,15 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 4, 
+                  sx={{
+                    mb: 4,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  We offer certified pre-owned laptops from all major brands, including recent 
-                  models with significant savings compared to new devices. Every pre-owned laptop 
-                  comes with a minimum 6-month warranty, making it a smart, sustainable choice 
+                  We offer certified pre-owned laptops from all major brands, including recent
+                  models with significant savings compared to new devices. Every pre-owned laptop
+                  comes with a minimum 6-month warranty, making it a smart, sustainable choice
                   that's good for both your wallet and the environment.
                 </Typography>
                 <Button
@@ -979,7 +980,7 @@ const HomePage = () => {
                   sx={{
                     bgcolor: '#e74c3c',
                     color: '#fff',
-                    '&:hover': { 
+                    '&:hover': {
                       bgcolor: '#c0392b',
                       transform: 'translateY(-2px)'
                     },
@@ -1002,8 +1003,8 @@ const HomePage = () => {
             <Divider sx={{ my: { xs: 6, md: 8 } }} />
 
             {/* Section 3: Repair Services - Text Left, Image Right */}
-            <Box sx={{ 
-              display: 'flex', 
+            <Box sx={{
+              display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
               gap: { xs: 4, md: 8 },
@@ -1011,10 +1012,10 @@ const HomePage = () => {
             }}>
               {/* Text Content - LEFT */}
               <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
-                <Typography 
-                  variant="h3" 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
                     mb: 3,
                     fontSize: { xs: '1.75rem', md: '2.25rem' },
                     lineHeight: 1.2,
@@ -1026,22 +1027,22 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Is your laptop running slow, not turning on, or has a cracked screen? 
-                  Our team of certified technicians with over 10 years of combined experience 
-                  is here to provide comprehensive repair solutions. We specialize in all 
+                  Is your laptop running slow, not turning on, or has a cracked screen?
+                  Our team of certified technicians with over 10 years of combined experience
+                  is here to provide comprehensive repair solutions. We specialize in all
                   major brands including Apple MacBook, Dell, HP, Lenovo, Asus, and Acer.
                 </Typography>
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
@@ -1058,15 +1059,15 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 4, 
+                  sx={{
+                    mb: 4,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  We use only high-quality, genuine or OEM-equivalent parts to ensure 
-                  your device returns to peak performance. Most common repairs are completed 
-                  within 24-48 hours, and we provide a 90-day warranty on all repair work. 
+                  We use only high-quality, genuine or OEM-equivalent parts to ensure
+                  your device returns to peak performance. Most common repairs are completed
+                  within 24-48 hours, and we provide a 90-day warranty on all repair work.
                   Free diagnostics for all devices brought to our stores.
                 </Typography>
                 <Button
@@ -1076,7 +1077,7 @@ const HomePage = () => {
                   sx={{
                     bgcolor: '#e74c3c',
                     color: '#fff',
-                    '&:hover': { 
+                    '&:hover': {
                       bgcolor: '#c0392b',
                       transform: 'translateY(-2px)'
                     },
@@ -1095,8 +1096,8 @@ const HomePage = () => {
               </Box>
 
               {/* Image - RIGHT with Auto-Shake Effect */}
-              <Box sx={{ 
-                flex: 1, 
+              <Box sx={{
+                flex: 1,
                 width: '100%',
               }}>
                 <Box sx={{
@@ -1141,10 +1142,10 @@ const HomePage = () => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                    <Typography 
-                      variant="h5" 
-                      sx={{ 
-                        color: 'white', 
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        color: 'white',
                         fontWeight: 700,
                         textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
                       }}
@@ -1160,15 +1161,15 @@ const HomePage = () => {
             <Divider sx={{ my: { xs: 6, md: 8 } }} />
 
             {/* Section 4: Maximize Life - Image Left, Text Right */}
-            <Box sx={{ 
-              display: 'flex', 
+            <Box sx={{
+              display: 'flex',
               flexDirection: { xs: 'column', md: 'row' },
               alignItems: 'center',
               gap: { xs: 4, md: 8 }
             }}>
               {/* Image - LEFT with Auto-Float Effect */}
-              <Box sx={{ 
-                flex: 1, 
+              <Box sx={{
+                flex: 1,
                 width: '100%',
                 order: { xs: 1, md: 1 },
               }}>
@@ -1237,15 +1238,15 @@ const HomePage = () => {
               </Box>
 
               {/* Text Content - RIGHT */}
-              <Box sx={{ 
+              <Box sx={{
                 flex: 1,
                 order: { xs: 2, md: 2 },
                 minHeight: { md: 400 }
               }}>
-                <Typography 
-                  variant="h3" 
-                  sx={{ 
-                    fontWeight: 700, 
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
                     mb: 3,
                     fontSize: { xs: '1.75rem', md: '2.25rem' },
                     lineHeight: 1.2,
@@ -1257,21 +1258,21 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  Beyond repairs, we offer comprehensive services designed to enhance and 
-                  extend the life of your laptop investment. Our optimization services ensure 
+                  Beyond repairs, we offer comprehensive services designed to enhance and
+                  extend the life of your laptop investment. Our optimization services ensure
                   your device runs at its maximum potential throughout its lifespan.
                 </Typography>
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 3, 
+                  sx={{
+                    mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
@@ -1288,16 +1289,16 @@ const HomePage = () => {
                 <Typography
                   variant="body1"
                   color="text.secondary"
-                  sx={{ 
-                    mb: 4, 
+                  sx={{
+                    mb: 4,
                     lineHeight: 1.8,
                     fontSize: '1.05rem'
                   }}
                 >
-                  We also offer personalized consultation services to help you understand 
-                  how to best maintain your specific laptop model. From gaming laptops 
-                  requiring specialized cooling to business laptops needing enhanced security 
-                  configurations, our experts can help you get the most out of your machine 
+                  We also offer personalized consultation services to help you understand
+                  how to best maintain your specific laptop model. From gaming laptops
+                  requiring specialized cooling to business laptops needing enhanced security
+                  configurations, our experts can help you get the most out of your machine
                   for years to come, potentially extending its usable life by 2-3 years.
                 </Typography>
                 <Button
@@ -1307,7 +1308,7 @@ const HomePage = () => {
                   sx={{
                     bgcolor: '#e74c3c',
                     color: '#fff',
-                    '&:hover': { 
+                    '&:hover': {
                       bgcolor: '#c0392b',
                       transform: 'translateY(-2px)'
                     },
@@ -1330,7 +1331,7 @@ const HomePage = () => {
       </Box>
 
       {/* BORDER - Separates All About BRAINTONE from Results and Feedbacks */}
-      <Box sx={{ 
+      <Box sx={{
         position: 'relative',
         height: '2px',
         background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
@@ -1349,503 +1350,503 @@ const HomePage = () => {
       }} />
 
       {/* Results and Feedbacks Section */}
- {/* Results and Feedbacks Section */}
-<Box sx={{
-py: 8,
-position: 'relative',
-overflow: 'hidden',
-'&::before': {
-content: '""',
-position: 'absolute',
-top: 0,
-left: 0,
-right: 0,
-bottom: 0,
-background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-},
-'&::after': {
-content: '""',
-position: 'absolute',
-top: '-50%',
-left: '-50%',
-width: '200%',
-height: '200%',
-background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
-animation: 'rotate 20s linear infinite',
-zIndex: 0,
-}
-}}>
-<Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-<Box sx={{ textAlign: 'center', mb: 6 }}>
-<Typography
-variant="h2"
-sx={{
-fontWeight: 700,
-mb: 2,
-fontSize: { xs: '2rem', md: '2.5rem' },
-color: '#2c3e50'
-}}
->
-Results and Feedbacks
-</Typography>
-<Typography
-variant="subtitle1"
-color="text.secondary"
-sx={{
-fontSize: '1.1rem',
-lineHeight: 1.6,
-maxWidth: 600,
-mx: 'auto',
-mb: 4
-}}
->
-Trusted by customers for reliable laptops and expert repairs.
-</Typography>
-</Box>
-
-       {/* Feedback Slider Container */}
-       <Box sx={{ 
+      {/* Results and Feedbacks Section */}
+      <Box sx={{
+        py: 8,
         position: 'relative',
-        maxWidth: 1200,
-        mx: 'auto',
-        mb: 6,
-        overflow: 'hidden'
-      }}>
-        {/* Feedback Cards Grid - Auto Scroll Slider */}
-        <Box sx={{
-          display: 'flex',
-          gap: 4,
-          animation: 'slide 60s linear infinite',
-          '&:hover': {
-            animationPlayState: 'paused'
-          },
-          '@keyframes slide': {
-            '0%': { transform: 'translateX(0)' },
-            '100%': { transform: 'translateX(-50%)' }
-          }
-        }}>
-          {/* First set of 6 feedbacks */}
-          {[
-            {
-              id: 1,
-              text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-              author: "Priya Sharma",
-              role: "Graphic Designer",
-              initials: "PS"
-            },
-            {
-              id: 2,
-              text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-              author: "Arjun Patel",
-              role: "University Student",
-              initials: "AP"
-            },
-            {
-              id: 3,
-              text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-              author: "Ananya Reddy",
-              role: "Startup Founder",
-              initials: "AR"
-            },
-            {
-              id: 4,
-              text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-              author: "Rohan Singh",
-              role: "Software Developer",
-              initials: "RS"
-            },
-            {
-              id: 5,
-              text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-              author: "Neha Kapoor",
-              role: "Graduate Student",
-              initials: "NK"
-            },
-            {
-              id: 6,
-              text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-              author: "Vikram Mehta",
-              role: "IT Manager",
-              initials: "VM"
-            }
-          ].map((feedback) => (
-            <Box
-              key={feedback.id}
-              sx={{
-                flex: '0 0 calc(33.333% - 32px)',
-                minWidth: { xs: '85%', sm: '45%', md: '30%' }
-              }}
-            >
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: 4,
-                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)'
-                  },
-                  '&::before': {
-                    content: '"\\201C"',
-                    position: 'absolute',
-                    top: 20,
-                    left: 20,
-                    fontSize: '4rem',
-                    color: 'rgba(231, 76, 60, 0.1)',
-                    fontFamily: 'serif',
-                    lineHeight: 1,
-                  }
-                }}
-              >
-                {/* Quote Icon */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 16,
-                    right: 16,
-                    width: 40,
-                    height: 40,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#e74c3c'
-                  }}
-                >
-                  <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                </Box>
-
-                {/* Feedback Text */}
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: '0.95rem',
-                    lineHeight: 1.7,
-                    color: '#2c3e50',
-                    mb: 4,
-                    fontStyle: 'italic',
-                    position: 'relative',
-                    zIndex: 1,
-                    flex: 1
-                  }}
-                >
-                  "{feedback.text}"
-                </Typography>
-
-                {/* Profile Section */}
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 3,
-                    pt: 3,
-                    borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                    position: 'relative',
-                    zIndex: 1
-                  }}
-                >
-                  {/* Round Profile */}
-                  <Box
-                    sx={{
-                      width: 60,
-                      height: 60,
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '1.25rem',
-                      flexShrink: 0,
-                      boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                      position: 'relative',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: -2,
-                        left: -2,
-                        right: -2,
-                        bottom: -2,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(231, 76, 60, 0.2)',
-                      }
-                    }}
-                  >
-                    {feedback.initials}
-                  </Box>
-
-                  {/* Author Info */}
-                  <Box sx={{ flex: 1 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        color: '#e74c3c',
-                        fontSize: '1.1rem',
-                        mb: 0.5
-                      }}
-                    >
-                      {feedback.author}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: '#666',
-                        fontSize: '0.9rem'
-                      }}
-                    >
-                      {feedback.role}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-          
-          {/* Duplicate set for seamless scrolling */}
-          {[
-            {
-              id: 7,
-              text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-              author: "Priya Sharma",
-              role: "Graphic Designer",
-              initials: "PS"
-            },
-            {
-              id: 8,
-              text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-              author: "Arjun Patel",
-              role: "University Student",
-              initials: "AP"
-            },
-            {
-              id: 9,
-              text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-              author: "Ananya Reddy",
-              role: "Startup Founder",
-              initials: "AR"
-            },
-            {
-              id: 10,
-              text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-              author: "Rohan Singh",
-              role: "Software Developer",
-              initials: "RS"
-            },
-            {
-              id: 11,
-              text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-              author: "Neha Kapoor",
-              role: "Graduate Student",
-              initials: "NK"
-            },
-            {
-              id: 12,
-              text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-              author: "Vikram Mehta",
-              role: "IT Manager",
-              initials: "VM"
-            }
-          ].map((feedback) => (
-            <Box
-              key={feedback.id}
-              sx={{
-                flex: '0 0 calc(33.333% - 32px)',
-                minWidth: { xs: '85%', sm: '45%', md: '30%' }
-              }}
-            >
-              <Box
-                sx={{
-                  p: 4,
-                  borderRadius: 4,
-                  background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    transform: 'translateY(-8px)',
-                    boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)'
-                  },
-                  '&::before': {
-                    content: '"\\201C"',
-                    position: 'absolute',
-                    top: 20,
-                    left: 20,
-                    fontSize: '4rem',
-                    color: 'rgba(231, 76, 60, 0.1)',
-                    fontFamily: 'serif',
-                    lineHeight: 1,
-                  }
-                }}
-              >
-                {/* Quote Icon */}
-                <Box
-                  sx={{
-                    position: 'absolute',
-                    top: 16,
-                    right: 16,
-                    width: 40,
-                    height: 40,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#e74c3c'
-                  }}
-                >
-                  <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                </Box>
-
-                {/* Feedback Text */}
-                <Typography
-                  variant="body1"
-                  sx={{
-                    fontSize: '0.95rem',
-                    lineHeight: 1.7,
-                    color: '#2c3e50',
-                    mb: 4,
-                    fontStyle: 'italic',
-                    position: 'relative',
-                    zIndex: 1,
-                    flex: 1
-                  }}
-                >
-                  "{feedback.text}"
-                </Typography>
-
-                {/* Profile Section */}
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: 3,
-                    pt: 3,
-                    borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                    position: 'relative',
-                    zIndex: 1
-                  }}
-                >
-                  {/* Round Profile */}
-                  <Box
-                    sx={{
-                      width: 60,
-                      height: 60,
-                      borderRadius: '50%',
-                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      color: 'white',
-                      fontWeight: 700,
-                      fontSize: '1.25rem',
-                      flexShrink: 0,
-                      boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                      position: 'relative',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: -2,
-                        left: -2,
-                        right: -2,
-                        bottom: -2,
-                        borderRadius: '50%',
-                        border: '2px solid rgba(231, 76, 60, 0.2)',
-                      }
-                    }}
-                  >
-                    {feedback.initials}
-                  </Box>
-
-                  {/* Author Info */}
-                  <Box sx={{ flex: 1 }}>
-                    <Typography
-                      variant="h6"
-                      sx={{
-                        fontWeight: 700,
-                        color: '#e74c3c',
-                        fontSize: '1.1rem',
-                        mb: 0.5
-                      }}
-                    >
-                      {feedback.author}
-                    </Typography>
-                    <Typography
-                      variant="body2"
-                      sx={{
-                        color: '#666',
-                        fontSize: '0.9rem'
-                      }}
-                    >
-                      {feedback.role}
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-          ))}
-        </Box>
-
-        {/* Gradient Overlays */}
-        <Box sx={{
+        overflow: 'hidden',
+        '&::before': {
+          content: '""',
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
-          height: '100%',
-          pointerEvents: 'none',
-          zIndex: 1,
-          background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(255,255,255,1) 100%)',
-        }} />
-
-        {/* Navigation Dots */}
-        <Box sx={{ 
-          display: 'flex', 
-          justifyContent: 'center', 
-          mt: 4,
-          gap: 1.5
-        }}>
-          {[1, 2, 3, 4, 5, 6].map((dot) => (
-            <Box
-              key={dot}
+          bottom: 0,
+          background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          top: '-50%',
+          left: '-50%',
+          width: '200%',
+          height: '200%',
+          background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
+          animation: 'rotate 20s linear infinite',
+          zIndex: 0,
+        }
+      }}>
+        <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+          <Box sx={{ textAlign: 'center', mb: 6 }}>
+            <Typography
+              variant="h2"
               sx={{
-                width: 10,
-                height: 10,
-                borderRadius: '50%',
-                backgroundColor: dot === 1 ? '#e74c3c' : '#ddd',
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  backgroundColor: dot === 1 ? '#c0392b' : '#bbb',
-                  transform: 'scale(1.2)'
-                }
+                fontWeight: 700,
+                mb: 2,
+                fontSize: { xs: '2rem', md: '2.5rem' },
+                color: '#2c3e50'
               }}
-            />
-          ))}
-        </Box>
+            >
+              Results and Feedbacks
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              color="text.secondary"
+              sx={{
+                fontSize: '1.1rem',
+                lineHeight: 1.6,
+                maxWidth: 600,
+                mx: 'auto',
+                mb: 4
+              }}
+            >
+              Trusted by customers for reliable laptops and expert repairs.
+            </Typography>
+          </Box>
+
+          {/* Feedback Slider Container */}
+          <Box sx={{
+            position: 'relative',
+            maxWidth: 1200,
+            mx: 'auto',
+            mb: 6,
+            overflow: 'hidden'
+          }}>
+            {/* Feedback Cards Grid - Auto Scroll Slider */}
+            <Box sx={{
+              display: 'flex',
+              gap: 4,
+              animation: 'slide 60s linear infinite',
+              '&:hover': {
+                animationPlayState: 'paused'
+              },
+              '@keyframes slide': {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-50%)' }
+              }
+            }}>
+              {/* First set of 6 feedbacks */}
+              {[
+                {
+                  id: 1,
+                  text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
+                  author: "Priya Sharma",
+                  role: "Graphic Designer",
+                  initials: "PS"
+                },
+                {
+                  id: 2,
+                  text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
+                  author: "Arjun Patel",
+                  role: "University Student",
+                  initials: "AP"
+                },
+                {
+                  id: 3,
+                  text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
+                  author: "Ananya Reddy",
+                  role: "Startup Founder",
+                  initials: "AR"
+                },
+                {
+                  id: 4,
+                  text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
+                  author: "Rohan Singh",
+                  role: "Software Developer",
+                  initials: "RS"
+                },
+                {
+                  id: 5,
+                  text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
+                  author: "Neha Kapoor",
+                  role: "Graduate Student",
+                  initials: "NK"
+                },
+                {
+                  id: 6,
+                  text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
+                  author: "Vikram Mehta",
+                  role: "IT Manager",
+                  initials: "VM"
+                }
+              ].map((feedback) => (
+                <Box
+                  key={feedback.id}
+                  sx={{
+                    flex: '0 0 calc(33.333% - 32px)',
+                    minWidth: { xs: '85%', sm: '45%', md: '30%' }
+                  }}
+                >
+                  <Box
+                    sx={{
+                      p: 4,
+                      borderRadius: 4,
+                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                      border: '1px solid rgba(231, 76, 60, 0.1)',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
+                        borderColor: 'rgba(231, 76, 60, 0.3)'
+                      },
+                      '&::before': {
+                        content: '"\\201C"',
+                        position: 'absolute',
+                        top: 20,
+                        left: 20,
+                        fontSize: '4rem',
+                        color: 'rgba(231, 76, 60, 0.1)',
+                        fontFamily: 'serif',
+                        lineHeight: 1,
+                      }
+                    }}
+                  >
+                    {/* Quote Icon */}
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        top: 16,
+                        right: 16,
+                        width: 40,
+                        height: 40,
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#e74c3c'
+                      }}
+                    >
+                      <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
+                    </Box>
+
+                    {/* Feedback Text */}
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontSize: '0.95rem',
+                        lineHeight: 1.7,
+                        color: '#2c3e50',
+                        mb: 4,
+                        fontStyle: 'italic',
+                        position: 'relative',
+                        zIndex: 1,
+                        flex: 1
+                      }}
+                    >
+                      "{feedback.text}"
+                    </Typography>
+
+                    {/* Profile Section */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 3,
+                        pt: 3,
+                        borderTop: '1px solid rgba(231, 76, 60, 0.1)',
+                        position: 'relative',
+                        zIndex: 1
+                      }}
+                    >
+                      {/* Round Profile */}
+                      <Box
+                        sx={{
+                          width: 60,
+                          height: 60,
+                          borderRadius: '50%',
+                          background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          fontWeight: 700,
+                          fontSize: '1.25rem',
+                          flexShrink: 0,
+                          boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
+                          position: 'relative',
+                          '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: -2,
+                            left: -2,
+                            right: -2,
+                            bottom: -2,
+                            borderRadius: '50%',
+                            border: '2px solid rgba(231, 76, 60, 0.2)',
+                          }
+                        }}
+                      >
+                        {feedback.initials}
+                      </Box>
+
+                      {/* Author Info */}
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color: '#e74c3c',
+                            fontSize: '1.1rem',
+                            mb: 0.5
+                          }}
+                        >
+                          {feedback.author}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: '#666',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          {feedback.role}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+
+              {/* Duplicate set for seamless scrolling */}
+              {[
+                {
+                  id: 7,
+                  text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
+                  author: "Priya Sharma",
+                  role: "Graphic Designer",
+                  initials: "PS"
+                },
+                {
+                  id: 8,
+                  text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
+                  author: "Arjun Patel",
+                  role: "University Student",
+                  initials: "AP"
+                },
+                {
+                  id: 9,
+                  text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
+                  author: "Ananya Reddy",
+                  role: "Startup Founder",
+                  initials: "AR"
+                },
+                {
+                  id: 10,
+                  text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
+                  author: "Rohan Singh",
+                  role: "Software Developer",
+                  initials: "RS"
+                },
+                {
+                  id: 11,
+                  text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
+                  author: "Neha Kapoor",
+                  role: "Graduate Student",
+                  initials: "NK"
+                },
+                {
+                  id: 12,
+                  text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
+                  author: "Vikram Mehta",
+                  role: "IT Manager",
+                  initials: "VM"
+                }
+              ].map((feedback) => (
+                <Box
+                  key={feedback.id}
+                  sx={{
+                    flex: '0 0 calc(33.333% - 32px)',
+                    minWidth: { xs: '85%', sm: '45%', md: '30%' }
+                  }}
+                >
+                  <Box
+                    sx={{
+                      p: 4,
+                      borderRadius: 4,
+                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
+                      border: '1px solid rgba(231, 76, 60, 0.1)',
+                      boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
+                      height: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        transform: 'translateY(-8px)',
+                        boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
+                        borderColor: 'rgba(231, 76, 60, 0.3)'
+                      },
+                      '&::before': {
+                        content: '"\\201C"',
+                        position: 'absolute',
+                        top: 20,
+                        left: 20,
+                        fontSize: '4rem',
+                        color: 'rgba(231, 76, 60, 0.1)',
+                        fontFamily: 'serif',
+                        lineHeight: 1,
+                      }
+                    }}
+                  >
+                    {/* Quote Icon */}
+                    <Box
+                      sx={{
+                        position: 'absolute',
+                        top: 16,
+                        right: 16,
+                        width: 40,
+                        height: 40,
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#e74c3c'
+                      }}
+                    >
+                      <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
+                    </Box>
+
+                    {/* Feedback Text */}
+                    <Typography
+                      variant="body1"
+                      sx={{
+                        fontSize: '0.95rem',
+                        lineHeight: 1.7,
+                        color: '#2c3e50',
+                        mb: 4,
+                        fontStyle: 'italic',
+                        position: 'relative',
+                        zIndex: 1,
+                        flex: 1
+                      }}
+                    >
+                      "{feedback.text}"
+                    </Typography>
+
+                    {/* Profile Section */}
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 3,
+                        pt: 3,
+                        borderTop: '1px solid rgba(231, 76, 60, 0.1)',
+                        position: 'relative',
+                        zIndex: 1
+                      }}
+                    >
+                      {/* Round Profile */}
+                      <Box
+                        sx={{
+                          width: 60,
+                          height: 60,
+                          borderRadius: '50%',
+                          background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          color: 'white',
+                          fontWeight: 700,
+                          fontSize: '1.25rem',
+                          flexShrink: 0,
+                          boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
+                          position: 'relative',
+                          '&::before': {
+                            content: '""',
+                            position: 'absolute',
+                            top: -2,
+                            left: -2,
+                            right: -2,
+                            bottom: -2,
+                            borderRadius: '50%',
+                            border: '2px solid rgba(231, 76, 60, 0.2)',
+                          }
+                        }}
+                      >
+                        {feedback.initials}
+                      </Box>
+
+                      {/* Author Info */}
+                      <Box sx={{ flex: 1 }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 700,
+                            color: '#e74c3c',
+                            fontSize: '1.1rem',
+                            mb: 0.5
+                          }}
+                        >
+                          {feedback.author}
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: '#666',
+                            fontSize: '0.9rem'
+                          }}
+                        >
+                          {feedback.role}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+
+            {/* Gradient Overlays */}
+            <Box sx={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              height: '100%',
+              pointerEvents: 'none',
+              zIndex: 1,
+              background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(255,255,255,1) 100%)',
+            }} />
+
+            {/* Navigation Dots */}
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              mt: 4,
+              gap: 1.5
+            }}>
+              {[1, 2, 3, 4, 5, 6].map((dot) => (
+                <Box
+                  key={dot}
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    borderRadius: '50%',
+                    backgroundColor: dot === 1 ? '#e74c3c' : '#ddd',
+                    cursor: 'pointer',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: dot === 1 ? '#c0392b' : '#bbb',
+                      transform: 'scale(1.2)'
+                    }
+                  }}
+                />
+              ))}
+            </Box>
+          </Box>
+        </Container>
       </Box>
-    </Container>
-  </Box>
 
       {/* Ready to Find Section */}
-      <Box sx={{ 
+      <Box sx={{
         py: 10,
         position: 'relative',
         overflow: 'hidden',
@@ -1874,11 +1875,11 @@ Trusted by customers for reliable laptops and expert repairs.
         }
       }}>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
-          <Typography 
-            variant="h3" 
-            align="center" 
-            sx={{ 
-              fontWeight: 700, 
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              fontWeight: 700,
               mb: 8,
               fontSize: { xs: '1.75rem', md: '2.25rem' },
               color: '#fff',
@@ -1890,8 +1891,8 @@ Trusted by customers for reliable laptops and expert repairs.
           >
             Ready to find your next laptop?
           </Typography>
-          
-          {[ 
+
+          {[
             ['New Laptops', 'Second-hand Laptops', 'Repair of Laptops'],
             ['Video Games', 'Laptop Accessories', 'And much more...']
           ].map((row, rowIndex) => (
@@ -1909,7 +1910,7 @@ Trusted by customers for reliable laptops and expert repairs.
                   'And much more...': '/contact',
                 };
                 const to = linkMap[label] || '/contact';
-                
+
                 return (
                   <Grid item xs={12} sm={6} md={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Box
@@ -1955,10 +1956,10 @@ Trusted by customers for reliable laptops and expert repairs.
                         },
                       }}
                     >
-                      <Box sx={{ 
-                        display: 'flex', 
-                        alignItems: 'center', 
-                        justifyContent: 'center', 
+                      <Box sx={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
                         width: 50,
                         position: 'relative',
                         '&::after': {
@@ -1974,11 +1975,11 @@ Trusted by customers for reliable laptops and expert repairs.
                       }}>
                         <IconComponent sx={{ fontSize: 36, color: '#fff', position: 'relative', zIndex: 1 }} />
                       </Box>
-                      
-                      <Typography 
-                        variant="h6" 
-                        sx={{ 
-                          fontWeight: 600, 
+
+                      <Typography
+                        variant="h6"
+                        sx={{
+                          fontWeight: 600,
                           fontSize: '1.1rem',
                           color: '#fff',
                           textShadow: '0 1px 3px rgba(0,0,0,0.5)',
@@ -1997,493 +1998,7 @@ Trusted by customers for reliable laptops and expert repairs.
         </Container>
       </Box>
 
-      {/* Footer (matches provided design) */}
-      <Box
-        component="footer"
-        sx={{
-          bgcolor: '#1a1a2e',
-          color: '#ffffff',
-          pt: 4,
-          pb: 3,
-          position: 'relative',
-          overflow: 'hidden',
-          borderTop: '4px solid #e74c3c',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            height: '4px',
-            background: 'linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #e74c3c)',
-            backgroundSize: '300% 100%',
-            animation: 'shimmer 4s infinite linear',
-          },
-        }}
-      >
-        <Container maxWidth="lg">
-          {/* Box 1: Visit Us Banner - Full Width */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(231, 76, 60, 0.1)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(231, 76, 60, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(231, 76, 60, 0.15)',
-                transform: 'translateY(-2px)',
-              },
-            }}
-          >
-            <Box sx={{ textAlign: 'center', width: '100%' }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  mb: 1.5,
-                  fontSize: { xs: '1.5rem', md: '2rem' },
-                }}
-              >
-                Visit Us for Laptop Repairs
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: '#b0b0b0',
-                  fontWeight: 400,
-                  fontSize: { xs: '1rem', md: '1.2rem' },
-                  maxWidth: '800px',
-                  mx: 'auto',
-                }}
-              >
-                Walk into our store with your laptop for free diagnosis and expert repair services.
-              </Typography>
-            </Box>
-          </Box>
-
-          {/* Box 2: Fort Location - Full Width with Google Maps Link */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              border: '1px solid rgba(231, 76, 60, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(231, 76, 60, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                cursor: 'pointer',
-              },
-            }}
-            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai', '_blank', 'noopener,noreferrer')}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
-              <Box
-                sx={{
-                  minWidth: 60,
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  color: '#e74c3c',
-                }}
-              >
-                <PlaceIcon sx={{ fontSize: 28 }} />
-              </Box>
-
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: '#e74c3c',
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' },
-                    }}
-                  >
-                    Fort Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: '#b0b0b0',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2,
-                  }}
-                >
-                  Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
-                </Typography>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#3498db',
-                      }}
-                    >
-                      <PhoneIcon sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 081697 98826
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Box 3: Vile Parle Location - Full Width with Google Maps Link */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              border: '1px solid rgba(52, 152, 219, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(52, 152, 219, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
-                cursor: 'pointer',
-              },
-            }}
-            onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai', '_blank', 'noopener,noreferrer')}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
-              <Box
-                sx={{
-                  minWidth: 60,
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  color: '#3498db',
-                }}
-              >
-                <PlaceIcon sx={{ fontSize: 28 }} />
-              </Box>
-
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: '#3498db',
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' },
-                    }}
-                  >
-                    Vile Parle Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#3498db',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: '#b0b0b0',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2,
-                  }}
-                >
-                  Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
-                </Typography>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#3498db',
-                      }}
-                    >
-                      <PhoneIcon sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 092233 33357
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#3498db',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Box 4: Working Hours - Full Width */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(46, 204, 113, 0.1)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(46, 204, 113, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(46, 204, 113, 0.15)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(46, 204, 113, 0.1)',
-              },
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', gap: 4 }}>
-              <Box
-                sx={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(46, 204, 113, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#2ecc71',
-                }}
-              >
-                <AccessTimeIcon sx={{ fontSize: 32 }} />
-              </Box>
-
-              <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#2ecc71',
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '1.2rem', md: '1.4rem' },
-                  }}
-                >
-                  Working Hours
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: '#ffffff',
-                    fontWeight: 700,
-                    fontSize: { xs: '1.4rem', md: '1.8rem' },
-                  }}
-                >
-                  Mon-Sat: 11 AM - 7 PM
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: 'rgba(255,255,255,0.8)',
-                    mt: 1,
-                    fontSize: { xs: '0.9rem', md: '1rem' },
-                  }}
-                >
-                  Visit us during our business hours for immediate assistance
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Box 5: Copyright/Brand - Full Width */}
-          <Box
-            sx={{
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(255, 255, 255, 0.1)',
-              },
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                color: '#ffffff',
-                fontWeight: 900,
-                mb: 2,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                background: 'linear-gradient(45deg, #e74c3c 30%, #ff7675 50%, #3498db 70%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                letterSpacing: '1px',
-              }}
-            >
-              BRAINTONE
-            </Typography>
-
-            <Divider
-              sx={{
-                width: '200px',
-                my: 2,
-                backgroundColor: 'rgba(231, 76, 60, 0.5)',
-                height: '2px',
-              }}
-            />
-
-            <Typography
-              variant="h6"
-              sx={{
-                color: '#b0b0b0',
-                mb: 1,
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                textAlign: 'center',
-              }}
-            >
-              Expert Laptop Repair Services
-            </Typography>
-
-            <Typography
-              variant="body1"
-              sx={{
-                color: 'rgba(255,255,255,0.7)',
-                fontSize: { xs: '0.9rem', md: '1rem' },
-                textAlign: 'center',
-                mt: 1,
-              }}
-            >
-              © 2024 BRAINTONE. All rights reserved.
-            </Typography>
-          </Box>
-
-          {/* Bottom decorative line */}
-          <Box
-            sx={{
-              width: '100%',
-              height: '2px',
-              background: 'linear-gradient(90deg, transparent, #e74c3c 20%, #3498db 50%, #2ecc71 80%, transparent)',
-              mt: 4,
-              borderRadius: '2px',
-            }}
-          />
-        </Container>
-      </Box>
-
-
-      {/* Add CSS Animations */}
-      <style jsx="true">{`
-        @keyframes gradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
-        }
-        
-        @keyframes pulse {
-          0% { transform: scale(1); opacity: 0.5; }
-          50% { transform: scale(1.1); opacity: 0.8; }
-          100% { transform: scale(1); opacity: 0.5; }
-        }
-        
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-        
-        @keyframes rotate {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        
-        @keyframes zoom {
-          0% { transform: scale(1); }
-          100% { transform: scale(1.1); }
-        }
-        
-        @keyframes float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-10px); }
-        }
-      `}</style>
+      <Footer fullFooter={true} />
     </Box>
   );
 };

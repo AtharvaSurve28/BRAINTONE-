@@ -32,6 +32,7 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import Footer from '../components/Footer';
 
 // Animations - EXACTLY SAME as laptops page
 const shimmer = keyframes`
@@ -221,6 +222,7 @@ const Accessories = () => {
         'Easy to Clean',
         'Transparent & Colors',
         'Country-specific Layouts',
+        'House-specific Layouts',
       ],
       bestFor: 'Spill protection, dust prevention, hygiene',
       brands: 'Generic & Brand Specific',
@@ -259,6 +261,7 @@ const Accessories = () => {
         'External Pockets',
         'Handle & Shoulder Strap',
         'Multiple Size Options',
+        'House-specific Layouts',
       ],
       bestFor: 'Extra protection in bags, minimal carry',
       brands: 'AmazonBasics, Case Logic, STM',
@@ -356,8 +359,8 @@ const Accessories = () => {
   const bubbles = generateBubbles();
 
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
+    <Box sx={{
+      minHeight: '100vh',
       backgroundColor: '#ffffff',
       overflow: 'hidden',
       position: 'relative',
@@ -452,19 +455,19 @@ const Accessories = () => {
           >
             Premium Accessories
           </Typography>
-          
-          <Divider sx={{ 
+
+          <Divider sx={{
             width: '120px',
-            height: '4px', 
+            height: '4px',
             background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
             backgroundSize: '300% 100%',
-            mx: 'auto', 
+            mx: 'auto',
             mb: 3,
             animation: `${shimmer} 4s linear infinite`,
             borderRadius: '2px',
           }} />
-          
-          <Typography 
+
+          <Typography
             variant="h5"
             sx={{
               textAlign: 'center',
@@ -489,9 +492,9 @@ const Accessories = () => {
         <Grid container spacing={4} justifyContent="center" alignItems="stretch">
           {accessories.map((accessory, index) => (
             <Grid item xs={12} sm={6} md={4} key={accessory.id} sx={{ display: 'flex' }}>
-              <Card 
+              <Card
                 onClick={() => handleOpenModal(accessory)}
-                sx={{ 
+                sx={{
                   width: '100%',
                   height: 420,
                   display: 'flex',
@@ -581,7 +584,7 @@ const Accessories = () => {
                   >
                     View Details →
                   </Box>
-                  
+
                   <CardMedia
                     component="img"
                     image={accessory.image}
@@ -598,10 +601,10 @@ const Accessories = () => {
                     }}
                   />
                 </Box>
-                
+
                 {/* Card Content - EXACT SAME STRUCTURE as laptops */}
-                <CardContent 
-                  sx={{ 
+                <CardContent
+                  sx={{
                     textAlign: 'center',
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
                     py: 3,
@@ -625,7 +628,7 @@ const Accessories = () => {
                   }}
                 >
                   {/* Name - EXACT SAME as laptops brand name */}
-                  <Typography 
+                  <Typography
                     variant="h5"
                     className="accessory-name"
                     sx={{
@@ -640,9 +643,9 @@ const Accessories = () => {
                   >
                     {accessory.name}
                   </Typography>
-                  
+
                   {/* Description */}
-                  <Typography 
+                  <Typography
                     variant="body2"
                     sx={{
                       color: '#666',
@@ -658,9 +661,9 @@ const Accessories = () => {
                   >
                     {accessory.description}
                   </Typography>
-                  
+
                   {/* Price */}
-                  <Typography 
+                  <Typography
                     variant="h6"
                     sx={{
                       fontWeight: 700,
@@ -678,8 +681,8 @@ const Accessories = () => {
         </Grid>
 
         {/* Bottom Content Section - EXACT SAME as laptops */}
-        <Box sx={{ 
-          textAlign: 'center', 
+        <Box sx={{
+          textAlign: 'center',
           mt: 10,
           p: 6,
           borderRadius: 3,
@@ -704,9 +707,9 @@ const Accessories = () => {
             zIndex: 1,
           }
         }}>
-          <Typography 
+          <Typography
             variant="h4"
-            sx={{ 
+            sx={{
               color: '#8B0000',
               fontWeight: 800,
               mb: 3,
@@ -718,10 +721,10 @@ const Accessories = () => {
           >
             Premium Accessories Collection
           </Typography>
-          
-          <Typography 
-            variant="body1" 
-            sx={{ 
+
+          <Typography
+            variant="body1"
+            sx={{
               color: '#555',
               maxWidth: '600px',
               mx: 'auto',
@@ -735,10 +738,10 @@ const Accessories = () => {
           >
             From laptop batteries to docking stations, we have all the accessories you need to enhance your laptop experience. Quality products with warranty included.
           </Typography>
-          
-          <Button 
-            component={Link} 
-            to="/contact" 
+
+          <Button
+            component={Link}
+            to="/contact"
             variant="contained"
             sx={{
               px: 6,
@@ -763,436 +766,7 @@ const Accessories = () => {
           </Button>
         </Box>
       </Container>
-
-      {/* Footer - EXACT SAME as previous */}
-      <Box
-        component="footer"
-        sx={{
-          bgcolor: '#1a1a2e',
-          color: '#ffffff',
-          pt: 4,
-          pb: 3,
-          position: 'relative',
-          overflow: 'hidden',
-          borderTop: '4px solid #e74c3c',
-        }}
-      >
-        <Container maxWidth="lg">
-          {/* Visit Us Banner */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(231, 76, 60, 0.1)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(231, 76, 60, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(231, 76, 60, 0.15)',
-                transform: 'translateY(-2px)',
-              },
-            }}
-          >
-            <Box sx={{ textAlign: 'center', width: '100%' }}>
-              <Typography
-                variant="h4"
-                sx={{
-                  color: '#ffffff',
-                  fontWeight: 700,
-                  mb: 1.5,
-                  fontSize: { xs: '1.5rem', md: '2rem' },
-                }}
-              >
-                Visit Us for Accessories & Repairs
-              </Typography>
-              <Typography
-                variant="h6"
-                sx={{
-                  color: '#b0b0b0',
-                  fontWeight: 400,
-                  fontSize: { xs: '1rem', md: '1.2rem' },
-                  maxWidth: '800px',
-                  mx: 'auto',
-                }}
-              >
-                Walk into our store for genuine accessories and expert laptop repair services.
-              </Typography>
-            </Box>
-          </Box>
-
-          {/* Fort Location */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              border: '1px solid rgba(231, 76, 60, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(231, 76, 60, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                cursor: 'pointer',
-              },
-            }}
-            onClick={() => openGoogleMaps('fort')}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
-              <Box
-                sx={{
-                  minWidth: 60,
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  color: '#e74c3c',
-                }}
-              >
-                <PlaceIcon sx={{ fontSize: 28 }} />
-              </Box>
-
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: '#e74c3c',
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' },
-                    }}
-                  >
-                    Fort Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: '#b0b0b0',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2,
-                  }}
-                >
-                  Address: 1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
-                </Typography>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#3498db',
-                      }}
-                    >
-                      <PhoneIcon sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 081697 98826
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#e74c3c',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Vile Parle Location */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              border: '1px solid rgba(52, 152, 219, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(52, 152, 219, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(52, 152, 219, 0.1)',
-                cursor: 'pointer',
-              },
-            }}
-            onClick={() => openGoogleMaps('vileParle')}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', width: '100%', gap: 3 }}>
-              <Box
-                sx={{
-                  minWidth: 60,
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                  color: '#3498db',
-                }}
-              >
-                <PlaceIcon sx={{ fontSize: 28 }} />
-              </Box>
-
-              <Box sx={{ flexGrow: 1, minWidth: 0 }}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                  <Typography
-                    variant="h5"
-                    sx={{
-                      color: '#3498db',
-                      fontWeight: 600,
-                      mb: 1,
-                      fontSize: { xs: '1.1rem', md: '1.3rem' },
-                    }}
-                  >
-                    Vile Parle Location
-                  </Typography>
-                  <OpenInNewIcon 
-                    sx={{ 
-                      color: '#3498db',
-                      fontSize: '1.2rem',
-                      opacity: 0.7,
-                    }} 
-                  />
-                </Box>
-
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: '#b0b0b0',
-                    lineHeight: 1.6,
-                    fontSize: { xs: '0.95rem', md: '1rem' },
-                    mb: 2,
-                  }}
-                >
-                  Address: 1st Floor, Prime Mall, F92/96, Alfa Market, Road, Naypada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
-                </Typography>
-
-                <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-                    <Box
-                      sx={{
-                        width: 36,
-                        height: 36,
-                        borderRadius: '50%',
-                        backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#3498db',
-                      }}
-                    >
-                      <PhoneIcon sx={{ fontSize: 18 }} />
-                    </Box>
-                    <Typography variant="body1" sx={{ color: '#ffffff', fontWeight: 500, fontSize: '1rem' }}>
-                      Phone: 092233 33357
-                    </Typography>
-                  </Box>
-                  <Typography 
-                    variant="body2" 
-                    sx={{ 
-                      color: '#3498db',
-                      fontWeight: 500,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 0.5,
-                    }}
-                  >
-                    View on Maps
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Working Hours */}
-          <Box
-            sx={{
-              mb: 3,
-              backgroundColor: 'rgba(46, 204, 113, 0.1)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(46, 204, 113, 0.2)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(46, 204, 113, 0.15)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(46, 204, 113, 0.1)',
-              },
-            }}
-          >
-            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', gap: 4 }}>
-              <Box
-                sx={{
-                  width: 70,
-                  height: 70,
-                  borderRadius: '50%',
-                  backgroundColor: 'rgba(46, 204, 113, 0.2)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  color: '#2ecc71',
-                }}
-              >
-                <AccessTimeIcon sx={{ fontSize: 32 }} />
-              </Box>
-
-              <Box sx={{ textAlign: 'left', flexGrow: 1 }}>
-                <Typography
-                  variant="h5"
-                  sx={{
-                    color: '#2ecc71',
-                    fontWeight: 600,
-                    mb: 1,
-                    fontSize: { xs: '1.2rem', md: '1.4rem' },
-                  }}
-                >
-                  Working Hours
-                </Typography>
-                <Typography
-                  variant="h4"
-                  sx={{
-                    color: '#ffffff',
-                    fontWeight: 700,
-                    fontSize: { xs: '1.4rem', md: '1.8rem' },
-                  }}
-                >
-                  Mon-Sat: 11 AM - 7 PM
-                </Typography>
-                <Typography
-                  variant="body1"
-                  sx={{
-                    color: 'rgba(255,255,255,0.8)',
-                    mt: 1,
-                    fontSize: { xs: '0.9rem', md: '1rem' },
-                  }}
-                >
-                  Visit us during our business hours for immediate assistance
-                </Typography>
-              </Box>
-            </Box>
-          </Box>
-
-          {/* Copyright/Brand */}
-          <Box
-            sx={{
-              backgroundColor: 'rgba(255, 255, 255, 0.05)',
-              borderRadius: 2,
-              p: 3,
-              minHeight: '120px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '1px solid rgba(255, 255, 255, 0.1)',
-              transition: 'all 0.3s ease',
-              width: '100%',
-              '&:hover': {
-                backgroundColor: 'rgba(255, 255, 255, 0.08)',
-                transform: 'translateY(-2px)',
-                boxShadow: '0 8px 20px rgba(255, 255, 255, 0.1)',
-              },
-            }}
-          >
-            <Typography
-              variant="h3"
-              sx={{
-                color: '#ffffff',
-                fontWeight: 900,
-                mb: 2,
-                fontSize: { xs: '1.8rem', md: '2.5rem' },
-                background: 'linear-gradient(45deg, #e74c3c 30%, #ff7675 50%, #3498db 70%)',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                letterSpacing: '1px',
-              }}
-            >
-              BRAINTONE
-            </Typography>
-
-            <Divider
-              sx={{
-                width: '200px',
-                my: 2,
-                backgroundColor: 'rgba(231, 76, 60, 0.5)',
-                height: '2px',
-              }}
-            />
-
-            <Typography
-              variant="h6"
-              sx={{
-                color: '#b0b0b0',
-                mb: 1,
-                fontSize: { xs: '1rem', md: '1.1rem' },
-                textAlign: 'center',
-              }}
-            >
-              Expert Laptop Accessories & Repair Services
-            </Typography>
-
-            <Typography
-              variant="body1"
-              sx={{
-                color: 'rgba(255,255,255,0.7)',
-                fontSize: { xs: '0.9rem', md: '1rem' },
-                textAlign: 'center',
-                mt: 1,
-              }}
-            >
-              © 2024 BRAINTONE. All rights reserved.
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
+      <Footer fullFooter={true} />
 
       {/* Popup Modal - Keep the same */}
       <Modal
@@ -1217,8 +791,8 @@ const Accessories = () => {
         >
           {selectedAccessory && (
             <>
-              <Box sx={{ 
-                p: 4, 
+              <Box sx={{
+                p: 4,
                 bgcolor: selectedAccessory.color,
                 color: '#ffffff',
                 borderTopLeftRadius: 12,
@@ -1235,9 +809,9 @@ const Accessories = () => {
                       </Typography>
                     </Box>
                   </Box>
-                  <IconButton 
-                    onClick={handleCloseModal} 
-                    sx={{ 
+                  <IconButton
+                    onClick={handleCloseModal}
+                    sx={{
                       color: '#ffffff',
                     }}
                   >
@@ -1247,8 +821,8 @@ const Accessories = () => {
               </Box>
 
               <Box sx={{ p: 4 }}>
-                <Box sx={{ 
-                  textAlign: 'center', 
+                <Box sx={{
+                  textAlign: 'center',
                   mb: 5,
                   p: 4,
                   bgcolor: alpha(selectedAccessory.color, 0.1),
@@ -1275,8 +849,8 @@ const Accessories = () => {
                           <ListItemIcon>
                             <CheckCircleIcon sx={{ color: selectedAccessory.color }} />
                           </ListItemIcon>
-                          <ListItemText 
-                            primary={spec} 
+                          <ListItemText
+                            primary={spec}
                             primaryTypographyProps={{ fontWeight: 'medium' }}
                           />
                         </ListItem>
@@ -1306,14 +880,14 @@ const Accessories = () => {
                 </Grid>
 
                 {selectedAccessory.warranty !== 'NA (Consumable)' && (
-                  <Box sx={{ 
+                  <Box sx={{
                     mt: 4,
                     display: 'flex',
                     justifyContent: 'center',
                     mb: 5,
                   }}>
-                    <Box sx={{ 
-                      p: 4, 
+                    <Box sx={{
+                      p: 4,
                       bgcolor: selectedAccessory.color,
                       borderRadius: 3,
                       color: '#ffffff',
@@ -1349,7 +923,7 @@ const Accessories = () => {
                     onClick={handleContactButton}
                     size="large"
                     startIcon={<ContactPhoneIcon />}
-                    sx={{ 
+                    sx={{
                       px: 6,
                       py: 1.5,
                       bgcolor: '#8B0000',
@@ -1374,13 +948,13 @@ const Accessories = () => {
                   <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
                     See and feel the quality of our accessories in person
                   </Typography>
-                  
+
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mb: 4 }}>
                     <Button
                       variant="outlined"
                       startIcon={<PlaceIcon />}
                       onClick={() => openGoogleMaps('fort')}
-                      sx={{ 
+                      sx={{
                         color: '#e74c3c',
                         borderColor: '#e74c3c',
                         '&:hover': {
@@ -1395,7 +969,7 @@ const Accessories = () => {
                       variant="outlined"
                       startIcon={<PlaceIcon />}
                       onClick={() => openGoogleMaps('vileParle')}
-                      sx={{ 
+                      sx={{
                         color: '#3498db',
                         borderColor: '#3498db',
                         '&:hover': {
@@ -1407,12 +981,12 @@ const Accessories = () => {
                       Vile Parle Location
                     </Button>
                   </Stack>
-                  
+
                   <Button
                     variant="contained"
                     onClick={handleCloseModal}
                     size="large"
-                    sx={{ 
+                    sx={{
                       px: 6,
                       py: 1.5,
                       bgcolor: '#8B0000',

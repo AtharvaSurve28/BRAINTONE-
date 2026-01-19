@@ -12,11 +12,11 @@ const connectDB = require('../config/db');
 const createAdmin = async () => {
   try {
     await connectDB();
-    
+
     // Read credentials from environment variables
     const adminUsername = process.env.ADMIN_USERNAME || 'admin';
     const adminPassword = process.env.ADMIN_PASSWORD;
-    
+
     if (!adminPassword) {
       console.error('❌ ADMIN_PASSWORD not set in environment variables!');
       console.log('Set it with: export ADMIN_PASSWORD="your-secure-password"');
@@ -30,14 +30,10 @@ const createAdmin = async () => {
       process.exit(0);
     }
 
-    // Hash the password
-    const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(adminPassword, salt);
-
     // Create admin user
     const admin = new Admin({
       username: adminUsername,
-      password: hashedPassword,
+      password: adminPassword,
       role: 'admin'
     });
 

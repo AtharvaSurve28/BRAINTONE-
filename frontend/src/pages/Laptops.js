@@ -3,6 +3,7 @@ import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button,
 import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import { keyframes } from '@emotion/react';
 import { ArrowForward } from '@mui/icons-material';
+import Footer from '../components/Footer';
 
 // Animations
 const shimmer = keyframes`
@@ -140,8 +141,8 @@ const Laptops = () => {
   };
 
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
+    <Box sx={{
+      minHeight: '100vh',
       backgroundColor: '#ffffff',
       overflow: 'hidden',
       position: 'relative',
@@ -181,96 +182,96 @@ const Laptops = () => {
       </Box>
 
       {/* MODIFIED TOP BRANDS HERO SECTION - DARKER RED */}
-{/* MODIFIED TOP BRANDS HERO SECTION - CLEAN BACKGROUND IMAGE */}
-<Box sx={{ 
-  position: 'relative',
-  color: 'white',
-  py: { xs: 6, md: 8 },
-  textAlign: 'center',
-  overflow: 'hidden',
-  minHeight: '40vh',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  '&::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    backgroundImage: 'url(https://www.electronicsbazaar.com/pub/media/magefan_blog/image_322.png)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center 25%',
-    backgroundRepeat: 'no-repeat',
-    filter: 'brightness(0.4)',
-    zIndex: 0,
-    transform: 'scale(1.05)',
-  },
-  '&::after': {
-    content: '""',
-    position: 'absolute',
-    bottom: 0,
-    left: 0,
-    right: 0,
-    height: '5px',
-    background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-    backgroundSize: '400% 100%',
-    animation: `${shimmer} 6s linear infinite`,
-    zIndex: 1,
-  }
-}}>
-  
-  <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
-    <Typography 
-      variant="h1"
-      sx={{
-        textAlign: 'center',
-        fontWeight: 900,
-        fontSize: { xs: '2.5rem', md: '4rem' },
-        letterSpacing: '-1.5px',
+      {/* MODIFIED TOP BRANDS HERO SECTION - CLEAN BACKGROUND IMAGE */}
+      <Box sx={{
+        position: 'relative',
         color: 'white',
-        textShadow: '0 4px 12px rgba(0,0,0,0.7)',
-        lineHeight: 1.1,
-        mb: 2,
-        animation: `${floatAnimation} 4s ease-in-out infinite`,
-      }}
-    >
-      Our Top Brands
-    </Typography>
-    
-    <Divider sx={{ 
-      width: '120px', 
-      height: '4px', 
-      background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
-      backgroundSize: '300% 100%',
-      mx: 'auto', 
-      mb: 3,
-      animation: `${shimmer} 4s linear infinite`,
-      borderRadius: '2px',
-    }} />
-    
-    <Typography 
-      variant="h5"
-      sx={{
+        py: { xs: 6, md: 8 },
         textAlign: 'center',
-        color: 'rgba(255, 255, 255, 0.95)',
-        fontWeight: 400,
-        fontSize: '1.2rem',
-        maxWidth: '700px',
-        mx: 'auto',
-        lineHeight: 1.6,
-        textShadow: '0 2px 8px rgba(0,0,0,0.7)',
-        letterSpacing: '0.3px',
-        backgroundColor: 'rgba(0,0,0,0.3)',
-        padding: '8px 16px',
-        borderRadius: '8px',
-        backdropFilter: 'blur(4px)',
-      }}
-    >
-      Premium laptops and desktops from world-leading manufacturers
-    </Typography>
-  </Container>
+        overflow: 'hidden',
+        minHeight: '40vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: 'url(https://www.electronicsbazaar.com/pub/media/magefan_blog/image_322.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center 25%',
+          backgroundRepeat: 'no-repeat',
+          filter: 'brightness(0.4)',
+          zIndex: 0,
+          transform: 'scale(1.05)',
+        },
+        '&::after': {
+          content: '""',
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '5px',
+          background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+          backgroundSize: '400% 100%',
+          animation: `${shimmer} 6s linear infinite`,
+          zIndex: 1,
+        }
+      }}>
+
+        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
+          <Typography
+            variant="h1"
+            sx={{
+              textAlign: 'center',
+              fontWeight: 900,
+              fontSize: { xs: '2.5rem', md: '4rem' },
+              letterSpacing: '-1.5px',
+              color: 'white',
+              textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+              lineHeight: 1.1,
+              mb: 2,
+              animation: `${floatAnimation} 4s ease-in-out infinite`,
+            }}
+          >
+            Our Top Brands
+          </Typography>
+
+          <Divider sx={{
+            width: '120px',
+            height: '4px',
+            background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
+            backgroundSize: '300% 100%',
+            mx: 'auto',
+            mb: 3,
+            animation: `${shimmer} 4s linear infinite`,
+            borderRadius: '2px',
+          }} />
+
+          <Typography
+            variant="h5"
+            sx={{
+              textAlign: 'center',
+              color: 'rgba(255, 255, 255, 0.95)',
+              fontWeight: 400,
+              fontSize: '1.2rem',
+              maxWidth: '700px',
+              mx: 'auto',
+              lineHeight: 1.6,
+              textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+              letterSpacing: '0.3px',
+              backgroundColor: 'rgba(0,0,0,0.3)',
+              padding: '8px 16px',
+              borderRadius: '8px',
+              backdropFilter: 'blur(4px)',
+            }}
+          >
+            Premium laptops and desktops from world-leading manufacturers
+          </Typography>
+        </Container>
 
         {/* Floating decorative elements - darker */}
         <Box sx={{
@@ -285,7 +286,7 @@ const Laptops = () => {
           zIndex: 1,
           filter: 'blur(2px)',
         }} />
-        
+
         <Box sx={{
           position: 'absolute',
           bottom: '30%',
@@ -298,7 +299,7 @@ const Laptops = () => {
           zIndex: 1,
           filter: 'blur(1px)',
         }} />
-        
+
         {/* Additional floating element */}
         <Box sx={{
           position: 'absolute',
@@ -320,9 +321,9 @@ const Laptops = () => {
         <Grid container spacing={4} justifyContent="center">
           {brands.map((brand, index) => (
             <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex' }}>
-              <Card 
+              <Card
                 onClick={() => handleBrandClick(brand.route)} // Added onClick handler
-                sx={{ 
+                sx={{
                   width: '100%',
                   height: 420,
                   display: 'flex',
@@ -412,7 +413,7 @@ const Laptops = () => {
                   >
                     Explore {brand.name} Laptops →
                   </Box>
-                  
+
                   <CardMedia
                     component="img"
                     image={brand.image}
@@ -429,10 +430,10 @@ const Laptops = () => {
                     }}
                   />
                 </Box>
-                
+
                 {/* Brand Name */}
-                <CardContent 
-                  sx={{ 
+                <CardContent
+                  sx={{
                     textAlign: 'center',
                     backgroundColor: 'rgba(255, 255, 255, 0.95)',
                     py: 4,
@@ -445,7 +446,7 @@ const Laptops = () => {
                     zIndex: 2,
                   }}
                 >
-                  <Typography 
+                  <Typography
                     variant="h5"
                     className="brand-name"
                     sx={{
@@ -466,8 +467,8 @@ const Laptops = () => {
         </Grid>
 
         {/* Bottom Content Section with enhanced styling */}
-        <Box sx={{ 
-          textAlign: 'center', 
+        <Box sx={{
+          textAlign: 'center',
           mt: 10,
           p: 6,
           borderRadius: 3,
@@ -492,9 +493,9 @@ const Laptops = () => {
             zIndex: 1,
           }
         }}>
-          <Typography 
+          <Typography
             variant="h4"
-            sx={{ 
+            sx={{
               color: '#8B0000', // Darker red
               fontWeight: 800,
               mb: 3,
@@ -506,10 +507,10 @@ const Laptops = () => {
           >
             New Laptops & Desktops
           </Typography>
-          
-          <Typography 
-            variant="body1" 
-            sx={{ 
+
+          <Typography
+            variant="body1"
+            sx={{
               color: '#555',
               maxWidth: '600px',
               mx: 'auto',
@@ -523,10 +524,10 @@ const Laptops = () => {
           >
             Explore the latest Intel and AMD builds for work, gaming, and study. We can customize RAM, SSD, and graphics to match your needs.
           </Typography>
-          
-          <Button 
-            component={Link} 
-            to="/contact" 
+
+          <Button
+            component={Link}
+            to="/contact"
             variant="contained"
             sx={{
               px: 6,
@@ -551,6 +552,7 @@ const Laptops = () => {
           </Button>
         </Box>
       </Container>
+      <Footer fullFooter={true} />
     </Box>
   );
 };

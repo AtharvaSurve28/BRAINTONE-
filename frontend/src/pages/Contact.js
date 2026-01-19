@@ -19,6 +19,7 @@ import {
   AccessTime,
   Place,
 } from '@mui/icons-material';
+import Footer from '../components/Footer';
 
 const Contact = () => {
   const contactInfo = [
@@ -97,8 +98,8 @@ const Contact = () => {
   ];
 
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
+    <Box sx={{
+      minHeight: '100vh',
       bgcolor: '#fafafa',
       position: 'relative',
       overflow: 'hidden',
@@ -167,9 +168,9 @@ const Contact = () => {
             <Slide direction="down" in={true} timeout={800}>
               <Typography
                 variant="h2"
-                sx={{ 
-                  fontWeight: 900, 
-                  mb: 3, 
+                sx={{
+                  fontWeight: 900,
+                  mb: 3,
                   fontSize: { xs: '2.5rem', md: '3.8rem' },
                   color: 'white',
                   textShadow: '0 4px 12px rgba(0,0,0,0.5)',
@@ -180,9 +181,9 @@ const Contact = () => {
               </Typography>
             </Slide>
             <Slide direction="up" in={true} timeout={1000}>
-              <Typography 
-                variant="h5" 
-                sx={{ 
+              <Typography
+                variant="h5"
+                sx={{
                   fontWeight: 600,
                   mb: 2,
                   fontSize: { xs: '1.3rem', md: '1.8rem' },
@@ -196,7 +197,7 @@ const Contact = () => {
               </Typography>
             </Slide>
             <Slide direction="up" in={true} timeout={1200}>
-              <Typography variant="h6" sx={{ 
+              <Typography variant="h6" sx={{
                 maxWidth: '700px',
                 mx: 'auto',
                 fontSize: { xs: '1rem', md: '1.2rem' },
@@ -214,12 +215,12 @@ const Contact = () => {
       {/* Contact Info Cards with Staggered Animation */}
       <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
         <Fade in={true} timeout={1200}>
-          <Typography 
-            variant="h3" 
-            align="center" 
-            sx={{ 
-              fontWeight: 800, 
-              mb: 6, 
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              fontWeight: 800,
+              mb: 6,
               color: '#8B0000',
               position: 'relative',
               '&::after': {
@@ -238,12 +239,12 @@ const Contact = () => {
             Get In Touch
           </Typography>
         </Fade>
-        
+
         <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
           {contactInfo.map((info, index) => (
-            <Zoom 
+            <Zoom
               key={index}
-              in={true} 
+              in={true}
               timeout={800}
               style={{ transitionDelay: `${index * 150}ms` }}
             >
@@ -314,9 +315,9 @@ const Contact = () => {
                   {info.value}
                 </Typography>
                 {info.mapsLabel && (
-                  <Typography variant="caption" sx={{ 
-                    color: '#e74c3c', 
-                    mt: 1, 
+                  <Typography variant="caption" sx={{
+                    color: '#e74c3c',
+                    mt: 1,
                     fontWeight: 700,
                     fontSize: '0.8rem',
                     backgroundColor: 'rgba(231, 76, 60, 0.1)',
@@ -337,12 +338,12 @@ const Contact = () => {
       {/* Store Locations Section */}
       <Fade in={true} timeout={1400}>
         <Container maxWidth="lg" sx={{ py: 4, position: 'relative', zIndex: 1 }}>
-          <Typography 
-            variant="h3" 
-            align="center" 
-            sx={{ 
-              fontWeight: 800, 
-              mb: 6, 
+          <Typography
+            variant="h3"
+            align="center"
+            sx={{
+              fontWeight: 800,
+              mb: 6,
               color: '#c0392b',
               position: 'relative',
               '&::after': {
@@ -360,7 +361,7 @@ const Contact = () => {
           >
             Visit Our Stores
           </Typography>
-          
+
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', mb: 8 }}>
             {/* Fort Location Card */}
             <Zoom in={true} timeout={1000}>
@@ -405,9 +406,9 @@ const Contact = () => {
                   },
                 }}
               >
-                <Place sx={{ 
-                  fontSize: 56, 
-                  color: '#e74c3c', 
+                <Place sx={{
+                  fontSize: 56,
+                  color: '#e74c3c',
                   mb: 2,
                   animation: 'float 3s ease-in-out infinite',
                   animationDelay: '0.5s',
@@ -424,8 +425,8 @@ const Contact = () => {
                 <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
                   Phone: 081697 98826
                 </Typography>
-                <Typography variant="caption" sx={{ 
-                  color: '#e74c3c', 
+                <Typography variant="caption" sx={{
+                  color: '#e74c3c',
                   fontWeight: 800,
                   backgroundColor: 'rgba(231, 76, 60, 0.1)',
                   px: 2,
@@ -437,7 +438,7 @@ const Contact = () => {
                 </Typography>
               </Card>
             </Zoom>
-            
+
             {/* Vile Parle Location Card */}
             <Zoom in={true} timeout={1000} style={{ transitionDelay: '300ms' }}>
               <Card
@@ -481,9 +482,9 @@ const Contact = () => {
                   },
                 }}
               >
-                <Place sx={{ 
-                  fontSize: 56, 
-                  color: '#c0392b', 
+                <Place sx={{
+                  fontSize: 56,
+                  color: '#c0392b',
                   mb: 2,
                   animation: 'float 3s ease-in-out infinite',
                   animationDelay: '0.8s',
@@ -500,8 +501,8 @@ const Contact = () => {
                 <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
                   Phone: 092233 33357
                 </Typography>
-                <Typography variant="caption" sx={{ 
-                  color: '#c0392b', 
+                <Typography variant="caption" sx={{
+                  color: '#c0392b',
                   fontWeight: 800,
                   backgroundColor: 'rgba(192, 57, 43, 0.1)',
                   px: 2,
@@ -518,75 +519,11 @@ const Contact = () => {
       </Fade>
 
       {/* Footer with Background Image */}
-{/* Footer with Midnight Navy Background */}
-<Slide direction="up" in={true} timeout={1000}>
-  <Box
-    component="footer"
-    sx={{
-      position: 'relative',
-      // Removed image and replaced with the custom color
-      bgcolor: '#1E1B2E', 
-      color: 'white',
-      py: 8,
-      mt: 8,
-      overflow: 'hidden',
-      // Subtle top border to separate it from the white body
-      borderTop: '1px solid rgba(255,255,255,0.1)',
-    }}
-  >
-    <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-      <Typography 
-        variant="h2" 
-        align="center" 
-        sx={{ 
-          fontWeight: 900, 
-          mb: 3, 
-          fontSize: { xs: '2.5rem', md: '3.5rem' },
-          color: '#e74c3c', // Explicit white color
-          letterSpacing: '1px',
-        }}
-      >
-        BRAINTONE
-      </Typography>
-      <Typography 
-        variant="h5" 
-        align="center" 
-        sx={{ 
-          fontSize: { xs: '1.2rem', md: '1.6rem' }, 
-          mb: 2,
-          fontWeight: 600,
-          color: 'white', // Explicit white color
-        }}
-      >
-        Expert Laptop Services Since 1998
-      </Typography>
-      <Typography 
-        variant="body1" 
-        align="center" 
-        sx={{ 
-          fontSize: '1.1rem', 
-          mb: 1,
-          fontWeight: 500,
-          color: 'rgba(255, 255, 255, 0.9)', // Slightly softer white for body text
-        }}
-      >
-        © {new Date().getFullYear()} Braintone. All rights reserved.
-      </Typography>
-      <Typography 
-        variant="body1" 
-        align="center" 
-        sx={{ 
-          fontSize: '1rem', 
-          mt: 2,
-          fontWeight: 500,
-          color: 'rgba(255, 255, 255, 0.8)', // Slightly transparent white
-        }}
-      >
-        Mon-Sat: 11AM - 7PM
-      </Typography>
-    </Container>
-  </Box>
-</Slide>
+      <Slide direction="up" in={true} timeout={1000}>
+        <Box>
+          <Footer fullFooter={false} />
+        </Box>
+      </Slide>
     </Box>
   );
 };

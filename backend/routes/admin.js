@@ -2,9 +2,12 @@ const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/Admin');
-const { authMiddleware, JWT_SECRET } = require('../middleware/auth');
+const { authMiddleware, JWT_SECRET: AuthSecret } = require('../middleware/auth');
 const laptopController = require('../controllers/laptopController');
 const Laptop = require('../models/Laptop');
+
+// Use exported secret or fallback to env var
+const JWT_SECRET = AuthSecret || process.env.JWT_SECRET;
 
 // Admin Login
 router.post('/login', async (req, res) => {
@@ -25,6 +28,12 @@ router.post('/login', async (req, res) => {
     const isMatch = await admin.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ message: 'Invalid credentials' });
+    }
+
+    // Security Check
+    if (!JWT_SECRET) {
+      console.error('FATAL ERROR: JWT_SECRET is not defined!');
+      return res.status(500).json({ message: 'Server configuration error' });
     }
 
     // Generate JWT token
