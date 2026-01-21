@@ -488,10 +488,10 @@ const HomePage = () => {
         }
       }}>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={4} alignItems="flex-start">
+          <Grid container spacing={4} alignItems="flex-start" sx={{ flexWrap: { xs: 'wrap', sm: 'nowrap' } }}>
 
             {/* LEFT SIDE — Title + Paragraph + Bullet Points */}
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12} sm={6} sx={{ flexBasis: { sm: '50%' }, flexGrow: 0 }}>
               <Box sx={{ pr: { xs: 0, sm: 2, md: 4 } }}>
 
                 {/* TITLE */}
@@ -554,7 +554,13 @@ const HomePage = () => {
               item
               xs={12}
               sm={6}
-              sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-end" }, alignItems: "flex-start" }}
+              sx={{
+                display: "flex",
+                justifyContent: { xs: "center", sm: "flex-end" },
+                alignItems: "flex-start",
+                flexBasis: { sm: '50%' },
+                flexGrow: 0
+              }}
             >
               <Paper
                 elevation={3}
