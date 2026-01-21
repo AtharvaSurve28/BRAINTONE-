@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../apiConfig';
 import {
   Box,
   Container,
@@ -78,12 +79,12 @@ const AdminDashboard = () => {
     laptops.forEach(laptop => {
       // Normalize categories - combine all mid-range variations into one
       let category = laptop.category || 'Uncategorized';
-      
+
       // Combine all mid-range variations
       if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
         category = 'Mid-Range';
       }
-      
+
       categories[category] = (categories[category] || 0) + 1;
 
       // Brands
@@ -114,7 +115,7 @@ const AdminDashboard = () => {
     try {
       setRefreshing(true);
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('/api/admin/laptops', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/laptops`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -142,7 +143,7 @@ const AdminDashboard = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/laptops/${deleteDialog.laptop._id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/laptops/${deleteDialog.laptop._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -196,23 +197,23 @@ const AdminDashboard = () => {
   };
 
   // Filter and normalize categories
-  const filteredLaptops = activeFilter === 'all' 
-    ? laptops 
+  const filteredLaptops = activeFilter === 'all'
+    ? laptops
     : laptops.filter(laptop => {
-        let category = laptop.category || 'Uncategorized';
-        // Normalize to single mid-range category
-        if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
-          category = 'Mid-Range';
-        }
-        return category.toLowerCase() === activeFilter.toLowerCase();
-      });
+      let category = laptop.category || 'Uncategorized';
+      // Normalize to single mid-range category
+      if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
+        category = 'Mid-Range';
+      }
+      return category.toLowerCase() === activeFilter.toLowerCase();
+    });
 
   if (loading) {
     return (
-      <Box sx={{ 
-        display: 'flex', 
-        justifyContent: 'center', 
-        alignItems: 'center', 
+      <Box sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
         minHeight: '100vh',
         background: 'linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)'
       }}>
@@ -243,13 +244,13 @@ const AdminDashboard = () => {
   const uniqueCategories = getUniqueCategories();
 
   return (
-    <Box sx={{ 
-      minHeight: '100vh', 
+    <Box sx={{
+      minHeight: '100vh',
       background: 'linear-gradient(135deg, #f8f0f0 0%, #fef0f0 100%)',
-      pb: 6 
+      pb: 6
     }}>
       {/* Header */}
-      <Box sx={{ 
+      <Box sx={{
         background: 'linear-gradient(90deg, #E2231A 0%, #c41e1a 100%)',
         color: 'white',
         py: 3,
@@ -257,17 +258,17 @@ const AdminDashboard = () => {
         boxShadow: '0 4px 20px rgba(226, 35, 26, 0.15)'
       }}>
         <Container maxWidth="xl">
-          <Box sx={{ 
-            display: 'flex', 
-            justifyContent: 'space-between', 
+          <Box sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
             alignItems: 'center',
             flexWrap: 'wrap',
             gap: 2
           }}>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
-              <Avatar sx={{ 
-                bgcolor: 'white', 
-                width: 48, 
+              <Avatar sx={{
+                bgcolor: 'white',
+                width: 48,
                 height: 48,
                 boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
               }}>
@@ -284,10 +285,10 @@ const AdminDashboard = () => {
             </Box>
             <Box sx={{ display: 'flex', gap: 2, alignItems: 'center' }}>
               <Tooltip title="Refresh Data">
-                <IconButton 
-                  onClick={fetchLaptops} 
+                <IconButton
+                  onClick={fetchLaptops}
                   disabled={refreshing}
-                  sx={{ 
+                  sx={{
                     color: 'white',
                     backgroundColor: 'rgba(255,255,255,0.1)',
                     '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' }
@@ -300,7 +301,7 @@ const AdminDashboard = () => {
                 variant="contained"
                 startIcon={<AddIcon />}
                 onClick={() => navigate('/admin/laptops/new')}
-                sx={{ 
+                sx={{
                   backgroundColor: 'white',
                   color: '#E2231A',
                   fontWeight: 600,
@@ -312,9 +313,9 @@ const AdminDashboard = () => {
                 Add New Laptop
               </Button>
               <Tooltip title="Logout">
-                <IconButton 
+                <IconButton
                   onClick={handleLogout}
-                  sx={{ 
+                  sx={{
                     color: 'white',
                     backgroundColor: 'rgba(255,255,255,0.1)',
                     '&:hover': { backgroundColor: 'rgba(255,255,255,0.2)' }
@@ -330,24 +331,24 @@ const AdminDashboard = () => {
 
       <Container maxWidth="xl">
         {refreshing && (
-          <LinearProgress 
-            sx={{ 
-              position: 'fixed', 
-              top: 0, 
-              left: 0, 
-              right: 0, 
+          <LinearProgress
+            sx={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
               zIndex: 9999,
               backgroundColor: '#E2231A'
-            }} 
+            }}
           />
         )}
 
         {/* Error Alert */}
         {error && (
-          <Alert 
-            severity="error" 
-            sx={{ 
-              mb: 3, 
+          <Alert
+            severity="error"
+            sx={{
+              mb: 3,
               borderRadius: 2,
               animation: 'slideDown 0.3s',
               '@keyframes slideDown': {
@@ -373,7 +374,7 @@ const AdminDashboard = () => {
               clickable
               color={activeFilter === 'all' ? 'primary' : 'default'}
               onClick={() => setActiveFilter('all')}
-              sx={{ 
+              sx={{
                 fontWeight: activeFilter === 'all' ? 600 : 500,
                 backgroundColor: activeFilter === 'all' ? '#E2231A' : '#f5f5f5',
                 color: activeFilter === 'all' ? 'white' : '#333333',
@@ -385,22 +386,22 @@ const AdminDashboard = () => {
             {uniqueCategories.map(category => {
               const isActive = activeFilter === category.toLowerCase();
               const categoryColor = getCategoryColor(category);
-              
+
               return (
                 <Chip
                   key={category}
                   label={category}
                   clickable
-                  sx={{ 
-                    backgroundColor: isActive 
-                      ? categoryColor 
+                  sx={{
+                    backgroundColor: isActive
+                      ? categoryColor
                       : alpha(categoryColor, 0.15),
                     color: isActive ? 'white' : '#333333', // Dark text for all categories
                     fontWeight: isActive ? 600 : 500,
                     border: `1px solid ${alpha(categoryColor, 0.3)}`,
                     '&:hover': {
-                      backgroundColor: isActive 
-                        ? categoryColor 
+                      backgroundColor: isActive
+                        ? categoryColor
                         : alpha(categoryColor, 0.25),
                       transform: 'translateY(-1px)'
                     }
@@ -413,14 +414,14 @@ const AdminDashboard = () => {
         </Paper>
 
         {/* Laptops Table */}
-        <Paper sx={{ 
+        <Paper sx={{
           borderRadius: 3,
           overflow: 'hidden',
           boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
           position: 'relative'
         }}>
-          <Box sx={{ 
-            p: 3, 
+          <Box sx={{
+            p: 3,
             backgroundColor: '#E2231A',
             color: 'white',
             display: 'flex',
@@ -435,21 +436,21 @@ const AdminDashboard = () => {
               <Typography variant="body2" sx={{ opacity: 0.9 }}>
                 {activeFilter === 'all' ? 'All Categories' : `Filtered by: ${activeFilter}`}
               </Typography>
-              <Chip 
-                label={`${filteredLaptops.length} of ${laptops.length}`} 
-                size="small" 
+              <Chip
+                label={`${filteredLaptops.length} of ${laptops.length}`}
+                size="small"
                 sx={{ backgroundColor: 'rgba(255,255,255,0.2)', color: 'white' }}
               />
             </Box>
           </Box>
-          
+
           <TableContainer>
             <Table>
               <TableHead>
-                <TableRow sx={{ 
+                <TableRow sx={{
                   backgroundColor: '#fafafa',
-                  '& th': { 
-                    fontWeight: 600, 
+                  '& th': {
+                    fontWeight: 600,
                     fontSize: '0.875rem',
                     borderBottom: '2px solid #eee',
                     color: '#333333'
@@ -473,21 +474,21 @@ const AdminDashboard = () => {
                           No laptops found
                         </Typography>
                         <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                          {activeFilter === 'all' 
-                            ? 'Add your first laptop to get started!' 
+                          {activeFilter === 'all'
+                            ? 'Add your first laptop to get started!'
                             : `No laptops found in "${activeFilter}" category`}
                         </Typography>
                         {activeFilter !== 'all' && (
-                          <Button 
-                            variant="outlined" 
+                          <Button
+                            variant="outlined"
                             onClick={() => setActiveFilter('all')}
                             sx={{ mr: 2 }}
                           >
                             Show All Laptops
                           </Button>
                         )}
-                        <Button 
-                          variant="contained" 
+                        <Button
+                          variant="contained"
                           startIcon={<AddIcon />}
                           onClick={() => navigate('/admin/laptops/new')}
                           sx={{ backgroundColor: '#E2231A' }}
@@ -504,22 +505,22 @@ const AdminDashboard = () => {
                     if (displayCategory.toLowerCase().includes('mid') || displayCategory.toLowerCase().includes('mid-range')) {
                       displayCategory = 'Mid-Range';
                     }
-                    
+
                     return (
-                      <TableRow 
-                        key={laptop._id} 
-                        hover 
-                        sx={{ 
+                      <TableRow
+                        key={laptop._id}
+                        hover
+                        sx={{
                           '&:hover': { backgroundColor: '#f9f9f9' },
                           transition: 'background-color 0.2s'
                         }}
                       >
                         <TableCell>
                           <Box sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                            <Box sx={{ 
-                              width: 10, 
-                              height: 10, 
-                              borderRadius: '50%', 
+                            <Box sx={{
+                              width: 10,
+                              height: 10,
+                              borderRadius: '50%',
                               backgroundColor: getBrandColor(laptop.brand)
                             }} />
                             <Typography variant="body2" fontWeight={500} color="#333333">
@@ -538,10 +539,10 @@ const AdminDashboard = () => {
                           </Box>
                         </TableCell>
                         <TableCell>
-                          <Chip 
-                            label={displayCategory} 
-                            size="small" 
-                            sx={{ 
+                          <Chip
+                            label={displayCategory}
+                            size="small"
+                            sx={{
                               backgroundColor: alpha(getCategoryColor(displayCategory), 0.15),
                               color: '#333333', // Dark text for category chips
                               fontWeight: 500,
@@ -566,7 +567,7 @@ const AdminDashboard = () => {
                             <Tooltip title="Edit">
                               <IconButton
                                 size="small"
-                                sx={{ 
+                                sx={{
                                   backgroundColor: alpha('#1976d2', 0.1),
                                   '&:hover': { backgroundColor: alpha('#1976d2', 0.2) }
                                 }}
@@ -578,7 +579,7 @@ const AdminDashboard = () => {
                             <Tooltip title="Delete">
                               <IconButton
                                 size="small"
-                                sx={{ 
+                                sx={{
                                   backgroundColor: alpha('#E2231A', 0.1),
                                   '&:hover': { backgroundColor: alpha('#E2231A', 0.2) }
                                 }}
@@ -607,19 +608,19 @@ const AdminDashboard = () => {
             <Grid container spacing={2}>
               {Object.entries(stats.brands).map(([brand, count]) => (
                 <Grid item xs={6} sm={4} md={3} key={brand}>
-                  <Box sx={{ 
-                    p: 2, 
-                    borderRadius: 2, 
+                  <Box sx={{
+                    p: 2,
+                    borderRadius: 2,
                     backgroundColor: alpha(getBrandColor(brand), 0.05),
                     border: `1px solid ${alpha(getBrandColor(brand), 0.2)}`,
                     display: 'flex',
                     alignItems: 'center',
                     gap: 2
                   }}>
-                    <Box sx={{ 
-                      width: 40, 
-                      height: 40, 
-                      borderRadius: '50%', 
+                    <Box sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: '50%',
                       backgroundColor: getBrandColor(brand),
                       display: 'flex',
                       alignItems: 'center',
@@ -645,14 +646,14 @@ const AdminDashboard = () => {
         )}
 
         {/* Delete Confirmation Dialog */}
-        <Dialog 
-          open={deleteDialog.open} 
+        <Dialog
+          open={deleteDialog.open}
           onClose={() => setDeleteDialog({ open: false, laptop: null })}
           PaperProps={{
             sx: { borderRadius: 3 }
           }}
         >
-          <DialogTitle sx={{ 
+          <DialogTitle sx={{
             backgroundColor: '#fafafa',
             borderBottom: '1px solid #eee',
             fontWeight: 600,
@@ -663,9 +664,9 @@ const AdminDashboard = () => {
           </DialogTitle>
           <DialogContent sx={{ pt: 3 }}>
             <Box sx={{ textAlign: 'center', mb: 2 }}>
-              <Avatar sx={{ 
-                bgcolor: alpha('#E2231A', 0.1), 
-                width: 60, 
+              <Avatar sx={{
+                bgcolor: alpha('#E2231A', 0.1),
+                width: 60,
                 height: 60,
                 mx: 'auto',
                 mb: 2
@@ -682,20 +683,20 @@ const AdminDashboard = () => {
             </Box>
           </DialogContent>
           <DialogActions sx={{ px: 3, pb: 3 }}>
-            <Button 
+            <Button
               onClick={() => setDeleteDialog({ open: false, laptop: null })}
-              sx={{ 
+              sx={{
                 color: '#666666',
                 '&:hover': { backgroundColor: '#f5f5f5' }
               }}
             >
               Cancel
             </Button>
-            <Button 
-              onClick={handleDelete} 
+            <Button
+              onClick={handleDelete}
               variant="contained"
               startIcon={<DeleteIcon />}
-              sx={{ 
+              sx={{
                 backgroundColor: '#E2231A',
                 '&:hover': { backgroundColor: '#c41e1a' }
               }}

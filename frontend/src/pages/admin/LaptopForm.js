@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import API_BASE_URL from '../../apiConfig';
 import {
   Box,
   Container,
@@ -45,7 +46,7 @@ const LaptopForm = () => {
 
   const brands = ['dell', 'hp', 'lenovo', 'asus', 'acer', 'apple', 'msi', 'samsung', 'microsoft'];
   const categories = ['entry', 'mid-range', 'consumer', 'commercial', 'gaming', 'premium'];
-  
+
   const brandSeries = {
     dell: ['inspiron', 'vostro', 'latitude', 'xps', 'gseries', 'alienware'],
     hp: ['15s', 'pavilion', 'envy', 'probook', 'omen', 'victus', 'gseries'],
@@ -68,7 +69,7 @@ const LaptopForm = () => {
   const fetchLaptop = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`/api/admin/laptops/${id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/admin/laptops/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
@@ -81,7 +82,7 @@ const LaptopForm = () => {
       }
 
       const laptop = await response.json();
-      
+
       // Convert arrays to strings for form
       setFormData({
         ...laptop,
@@ -112,7 +113,7 @@ const LaptopForm = () => {
 
     try {
       const token = localStorage.getItem('adminToken');
-      
+
       // Convert form data to API format
       const submitData = {
         ...formData,
@@ -121,7 +122,7 @@ const LaptopForm = () => {
         specs: formData.specs.split(',').map(spec => spec.trim()).filter(Boolean),
       };
 
-      const url = isEdit ? `/api/admin/laptops/${id}` : '/api/admin/laptops';
+      const url = isEdit ? `${API_BASE_URL}/api/admin/laptops/${id}` : `${API_BASE_URL}/api/admin/laptops`;
       const method = isEdit ? 'PUT' : 'POST';
 
       const response = await fetch(url, {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_BASE_URL from '../../apiConfig';
 import {
   Box,
   Container,
@@ -31,9 +32,9 @@ const AdminLogin = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [loopNum, setLoopNum] = useState(0);
   const [typingSpeed, setTypingSpeed] = useState(100);
-  
+
   const navigate = useNavigate();
-  
+
   const warningMessages = [
     "⚠️ Note: Do not share credentials with anyone.",
     "⚠️ Warning: Restricted access only.",
@@ -46,18 +47,18 @@ const AdminLogin = () => {
     const handleTyping = () => {
       const i = loopNum % warningMessages.length;
       const fullText = warningMessages[i];
-      
+
       if (!isDeleting) {
         setWarningText(fullText.substring(0, warningText.length + 1));
         setTypingSpeed(100);
-        
+
         if (warningText === fullText) {
           setTimeout(() => setIsDeleting(true), 2000);
         }
       } else {
         setWarningText(fullText.substring(0, warningText.length - 1));
         setTypingSpeed(50);
-        
+
         if (warningText === '') {
           setIsDeleting(false);
           setLoopNum(loopNum + 1);
@@ -78,7 +79,7 @@ const AdminLogin = () => {
     setLoading(true);
 
     try {
-      const response = await fetch('/api/admin/login', {
+      const response = await fetch(`${API_BASE_URL}/api/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -141,8 +142,8 @@ const AdminLogin = () => {
             }
           }}
         >
-          <SecurityIcon sx={{ 
-            color: '#E2231A', 
+          <SecurityIcon sx={{
+            color: '#E2231A',
             fontSize: 22,
             animation: 'iconPulse 2s infinite',
             '@keyframes iconPulse': {
@@ -150,11 +151,11 @@ const AdminLogin = () => {
               '50%': { transform: 'scale(1.1)' }
             }
           }} />
-          <Typography 
-            variant="body2" 
-            sx={{ 
-              color: '#E2231A', 
-              fontWeight: 500, 
+          <Typography
+            variant="body2"
+            sx={{
+              color: '#E2231A',
+              fontWeight: 500,
               fontSize: '0.85rem',
               minHeight: '20px',
               fontFamily: "'Courier New', monospace",
@@ -162,9 +163,9 @@ const AdminLogin = () => {
             }}
           >
             {warningText}
-            <Box 
-              component="span" 
-              sx={{ 
+            <Box
+              component="span"
+              sx={{
                 animation: 'blink 1s infinite',
                 '@keyframes blink': {
                   '0%, 100%': { opacity: 1 },
@@ -177,10 +178,10 @@ const AdminLogin = () => {
           </Typography>
         </Box>
 
-        <Paper 
+        <Paper
           elevation={0}
-          sx={{ 
-            p: 4, 
+          sx={{
+            p: 4,
             borderRadius: 3,
             backgroundColor: '#ffffff',
             boxShadow: '0 8px 32px rgba(226, 35, 26, 0.15)',
@@ -219,25 +220,25 @@ const AdminLogin = () => {
                 mb: 2,
                 animation: 'logoPulse 2.5s infinite',
                 '@keyframes logoPulse': {
-                  '0%': { 
-                    transform: 'scale(1)', 
-                    boxShadow: '0 0 0 0 rgba(226, 35, 26, 0.4)' 
+                  '0%': {
+                    transform: 'scale(1)',
+                    boxShadow: '0 0 0 0 rgba(226, 35, 26, 0.4)'
                   },
-                  '70%': { 
-                    transform: 'scale(1.02)', 
-                    boxShadow: '0 0 0 12px rgba(226, 35, 26, 0)' 
+                  '70%': {
+                    transform: 'scale(1.02)',
+                    boxShadow: '0 0 0 12px rgba(226, 35, 26, 0)'
                   },
-                  '100%': { 
-                    transform: 'scale(1)', 
-                    boxShadow: '0 0 0 0 rgba(226, 35, 26, 0)' 
+                  '100%': {
+                    transform: 'scale(1)',
+                    boxShadow: '0 0 0 0 rgba(226, 35, 26, 0)'
                   }
                 }
               }}
             >
-              <Typography 
-                sx={{ 
-                  fontSize: 24, 
-                  fontWeight: 900, 
+              <Typography
+                sx={{
+                  fontSize: 24,
+                  fontWeight: 900,
                   color: 'white',
                   letterSpacing: '1px',
                   fontFamily: "'Segoe UI', 'Roboto', sans-serif",
@@ -260,10 +261,10 @@ const AdminLogin = () => {
 
           {/* Error Alert */}
           {error && (
-            <Alert 
-              severity="error" 
-              sx={{ 
-                mb: 2.5, 
+            <Alert
+              severity="error"
+              sx={{
+                mb: 2.5,
                 py: 1,
                 fontSize: '0.875rem',
                 animation: 'shake 0.5s',
@@ -351,7 +352,7 @@ const AdminLogin = () => {
                       <IconButton
                         onClick={() => setShowPassword(!showPassword)}
                         edge="end"
-                        sx={{ 
+                        sx={{
                           color: '#E2231A',
                           '&:hover': { backgroundColor: 'rgba(226, 35, 26, 0.08)' }
                         }}
@@ -428,10 +429,10 @@ const AdminLogin = () => {
           <Box sx={{ mt: 3, pt: 2.5, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
             <Typography variant="caption" align="center" sx={{ color: '#9e9e9e', fontSize: '0.75rem' }}>
               By logging in, you agree to our{' '}
-              <Box 
-                component="span" 
-                sx={{ 
-                  color: '#E2231A', 
+              <Box
+                component="span"
+                sx={{
+                  color: '#E2231A',
                   textDecoration: 'underline',
                   cursor: 'pointer',
                   '&:hover': { opacity: 0.8 }
@@ -441,10 +442,10 @@ const AdminLogin = () => {
                 Terms
               </Box>{' '}
               &{' '}
-              <Box 
-                component="span" 
-                sx={{ 
-                  color: '#E2231A', 
+              <Box
+                component="span"
+                sx={{
+                  color: '#E2231A',
                   textDecoration: 'underline',
                   cursor: 'pointer',
                   '&:hover': { opacity: 0.8 }

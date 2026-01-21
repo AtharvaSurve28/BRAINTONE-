@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import API_BASE_URL from '../apiConfig';
 import { Navigate } from 'react-router-dom';
 import { CircularProgress, Box } from '@mui/material';
 
@@ -9,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkAuth = async () => {
       const token = localStorage.getItem('adminToken');
-      
+
       if (!token) {
         setIsAuthenticated(false);
         setLoading(false);
@@ -18,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
 
       // Verify token by making a test API call
       try {
-        const response = await fetch('/api/admin/laptops', {
+        const response = await fetch(`${API_BASE_URL}/api/admin/laptops`, {
           headers: {
             'Authorization': `Bearer ${token}`,
           },

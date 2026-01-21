@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import API_BASE_URL from '../apiConfig';
 import {
   Box,
   Container,
@@ -694,7 +695,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
     try {
       setLoading(true);
       console.log(`Fetching ${brandId} data...`);
-      const response = await fetch(`/api/laptops/brand/${brandId}`);
+      const response = await fetch(`${API_BASE_URL}/api/laptops/brand/${brandId}`);
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
