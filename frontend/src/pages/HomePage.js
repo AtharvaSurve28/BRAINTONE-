@@ -554,16 +554,18 @@ const HomePage = () => {
               item
               xs={12}
               md={6}
-              sx={{ display: "flex", justifyContent: "center" }}
+              sx={{ display: "flex", justifyContent: "flex-end" }}
             >
               <Paper
                 elevation={3}
                 sx={{
-                  p: { xs: 3, md: 5 },
+                  p: { xs: 3, md: 4 },
                   borderRadius: 4,
                   width: "100%",
+                  maxWidth: "500px",
                   minHeight: 320,
                   boxShadow: "0px 10px 25px rgba(0,0,0,0.1)",
+                  mt: -1, // Nudge up to align perfectly with text
                 }}
               >
                 <Typography
