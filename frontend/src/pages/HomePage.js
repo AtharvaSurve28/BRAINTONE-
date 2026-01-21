@@ -491,8 +491,8 @@ const HomePage = () => {
           <Grid container spacing={4} alignItems="flex-start">
 
             {/* LEFT SIDE — Title + Paragraph + Bullet Points */}
-            <Grid item xs={12} md={6}>
-              <Box sx={{ pr: 4 }}>
+            <Grid item xs={12} sm={6}>
+              <Box sx={{ pr: { xs: 0, sm: 2, md: 4 } }}>
 
                 {/* TITLE */}
                 <Typography
@@ -553,8 +553,8 @@ const HomePage = () => {
             <Grid
               item
               xs={12}
-              md={6}
-              sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" }, alignItems: "flex-start" }}
+              sm={6}
+              sx={{ display: "flex", justifyContent: { xs: "center", sm: "flex-end" }, alignItems: "flex-start" }}
             >
               <Paper
                 elevation={3}
