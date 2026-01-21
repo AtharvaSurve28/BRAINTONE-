@@ -488,7 +488,7 @@ const HomePage = () => {
         }
       }}>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={6} alignItems="center">
+          <Grid container spacing={6} alignItems="flex-start">
 
             {/* LEFT SIDE — Title + Paragraph + Bullet Points */}
             <Grid item xs={12} md={6}>
