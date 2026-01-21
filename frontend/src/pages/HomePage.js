@@ -565,28 +565,28 @@ const HomePage = () => {
               <Paper
                 elevation={3}
                 sx={{
-                  p: { xs: 3, md: 4 },
+                  p: { xs: 4, md: 5 },
                   borderRadius: 4,
                   width: "100%",
                   maxWidth: "500px",
-                  minHeight: 320,
+                  minHeight: 450,
                   boxShadow: "0px 10px 25px rgba(0,0,0,0.1)",
                   mt: -1, // Nudge up to align perfectly with text
                 }}
               >
                 <Typography
-                  variant="h5"
+                  variant="h4"
                   sx={{
                     fontWeight: 800,
                     color: "#e74c3c",
-                    mb: 4,
+                    mb: 5,
                     textAlign: "center",
                   }}
                 >
                   Why Choose BRAINTONE?
                 </Typography>
 
-                <Stack spacing={3}>
+                <Stack spacing={4}>
                   {[
                     {
                       icon: <GroupIcon />,
