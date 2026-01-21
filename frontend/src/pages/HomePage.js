@@ -488,7 +488,7 @@ const HomePage = () => {
         }
       }}>
         <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={6} alignItems="flex-start">
+          <Grid container spacing={4} alignItems="flex-start">
 
             {/* LEFT SIDE — Title + Paragraph + Bullet Points */}
             <Grid item xs={12} md={6}>
@@ -554,7 +554,7 @@ const HomePage = () => {
               item
               xs={12}
               md={6}
-              sx={{ display: "flex", justifyContent: "flex-end" }}
+              sx={{ display: "flex", justifyContent: { xs: "center", md: "flex-end" }, alignItems: "flex-start" }}
             >
               <Paper
                 elevation={3}
