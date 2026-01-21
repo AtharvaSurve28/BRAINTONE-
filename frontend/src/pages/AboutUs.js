@@ -1722,6 +1722,7 @@ const AboutUs = () => {
       </Snackbar>
 
       {/* Our Journey Section */}
+      {/* Our Journey Section */}
       <Container maxWidth="md" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
         <Typography variant="h3" align="center" sx={{
           fontWeight: 800,
@@ -1743,7 +1744,7 @@ const AboutUs = () => {
         </Typography>
 
         <Box sx={{ position: 'relative' }}>
-          {/* Timeline Line */}
+          {/* Timeline Line - Behind everything */}
           <Box sx={{
             position: 'absolute',
             left: '50%',
@@ -1751,18 +1752,24 @@ const AboutUs = () => {
             width: '2px',
             height: '100%',
             background: 'linear-gradient(to bottom, #e74c3c, #c0392b)',
-            display: { xs: 'none', md: 'block' }
+            display: { xs: 'none', md: 'block' },
+            zIndex: 0, // Place behind everything
           }} />
 
           {milestones.map((milestone, index) => (
-            <Box key={index} sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
-              alignItems: 'center',
-              mb: 4,
-              gap: 3,
-              animation: `fadeInUp 1s ease ${0.4 + index * 0.2}s both`
-            }}>
+            <Box
+              key={index}
+              sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
+                alignItems: 'center',
+                mb: 4,
+                gap: 3,
+                animation: `fadeInUp 1s ease ${0.4 + index * 0.2}s both`,
+                position: 'relative',
+                zIndex: 2, // Higher than timeline line
+              }}
+            >
               {/* Timeline Dot */}
               <Box sx={{
                 width: 20,
@@ -1772,7 +1779,7 @@ const AboutUs = () => {
                 border: '4px solid white',
                 boxShadow: '0 0 0 4px rgba(231, 76, 60, 0.2)',
                 position: 'relative',
-                zIndex: 2,
+                zIndex: 3, // Higher than everything
                 flexShrink: 0,
                 animation: 'pulse 2s ease-in-out infinite'
               }} />
@@ -1785,6 +1792,8 @@ const AboutUs = () => {
                   background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                   border: '1px solid rgba(231, 76, 60, 0.1)',
                   flex: 1,
+                  position: 'relative',
+                  zIndex: 2, // Higher than timeline line
                   '&:hover': {
                     boxShadow: '0 12px 28px rgba(231, 76, 60, 0.25)',
                     transform: 'translateY(-5px)',
