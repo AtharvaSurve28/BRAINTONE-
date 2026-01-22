@@ -109,9 +109,7 @@ export default function Navbar() {
         <Typography variant="h6" component={Link} to="/" onClick={handleDrawerToggle} sx={{ fontWeight: 900, color: '#e74c3c', textDecoration: 'none' }}>
           BRAINTONE
         </Typography>
-        <IconButton onClick={handleDrawerToggle}>
-          <CloseIcon />
-        </IconButton>
+        {/* Removed redundant CloseIcon here as it's now handled by the main toggle button */}
       </Box>
 
       {/* Drawer Links */}
@@ -204,7 +202,7 @@ export default function Navbar() {
       sx={{
         position: 'sticky',
         top: 0,
-        zIndex: 1200,
+        zIndex: theme.zIndex.appBar + 2, // Ensure Navbar is always on top (including of Drawer backdrop)
         transform: isScrolled ? 'translateY(-5px)' : 'translateY(0px)',
         transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
@@ -292,8 +290,16 @@ export default function Navbar() {
                 }}>
                   BRAINTONE
                 </Typography>
-                <IconButton onClick={handleDrawerToggle} sx={{ color: '#333' }}>
-                  <MenuIcon />
+                <IconButton
+                  onClick={handleDrawerToggle}
+                  sx={{
+                    color: mobileOpen ? '#e74c3c' : '#333',
+                    transition: 'all 0.3s ease',
+                    zIndex: theme.zIndex.appBar + 3,
+                    position: 'relative',
+                  }}
+                >
+                  {mobileOpen ? <CloseIcon /> : <MenuIcon />}
                 </IconButton>
               </Box>
             )}
