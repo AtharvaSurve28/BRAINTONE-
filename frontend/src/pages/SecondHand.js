@@ -902,11 +902,12 @@ const SecondHand = () => {
       >
         <Paper
           sx={{
-            width: isMobile ? '100%' : 800,
+            width: isMobile ? '95%' : 800,
             maxHeight: '90vh',
             overflow: 'auto',
             borderRadius: 3,
             position: 'relative',
+            m: 2,
             animation: 'modalSlideIn 0.4s ease-out',
             '@keyframes modalSlideIn': {
               '0%': {
@@ -924,7 +925,7 @@ const SecondHand = () => {
             <>
               {/* Modal Header */}
               <Box sx={{
-                p: 4,
+                p: { xs: 2.5, sm: 4 },
                 bgcolor: selectedCategory.color,
                 color: selectedCategory.textColor,
                 borderTopLeftRadius: 12,
@@ -954,10 +955,10 @@ const SecondHand = () => {
                       {selectedCategory.icon}
                     </Box>
                     <Box>
-                      <Typography variant="h4" component="h2" fontWeight="bold">
+                      <Typography variant={isMobile ? "h5" : "h4"} component="h2" fontWeight="bold">
                         {selectedCategory.title}
                       </Typography>
-                      <Typography variant="h6" sx={{ mt: 0.5, opacity: 0.9 }}>
+                      <Typography variant={isMobile ? "body1" : "h6"} sx={{ mt: 0.5, opacity: 0.9 }}>
                         {selectedCategory.description}
                       </Typography>
                     </Box>
@@ -987,13 +988,12 @@ const SecondHand = () => {
                 </Box>
               </Box>
 
-              {/* Modal Content */}
-              <Box sx={{ p: 4 }}>
+              <Box sx={{ p: { xs: 2, sm: 4 } }}>
                 {/* Price Highlight */}
                 <Box sx={{
                   textAlign: 'center',
-                  mb: 5,
-                  p: 4,
+                  mb: { xs: 3, sm: 5 },
+                  p: { xs: 3, sm: 4 },
                   bgcolor: alpha(selectedCategory.color, 0.1),
                   borderRadius: 3,
                   border: `2px dashed ${selectedCategory.color}`,
@@ -1007,10 +1007,10 @@ const SecondHand = () => {
                     },
                   }
                 }}>
-                  <Typography variant="h6" color="text.secondary" gutterBottom>
+                  <Typography variant="body1" color="text.secondary" gutterBottom>
                     Starting from
                   </Typography>
-                  <Typography variant="h1" fontWeight="bold" color={selectedCategory.color}>
+                  <Typography variant={isMobile ? "h3" : "h1"} fontWeight="bold" color={selectedCategory.color}>
                     {selectedCategory.startingPrice}
                   </Typography>
                 </Box>
@@ -1098,7 +1098,7 @@ const SecondHand = () => {
                   mb: 5,
                 }}>
                   <Box sx={{
-                    p: 4,
+                    p: { xs: 3, sm: 4 },
                     bgcolor: selectedCategory.color,
                     borderRadius: 3,
                     color: selectedCategory.textColor,
@@ -1115,25 +1115,25 @@ const SecondHand = () => {
                       },
                     }
                   }}>
-                    <Typography variant="h5" gutterBottom fontWeight="bold">
+                    <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold">
                       Warranty Included
                     </Typography>
-                    <Typography variant="h3" fontWeight="bold">
+                    <Typography variant={isMobile ? "h4" : "h3"} fontWeight="bold">
                       {selectedCategory.warranty}
                     </Typography>
-                    <Typography variant="body2" sx={{ mt: 2, opacity: 0.9 }}>
+                    <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
                       All our certified pre-owned laptops come with a comprehensive 1-month warranty
                     </Typography>
                   </Box>
                 </Box>
 
                 {/* Contact Us Button Section */}
-                <Divider sx={{ my: 5 }} />
+                <Divider sx={{ my: { xs: 3, sm: 5 } }} />
                 <Box sx={{ textAlign: 'center', mb: 4 }}>
-                  <Typography variant="h5" gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold" color="#8B0000">
                     Want to Know More?
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
                     Contact our sales team for personalized recommendations and special offers
                   </Typography>
                   <Button
@@ -1173,10 +1173,10 @@ const SecondHand = () => {
                 {/* Store Visit Section with Google Maps Links */}
                 <Divider sx={{ my: 5 }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h5" : "h4"} gutterBottom fontWeight="bold" color="#8B0000">
                     For Hands-On Experience Visit Our Stores
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
                     See and feel the quality of our certified pre-owned laptops in person
                   </Typography>
 

@@ -775,17 +775,18 @@ const Accessories = () => {
       >
         <Paper
           sx={{
-            width: isMobile ? '100%' : 800,
+            width: isMobile ? '95%' : 800,
             maxHeight: '90vh',
             overflow: 'auto',
             borderRadius: 3,
             position: 'relative',
+            m: 2,
           }}
         >
           {selectedAccessory && (
             <>
               <Box sx={{
-                p: 4,
+                p: { xs: 2.5, sm: 4 },
                 bgcolor: selectedAccessory.color,
                 color: '#ffffff',
                 borderTopLeftRadius: 12,
@@ -794,10 +795,10 @@ const Accessories = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
                     <Box>
-                      <Typography variant="h4" component="h2" fontWeight="bold">
+                      <Typography variant={isMobile ? "h5" : "h4"} component="h2" fontWeight="bold">
                         {selectedAccessory.name}
                       </Typography>
-                      <Typography variant="h6" sx={{ mt: 0.5, opacity: 0.9 }}>
+                      <Typography variant={isMobile ? "body1" : "h6"} sx={{ mt: 0.5, opacity: 0.9 }}>
                         {selectedAccessory.description}
                       </Typography>
                     </Box>
@@ -813,19 +814,19 @@ const Accessories = () => {
                 </Box>
               </Box>
 
-              <Box sx={{ p: 4 }}>
+              <Box sx={{ p: { xs: 2, sm: 4 } }}>
                 <Box sx={{
                   textAlign: 'center',
-                  mb: 5,
-                  p: 4,
+                  mb: { xs: 3, sm: 5 },
+                  p: { xs: 3, sm: 4 },
                   bgcolor: alpha(selectedAccessory.color, 0.1),
                   borderRadius: 3,
                   border: `2px dashed ${selectedAccessory.color}`,
                 }}>
-                  <Typography variant="h6" color="text.secondary" gutterBottom>
+                  <Typography variant="body1" color="text.secondary" gutterBottom>
                     Starting from
                   </Typography>
-                  <Typography variant="h1" fontWeight="bold" color={selectedAccessory.color}>
+                  <Typography variant={isMobile ? "h3" : "h1"} fontWeight="bold" color={selectedAccessory.color}>
                     {selectedAccessory.startingPrice}
                   </Typography>
                 </Box>
@@ -880,7 +881,7 @@ const Accessories = () => {
                     mb: 5,
                   }}>
                     <Box sx={{
-                      p: 4,
+                      p: { xs: 3, sm: 4 },
                       bgcolor: selectedAccessory.color,
                       borderRadius: 3,
                       color: '#ffffff',
@@ -888,25 +889,25 @@ const Accessories = () => {
                       width: { xs: '100%', sm: '80%', md: '70%' },
                       maxWidth: '500px',
                     }}>
-                      <Typography variant="h5" gutterBottom fontWeight="bold">
+                      <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold">
                         Warranty Included
                       </Typography>
-                      <Typography variant="h3" fontWeight="bold">
+                      <Typography variant={isMobile ? "h4" : "h3"} fontWeight="bold">
                         {selectedAccessory.warranty}
                       </Typography>
-                      <Typography variant="body2" sx={{ mt: 2, opacity: 0.9 }}>
+                      <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
                         All our premium accessories come with comprehensive warranty
                       </Typography>
                     </Box>
                   </Box>
                 )}
 
-                <Divider sx={{ my: 5 }} />
+                <Divider sx={{ my: { xs: 3, sm: 5 } }} />
                 <Box sx={{ textAlign: 'center', mb: 4 }}>
-                  <Typography variant="h5" gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold" color="#8B0000">
                     Want to Know More?
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
                     Contact our team for personalized recommendations and bulk orders
                   </Typography>
                   <Button
@@ -935,10 +936,10 @@ const Accessories = () => {
 
                 <Divider sx={{ my: 5 }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant="h4" gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h5" : "h4"} gutterBottom fontWeight="bold" color="#8B0000">
                     For Hands-On Experience Visit Our Stores
                   </Typography>
-                  <Typography variant="body1" color="text.secondary" sx={{ mb: 4, maxWidth: 600, mx: 'auto' }}>
+                  <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
                     See and feel the quality of our accessories in person
                   </Typography>
 
