@@ -4,9 +4,6 @@ import {
   Container,
   Typography,
   Card,
-  Fade,
-  Slide,
-  Zoom,
 } from '@mui/material';
 import {
   MailOutline,
@@ -16,10 +13,11 @@ import {
   Twitter,
   LinkedIn,
   Facebook,
-  AccessTime,
-  Place,
 } from '@mui/icons-material';
+import Place from '@mui/icons-material/Place';
+import AccessTime from '@mui/icons-material/AccessTime';
 import Footer from '../components/Footer';
+import FadeInSection from '../components/FadeInSection';
 
 const Contact = () => {
   const contactInfo = [
@@ -141,7 +139,7 @@ const Contact = () => {
       `}</style>
 
       {/* Header with Background Image */}
-      <Fade in={true} timeout={1000}>
+      <FadeInSection fullWidth>
         <Box
           sx={{
             position: 'relative',
@@ -165,56 +163,50 @@ const Contact = () => {
           }}
         >
           <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
-            <Slide direction="down" in={true} timeout={800}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: 900,
-                  mb: 3,
-                  fontSize: { xs: '2.5rem', md: '3.8rem' },
-                  color: 'white',
-                  textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-                  letterSpacing: '1px',
-                }}
-              >
-                Contact Braintone
-              </Typography>
-            </Slide>
-            <Slide direction="up" in={true} timeout={1000}>
-              <Typography
-                variant="h5"
-                sx={{
-                  fontWeight: 600,
-                  mb: 2,
-                  fontSize: { xs: '1.3rem', md: '1.8rem' },
-                  color: 'white',
-                  textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-                  maxWidth: '800px',
-                  mx: 'auto',
-                }}
-              >
-                26+ Years of Excellence in Laptop Services
-              </Typography>
-            </Slide>
-            <Slide direction="up" in={true} timeout={1200}>
-              <Typography variant="h6" sx={{
-                maxWidth: '700px',
-                mx: 'auto',
-                fontSize: { xs: '1rem', md: '1.2rem' },
-                fontWeight: 400,
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 900,
+                mb: 3,
+                fontSize: { xs: '2.5rem', md: '3.8rem' },
+                color: 'white',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                letterSpacing: '1px',
+              }}
+            >
+              Contact Braintone
+            </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                fontWeight: 600,
+                mb: 2,
+                fontSize: { xs: '1.3rem', md: '1.8rem' },
                 color: 'white',
                 textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-              }}>
-                We're here to help and answer any questions you might have
-              </Typography>
-            </Slide>
+                maxWidth: '800px',
+                mx: 'auto',
+              }}
+            >
+              26+ Years of Excellence in Laptop Services
+            </Typography>
+            <Typography variant="h6" sx={{
+              maxWidth: '700px',
+              mx: 'auto',
+              fontSize: { xs: '1rem', md: '1.2rem' },
+              fontWeight: 400,
+              color: 'white',
+              textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+            }}>
+              We're here to help and answer any questions you might have
+            </Typography>
           </Container>
         </Box>
-      </Fade>
+      </FadeInSection>
 
       {/* Contact Info Cards with Staggered Animation */}
-      <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
-        <Fade in={true} timeout={1200}>
+      <FadeInSection>
+        <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
           <Typography
             variant="h3"
             align="center"
@@ -238,17 +230,11 @@ const Contact = () => {
           >
             Get In Touch
           </Typography>
-        </Fade>
 
-        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
-          {contactInfo.map((info, index) => (
-            <Zoom
-              key={index}
-              in={true}
-              timeout={800}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
+            {contactInfo.map((info, index) => (
               <Card
+                key={index}
                 component={info.link ? "a" : "div"}
                 href={info.link}
                 target={info.link ? "_blank" : undefined}
@@ -330,13 +316,13 @@ const Contact = () => {
                   </Typography>
                 )}
               </Card>
-            </Zoom>
-          ))}
-        </Box>
-      </Container>
+            ))}
+          </Box>
+        </Container>
+      </FadeInSection>
 
       {/* Store Locations Section */}
-      <Fade in={true} timeout={1400}>
+      <FadeInSection>
         <Container maxWidth="lg" sx={{ py: 4, position: 'relative', zIndex: 1 }}>
           <Typography
             variant="h3"
@@ -364,166 +350,159 @@ const Contact = () => {
 
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', mb: 8 }}>
             {/* Fort Location Card */}
-            <Zoom in={true} timeout={1000}>
-              <Card
-                component="a"
-                href="https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  p: 4,
-                  textAlign: 'center',
-                  height: '280px',
-                  width: '420px',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: '0 12px 35px rgba(231, 76, 60, 0.2)',
-                  border: '2px solid rgba(231, 76, 60, 0.2)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  animation: 'bounce 3s ease-in-out infinite',
-                  animationDelay: '0.2s',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                  },
-                  '&:hover': {
-                    transform: 'translateY(-15px) scale(1.05)',
-                    boxShadow: '0 25px 50px rgba(231, 76, 60, 0.35)',
-                    background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                    border: '2px solid rgba(231, 76, 60, 0.4)',
-                    animation: 'none',
-                  },
-                }}
-              >
-                <Place sx={{
-                  fontSize: 56,
-                  color: '#e74c3c',
-                  mb: 2,
-                  animation: 'float 3s ease-in-out infinite',
-                  animationDelay: '0.5s',
-                }} />
-                <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
-                  Fort Location
-                </Typography>
-                <Typography variant="h6" sx={{ color: '#e74c3c', mb: 1, fontWeight: 600 }}>
-                  Braintone Laptop Services
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
-                  1st Floor, 17A, Bahubali Bldg, Flora Fountain
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
-                  Phone: 081697 98826
-                </Typography>
-                <Typography variant="caption" sx={{
-                  color: '#e74c3c',
-                  fontWeight: 800,
-                  backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                  px: 2,
-                  py: 1,
-                  borderRadius: 2,
-                  animation: 'shadowPulse 2s infinite',
-                }}>
-                  📍 Click to open in Google Maps
-                </Typography>
-              </Card>
-            </Zoom>
+            <Card
+              component="a"
+              href="https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                p: 4,
+                textAlign: 'center',
+                height: '280px',
+                width: '420px',
+                background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                boxShadow: '0 12px 35px rgba(231, 76, 60, 0.2)',
+                border: '2px solid rgba(231, 76, 60, 0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                position: 'relative',
+                overflow: 'hidden',
+                animation: 'bounce 3s ease-in-out infinite',
+                animationDelay: '0.2s',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
+                },
+                '&:hover': {
+                  transform: 'translateY(-15px) scale(1.05)',
+                  boxShadow: '0 25px 50px rgba(231, 76, 60, 0.35)',
+                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                  border: '2px solid rgba(231, 76, 60, 0.4)',
+                  animation: 'none',
+                },
+              }}
+            >
+              <Place sx={{
+                fontSize: 56,
+                color: '#e74c3c',
+                mb: 2,
+                animation: 'float 3s ease-in-out infinite',
+                animationDelay: '0.5s',
+              }} />
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
+                Fort Location
+              </Typography>
+              <Typography variant="h6" sx={{ color: '#e74c3c', mb: 1, fontWeight: 600 }}>
+                Braintone Laptop Services
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
+                1st Floor, 17A, Bahubali Bldg, Flora Fountain
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
+                Phone: 081697 98826
+              </Typography>
+              <Typography variant="caption" sx={{
+                color: '#e74c3c',
+                fontWeight: 800,
+                backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                animation: 'shadowPulse 2s infinite',
+              }}>
+                📍 Click to open in Google Maps
+              </Typography>
+            </Card>
 
             {/* Vile Parle Location Card */}
-            <Zoom in={true} timeout={1000} style={{ transitionDelay: '300ms' }}>
-              <Card
-                component="a"
-                href="https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  p: 4,
-                  textAlign: 'center',
-                  height: '280px',
-                  width: '420px',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: '0 12px 35px rgba(192, 57, 43, 0.2)',
-                  border: '2px solid rgba(192, 57, 43, 0.2)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  animation: 'bounce 3s ease-in-out infinite',
-                  animationDelay: '0.5s',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #c0392b, #8B0000)',
-                  },
-                  '&:hover': {
-                    transform: 'translateY(-15px) scale(1.05)',
-                    boxShadow: '0 25px 50px rgba(192, 57, 43, 0.35)',
-                    background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                    border: '2px solid rgba(192, 57, 43, 0.4)',
-                    animation: 'none',
-                  },
-                }}
-              >
-                <Place sx={{
-                  fontSize: 56,
-                  color: '#c0392b',
-                  mb: 2,
-                  animation: 'float 3s ease-in-out infinite',
-                  animationDelay: '0.8s',
-                }} />
-                <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
-                  Vile Parle Location
-                </Typography>
-                <Typography variant="h6" sx={{ color: '#c0392b', mb: 1, fontWeight: 600 }}>
-                  Braintone Laptop Services
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
-                  1st Floor, Prime Mall, Irla, Vile Parle West
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
-                  Phone: 092233 33357
-                </Typography>
-                <Typography variant="caption" sx={{
-                  color: '#c0392b',
-                  fontWeight: 800,
-                  backgroundColor: 'rgba(192, 57, 43, 0.1)',
-                  px: 2,
-                  py: 1,
-                  borderRadius: 2,
-                  animation: 'shadowPulse 2s infinite',
-                }}>
-                  📍 Click to open in Google Maps
-                </Typography>
-              </Card>
-            </Zoom>
+            <Card
+              component="a"
+              href="https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai"
+              target="_blank"
+              rel="noopener noreferrer"
+              sx={{
+                p: 4,
+                textAlign: 'center',
+                height: '280px',
+                width: '420px',
+                background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                boxShadow: '0 12px 35px rgba(192, 57, 43, 0.2)',
+                border: '2px solid rgba(192, 57, 43, 0.2)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                textDecoration: 'none',
+                cursor: 'pointer',
+                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                position: 'relative',
+                overflow: 'hidden',
+                animation: 'bounce 3s ease-in-out infinite',
+                animationDelay: '0.5s',
+                '&::before': {
+                  content: '""',
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  height: '4px',
+                  background: 'linear-gradient(90deg, #c0392b, #8B0000)',
+                },
+                '&:hover': {
+                  transform: 'translateY(-15px) scale(1.05)',
+                  boxShadow: '0 25px 50px rgba(192, 57, 43, 0.35)',
+                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                  border: '2px solid rgba(192, 57, 43, 0.4)',
+                  animation: 'none',
+                },
+              }}
+            >
+              <Place sx={{
+                fontSize: 56,
+                color: '#c0392b',
+                mb: 2,
+                animation: 'float 3s ease-in-out infinite',
+                animationDelay: '0.8s',
+              }} />
+              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
+                Vile Parle Location
+              </Typography>
+              <Typography variant="h6" sx={{ color: '#c0392b', mb: 1, fontWeight: 600 }}>
+                Braintone Laptop Services
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
+                1st Floor, Prime Mall, Irla, Vile Parle West
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
+                Phone: 092233 33357
+              </Typography>
+              <Typography variant="caption" sx={{
+                color: '#c0392b',
+                fontWeight: 800,
+                backgroundColor: 'rgba(192, 57, 43, 0.1)',
+                px: 2,
+                py: 1,
+                borderRadius: 2,
+                animation: 'shadowPulse 2s infinite',
+              }}>
+                📍 Click to open in Google Maps
+              </Typography>
+            </Card>
           </Box>
         </Container>
-      </Fade>
+      </FadeInSection>
 
-      {/* Footer with Background Image */}
-      <Slide direction="up" in={true} timeout={1000}>
-        <Box>
-          <Footer fullFooter={false} />
-        </Box>
-      </Slide>
+      <Box>
+        <Footer fullFooter={false} />
+      </Box>
     </Box>
   );
 };
