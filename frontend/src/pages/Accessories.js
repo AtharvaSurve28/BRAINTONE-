@@ -33,6 +33,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Footer from '../components/Footer';
+import FadeInSection from '../components/FadeInSection';
 
 // Animations - EXACTLY SAME as laptops page
 const shimmer = keyframes`
@@ -399,291 +400,283 @@ const Accessories = () => {
         ))}
       </Box>
 
-      {/* HERO SECTION - EXACTLY SAME STRUCTURE as laptops */}
-      <Box
-        sx={{
-          position: 'relative',
-          color: 'white',
-          py: { xs: 6, md: 8 },
-          textAlign: 'center',
-          overflow: 'hidden',
-          minHeight: '40vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: 'url(https://st2.depositphotos.com/2272943/5953/i/450/depositphotos_59537013-stock-photo-computer-peripherals-laptop-accessories-composition.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'brightness(0.4)',
-            zIndex: 0,
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '5px',
-            background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-            backgroundSize: '400% 100%',
-            animation: `${shimmer} 6s linear infinite`,
-            zIndex: 1,
-          }
-        }}
-      >
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
-          <Typography
-            variant="h1"
-            sx={{
-              textAlign: 'center',
-              fontWeight: 900,
-              fontSize: { xs: '2.5rem', md: '4rem' },
-              letterSpacing: '-1.5px',
-              color: 'white',
-              textShadow: '0 4px 12px rgba(0,0,0,0.5)',
-              lineHeight: 1.1,
-              mb: 2,
-              animation: `${floatAnimation} 4s ease-in-out infinite`,
-            }}
-          >
-            Premium Accessories
-          </Typography>
+      {/* HERO SECTION - EXACT SAME STRUCTURE as laptops */}
+      <FadeInSection fullWidth>
+        <Box
+          sx={{
+            position: 'relative',
+            color: 'white',
+            py: { xs: 6, md: 8 },
+            textAlign: 'center',
+            overflow: 'hidden',
+            minHeight: '40vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundImage: 'url(https://st2.depositphotos.com/2272943/5953/i/450/depositphotos_59537013-stock-photo-computer-peripherals-laptop-accessories-composition.jpg)',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              filter: 'brightness(0.4)',
+              zIndex: 0,
+            },
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              bottom: 0,
+              left: 0,
+              right: 0,
+              height: '5px',
+              background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+              backgroundSize: '400% 100%',
+              animation: `${shimmer} 6s linear infinite`,
+              zIndex: 1,
+            }
+          }}
+        >
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                textAlign: 'center',
+                fontWeight: 900,
+                fontSize: { xs: '2.5rem', md: '4rem' },
+                letterSpacing: '-1.5px',
+                color: 'white',
+                textShadow: '0 4px 12px rgba(0,0,0,0.5)',
+                lineHeight: 1.1,
+                mb: 2,
+                animation: `${floatAnimation} 4s ease-in-out infinite`,
+              }}
+            >
+              Premium Accessories
+            </Typography>
 
-          <Divider sx={{
-            width: '120px',
-            height: '4px',
-            background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
-            backgroundSize: '300% 100%',
-            mx: 'auto',
-            mb: 3,
-            animation: `${shimmer} 4s linear infinite`,
-            borderRadius: '2px',
-          }} />
-
-          <Typography
-            variant="h5"
-            sx={{
-              textAlign: 'center',
-              color: 'rgba(255, 255, 255, 0.95)',
-              fontWeight: 400,
-              fontSize: '1.2rem',
-              maxWidth: '700px',
+            <Divider sx={{
+              width: '120px',
+              height: '4px',
+              background: 'linear-gradient(90deg, #FFD700, #FFFFFF, #FFD700)',
+              backgroundSize: '300% 100%',
               mx: 'auto',
-              lineHeight: 1.6,
-              textShadow: '0 2px 8px rgba(0,0,0,0.5)',
-              letterSpacing: '0.3px',
-            }}
-          >
-            Enhance your laptop experience with our premium accessories collection
-          </Typography>
-        </Container>
-      </Box>
+              mb: 3,
+              animation: `${shimmer} 4s linear infinite`,
+              borderRadius: '2px',
+            }} />
+
+            <Typography
+              variant="h5"
+              sx={{
+                textAlign: 'center',
+                color: 'rgba(255, 255, 255, 0.95)',
+                fontWeight: 400,
+                fontSize: '1.2rem',
+                maxWidth: '700px',
+                mx: 'auto',
+                lineHeight: 1.6,
+                textShadow: '0 2px 8px rgba(0,0,0,0.5)',
+                letterSpacing: '0.3px',
+              }}
+            >
+              Enhance your laptop experience with our premium accessories collection
+            </Typography>
+          </Container>
+        </Box>
+      </FadeInSection>
 
       {/* Accessories Cards Section - USING EXACT SAME LAYOUT as laptops */}
-      <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
-        {/* Accessories Grid - EXACT SAME as laptops grid */}
-        <Grid container spacing={4} justifyContent="center" alignItems="stretch">
-          {accessories.map((accessory, index) => (
-            <Grid item xs={12} sm={6} md={4} key={accessory.id} sx={{ display: 'flex' }}>
-              <Card
-                onClick={() => handleOpenModal(accessory)}
-                sx={{
-                  width: '100%',
-                  height: 420,
-                  display: 'flex',
-                  flexDirection: 'column',
-                  backgroundColor: '#ffffff',
-                  borderRadius: 3,
-                  boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  border: `2px solid ${accessory.color}20`,
-                  overflow: 'hidden',
-                  animation: `${bounceAnimation} 2s ease-in-out infinite`,
-                  animationDelay: `${index * 0.2}s`,
-                  position: 'relative',
-                  zIndex: 2,
-                  cursor: 'pointer',
-                  '&:hover': {
-                    boxShadow: `0 20px 50px ${accessory.color}40`,
-                    transform: 'translateY(-15px) scale(1.05)',
-                    borderColor: accessory.color,
-                    animationPlayState: 'paused',
-                    '& .accessory-image': {
-                      transform: 'scale(1.15)',
-                    },
-                    '& .accessory-name': {
-                      color: accessory.color,
-                      transform: 'scale(1.05)',
-                    },
-                    '& .explore-text': {
-                      opacity: 1,
-                      transform: 'translateY(0)',
-                    }
-                  },
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    background: `linear-gradient(135deg, ${accessory.color}05 0%, ${accessory.color}02 100%)`,
-                    borderRadius: 3,
-                    zIndex: 1,
-                  }
-                }}
-              >
-                {/* Image Container - EXACT SAME as laptops */}
-                <Box
+      <FadeInSection>
+        <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
+          {/* Accessories Grid - EXACT SAME as laptops grid */}
+          <Grid container spacing={4} justifyContent="center" alignItems="stretch">
+            {accessories.map((accessory, index) => (
+              <Grid item xs={12} sm={6} md={4} key={accessory.id} sx={{ display: 'flex' }}>
+                <Card
+                  onClick={() => handleOpenModal(accessory)}
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    p: 0,
-                    height: 250,
-                    position: 'relative',
-                    overflow: 'hidden',
-                    zIndex: 2,
-                    borderBottom: `3px solid ${accessory.color}`,
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: `linear-gradient(135deg, ${accessory.color}10 0%, ${accessory.color}00 100%)`,
-                    }
-                  }}
-                >
-                  {/* Explore Button (Visible on hover) */}
-                  <Box
-                    className="explore-text"
-                    sx={{
-                      position: 'absolute',
-                      bottom: 20,
-                      left: '50%',
-                      transform: 'translateX(-50%) translateY(20px)',
-                      backgroundColor: accessory.color,
-                      color: 'white',
-                      px: 3,
-                      py: 1,
-                      borderRadius: 2,
-                      fontSize: '0.9rem',
-                      fontWeight: 600,
-                      opacity: 0,
-                      transition: 'all 0.3s ease',
-                      zIndex: 3,
-                      boxShadow: `0 4px 15px ${accessory.color}40`,
-                    }}
-                  >
-                    View Details →
-                  </Box>
-
-                  <CardMedia
-                    component="img"
-                    image={accessory.image}
-                    alt={accessory.name}
-                    className="accessory-image"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
-                      zIndex: 2,
-                      position: 'relative',
-                      display: 'block',
-                    }}
-                  />
-                </Box>
-
-                {/* Card Content - EXACT SAME STRUCTURE as laptops */}
-                <CardContent
-                  sx={{
-                    textAlign: 'center',
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
-                    py: 3,
-                    px: 3,
-                    flexGrow: 1,
+                    width: '100%',
+                    height: 420,
                     display: 'flex',
                     flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    backgroundColor: '#ffffff',
+                    borderRadius: 3,
+                    boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    border: `2px solid ${accessory.color}20`,
+                    overflow: 'hidden',
+                    animation: `${bounceAnimation} 2s ease-in-out infinite`,
+                    animationDelay: `${index * 0.2}s`,
                     position: 'relative',
                     zIndex: 2,
-                    '&::before': {
-                      content: '""',
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      height: '3px',
-                      background: `linear-gradient(90deg, transparent, ${accessory.color}, transparent)`,
+                    cursor: 'pointer',
+                    '&:hover': {
+                      boxShadow: `0 20px 50px ${accessory.color}40`,
+                      transform: 'translateY(-15px) scale(1.05)',
+                      borderColor: accessory.color,
+                      animationPlayState: 'paused',
+                      '& .accessory-image': {
+                        transform: 'scale(1.15)',
+                      },
+                      '& .accessory-name': {
+                        color: accessory.color,
+                        transform: 'scale(1.05)',
+                      }
                     }
                   }}
                 >
-                  {/* Name - EXACT SAME as laptops brand name */}
-                  <Typography
-                    variant="h5"
-                    className="accessory-name"
+                  {/* Image Container - EXACT SAME as laptops */}
+                  <Box
                     sx={{
-                      fontWeight: 800,
-                      color: '#333333',
-                      fontSize: '1.8rem',
-                      transition: 'all 0.4s ease',
-                      letterSpacing: '-0.5px',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                      mb: 1,
-                    }}
-                  >
-                    {accessory.name}
-                  </Typography>
-
-                  {/* Description */}
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      color: '#666',
-                      fontSize: '0.95rem',
-                      lineHeight: 1.5,
-                      mb: 2,
-                      minHeight: '3em', // reserve ~2 lines so all cards align
-                      display: '-webkit-box',
-                      WebkitLineClamp: 2,
-                      WebkitBoxOrient: 'vertical',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      p: 0,
+                      height: 250,
+                      position: 'relative',
                       overflow: 'hidden',
+                      zIndex: 2,
+                      borderBottom: `3px solid ${accessory.color}`,
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: `linear-gradient(135deg, ${accessory.color}10 0%, ${accessory.color}00 100%)`,
+                      }
                     }}
                   >
-                    {accessory.description}
-                  </Typography>
+                    {/* Explore Button (Visible on hover) */}
+                    <Box
+                      className="explore-text"
+                      sx={{
+                        position: 'absolute',
+                        bottom: 20,
+                        left: '50%',
+                        transform: 'translateX(-50%) translateY(20px)',
+                        backgroundColor: accessory.color,
+                        color: 'white',
+                        px: 3,
+                        py: 1,
+                        borderRadius: 2,
+                        fontSize: '0.9rem',
+                        fontWeight: 600,
+                        opacity: 0,
+                        transition: 'all 0.3s ease',
+                        zIndex: 3,
+                        boxShadow: `0 4px 15px ${accessory.color}40`,
+                      }}
+                    >
+                      View Details →
+                    </Box>
 
-                  {/* Price */}
-                  <Typography
-                    variant="h6"
+                    <CardMedia
+                      component="img"
+                      image={accessory.image}
+                      alt={accessory.name}
+                      className="accessory-image"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        transition: 'transform 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                        zIndex: 2,
+                        position: 'relative',
+                        display: 'block',
+                      }}
+                    />
+                  </Box>
+
+                  {/* Card Content - EXACT SAME STRUCTURE as laptops */}
+                  <CardContent
                     sx={{
-                      fontWeight: 700,
-                      color: accessory.color,
-                      fontSize: '1.4rem',
-                      mt: 1,
+                      textAlign: 'center',
+                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      py: 3,
+                      px: 3,
+                      flexGrow: 1,
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative',
+                      zIndex: 2,
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        height: '3px',
+                        background: `linear-gradient(90deg, transparent, ${accessory.color}, transparent)`,
+                      }
                     }}
                   >
-                    {accessory.startingPrice}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
+                    {/* Name - EXACT SAME as laptops brand name */}
+                    <Typography
+                      variant="h5"
+                      className="accessory-name"
+                      sx={{
+                        fontWeight: 800,
+                        color: '#333333',
+                        fontSize: '1.8rem',
+                        transition: 'all 0.4s ease',
+                        letterSpacing: '-0.5px',
+                        textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                        mb: 1,
+                      }}
+                    >
+                      {accessory.name}
+                    </Typography>
 
-        {/* Bottom Content Section - EXACT SAME as laptops */}
+                    {/* Description */}
+                    <Typography
+                      variant="body2"
+                      sx={{
+                        color: '#666',
+                        fontSize: '0.95rem',
+                        lineHeight: 1.5,
+                        mb: 2,
+                        minHeight: '3em', // reserve ~2 lines so all cards align
+                        display: '-webkit-box',
+                        WebkitLineClamp: 2,
+                        WebkitBoxOrient: 'vertical',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      {accessory.description}
+                    </Typography>
+
+                    {/* Price */}
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 700,
+                        color: accessory.color,
+                        fontSize: '1.4rem',
+                        mt: 1,
+                      }}
+                    >
+                      {accessory.startingPrice}
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </FadeInSection>
+
+      {/* Bottom Content Section - EXACT SAME as laptops */}
+      <FadeInSection>
         <Box sx={{
           textAlign: 'center',
           mt: 10,
+          mb: 10,
           p: 6,
           borderRadius: 3,
           backgroundColor: 'rgba(255, 255, 255, 0.9)',
@@ -765,7 +758,7 @@ const Accessories = () => {
             Get Accessories Recommendation
           </Button>
         </Box>
-      </Container>
+      </FadeInSection>
       <Footer fullFooter={true} />
 
       {/* Popup Modal - Keep the same */}

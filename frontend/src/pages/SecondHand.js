@@ -39,6 +39,7 @@ import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Footer from '../components/Footer';
+import FadeInSection from '../components/FadeInSection';
 
 const SecondHand = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -602,47 +603,48 @@ const SecondHand = () => {
 
 
       {/* Hero Section - Clean Background Image - Very Little Short */}
-      <Box sx={{
-        position: 'relative',
-        color: 'white',
-        py: { xs: 6.5, md: 8.5 },
-        textAlign: 'center',
-        overflow: 'hidden',
-        minHeight: { xs: '53vh', md: '43vh' },
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center 25%',
-          backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.4)',
-          zIndex: 0,
-          transform: 'scale(1.05)',
-        },
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          bottom: 0,
-          left: 0,
-          right: 0,
-          height: '4px',
-          background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-          backgroundSize: '400% 100%',
-          animation: 'shimmer 6s linear infinite',
-          zIndex: 1,
-        }
-      }}>
+      <FadeInSection fullWidth>
+        <Box sx={{
+          position: 'relative',
+          color: 'white',
+          py: { xs: 6.5, md: 8.5 },
+          textAlign: 'center',
+          overflow: 'hidden',
+          minHeight: { xs: '53vh', md: '43vh' },
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center 25%',
+            backgroundRepeat: 'no-repeat',
+            filter: 'brightness(0.4)',
+            zIndex: 0,
+            transform: 'scale(1.05)',
+          },
+          '&::after': {
+            content: '""',
+            position: 'absolute',
+            bottom: 0,
+            left: 0,
+            right: 0,
+            height: '4px',
+            background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
+            backgroundSize: '400% 100%',
+            animation: 'shimmer 6s linear infinite',
+            zIndex: 1,
+          }
+        }}>
 
-        {/* Add CSS keyframes directly */}
-        <style>{`
+          {/* Add CSS keyframes directly */}
+          <style>{`
     @keyframes shimmer {
       0% { background-position: 0% 0%; }
       100% { background-position: 400% 0%; }
@@ -653,112 +655,113 @@ const SecondHand = () => {
     }
   `}</style>
 
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
-          <Typography
-            variant="h1"
-            sx={{
-              textAlign: 'center',
-              fontWeight: 900,
-              fontSize: { xs: '2.3rem', md: '3.1rem' },
-              letterSpacing: '-1.1px',
-              color: 'white',
-              textShadow: '0 4px 12px rgba(0,0,0,0.7)',
-              lineHeight: 1.1,
-              mb: 2.5,
-              animation: 'float 4s ease-in-out infinite',
-            }}
-          >
-            Certified Pre-Owned Laptops
-          </Typography>
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 3.5 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                textAlign: 'center',
+                fontWeight: 900,
+                fontSize: { xs: '2.3rem', md: '3.1rem' },
+                letterSpacing: '-1.1px',
+                color: 'white',
+                textShadow: '0 4px 12px rgba(0,0,0,0.7)',
+                lineHeight: 1.1,
+                mb: 2.5,
+                animation: 'float 4s ease-in-out infinite',
+              }}
+            >
+              Certified Pre-Owned Laptops
+            </Typography>
 
-          <Typography
-            variant="h5"
-            sx={{
-              textAlign: 'center',
-              color: 'rgba(255, 255, 255, 0.95)',
-              fontWeight: 400,
-              fontSize: { xs: '1.05rem', md: '1.25rem' },
-              maxWidth: '800px',
-              mx: 'auto',
-              lineHeight: 1.45,
-              textShadow: '0 2px 8px rgba(0,0,0,0.7)',
-              letterSpacing: '0.23px',
-              mb: 3.5,
-            }}
-          >
-            Professionally tested refurbished laptops with warranty
-          </Typography>
+            <Typography
+              variant="h5"
+              sx={{
+                textAlign: 'center',
+                color: 'rgba(255, 255, 255, 0.95)',
+                fontWeight: 400,
+                fontSize: { xs: '1.05rem', md: '1.25rem' },
+                maxWidth: '800px',
+                mx: 'auto',
+                lineHeight: 1.45,
+                textShadow: '0 2px 8px rgba(0,0,0,0.7)',
+                letterSpacing: '0.23px',
+                mb: 3.5,
+              }}
+            >
+              Professionally tested refurbished laptops with warranty
+            </Typography>
 
-          {/* Features Chips - Slightly smaller */}
-          <Stack
-            direction={{ xs: 'column', sm: 'row' }}
-            spacing={1.8}
-            sx={{
-              justifyContent: 'center',
-              maxWidth: '730px',
-              mx: 'auto',
-            }}
-          >
-            <Chip
-              icon={<CheckCircleIcon />}
-              label="10-Point Quality Check"
+            {/* Features Chips - Slightly smaller */}
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              spacing={1.8}
               sx={{
-                bgcolor: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '0.93rem',
-                py: 1.3,
-                px: 1.8,
-                animation: 'float 3s ease-in-out infinite',
-                '& .MuiChip-icon': {
-                  color: '#FFD700',
-                  fontSize: '1.1rem',
-                },
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
+                justifyContent: 'center',
+                maxWidth: '730px',
+                mx: 'auto',
               }}
-            />
-            <Chip
-              icon={<CheckCircleIcon />}
-              label="Warranty Included"
-              sx={{
-                bgcolor: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '0.93rem',
-                py: 1.3,
-                px: 1.8,
-                animation: 'float 3s ease-in-out infinite 0.5s',
-                '& .MuiChip-icon': {
-                  color: '#FFD700',
-                  fontSize: '1.1rem',
-                },
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-              }}
-            />
-            <Chip
-              icon={<CheckCircleIcon />}
-              label="Money-Back Guarantee"
-              sx={{
-                bgcolor: 'rgba(0, 0, 0, 0.5)',
-                color: 'white',
-                fontWeight: 'bold',
-                fontSize: '0.93rem',
-                py: 1.3,
-                px: 1.8,
-                animation: 'float 3s ease-in-out infinite 1s',
-                '& .MuiChip-icon': {
-                  color: '#FFD700',
-                  fontSize: '1.1rem',
-                },
-                backdropFilter: 'blur(4px)',
-                border: '1px solid rgba(255, 255, 255, 0.2)',
-              }}
-            />
-          </Stack>
-        </Container>
-      </Box>
+            >
+              <Chip
+                icon={<CheckCircleIcon />}
+                label="10-Point Quality Check"
+                sx={{
+                  bgcolor: 'rgba(0, 0, 0, 0.5)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: '0.93rem',
+                  py: 1.3,
+                  px: 1.8,
+                  animation: 'float 3s ease-in-out infinite',
+                  '& .MuiChip-icon': {
+                    color: '#FFD700',
+                    fontSize: '1.1rem',
+                  },
+                  backdropFilter: 'blur(4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                }}
+              />
+              <Chip
+                icon={<CheckCircleIcon />}
+                label="Warranty Included"
+                sx={{
+                  bgcolor: 'rgba(0, 0, 0, 0.5)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: '0.93rem',
+                  py: 1.3,
+                  px: 1.8,
+                  animation: 'float 3s ease-in-out infinite 0.5s',
+                  '& .MuiChip-icon': {
+                    color: '#FFD700',
+                    fontSize: '1.1rem',
+                  },
+                  backdropFilter: 'blur(4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                }}
+              />
+              <Chip
+                icon={<CheckCircleIcon />}
+                label="Money-Back Guarantee"
+                sx={{
+                  bgcolor: 'rgba(0, 0, 0, 0.5)',
+                  color: 'white',
+                  fontWeight: 'bold',
+                  fontSize: '0.93rem',
+                  py: 1.3,
+                  px: 1.8,
+                  animation: 'float 3s ease-in-out infinite 1s',
+                  '& .MuiChip-icon': {
+                    color: '#FFD700',
+                    fontSize: '1.1rem',
+                  },
+                  backdropFilter: 'blur(4px)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                }}
+              />
+            </Stack>
+          </Container>
+        </Box>
+      </FadeInSection>
 
       {/* Main Content with Bubble Background */}
       <Box sx={{
@@ -779,129 +782,109 @@ const SecondHand = () => {
           }}
         >
           {/* Category Grid Section */}
-          <Box sx={{
-            mb: 10,
-            position: 'relative',
-            zIndex: 2,
-          }}>
-            <Typography
-              variant="h2"
-              component="h2"
-              textAlign="center"
-              gutterBottom
-              fontWeight="bold"
-              color="#8B0000"
-              sx={{
-                mb: 2,
-                fontSize: { xs: '2.25rem', md: '3rem' },
-                animation: 'titleGlow 3s ease-in-out infinite',
-                position: 'relative',
-                zIndex: 2,
-                '@keyframes titleGlow': {
-                  '0%, 100%': {
-                    textShadow: '0 0 10px rgba(139, 0, 0, 0.3)',
-                  },
-                  '50%': {
-                    textShadow: '0 0 20px rgba(139, 0, 0, 0.6)',
-                  },
-                }
-              }}
-            >
-              Browse By Category
-            </Typography>
-            <Typography
-              variant="h5"
-              textAlign="center"
-              color="text.secondary"
-              sx={{
-                mb: 8,
-                maxWidth: 700,
-                mx: 'auto',
-                fontSize: { xs: '1.25rem', md: '1.5rem' },
-                position: 'relative',
-                zIndex: 2,
-              }}
-            >
-              Select a category to explore our certified pre-owned laptops
-            </Typography>
+          <FadeInSection>
+            <Box sx={{
+              mb: 10,
+              position: 'relative',
+              zIndex: 2,
+            }}>
+              <Typography
+                variant="h2"
+                component="h2"
+                textAlign="center"
+                gutterBottom
+                fontWeight="bold"
+                color="#8B0000"
+                sx={{
+                  mb: 2,
+                  fontSize: { xs: '2.25rem', md: '3rem' },
+                  animation: 'titleGlow 3s ease-in-out infinite',
+                  position: 'relative',
+                  zIndex: 2,
+                  '@keyframes titleGlow': {
+                    '0%, 100%': {
+                      textShadow: '0 0 10px rgba(139, 0, 0, 0.3)',
+                    },
+                    '50%': {
+                      textShadow: '0 0 20px rgba(139, 0, 0, 0.6)',
+                    },
+                  }
+                }}
+              >
+                Browse By Category
+              </Typography>
+              <Typography
+                variant="h5"
+                textAlign="center"
+                color="text.secondary"
+                sx={{
+                  mb: 8,
+                  maxWidth: 700,
+                  mx: 'auto',
+                  fontSize: { xs: '1.25rem', md: '1.5rem' },
+                  position: 'relative',
+                  zIndex: 2,
+                }}
+              >
+                Select a category to explore our certified pre-owned laptops
+              </Typography>
 
-            {/* First Row - 3 boxes horizontally */}
-            <Grid
-              container
-              spacing={4}
-              sx={{
-                mb: 6,
-                justifyContent: 'center',
-                position: 'relative',
-                zIndex: 2,
-              }}
-            >
-              {categories.slice(0, 3).map((category, index) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  key={category.id}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    animation: `slideInUp 0.8s ease-out ${index * 0.2}s both`,
-                    '@keyframes slideInUp': {
-                      '0%': {
-                        opacity: 0,
-                        transform: 'translateY(50px)',
-                      },
-                      '100%': {
-                        opacity: 1,
-                        transform: 'translateY(0)',
-                      },
-                    }
-                  }}
-                >
-                  <CategoryCard category={category} />
-                </Grid>
-              ))}
-            </Grid>
+              {/* First Row - 3 boxes horizontally */}
+              <Grid
+                container
+                spacing={4}
+                sx={{
+                  mb: 6,
+                  justifyContent: 'center',
+                  position: 'relative',
+                  zIndex: 2,
+                }}
+              >
+                {categories.slice(0, 3).map((category, index) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    key={category.id}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <CategoryCard category={category} />
+                  </Grid>
+                ))}
+              </Grid>
 
-            {/* Second Row - 3 boxes horizontally */}
-            <Grid
-              container
-              spacing={4}
-              sx={{
-                justifyContent: 'center',
-                position: 'relative',
-                zIndex: 2,
-              }}
-            >
-              {categories.slice(3, 6).map((category, index) => (
-                <Grid
-                  item
-                  xs={12}
-                  sm={6}
-                  md={4}
-                  key={category.id}
-                  sx={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    animation: `slideInUp 0.8s ease-out ${index * 0.2 + 0.6}s both`,
-                    '@keyframes slideInUp': {
-                      '0%': {
-                        opacity: 0,
-                        transform: 'translateY(50px)',
-                      },
-                      '100%': {
-                        opacity: 1,
-                        transform: 'translateY(0)',
-                      },
-                    }
-                  }}
-                >
-                  <CategoryCard category={category} />
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
+              {/* Second Row - 3 boxes horizontally */}
+              <Grid
+                container
+                spacing={4}
+                sx={{
+                  justifyContent: 'center',
+                  position: 'relative',
+                  zIndex: 2,
+                }}
+              >
+                {categories.slice(3, 6).map((category, index) => (
+                  <Grid
+                    item
+                    xs={12}
+                    sm={6}
+                    md={4}
+                    key={category.id}
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'center',
+                    }}
+                  >
+                    <CategoryCard category={category} />
+                  </Grid>
+                ))}
+              </Grid>
+            </Box>
+          </FadeInSection>
         </Container>
       </Box>
 

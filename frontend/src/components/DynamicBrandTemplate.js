@@ -46,6 +46,7 @@ import {
 } from '@mui/icons-material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Footer from './Footer';
+import FadeInSection from './FadeInSection';
 
 // Animations
 const gradientText = keyframes`
@@ -508,6 +509,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
                       top: 0,
                       left: 0,
                       right: 0,
+                      bottom: 0,
                       height: 4,
                       backgroundColor: category?.color || '#3B82F6'
                     },
@@ -778,247 +780,249 @@ const DynamicBrandTemplate = ({ brandId }) => {
     if (!hasLaptops) return null;
 
     return (
-      <Box sx={{ mb: 10, mt: 10 }}>
-        {/* Clean Category Header */}
-        <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
-          <Box sx={{
-            width: 48,
-            height: 48,
-            borderRadius: 2,
-            backgroundColor: alpha(category.color, 0.1),
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: category.color,
-            border: `2px solid ${alpha(category.color, 0.2)}`
-          }}>
-            {category.icon}
-          </Box>
-          <Box>
-            <Typography variant="h4" sx={{
-              fontWeight: 700,
+      <FadeInSection>
+        <Box sx={{ mb: 10, mt: 10 }}>
+          {/* Clean Category Header */}
+          <Box sx={{ mb: 4, display: 'flex', alignItems: 'center', flexWrap: 'wrap', gap: 2 }}>
+            <Box sx={{
+              width: 48,
+              height: 48,
+              borderRadius: 2,
+              backgroundColor: alpha(category.color, 0.1),
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
               color: category.color,
-              mb: 0.5
+              border: `2px solid ${alpha(category.color, 0.2)}`
             }}>
-              {category.name} Laptops
-              <Typography component="span" variant="h6" sx={{
-                fontWeight: 600,
-                color: 'text.secondary',
-                ml: 1
+              {category.icon}
+            </Box>
+            <Box>
+              <Typography variant="h4" sx={{
+                fontWeight: 700,
+                color: category.color,
+                mb: 0.5
               }}>
-                ({laptops.length} models)
+                {category.name} Laptops
+                <Typography component="span" variant="h6" sx={{
+                  fontWeight: 600,
+                  color: 'text.secondary',
+                  ml: 1
+                }}>
+                  ({laptops.length} models)
+                </Typography>
               </Typography>
-            </Typography>
-            <Typography variant="body1" sx={{
-              color: 'text.secondary',
-              fontSize: '1.1rem'
-            }}>
-              {category.description} | Price range: {category.priceRange}
-            </Typography>
-          </Box>
-        </Box>
-
-        {/* Laptop Grid */}
-        <Box sx={{
-          display: 'grid',
-          gridTemplateColumns: {
-            xs: '1fr',
-            sm: 'repeat(2, 1fr)',
-            md: 'repeat(3, 1fr)',
-            lg: 'repeat(4, 1fr)'
-          },
-          gap: 3,
-          width: '100%',
-          alignItems: 'stretch'
-        }}>
-          {displayLaptops.map((laptop, index) => (
-            <Card
-              key={laptop.id || index}
-              sx={{
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                borderRadius: 2,
-                overflow: 'hidden',
-                border: `1px solid ${alpha('#e0e0e0', 0.8)}`,
-                transition: 'all 0.3s ease',
-                boxSizing: 'border-box',
-                minWidth: 0,
-                maxWidth: '100%',
-                minHeight: 480,
-                backgroundColor: '#ffffff',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: `0 12px 28px ${alpha(category.color, 0.15)}`,
-                  borderColor: alpha(category.color, 0.3)
-                }
-              }}
-            >
-              <CardMedia
-                component="img"
-                image={laptop.image}
-                alt={laptop.name}
-                sx={{
-                  height: 160,
-                  objectFit: 'cover',
-                  width: '100%',
-                  flexShrink: 0
-                }}
-              />
-
-              <CardContent sx={{
-                flex: '1 0 auto',
-                p: 2.5,
-                display: 'flex',
-                flexDirection: 'column',
-                minHeight: 0
+              <Typography variant="body1" sx={{
+                color: 'text.secondary',
+                fontSize: '1.1rem'
               }}>
-                {/* Name and Price */}
-                <Box sx={{ mb: 1.5 }}>
-                  <Typography variant="h6" sx={{
-                    fontWeight: 700,
-                    fontSize: '1rem',
-                    lineHeight: 1.3,
-                    mb: 0.5,
-                    color: '#1a1a1a'
-                  }}>
-                    {laptop.name}
-                  </Typography>
-                  <Typography variant="h5" sx={{
-                    fontWeight: 800,
-                    color: category.color,
-                    fontSize: '1.25rem'
-                  }}>
-                    {laptop.price}
-                  </Typography>
-                </Box>
+                {category.description} | Price range: {category.priceRange}
+              </Typography>
+            </Box>
+          </Box>
 
-                {/* Best For */}
-                <Box sx={{ mb: 2 }}>
-                  <Typography
-                    variant="caption"
-                    sx={{
-                      display: 'block',
-                      color: category.color,
-                      backgroundColor: alpha(category.color, 0.1),
-                      px: 1.5,
-                      py: 0.75,
-                      borderRadius: 1,
-                      fontWeight: 600,
-                      fontSize: '0.75rem',
-                      lineHeight: 1.2
-                    }}
-                  >
-                    ⭐ Best for: {laptop.bestFor}
-                  </Typography>
-                </Box>
+          {/* Laptop Grid */}
+          <Box sx={{
+            display: 'grid',
+            gridTemplateColumns: {
+              xs: '1fr',
+              sm: 'repeat(2, 1fr)',
+              md: 'repeat(3, 1fr)',
+              lg: 'repeat(4, 1fr)'
+            },
+            gap: 3,
+            width: '100%',
+            alignItems: 'stretch'
+          }}>
+            {displayLaptops.map((laptop, index) => (
+              <Card
+                key={laptop.id || index}
+                sx={{
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  border: `1px solid ${alpha('#e0e0e0', 0.8)}`,
+                  transition: 'all 0.3s ease',
+                  boxSizing: 'border-box',
+                  minWidth: 0,
+                  maxWidth: '100%',
+                  minHeight: 480,
+                  backgroundColor: '#ffffff',
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: `0 12px 28px ${alpha(category.color, 0.15)}`,
+                    borderColor: alpha(category.color, 0.3)
+                  }
+                }}
+              >
+                <CardMedia
+                  component="img"
+                  image={laptop.image}
+                  alt={laptop.name}
+                  sx={{
+                    height: 160,
+                    objectFit: 'cover',
+                    width: '100%',
+                    flexShrink: 0
+                  }}
+                />
 
-                {/* Specs Container */}
-                <Box sx={{
-                  flex: 1,
-                  mb: 2,
+                <CardContent sx={{
+                  flex: '1 0 auto',
+                  p: 2.5,
+                  display: 'flex',
+                  flexDirection: 'column',
                   minHeight: 0
                 }}>
-                  {laptop.specs?.map((spec, specIndex) => (
+                  {/* Name and Price */}
+                  <Box sx={{ mb: 1.5 }}>
+                    <Typography variant="h6" sx={{
+                      fontWeight: 700,
+                      fontSize: '1rem',
+                      lineHeight: 1.3,
+                      mb: 0.5,
+                      color: '#1a1a1a'
+                    }}>
+                      {laptop.name}
+                    </Typography>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 800,
+                      color: category.color,
+                      fontSize: '1.25rem'
+                    }}>
+                      {laptop.price}
+                    </Typography>
+                  </Box>
+
+                  {/* Best For */}
+                  <Box sx={{ mb: 2 }}>
                     <Typography
-                      key={specIndex}
-                      variant="body2"
+                      variant="caption"
                       sx={{
-                        color: '#666666',
-                        mb: 0.75,
-                        fontSize: '0.85rem',
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: 0.75,
-                        lineHeight: 1.4
+                        display: 'block',
+                        color: category.color,
+                        backgroundColor: alpha(category.color, 0.1),
+                        px: 1.5,
+                        py: 0.75,
+                        borderRadius: 1,
+                        fontWeight: 600,
+                        fontSize: '0.75rem',
+                        lineHeight: 1.2
                       }}
                     >
-                      <Box
-                        sx={{
-                          width: 4,
-                          height: 4,
-                          borderRadius: '50%',
-                          backgroundColor: alpha(category.color, 0.8),
-                          flexShrink: 0,
-                          mt: 0.75
-                        }}
-                      />
-                      <span>{spec}</span>
+                      ⭐ Best for: {laptop.bestFor}
                     </Typography>
-                  ))}
-                </Box>
+                  </Box>
 
-                {/* View Details Button */}
-                <Box sx={{
-                  mt: 'auto',
-                  pt: 1.5,
-                  flexShrink: 0
-                }}>
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    size="medium"
-                    endIcon={<ArrowForward />}
-                    onClick={() => handleOpenModal(laptop, category)}
-                    sx={{
-                      backgroundColor: category.color,
-                      color: '#ffffff',
-                      fontWeight: 600,
-                      fontSize: '0.9rem',
-                      py: 1,
-                      borderRadius: 1,
-                      textTransform: 'none',
-                      '&:hover': {
+                  {/* Specs Container */}
+                  <Box sx={{
+                    flex: 1,
+                    mb: 2,
+                    minHeight: 0
+                  }}>
+                    {laptop.specs?.map((spec, specIndex) => (
+                      <Typography
+                        key={specIndex}
+                        variant="body2"
+                        sx={{
+                          color: '#666666',
+                          mb: 0.75,
+                          fontSize: '0.85rem',
+                          display: 'flex',
+                          alignItems: 'flex-start',
+                          gap: 0.75,
+                          lineHeight: 1.4
+                        }}
+                      >
+                        <Box
+                          sx={{
+                            width: 4,
+                            height: 4,
+                            borderRadius: '50%',
+                            backgroundColor: alpha(category.color, 0.8),
+                            flexShrink: 0,
+                            mt: 0.75
+                          }}
+                        />
+                        <span>{spec}</span>
+                      </Typography>
+                    ))}
+                  </Box>
+
+                  {/* View Details Button */}
+                  <Box sx={{
+                    mt: 'auto',
+                    pt: 1.5,
+                    flexShrink: 0
+                  }}>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      size="medium"
+                      endIcon={<ArrowForward />}
+                      onClick={() => handleOpenModal(laptop, category)}
+                      sx={{
                         backgroundColor: category.color,
-                        opacity: 0.9,
-                        transform: 'translateY(-2px)',
-                        boxShadow: `0 6px 16px ${alpha(category.color, 0.3)}`
-                      }
-                    }}
-                  >
-                    View Full Details
-                  </Button>
-                </Box>
-              </CardContent>
-            </Card>
-          ))}
-        </Box>
-
-        {/* Show "View All" / "Show Less" button if more than 3 laptops */}
-        {laptops.length > 3 && (
-          <Box sx={{ textAlign: 'center', mt: 4 }}>
-            <Button
-              variant="outlined"
-              size="large"
-              onClick={() => toggleCategoryExpansion(category.key)}
-              sx={{
-                color: category.color,
-                borderColor: alpha(category.color, 0.4),
-                fontWeight: 600,
-                fontSize: '0.95rem',
-                px: 4,
-                py: 1.5,
-                borderRadius: 2,
-                textTransform: 'none',
-                '&:hover': {
-                  borderColor: category.color,
-                  backgroundColor: alpha(category.color, 0.05),
-                  transform: 'translateY(-2px)'
-                }
-              }}
-            >
-              {isExpanded
-                ? `Show Less (3 of ${laptops.length})`
-                : `View All ${laptops.length} Models`}
-              <ArrowForward sx={{
-                ml: 1,
-                transform: isExpanded ? 'rotate(-90deg)' : 'rotate(0deg)',
-                transition: 'transform 0.3s ease'
-              }} />
-            </Button>
+                        color: '#ffffff',
+                        fontWeight: 600,
+                        fontSize: '0.9rem',
+                        py: 1,
+                        borderRadius: 1,
+                        textTransform: 'none',
+                        '&:hover': {
+                          backgroundColor: category.color,
+                          opacity: 0.9,
+                          transform: 'translateY(-2px)',
+                          boxShadow: `0 6px 16px ${alpha(category.color, 0.3)}`
+                        }
+                      }}
+                    >
+                      View Full Details
+                    </Button>
+                  </Box>
+                </CardContent>
+              </Card>
+            ))}
           </Box>
-        )}
-      </Box>
+
+          {/* Show "View All" / "Show Less" button if more than 3 laptops */}
+          {laptops.length > 3 && (
+            <Box sx={{ textAlign: 'center', mt: 4 }}>
+              <Button
+                variant="outlined"
+                size="large"
+                onClick={() => toggleCategoryExpansion(category.key)}
+                sx={{
+                  color: category.color,
+                  borderColor: alpha(category.color, 0.4),
+                  fontWeight: 600,
+                  fontSize: '0.95rem',
+                  px: 4,
+                  py: 1.5,
+                  borderRadius: 2,
+                  textTransform: 'none',
+                  '&:hover': {
+                    borderColor: category.color,
+                    backgroundColor: alpha(category.color, 0.05),
+                    transform: 'translateY(-2px)'
+                  }
+                }}
+              >
+                {isExpanded
+                  ? `Show Less (3 of ${laptops.length})`
+                  : `View All ${laptops.length} Models`}
+                <ArrowForward sx={{
+                  ml: 1,
+                  transform: isExpanded ? 'rotate(-90deg)' : 'rotate(0deg)',
+                  transition: 'transform 0.3s ease'
+                }} />
+              </Button>
+            </Box>
+          )}
+        </Box>
+      </FadeInSection>
     );
   };
 
@@ -1032,53 +1036,55 @@ const DynamicBrandTemplate = ({ brandId }) => {
       overflow: 'hidden'
     }}>
       {/* Hero Header - BRAND SPECIFIC */}
-      <Box sx={{
-        minHeight: '30vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'relative',
-        overflow: 'hidden',
-        background: brandColors.gradient,
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.12) 0%, transparent 60%)'
-        }
-      }}>
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
-          <Typography
-            variant="h1"
-            sx={{
-              fontWeight: 900,
-              fontSize: { xs: '2rem', md: '3rem' },
-              background: brandColors.textGradient,
-              backgroundSize: '300% 300%',
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
-              animation: `${gradientText} 8s ease infinite`,
-              mb: 2
-            }}
-          >
-            {brandData.brandName} Laptop Series
-          </Typography>
-          <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 2 }}>
-            Organized by Levels and Categories
-          </Typography>
-          <Divider sx={{
-            width: '100px',
-            height: '3px',
-            background: '#90E0EF',
-            mx: 'auto',
-            borderRadius: '2px'
-          }} />
-        </Container>
-      </Box>
+      <FadeInSection fullWidth>
+        <Box sx={{
+          minHeight: '30vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          position: 'relative',
+          overflow: 'hidden',
+          background: brandColors.gradient,
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.12) 0%, transparent 60%)'
+          }
+        }}>
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2, textAlign: 'center', py: 6 }}>
+            <Typography
+              variant="h1"
+              sx={{
+                fontWeight: 900,
+                fontSize: { xs: '2rem', md: '3rem' },
+                background: brandColors.textGradient,
+                backgroundSize: '300% 300%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: `${gradientText} 8s ease infinite`,
+                mb: 2
+              }}
+            >
+              {brandData.brandName} Laptop Series
+            </Typography>
+            <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 2 }}>
+              Organized by Levels and Categories
+            </Typography>
+            <Divider sx={{
+              width: '100px',
+              height: '3px',
+              background: '#90E0EF',
+              mx: 'auto',
+              borderRadius: '2px'
+            }} />
+          </Container>
+        </Box>
+      </FadeInSection>
 
       {/* Main Content */}
       <Container maxWidth="lg" sx={{
@@ -1091,189 +1097,195 @@ const DynamicBrandTemplate = ({ brandId }) => {
         zIndex: 1
       }}>
         {/* Series Selection Tabs - DARK BLACK DEFAULT, BRAND COLOR WHEN SELECTED */}
-        {brandData.series && brandData.series.length > 0 && (
-          <Box sx={{ mb: 6 }}>
-            <Typography variant="h6" sx={{
-              fontWeight: 700,
-              mb: 3,
-              color: '#000000',
-              fontSize: '1.1rem',
-              letterSpacing: '0.5px'
-            }}>
-              SELECT SERIES:
-            </Typography>
+        <FadeInSection>
+          {brandData.series && brandData.series.length > 0 && (
+            <Box sx={{ mb: 6 }}>
+              <Typography variant="h6" sx={{
+                fontWeight: 700,
+                mb: 3,
+                color: '#000000',
+                fontSize: '1.1rem',
+                letterSpacing: '0.5px'
+              }}>
+                SELECT SERIES:
+              </Typography>
 
-            <Paper
-              elevation={0}
-              sx={{
-                borderRadius: 2,
-                p: 1,
-                backgroundColor: '#f8f9fa',
-                border: '1px solid #e9ecef'
-              }}
-            >
-              <Tabs
-                value={selectedSeries}
-                onChange={handleSeriesChange}
-                variant="scrollable"
-                scrollButtons="auto"
+              <Paper
+                elevation={0}
                 sx={{
-                  minHeight: 48,
-                  '& .MuiTabs-scroller': {
-                    paddingBottom: '4px'
-                  },
-                  '& .MuiTabs-indicator': {
-                    backgroundColor: brandAccentColor,
-                    height: 3,
-                    borderRadius: 2
-                  },
-                  '& .MuiTab-root': {
-                    fontWeight: 600,
-                    fontSize: '0.95rem',
-                    textTransform: 'none',
-                    minHeight: 48,
-                    padding: '8px 20px',
-                    transition: 'all 0.2s ease',
-                    borderBottom: '3px solid transparent',
-                    color: '#000000', // DEFAULT: All tabs are dark black
-                    '&:hover': {
-                      backgroundColor: alpha(brandAccentColor, 0.05),
-                      borderBottom: `3px solid ${alpha(brandAccentColor, 0.2)}`,
-                      color: brandAccentColor // Hover: Change to brand color
-                    }
-                  },
-                  '& .Mui-selected': {
-                    color: `${brandAccentColor} !important`, // SELECTED: Only selected tab gets brand color
-                    fontWeight: 700
-                  }
+                  borderRadius: 2,
+                  p: 1,
+                  backgroundColor: '#f8f9fa',
+                  border: '1px solid #e9ecef'
                 }}
               >
-                {brandData.series.map((series) => (
-                  <Tab
-                    key={series.name}
-                    label={series.displayName}
-                    value={series.name}
-                  />
-                ))}
-              </Tabs>
-            </Paper>
-          </Box>
-        )}
+                <Tabs
+                  value={selectedSeries}
+                  onChange={handleSeriesChange}
+                  variant="scrollable"
+                  scrollButtons="auto"
+                  sx={{
+                    minHeight: 48,
+                    '& .MuiTabs-scroller': {
+                      paddingBottom: '4px'
+                    },
+                    '& .MuiTabs-indicator': {
+                      backgroundColor: brandAccentColor,
+                      height: 3,
+                      borderRadius: 2
+                    },
+                    '& .MuiTab-root': {
+                      fontWeight: 600,
+                      fontSize: '0.95rem',
+                      textTransform: 'none',
+                      minHeight: 48,
+                      padding: '8px 20px',
+                      transition: 'all 0.2s ease',
+                      borderBottom: '3px solid transparent',
+                      color: '#000000', // DEFAULT: All tabs are dark black
+                      '&:hover': {
+                        backgroundColor: alpha(brandAccentColor, 0.05),
+                        borderBottom: `3px solid ${alpha(brandAccentColor, 0.2)}`,
+                        color: brandAccentColor // Hover: Change to brand color
+                      }
+                    },
+                    '& .Mui-selected': {
+                      color: `${brandAccentColor} !important`, // SELECTED: Only selected tab gets brand color
+                      fontWeight: 700
+                    }
+                  }}
+                >
+                  {brandData.series.map((series) => (
+                    <Tab
+                      key={series.name}
+                      label={series.displayName}
+                      value={series.name}
+                    />
+                  ))}
+                </Tabs>
+              </Paper>
+            </Box>
+          )}
+        </FadeInSection>
 
         {/* Selected Series Header - BRAND COLOR THEME */}
-        {selectedSeriesData && (
-          <Box sx={{
-            mb: 6,
-            p: 4,
-            borderRadius: 2,
-            backgroundColor: '#f8f9fa',
-            borderLeft: `4px solid ${brandAccentColor}`,
-            boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
-          }}>
-            <Typography variant="h3" sx={{
-              fontWeight: 800,
-              color: '#000000',
-              mb: 1.5,
-              fontSize: { xs: '2rem', md: '2.5rem' }
+        <FadeInSection>
+          {selectedSeriesData && (
+            <Box sx={{
+              mb: 6,
+              p: 4,
+              borderRadius: 2,
+              backgroundColor: '#f8f9fa',
+              borderLeft: `4px solid ${brandAccentColor}`,
+              boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
             }}>
-              {selectedSeriesData.displayName || selectedSeries} Series
-            </Typography>
-            <Typography variant="body1" sx={{
-              color: '#495057',
-              fontSize: '1.1rem',
-              lineHeight: 1.6,
-              mb: 2
-            }}>
-              {selectedSeriesData.description || `${selectedSeriesData.displayName} series laptops designed for optimal performance and reliability.`}
-            </Typography>
-
-            {/* Series Categories */}
-            <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: 'wrap' }}>
-              <Typography variant="body2" sx={{
-                fontWeight: 600,
+              <Typography variant="h3" sx={{
+                fontWeight: 800,
                 color: '#000000',
-                mr: 1
+                mb: 1.5,
+                fontSize: { xs: '2rem', md: '2.5rem' }
               }}>
-                Available in:
+                {selectedSeriesData.displayName || selectedSeries} Series
               </Typography>
-              {selectedSeriesData.categories?.map((category) => {
-                const cat = categories.find(c => c.name === category);
-                return cat ? (
-                  <Chip
-                    key={category}
-                    label={category}
-                    size="medium"
-                    sx={{
-                      backgroundColor: alpha(cat.color, 0.1),
-                      color: cat.color,
-                      fontWeight: 600,
-                      border: `1px solid ${alpha(cat.color, 0.3)}`,
-                      '&:hover': {
-                        backgroundColor: alpha(cat.color, 0.2),
-                        transform: 'translateY(-1px)'
-                      }
-                    }}
-                  />
-                ) : (
-                  <Chip
-                    key={category}
-                    label={category}
-                    size="medium"
-                    sx={{
-                      backgroundColor: alpha('#000000', 0.05),
-                      color: '#000000',
-                      fontWeight: 600,
-                      border: `1px solid ${alpha('#000000', 0.2)}`
-                    }}
-                  />
-                );
-              })}
-            </Stack>
-          </Box>
-        )}
+              <Typography variant="body1" sx={{
+                color: '#495057',
+                fontSize: '1.1rem',
+                lineHeight: 1.6,
+                mb: 2
+              }}>
+                {selectedSeriesData.description || `${selectedSeriesData.displayName} series laptops designed for optimal performance and reliability.`}
+              </Typography>
+
+              {/* Series Categories */}
+              <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: 'wrap' }}>
+                <Typography variant="body2" sx={{
+                  fontWeight: 600,
+                  color: '#000000',
+                  mr: 1
+                }}>
+                  Available in:
+                </Typography>
+                {selectedSeriesData.categories?.map((category) => {
+                  const cat = categories.find(c => c.name === category);
+                  return cat ? (
+                    <Chip
+                      key={category}
+                      label={category}
+                      size="medium"
+                      sx={{
+                        backgroundColor: alpha(cat.color, 0.1),
+                        color: cat.color,
+                        fontWeight: 600,
+                        border: `1px solid ${alpha(cat.color, 0.3)}`,
+                        '&:hover': {
+                          backgroundColor: alpha(cat.color, 0.2),
+                          transform: 'translateY(-1px)'
+                        }
+                      }}
+                    />
+                  ) : (
+                    <Chip
+                      key={category}
+                      label={category}
+                      size="medium"
+                      sx={{
+                        backgroundColor: alpha('#000000', 0.05),
+                        color: '#000000',
+                        fontWeight: 600,
+                        border: `1px solid ${alpha('#000000', 0.2)}`
+                      }}
+                    />
+                  );
+                })}
+              </Stack>
+            </Box>
+          )}
+        </FadeInSection>
 
         {/* Warning Message - WITH MOVING ANIMATION */}
-        <Box
-          sx={{
-            position: 'relative',
-            overflow: 'hidden',
-            mb: 6,
-            py: 1.5,
-            backgroundColor: alpha('#ff0000', 0.08),
-            borderRadius: 2,
-            border: `1px solid ${alpha('#ff0000', 0.2)}`
-          }}
-        >
-          <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', whiteSpace: 'nowrap' }}>
-            <Typography
-              variant="body1"
-              sx={{
-                display: 'inline-block',
-                color: '#ff0000',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                animation: `${scrollLeftToRight} 20s linear infinite`,
-                px: 2
-              }}
-            >
-              ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
-            </Typography>
-            <Typography
-              variant="body1"
-              sx={{
-                display: 'inline-block',
-                color: '#ff0000',
-                fontWeight: 700,
-                fontSize: '0.95rem',
-                animation: `${scrollLeftToRight} 20s linear infinite`,
-                px: 2,
-                animationDelay: '-10s'
-              }}
-            >
-              ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
-            </Typography>
+        <FadeInSection>
+          <Box
+            sx={{
+              position: 'relative',
+              overflow: 'hidden',
+              mb: 6,
+              py: 1.5,
+              backgroundColor: alpha('#ff0000', 0.08),
+              borderRadius: 2,
+              border: `1px solid ${alpha('#ff0000', 0.2)}`
+            }}
+          >
+            <Box sx={{ position: 'relative', width: '100%', overflow: 'hidden', whiteSpace: 'nowrap' }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  display: 'inline-block',
+                  color: '#ff0000',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  animation: `${scrollLeftToRight} 20s linear infinite`,
+                  px: 2
+                }}
+              >
+                ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
+              </Typography>
+              <Typography
+                variant="body1"
+                sx={{
+                  display: 'inline-block',
+                  color: '#ff0000',
+                  fontWeight: 700,
+                  fontSize: '0.95rem',
+                  animation: `${scrollLeftToRight} 20s linear infinite`,
+                  px: 2,
+                  animationDelay: '-10s'
+                }}
+              >
+                ⚠️ Note: Limited models shown online. Visit our store for complete collection & expert consultation. ⚠️
+              </Typography>
+            </Box>
           </Box>
-        </Box>
+        </FadeInSection>
 
         {/* Categories with Laptops - Increased spacing between them */}
         {categories
@@ -1281,84 +1293,86 @@ const DynamicBrandTemplate = ({ brandId }) => {
           .map((category) => renderCategorySection(category))}
 
         {/* Legend Explanation */}
-        <Box sx={{
-          mt: 12,
-          pt: 8,
-          borderTop: `1px solid ${alpha('#000000', 0.1)}`
-        }}>
-          <Typography variant="h5" sx={{
-            fontWeight: 700,
-            mb: 6,
-            color: '#1f2937'
+        <FadeInSection>
+          <Box sx={{
+            mt: 12,
+            pt: 8,
+            borderTop: `1px solid ${alpha('#000000', 0.1)}`
           }}>
-            Category Guide
-          </Typography>
-          <Grid container spacing={3}>
-            {categories.map((category) => (
-              <Grid item xs={12} sm={6} md={4} key={category.name}>
-                <Box sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  mb: 2,
-                  p: 2,
-                  borderRadius: 2,
-                  backgroundColor: alpha('#f9fafb', 0.8),
-                  border: `1px solid ${alpha('#e5e7eb', 0.8)}`,
-                  transition: 'all 0.3s ease',
-                  '&:hover': {
-                    backgroundColor: '#ffffff',
-                    borderColor: alpha(category.color, 0.3),
-                    transform: 'translateY(-2px)',
-                    boxShadow: `0 4px 12px ${alpha(category.color, 0.1)}`
-                  }
-                }}>
+            <Typography variant="h5" sx={{
+              fontWeight: 700,
+              mb: 6,
+              color: '#1f2937'
+            }}>
+              Category Guide
+            </Typography>
+            <Grid container spacing={3}>
+              {categories.map((category) => (
+                <Grid item xs={12} sm={6} md={4} key={category.name}>
                   <Box sx={{
-                    width: 40,
-                    height: 40,
-                    borderRadius: 2,
-                    backgroundColor: alpha(category.color, 0.1),
                     display: 'flex',
                     alignItems: 'center',
-                    justifyContent: 'center',
-                    mr: 2,
-                    color: category.color,
-                    border: `1px solid ${alpha(category.color, 0.2)}`
+                    mb: 2,
+                    p: 2,
+                    borderRadius: 2,
+                    backgroundColor: alpha('#f9fafb', 0.8),
+                    border: `1px solid ${alpha('#e5e7eb', 0.8)}`,
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      backgroundColor: '#ffffff',
+                      borderColor: alpha(category.color, 0.3),
+                      transform: 'translateY(-2px)',
+                      boxShadow: `0 4px 12px ${alpha(category.color, 0.1)}`
+                    }
                   }}>
-                    {category.icon}
-                  </Box>
-                  <Box>
-                    <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827' }}>
-                      {category.name}
-                    </Typography>
-                    <Typography variant="caption" sx={{
-                      color: '#6b7280',
-                      display: 'block'
-                    }}>
-                      {category.description}
-                    </Typography>
-                    <Typography variant="caption" sx={{
+                    <Box sx={{
+                      width: 40,
+                      height: 40,
+                      borderRadius: 2,
+                      backgroundColor: alpha(category.color, 0.1),
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mr: 2,
                       color: category.color,
-                      fontWeight: 600,
-                      display: 'block',
-                      mt: 0.5
+                      border: `1px solid ${alpha(category.color, 0.2)}`
                     }}>
-                      {category.priceRange}
-                    </Typography>
+                      {category.icon}
+                    </Box>
+                    <Box>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827' }}>
+                        {category.name}
+                      </Typography>
+                      <Typography variant="caption" sx={{
+                        color: '#6b7280',
+                        display: 'block'
+                      }}>
+                        {category.description}
+                      </Typography>
+                      <Typography variant="caption" sx={{
+                        color: category.color,
+                        fontWeight: 600,
+                        display: 'block',
+                        mt: 0.5
+                      }}>
+                        {category.priceRange}
+                      </Typography>
+                    </Box>
                   </Box>
-                </Box>
-              </Grid>
-            ))}
-          </Grid>
-          <Typography variant="body2" sx={{
-            mt: 6,
-            color: '#6b7280',
-            fontStyle: 'italic',
-            textAlign: 'center',
-            px: 2
-          }}>
-            Laptops may appear in multiple categories based on their specifications and suitability for different use cases.
-          </Typography>
-        </Box>
+                </Grid>
+              ))}
+            </Grid>
+            <Typography variant="body2" sx={{
+              mt: 6,
+              color: '#6b7280',
+              fontStyle: 'italic',
+              textAlign: 'center',
+              px: 2
+            }}>
+              Laptops may appear in multiple categories based on their specifications and suitability for different use cases.
+            </Typography>
+          </Box>
+        </FadeInSection>
       </Container>
 
       {/* Laptop Details Modal Popup */}

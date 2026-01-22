@@ -67,6 +67,7 @@ import {
 } from '@mui/icons-material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import Footer from '../components/Footer';
+import FadeInSection from '../components/FadeInSection';
 
 
 const AboutUs = () => {
@@ -334,1088 +335,1098 @@ const AboutUs = () => {
     }}>
 
       {/* Hero Section */}
-      <Box sx={{
-        py: 12,
-        position: 'relative',
-        overflow: 'hidden',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'brightness(0.4)',
-          zIndex: 0,
-        },
-      }}>
-        <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
-          <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
-            <Typography variant="h2" sx={{
-              fontWeight: 800,
-              fontSize: { xs: '2.5rem', md: '3.5rem' },
-              textShadow: '0 4px 8px rgba(0,0,0,0.3)',
-              color: 'white',
-            }}>
-              About Braintone Computers
-            </Typography>
+      <FadeInSection fullWidth>
+        <Box sx={{
+          py: 12,
+          position: 'relative',
+          overflow: 'hidden',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'brightness(0.4)',
+            zIndex: 0,
+          },
+        }}>
+          <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
+            <Stack spacing={4} alignItems="center" textAlign="center" sx={{ animation: 'fadeInUp 1s ease' }}>
+              <Typography variant="h2" sx={{
+                fontWeight: 800,
+                fontSize: { xs: '2.5rem', md: '3.5rem' },
+                textShadow: '0 4px 8px rgba(0,0,0,0.3)',
+                color: 'white',
+              }}>
+                About Braintone Computers
+              </Typography>
 
-            <Box sx={{
-              width: '100px',
-              height: '4px',
-              background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientMove 2s linear infinite',
-              borderRadius: '2px',
-            }} />
+              <Box sx={{
+                width: '100px',
+                height: '4px',
+                background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000)',
+                backgroundSize: '200% 100%',
+                animation: 'gradientMove 2s linear infinite',
+                borderRadius: '2px',
+              }} />
 
-            <Typography variant="h5" sx={{
-              maxWidth: '900px',
-              lineHeight: 1.6,
-              textShadow: '0 2px 4px rgba(0,0,0,0.3)',
-              fontWeight: 400,
-              fontSize: { xs: '1.1rem', md: '1.3rem' },
-              color: 'white',
-            }}>
-              Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware,
-              Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive
-              technology solutions from sales to support with 26+ years of experience.
-            </Typography>
+              <Typography variant="h5" sx={{
+                maxWidth: '900px',
+                lineHeight: 1.6,
+                textShadow: '0 2px 4px rgba(0,0,0,0.3)',
+                fontWeight: 400,
+                fontSize: { xs: '1.1rem', md: '1.3rem' },
+                color: 'white',
+              }}>
+                Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware,
+                Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive
+                technology solutions from sales to support with 26+ years of experience.
+              </Typography>
 
-            <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
-              <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-              <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
-            </Box>
-          </Stack>
-        </Container>
-      </Box>
+              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 2, justifyContent: 'center', mt: 2 }}>
+                <Chip label="Since 1998" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+                <Chip label="Authorized Dealer" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+                <Chip label="IT Solutions" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+                <Chip label="Network Experts" sx={{ bgcolor: 'rgba(255,255,255,0.2)', color: 'white', fontWeight: 600 }} />
+              </Box>
+            </Stack>
+          </Container>
+        </Box>
+      </FadeInSection>
+
 
       {/* Stats Section */}
-      <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1 }}>
-        <Grid container spacing={3} justifyContent="center">
-          {stats.map((stat, index) => (
-            <Grid item xs={6} sm={3} key={index}>
-              <Card sx={{
-                textAlign: 'center',
-                p: 3,
-                boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
-                transition: 'all 0.3s ease',
-                background: 'linear-gradient(135deg, #fff5f5 0%, #ffecec 100%)',
-                border: '2px solid',
-                borderImage: 'linear-gradient(45deg, #e74c3c, #c0392b, #e74c3c) 1',
-                position: 'relative',
-                overflow: 'hidden',
-                animation: `bounce 2s ease-in-out infinite ${index * 0.1}s`,
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 15px 35px rgba(231, 76, 60, 0.3)',
-                },
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-                },
-              }}>
-                <stat.icon sx={{ fontSize: 48, color: stat.color, mb: 1, animation: 'pulse 3s ease-in-out infinite' }} />
-                <Typography variant="h4" sx={{
-                  fontWeight: 800,
-                  mb: 1,
-                  color: '#e74c3c',
-                  fontSize: { xs: '1.8rem', md: '2.2rem' }
+      <FadeInSection fullWidth>
+        <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1 }}>
+          <Grid container spacing={3} justifyContent="center">
+            {stats.map((stat, index) => (
+              <Grid item xs={6} sm={3} key={index}>
+                <Card sx={{
+                  textAlign: 'center',
+                  p: 3,
+                  boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
+                  transition: 'all 0.3s ease',
+                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffecec 100%)',
+                  border: '2px solid',
+                  borderImage: 'linear-gradient(45deg, #e74c3c, #c0392b, #e74c3c) 1',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  animation: `bounce 2s ease-in-out infinite ${index * 0.1}s`,
+                  '&:hover': {
+                    transform: 'translateY(-8px)',
+                    boxShadow: '0 15px 35px rgba(231, 76, 60, 0.3)',
+                  },
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+                  },
                 }}>
-                  {stat.value}
-                </Typography>
-                <Typography variant="body2" sx={{
-                  color: '#7f8c8d',
-                  fontWeight: 600,
-                  fontSize: '0.9rem'
-                }}>
-                  {stat.label}
-                </Typography>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
+                  <stat.icon sx={{ fontSize: 48, color: stat.color, mb: 1, animation: 'pulse 3s ease-in-out infinite' }} />
+                  <Typography variant="h4" sx={{
+                    fontWeight: 800,
+                    mb: 1,
+                    color: '#e74c3c',
+                    fontSize: { xs: '1.8rem', md: '2.2rem' }
+                  }}>
+                    {stat.value}
+                  </Typography>
+                  <Typography variant="body2" sx={{
+                    color: '#7f8c8d',
+                    fontWeight: 600,
+                    fontSize: '0.9rem'
+                  }}>
+                    {stat.label}
+                  </Typography>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+      </FadeInSection>
+
 
       {/* Company Overview, Vision, Reasons to Buy Tabs */}
-      <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
-        <Box sx={{
-          borderBottom: 1,
-          borderColor: 'divider',
-          mb: 4,
-          background: 'linear-gradient(to right, transparent, rgba(231, 76, 60, 0.1), transparent)',
-          py: 1,
-          borderRadius: 1
-        }}>
-          <Tabs
-            value={activeTab}
-            onChange={handleTabChange}
-            centered
-            sx={{
-              '& .MuiTab-root': {
-                textTransform: 'none',
-                fontWeight: 600,
-                fontSize: '16px',
-                color: '#7f8c8d',
-                '&.Mui-selected': {
-                  color: '#e74c3c',
+      <FadeInSection>
+        <Container maxWidth="lg" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
+          <Box sx={{
+            borderBottom: 1,
+            borderColor: 'divider',
+            mb: 4,
+            background: 'linear-gradient(to right, transparent, rgba(231, 76, 60, 0.1), transparent)',
+            py: 1,
+            borderRadius: 1
+          }}>
+            <Tabs
+              value={activeTab}
+              onChange={handleTabChange}
+              centered
+              sx={{
+                '& .MuiTab-root': {
+                  textTransform: 'none',
+                  fontWeight: 600,
+                  fontSize: '16px',
+                  color: '#7f8c8d',
+                  '&.Mui-selected': {
+                    color: '#e74c3c',
+                  }
+                },
+                '& .MuiTabs-indicator': {
+                  backgroundColor: '#e74c3c',
+                  height: 3,
+                  borderRadius: '2px',
                 }
-              },
-              '& .MuiTabs-indicator': {
-                backgroundColor: '#e74c3c',
-                height: 3,
-                borderRadius: '2px',
+              }}
+            >
+              <Tab label="Company Overview" />
+              <Tab label="Our Vision" />
+              <Tab label="Why Choose Braintone" />
+            </Tabs>
+          </Box>
+
+          {activeTab === 0 && (
+            <Card sx={{
+              p: { xs: 4, md: 6 },
+              boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              border: '1px solid rgba(231, 76, 60, 0.1)',
+              borderRadius: 3,
+              position: 'relative',
+              overflow: 'hidden',
+              animation: 'fadeInUp 1s ease',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '4px',
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
+                backgroundSize: '200% 100%',
+                animation: 'gradientMove 3s linear infinite',
               }
-            }}
-          >
-            <Tab label="Company Overview" />
-            <Tab label="Our Vision" />
-            <Tab label="Why Choose Braintone" />
-          </Tabs>
-        </Box>
-
-        {activeTab === 0 && (
-          <Card sx={{
-            p: { xs: 4, md: 6 },
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-            background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-            border: '1px solid rgba(231, 76, 60, 0.1)',
-            borderRadius: 3,
-            position: 'relative',
-            overflow: 'hidden',
-            animation: 'fadeInUp 1s ease',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '4px',
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientMove 3s linear infinite',
-            }
-          }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                  <Box sx={{
-                    width: 60,
-                    height: 60,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    animation: 'pulse 2s ease-in-out infinite',
-                  }}>
-                    <Business sx={{ fontSize: 32, color: 'white' }} />
-                  </Box>
-                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
-                    Company Overview
-                  </Typography>
-                </Box>
-
-                <Typography variant="body1" sx={{
-                  mb: 3,
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                  color: '#34495e',
-                  textAlign: 'justify'
-                }}>
-                  <strong>Braintone Technology Pvt Ltd.</strong> was formed in Mumbai in 1998. We are a company providing
-                  IT Hardware, Office Automation, Audio Video Solutions & IT Software Solutions ranging from sales of
-                  Laptops, Desktops, Servers, Public Address Systems, Projectors, Projector Screens and Total Networking
-                  & Security Products at very competitive and affordable prices.
-                </Typography>
-
-                <Typography variant="body1" sx={{
-                  mb: 3,
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                  color: '#34495e',
-                  textAlign: 'justify'
-                }}>
-                  Braintone understands the complexities of a business's infrastructure and how vital it is to the
-                  business operations. A network that is not running properly or is down can result in a loss of
-                  productivity or revenue. Braintone recognizes the importance of a company's network and responds
-                  promptly and accordingly.
-                </Typography>
-
-                <Box sx={{ mb: 4 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
-                    Our Certified Professionals
-                  </Typography>
-                  <Typography variant="body1" sx={{
-                    mb: 2,
-                    lineHeight: 1.8,
-                    fontSize: '1.1rem',
-                    color: '#34495e',
-                    textAlign: 'justify'
-                  }}>
-                    Our certified professionals are the best in their field, with extensive experience implementing
-                    dozens of computer networks for small businesses to large corporations. Whether you have 4 computers
-                    or 400 on a network, our specialists can assist you in all aspects of hardware installation,
-                    networking, and troubleshooting.
-                  </Typography>
-                </Box>
-
-                <Box sx={{
-                  p: 2,
-                  bgcolor: 'rgba(231, 76, 60, 0.05)',
-                  borderRadius: 2,
-                  borderLeft: '4px solid #e74c3c',
-                  mb: 3
-                }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#e74c3c', mb: 1 }}>
-                    Our Services Include:
-                  </Typography>
-                  <Grid container spacing={1}>
-                    {services.slice(0, 10).map((service, index) => (
-                      <Grid item xs={6} sm={4} key={index}>
-                        <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                          <CheckCircle sx={{ fontSize: 14, color: '#27ae60' }} /> {service}
-                        </Typography>
-                      </Grid>
-                    ))}
-                  </Grid>
-                </Box>
-
-                <Typography variant="body1" sx={{
-                  mb: 3,
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                  color: '#34495e',
-                  textAlign: 'justify',
-                  fontStyle: 'italic',
-                  borderLeft: '4px solid #e74c3c',
-                  pl: 2,
-                  py: 1,
-                  bgcolor: 'rgba(231, 76, 60, 0.05)'
-                }}>
-                  "We take pride in our quick, responsive service to our clients and their computing needs.
-                  Braintone Technology Pvt Ltd has been installing and supporting systems for over 26 years.
-                  We are Systems Integrators with wide experience of providing efficient and workable hardware
-                  and software solutions."
-                </Typography>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Box sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '100%'
-                }}>
-                  <img
-                    src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
-                    alt="Company Overview"
-                    style={{
-                      width: '100%',
-                      maxWidth: '500px',
-                      height: 'auto',
-                      borderRadius: '12px',
-                      boxShadow: '0 15px 35px rgba(231, 76, 60, 0.3)',
-                    }}
-                  />
-                </Box>
-
-                <Box sx={{ mt: 4 }}>
-                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#2c3e50' }}>
-                    Technical Expertise
-                  </Typography>
-                  <Typography variant="body1" sx={{
-                    lineHeight: 1.8,
-                    fontSize: '1rem',
-                    color: '#34495e',
-                    textAlign: 'justify'
-                  }}>
-                    Our special blend of software, hardware and systems people helps to ensure projects arrive
-                    on time and to budget. Wherever high level technical skills are required, Braintone can
-                    usually do the job. Once a system is installed, we are able to support it throughout
-                    Mumbai, Maharashtra and India.
-                  </Typography>
-                </Box>
-              </Grid>
-            </Grid>
-          </Card>
-        )}
-
-        {activeTab === 1 && (
-          <Card sx={{
-            p: { xs: 4, md: 6 },
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-            background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-            border: '1px solid rgba(231, 76, 60, 0.1)',
-            borderRadius: 3,
-            position: 'relative',
-            overflow: 'hidden',
-            animation: 'fadeInUp 1s ease',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '4px',
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientMove 3s linear infinite',
-            }
-          }}>
-            <Grid container spacing={4} alignItems="center">
-              <Grid item xs={12} md={6}>
-                <Box sx={{
-                  display: 'flex',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  height: '100%'
-                }}>
-                  <img
-                    src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
-                    alt="Our Vision"
-                    style={{
-                      width: '100%',
-                      maxWidth: '500px',
-                      height: 'auto',
-                      borderRadius: '12px',
-                      boxShadow: '0 15px 35px rgba(192, 57, 43, 0.3)',
-                    }}
-                  />
-                </Box>
-              </Grid>
-              <Grid item xs={12} md={6}>
-                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
-                  <Box sx={{
-                    width: 60,
-                    height: 60,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #c0392b, #e74c3c)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(192, 57, 43, 0.3)',
-                    animation: 'pulse 2s ease-in-out infinite',
-                  }}>
-                    <Visibility sx={{ fontSize: 32, color: 'white' }} />
-                  </Box>
-                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
-                    Our Vision
-                  </Typography>
-                </Box>
-                <Typography variant="body1" sx={{
-                  mb: 3,
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                  color: '#34495e',
-                  textAlign: 'justify'
-                }}>
-                  To become India's most trusted and comprehensive technology partner, recognized for excellence
-                  in IT hardware sales, networking solutions, and professional support services. We envision a
-                  future where technology barriers are eliminated, and every business has access to reliable
-                  computing power that empowers growth and innovation.
-                </Typography>
-
-                <Typography variant="body1" sx={{
-                  mb: 3,
-                  lineHeight: 1.8,
-                  fontSize: '1.1rem',
-                  color: '#34495e',
-                  textAlign: 'justify'
-                }}>
-                  By 2030, we aim to expand our footprint across India while maintaining the personalized
-                  service and community focus that has defined our success since 1998. We're committed to
-                  sustainable technology practices, including responsible e-waste management and promoting
-                  energy-efficient solutions.
-                </Typography>
-
-                <Box sx={{
-                  p: 2,
-                  bgcolor: 'rgba(231, 76, 60, 0.05)',
-                  borderRadius: 2,
-                  borderLeft: '4px solid #c0392b'
-                }}>
-                  <Typography variant="body2" sx={{ fontWeight: 600, color: '#c0392b', mb: 1 }}>
-                    Future Goals:
-                  </Typography>
-                  <Stack spacing={1}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Expand to 15+ locations across India
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Launch comprehensive B2B enterprise solutions
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Establish training centers for IT professionals
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Reach 50,000+ satisfied corporate clients
-                    </Typography>
-                  </Stack>
-                </Box>
-              </Grid>
-            </Grid>
-          </Card>
-        )}
-
-        {activeTab === 2 && (
-          <Card sx={{
-            p: { xs: 4, md: 6 },
-            boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-            background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-            border: '1px solid rgba(231, 76, 60, 0.1)',
-            borderRadius: 3,
-            position: 'relative',
-            overflow: 'hidden',
-            animation: 'fadeInUp 1s ease',
-            '&::before': {
-              content: '""',
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '4px',
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
-              backgroundSize: '200% 100%',
-              animation: 'gradientMove 3s linear infinite',
-            }
-          }}>
-            <Box sx={{ textAlign: 'center', mb: 4 }}>
-              <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, justifyContent: 'center' }}>
-                <Box sx={{
-                  width: 60,
-                  height: 60,
-                  borderRadius: '50%',
-                  background: 'linear-gradient(135deg, #e74c3c, #c0392b)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                  animation: 'pulse 2s ease-in-out infinite',
-                }}>
-                  <Star sx={{ fontSize: 32, color: 'white' }} />
-                </Box>
-                <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
-                  11 Reasons to Choose Braintone
-                </Typography>
-              </Box>
-              <Typography variant="h6" sx={{ color: '#7f8c8d', fontWeight: 400, mb: 4 }}>
-                Discover why thousands of customers trust Braintone for their technology needs
-              </Typography>
-            </Box>
-
-            <Box sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
-              gap: 3,
-              mb: 4
             }}>
-              {reasonsToBuy.map((reason, index) => (
-                <Box
-                  key={index}
-                  sx={{
-                    p: 3,
-                    height: '180px',
-                    minHeight: '180px',
-                    maxHeight: '180px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
-                    border: '1px solid rgba(231, 76, 60, 0.2)',
-                    borderRadius: '8px',
-                    transition: 'all 0.3s ease',
-                    animation: `bounce 2s ease-in-out infinite ${index * 0.1}s`,
-                    '&:hover': {
-                      boxShadow: '0 15px 30px rgba(231, 76, 60, 0.25)',
-                      transform: 'translateY(-5px)',
-                    },
-                  }}
-                >
-                  <Box sx={{
-                    display: 'flex',
-                    alignItems: 'flex-start',
-                    gap: 2,
-                    mb: 2,
-                    minHeight: '30px',
-                  }}>
+              <Grid container spacing={4} alignItems="center">
+                <Grid item xs={12} md={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
                     <Box sx={{
-                      width: 40,
-                      height: 40,
+                      width: 60,
+                      height: 60,
                       borderRadius: '50%',
                       background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      flexShrink: 0,
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      animation: 'pulse 2s ease-in-out infinite',
                     }}>
-                      {React.cloneElement(reason.icon, { sx: { fontSize: 20, color: 'white' } })}
+                      <Business sx={{ fontSize: 32, color: 'white' }} />
                     </Box>
-                    <Box sx={{ flex: 1 }}>
-                      <Typography variant="h6" sx={{
-                        fontWeight: 700,
-                        color: '#e74c3c',
-                        fontSize: '1rem',
-                        lineHeight: 1.2,
-                        margin: 0
-                      }}>
-                        {index + 1}. {reason.title}
-                      </Typography>
-                    </Box>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                      Company Overview
+                    </Typography>
                   </Box>
 
-                  <Typography variant="body2" sx={{
-                    color: '#7f8c8d',
-                    lineHeight: 1.5,
-                    fontSize: '0.85rem',
-                    flex: 1,
-                    overflowY: 'auto',
-                    pr: 1,
-                    minHeight: '90px',
-                    '&::-webkit-scrollbar': {
-                      width: '4px',
-                    },
-                    '&::-webkit-scrollbar-track': {
-                      background: 'rgba(231, 76, 60, 0.1)',
-                      borderRadius: '2px',
-                    },
-                    '&::-webkit-scrollbar-thumb': {
-                      background: '#e74c3c',
-                      borderRadius: '2px',
-                    },
+                  <Typography variant="body1" sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
+                    color: '#34495e',
+                    textAlign: 'justify'
                   }}>
-                    {reason.description}
+                    <strong>Braintone Technology Pvt Ltd.</strong> was formed in Mumbai in 1998. We are a company providing
+                    IT Hardware, Office Automation, Audio Video Solutions & IT Software Solutions ranging from sales of
+                    Laptops, Desktops, Servers, Public Address Systems, Projectors, Projector Screens and Total Networking
+                    & Security Products at very competitive and affordable prices.
+                  </Typography>
+
+                  <Typography variant="body1" sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
+                    color: '#34495e',
+                    textAlign: 'justify'
+                  }}>
+                    Braintone understands the complexities of a business's infrastructure and how vital it is to the
+                    business operations. A network that is not running properly or is down can result in a loss of
+                    productivity or revenue. Braintone recognizes the importance of a company's network and responds
+                    promptly and accordingly.
+                  </Typography>
+
+                  <Box sx={{ mb: 4 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
+                      Our Certified Professionals
+                    </Typography>
+                    <Typography variant="body1" sx={{
+                      mb: 2,
+                      lineHeight: 1.8,
+                      fontSize: '1.1rem',
+                      color: '#34495e',
+                      textAlign: 'justify'
+                    }}>
+                      Our certified professionals are the best in their field, with extensive experience implementing
+                      dozens of computer networks for small businesses to large corporations. Whether you have 4 computers
+                      or 400 on a network, our specialists can assist you in all aspects of hardware installation,
+                      networking, and troubleshooting.
+                    </Typography>
+                  </Box>
+
+                  <Box sx={{
+                    p: 2,
+                    bgcolor: 'rgba(231, 76, 60, 0.05)',
+                    borderRadius: 2,
+                    borderLeft: '4px solid #e74c3c',
+                    mb: 3
+                  }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600, color: '#e74c3c', mb: 1 }}>
+                      Our Services Include:
+                    </Typography>
+                    <Grid container spacing={1}>
+                      {services.slice(0, 10).map((service, index) => (
+                        <Grid item xs={6} sm={4} key={index}>
+                          <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                            <CheckCircle sx={{ fontSize: 14, color: '#27ae60' }} /> {service}
+                          </Typography>
+                        </Grid>
+                      ))}
+                    </Grid>
+                  </Box>
+
+                  <Typography variant="body1" sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
+                    color: '#34495e',
+                    textAlign: 'justify',
+                    fontStyle: 'italic',
+                    borderLeft: '4px solid #e74c3c',
+                    pl: 2,
+                    py: 1,
+                    bgcolor: 'rgba(231, 76, 60, 0.05)'
+                  }}>
+                    "We take pride in our quick, responsive service to our clients and their computing needs.
+                    Braintone Technology Pvt Ltd has been installing and supporting systems for over 26 years.
+                    We are Systems Integrators with wide experience of providing efficient and workable hardware
+                    and software solutions."
+                  </Typography>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%'
+                  }}>
+                    <img
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
+                      alt="Company Overview"
+                      style={{
+                        width: '100%',
+                        maxWidth: '500px',
+                        height: 'auto',
+                        borderRadius: '12px',
+                        boxShadow: '0 15px 35px rgba(231, 76, 60, 0.3)',
+                      }}
+                    />
+                  </Box>
+
+                  <Box sx={{ mt: 4 }}>
+                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#2c3e50' }}>
+                      Technical Expertise
+                    </Typography>
+                    <Typography variant="body1" sx={{
+                      lineHeight: 1.8,
+                      fontSize: '1rem',
+                      color: '#34495e',
+                      textAlign: 'justify'
+                    }}>
+                      Our special blend of software, hardware and systems people helps to ensure projects arrive
+                      on time and to budget. Wherever high level technical skills are required, Braintone can
+                      usually do the job. Once a system is installed, we are able to support it throughout
+                      Mumbai, Maharashtra and India.
+                    </Typography>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Card>
+          )}
+
+          {activeTab === 1 && (
+            <Card sx={{
+              p: { xs: 4, md: 6 },
+              boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              border: '1px solid rgba(231, 76, 60, 0.1)',
+              borderRadius: 3,
+              position: 'relative',
+              overflow: 'hidden',
+              animation: 'fadeInUp 1s ease',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '4px',
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
+                backgroundSize: '200% 100%',
+                animation: 'gradientMove 3s linear infinite',
+              }
+            }}>
+              <Grid container spacing={4} alignItems="center">
+                <Grid item xs={12} md={6}>
+                  <Box sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    height: '100%'
+                  }}>
+                    <img
+                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                      alt="Our Vision"
+                      style={{
+                        width: '100%',
+                        maxWidth: '500px',
+                        height: 'auto',
+                        borderRadius: '12px',
+                        boxShadow: '0 15px 35px rgba(192, 57, 43, 0.3)',
+                      }}
+                    />
+                  </Box>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 3 }}>
+                    <Box sx={{
+                      width: 60,
+                      height: 60,
+                      borderRadius: '50%',
+                      background: 'linear-gradient(135deg, #c0392b, #e74c3c)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 20px rgba(192, 57, 43, 0.3)',
+                      animation: 'pulse 2s ease-in-out infinite',
+                    }}>
+                      <Visibility sx={{ fontSize: 32, color: 'white' }} />
+                    </Box>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                      Our Vision
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
+                    color: '#34495e',
+                    textAlign: 'justify'
+                  }}>
+                    To become India's most trusted and comprehensive technology partner, recognized for excellence
+                    in IT hardware sales, networking solutions, and professional support services. We envision a
+                    future where technology barriers are eliminated, and every business has access to reliable
+                    computing power that empowers growth and innovation.
+                  </Typography>
+
+                  <Typography variant="body1" sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.1rem',
+                    color: '#34495e',
+                    textAlign: 'justify'
+                  }}>
+                    By 2030, we aim to expand our footprint across India while maintaining the personalized
+                    service and community focus that has defined our success since 1998. We're committed to
+                    sustainable technology practices, including responsible e-waste management and promoting
+                    energy-efficient solutions.
+                  </Typography>
+
+                  <Box sx={{
+                    p: 2,
+                    bgcolor: 'rgba(231, 76, 60, 0.05)',
+                    borderRadius: 2,
+                    borderLeft: '4px solid #c0392b'
+                  }}>
+                    <Typography variant="body2" sx={{ fontWeight: 600, color: '#c0392b', mb: 1 }}>
+                      Future Goals:
+                    </Typography>
+                    <Stack spacing={1}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Expand to 15+ locations across India
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Launch comprehensive B2B enterprise solutions
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Establish training centers for IT professionals
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Reach 50,000+ satisfied corporate clients
+                      </Typography>
+                    </Stack>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Card>
+          )}
+
+          {activeTab === 2 && (
+            <Card sx={{
+              p: { xs: 4, md: 6 },
+              boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
+              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              border: '1px solid rgba(231, 76, 60, 0.1)',
+              borderRadius: 3,
+              position: 'relative',
+              overflow: 'hidden',
+              animation: 'fadeInUp 1s ease',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '100%',
+                height: '4px',
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b, #e74c3c)',
+                backgroundSize: '200% 100%',
+                animation: 'gradientMove 3s linear infinite',
+              }
+            }}>
+              <Box sx={{ textAlign: 'center', mb: 4 }}>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: 2, justifyContent: 'center' }}>
+                  <Box sx={{
+                    width: 60,
+                    height: 60,
+                    borderRadius: '50%',
+                    background: 'linear-gradient(135deg, #e74c3c, #c0392b)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                    animation: 'pulse 2s ease-in-out infinite',
+                  }}>
+                    <Star sx={{ fontSize: 32, color: 'white' }} />
+                  </Box>
+                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                    11 Reasons to Choose Braintone
                   </Typography>
                 </Box>
-              ))}
-            </Box>
+                <Typography variant="h6" sx={{ color: '#7f8c8d', fontWeight: 400, mb: 4 }}>
+                  Discover why thousands of customers trust Braintone for their technology needs
+                </Typography>
+              </Box>
 
-            <Box sx={{
-              mt: 6,
-              p: 3,
-              bgcolor: 'rgba(52, 152, 219, 0.05)',
-              borderRadius: 2,
-              border: '1px solid rgba(52, 152, 219, 0.2)',
-              textAlign: 'center'
-            }}>
-              <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#3498db' }}>
-                Complete Business Systems
-              </Typography>
-              <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6 }}>
-                Complete Business Systems prides itself on the high technical ability of its staff.
-                We maintain a full complement of skills to allow even the most demanding project to be undertaken.
-                Our expertise covers everything from basic workstations to complex enterprise network solutions.
-              </Typography>
-            </Box>
-          </Card>
-        )}
-      </Container>
+              <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr' },
+                gap: 3,
+                mb: 4
+              }}>
+                {reasonsToBuy.map((reason, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      p: 3,
+                      height: '180px',
+                      minHeight: '180px',
+                      maxHeight: '180px',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
+                      border: '1px solid rgba(231, 76, 60, 0.2)',
+                      borderRadius: '8px',
+                      transition: 'all 0.3s ease',
+                      animation: `bounce 2s ease-in-out infinite ${index * 0.1}s`,
+                      '&:hover': {
+                        boxShadow: '0 15px 30px rgba(231, 76, 60, 0.25)',
+                        transform: 'translateY(-5px)',
+                      },
+                    }}
+                  >
+                    <Box sx={{
+                      display: 'flex',
+                      alignItems: 'flex-start',
+                      gap: 2,
+                      mb: 2,
+                      minHeight: '30px',
+                    }}>
+                      <Box sx={{
+                        width: 40,
+                        height: 40,
+                        borderRadius: '50%',
+                        background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        flexShrink: 0,
+                      }}>
+                        {React.cloneElement(reason.icon, { sx: { fontSize: 20, color: 'white' } })}
+                      </Box>
+                      <Box sx={{ flex: 1 }}>
+                        <Typography variant="h6" sx={{
+                          fontWeight: 700,
+                          color: '#e74c3c',
+                          fontSize: '1rem',
+                          lineHeight: 1.2,
+                          margin: 0
+                        }}>
+                          {index + 1}. {reason.title}
+                        </Typography>
+                      </Box>
+                    </Box>
+
+                    <Typography variant="body2" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.5,
+                      fontSize: '0.85rem',
+                      flex: 1,
+                      overflowY: 'auto',
+                      pr: 1,
+                      minHeight: '90px',
+                      '&::-webkit-scrollbar': {
+                        width: '4px',
+                      },
+                      '&::-webkit-scrollbar-track': {
+                        background: 'rgba(231, 76, 60, 0.1)',
+                        borderRadius: '2px',
+                      },
+                      '&::-webkit-scrollbar-thumb': {
+                        background: '#e74c3c',
+                        borderRadius: '2px',
+                      },
+                    }}>
+                      {reason.description}
+                    </Typography>
+                  </Box>
+                ))}
+              </Box>
+
+              <Box sx={{
+                mt: 6,
+                p: 3,
+                bgcolor: 'rgba(52, 152, 219, 0.05)',
+                borderRadius: 2,
+                border: '1px solid rgba(52, 152, 219, 0.2)',
+                textAlign: 'center'
+              }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#3498db' }}>
+                  Complete Business Systems
+                </Typography>
+                <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6 }}>
+                  Complete Business Systems prides itself on the high technical ability of its staff.
+                  We maintain a full complement of skills to allow even the most demanding project to be undertaken.
+                  Our expertise covers everything from basic workstations to complex enterprise network solutions.
+                </Typography>
+              </Box>
+            </Card>
+          )}
+        </Container>
+      </FadeInSection>
 
       {/* What We Offer Section */}
-      <Box sx={{
-        background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
-        py: 10,
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <Container maxWidth="lg">
-          <Typography variant="h3" align="center" sx={{
-            fontWeight: 800,
-            mb: 2,
-            color: '#2c3e50',
-            position: 'relative',
-            display: 'inline-block',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            animation: 'fadeInUp 1s ease',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              bottom: -10,
+      <FadeInSection fullWidth>
+        <Box sx={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          py: 10,
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <Container maxWidth="lg">
+            <Typography variant="h3" align="center" sx={{
+              fontWeight: 800,
+              mb: 2,
+              color: '#2c3e50',
+              position: 'relative',
+              display: 'inline-block',
               left: '50%',
               transform: 'translateX(-50%)',
-              width: 80,
-              height: 4,
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-              borderRadius: 2,
-            }
-          }}>
-            Our Comprehensive Services
-          </Typography>
-          <Typography variant="h6" align="center" sx={{
-            color: '#7f8c8d',
-            mb: 6,
-            fontWeight: 500,
-            animation: 'fadeInUp 1s ease 0.2s both'
-          }}>
-            Complete solutions for all your computing needs - sales, service, and support
-          </Typography>
-
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 3,
-          }}>
-            <Box sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-              gap: 3,
-              width: '100%',
-              maxWidth: { xs: '400px', sm: '800px', md: '1000px' },
-              justifyContent: 'center',
+              animation: 'fadeInUp 1s ease',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 80,
+                height: 4,
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+                borderRadius: 2,
+              }
             }}>
-              <Box
-                component="button"
-                onClick={() => window.location.href = '/laptops'}
-                sx={{
-                  p: 4,
-                  height: '280px',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  textAlign: 'left',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                  borderRadius: '12px',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animation: `fadeInUp 1s ease 0.4s both, bounce 2s ease-in-out infinite 0s`,
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-10px) scale(1.02)',
-                    boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)',
-                    '& .service-icon': {
-                      transform: 'scale(1.1) rotate(5deg)',
-                    }
-                  },
-                  '&:active': {
-                    transform: 'translateY(-5px) scale(1.01)',
-                  },
-                }}
-              >
+              Our Comprehensive Services
+            </Typography>
+            <Typography variant="h6" align="center" sx={{
+              color: '#7f8c8d',
+              mb: 6,
+              fontWeight: 500,
+              animation: 'fadeInUp 1s ease 0.2s both'
+            }}>
+              Complete solutions for all your computing needs - sales, service, and support
+            </Typography>
+
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 3,
+            }}>
+              <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 3,
+                width: '100%',
+                maxWidth: { xs: '400px', sm: '800px', md: '1000px' },
+                justifyContent: 'center',
+              }}>
                 <Box
-                  className="service-icon"
+                  component="button"
+                  onClick={() => window.location.href = '/laptops'}
                   sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: '#ffecec',
+                    p: 4,
+                    height: '280px',
+                    width: '100%',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    border: '3px solid white',
-                    animation: 'pulse 3s ease-in-out infinite',
-                    transition: 'all 0.3s ease',
-                    mb: 3,
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between',
+                    textAlign: 'left',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    border: '1px solid rgba(231, 76, 60, 0.1)',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    animation: `fadeInUp 1s ease 0.4s both, bounce 2s ease-in-out infinite 0s`,
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      transform: 'translateY(-10px) scale(1.02)',
+                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                      borderColor: 'rgba(231, 76, 60, 0.3)',
+                      '& .service-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                      }
+                    },
+                    '&:active': {
+                      transform: 'translateY(-5px) scale(1.01)',
+                    },
                   }}
                 >
-                  <Laptop sx={{ fontSize: 40, color: '#e74c3c' }} />
+                  <Box
+                    className="service-icon"
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: '50%',
+                      background: '#ffecec',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      border: '3px solid white',
+                      animation: 'pulse 3s ease-in-out infinite',
+                      transition: 'all 0.3s ease',
+                      mb: 3,
+                    }}
+                  >
+                    <Laptop sx={{ fontSize: 40, color: '#e74c3c' }} />
+                  </Box>
+
+                  <Box sx={{ flex: 1, width: '100%' }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 700,
+                      mb: 1.5,
+                      color: '#2c3e50',
+                      fontSize: '1.4rem'
+                    }}>
+                      New Laptops
+                    </Typography>
+
+                    <Typography variant="body1" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.6,
+                      fontSize: '1rem',
+                      mb: 3
+                    }}>
+                      Latest models from top brands like Dell, HP, Lenovo, Asus, and Apple
+                    </Typography>
+
+                    <Stack spacing={1.5}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Latest models from top brands
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Official warranty & support
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Custom configurations available
+                      </Typography>
+                    </Stack>
+                  </Box>
+
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    color: '#e74c3c',
+                    opacity: 0.7,
+                    transition: 'opacity 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                    }
+                  }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                      Shop Now
+                    </Typography>
+                    <OpenInNewIcon sx={{ fontSize: 14 }} />
+                  </Box>
                 </Box>
 
-                <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{
-                    fontWeight: 700,
-                    mb: 1.5,
-                    color: '#2c3e50',
-                    fontSize: '1.4rem'
+                <Box
+                  component="button"
+                  onClick={() => window.location.href = '/pre-owned-laptops'}
+                  sx={{
+                    p: 4,
+                    height: '280px',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between',
+                    textAlign: 'left',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    border: '1px solid rgba(231, 76, 60, 0.1)',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    animation: `fadeInUp 1s ease 0.5s both, bounce 2s ease-in-out infinite 0.1s`,
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      transform: 'translateY(-10px) scale(1.02)',
+                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                      borderColor: 'rgba(231, 76, 60, 0.3)',
+                      '& .service-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                      }
+                    },
+                    '&:active': {
+                      transform: 'translateY(-5px) scale(1.01)',
+                    },
+                  }}
+                >
+                  <Box
+                    className="service-icon"
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: '50%',
+                      background: '#ffecec',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      border: '3px solid white',
+                      animation: 'pulse 3s ease-in-out infinite',
+                      transition: 'all 0.3s ease',
+                      mb: 3,
+                    }}
+                  >
+                    <ShoppingCart sx={{ fontSize: 40, color: '#c0392b' }} />
+                  </Box>
+
+                  <Box sx={{ flex: 1, width: '100%' }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 700,
+                      mb: 1.5,
+                      color: '#2c3e50',
+                      fontSize: '1.4rem'
+                    }}>
+                      Pre-Owned Laptops
+                    </Typography>
+
+                    <Typography variant="body1" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.6,
+                      fontSize: '1rem',
+                      mb: 3
+                    }}>
+                      Quality tested, certified pre-owned laptops with warranty
+                    </Typography>
+
+                    <Stack spacing={1.5}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Thorough quality testing
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 6-month warranty included
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Budget-friendly options
+                      </Typography>
+                    </Stack>
+                  </Box>
+
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    color: '#e74c3c',
+                    opacity: 0.7,
+                    transition: 'opacity 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                    }
                   }}>
-                    New Laptops
-                  </Typography>
-
-                  <Typography variant="body1" sx={{
-                    color: '#7f8c8d',
-                    lineHeight: 1.6,
-                    fontSize: '1rem',
-                    mb: 3
-                  }}>
-                    Latest models from top brands like Dell, HP, Lenovo, Asus, and Apple
-                  </Typography>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Latest models from top brands
+                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                      Browse Collection
                     </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Official warranty & support
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Custom configurations available
-                    </Typography>
-                  </Stack>
-                </Box>
-
-                <Box sx={{
-                  position: 'absolute',
-                  top: 20,
-                  right: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.5,
-                  color: '#e74c3c',
-                  opacity: 0.7,
-                  transition: 'opacity 0.3s ease',
-                  '&:hover': {
-                    opacity: 1,
-                  }
-                }}>
-                  <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                    Shop Now
-                  </Typography>
-                  <OpenInNewIcon sx={{ fontSize: 14 }} />
+                    <OpenInNewIcon sx={{ fontSize: 14 }} />
+                  </Box>
                 </Box>
               </Box>
 
-              <Box
-                component="button"
-                onClick={() => window.location.href = '/pre-owned-laptops'}
-                sx={{
-                  p: 4,
-                  height: '280px',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  textAlign: 'left',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                  borderRadius: '12px',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animation: `fadeInUp 1s ease 0.5s both, bounce 2s ease-in-out infinite 0.1s`,
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-10px) scale(1.02)',
-                    boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)',
-                    '& .service-icon': {
-                      transform: 'scale(1.1) rotate(5deg)',
-                    }
-                  },
-                  '&:active': {
-                    transform: 'translateY(-5px) scale(1.01)',
-                  },
-                }}
-              >
+              <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
+                gap: 3,
+                width: '100%',
+                maxWidth: { xs: '400px', sm: '800px', md: '1000px' },
+                justifyContent: 'center',
+              }}>
                 <Box
-                  className="service-icon"
+                  component="button"
+                  onClick={() => window.location.href = '/repair'}
                   sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: '#ffecec',
+                    p: 4,
+                    height: '280px',
+                    width: '100%',
                     display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    border: '3px solid white',
-                    animation: 'pulse 3s ease-in-out infinite',
-                    transition: 'all 0.3s ease',
-                    mb: 3,
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between',
+                    textAlign: 'left',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    border: '1px solid rgba(231, 76, 60, 0.1)',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    animation: `fadeInUp 1s ease 0.6s both, bounce 2s ease-in-out infinite 0.2s`,
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      transform: 'translateY(-10px) scale(1.02)',
+                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                      borderColor: 'rgba(231, 76, 60, 0.3)',
+                      '& .service-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                      }
+                    },
+                    '&:active': {
+                      transform: 'translateY(-5px) scale(1.01)',
+                    },
                   }}
                 >
-                  <ShoppingCart sx={{ fontSize: 40, color: '#c0392b' }} />
+                  <Box
+                    className="service-icon"
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: '50%',
+                      background: '#ffecec',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      border: '3px solid white',
+                      animation: 'pulse 3s ease-in-out infinite',
+                      transition: 'all 0.3s ease',
+                      mb: 3,
+                    }}
+                  >
+                    <Build sx={{ fontSize: 40, color: '#d35400' }} />
+                  </Box>
+
+                  <Box sx={{ flex: 1, width: '100%' }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 700,
+                      mb: 1.5,
+                      color: '#2c3e50',
+                      fontSize: '1.4rem'
+                    }}>
+                      Repair Services
+                    </Typography>
+
+                    <Typography variant="body1" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.6,
+                      fontSize: '1rem',
+                      mb: 3
+                    }}>
+                      Comprehensive repair services for all laptop brands and models
+                    </Typography>
+
+                    <Stack spacing={1.5}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> All brands & models
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Genuine parts only
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Same-day service available
+                      </Typography>
+                    </Stack>
+                  </Box>
+
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    color: '#e74c3c',
+                    opacity: 0.7,
+                    transition: 'opacity 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                    }
+                  }}>
+                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                      Book Service
+                    </Typography>
+                    <OpenInNewIcon sx={{ fontSize: 14 }} />
+                  </Box>
                 </Box>
 
-                <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{
-                    fontWeight: 700,
-                    mb: 1.5,
-                    color: '#2c3e50',
-                    fontSize: '1.4rem'
+                {/* Doorstep Service Box - UPDATED WITH MODAL */}
+                <Box
+                  component="button"
+                  onClick={() => setDoorstepModalOpen(true)}
+                  sx={{
+                    p: 4,
+                    height: '280px',
+                    width: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'flex-start',
+                    justifyContent: 'space-between',
+                    textAlign: 'left',
+                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    border: '1px solid rgba(231, 76, 60, 0.1)',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                    borderRadius: '12px',
+                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                    animation: `fadeInUp 1s ease 0.7s both, bounce 2s ease-in-out infinite 0.3s`,
+                    cursor: 'pointer',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    '&:hover': {
+                      transform: 'translateY(-10px) scale(1.02)',
+                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                      borderColor: 'rgba(231, 76, 60, 0.3)',
+                      '& .service-icon': {
+                        transform: 'scale(1.1) rotate(5deg)',
+                      }
+                    },
+                    '&:active': {
+                      transform: 'translateY(-5px) scale(1.01)',
+                    },
+                  }}
+                >
+                  <Box
+                    className="service-icon"
+                    sx={{
+                      width: 80,
+                      height: 80,
+                      borderRadius: '50%',
+                      background: '#ffecec',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      border: '3px solid white',
+                      animation: 'pulse 3s ease-in-out infinite',
+                      transition: 'all 0.3s ease',
+                      mb: 3,
+                    }}
+                  >
+                    <LocalShipping sx={{ fontSize: 40, color: '#e67e22' }} />
+                  </Box>
+
+                  <Box sx={{ flex: 1, width: '100%' }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 700,
+                      mb: 1.5,
+                      color: '#2c3e50',
+                      fontSize: '1.4rem'
+                    }}>
+                      Doorstep Service
+                    </Typography>
+
+                    <Typography variant="body1" sx={{
+                      color: '#7f8c8d',
+                      lineHeight: 1.6,
+                      fontSize: '1rem',
+                      mb: 3
+                    }}>
+                      Book free pickup & delivery for laptop repairs across Mumbai
+                    </Typography>
+
+                    <Stack spacing={1.5}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Free pickup & delivery
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Across Mumbai
+                      </Typography>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Safe & insured handling
+                      </Typography>
+                    </Stack>
+                  </Box>
+
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: 0.5,
+                    color: '#e74c3c',
+                    opacity: 0.7,
+                    transition: 'opacity 0.3s ease',
+                    '&:hover': {
+                      opacity: 1,
+                    }
                   }}>
-                    Pre-Owned Laptops
-                  </Typography>
-
-                  <Typography variant="body1" sx={{
-                    color: '#7f8c8d',
-                    lineHeight: 1.6,
-                    fontSize: '1rem',
-                    mb: 3
-                  }}>
-                    Quality tested, certified pre-owned laptops with warranty
-                  </Typography>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Thorough quality testing
+                    <Typography variant="caption" sx={{ fontWeight: 600 }}>
+                      Schedule Pickup
                     </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 6-month warranty included
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Budget-friendly options
-                    </Typography>
-                  </Stack>
-                </Box>
-
-                <Box sx={{
-                  position: 'absolute',
-                  top: 20,
-                  right: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.5,
-                  color: '#e74c3c',
-                  opacity: 0.7,
-                  transition: 'opacity 0.3s ease',
-                  '&:hover': {
-                    opacity: 1,
-                  }
-                }}>
-                  <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                    Browse Collection
-                  </Typography>
-                  <OpenInNewIcon sx={{ fontSize: 14 }} />
+                    <OpenInNewIcon sx={{ fontSize: 14 }} />
+                  </Box>
                 </Box>
               </Box>
             </Box>
-
-            <Box sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' },
-              gap: 3,
-              width: '100%',
-              maxWidth: { xs: '400px', sm: '800px', md: '1000px' },
-              justifyContent: 'center',
-            }}>
-              <Box
-                component="button"
-                onClick={() => window.location.href = '/repair'}
-                sx={{
-                  p: 4,
-                  height: '280px',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  textAlign: 'left',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                  borderRadius: '12px',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animation: `fadeInUp 1s ease 0.6s both, bounce 2s ease-in-out infinite 0.2s`,
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-10px) scale(1.02)',
-                    boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)',
-                    '& .service-icon': {
-                      transform: 'scale(1.1) rotate(5deg)',
-                    }
-                  },
-                  '&:active': {
-                    transform: 'translateY(-5px) scale(1.01)',
-                  },
-                }}
-              >
-                <Box
-                  className="service-icon"
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: '#ffecec',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    border: '3px solid white',
-                    animation: 'pulse 3s ease-in-out infinite',
-                    transition: 'all 0.3s ease',
-                    mb: 3,
-                  }}
-                >
-                  <Build sx={{ fontSize: 40, color: '#d35400' }} />
-                </Box>
-
-                <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{
-                    fontWeight: 700,
-                    mb: 1.5,
-                    color: '#2c3e50',
-                    fontSize: '1.4rem'
-                  }}>
-                    Repair Services
-                  </Typography>
-
-                  <Typography variant="body1" sx={{
-                    color: '#7f8c8d',
-                    lineHeight: 1.6,
-                    fontSize: '1rem',
-                    mb: 3
-                  }}>
-                    Comprehensive repair services for all laptop brands and models
-                  </Typography>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> All brands & models
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Genuine parts only
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Same-day service available
-                    </Typography>
-                  </Stack>
-                </Box>
-
-                <Box sx={{
-                  position: 'absolute',
-                  top: 20,
-                  right: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.5,
-                  color: '#e74c3c',
-                  opacity: 0.7,
-                  transition: 'opacity 0.3s ease',
-                  '&:hover': {
-                    opacity: 1,
-                  }
-                }}>
-                  <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                    Book Service
-                  </Typography>
-                  <OpenInNewIcon sx={{ fontSize: 14 }} />
-                </Box>
-              </Box>
-
-              {/* Doorstep Service Box - UPDATED WITH MODAL */}
-              <Box
-                component="button"
-                onClick={() => setDoorstepModalOpen(true)}
-                sx={{
-                  p: 4,
-                  height: '280px',
-                  width: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'flex-start',
-                  justifyContent: 'space-between',
-                  textAlign: 'left',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                  borderRadius: '12px',
-                  transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  animation: `fadeInUp 1s ease 0.7s both, bounce 2s ease-in-out infinite 0.3s`,
-                  cursor: 'pointer',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  '&:hover': {
-                    transform: 'translateY(-10px) scale(1.02)',
-                    boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                    borderColor: 'rgba(231, 76, 60, 0.3)',
-                    '& .service-icon': {
-                      transform: 'scale(1.1) rotate(5deg)',
-                    }
-                  },
-                  '&:active': {
-                    transform: 'translateY(-5px) scale(1.01)',
-                  },
-                }}
-              >
-                <Box
-                  className="service-icon"
-                  sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: '#ffecec',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    border: '3px solid white',
-                    animation: 'pulse 3s ease-in-out infinite',
-                    transition: 'all 0.3s ease',
-                    mb: 3,
-                  }}
-                >
-                  <LocalShipping sx={{ fontSize: 40, color: '#e67e22' }} />
-                </Box>
-
-                <Box sx={{ flex: 1, width: '100%' }}>
-                  <Typography variant="h5" sx={{
-                    fontWeight: 700,
-                    mb: 1.5,
-                    color: '#2c3e50',
-                    fontSize: '1.4rem'
-                  }}>
-                    Doorstep Service
-                  </Typography>
-
-                  <Typography variant="body1" sx={{
-                    color: '#7f8c8d',
-                    lineHeight: 1.6,
-                    fontSize: '1rem',
-                    mb: 3
-                  }}>
-                    Book free pickup & delivery for laptop repairs across Mumbai
-                  </Typography>
-
-                  <Stack spacing={1.5}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Free pickup & delivery
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Across Mumbai
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                      <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Safe & insured handling
-                    </Typography>
-                  </Stack>
-                </Box>
-
-                <Box sx={{
-                  position: 'absolute',
-                  top: 20,
-                  right: 20,
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: 0.5,
-                  color: '#e74c3c',
-                  opacity: 0.7,
-                  transition: 'opacity 0.3s ease',
-                  '&:hover': {
-                    opacity: 1,
-                  }
-                }}>
-                  <Typography variant="caption" sx={{ fontWeight: 600 }}>
-                    Schedule Pickup
-                  </Typography>
-                  <OpenInNewIcon sx={{ fontSize: 14 }} />
-                </Box>
-              </Box>
-            </Box>
-          </Box>
-        </Container>
-      </Box>
+          </Container>
+        </Box>
+      </FadeInSection>
 
       {/* Doorstep Service Modal */}
       <Modal
@@ -1723,128 +1734,17 @@ const AboutUs = () => {
 
       {/* Our Journey Section */}
       {/* Our Journey Section */}
-      <Container maxWidth="md" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
-        <Typography variant="h3" align="center" sx={{
-          fontWeight: 800,
-          mb: 2,
-          background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-          WebkitBackgroundClip: 'text',
-          WebkitTextFillColor: 'transparent',
-          animation: 'fadeInUp 1s ease'
-        }}>
-          Our 26+ Year Journey
-        </Typography>
-        <Typography variant="h6" align="center" sx={{
-          color: '#7f8c8d',
-          mb: 6,
-          fontWeight: 500,
-          animation: 'fadeInUp 1s ease 0.2s both'
-        }}>
-          From a small computer store to Mumbai's trusted technology partner
-        </Typography>
-
-        <Box sx={{ position: 'relative' }}>
-          {/* Timeline Line - Behind everything */}
-          <Box sx={{
-            position: 'absolute',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: '2px',
-            height: '100%',
-            background: 'linear-gradient(to bottom, #e74c3c, #c0392b)',
-            display: { xs: 'none', md: 'block' },
-            zIndex: 0, // Place behind everything
-          }} />
-
-          {milestones.map((milestone, index) => (
-            <Box
-              key={index}
-              sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
-                alignItems: 'center',
-                mb: 4,
-                gap: 3,
-                animation: `fadeInUp 1s ease ${0.4 + index * 0.2}s both`,
-                position: 'relative',
-                zIndex: 2, // Higher than timeline line
-              }}
-            >
-              {/* Timeline Dot */}
-              <Box sx={{
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
-                border: '4px solid white',
-                boxShadow: '0 0 0 4px rgba(231, 76, 60, 0.2)',
-                position: 'relative',
-                zIndex: 3, // Higher than everything
-                flexShrink: 0,
-                animation: 'pulse 2s ease-in-out infinite'
-              }} />
-
-              <Card
-                sx={{
-                  p: 3,
-                  boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
-                  transition: 'all 0.3s ease',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  border: '1px solid rgba(231, 76, 60, 0.1)',
-                  flex: 1,
-                  position: 'relative',
-                  zIndex: 2, // Higher than timeline line
-                  '&:hover': {
-                    boxShadow: '0 12px 28px rgba(231, 76, 60, 0.25)',
-                    transform: 'translateY(-5px)',
-                  },
-                }}
-              >
-                <Typography variant="h6" sx={{ color: '#e74c3c', fontWeight: 700, mb: 1 }}>
-                  {milestone.year}
-                </Typography>
-                <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: '#2c3e50' }}>
-                  {milestone.event}
-                </Typography>
-                <Typography variant="body1" sx={{ color: '#7f8c8d' }}>
-                  {milestone.description}
-                </Typography>
-              </Card>
-            </Box>
-          ))}
-        </Box>
-      </Container>
-
-      {/* Meet Our Team Section */}
-      <Box sx={{
-        background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
-        py: 10,
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <Container maxWidth="lg">
+      <FadeInSection>
+        <Container maxWidth="md" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
           <Typography variant="h3" align="center" sx={{
             fontWeight: 800,
             mb: 2,
-            color: '#2c3e50',
-            position: 'relative',
-            display: 'inline-block',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            animation: 'fadeInUp 1s ease',
-            '&::after': {
-              content: '""',
-              position: 'absolute',
-              bottom: -10,
-              left: '50%',
-              transform: 'translateX(-50%)',
-              width: 80,
-              height: 4,
-              background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-              borderRadius: 2,
-            }
+            background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            animation: 'fadeInUp 1s ease'
           }}>
-            Meet Our Expert Team
+            Our 26+ Year Journey
           </Typography>
           <Typography variant="h6" align="center" sx={{
             color: '#7f8c8d',
@@ -1852,162 +1752,277 @@ const AboutUs = () => {
             fontWeight: 500,
             animation: 'fadeInUp 1s ease 0.2s both'
           }}>
-            Dedicated professionals with decades of combined experience in the technology industry
+            From a small computer store to Mumbai's trusted technology partner
           </Typography>
 
-          <Box sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            gap: 3,
-          }}>
+          <Box sx={{ position: 'relative' }}>
+            {/* Timeline Line - Behind everything */}
             <Box sx={{
-              display: 'grid',
-              gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr 1fr' },
-              gap: 3,
-              width: '100%',
-              maxWidth: { xs: '400px', sm: '800px', md: '1200px' },
-              justifyContent: 'center',
-            }}>
-              {team.map((member, index) => (
-                <Box
-                  key={index}
+              position: 'absolute',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              width: '2px',
+              height: '100%',
+              background: 'linear-gradient(to bottom, #e74c3c, #c0392b)',
+              display: { xs: 'none', md: 'block' },
+              zIndex: 0, // Place behind everything
+            }} />
+
+            {milestones.map((milestone, index) => (
+              <Box
+                key={index}
+                sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', md: index % 2 === 0 ? 'row' : 'row-reverse' },
+                  alignItems: 'center',
+                  mb: 4,
+                  gap: 3,
+                  animation: `fadeInUp 1s ease ${0.4 + index * 0.2}s both`,
+                  position: 'relative',
+                  zIndex: 2, // Higher than timeline line
+                }}
+              >
+                {/* Timeline Dot */}
+                <Box sx={{
+                  width: 20,
+                  height: 20,
+                  borderRadius: '50%',
+                  background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
+                  border: '4px solid white',
+                  boxShadow: '0 0 0 4px rgba(231, 76, 60, 0.2)',
+                  position: 'relative',
+                  zIndex: 3, // Higher than everything
+                  flexShrink: 0,
+                  animation: 'pulse 2s ease-in-out infinite'
+                }} />
+
+                <Card
                   sx={{
                     p: 3,
-                    height: '360px',
-                    width: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
+                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
+                    transition: 'all 0.3s ease',
                     background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
-                    borderRadius: '12px',
-                    transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    animation: `fadeInUp 1s ease ${0.4 + index * 0.1}s both, bounce 2s ease-in-out infinite ${index * 0.1}s`,
+                    flex: 1,
                     position: 'relative',
-                    overflow: 'hidden',
+                    zIndex: 2, // Higher than timeline line
                     '&:hover': {
-                      transform: 'translateY(-10px) scale(1.02)',
-                      boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                      borderColor: 'rgba(231, 76, 60, 0.3)',
-                      '& .member-image': {
-                        transform: 'scale(1.05)',
-                      }
+                      boxShadow: '0 12px 28px rgba(231, 76, 60, 0.25)',
+                      transform: 'translateY(-5px)',
                     },
                   }}
                 >
-                  {/* Member Image Container */}
-                  <Box sx={{
-                    position: 'relative',
-                    width: '120px',
-                    height: '120px',
-                    mb: 3,
-                    overflow: 'hidden',
-                    borderRadius: '50%',
-                    border: '3px solid white',
-                    boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                    background: '#ffecec',
-                  }}>
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="member-image"
-                      style={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.4s ease'
-                      }}
-                    />
+                  <Typography variant="h6" sx={{ color: '#e74c3c', fontWeight: 700, mb: 1 }}>
+                    {milestone.year}
+                  </Typography>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: '#2c3e50' }}>
+                    {milestone.event}
+                  </Typography>
+                  <Typography variant="body1" sx={{ color: '#7f8c8d' }}>
+                    {milestone.description}
+                  </Typography>
+                </Card>
+              </Box>
+            ))}
+          </Box>
+        </Container>
+      </FadeInSection>
+
+      {/* Meet Our Team Section */}
+      <FadeInSection fullWidth>
+        <Box sx={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          py: 10,
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <Container maxWidth="lg">
+            <Typography variant="h3" align="center" sx={{
+              fontWeight: 800,
+              mb: 2,
+              color: '#2c3e50',
+              position: 'relative',
+              display: 'inline-block',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              animation: 'fadeInUp 1s ease',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 80,
+                height: 4,
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+                borderRadius: 2,
+              }
+            }}>
+              Meet Our Expert Team
+            </Typography>
+            <Typography variant="h6" align="center" sx={{
+              color: '#7f8c8d',
+              mb: 6,
+              fontWeight: 500,
+              animation: 'fadeInUp 1s ease 0.2s both'
+            }}>
+              Dedicated professionals with decades of combined experience in the technology industry
+            </Typography>
+
+            <Box sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              gap: 3,
+            }}>
+              <Box sx={{
+                display: 'grid',
+                gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr', md: '1fr 1fr 1fr 1fr' },
+                gap: 3,
+                width: '100%',
+                maxWidth: { xs: '400px', sm: '800px', md: '1200px' },
+                justifyContent: 'center',
+              }}>
+                {team.map((member, index) => (
+                  <Box
+                    key={index}
+                    sx={{
+                      p: 3,
+                      height: '360px',
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                      textAlign: 'center',
+                      background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                      border: '1px solid rgba(231, 76, 60, 0.1)',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
+                      borderRadius: '12px',
+                      transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
+                      animation: `fadeInUp 1s ease ${0.4 + index * 0.1}s both, bounce 2s ease-in-out infinite ${index * 0.1}s`,
+                      position: 'relative',
+                      overflow: 'hidden',
+                      '&:hover': {
+                        transform: 'translateY(-10px) scale(1.02)',
+                        boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
+                        borderColor: 'rgba(231, 76, 60, 0.3)',
+                        '& .member-image': {
+                          transform: 'scale(1.05)',
+                        }
+                      },
+                    }}
+                  >
+                    {/* Member Image Container */}
+                    <Box sx={{
+                      position: 'relative',
+                      width: '120px',
+                      height: '120px',
+                      mb: 3,
+                      overflow: 'hidden',
+                      borderRadius: '50%',
+                      border: '3px solid white',
+                      boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
+                      background: '#ffecec',
+                    }}>
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="member-image"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.4s ease'
+                        }}
+                      />
+                      <Box sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0,
+                        background: 'linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.2))',
+                        borderRadius: '50%',
+                      }} />
+                    </Box>
+
+                    {/* Member Info */}
+                    <Box sx={{
+                      flex: 1,
+                      width: '100%',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      alignItems: 'center',
+                    }}>
+                      <Typography variant="h5" sx={{
+                        fontWeight: 700,
+                        mb: 1,
+                        color: '#2c3e50',
+                        fontSize: '1.2rem',
+                        lineHeight: 1.3
+                      }}>
+                        {member.name}
+                      </Typography>
+
+                      <Typography variant="body1" sx={{
+                        color: '#e74c3c',
+                        fontWeight: 700,
+                        mb: 3,
+                        fontSize: '0.9rem',
+                        textTransform: 'uppercase',
+                        letterSpacing: '0.5px'
+                      }}>
+                        {member.role}
+                      </Typography>
+
+                      <Typography variant="body2" sx={{
+                        color: '#7f8c8d',
+                        lineHeight: 1.6,
+                        fontSize: '0.9rem',
+                        flex: 1
+                      }}>
+                        {member.description}
+                      </Typography>
+                    </Box>
+
+                    {/* Decorative Element */}
                     <Box sx={{
                       position: 'absolute',
                       top: 0,
                       left: 0,
-                      right: 0,
-                      bottom: 0,
-                      background: 'linear-gradient(135deg, rgba(231, 76, 60, 0.2), rgba(192, 57, 43, 0.2))',
-                      borderRadius: '50%',
+                      width: '100%',
+                      height: '4px',
+                      background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
                     }} />
                   </Box>
-
-                  {/* Member Info */}
-                  <Box sx={{
-                    flex: 1,
-                    width: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                  }}>
-                    <Typography variant="h5" sx={{
-                      fontWeight: 700,
-                      mb: 1,
-                      color: '#2c3e50',
-                      fontSize: '1.2rem',
-                      lineHeight: 1.3
-                    }}>
-                      {member.name}
-                    </Typography>
-
-                    <Typography variant="body1" sx={{
-                      color: '#e74c3c',
-                      fontWeight: 700,
-                      mb: 3,
-                      fontSize: '0.9rem',
-                      textTransform: 'uppercase',
-                      letterSpacing: '0.5px'
-                    }}>
-                      {member.role}
-                    </Typography>
-
-                    <Typography variant="body2" sx={{
-                      color: '#7f8c8d',
-                      lineHeight: 1.6,
-                      fontSize: '0.9rem',
-                      flex: 1
-                    }}>
-                      {member.description}
-                    </Typography>
-                  </Box>
-
-                  {/* Decorative Element */}
-                  <Box sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-                  }} />
-                </Box>
-              ))}
+                ))}
+              </Box>
             </Box>
-          </Box>
 
-          {/* Team Description */}
-          <Box sx={{
-            mt: 6,
-            p: 4,
-            bgcolor: 'rgba(231, 76, 60, 0.05)',
-            borderRadius: 2,
-            border: '1px solid rgba(231, 76, 60, 0.2)',
-            textAlign: 'center'
-          }}>
-            <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
-              Our Team Philosophy
-            </Typography>
-            <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6, mb: 2 }}>
-              Each member of our team brings unique expertise and dedication to providing exceptional service.
-              With a combined experience of over 80 years in the technology industry, we're committed to
-              delivering solutions that exceed your expectations.
-            </Typography>
-            <Typography variant="body2" sx={{ color: '#7f8c8d', fontStyle: 'italic' }}>
-              "Our strength lies in our team's diversity, expertise, and shared commitment to customer satisfaction."
-            </Typography>
-          </Box>
-        </Container>
-      </Box>
+            {/* Team Description */}
+            <Box sx={{
+              mt: 6,
+              p: 4,
+              bgcolor: 'rgba(231, 76, 60, 0.05)',
+              borderRadius: 2,
+              border: '1px solid rgba(231, 76, 60, 0.2)',
+              textAlign: 'center'
+            }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
+                Our Team Philosophy
+              </Typography>
+              <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6, mb: 2 }}>
+                Each member of our team brings unique expertise and dedication to providing exceptional service.
+                With a combined experience of over 80 years in the technology industry, we're committed to
+                delivering solutions that exceed your expectations.
+              </Typography>
+              <Typography variant="body2" sx={{ color: '#7f8c8d', fontStyle: 'italic' }}>
+                "Our strength lies in our team's diversity, expertise, and shared commitment to customer satisfaction."
+              </Typography>
+            </Box>
+          </Container>
+        </Box>
+      </FadeInSection>
 
       <Footer fullFooter={true} />
     </Box>
