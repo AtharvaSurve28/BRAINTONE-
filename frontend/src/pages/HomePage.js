@@ -817,533 +817,486 @@ const HomePage = () => {
                 <Box sx={{
                   flex: 1,
                   width: '100%',
-                  perspective: '1000px',
                 }}>
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
                     height: { xs: 300, md: 400 },
-                    transition: 'transform 0.8s',
-                    transformStyle: 'preserve-3d',
-                    animation: 'flip 6s ease-in-out infinite',
-                    '@keyframes flip': {
-                      '0%, 100%': {
-                        transform: 'rotateY(0deg)',
-                      },
-                      '50%': {
-                        transform: 'rotateY(180deg)',
-                      }
-                    }
-                  }}>
-                    {/* Front of Card */}
-                    <Box
-                      component="img"
-                      src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=1400&q=80"
-                      alt="New Laptops"
-                      sx={{
-                        position: 'absolute',
-                        width: '100%',
-                        height: '100%',
-                        backfaceVisibility: 'hidden',
-                        borderRadius: 2,
-                        objectFit: 'cover',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                      }}
-                    />
-                    {/* Back of Card */}
-                    <Box sx={{
-                      position: 'absolute',
-                      width: '100%',
-                      height: '100%',
-                      backfaceVisibility: 'hidden',
-                      borderRadius: 2,
-                      backgroundColor: '#e74c3c',
-                      color: 'white',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      padding: 4,
-                      transform: 'rotateY(180deg)',
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                    }}>
-                      <Typography variant="h5" sx={{ fontWeight: 700, mb: 2 }}>
-                        Premium Selection
-                      </Typography>
-                      <Typography variant="body1" align="center" sx={{ mb: 2 }}>
-                        Latest models from top brands
-                      </Typography>
-                      <Typography variant="body2" align="center">
-                        Expert guidance available
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Divider */}
-              <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-              {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
-              <Box sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'center',
-                gap: { xs: 4, md: 8 },
-                mb: { xs: 8, md: 12 }
-              }}>
-                {/* Image - LEFT with Auto-Pulse Effect */}
-                <Box sx={{
-                  flex: 1,
-                  width: '100%',
-                  order: { xs: 1, md: 1 },
-                }}>
-                  <Box sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: { xs: 300, md: 400 },
-                    animation: 'pulse 3s ease-in-out infinite',
-                    '@keyframes pulse': {
-                      '0%, 100%': {
-                        transform: 'scale(1)',
-                        boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                      },
-                      '50%': {
-                        transform: 'scale(1.05)',
-                        boxShadow: '0 20px 40px rgba(52, 152, 219, 0.4)',
-                      }
-                    }
                   }}>
                     <Box
-                      component="img"
-                      src="https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?auto=format&fit=crop&w=1400&q=80"
-                      alt="Pre-owned Laptops"
+                      component="video"
+                      src="/videos/All_About_Braintone1.mp4"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
                       sx={{
                         width: '100%',
                         height: '100%',
                         borderRadius: 2,
                         objectFit: 'cover',
-                      }}
-                    />
-                  </Box>
-                </Box>
-
-                {/* Text Content - RIGHT */}
-                <Box sx={{
-                  flex: 1,
-                  order: { xs: 2, md: 2 },
-                  minHeight: { md: 400 }
-                }}>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 3,
-                      fontSize: { xs: '1.75rem', md: '2.25rem' },
-                      lineHeight: 1.2,
-                      color: '#2c3e50'
-                    }}
-                  >
-                    Quality Pre-Owned Laptops
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Get the performance you need at a price you'll love with our extensive range
-                    of certified pre-owned laptops. Each device in our pre-owned collection undergoes
-                    a rigorous 25-point inspection and refurbishment process to guarantee it meets
-                    our exacting standards for quality and reliability.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Our refurbishment process includes:
-                    • Comprehensive hardware diagnostics and testing
-                    • Thorough cleaning and cosmetic restoration
-                    • Battery health assessment and optimization
-                    • Operating system reinstallation and updates
-                    • Stress testing to ensure stability
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 4,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    We offer certified pre-owned laptops from all major brands, including recent
-                    models with significant savings compared to new devices. Every pre-owned laptop
-                    comes with a minimum 6-month warranty, making it a smart, sustainable choice
-                    that's good for both your wallet and the environment.
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/pre-owned-laptops"
-                    variant="contained"
-                    sx={{
-                      bgcolor: '#e74c3c',
-                      color: '#fff',
-                      '&:hover': {
-                        bgcolor: '#c0392b',
-                        transform: 'translateY(-2px)'
-                      },
-                      textTransform: 'none',
-                      fontWeight: 600,
-                      fontSize: '1rem',
-                      borderRadius: 2,
-                      px: 4,
-                      py: 1.5,
-                      minWidth: 180,
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    Browse Pre-Owned
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Divider */}
-              <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-              {/* Section 3: Repair Services - Text Left, Image Right */}
-              <Box sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'center',
-                gap: { xs: 4, md: 8 },
-                mb: { xs: 8, md: 12 }
-              }}>
-                {/* Text Content - LEFT */}
-                <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 3,
-                      fontSize: { xs: '1.75rem', md: '2.25rem' },
-                      lineHeight: 1.2,
-                      color: '#2c3e50'
-                    }}
-                  >
-                    Expert Laptop Repair Services
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Is your laptop running slow, not turning on, or has a cracked screen?
-                    Our team of certified technicians with over 10 years of combined experience
-                    is here to provide comprehensive repair solutions. We specialize in all
-                    major brands including Apple MacBook, Dell, HP, Lenovo, Asus, and Acer.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Our comprehensive repair services include:
-                    • Screen replacement and display repairs
-                    • Motherboard diagnostics and repair
-                    • Keyboard and touchpad replacement
-                    • Battery replacement and calibration
-                    • Liquid damage repair and cleaning
-                    • Software troubleshooting and virus removal
-                    • Data recovery and transfer services
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 4,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    We use only high-quality, genuine or OEM-equivalent parts to ensure
-                    your device returns to peak performance. Most common repairs are completed
-                    within 24-48 hours, and we provide a 90-day warranty on all repair work.
-                    Free diagnostics for all devices brought to our stores.
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/repair"
-                    variant="contained"
-                    sx={{
-                      bgcolor: '#e74c3c',
-                      color: '#fff',
-                      '&:hover': {
-                        bgcolor: '#c0392b',
-                        transform: 'translateY(-2px)'
-                      },
-                      textTransform: 'none',
-                      fontWeight: 600,
-                      fontSize: '1rem',
-                      borderRadius: 2,
-                      px: 4,
-                      py: 1.5,
-                      minWidth: 180,
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    Get a Repair Quote
-                  </Button>
-                </Box>
-
-                {/* Image - RIGHT with Auto-Shake Effect */}
-                <Box sx={{
-                  flex: 1,
-                  width: '100%',
-                }}>
-                  <Box sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: { xs: 300, md: 400 },
-                    borderRadius: 2,
-                    overflow: 'hidden',
-                    animation: 'shake 5s ease-in-out infinite',
-                    '@keyframes shake': {
-                      '0%, 100%': {
-                        transform: 'translateX(0) rotate(0)',
-                      },
-                      '10%, 30%, 50%, 70%, 90%': {
-                        transform: 'translateX(-5px) rotate(-1deg)',
-                      },
-                      '20%, 40%, 60%, 80%': {
-                        transform: 'translateX(5px) rotate(1deg)',
-                      }
-                    }
-                  }}>
-                    <Box
-                      component="img"
-                      src="https://laptopworlds.in/wp-content/uploads/2023/11/l2.png"
-                      alt="Repair Services"
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        filter: 'brightness(0.9)',
-                      }}
-                    />
-                    {/* Overlay */}
-                    <Box sx={{
-                      position: 'absolute',
-                      top: 0,
-                      left: 0,
-                      right: 0,
-                      bottom: 0,
-                      backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                    }}>
-                      <Typography
-                        variant="h5"
-                        sx={{
-                          color: 'white',
-                          fontWeight: 700,
-                          textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-                        }}
-                      >
-                        Expert Repairs
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Divider */}
-              <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-              {/* Section 4: Maximize Life - Image Left, Text Right */}
-              <Box sx={{
-                display: 'flex',
-                flexDirection: { xs: 'column', md: 'row' },
-                alignItems: 'center',
-                gap: { xs: 4, md: 8 }
-              }}>
-                {/* Image - LEFT with Auto-Float Effect */}
-                <Box sx={{
-                  flex: 1,
-                  width: '100%',
-                  order: { xs: 1, md: 1 },
-                }}>
-                  <Box sx={{
-                    position: 'relative',
-                    width: '100%',
-                    height: { xs: 300, md: 400 },
-                    animation: 'floatUp 8s ease-in-out infinite',
-                    '@keyframes floatUp': {
-                      '0%, 100%': {
-                        transform: 'translateY(0)',
-                      },
-                      '50%': {
-                        transform: 'translateY(-20px)',
-                      }
-                    }
-                  }}>
-                    <Box
-                      component="img"
-                      src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1400&q=80"
-                      alt="Maximize Laptop Life"
-                      sx={{
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        borderRadius: 2,
                         boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                        willChange: 'transform',
                       }}
                     />
-                    {/* Floating Elements */}
-                    <Box sx={{
-                      position: 'absolute',
-                      top: 20,
-                      right: 20,
-                      width: 50,
-                      height: 50,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(231, 76, 60, 0.8)',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      color: 'white',
-                      fontWeight: 'bold',
-                      animation: 'float 3s ease-in-out infinite',
-                    }}>
-                      <Typography variant="h6">✓</Typography>
-                    </Box>
-                    <Box sx={{
-                      position: 'absolute',
-                      bottom: 20,
-                      left: 20,
-                      width: 40,
-                      height: 40,
-                      borderRadius: '50%',
-                      backgroundColor: 'rgba(52, 152, 219, 0.8)',
-                      display: 'flex',
-                      justifyContent: 'center',
-                      alignItems: 'center',
-                      color: 'white',
-                      fontWeight: 'bold',
-                      animation: 'float 3s ease-in-out infinite 1s',
-                    }}>
-                      <Typography variant="h6">+</Typography>
-                    </Box>
                   </Box>
-                </Box>
-
-                {/* Text Content - RIGHT */}
-                <Box sx={{
-                  flex: 1,
-                  order: { xs: 2, md: 2 },
-                  minHeight: { md: 400 }
-                }}>
-                  <Typography
-                    variant="h3"
-                    sx={{
-                      fontWeight: 700,
-                      mb: 3,
-                      fontSize: { xs: '1.75rem', md: '2.25rem' },
-                      lineHeight: 1.2,
-                      color: '#2c3e50'
-                    }}
-                  >
-                    Maximize Your Laptop's Life & Performance
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Beyond repairs, we offer comprehensive services designed to enhance and
-                    extend the life of your laptop investment. Our optimization services ensure
-                    your device runs at its maximum potential throughout its lifespan.
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 3,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    Our enhancement services include:
-                    • Memory (RAM) upgrades for improved multitasking
-                    • SSD installation for faster boot times and application loading
-                    • Professional internal cleaning to prevent overheating
-                    • Thermal paste replacement for better heat dissipation
-                    • Operating system optimization and tuning
-                    • Custom software configuration for specific use cases
-                    • Regular maintenance packages for long-term performance
-                  </Typography>
-                  <Typography
-                    variant="body1"
-                    color="text.secondary"
-                    sx={{
-                      mb: 4,
-                      lineHeight: 1.8,
-                      fontSize: '1.05rem'
-                    }}
-                  >
-                    We also offer personalized consultation services to help you understand
-                    how to best maintain your specific laptop model. From gaming laptops
-                    requiring specialized cooling to business laptops needing enhanced security
-                    configurations, our experts can help you get the most out of your machine
-                    for years to come, potentially extending its usable life by 2-3 years.
-                  </Typography>
-                  <Button
-                    component={Link}
-                    to="/contact"
-                    variant="contained"
-                    sx={{
-                      bgcolor: '#e74c3c',
-                      color: '#fff',
-                      '&:hover': {
-                        bgcolor: '#c0392b',
-                        transform: 'translateY(-2px)'
-                      },
-                      textTransform: 'none',
-                      fontWeight: 600,
-                      fontSize: '1rem',
-                      borderRadius: 2,
-                      px: 4,
-                      py: 1.5,
-                      minWidth: 180,
-                      transition: 'all 0.3s ease'
-                    }}
-                  >
-                    Explore Our Services
-                  </Button>
                 </Box>
               </Box>
             </Container>
+
+            {/* Divider */}
+            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+
+            {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'center',
+              gap: { xs: 4, md: 8 },
+              mb: { xs: 8, md: 12 }
+            }}>
+              {/* Image - LEFT with Auto-Pulse Effect */}
+              <Box sx={{
+                flex: 1,
+                width: '100%',
+                order: { xs: 1, md: 1 },
+              }}>
+                <Box sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: { xs: 300, md: 400 },
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                  borderRadius: 2,
+                  overflow: 'hidden'
+                }}>
+                  <Box
+                    component="video"
+                    src="/videos/All_About_Braintone2.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      borderRadius: 2,
+                      objectFit: 'cover',
+                      willChange: 'transform',
+                    }}
+                  />
+                </Box>
+              </Box>
+
+              {/* Text Content - RIGHT */}
+              <Box sx={{
+                flex: 1,
+                order: { xs: 2, md: 2 },
+                minHeight: { md: 400 }
+              }}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 3,
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    lineHeight: 1.2,
+                    color: '#2c3e50'
+                  }}
+                >
+                  Quality Pre-Owned Laptops
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Get the performance you need at a price you'll love with our extensive range
+                  of certified pre-owned laptops. Each device in our pre-owned collection undergoes
+                  a rigorous 25-point inspection and refurbishment process to guarantee it meets
+                  our exacting standards for quality and reliability.
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Our refurbishment process includes:
+                  • Comprehensive hardware diagnostics and testing
+                  • Thorough cleaning and cosmetic restoration
+                  • Battery health assessment and optimization
+                  • Operating system reinstallation and updates
+                  • Stress testing to ensure stability
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 4,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  We offer certified pre-owned laptops from all major brands, including recent
+                  models with significant savings compared to new devices. Every pre-owned laptop
+                  comes with a minimum 6-month warranty, making it a smart, sustainable choice
+                  that's good for both your wallet and the environment.
+                </Typography>
+                <Button
+                  component={Link}
+                  to="/pre-owned-laptops"
+                  variant="contained"
+                  sx={{
+                    bgcolor: '#e74c3c',
+                    color: '#fff',
+                    '&:hover': {
+                      bgcolor: '#c0392b',
+                      transform: 'translateY(-2px)'
+                    },
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    borderRadius: 2,
+                    px: 4,
+                    py: 1.5,
+                    minWidth: 180,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Browse Pre-Owned
+                </Button>
+              </Box>
+            </Box>
+
+            {/* Divider */}
+            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+
+            {/* Section 3: Repair Services - Text Left, Image Right */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'center',
+              gap: { xs: 4, md: 8 },
+              mb: { xs: 8, md: 12 }
+            }}>
+              {/* Text Content - LEFT */}
+              <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 3,
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    lineHeight: 1.2,
+                    color: '#2c3e50'
+                  }}
+                >
+                  Expert Laptop Repair Services
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Is your laptop running slow, not turning on, or has a cracked screen?
+                  Our team of certified technicians with over 10 years of combined experience
+                  is here to provide comprehensive repair solutions. We specialize in all
+                  major brands including Apple MacBook, Dell, HP, Lenovo, Asus, and Acer.
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Our comprehensive repair services include:
+                  • Screen replacement and display repairs
+                  • Motherboard diagnostics and repair
+                  • Keyboard and touchpad replacement
+                  • Battery replacement and calibration
+                  • Liquid damage repair and cleaning
+                  • Software troubleshooting and virus removal
+                  • Data recovery and transfer services
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 4,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  We use only high-quality, genuine or OEM-equivalent parts to ensure
+                  your device returns to peak performance. Most common repairs are completed
+                  within 24-48 hours, and we provide a 90-day warranty on all repair work.
+                  Free diagnostics for all devices brought to our stores.
+                </Typography>
+                <Button
+                  component={Link}
+                  to="/repair"
+                  variant="contained"
+                  sx={{
+                    bgcolor: '#e74c3c',
+                    color: '#fff',
+                    '&:hover': {
+                      bgcolor: '#c0392b',
+                      transform: 'translateY(-2px)'
+                    },
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    borderRadius: 2,
+                    px: 4,
+                    py: 1.5,
+                    minWidth: 180,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Get a Repair Quote
+                </Button>
+              </Box>
+
+              {/* Image - RIGHT with Auto-Shake Effect */}
+              <Box sx={{
+                flex: 1,
+                width: '100%',
+              }}>
+                <Box sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: { xs: 300, md: 400 },
+                  borderRadius: 2,
+                  overflow: 'hidden',
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
+                }}>
+                  <Box
+                    component="video"
+                    src="/videos/All_About_Braintone3.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      filter: 'brightness(0.9)',
+                      willChange: 'transform',
+                    }}
+                  />
+                  {/* Overlay */}
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                    <Typography
+                      variant="h5"
+                      sx={{
+                        color: 'white',
+                        fontWeight: 700,
+                        textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                      }}
+                    >
+                      Expert Repairs
+                    </Typography>
+                  </Box>
+                </Box>
+              </Box>
+            </Box>
+
+            {/* Divider */}
+            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+
+            {/* Section 4: Maximize Life - Image Left, Text Right */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'center',
+              gap: { xs: 4, md: 8 }
+            }}>
+              {/* Image - LEFT with Auto-Float Effect */}
+              <Box sx={{
+                flex: 1,
+                width: '100%',
+                order: { xs: 1, md: 1 },
+              }}>
+                <Box sx={{
+                  position: 'relative',
+                  width: '100%',
+                  height: { xs: 300, md: 400 },
+                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                  borderRadius: 2,
+                  overflow: 'hidden'
+                }}>
+                  <Box
+                    component="video"
+                    src="/videos/All_About_Braintone4.mp4"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      borderRadius: 2,
+                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                      willChange: 'transform',
+                    }}
+                  />
+                  {/* Floating Elements */}
+                  <Box sx={{
+                    position: 'absolute',
+                    top: 20,
+                    right: 20,
+                    width: 50,
+                    height: 50,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(231, 76, 60, 0.8)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    animation: 'float 3s ease-in-out infinite',
+                  }}>
+                    <Typography variant="h6">✓</Typography>
+                  </Box>
+                  <Box sx={{
+                    position: 'absolute',
+                    bottom: 20,
+                    left: 20,
+                    width: 40,
+                    height: 40,
+                    borderRadius: '50%',
+                    backgroundColor: 'rgba(52, 152, 219, 0.8)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    animation: 'float 3s ease-in-out infinite 1s',
+                  }}>
+                    <Typography variant="h6">+</Typography>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Text Content - RIGHT */}
+              <Box sx={{
+                flex: 1,
+                order: { xs: 2, md: 2 },
+                minHeight: { md: 400 }
+              }}>
+                <Typography
+                  variant="h3"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 3,
+                    fontSize: { xs: '1.75rem', md: '2.25rem' },
+                    lineHeight: 1.2,
+                    color: '#2c3e50'
+                  }}
+                >
+                  Maximize Your Laptop's Life & Performance
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Beyond repairs, we offer comprehensive services designed to enhance and
+                  extend the life of your laptop investment. Our optimization services ensure
+                  your device runs at its maximum potential throughout its lifespan.
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 3,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  Our enhancement services include:
+                  • Memory (RAM) upgrades for improved multitasking
+                  • SSD installation for faster boot times and application loading
+                  • Professional internal cleaning to prevent overheating
+                  • Thermal paste replacement for better heat dissipation
+                  • Operating system optimization and tuning
+                  • Custom software configuration for specific use cases
+                  • Regular maintenance packages for long-term performance
+                </Typography>
+                <Typography
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{
+                    mb: 4,
+                    lineHeight: 1.8,
+                    fontSize: '1.05rem'
+                  }}
+                >
+                  We also offer personalized consultation services to help you understand
+                  how to best maintain your specific laptop model. From gaming laptops
+                  requiring specialized cooling to business laptops needing enhanced security
+                  configurations, our experts can help you get the most out of your machine
+                  for years to come, potentially extending its usable life by 2-3 years.
+                </Typography>
+                <Button
+                  component={Link}
+                  to="/contact"
+                  variant="contained"
+                  sx={{
+                    bgcolor: '#e74c3c',
+                    color: '#fff',
+                    '&:hover': {
+                      bgcolor: '#c0392b',
+                      transform: 'translateY(-2px)'
+                    },
+                    textTransform: 'none',
+                    fontWeight: 600,
+                    fontSize: '1rem',
+                    borderRadius: 2,
+                    px: 4,
+                    py: 1.5,
+                    minWidth: 180,
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  Explore Our Services
+                </Button>
+              </Box>
+            </Box>
           </Container>
         </Box>
       </FadeInSection>
@@ -1367,7 +1320,6 @@ const HomePage = () => {
         }
       }} />
 
-      {/* Results and Feedbacks Section */}
       {/* Results and Feedbacks Section */}
       <FadeInSection fullWidth>
         <Box sx={{
@@ -2021,7 +1973,7 @@ const HomePage = () => {
       </FadeInSection>
 
       <Footer fullFooter={true} />
-    </Box>
+    </Box >
   );
 };
 
