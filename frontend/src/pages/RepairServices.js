@@ -668,26 +668,54 @@ const RepairServices = () => {
           </Box>
         </DialogContent>
         <DialogActions sx={{ p: 2 }}>
-          <Button
-            variant="contained"
-            onClick={openPersonalRepairModal}
-            sx={{
-              background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-              color: 'white',
-              fontWeight: 600,
-              '&:hover': {
-                background: 'linear-gradient(135deg, #c0392b 0%, #a93226 100%)',
-              },
-            }}
+          <Stack
+            direction={{ xs: 'column', sm: 'row' }}
+            spacing={2}
+            width="100%"
+            justifyContent="flex-end"
           >
-            Book a Personal Repair Service
-          </Button>
-          <Button component={Link} to="/contact" variant="contained" onClick={closeDetails}>
-            Contact Us
-          </Button>
-          <Button onClick={closeDetails} variant="outlined">
-            Close
-          </Button>
+            <Button
+              variant="contained"
+              onClick={openPersonalRepairModal}
+              sx={{
+                background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                color: 'white',
+                fontWeight: 600,
+                width: { xs: '100%', sm: 'auto' },
+                py: 1.5,
+                fontSize: '0.9rem',
+                '&:hover': {
+                  background: 'linear-gradient(135deg, #c0392b 0%, #a93226 100%)',
+                },
+              }}
+            >
+              Book a Personal Repair Service
+            </Button>
+            <Button
+              component={Link}
+              to="/contact"
+              variant="contained"
+              onClick={closeDetails}
+              sx={{
+                width: { xs: '100%', sm: 'auto' },
+                py: 1.5,
+                fontSize: '0.9rem',
+              }}
+            >
+              Contact Us
+            </Button>
+            <Button
+              onClick={closeDetails}
+              variant="outlined"
+              sx={{
+                width: { xs: '100%', sm: 'auto' },
+                py: 1.5,
+                fontSize: '0.9rem',
+              }}
+            >
+              Close
+            </Button>
+          </Stack>
         </DialogActions>
       </Dialog>
 
