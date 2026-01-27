@@ -1164,6 +1164,20 @@ const DynamicBrandTemplate = ({ brandId }) => {
                   ))}
                 </Tabs>
               </Paper>
+              {/* Mobile Scroll Hint */}
+              <Typography
+                variant="caption"
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                  color: 'text.secondary',
+                  mt: 1,
+                  fontStyle: 'italic',
+                  textAlign: 'right',
+                  fontSize: '0.75rem'
+                }}
+              >
+                Swipe for more →
+              </Typography>
             </Box>
           )}
         </FadeInSection>
