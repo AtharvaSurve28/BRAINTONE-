@@ -1173,7 +1173,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
           {selectedSeriesData && (
             <Box sx={{
               mb: 6,
-              p: 4,
+              p: { xs: 2, md: 4 }, // Reduced padding on mobile
               borderRadius: 2,
               backgroundColor: '#f8f9fa',
               borderLeft: `4px solid ${brandAccentColor}`,
@@ -1183,13 +1183,13 @@ const DynamicBrandTemplate = ({ brandId }) => {
                 fontWeight: 800,
                 color: '#000000',
                 mb: 1.5,
-                fontSize: { xs: '2rem', md: '2.5rem' }
+                fontSize: { xs: '1.75rem', md: '2.5rem' } // Smaller font on mobile
               }}>
                 {selectedSeriesData.displayName || selectedSeries} Series
               </Typography>
               <Typography variant="body1" sx={{
                 color: '#495057',
-                fontSize: '1.1rem',
+                fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.6,
                 mb: 2
               }}>
@@ -1197,46 +1197,58 @@ const DynamicBrandTemplate = ({ brandId }) => {
               </Typography>
 
               {/* Series Categories */}
-              <Stack direction="row" spacing={1.5} sx={{ mt: 3, flexWrap: 'wrap' }}>
+              <Stack
+                direction={{ xs: 'column', sm: 'row' }} // Stack vertically on mobile
+                spacing={{ xs: 1, sm: 1.5 }}
+                sx={{
+                  mt: 3,
+                  flexWrap: 'wrap',
+                  alignItems: { xs: 'flex-start', sm: 'center' }
+                }}
+              >
                 <Typography variant="body2" sx={{
                   fontWeight: 600,
                   color: '#000000',
-                  mr: 1
+                  mr: { xs: 0, sm: 1 },
+                  mb: { xs: 1, sm: 0 }, // Margin bottom on mobile
+                  whiteSpace: 'nowrap'
                 }}>
                   Available in:
                 </Typography>
-                {selectedSeriesData.categories?.map((category) => {
-                  const cat = categories.find(c => c.name === category);
-                  return cat ? (
-                    <Chip
-                      key={category}
-                      label={category}
-                      size="medium"
-                      sx={{
-                        backgroundColor: alpha(cat.color, 0.1),
-                        color: cat.color,
-                        fontWeight: 600,
-                        border: `1px solid ${alpha(cat.color, 0.3)}`,
-                        '&:hover': {
-                          backgroundColor: alpha(cat.color, 0.2),
-                          transform: 'translateY(-1px)'
-                        }
-                      }}
-                    />
-                  ) : (
-                    <Chip
-                      key={category}
-                      label={category}
-                      size="medium"
-                      sx={{
-                        backgroundColor: alpha('#000000', 0.05),
-                        color: '#000000',
-                        fontWeight: 600,
-                        border: `1px solid ${alpha('#000000', 0.2)}`
-                      }}
-                    />
-                  );
-                })}
+                <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 1 }}>
+                  {selectedSeriesData.categories?.map((category) => {
+                    const cat = categories.find(c => c.name === category);
+                    return cat ? (
+                      <Chip
+                        key={category}
+                        label={category}
+                        size="medium"
+                        sx={{
+                          backgroundColor: alpha(cat.color, 0.1),
+                          color: cat.color,
+                          fontWeight: 600,
+                          border: `1px solid ${alpha(cat.color, 0.3)}`,
+                          '&:hover': {
+                            backgroundColor: alpha(cat.color, 0.2),
+                            transform: 'translateY(-1px)'
+                          }
+                        }}
+                      />
+                    ) : (
+                      <Chip
+                        key={category}
+                        label={category}
+                        size="medium"
+                        sx={{
+                          backgroundColor: alpha('#000000', 0.05),
+                          color: '#000000',
+                          fontWeight: 600,
+                          border: `1px solid ${alpha('#000000', 0.2)}`
+                        }}
+                      />
+                    );
+                  })}
+                </Box>
               </Stack>
             </Box>
           )}
