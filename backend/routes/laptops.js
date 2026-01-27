@@ -5,12 +5,12 @@ const Laptop = require('../models/Laptop');
 
 // Helper function to map category to categoryKey
 const mapCategoryToKey = (category) => {
-  switch(category?.toLowerCase()) {
+  switch (category?.toLowerCase()) {
     case 'entry': return 'entryLevel';
     case 'consumer': return 'consumer';
     case 'commercial': return 'commercial';
     case 'gaming': return 'gaming';
-    case 'mid-range': 
+    case 'mid-range':
     case 'midrange': return 'midrange';
     case 'premium': return 'premium';
     default: return 'consumer';
@@ -22,9 +22,9 @@ const processLaptopsIntoSeries = (laptops, seriesStructure) => {
   laptops.forEach(laptop => {
     const series = seriesStructure.find(s => s.name === laptop.series?.toLowerCase());
     if (!series) return;
-    
+
     const categoryKey = mapCategoryToKey(laptop.category);
-    
+
     if (series[categoryKey]) {
       series[categoryKey].push({
         id: laptop._id?.toString() || 'temp-id',
@@ -99,7 +99,7 @@ const brandSeriesStructures = {
     }
   ],
 
-  
+
   hp: [
     {
       name: '15s',
@@ -125,7 +125,7 @@ const brandSeriesStructures = {
       categories: ['Consumer', 'Premium'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
-    {        
+    {
       name: 'probook',
       displayName: 'Probook',
       description: 'Business laptops with enterprise-grade security, durability, and performance.',
@@ -174,7 +174,7 @@ const brandSeriesStructures = {
       displayName: 'ThinkBook',
       description: 'Business laptops with legendary durability, security, and professional features.',
       logoColor: '#E2231A',
-      categories: ['Commercial', 'Consumer' , 'Mid-Range'],
+      categories: ['Commercial', 'Consumer', 'Mid-Range'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
@@ -190,7 +190,7 @@ const brandSeriesStructures = {
       displayName: 'LOQ',
       description: '2-in-1 convertible laptops with premium design and versatile form factors.',
       logoColor: '#E2231A',
-      categories: ['Consumer', 'Mid-Range' , 'Commercial' , 'Gaming'],
+      categories: ['Consumer', 'Mid-Range', 'Commercial', 'Gaming'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
@@ -286,7 +286,7 @@ const brandSeriesStructures = {
       displayName: 'Travelmate',
       description: '2-in-1 convertible laptops with versatile form factors and touch displays.',
       logoColor: '#83B81A',
-      categories: ['Entry Level' , 'Commercial'],
+      categories: ['Entry Level', 'Commercial'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
@@ -298,7 +298,7 @@ const brandSeriesStructures = {
       displayName: 'MacBook Air',
       description: 'Ultra-thin and lightweight laptops with exceptional battery life and performance.',
       logoColor: '#000000',
-      categories: ['Consumer', 'Mid-Range' , 'Commercial' , 'Premium'],
+      categories: ['Consumer', 'Mid-Range', 'Commercial', 'Premium'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
@@ -306,7 +306,7 @@ const brandSeriesStructures = {
       displayName: 'MacBook Pro',
       description: 'Professional laptops with powerful performance, stunning displays, and advanced features.',
       logoColor: '#000000',
-      categories: ['Premium' , 'Gaming' , 'Consumer', 'Commercial'],
+      categories: ['Premium', 'Gaming', 'Consumer', 'Commercial'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
@@ -326,7 +326,7 @@ const brandSeriesStructures = {
       displayName: 'G Series',
       description: 'Gaming laptops with powerful graphics and high refresh displays.',
       logoColor: '#FF0000',
-      categories: ['Gaming', 'Premium' , 'consumer' , 'Mid-Range'],
+      categories: ['Gaming', 'Premium', 'consumer', 'Mid-Range'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
@@ -350,7 +350,7 @@ const brandSeriesStructures = {
       displayName: 'Titan Series',
       description: 'Professional laptops designed for content creators with color-accurate displays.',
       logoColor: '#000000',
-      categories: ['Premium' , 'Gaming'],
+      categories: ['Premium', 'Gaming'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
@@ -430,7 +430,7 @@ router.get('/brand/:brandId', async (req, res) => {
   try {
     const brandId = req.params.brandId.toLowerCase();
     console.log(`Fetching ${brandId.toUpperCase()} laptops...`);
-    
+
     // Check if brand is supported
     if (!brandSeriesStructures[brandId]) {
       return res.status(404).json({
@@ -438,17 +438,19 @@ router.get('/brand/:brandId', async (req, res) => {
         error: `Brand '${brandId}' is not supported`
       });
     }
-    
-    // Get laptops from database
-    const laptops = await Laptop.find({ brand: brandId });
+
+    // Get laptops from database with optimized query
+    const laptops = await Laptop.find({ brand: brandId })
+      .select('name series category price processor ram storage display graphics images bestFor')
+      .lean();
     console.log(`Found ${laptops.length} ${brandId.toUpperCase()} laptops`);
-    
+
     // Get series structure for this brand
     const seriesStructure = JSON.parse(JSON.stringify(brandSeriesStructures[brandId]));
-    
+
     // Process laptops into series structure
     processLaptopsIntoSeries(laptops, seriesStructure);
-    
+
     // Send response
     res.json({
       success: true,
@@ -456,12 +458,12 @@ router.get('/brand/:brandId', async (req, res) => {
       brandName: brandNames[brandId] || brandId.toUpperCase(),
       series: seriesStructure
     });
-    
+
   } catch (error) {
     console.error(`Brand API Error (${req.params.brandId}):`, error);
-    res.status(500).json({ 
-      success: false, 
-      error: error.message 
+    res.status(500).json({
+      success: false,
+      error: error.message
     });
   }
 });

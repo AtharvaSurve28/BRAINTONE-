@@ -8,7 +8,7 @@ const laptopSchema = new mongoose.Schema({
   category: { type: String, required: true },
   name: { type: String, required: true },
   price: { type: Number, required: true },
-  
+
   // OPTIONAL BUT IMPORTANT:
   processor: String,
   ram: String,
@@ -20,6 +20,10 @@ const laptopSchema = new mongoose.Schema({
   condition: { type: String, default: 'new' },
   specs: [String]
 }, { timestamps: true });
+
+laptopSchema.index({ brand: 1 });
+laptopSchema.index({ series: 1 });
+laptopSchema.index({ category: 1 });
 
 module.exports = mongoose.model('Laptop', laptopSchema);
 
