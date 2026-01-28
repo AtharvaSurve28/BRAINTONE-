@@ -32,6 +32,7 @@ import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
+import BannerSlider from '../components/BannerSlider';
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -243,6 +244,9 @@ const HomePage = () => {
         `}</style>
       </Box>
 
+      {/* Automatic Banner Slider */}
+      <BannerSlider />
+
       {/* Find the Perfect Laptop - with Gradient Background */}
       {/* Find the Perfect Laptop - WITH COMPLETE MOTION BACKGROUND EFFECTS */}
       <FadeInSection fullWidth>
@@ -250,17 +254,17 @@ const HomePage = () => {
           py: 8,
           position: 'relative',
           overflow: 'hidden',
-          // Top shimmer border
+          // Top centered short red border
           '&::before': {
             content: '""',
             position: 'absolute',
             top: 0,
-            left: 0,
-            right: 0,
-            height: '4px',
-            background: 'linear-gradient(90deg, #e74c3c, #3498db, #e74c3c)',
-            backgroundSize: '200% 100%',
-            animation: 'shimmer 2s infinite',
+            left: '50%',
+            transform: 'translateX(-50%)', // Center it
+            width: '60px', // Short width
+            height: '3px', // Slightly thicker
+            background: '#e74c3c', // Solid red color
+            borderRadius: '1px',
             zIndex: 3,
           },
           // Solid gradient background
