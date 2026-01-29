@@ -103,7 +103,7 @@ const brandSeriesStructures = {
   hp: [
     {
       name: '15s',
-      displayName: 'HP 15s Series',
+      displayName: 'HP 15s',
       description: 'Essential laptops for everyday computing, perfect for students and home users.',
       logoColor: '#0096D6',
       categories: ['Entry Level', 'Consumer'],
@@ -315,7 +315,7 @@ const brandSeriesStructures = {
   msi: [
     {
       name: 'katana',
-      displayName: 'Katana Series',
+      displayName: 'Katana',
       description: 'Slim gaming laptops with excellent performance-to-price ratio for mainstream gamers.',
       logoColor: '#FF0000',
       categories: ['Gaming', 'Premium'],
@@ -323,7 +323,7 @@ const brandSeriesStructures = {
     },
     {
       name: 'gseries',
-      displayName: 'G Series',
+      displayName: 'G',
       description: 'Gaming laptops with powerful graphics and high refresh displays.',
       logoColor: '#FF0000',
       categories: ['Gaming', 'Premium', 'consumer', 'Mid-Range'],
@@ -331,7 +331,7 @@ const brandSeriesStructures = {
     },
     {
       name: 'victor',
-      displayName: 'Victor Series',
+      displayName: 'Victor',
       description: 'Ultra-thin gaming laptops with premium design and powerful performance.',
       logoColor: '#FF0000',
       categories: ['Gaming', 'Premium'],
@@ -339,7 +339,7 @@ const brandSeriesStructures = {
     },
     {
       name: 'raider',
-      displayName: 'Raider Series',
+      displayName: 'Raider',
       description: 'High-performance gaming laptops with desktop-level performance and advanced cooling.',
       logoColor: '#FF0000',
       categories: ['Gaming', 'Premium'],
@@ -347,7 +347,7 @@ const brandSeriesStructures = {
     },
     {
       name: 'titan',
-      displayName: 'Titan Series',
+      displayName: 'Titan',
       description: 'Professional laptops designed for content creators with color-accurate displays.',
       logoColor: '#000000',
       categories: ['Premium', 'Gaming'],

@@ -17,6 +17,7 @@ import Microsoft from './pages/Microsoft';
 
 import SecondHand from './pages/SecondHand';
 import Accessories from './pages/Accessories';
+import MacAccessories from './pages/MacAccessories';
 import RepairServices from './pages/RepairServices';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
@@ -52,7 +53,7 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route path="/" element={<HomePage />} />
           <Route path="/laptops" element={<Laptops />} />
-          
+
           {/* Laptop Brand Routes */}
           <Route path="/laptops/dell" element={<Dell />} />
           <Route path="/laptops/hp" element={<HP />} />
@@ -63,22 +64,23 @@ function AnimatedRoutes() {
           <Route path="/laptops/msi" element={<MSI />} />
           <Route path="/laptops/samsung" element={<Samsung />} />
           <Route path="/laptops/microsoft" element={<Microsoft />} />
-          
+
           <Route path="/second-hand" element={<SecondHand />} />
           <Route path="/pre-owned-laptops" element={<SecondHand />} />
           <Route path="/services/pre-owned-laptops" element={<SecondHand />} />
           <Route path="/accessories" element={<Accessories />} />
           <Route path="/accessories/:category" element={<Accessories />} />
+          <Route path="/mac-accessories" element={<MacAccessories />} />
           <Route path="/repair" element={<RepairServices />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
-          
+
           {/* Admin Routes */}
           <Route path="/admin/login" element={<AdminLogin />} />
           <Route path="/admin/dashboard" element={<AdminDashboard />} />
           <Route path="/admin/laptops/new" element={<LaptopForm />} />
           <Route path="/admin/laptops/edit/:id" element={<LaptopForm />} />
-          
+
         </Routes>
       </Box>
     </Fade>
@@ -94,7 +96,7 @@ function AppContent() {
       {!isAdminRoute && <Navbar />}
       <ScrollToTop />
       <AnimatedRoutes />
-      
+
       {/* Add Floating Chat Button to all non-admin pages */}
       {!isAdminRoute && <FloatingChatButton />}
     </Box>

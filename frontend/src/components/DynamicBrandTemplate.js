@@ -1060,7 +1060,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
               variant="h1"
               sx={{
                 fontWeight: 900,
-                fontSize: { xs: '2rem', md: '3rem' },
+                fontSize: { xs: '2.5rem', md: '4rem' }, // Slightly larger as requested earlier
                 background: brandColors.textGradient,
                 backgroundSize: '300% 300%',
                 WebkitBackgroundClip: 'text',
@@ -1070,7 +1070,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
                 mb: 2
               }}
             >
-              {brandData.brandName} Laptop Series
+              {brandData.brandName} Laptops
             </Typography>
             <Typography variant="h6" sx={{ color: 'rgba(255, 255, 255, 0.9)', mb: 2 }}>
               Organized by Levels and Categories
@@ -1199,7 +1199,7 @@ const DynamicBrandTemplate = ({ brandId }) => {
                 mb: 1.5,
                 fontSize: { xs: '1.75rem', md: '2.5rem' } // Smaller font on mobile
               }}>
-                {selectedSeriesData.displayName || selectedSeries} Series
+                {selectedSeriesData.displayName || selectedSeries}
               </Typography>
               <Typography variant="body1" sx={{
                 color: '#495057',

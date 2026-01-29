@@ -52,11 +52,16 @@ export default function Navbar() {
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [servicesAnchorEl, setServicesAnchorEl] = useState(null);
+  const [accessoriesAnchorEl, setAccessoriesAnchorEl] = useState(null);
   const [mobileOpen, setMobileOpen] = useState(false); // Mobile Drawer State
   const [servicesExpanded, setServicesExpanded] = useState(false); // Mobile Services Accordion state
+  const [accessoriesExpanded, setAccessoriesExpanded] = useState(false); // Mobile Accessories Accordion state
 
   const servicesOpen = Boolean(servicesAnchorEl);
+  const accessoriesOpen = Boolean(accessoriesAnchorEl);
+
   const isServicesActive = ['/laptops', '/services/pre-owned-laptops', '/repair'].includes(location.pathname);
+  const isAccessoriesActive = ['/accessories', '/mac-accessories'].includes(location.pathname);
 
   const socialLinks = {
     google: 'https://www.justdial.com/Mumbai/Braintone-Technology-Pvt-Ltd-Near-Central-Bank-Of-India-Near-Welcome-Restaurant-Flora-Fountain-Fort/022PXX22-XX22-090813232428-I9U1_BZDET/reviews',
@@ -145,11 +150,33 @@ export default function Navbar() {
           </List>
         )}
 
+        {/* Accessories Dropdown/Accordion for Mobile */}
         <ListItem disablePadding>
-          <ListItemButton component={NavLink} to="/accessories" onClick={handleDrawerToggle} selected={location.pathname === '/accessories'}>
+          <ListItemButton onClick={() => setAccessoriesExpanded(!accessoriesExpanded)}>
             <ListItemText primary="ACCESSORIES" primaryTypographyProps={{ fontWeight: 600 }} />
+            <KeyboardArrowDownIcon sx={{ transform: accessoriesExpanded ? 'rotate(180deg)' : '0deg', transition: '0.3s' }} />
           </ListItemButton>
         </ListItem>
+
+        {accessoriesExpanded && (
+          <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
+            <ListItemButton component={Link} to="/accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemText primary="All Laptop Accessories" />
+            </ListItemButton>
+            <ListItemButton component={Link} to="/mac-accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
+              <ListItemIcon sx={{ minWidth: 32 }}>
+                <Box
+                  component="img"
+                  src="/images/apple-icon.png"
+                  alt="Apple"
+                  sx={{ width: 18, height: 18, objectFit: 'contain' }}
+                />
+              </ListItemIcon>
+              <ListItemText primary="Mac Accessories" />
+            </ListItemButton>
+          </List>
+        )}
         <ListItem disablePadding>
           <ListItemButton component={NavLink} to="/about" onClick={handleDrawerToggle} selected={location.pathname === '/about'}>
             <ListItemText primary="ABOUT US" primaryTypographyProps={{ fontWeight: 600 }} />
@@ -354,7 +381,54 @@ export default function Navbar() {
                       </MenuItem>
                     </Menu>
                   </Box>
-                  <Button component={NavLink} to="/accessories" sx={navLinkSx(location.pathname === '/accessories')}>ACCESSORIES</Button>
+                  <Box
+                    onMouseEnter={(e) => setAccessoriesAnchorEl(e.currentTarget)}
+                    onMouseLeave={() => setAccessoriesAnchorEl(null)}
+                    sx={{ display: 'flex' }}
+                  >
+                    <Button
+                      endIcon={<KeyboardArrowDownIcon sx={{ transition: '0.2s', transform: accessoriesOpen ? 'rotate(180deg)' : 'none' }} />}
+                      sx={navLinkSx(isAccessoriesActive)}
+                    >
+                      ACCESSORIES
+                    </Button>
+                    <Menu
+                      anchorEl={accessoriesAnchorEl}
+                      open={accessoriesOpen}
+                      onClose={() => setAccessoriesAnchorEl(null)}
+                      disableScrollLock
+                      disableRestoreFocus
+                      sx={{ pointerEvents: 'none', mt: '-5px' }}
+                      PaperProps={{
+                        onMouseEnter: () => setAccessoriesAnchorEl(accessoriesAnchorEl),
+                        onMouseLeave: () => setAccessoriesAnchorEl(null),
+                        sx: {
+                          pointerEvents: 'auto',
+                          minWidth: 240,
+                          borderRadius: '0 0 8px 8px',
+                          bgcolor: 'rgba(255, 255, 255, 0.95)',
+                          backdropFilter: 'blur(10px)',
+                          boxShadow: '0 15px 30px -5px rgba(0,0,0,0.15)',
+                          border: '1px solid rgba(0,0,0,0.05)'
+                        }
+                      }}
+                      anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+                      transformOrigin={{ vertical: 'top', horizontal: 'left' }}
+                    >
+                      <MenuItem component={Link} to="/accessories" onClick={() => setAccessoriesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
+                        <LaptopIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> All Laptop Accessories
+                      </MenuItem>
+                      <MenuItem component={Link} to="/mac-accessories" onClick={() => setAccessoriesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
+                        <Box
+                          component="img"
+                          src="/images/apple-icon.png"
+                          alt="Apple"
+                          sx={{ mr: 1.5, width: 18, height: 18, objectFit: 'contain', mt: -0.2 }}
+                        />
+                        Mac Accessories
+                      </MenuItem>
+                    </Menu>
+                  </Box>
                   <Button component={NavLink} to="/about" sx={navLinkSx(location.pathname === '/about')}>ABOUT US</Button>
                   <Button component={NavLink} to="/contact" sx={navLinkSx(location.pathname === '/contact')}>CONTACT</Button>
                 </Box>
