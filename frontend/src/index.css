@@ -12,13 +12,13 @@ code {
     monospace;
 }
 
-/* Scroll Fade In Animation */
+/* Scroll Fade In Animation - Optimized for Performance */
 .fade-in-section {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(20px);
   visibility: hidden;
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out, visibility 1.2s ease-out;
-  will-change: opacity, transform, visibility;
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, visibility 0.6s ease-out;
+  contain: layout style paint;
 }
 
 .fade-in-section.is-visible {

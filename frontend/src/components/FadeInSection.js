@@ -14,7 +14,8 @@ const FadeInSection = (props) => {
                 }
             });
         }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
+            threshold: 0.15, // Trigger when 15% of the element is visible
+            rootMargin: '50px' // Start animation 50px before element enters viewport
         });
 
         const currentRef = domRef.current;
