@@ -2,15 +2,6 @@
   box-sizing: border-box;
 }
 
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  transform: translateZ(0);
-  -webkit-transform: translateZ(0);
-}
-
 a {
   color: inherit;
   text-decoration: none;
@@ -18,7 +9,6 @@ a {
 
 .main-content {
   min-height: calc(100vh - 220px);
-  contain: layout style;
 }
 
 .hero-background-dark {
