@@ -169,9 +169,9 @@ const AboutUs = () => {
 
   const stats = [
     { icon: People, label: 'Satisfied Customers', value: '1,00,000+', color: '#e74c3c' },
-    { icon: ShoppingCart, label: 'Laptops Sold', value: '35,000+', color: '#c0392b' },
+    { icon: ShoppingCart, label: 'Laptops Sold', value: '75,000+', color: '#c0392b' },
     { icon: TrendingUp, label: 'Years in Business', value: '26+', color: '#d35400' },
-    { icon: CheckCircle, label: 'Devices Repaired', value: '35,000+', color: '#e67e22' }
+    { icon: CheckCircle, label: 'Devices Repaired', value: '1,00,000+', color: '#e67e22' }
   ];
 
   const features = [
@@ -206,7 +206,7 @@ const AboutUs = () => {
     { year: '2005', event: 'Expanded Services', description: 'Added laptop repair services and became authorized service center' },
     { year: '2012', event: 'Second Location', description: 'Opened Vile Parle branch to serve western suburbs' },
     { year: '2018', event: 'Online Platform', description: 'Launched website for online sales and service bookings' },
-    { year: '2024', event: '25+ Years', description: 'Celebrating over 25 years of trusted service in Mumbai' }
+    { year: '2024', event: '26+ Years', description: 'Celebrating over 26 years of trusted service in Mumbai' }
   ];
 
   const team = [

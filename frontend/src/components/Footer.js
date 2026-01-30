@@ -57,7 +57,7 @@ const Footer = ({ fullFooter = true }) => {
                                     fontSize: { xs: '1rem', md: '1.25rem' }, // Responsive font size
                                 }}
                             >
-                                Join 25,000+ satisfied customers who trust Braintone for their technology needs.
+                                Join 1,00,000+ satisfied customers who trust Braintone for their technology needs.
                                 Whether you're buying IT hardware, setting up a network, or need expert technical
                                 support, we're here to help with 26+ years of experience behind us.
                             </Typography>
