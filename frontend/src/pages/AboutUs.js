@@ -386,7 +386,7 @@ const AboutUs = () => {
                 fontSize: { xs: '1.1rem', md: '1.3rem' },
                 color: 'white',
               }}>
-                Since 1998, Braintone Computers has been Mumbai's trusted destination for IT Hardware,
+                Since 1998, Braintone Technology has been Mumbai's trusted destination for IT Hardware,
                 Office Automation, Audio Video Solutions & IT Software Solutions. We provide comprehensive
                 technology solutions from sales to support with 26+ years of experience.
               </Typography>
