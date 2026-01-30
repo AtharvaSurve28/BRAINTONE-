@@ -20,7 +20,9 @@ import {
   FormControl,
   InputLabel,
   Select,
-  MenuItem
+  MenuItem,
+  useMediaQuery,
+  useTheme
 } from '@mui/material';
 import {
   People,
@@ -86,6 +88,8 @@ const AboutUs = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   const handleTabChange = (event, newValue) => {
     setActiveTab(newValue);
@@ -164,8 +168,8 @@ const AboutUs = () => {
   };
 
   const stats = [
-    { icon: People, label: 'Satisfied Customers', value: '25,000+', color: '#e74c3c' },
-    { icon: ShoppingCart, label: 'Laptops Sold', value: '15,000+', color: '#c0392b' },
+    { icon: People, label: 'Satisfied Customers', value: '1,00,000+', color: '#e74c3c' },
+    { icon: ShoppingCart, label: 'Laptops Sold', value: '35,000+', color: '#c0392b' },
     { icon: TrendingUp, label: 'Years in Business', value: '26+', color: '#d35400' },
     { icon: CheckCircle, label: 'Devices Repaired', value: '35,000+', color: '#e67e22' }
   ];
@@ -192,7 +196,7 @@ const AboutUs = () => {
     {
       icon: <LocalShipping sx={{ fontSize: 40, color: '#e67e22' }} />,
       title: 'Doorstep Service',
-      description: 'Pickup and delivery services for repairs across Mumbai',
+      description: 'Cash on Delivery available for all services',
       color: '#ffecec'
     }
   ];
@@ -349,8 +353,8 @@ const AboutUs = () => {
             bottom: 0,
             backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            filter: 'brightness(0.4)',
+            backgroundRepeat: 'no-repeat',
+            filter: 'brightness(0.6)',
             zIndex: 0,
           },
         }}>
@@ -401,13 +405,13 @@ const AboutUs = () => {
 
       {/* Stats Section */}
       <FadeInSection fullWidth>
-        <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1 }}>
-          <Grid container spacing={3} justifyContent="center">
+        <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
+          <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
             {stats.map((stat, index) => (
               <Grid item xs={6} sm={3} key={index}>
                 <Card sx={{
                   textAlign: 'center',
-                  p: 3,
+                  p: { xs: 1.5, sm: 3 },
                   boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
                   transition: 'all 0.3s ease',
                   background: 'linear-gradient(135deg, #fff5f5 0%, #ffecec 100%)',
@@ -430,19 +434,19 @@ const AboutUs = () => {
                     background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
                   },
                 }}>
-                  <stat.icon sx={{ fontSize: 48, color: stat.color, mb: 1, animation: 'pulse 3s ease-in-out infinite' }} />
+                  <stat.icon sx={{ fontSize: { xs: 32, md: 48 }, color: stat.color, mb: 1, animation: 'pulse 3s ease-in-out infinite' }} />
                   <Typography variant="h4" sx={{
                     fontWeight: 800,
-                    mb: 1,
+                    mb: 0.5,
                     color: '#e74c3c',
-                    fontSize: { xs: '1.8rem', md: '2.2rem' }
+                    fontSize: { xs: '1.2rem', sm: '1.8rem', md: '2.2rem' }
                   }}>
                     {stat.value}
                   </Typography>
                   <Typography variant="body2" sx={{
                     color: '#7f8c8d',
                     fontWeight: 600,
-                    fontSize: '0.9rem'
+                    fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' }
                   }}>
                     {stat.label}
                   </Typography>
@@ -468,13 +472,20 @@ const AboutUs = () => {
             <Tabs
               value={activeTab}
               onChange={handleTabChange}
-              centered
+              centered={!isMobile}
+              variant={isMobile ? "scrollable" : "standard"}
+              scrollButtons={isMobile ? "auto" : false}
               sx={{
+                '& .MuiTabs-flexContainer': {
+                  justifyContent: isMobile ? 'flex-start' : 'center',
+                },
                 '& .MuiTab-root': {
                   textTransform: 'none',
                   fontWeight: 600,
-                  fontSize: '16px',
+                  fontSize: { xs: '14px', sm: '16px' },
                   color: '#7f8c8d',
+                  minWidth: { xs: 'auto', sm: 160 },
+                  px: { xs: 2, sm: 3 },
                   '&.Mui-selected': {
                     color: '#e74c3c',
                   }
@@ -488,13 +499,30 @@ const AboutUs = () => {
             >
               <Tab label="Company Overview" />
               <Tab label="Our Vision" />
-              <Tab label="Why Choose Braintone" />
+              <Tab label="Reasons to Buy from Braintone" />
             </Tabs>
+            {isMobile && (
+              <Typography
+                variant="caption"
+                sx={{
+                  display: 'block',
+                  textAlign: 'center',
+                  color: 'rgba(0, 0, 0, 0.5)',
+                  mt: 0.5,
+                  fontWeight: 500,
+                  fontSize: '0.7rem',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px'
+                }}
+              >
+                ← swipe →
+              </Typography>
+            )}
           </Box>
 
           {activeTab === 0 && (
             <Card sx={{
-              p: { xs: 4, md: 6 },
+              p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
               background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
@@ -530,7 +558,7 @@ const AboutUs = () => {
                     }}>
                       <Business sx={{ fontSize: 32, color: 'white' }} />
                     </Box>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                       Company Overview
                     </Typography>
                   </Box>
@@ -661,7 +689,7 @@ const AboutUs = () => {
 
           {activeTab === 1 && (
             <Card sx={{
-              p: { xs: 4, md: 6 },
+              p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
               background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
@@ -717,7 +745,7 @@ const AboutUs = () => {
                     }}>
                       <Visibility sx={{ fontSize: 32, color: 'white' }} />
                     </Box>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                       Our Vision
                     </Typography>
                   </Box>
@@ -778,7 +806,7 @@ const AboutUs = () => {
 
           {activeTab === 2 && (
             <Card sx={{
-              p: { xs: 4, md: 6 },
+              p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
               background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
@@ -813,7 +841,7 @@ const AboutUs = () => {
                   }}>
                     <Star sx={{ fontSize: 32, color: 'white' }} />
                   </Box>
-                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50' }}>
+                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                     11 Reasons to Choose Braintone
                   </Typography>
                 </Box>
@@ -1391,7 +1419,7 @@ const AboutUs = () => {
 
                     <Stack spacing={1.5}>
                       <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
-                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Free pickup & delivery
+                        <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Cash on Delivery available for all services
                       </Typography>
                       <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Across Mumbai

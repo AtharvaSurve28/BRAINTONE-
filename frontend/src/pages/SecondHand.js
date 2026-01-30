@@ -38,6 +38,8 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import PlaceIcon from '@mui/icons-material/Place';
 import AccessTimeIcon from '@mui/icons-material/AccessTime';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import MonitorIcon from '@mui/icons-material/Monitor';
+import ImportantDevicesIcon from '@mui/icons-material/ImportantDevices';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
 
@@ -187,6 +189,48 @@ const SecondHand = () => {
       bestFor: 'Executives, Creative Professionals, Tech Enthusiasts',
       brands: 'Apple MacBook, Dell XPS, Microsoft Surface, HP Spectre',
       warranty: '1 Month Warranty',
+    },
+    {
+      id: 7,
+      title: 'Demo Units',
+      description: 'Used for demonstrations, as good as new',
+      startingPrice: '₹25,000',
+      icon: <MonitorIcon />,
+      color: '#E91E63', // Pink
+      bgColor: '#FCE4EC',
+      textColor: '#212121',
+      specs: [
+        'Latest Generation Processors',
+        '8GB - 16GB RAM',
+        '256GB - 512GB SSD',
+        'Pristine Condition',
+        'Full Brand Warranty (Varies)',
+        'Original Box & Accessories',
+      ],
+      bestFor: 'Users looking for brand new experience at Lower Price',
+      brands: 'All Leading Brands',
+      warranty: 'Full Support & Warranty',
+    },
+    {
+      id: 8,
+      title: 'Display Units',
+      description: 'Ex-Display store models, Great value',
+      startingPrice: '₹20,000',
+      icon: <ImportantDevicesIcon />,
+      color: '#FF5722', // Deep Orange
+      bgColor: '#FBE9E7',
+      textColor: '#212121',
+      specs: [
+        'High-End Specifications',
+        'Minor Cosmetic Imperfections',
+        'Fully Tested & Certified',
+        'Excellent Reliability',
+        'Highly Competitive Pricing',
+        'Latest Tech for Less',
+      ],
+      bestFor: 'Budget conscious buyers wanting High-End Tech',
+      brands: 'Major Brand Store Models',
+      warranty: 'Certified Performance',
     },
   ];
 
@@ -625,7 +669,7 @@ const SecondHand = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.4)',
+            filter: 'brightness(0.6)',
             zIndex: 0,
             transform: 'scale(1.05)',
           },
@@ -762,6 +806,40 @@ const SecondHand = () => {
           </Container>
         </Box>
       </FadeInSection>
+
+      {/* Red Moving Rail (Marquee) */}
+      <Box sx={{
+        bgcolor: '#e74c3c',
+        color: 'white',
+        py: 1.5,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        position: 'relative',
+        zIndex: 10,
+        boxShadow: '0 4px 10px rgba(0,0,0,0.1)',
+      }}>
+        <Box sx={{
+          display: 'inline-block',
+          animation: 'marquee 30s linear infinite',
+          '& span': {
+            mx: 4,
+            fontWeight: 700,
+            fontSize: '1.1rem',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+          }
+        }}>
+          <span>✨ PREMIUM DEMO & DISPLAY UNITS NOW AVAILABLE AT UNBEATABLE PRICES! VISIT BRAINTONE STORES FOR EXCLUSIVE DEALS! ✨</span>
+          <span>✨ PREMIUM DEMO & DISPLAY UNITS NOW AVAILABLE AT UNBEATABLE PRICES! VISIT BRAINTONE STORES FOR EXCLUSIVE DEALS! ✨</span>
+          <span>✨ PREMIUM DEMO & DISPLAY UNITS NOW AVAILABLE AT UNBEATABLE PRICES! VISIT BRAINTONE STORES FOR EXCLUSIVE DEALS! ✨</span>
+        </Box>
+        <style>{`
+          @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-33.33%); }
+          }
+        `}</style>
+      </Box>
 
       {/* Main Content with Bubble Background */}
       <Box sx={{

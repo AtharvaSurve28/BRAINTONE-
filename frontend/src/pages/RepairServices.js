@@ -742,7 +742,7 @@ const RepairServices = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.4)',
+            filter: 'brightness(0.6)',
             zIndex: 0,
             transform: 'scale(1.05)',
           },
@@ -2234,10 +2234,23 @@ const RepairServices = () => {
               </Typography>
             </Box>
             <Box sx={{ maxWidth: 1000, mx: 'auto', borderRadius: 4, overflow: 'hidden', boxShadow: '0 0 40px rgba(255, 0, 0, 0.3)', position: 'relative' }}>
-              <video controls style={{ width: '100%', display: 'block', backgroundColor: '#000' }}>
-                <source src="/videos/Repair Video.mp4" type="video/mp4" />
+              <Box
+                component="video"
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+                controls
+                sx={{
+                  width: '100%',
+                  display: 'block',
+                  backgroundColor: '#000'
+                }}
+              >
+                <source src="/videos/Repair_Video.mp4" type="video/mp4" />
                 Your browser does not support the video tag.
-              </video>
+              </Box>
             </Box>
           </Container>
         </Box>
