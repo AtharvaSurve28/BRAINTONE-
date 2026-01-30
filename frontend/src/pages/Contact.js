@@ -156,8 +156,8 @@ const Contact = () => {
               bottom: 0,
               backgroundImage: 'url("https://www.shutterstock.com/image-photo/customer-service-call-center-contact-600nw-2493101023.jpg")',
               backgroundSize: 'cover',
-              backgroundPosition: 'center',
-              filter: 'brightness(0.4)',
+              backgroundRepeat: 'no-repeat',
+              filter: 'brightness(0.6)',
               zIndex: 0,
             }
           }}

@@ -204,7 +204,7 @@ const Laptops = () => {
           backgroundSize: 'cover',
           backgroundPosition: 'center 25%',
           backgroundRepeat: 'no-repeat',
-          filter: 'brightness(0.4)',
+          filter: 'brightness(0.6)',
           zIndex: 0,
           transform: 'scale(1.05)',
         },
