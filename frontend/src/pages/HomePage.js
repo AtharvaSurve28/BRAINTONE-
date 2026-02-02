@@ -55,7 +55,11 @@ const HomePage = () => {
     '/images/feedbacks/feedback1.png',
     '/images/feedbacks/feedback2.png',
     '/images/feedbacks/feedback3.png',
-    '/images/feedbacks/feedback4.png'
+    '/images/feedbacks/feedback4.png',
+    '/images/feedbacks/feedback5.png',
+    '/images/feedbacks/feedback6.png',
+    '/images/feedbacks/feedback7.png',
+    '/images/feedbacks/feedback8.png'
   ];
 
   // Array of background images - your image first, then others
@@ -702,18 +706,10 @@ const HomePage = () => {
       {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
       <FadeInSection fullWidth>
         <Box sx={{
-          py: 8,
+          py: { xs: 8, md: 15 },
           position: 'relative',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-          },
+          background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
           '&::after': {
             content: '""',
             position: 'absolute',
@@ -877,7 +873,9 @@ const HomePage = () => {
             </Container>
 
             {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+              <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            </Box>
 
             {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
             <Box sx={{
@@ -1007,7 +1005,9 @@ const HomePage = () => {
             </Box>
 
             {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+              <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            </Box>
 
             {/* Section 3: Repair Services - Text Left, Image Right */}
             <Box sx={{
@@ -1157,7 +1157,9 @@ const HomePage = () => {
             </Box>
 
             {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+              <Divider sx={{ my: { xs: 6, md: 8 } }} />
+            </Box>
 
             {/* Section 4: Maximize Life - Image Left, Text Right */}
             <Box sx={{
@@ -1326,40 +1328,38 @@ const HomePage = () => {
         </Box>
       </FadeInSection>
 
-      {/* BORDER - Separates All About BRAINTONE from Results and Feedbacks */}
+      {/* Colored Transition Area with Separator */}
       <Box sx={{
-        position: 'relative',
-        height: '2px',
-        background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
-        mx: { xs: 4, md: 8 },
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '80px',
-          height: '3px',
-          background: '#e74c3c',
-          borderRadius: '2px',
-        }
-      }} />
+        background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
+        py: { xs: 3, md: 4 }
+      }}>
+        <Box sx={{
+          position: 'relative',
+          height: '2px',
+          background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
+          mx: { xs: 4, md: 8 },
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: '50%',
+            left: '50%',
+            transform: 'translate(-50%, -50%)',
+            width: '80px',
+            height: '3px',
+            background: '#e74c3c',
+            borderRadius: '2px',
+          }
+        }} />
+      </Box>
 
       {/* Feedbacks Section */}
       <FadeInSection fullWidth>
         <Box sx={{
-          py: 4,
+          pt: 4,
+          pb: { xs: 10, md: 14 }, // Using padding instead of margin to keep the background reddish
           position: 'relative',
           overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-          },
+          background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
           '&::after': {
             content: '""',
             position: 'absolute',
@@ -1434,7 +1434,7 @@ const HomePage = () => {
 
               {/* Flip Slider Container */}
               <Box sx={{
-                height: { xs: 250, md: 400 },
+                height: { xs: 200, md: 350 },
                 position: 'relative',
                 perspective: '1500px', // Crucial for 3D effect
                 borderRadius: 4,
@@ -1466,14 +1466,14 @@ const HomePage = () => {
                       sx={{
                         borderRadius: 4,
                         overflow: 'hidden',
-                        border: '1px solid rgba(231, 76, 60, 0.1)',
-                        boxShadow: '0 10px 40px rgba(0,0,0,0.05)',
+                        border: '1px solid rgba(255, 255, 255, 0.1)',
+                        boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
                         width: '100%',
                         height: '100%',
                         display: 'flex',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        backgroundColor: 'white',
+                        backgroundColor: '#202124', // Matches Google review screenshot background
                         backfaceVisibility: 'hidden'
                       }}
                     >
@@ -1512,7 +1512,7 @@ const HomePage = () => {
             </Box>
 
             {/* Slide Indicators */}
-            <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 6 }}>
+            <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }}>
               {feedbackImages.map((_, index) => (
                 <Box
                   key={index}
@@ -1528,6 +1528,42 @@ const HomePage = () => {
                 />
               ))}
             </Stack>
+
+            {/* Centered Button */}
+            <Box sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              mt: 4
+            }}>
+              <Button
+                component="a"
+                size="small"
+                href="https://www.google.com/search?sca_esv=73a4869cd1a8b769&sxsrf=ANbL-n53pO9e7AARfsxU7U2lxF7vyY211A:1770028042373&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOb5BDM1sSnLuU9e_HlP3noJVzWMCW30sCXPvRZQ5-6Fe6oNwo6e5A8xVAwRMb3s6rhY32Tl5ZoFC_HTkjQUUAdOm85rbyv1UD6LXGo5M22zpUGUBUw%3D%3D&q=Braintone+Technology+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwij39SlzLqSAxU9TGwGHY0OIcsQ0bkNegQIIhAF&biw=1536&bih=737&dpr=2.5&aic=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                variant="contained"
+                sx={{
+                  bgcolor: '#e74c3c',
+                  color: 'white',
+                  borderRadius: '30px',
+                  px: 4,
+                  py: 1,
+                  fontWeight: 600,
+                  fontSize: '0.9rem',
+                  textTransform: 'none',
+                  boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)',
+                  whiteSpace: 'nowrap',
+                  transition: 'all 0.3s ease',
+                  '&:hover': {
+                    bgcolor: '#c0392b',
+                    transform: 'translateY(-2px)',
+                    boxShadow: '0 6px 20px rgba(231, 76, 60, 0.4)'
+                  }
+                }}
+              >
+                Tap to visit
+              </Button>
+            </Box>
           </Container>
         </Box>
       </FadeInSection>
