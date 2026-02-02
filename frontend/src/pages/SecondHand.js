@@ -413,8 +413,14 @@ const SecondHand = () => {
       width: '100%',
       maxWidth: '400px',
       height: '340px',
+      '&:hover .category-card': {
+        transform: 'translateY(-12px)',
+        boxShadow: 8,
+        animation: 'none',
+      },
     }}>
       <Card
+        className="category-card"
         sx={{
           height: '320px',
           width: '100%',
@@ -423,11 +429,6 @@ const SecondHand = () => {
           flexDirection: 'column',
           animation: 'float 3s ease-in-out infinite',
           transition: 'transform 0.3s, box-shadow 0.3s',
-          '&:hover': {
-            transform: 'translateY(-12px)',
-            boxShadow: 8,
-            animation: 'none',
-          },
           border: `3px solid ${category.color}40`,
           overflow: 'hidden',
           borderRadius: '12px',
@@ -673,26 +674,10 @@ const SecondHand = () => {
             zIndex: 0,
             transform: 'scale(1.05)',
           },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '4px',
-            background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-            backgroundSize: '400% 100%',
-            animation: 'shimmer 6s linear infinite',
-            zIndex: 1,
-          }
         }}>
 
           {/* Add CSS keyframes directly */}
           <style>{`
-    @keyframes shimmer {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 400% 0%; }
-    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-9px); }
