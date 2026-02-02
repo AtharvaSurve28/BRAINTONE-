@@ -1434,7 +1434,7 @@ const HomePage = () => {
 
               {/* Flip Slider Container */}
               <Box sx={{
-                height: { xs: 420, md: 620 },
+                height: { xs: 250, md: 400 },
                 position: 'relative',
                 perspective: '1500px', // Crucial for 3D effect
                 borderRadius: 4,

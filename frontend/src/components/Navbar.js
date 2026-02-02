@@ -358,9 +358,10 @@ export default function Navbar() {
                       anchorEl={servicesAnchorEl}
                       open={servicesOpen}
                       onClose={() => setServicesAnchorEl(null)}
+                      transitionDuration={100}
                       disableScrollLock
                       disableRestoreFocus
-                      sx={{ pointerEvents: 'none', mt: '-5px' }}
+                      sx={{ pointerEvents: 'none', mt: '2px' }}
                       PaperProps={{
                         onMouseEnter: () => setServicesAnchorEl(servicesAnchorEl),
                         onMouseLeave: () => setServicesAnchorEl(null),
@@ -403,6 +404,7 @@ export default function Navbar() {
                       anchorEl={accessoriesAnchorEl}
                       open={accessoriesOpen}
                       onClose={() => setAccessoriesAnchorEl(null)}
+                      transitionDuration={100}
                       disableScrollLock
                       disableRestoreFocus
                       sx={{ pointerEvents: 'none', mt: '-5px' }}
