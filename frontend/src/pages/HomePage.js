@@ -33,17 +33,19 @@ import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
 import BannerSlider from '../components/BannerSlider';
+import VideoInView from '../components/VideoInView';
+
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   // Array of background images - your image first, then others
   const backgroundImages = [
-    'https://www.shutterstock.com/image-photo/laptop-report-friends-learning-library-600nw-2475778113.jpg', // Your image first - ADDED SLASH
+    'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=2174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Your image first - ADDED SLASH
     'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Laptop workspace
     'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80', // Laptop repair
     'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D', // Modern laptops
-    'https://thumbs.dreamstime.com/b/computer-peripherals-laptop-accessories-composition-white-wooden-board-47590141.jpg',
+    'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=2428&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
     'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2042&q=80', // Tech workspace
   ];
 
@@ -108,7 +110,7 @@ const HomePage = () => {
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: 'linear-gradient(135deg, rgba(26, 32, 44, 0.7) 0%, rgba(45, 55, 72, 0.6) 50%, rgba(74, 85, 104, 0.7) 100%)',
+                  background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
                 },
               }}
             />
@@ -385,9 +387,18 @@ const HomePage = () => {
                         background: card.iconBg,
                       },
                       '&:hover': {
-                        transform: 'translateY(-8px)',
+                        transform: 'translateY(-4px) scale(1.02)',
                         boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
                         cursor: 'pointer',
+                        // Prevent jitter by extending the hover area downwards
+                        '&::after': {
+                          content: '""',
+                          position: 'absolute',
+                          top: '100%',
+                          left: 0,
+                          width: '100%',
+                          height: '24px',
+                        },
                       },
                     }}
                   >
@@ -827,10 +838,8 @@ const HomePage = () => {
                     width: '100%',
                     height: { xs: 300, md: 400 },
                   }}>
-                    <Box
-                      component="video"
+                    <VideoInView
                       src="/videos/All_About_Braintone1.mp4"
-                      autoPlay
                       muted
                       loop
                       playsInline
@@ -874,10 +883,8 @@ const HomePage = () => {
                   borderRadius: 2,
                   overflow: 'hidden'
                 }}>
-                  <Box
-                    component="video"
+                  <VideoInView
                     src="/videos/All_About_Braintone2.mp4"
-                    autoPlay
                     muted
                     loop
                     playsInline
@@ -1090,10 +1097,8 @@ const HomePage = () => {
                   overflow: 'hidden',
                   boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
                 }}>
-                  <Box
-                    component="video"
+                  <VideoInView
                     src="/videos/All_About_Braintone3.mp4"
-                    autoPlay
                     muted
                     loop
                     playsInline
@@ -1157,10 +1162,8 @@ const HomePage = () => {
                   borderRadius: 2,
                   overflow: 'hidden'
                 }}>
-                  <Box
-                    component="video"
+                  <VideoInView
                     src="/videos/All_About_Braintone4.mp4"
-                    autoPlay
                     muted
                     loop
                     playsInline
@@ -1834,6 +1837,7 @@ const HomePage = () => {
             left: 0,
             right: 0,
             bottom: 0,
+            background: 'rgba(0, 0, 0, 0.3)',
             zIndex: 1,
           },
           '&::after': {
@@ -1843,7 +1847,7 @@ const HomePage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'url(https://laptopworlds.in/wp-content/uploads/2023/11/l2.png)',
+            background: 'url(https://plus.unsplash.com/premium_photo-1726804906019-20ac68ddec1b?q=80&w=2292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
@@ -1920,10 +1924,19 @@ const HomePage = () => {
                           left: '100%',
                         },
                         '&:hover': {
-                          transform: 'translateY(-8px)',
+                          transform: 'translateY(-4px) scale(1.02)',
                           backgroundColor: 'rgba(231, 76, 60, 0.3)',
                           borderColor: '#e74c3c',
                           boxShadow: '0 15px 40px rgba(231, 76, 60, 0.4)',
+                          // Prevent jitter by extending the hover area downwards
+                          '&::after': {
+                            content: '""',
+                            position: 'absolute',
+                            top: '100%',
+                            left: 0,
+                            width: '100%',
+                            height: '24px',
+                          },
                         },
                       }}
                     >

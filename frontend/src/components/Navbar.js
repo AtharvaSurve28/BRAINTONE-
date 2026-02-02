@@ -178,6 +178,11 @@ export default function Navbar() {
           </List>
         )}
         <ListItem disablePadding>
+          <ListItemButton component={NavLink} to="/ewaste" onClick={handleDrawerToggle} selected={location.pathname === '/ewaste'}>
+            <ListItemText primary="E-WASTE" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
           <ListItemButton component={NavLink} to="/about" onClick={handleDrawerToggle} selected={location.pathname === '/about'}>
             <ListItemText primary="ABOUT US" primaryTypographyProps={{ fontWeight: 600 }} />
           </ListItemButton>
@@ -249,7 +254,8 @@ export default function Navbar() {
                 fontWeight: 900,
                 textDecoration: 'none',
                 color: '#e74c3c',
-                letterSpacing: '-1px'
+                letterSpacing: '-1px',
+                ml: { xs: -1, sm: -4, md: -8 } // Responsive shift for logo
               }}>
                 BRAINTONE
               </Typography>
@@ -313,7 +319,8 @@ export default function Navbar() {
                   fontWeight: 900,
                   textDecoration: 'none',
                   color: '#e74c3c',
-                  letterSpacing: '-1px'
+                  letterSpacing: '-1px',
+                  ml: { xs: -1, sm: -4, md: -8 } // Responsive shift for logo
                 }}>
                   BRAINTONE
                 </Typography>
@@ -334,7 +341,7 @@ export default function Navbar() {
             {/* Desktop: Full Menu */}
             {!isMobile && (
               <>
-                <Box sx={{ display: 'flex', flexGrow: 1 }}>
+                <Box sx={{ display: 'flex', flexGrow: 1, ml: { xs: 0, sm: -4, md: -8 } }}>
                   <Button component={NavLink} to="/" end sx={navLinkSx(location.pathname === '/')}>HOME</Button>
                   <Box
                     onMouseEnter={(e) => setServicesAnchorEl(e.currentTarget)}
@@ -429,6 +436,7 @@ export default function Navbar() {
                       </MenuItem>
                     </Menu>
                   </Box>
+                  <Button component={NavLink} to="/ewaste" sx={navLinkSx(location.pathname === '/ewaste')}>E-WASTE</Button>
                   <Button component={NavLink} to="/about" sx={navLinkSx(location.pathname === '/about')}>ABOUT US</Button>
                   <Button component={NavLink} to="/contact" sx={navLinkSx(location.pathname === '/contact')}>CONTACT</Button>
                 </Box>

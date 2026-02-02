@@ -30,7 +30,7 @@ const BannerSlider = () => {
             btnText: "View Details",
             btnColor: "#ef4444", // Reddish
             btnIcon: <EastIcon />,
-            image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80", // Students
+            image: "https://plus.unsplash.com/premium_photo-1733306464128-d6b80ed2f2e2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Students
             theme: "light",
 
         },
@@ -47,7 +47,7 @@ const BannerSlider = () => {
             btnText: "View Details",
             btnColor: "#1e1e1e", // Black
             btnIcon: <BusinessIcon />, // using generic icon for quote
-            image: "https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1738&q=80", // Office
+            image: "https://images.unsplash.com/39/lIZrwvbeRuuzqOoWJUEn_Photoaday_CSD%20%281%20of%201%29-5.jpg?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Office
             theme: "dark",
         },
         {
@@ -63,7 +63,7 @@ const BannerSlider = () => {
             btnText: "View Details",
             btnColor: "#dc2626", // Red
             btnIcon: <GroupAddIcon />,
-            image: "https://images.unsplash.com/photo-1543269865-cbf427effbad?ixlib=rb-4.0.3&auto=format&fit=crop&w=1740&q=80", // Friends
+            image: "https://plus.unsplash.com/premium_photo-1663051303500-c85bef3f05f6?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Friends
             theme: "light",
         },
         {
@@ -79,7 +79,7 @@ const BannerSlider = () => {
             btnText: "View Details",
             btnColor: "#ea580c", // Orange
             btnIcon: <VolunteerActivismIcon />,
-            image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&auto=format&fit=crop&w=1748&q=80", // Community
+            image: "https://plus.unsplash.com/premium_photo-1683140538884-07fb31428ca6?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", // Community
             theme: "light",
         },
     ];

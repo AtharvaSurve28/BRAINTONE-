@@ -21,6 +21,8 @@ import MacAccessories from './pages/MacAccessories';
 import RepairServices from './pages/RepairServices';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
+import EWaste from './pages/EWaste';
+
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
 import FloatingChatButton from './components/FloatingChatButton'; // Import the new component
@@ -73,6 +75,7 @@ function AnimatedRoutes() {
           <Route path="/mac-accessories" element={<MacAccessories />} />
           <Route path="/repair" element={<RepairServices />} />
           <Route path="/about" element={<AboutUs />} />
+          <Route path="/ewaste" element={<EWaste />} />
           <Route path="/contact" element={<Contact />} />
 
           {/* Admin Routes */}
