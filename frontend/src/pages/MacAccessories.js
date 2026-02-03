@@ -166,7 +166,7 @@ const MacAccessories = () => {
                     display: 'flex',
                     alignItems: 'center',
                     overflow: 'hidden',
-                    backgroundImage: 'url("/images/mac_hero_bg.png")',
+                    backgroundImage: 'url("/images/mac-accessories-hero-updated.png")',
                     backgroundSize: 'cover',
                     backgroundPosition: { xs: 'center', md: '70% center' },
                     backgroundColor: '#f5f5f7',
