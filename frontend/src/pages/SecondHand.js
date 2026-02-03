@@ -274,6 +274,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 30% 30%, rgba(33, 150, 243, 0.08), rgba(33, 150, 243, 0.02))',
           animation: 'bubbleFloatLarge 25s ease-in-out infinite',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -287,6 +288,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 60% 40%, rgba(76, 175, 80, 0.06), rgba(76, 175, 80, 0.01))',
           animation: 'bubbleFloatMedium 30s ease-in-out infinite 5s',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -413,8 +415,14 @@ const SecondHand = () => {
       width: '100%',
       maxWidth: '400px',
       height: '340px',
+      '&:hover .category-card': {
+        transform: 'translateY(-12px)',
+        boxShadow: 8,
+        animation: 'none',
+      },
     }}>
       <Card
+        className="category-card"
         sx={{
           height: '320px',
           width: '100%',
@@ -423,11 +431,6 @@ const SecondHand = () => {
           flexDirection: 'column',
           animation: 'float 3s ease-in-out infinite',
           transition: 'transform 0.3s, box-shadow 0.3s',
-          '&:hover': {
-            transform: 'translateY(-12px)',
-            boxShadow: 8,
-            animation: 'none',
-          },
           border: `3px solid ${category.color}40`,
           overflow: 'hidden',
           borderRadius: '12px',
@@ -665,7 +668,7 @@ const SecondHand = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
@@ -673,26 +676,10 @@ const SecondHand = () => {
             zIndex: 0,
             transform: 'scale(1.05)',
           },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            bottom: 0,
-            left: 0,
-            right: 0,
-            height: '4px',
-            background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-            backgroundSize: '400% 100%',
-            animation: 'shimmer 6s linear infinite',
-            zIndex: 1,
-          }
         }}>
 
           {/* Add CSS keyframes directly */}
           <style>{`
-    @keyframes shimmer {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 400% 0%; }
-    }
     @keyframes float {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-9px); }

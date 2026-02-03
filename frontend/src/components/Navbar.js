@@ -31,7 +31,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger Icon
 import CloseIcon from '@mui/icons-material/Close';
-import PlaceIcon from '@mui/icons-material/Place'; // Added for Mobile Drawer
+
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 // Official Google "G" SVG Component
@@ -64,7 +64,7 @@ export default function Navbar() {
   const isAccessoriesActive = ['/accessories', '/mac-accessories'].includes(location.pathname);
 
   const socialLinks = {
-    google: 'https://www.justdial.com/Mumbai/Braintone-Technology-Pvt-Ltd-Near-Central-Bank-Of-India-Near-Welcome-Restaurant-Flora-Fountain-Fort/022PXX22-XX22-090813232428-I9U1_BZDET/reviews',
+    google: 'https://www.google.com/search?sca_esv=73a4869cd1a8b769&sxsrf=ANbL-n53pO9e7AARfsxU7U2lxF7vyY211A:1770028042373&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOb5BDM1sSnLuU9e_HlP3noJVzWMCW30sCXPvRZQ5-6Fe6oNwo6e5A8xVAwRMb3s6rhY32Tl5ZoFC_HTkjQUUAdOm85rbyv1UD6LXGo5M22zpUGUBUw%3D%3D&q=Braintone+Technology+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwij39SlzLqSAxU9TGwGHY0OIcsQ0bkNegQIIhAF&biw=1536&bih=737&dpr=2.5&aic=0',
     instagram: 'https://www.instagram.com/braintone.technology/',
     twitter: 'https://x.com/BraintoneL1707',
     linkedin: '#',
@@ -358,9 +358,10 @@ export default function Navbar() {
                       anchorEl={servicesAnchorEl}
                       open={servicesOpen}
                       onClose={() => setServicesAnchorEl(null)}
+                      transitionDuration={100}
                       disableScrollLock
                       disableRestoreFocus
-                      sx={{ pointerEvents: 'none', mt: '-5px' }}
+                      sx={{ pointerEvents: 'none', mt: '2px' }}
                       PaperProps={{
                         onMouseEnter: () => setServicesAnchorEl(servicesAnchorEl),
                         onMouseLeave: () => setServicesAnchorEl(null),
@@ -403,6 +404,7 @@ export default function Navbar() {
                       anchorEl={accessoriesAnchorEl}
                       open={accessoriesOpen}
                       onClose={() => setAccessoriesAnchorEl(null)}
+                      transitionDuration={100}
                       disableScrollLock
                       disableRestoreFocus
                       sx={{ pointerEvents: 'none', mt: '-5px' }}

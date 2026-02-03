@@ -17,18 +17,13 @@ import BuildIcon from '@mui/icons-material/Build';
 import StoreIcon from '@mui/icons-material/Store';
 import VerifiedUserIcon from '@mui/icons-material/VerifiedUser';
 import HeadsetMicIcon from '@mui/icons-material/HeadsetMic';
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import GroupIcon from '@mui/icons-material/Group';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import ChatIcon from '@mui/icons-material/Chat';
-import PlaceIcon from '@mui/icons-material/Place';
-import PhoneIcon from '@mui/icons-material/Phone';
-import OpenInNewIcon from '@mui/icons-material/OpenInNew';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import StarIcon from '@mui/icons-material/Star';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
@@ -38,15 +33,35 @@ import VideoInView from '../components/VideoInView';
 
 const HomePage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);
+
+  const nextFeedback = () => {
+    setCurrentFeedbackIndex((prev) => (prev + 1) % feedbackImages.length);
+  };
+
+  const prevFeedback = () => {
+    setCurrentFeedbackIndex((prev) => (prev - 1 + feedbackImages.length) % feedbackImages.length);
+  };
+
+  const feedbackImages = [
+    '/images/feedbacks/feedback1.png',
+    '/images/feedbacks/feedback2.png',
+    '/images/feedbacks/feedback3.png',
+    '/images/feedbacks/feedback4.png',
+    '/images/feedbacks/feedback5.png',
+    '/images/feedbacks/feedback6.png',
+    '/images/feedbacks/feedback7.png',
+    '/images/feedbacks/feedback8.png'
+  ];
 
   // Array of background images - your image first, then others
   const backgroundImages = [
-    'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=2174&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Your image first - ADDED SLASH
-    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=2071&q=80', // Laptop workspace
-    'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2069&q=80', // Laptop repair
-    'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D', // Modern laptops
-    'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=2428&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=2042&q=80', // Tech workspace
+    'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Your image first - ADDED SLASH
+    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Laptop workspace
+    'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Laptop repair
+    'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D', // Modern laptops
+    'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Tech workspace
   ];
 
   useEffect(() => {
@@ -238,11 +253,30 @@ const HomePage = () => {
 
         {/* Add CSS animations */}
         <style>{`
+          /* Optimized Animations */
           @keyframes gradient {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
           }
+          @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+          }
+          @keyframes zoom {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+          }
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+            20%, 40%, 60%, 80% { transform: translateX(5px); }
+          }
+        
         `}</style>
       </Box>
 
@@ -291,6 +325,7 @@ const HomePage = () => {
             background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
             animation: 'rotate 20s linear infinite',
             zIndex: 0,
+            willChange: 'transform',
           }} />
 
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
@@ -680,66 +715,315 @@ const HomePage = () => {
       }} />
 
       {/* All About BRAINTONE - WITH EXACT SAME BACKGROUND MOTION EFFECTS */}
-      {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
-      <FadeInSection fullWidth>
-        <Box sx={{
-          py: 8,
-          position: 'relative',
-          overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: '-50%',
-            left: '-50%',
-            width: '200%',
-            height: '200%',
-            background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
-            animation: 'rotate 20s linear infinite',
-            zIndex: 0,
-          }
-        }}>
-          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-            <Box sx={{ textAlign: 'center', mb: 8 }}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: 700,
-                  mb: 3,
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  color: '#2c3e50'
-                }}
-              >
-                All about <span style={{ color: '#e74c3c' }}>BRAINTONE</span>
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                sx={{
-                  fontSize: '1.1rem',
-                  lineHeight: 1.8,
-                  maxWidth: 800,
-                  mx: 'auto',
-                  px: 2
-                }}
-              >
-                Discover everything we have to offer, from the latest laptops to expert
-                repair and maintenance services. At BRAINTONE, we're committed to providing
-                top-quality technology solutions that empower your digital life.
-              </Typography>
-            </Box>
+      {/* MIDDLE SECTION GROUP (Braintone + Transitions + Feedback) */}
+      <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+
+        {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
+        <FadeInSection fullWidth>
+          <Box sx={{
+            py: { xs: 8, md: 15 },
+            position: 'relative',
+            overflow: 'hidden',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: '-50%',
+              left: '-50%',
+              width: '200%',
+              height: '200%',
+              background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
+              zIndex: 0,
+            }
+          }}>
+            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+              <Box sx={{ textAlign: 'center', mb: 8 }}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 3,
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    color: '#2c3e50'
+                  }}
+                >
+                  All about <span style={{ color: '#e74c3c' }}>BRAINTONE</span>
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: '1.1rem',
+                    lineHeight: 1.8,
+                    maxWidth: 800,
+                    mx: 'auto',
+                    px: 2
+                  }}
+                >
+                  Discover everything we have to offer, from the latest laptops to expert
+                  repair and maintenance services. At BRAINTONE, we're committed to providing
+                  top-quality technology solutions that empower your digital life.
+                </Typography>
+              </Box>
 
 
-            {/* Section 1: New Laptop Collection - Text Left, Image Right */}
-            <Container maxWidth="xl" sx={{ py: { xs: 4, md: 8 } }}>
+              {/* Section 1: New Laptop Collection - Text Left, Image Right */}
+              <Container maxWidth="xl" sx={{ py: { xs: 4, md: 8 } }}>
+                <Box sx={{
+                  display: 'flex',
+                  flexDirection: { xs: 'column', md: 'row' },
+                  alignItems: 'center',
+                  gap: { xs: 4, md: 8 },
+                  mb: { xs: 8, md: 12 }
+                }}>
+                  {/* Text Content - LEFT */}
+                  <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
+                    <Typography
+                      variant="h3"
+                      sx={{
+                        fontWeight: 700,
+                        mb: 3,
+                        fontSize: { xs: '1.75rem', md: '2.25rem' },
+                        lineHeight: 1.2,
+                        color: '#2c3e50'
+                      }}
+                    >
+                      Explore Our New Laptop Collection
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{
+                        mb: 3,
+                        lineHeight: 1.8,
+                        fontSize: '1.05rem'
+                      }}
+                    >
+                      Discover cutting-edge technology with our extensive range of brand-new laptops.
+                      From high-performance gaming rigs designed for immersive experiences to
+                      ultra-portable notebooks perfect for professionals on the go, we stock
+                      the latest models from leading brands like Dell, HP, Lenovo, Apple, and Asus.
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{
+                        mb: 3,
+                        lineHeight: 1.8,
+                        fontSize: '1.05rem'
+                      }}
+                    >
+                      Our collection includes laptops for every need and budget:
+                      • Business laptops with enhanced security features
+                      • Creative workstations with powerful graphics capabilities
+                      • Everyday use laptops with optimal performance
+                      • Convertible 2-in-1 devices for maximum flexibility
+                    </Typography>
+                    <Typography
+                      variant="body1"
+                      color="text.secondary"
+                      sx={{
+                        mb: 4,
+                        lineHeight: 1.8,
+                        fontSize: '1.05rem'
+                      }}
+                    >
+                      Each device is carefully selected to ensure you get the best in speed, design,
+                      and reliability. We provide expert guidance to help you choose the perfect
+                      laptop that matches your specific requirements and enhances your productivity.
+                    </Typography>
+                    <Button
+                      component={Link}
+                      to="/laptops"
+                      variant="contained"
+                      sx={{
+                        bgcolor: '#e74c3c',
+                        color: '#fff',
+                        '&:hover': {
+                          bgcolor: '#c0392b',
+                          transform: 'translateY(-2px)'
+                        },
+                        textTransform: 'none',
+                        fontWeight: 600,
+                        fontSize: '1rem',
+                        borderRadius: 2,
+                        px: 4,
+                        py: 1.5,
+                        minWidth: 180,
+                        transition: 'all 0.3s ease'
+                      }}
+                    >
+                      Shop New Laptops
+                    </Button>
+                  </Box>
+
+                  {/* Image - RIGHT with Auto-Flip Effect */}
+                  <Box sx={{
+                    flex: 1,
+                    width: '100%',
+                  }}>
+                    <Box sx={{
+                      position: 'relative',
+                      width: '100%',
+                      height: { xs: 300, md: 400 },
+                    }}>
+                      <VideoInView
+                        src="/videos/All_About_Braintone1.mp4"
+                        muted
+                        loop
+                        playsInline
+                        preload="metadata"
+                        sx={{
+                          width: '100%',
+                          height: '100%',
+                          borderRadius: 2,
+                          objectFit: 'cover',
+                          boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                          willChange: 'transform',
+                        }}
+                      />
+                    </Box>
+                  </Box>
+                </Box>
+              </Container>
+
+              {/* Divider */}
+              <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+                <Divider sx={{ my: { xs: 6, md: 8 } }} />
+              </Box>
+
+              {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
+              <Box sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'center',
+                gap: { xs: 4, md: 8 },
+                mb: { xs: 8, md: 12 }
+              }}>
+                {/* Image - LEFT with Auto-Pulse Effect */}
+                <Box sx={{
+                  flex: 1,
+                  width: '100%',
+                  order: { xs: 1, md: 1 },
+                }}>
+                  <Box sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: { xs: 300, md: 400 },
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                    borderRadius: 2,
+                    overflow: 'hidden'
+                  }}>
+                    <VideoInView
+                      src="/videos/All_About_Braintone2.mp4"
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        borderRadius: 2,
+                        objectFit: 'cover',
+                        willChange: 'transform',
+                      }}
+                    />
+                  </Box>
+                </Box>
+
+                {/* Text Content - RIGHT */}
+                <Box sx={{
+                  flex: 1,
+                  order: { xs: 2, md: 2 },
+                  minHeight: { md: 400 }
+                }}>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: 700,
+                      mb: 3,
+                      fontSize: { xs: '1.75rem', md: '2.25rem' },
+                      lineHeight: 1.2,
+                      color: '#2c3e50'
+                    }}
+                  >
+                    Quality Pre-Owned Laptops
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 3,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    Get the performance you need at a price you'll love with our extensive range
+                    of certified pre-owned laptops. Each device in our pre-owned collection undergoes
+                    a rigorous 25-point inspection and refurbishment process to guarantee it meets
+                    our exacting standards for quality and reliability.
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 3,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    Our refurbishment process includes:
+                    • Comprehensive hardware diagnostics and testing
+                    • Thorough cleaning and cosmetic restoration
+                    • Battery health assessment and optimization
+                    • Operating system reinstallation and updates
+                    • Stress testing to ensure stability
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 4,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    We offer certified pre-owned laptops from all major brands, including recent
+                    models with significant savings compared to new devices. Every pre-owned laptop
+                    comes with a minimum 6-month warranty, making it a smart, sustainable choice
+                    that's good for both your wallet and the environment.
+                  </Typography>
+                  <Button
+                    component={Link}
+                    to="/pre-owned-laptops"
+                    variant="contained"
+                    sx={{
+                      bgcolor: '#e74c3c',
+                      color: '#fff',
+                      '&:hover': {
+                        bgcolor: '#c0392b',
+                        transform: 'translateY(-2px)'
+                      },
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      fontSize: '1rem',
+                      borderRadius: 2,
+                      px: 4,
+                      py: 1.5,
+                      minWidth: 180,
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Browse Pre-Owned
+                  </Button>
+                </Box>
+              </Box>
+
+              {/* Divider */}
+              <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+                <Divider sx={{ my: { xs: 6, md: 8 } }} />
+              </Box>
+
+              {/* Section 3: Repair Services - Text Left, Image Right */}
               <Box sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },
@@ -759,7 +1043,7 @@ const HomePage = () => {
                       color: '#2c3e50'
                     }}
                   >
-                    Explore Our New Laptop Collection
+                    Expert Laptop Repair Services
                   </Typography>
                   <Typography
                     variant="body1"
@@ -770,10 +1054,10 @@ const HomePage = () => {
                       fontSize: '1.05rem'
                     }}
                   >
-                    Discover cutting-edge technology with our extensive range of brand-new laptops.
-                    From high-performance gaming rigs designed for immersive experiences to
-                    ultra-portable notebooks perfect for professionals on the go, we stock
-                    the latest models from leading brands like Dell, HP, Lenovo, Apple, and Asus.
+                    Is your laptop running slow, not turning on, or has a cracked screen?
+                    Our team of certified technicians with over 10 years of combined experience
+                    is here to provide comprehensive repair solutions. We specialize in all
+                    major brands including Apple MacBook, Dell, HP, Lenovo, Asus, and Acer.
                   </Typography>
                   <Typography
                     variant="body1"
@@ -784,11 +1068,14 @@ const HomePage = () => {
                       fontSize: '1.05rem'
                     }}
                   >
-                    Our collection includes laptops for every need and budget:
-                    • Business laptops with enhanced security features
-                    • Creative workstations with powerful graphics capabilities
-                    • Everyday use laptops with optimal performance
-                    • Convertible 2-in-1 devices for maximum flexibility
+                    Our comprehensive repair services include:
+                    • Screen replacement and display repairs
+                    • Motherboard diagnostics and repair
+                    • Keyboard and touchpad replacement
+                    • Battery replacement and calibration
+                    • Liquid damage repair and cleaning
+                    • Software troubleshooting and virus removal
+                    • Data recovery and transfer services
                   </Typography>
                   <Typography
                     variant="body1"
@@ -799,13 +1086,14 @@ const HomePage = () => {
                       fontSize: '1.05rem'
                     }}
                   >
-                    Each device is carefully selected to ensure you get the best in speed, design,
-                    and reliability. We provide expert guidance to help you choose the perfect
-                    laptop that matches your specific requirements and enhances your productivity.
+                    We use only high-quality, genuine or OEM-equivalent parts to ensure
+                    your device returns to peak performance. Most common repairs are completed
+                    within 24-48 hours, and we provide a 90-day warranty on all repair work.
+                    Free diagnostics for all devices brought to our stores.
                   </Typography>
                   <Button
                     component={Link}
-                    to="/laptops"
+                    to="/repair"
                     variant="contained"
                     sx={{
                       bgcolor: '#e74c3c',
@@ -824,11 +1112,11 @@ const HomePage = () => {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    Shop New Laptops
+                    Get a Repair Quote
                   </Button>
                 </Box>
 
-                {/* Image - RIGHT with Auto-Flip Effect */}
+                {/* Image - RIGHT with Auto-Shake Effect */}
                 <Box sx={{
                   flex: 1,
                   width: '100%',
@@ -837,9 +1125,12 @@ const HomePage = () => {
                     position: 'relative',
                     width: '100%',
                     height: { xs: 300, md: 400 },
+                    borderRadius: 2,
+                    overflow: 'hidden',
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
                   }}>
                     <VideoInView
-                      src="/videos/All_About_Braintone1.mp4"
+                      src="/videos/All_About_Braintone3.mp4"
                       muted
                       loop
                       playsInline
@@ -847,982 +1138,449 @@ const HomePage = () => {
                       sx={{
                         width: '100%',
                         height: '100%',
-                        borderRadius: 2,
                         objectFit: 'cover',
+                        filter: 'brightness(0.9)',
+                        willChange: 'transform',
+                      }}
+                    />
+                    {/* Overlay */}
+                    <Box sx={{
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      bottom: 0,
+                      backgroundColor: 'rgba(231, 76, 60, 0.2)',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          color: 'white',
+                          fontWeight: 700,
+                          textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
+                        }}
+                      >
+                        Expert Repairs
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box>
+
+              {/* Divider */}
+              <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
+                <Divider sx={{ my: { xs: 6, md: 8 } }} />
+              </Box>
+
+              {/* Section 4: Maximize Life - Image Left, Text Right */}
+              <Box sx={{
+                display: 'flex',
+                flexDirection: { xs: 'column', md: 'row' },
+                alignItems: 'center',
+                gap: { xs: 4, md: 8 }
+              }}>
+                {/* Image - LEFT with Auto-Float Effect */}
+                <Box sx={{
+                  flex: 1,
+                  width: '100%',
+                  order: { xs: 1, md: 1 },
+                }}>
+                  <Box sx={{
+                    position: 'relative',
+                    width: '100%',
+                    height: { xs: 300, md: 400 },
+                    boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                    borderRadius: 2,
+                    overflow: 'hidden'
+                  }}>
+                    <VideoInView
+                      src="/videos/All_About_Braintone4.mp4"
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                      sx={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        borderRadius: 2,
                         boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                         willChange: 'transform',
                       }}
                     />
+                    {/* Floating Elements */}
+                    <Box sx={{
+                      position: 'absolute',
+                      top: 20,
+                      right: 20,
+                      width: 50,
+                      height: 50,
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(231, 76, 60, 0.8)',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      animation: 'float 3s ease-in-out infinite',
+                    }}>
+                      <Typography variant="h6">✓</Typography>
+                    </Box>
+                    <Box sx={{
+                      position: 'absolute',
+                      bottom: 20,
+                      left: 20,
+                      width: 40,
+                      height: 40,
+                      borderRadius: '50%',
+                      backgroundColor: 'rgba(52, 152, 219, 0.8)',
+                      display: 'flex',
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                      color: 'white',
+                      fontWeight: 'bold',
+                      animation: 'float 3s ease-in-out infinite 1s',
+                    }}>
+                      <Typography variant="h6">+</Typography>
+                    </Box>
                   </Box>
+                </Box>
+
+                {/* Text Content - RIGHT */}
+                <Box sx={{
+                  flex: 1,
+                  order: { xs: 2, md: 2 },
+                  minHeight: { md: 400 }
+                }}>
+                  <Typography
+                    variant="h3"
+                    sx={{
+                      fontWeight: 700,
+                      mb: 3,
+                      fontSize: { xs: '1.75rem', md: '2.25rem' },
+                      lineHeight: 1.2,
+                      color: '#2c3e50'
+                    }}
+                  >
+                    Maximize Your Laptop's Life & Performance
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 3,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    Beyond repairs, we offer comprehensive services designed to enhance and
+                    extend the life of your laptop investment. Our optimization services ensure
+                    your device runs at its maximum potential throughout its lifespan.
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 3,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    Our enhancement services include:
+                    • Memory (RAM) upgrades for improved multitasking
+                    • SSD installation for faster boot times and application loading
+                    • Professional internal cleaning to prevent overheating
+                    • Thermal paste replacement for better heat dissipation
+                    • Operating system optimization and tuning
+                    • Custom software configuration for specific use cases
+                    • Regular maintenance packages for long-term performance
+                  </Typography>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    sx={{
+                      mb: 4,
+                      lineHeight: 1.8,
+                      fontSize: '1.05rem'
+                    }}
+                  >
+                    We also offer personalized consultation services to help you understand
+                    how to best maintain your specific laptop model. From gaming laptops
+                    requiring specialized cooling to business laptops needing enhanced security
+                    configurations, our experts can help you get the most out of your machine
+                    for years to come, potentially extending its usable life by 2-3 years.
+                  </Typography>
+                  <Button
+                    component={Link}
+                    to="/contact"
+                    variant="contained"
+                    sx={{
+                      bgcolor: '#e74c3c',
+                      color: '#fff',
+                      '&:hover': {
+                        bgcolor: '#c0392b',
+                        transform: 'translateY(-2px)'
+                      },
+                      textTransform: 'none',
+                      fontWeight: 600,
+                      fontSize: '1rem',
+                      borderRadius: 2,
+                      px: 4,
+                      py: 1.5,
+                      minWidth: 180,
+                      transition: 'all 0.3s ease'
+                    }}
+                  >
+                    Explore Our Services
+                  </Button>
                 </Box>
               </Box>
             </Container>
+          </Box>
+        </FadeInSection>
 
-            {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-            {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
-            <Box sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              gap: { xs: 4, md: 8 },
-              mb: { xs: 8, md: 12 }
-            }}>
-              {/* Image - LEFT with Auto-Pulse Effect */}
-              <Box sx={{
-                flex: 1,
-                width: '100%',
-                order: { xs: 1, md: 1 },
-              }}>
-                <Box sx={{
-                  position: 'relative',
-                  width: '100%',
-                  height: { xs: 300, md: 400 },
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                  borderRadius: 2,
-                  overflow: 'hidden'
-                }}>
-                  <VideoInView
-                    src="/videos/All_About_Braintone2.mp4"
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      borderRadius: 2,
-                      objectFit: 'cover',
-                      willChange: 'transform',
-                    }}
-                  />
-                </Box>
-              </Box>
-
-              {/* Text Content - RIGHT */}
-              <Box sx={{
-                flex: 1,
-                order: { xs: 2, md: 2 },
-                minHeight: { md: 400 }
-              }}>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 3,
-                    fontSize: { xs: '1.75rem', md: '2.25rem' },
-                    lineHeight: 1.2,
-                    color: '#2c3e50'
-                  }}
-                >
-                  Quality Pre-Owned Laptops
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Get the performance you need at a price you'll love with our extensive range
-                  of certified pre-owned laptops. Each device in our pre-owned collection undergoes
-                  a rigorous 25-point inspection and refurbishment process to guarantee it meets
-                  our exacting standards for quality and reliability.
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Our refurbishment process includes:
-                  • Comprehensive hardware diagnostics and testing
-                  • Thorough cleaning and cosmetic restoration
-                  • Battery health assessment and optimization
-                  • Operating system reinstallation and updates
-                  • Stress testing to ensure stability
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 4,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  We offer certified pre-owned laptops from all major brands, including recent
-                  models with significant savings compared to new devices. Every pre-owned laptop
-                  comes with a minimum 6-month warranty, making it a smart, sustainable choice
-                  that's good for both your wallet and the environment.
-                </Typography>
-                <Button
-                  component={Link}
-                  to="/pre-owned-laptops"
-                  variant="contained"
-                  sx={{
-                    bgcolor: '#e74c3c',
-                    color: '#fff',
-                    '&:hover': {
-                      bgcolor: '#c0392b',
-                      transform: 'translateY(-2px)'
-                    },
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    borderRadius: 2,
-                    px: 4,
-                    py: 1.5,
-                    minWidth: 180,
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Browse Pre-Owned
-                </Button>
-              </Box>
-            </Box>
-
-            {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-            {/* Section 3: Repair Services - Text Left, Image Right */}
-            <Box sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              gap: { xs: 4, md: 8 },
-              mb: { xs: 8, md: 12 }
-            }}>
-              {/* Text Content - LEFT */}
-              <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 3,
-                    fontSize: { xs: '1.75rem', md: '2.25rem' },
-                    lineHeight: 1.2,
-                    color: '#2c3e50'
-                  }}
-                >
-                  Expert Laptop Repair Services
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Is your laptop running slow, not turning on, or has a cracked screen?
-                  Our team of certified technicians with over 10 years of combined experience
-                  is here to provide comprehensive repair solutions. We specialize in all
-                  major brands including Apple MacBook, Dell, HP, Lenovo, Asus, and Acer.
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Our comprehensive repair services include:
-                  • Screen replacement and display repairs
-                  • Motherboard diagnostics and repair
-                  • Keyboard and touchpad replacement
-                  • Battery replacement and calibration
-                  • Liquid damage repair and cleaning
-                  • Software troubleshooting and virus removal
-                  • Data recovery and transfer services
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 4,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  We use only high-quality, genuine or OEM-equivalent parts to ensure
-                  your device returns to peak performance. Most common repairs are completed
-                  within 24-48 hours, and we provide a 90-day warranty on all repair work.
-                  Free diagnostics for all devices brought to our stores.
-                </Typography>
-                <Button
-                  component={Link}
-                  to="/repair"
-                  variant="contained"
-                  sx={{
-                    bgcolor: '#e74c3c',
-                    color: '#fff',
-                    '&:hover': {
-                      bgcolor: '#c0392b',
-                      transform: 'translateY(-2px)'
-                    },
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    borderRadius: 2,
-                    px: 4,
-                    py: 1.5,
-                    minWidth: 180,
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Get a Repair Quote
-                </Button>
-              </Box>
-
-              {/* Image - RIGHT with Auto-Shake Effect */}
-              <Box sx={{
-                flex: 1,
-                width: '100%',
-              }}>
-                <Box sx={{
-                  position: 'relative',
-                  width: '100%',
-                  height: { xs: 300, md: 400 },
-                  borderRadius: 2,
-                  overflow: 'hidden',
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
-                }}>
-                  <VideoInView
-                    src="/videos/All_About_Braintone3.mp4"
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      filter: 'brightness(0.9)',
-                      willChange: 'transform',
-                    }}
-                  />
-                  {/* Overlay */}
-                  <Box sx={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    backgroundColor: 'rgba(231, 76, 60, 0.2)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                  }}>
-                    <Typography
-                      variant="h5"
-                      sx={{
-                        color: 'white',
-                        fontWeight: 700,
-                        textShadow: '2px 2px 4px rgba(0,0,0,0.5)',
-                      }}
-                    >
-                      Expert Repairs
-                    </Typography>
-                  </Box>
-                </Box>
-              </Box>
-            </Box>
-
-            {/* Divider */}
-            <Divider sx={{ my: { xs: 6, md: 8 } }} />
-
-            {/* Section 4: Maximize Life - Image Left, Text Right */}
-            <Box sx={{
-              display: 'flex',
-              flexDirection: { xs: 'column', md: 'row' },
-              alignItems: 'center',
-              gap: { xs: 4, md: 8 }
-            }}>
-              {/* Image - LEFT with Auto-Float Effect */}
-              <Box sx={{
-                flex: 1,
-                width: '100%',
-                order: { xs: 1, md: 1 },
-              }}>
-                <Box sx={{
-                  position: 'relative',
-                  width: '100%',
-                  height: { xs: 300, md: 400 },
-                  boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                  borderRadius: 2,
-                  overflow: 'hidden'
-                }}>
-                  <VideoInView
-                    src="/videos/All_About_Braintone4.mp4"
-                    muted
-                    loop
-                    playsInline
-                    preload="metadata"
-                    sx={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      borderRadius: 2,
-                      boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
-                      willChange: 'transform',
-                    }}
-                  />
-                  {/* Floating Elements */}
-                  <Box sx={{
-                    position: 'absolute',
-                    top: 20,
-                    right: 20,
-                    width: 50,
-                    height: 50,
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(231, 76, 60, 0.8)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    animation: 'float 3s ease-in-out infinite',
-                  }}>
-                    <Typography variant="h6">✓</Typography>
-                  </Box>
-                  <Box sx={{
-                    position: 'absolute',
-                    bottom: 20,
-                    left: 20,
-                    width: 40,
-                    height: 40,
-                    borderRadius: '50%',
-                    backgroundColor: 'rgba(52, 152, 219, 0.8)',
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    animation: 'float 3s ease-in-out infinite 1s',
-                  }}>
-                    <Typography variant="h6">+</Typography>
-                  </Box>
-                </Box>
-              </Box>
-
-              {/* Text Content - RIGHT */}
-              <Box sx={{
-                flex: 1,
-                order: { xs: 2, md: 2 },
-                minHeight: { md: 400 }
-              }}>
-                <Typography
-                  variant="h3"
-                  sx={{
-                    fontWeight: 700,
-                    mb: 3,
-                    fontSize: { xs: '1.75rem', md: '2.25rem' },
-                    lineHeight: 1.2,
-                    color: '#2c3e50'
-                  }}
-                >
-                  Maximize Your Laptop's Life & Performance
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Beyond repairs, we offer comprehensive services designed to enhance and
-                  extend the life of your laptop investment. Our optimization services ensure
-                  your device runs at its maximum potential throughout its lifespan.
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 3,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  Our enhancement services include:
-                  • Memory (RAM) upgrades for improved multitasking
-                  • SSD installation for faster boot times and application loading
-                  • Professional internal cleaning to prevent overheating
-                  • Thermal paste replacement for better heat dissipation
-                  • Operating system optimization and tuning
-                  • Custom software configuration for specific use cases
-                  • Regular maintenance packages for long-term performance
-                </Typography>
-                <Typography
-                  variant="body1"
-                  color="text.secondary"
-                  sx={{
-                    mb: 4,
-                    lineHeight: 1.8,
-                    fontSize: '1.05rem'
-                  }}
-                >
-                  We also offer personalized consultation services to help you understand
-                  how to best maintain your specific laptop model. From gaming laptops
-                  requiring specialized cooling to business laptops needing enhanced security
-                  configurations, our experts can help you get the most out of your machine
-                  for years to come, potentially extending its usable life by 2-3 years.
-                </Typography>
-                <Button
-                  component={Link}
-                  to="/contact"
-                  variant="contained"
-                  sx={{
-                    bgcolor: '#e74c3c',
-                    color: '#fff',
-                    '&:hover': {
-                      bgcolor: '#c0392b',
-                      transform: 'translateY(-2px)'
-                    },
-                    textTransform: 'none',
-                    fontWeight: 600,
-                    fontSize: '1rem',
-                    borderRadius: 2,
-                    px: 4,
-                    py: 1.5,
-                    minWidth: 180,
-                    transition: 'all 0.3s ease'
-                  }}
-                >
-                  Explore Our Services
-                </Button>
-              </Box>
-            </Box>
-          </Container>
-        </Box>
-      </FadeInSection>
-
-      {/* BORDER - Separates All About BRAINTONE from Results and Feedbacks */}
-      <Box sx={{
-        position: 'relative',
-        height: '2px',
-        background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
-        mx: { xs: 4, md: 8 },
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: '50%',
-          left: '50%',
-          transform: 'translate(-50%, -50%)',
-          width: '80px',
-          height: '3px',
-          background: '#e74c3c',
-          borderRadius: '2px',
-        }
-      }} />
-
-      {/* Results and Feedbacks Section */}
-      <FadeInSection fullWidth>
+        {/* Colored Transition Area with Separator */}
         <Box sx={{
-          py: 8,
-          position: 'relative',
-          overflow: 'hidden',
-          '&::before': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
-          },
-          '&::after': {
-            content: '""',
-            position: 'absolute',
-            top: '-50%',
-            left: '-50%',
-            width: '200%',
-            height: '200%',
-            background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
-            animation: 'rotate 20s linear infinite',
-            zIndex: 0,
-          }
+          py: { xs: 3, md: 4 }
         }}>
-          <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
-            <Box sx={{ textAlign: 'center', mb: 6 }}>
-              <Typography
-                variant="h2"
-                sx={{
-                  fontWeight: 700,
-                  mb: 2,
-                  fontSize: { xs: '2rem', md: '2.5rem' },
-                  color: '#2c3e50'
-                }}
-              >
-                Results and Feedbacks
-              </Typography>
-              <Typography
-                variant="subtitle1"
-                color="text.secondary"
-                sx={{
-                  fontSize: '1.1rem',
-                  lineHeight: 1.6,
-                  maxWidth: 600,
-                  mx: 'auto',
-                  mb: 4
-                }}
-              >
-                Trusted by customers for reliable laptops and expert repairs.
-              </Typography>
-            </Box>
+          <Box sx={{
+            position: 'relative',
+            height: '2px',
+            background: 'linear-gradient(90deg, transparent, #e0e0e0, transparent)',
+            mx: { xs: 4, md: 8 },
+            '&::before': {
+              content: '""',
+              position: 'absolute',
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '80px',
+              height: '3px',
+              background: '#e74c3c',
+              borderRadius: '2px',
+            }
+          }} />
+        </Box>
 
-            {/* Feedback Slider Container */}
-            <Box sx={{
-              position: 'relative',
-              maxWidth: 1200,
-              mx: 'auto',
-              mb: 6,
-              overflow: 'hidden'
-            }}>
-              {/* Feedback Cards Grid - Auto Scroll Slider */}
-              <Box sx={{
-                display: 'flex',
-                gap: 4,
-                animation: 'slide 60s linear infinite',
-                '&:hover': {
-                  animationPlayState: 'paused'
-                },
-                '@keyframes slide': {
-                  '0%': { transform: 'translateX(0)' },
-                  '100%': { transform: 'translateX(-50%)' }
-                }
-              }}>
-                {/* First set of 6 feedbacks */}
-                {[
-                  {
-                    id: 1,
-                    text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-                    author: "Priya Sharma",
-                    role: "Graphic Designer",
-                    initials: "PS"
-                  },
-                  {
-                    id: 2,
-                    text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-                    author: "Arjun Patel",
-                    role: "University Student",
-                    initials: "AP"
-                  },
-                  {
-                    id: 3,
-                    text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-                    author: "Ananya Reddy",
-                    role: "Startup Founder",
-                    initials: "AR"
-                  },
-                  {
-                    id: 4,
-                    text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-                    author: "Rohan Singh",
-                    role: "Software Developer",
-                    initials: "RS"
-                  },
-                  {
-                    id: 5,
-                    text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-                    author: "Neha Kapoor",
-                    role: "Graduate Student",
-                    initials: "NK"
-                  },
-                  {
-                    id: 6,
-                    text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-                    author: "Vikram Mehta",
-                    role: "IT Manager",
-                    initials: "VM"
-                  }
-                ].map((feedback) => (
-                  <Box
-                    key={feedback.id}
-                    sx={{
-                      flex: '0 0 calc(33.333% - 32px)',
-                      minWidth: { xs: '85%', sm: '45%', md: '30%' }
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        p: 4,
-                        borderRadius: 4,
-                        background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                        border: '1px solid rgba(231, 76, 60, 0.1)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                          borderColor: 'rgba(231, 76, 60, 0.3)'
-                        },
-                        '&::before': {
-                          content: '"\\201C"',
-                          position: 'absolute',
-                          top: 20,
-                          left: 20,
-                          fontSize: '4rem',
-                          color: 'rgba(231, 76, 60, 0.1)',
-                          fontFamily: 'serif',
-                          lineHeight: 1,
-                        }
-                      }}
-                    >
-                      {/* Quote Icon */}
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          top: 16,
-                          right: 16,
-                          width: 40,
-                          height: 40,
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#e74c3c'
-                        }}
-                      >
-                        <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                      </Box>
+        {/* Feedbacks Section */}
+        <FadeInSection fullWidth>
+          <Box sx={{
+            pt: 4,
+            pb: { xs: 10, md: 14 }, // Using padding instead of margin to keep the background reddish
+            position: 'relative',
+            overflow: 'hidden',
+            '&::after': {
+              content: '""',
+              position: 'absolute',
+              top: '-50%',
+              left: '-50%',
+              width: '200%',
+              height: '200%',
+              background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
+              zIndex: 0,
+            }
+          }}>
+            <Container maxWidth="xl" sx={{ position: 'relative', zIndex: 1 }}>
+              <Box sx={{ textAlign: 'center', mb: 4 }}>
+                <Typography
+                  variant="h2"
+                  sx={{
+                    fontWeight: 700,
+                    mb: 1,
+                    fontSize: { xs: '2rem', md: '2.5rem' },
+                    color: '#2c3e50'
+                  }}
+                >
+                  Our Clients Feedback
+                </Typography>
 
-                      {/* Feedback Text */}
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontSize: '0.95rem',
-                          lineHeight: 1.7,
-                          color: '#2c3e50',
-                          mb: 4,
-                          fontStyle: 'italic',
-                          position: 'relative',
-                          zIndex: 1,
-                          flex: 1
-                        }}
-                      >
-                        "{feedback.text}"
-                      </Typography>
+                {/* Golden Stars */}
+                <Stack direction="row" spacing={0.5} justifyContent="center" sx={{ mb: 2 }}>
+                  {[...Array(5)].map((_, i) => (
+                    <StarIcon key={i} sx={{ color: '#FFD700', fontSize: '1.5rem' }} />
+                  ))}
+                </Stack>
 
-                      {/* Profile Section */}
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 3,
-                          pt: 3,
-                          borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                          position: 'relative',
-                          zIndex: 1
-                        }}
-                      >
-                        {/* Round Profile */}
-                        <Box
-                          sx={{
-                            width: 60,
-                            height: 60,
-                            borderRadius: '50%',
-                            background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            fontWeight: 700,
-                            fontSize: '1.25rem',
-                            flexShrink: 0,
-                            boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                            position: 'relative',
-                            '&::before': {
-                              content: '""',
-                              position: 'absolute',
-                              top: -2,
-                              left: -2,
-                              right: -2,
-                              bottom: -2,
-                              borderRadius: '50%',
-                              border: '2px solid rgba(231, 76, 60, 0.2)',
-                            }
-                          }}
-                        >
-                          {feedback.initials}
-                        </Box>
-
-                        {/* Author Info */}
-                        <Box sx={{ flex: 1 }}>
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              fontWeight: 700,
-                              color: '#e74c3c',
-                              fontSize: '1.1rem',
-                              mb: 0.5
-                            }}
-                          >
-                            {feedback.author}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              color: '#666',
-                              fontSize: '0.9rem'
-                            }}
-                          >
-                            {feedback.role}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                ))}
-
-                {/* Duplicate set for seamless scrolling */}
-                {[
-                  {
-                    id: 7,
-                    text: "I bought a second-hand MacBook from Braintone and it works like a charm. The price was unbeatable and the customer service was excellent. They helped me find the perfect machine for my design work. Highly recommended!",
-                    author: "Priya Sharma",
-                    role: "Graphic Designer",
-                    initials: "PS"
-                  },
-                  {
-                    id: 8,
-                    text: "My laptop's screen was completely shattered. The team at Braintone Technology fixed it in less than a day! They were professional, quick, and the repair cost was very reasonable. My laptop looks brand new again. Thank you!",
-                    author: "Arjun Patel",
-                    role: "University Student",
-                    initials: "AP"
-                  },
-                  {
-                    id: 9,
-                    text: "As a small business owner, reliable tech is crucial. Braintone supplied our office with five refurbished laptops that have been running flawlessly. Their advice on the best models for our needs was invaluable. Great service and products.",
-                    author: "Ananya Reddy",
-                    role: "Startup Founder",
-                    initials: "AR"
-                  },
-                  {
-                    id: 10,
-                    text: "I was skeptical about buying a refurbished laptop, but Braintone exceeded all expectations. The Dell XPS I purchased looked and performed like new, and came with a solid warranty. Saved me hundreds of dollars!",
-                    author: "Rohan Singh",
-                    role: "Software Developer",
-                    initials: "RS"
-                  },
-                  {
-                    id: 11,
-                    text: "When my laptop died during finals week, Braintone saved me! They diagnosed the issue quickly, had the parts in stock, and completed the repair same-day. Couldn't have asked for better service during a stressful time.",
-                    author: "Neha Kapoor",
-                    role: "Graduate Student",
-                    initials: "NK"
-                  },
-                  {
-                    id: 12,
-                    text: "We've been using Braintone for all our company's tech needs for 2 years now. From laptops to repairs, their service is consistently excellent. Their team is knowledgeable and always goes above and beyond.",
-                    author: "Vikram Mehta",
-                    role: "IT Manager",
-                    initials: "VM"
-                  }
-                ].map((feedback) => (
-                  <Box
-                    key={feedback.id}
-                    sx={{
-                      flex: '0 0 calc(33.333% - 32px)',
-                      minWidth: { xs: '85%', sm: '45%', md: '30%' }
-                    }}
-                  >
-                    <Box
-                      sx={{
-                        p: 4,
-                        borderRadius: 4,
-                        background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                        border: '1px solid rgba(231, 76, 60, 0.1)',
-                        boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-                        height: '100%',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        position: 'relative',
-                        overflow: 'hidden',
-                        transition: 'all 0.3s ease',
-                        '&:hover': {
-                          transform: 'translateY(-8px)',
-                          boxShadow: '0 15px 40px rgba(231,76,60,0.15)',
-                          borderColor: 'rgba(231, 76, 60, 0.3)'
-                        },
-                        '&::before': {
-                          content: '"\\201C"',
-                          position: 'absolute',
-                          top: 20,
-                          left: 20,
-                          fontSize: '4rem',
-                          color: 'rgba(231, 76, 60, 0.1)',
-                          fontFamily: 'serif',
-                          lineHeight: 1,
-                        }
-                      }}
-                    >
-                      {/* Quote Icon */}
-                      <Box
-                        sx={{
-                          position: 'absolute',
-                          top: 16,
-                          right: 16,
-                          width: 40,
-                          height: 40,
-                          borderRadius: '50%',
-                          background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          color: '#e74c3c'
-                        }}
-                      >
-                        <Box sx={{ fontSize: '1.5rem', lineHeight: 1 }}>"</Box>
-                      </Box>
-
-                      {/* Feedback Text */}
-                      <Typography
-                        variant="body1"
-                        sx={{
-                          fontSize: '0.95rem',
-                          lineHeight: 1.7,
-                          color: '#2c3e50',
-                          mb: 4,
-                          fontStyle: 'italic',
-                          position: 'relative',
-                          zIndex: 1,
-                          flex: 1
-                        }}
-                      >
-                        "{feedback.text}"
-                      </Typography>
-
-                      {/* Profile Section */}
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          gap: 3,
-                          pt: 3,
-                          borderTop: '1px solid rgba(231, 76, 60, 0.1)',
-                          position: 'relative',
-                          zIndex: 1
-                        }}
-                      >
-                        {/* Round Profile */}
-                        <Box
-                          sx={{
-                            width: 60,
-                            height: 60,
-                            borderRadius: '50%',
-                            background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            color: 'white',
-                            fontWeight: 700,
-                            fontSize: '1.25rem',
-                            flexShrink: 0,
-                            boxShadow: '0 4px 12px rgba(231,76,60,0.3)',
-                            position: 'relative',
-                            '&::before': {
-                              content: '""',
-                              position: 'absolute',
-                              top: -2,
-                              left: -2,
-                              right: -2,
-                              bottom: -2,
-                              borderRadius: '50%',
-                              border: '2px solid rgba(231, 76, 60, 0.2)',
-                            }
-                          }}
-                        >
-                          {feedback.initials}
-                        </Box>
-
-                        {/* Author Info */}
-                        <Box sx={{ flex: 1 }}>
-                          <Typography
-                            variant="h6"
-                            sx={{
-                              fontWeight: 700,
-                              color: '#e74c3c',
-                              fontSize: '1.1rem',
-                              mb: 0.5
-                            }}
-                          >
-                            {feedback.author}
-                          </Typography>
-                          <Typography
-                            variant="body2"
-                            sx={{
-                              color: '#666',
-                              fontSize: '0.9rem'
-                            }}
-                          >
-                            {feedback.role}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Box>
-                  </Box>
-                ))}
+                <Typography
+                  variant="subtitle1"
+                  color="text.secondary"
+                  sx={{
+                    fontSize: '1.1rem',
+                    lineHeight: 1.6,
+                    maxWidth: 800,
+                    mx: 'auto',
+                    mb: 2
+                  }}
+                >
+                  What our customers say about our products and services.
+                </Typography>
               </Box>
 
-              {/* Gradient Overlays */}
+              {/* Manual Feedback Slider */}
               <Box sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                height: '100%',
-                pointerEvents: 'none',
-                zIndex: 1,
-                background: 'linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 5%, rgba(255,255,255,0) 95%, rgba(255,255,255,1) 100%)',
-              }} />
+                position: 'relative',
+                maxWidth: 1200,
+                mx: 'auto',
+                px: { xs: 2, md: 8 },
+                mb: 6,
+              }}>
+                {/* Previous Arrow */}
+                <IconButton
+                  onClick={prevFeedback}
+                  sx={{
+                    position: 'absolute',
+                    left: { xs: -10, md: 0 },
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'white',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    zIndex: 2,
+                    '&:hover': { bgcolor: '#ffecec', color: '#e74c3c' }
+                  }}
+                >
+                  <ArrowBackIosNewIcon />
+                </IconButton>
 
-              {/* Navigation Dots */}
+                {/* Flip Slider Container */}
+                <Box sx={{
+                  height: { xs: 200, md: 350 },
+                  position: 'relative',
+                  perspective: '1500px', // Crucial for 3D effect
+                  borderRadius: 4,
+                  overflow: 'hidden'
+                }}>
+                  {feedbackImages.map((img, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        p: 1,
+                        transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
+                        opacity: index === currentFeedbackIndex ? 1 : 0,
+                        visibility: index === currentFeedbackIndex ? 'visible' : 'hidden',
+                        transform: `rotateY(${index === currentFeedbackIndex ? '0deg' : index < currentFeedbackIndex ? '-90deg' : '90deg'})`,
+                        transformStyle: 'preserve-3d',
+                        zIndex: index === currentFeedbackIndex ? 1 : 0
+                      }}
+                    >
+                      <Paper
+                        elevation={0}
+                        sx={{
+                          borderRadius: 4,
+                          overflow: 'hidden',
+                          border: '1px solid rgba(255, 255, 255, 0.1)',
+                          boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+                          width: '100%',
+                          height: '100%',
+                          display: 'flex',
+                          justifyContent: 'center',
+                          alignItems: 'center',
+                          backgroundColor: '#202124', // Matches Google review screenshot background
+                          backfaceVisibility: 'hidden'
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={img}
+                          alt={`Feedback ${index + 1}`}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'contain',
+                            display: 'block'
+                          }}
+                        />
+                      </Paper>
+                    </Box>
+                  ))}
+                </Box>
+
+                {/* Next Arrow */}
+                <IconButton
+                  onClick={nextFeedback}
+                  sx={{
+                    position: 'absolute',
+                    right: { xs: -10, md: 0 },
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'white',
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+                    zIndex: 2,
+                    '&:hover': { bgcolor: '#ffecec', color: '#e74c3c' }
+                  }}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+              </Box>
+
+              {/* Slide Indicators */}
+              <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }}>
+                {feedbackImages.map((_, index) => (
+                  <Box
+                    key={index}
+                    onClick={() => setCurrentFeedbackIndex(index)}
+                    sx={{
+                      width: index === currentFeedbackIndex ? 24 : 8,
+                      height: 8,
+                      borderRadius: 4,
+                      bgcolor: index === currentFeedbackIndex ? '#e74c3c' : '#e0e0e0',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease'
+                    }}
+                  />
+                ))}
+              </Stack>
+
+              {/* Centered Button */}
               <Box sx={{
                 display: 'flex',
                 justifyContent: 'center',
-                mt: 4,
-                gap: 1.5
+                mt: 4
               }}>
-                {[1, 2, 3, 4, 5, 6].map((dot) => (
-                  <Box
-                    key={dot}
-                    sx={{
-                      width: 10,
-                      height: 10,
-                      borderRadius: '50%',
-                      backgroundColor: dot === 1 ? '#e74c3c' : '#ddd',
-                      cursor: 'pointer',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        backgroundColor: dot === 1 ? '#c0392b' : '#bbb',
-                        transform: 'scale(1.2)'
-                      }
-                    }}
-                  />
-                ))}
+                <Button
+                  component="a"
+                  size="small"
+                  href="https://www.google.com/search?sca_esv=73a4869cd1a8b769&sxsrf=ANbL-n53pO9e7AARfsxU7U2lxF7vyY211A:1770028042373&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOb5BDM1sSnLuU9e_HlP3noJVzWMCW30sCXPvRZQ5-6Fe6oNwo6e5A8xVAwRMb3s6rhY32Tl5ZoFC_HTkjQUUAdOm85rbyv1UD6LXGo5M22zpUGUBUw%3D%3D&q=Braintone+Technology+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwij39SlzLqSAxU9TGwGHY0OIcsQ0bkNegQIIhAF&biw=1536&bih=737&dpr=2.5&aic=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  variant="contained"
+                  sx={{
+                    bgcolor: '#e74c3c',
+                    color: 'white',
+                    borderRadius: '30px',
+                    px: 4,
+                    py: 1,
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                    textTransform: 'none',
+                    boxShadow: '0 4px 15px rgba(231, 76, 60, 0.3)',
+                    whiteSpace: 'nowrap',
+                    transition: 'all 0.3s ease',
+                    '&:hover': {
+                      bgcolor: '#c0392b',
+                      transform: 'translateY(-2px)',
+                      boxShadow: '0 6px 20px rgba(231, 76, 60, 0.4)'
+                    }
+                  }}
+                >
+                  Tap to visit
+                </Button>
               </Box>
-            </Box>
-          </Container>
-        </Box>
-      </FadeInSection>
+            </Container>
+          </Box>
+        </FadeInSection>
+
+      </Box> {/* End of Unified Background Container */}
 
       {/* Ready to Find Section */}
       <FadeInSection fullWidth>
@@ -1847,11 +1605,12 @@ const HomePage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'url(https://plus.unsplash.com/premium_photo-1726804906019-20ac68ddec1b?q=80&w=2292&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            background: 'url(https://plus.unsplash.com/premium_photo-1726804906019-20ac68ddec1b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             animation: 'zoom 20s infinite alternate',
+            willChange: 'transform',
             zIndex: 0,
           }
         }}>
