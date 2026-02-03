@@ -161,26 +161,17 @@ const MacAccessories = () => {
             <Box
                 sx={{
                     position: 'relative',
-                    height: { xs: 'auto', md: '75vh' },
-                    minHeight: { xs: '400px', md: '450px' },
+                    height: '85vh',
+                    minHeight: '85vh',
                     display: 'flex',
                     alignItems: 'center',
                     overflow: 'hidden',
-                    backgroundImage: 'url("/images/mac_hero_bg.png")',
+                    backgroundImage: 'url("/images/mac-accessories-hero-updated.png")',
                     backgroundSize: 'cover',
                     backgroundPosition: { xs: 'center', md: '70% center' },
                     backgroundColor: '#f5f5f7',
                     py: { xs: 8, md: 0 },
-                    '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        background: 'linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 60%)',
-                        zIndex: 1
-                    }
+
                 }}
             >
                 <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 2 }}>
@@ -192,8 +183,8 @@ const MacAccessories = () => {
                                     src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
                                     alt="Apple"
                                     sx={{
-                                        width: { xs: 35, md: 50 },
-                                        height: { xs: 35, md: 50 },
+                                        width: { xs: 45, md: 60 },
+                                        height: { xs: 45, md: 60 },
                                         objectFit: 'contain'
                                     }}
                                 />
@@ -203,7 +194,7 @@ const MacAccessories = () => {
                                         fontSize: { xs: '0.75rem', md: '1rem' },
                                         fontWeight: 600,
                                         letterSpacing: { xs: '2px', md: '3px' },
-                                        color: '#86868b'
+                                        color: '#e0e0e0ff'
                                     }}
                                 >
                                     PREMIUM ACCESSORIES
@@ -218,17 +209,17 @@ const MacAccessories = () => {
                                     mb: { xs: 1.5, md: 2 },
                                     lineHeight: 1.1,
                                     letterSpacing: { xs: '-1px', md: '-2px' },
-                                    color: '#1d1d1f'
+                                    color: '#ffffffff'
                                 }}
                             >
                                 Elevate Your <br />
-                                <span style={{ color: '#000000' }}>Mac Experience</span>
+                                <span style={{ color: '#ffffffff' }}>Mac Experience</span>
                             </Typography>
 
                             <Typography
                                 variant="h5"
                                 sx={{
-                                    color: '#424245',
+                                    color: '#e0e0e0ff',
                                     maxWidth: '600px',
                                     lineHeight: { xs: 1.5, md: 1.6 },
                                     fontWeight: 400,
