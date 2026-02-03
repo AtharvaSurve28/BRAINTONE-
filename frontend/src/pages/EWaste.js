@@ -92,7 +92,7 @@ const EWaste = () => {
                     <Typography
                         variant="h2"
                         sx={{
-                            color: '#e74c3c',
+                            color: '#cc2b19ff',
                             fontWeight: 800,
                             mb: 2,
                             fontSize: { xs: '2.5rem', md: '4rem' },
