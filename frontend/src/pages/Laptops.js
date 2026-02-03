@@ -117,24 +117,6 @@ const Laptops = () => {
     }
   ];
 
-  // Generate bubbles for the background - SLOWER
-  const generateBubbles = () => {
-    const bubbles = [];
-    for (let i = 0; i < 20; i++) { // Reduced number of bubbles
-      bubbles.push({
-        id: i,
-        size: Math.random() * 35 + 15,
-        left: Math.random() * 100,
-        duration: Math.random() * 25 + 20, // MUCH SLOWER: 20-45 seconds
-        delay: Math.random() * 15,
-        opacity: Math.random() * 0.3 + 0.1,
-      });
-    }
-    return bubbles;
-  };
-
-  const bubbles = generateBubbles();
-
   // Function to handle brand click
   const handleBrandClick = (brandRoute) => {
     navigate(brandRoute);
@@ -147,39 +129,6 @@ const Laptops = () => {
       overflow: 'hidden',
       position: 'relative',
     }}>
-      {/* Animated Bubbles Background - SLOWER */}
-      <Box sx={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        pointerEvents: 'none',
-        zIndex: 0,
-        overflow: 'hidden',
-      }}>
-        {bubbles.map((bubble) => (
-          <Box
-            key={bubble.id}
-            sx={{
-              position: 'absolute',
-              left: `${bubble.left}%`,
-              bottom: '-50px',
-              width: `${bubble.size}px`,
-              height: `${bubble.size}px`,
-              borderRadius: '50%',
-              background: `radial-gradient(circle at 30% 30%, 
-                rgba(255, 120, 120, ${bubble.opacity}) 0%, 
-                rgba(180, 30, 30, ${bubble.opacity * 0.6}) 60%, 
-                rgba(140, 10, 10, ${bubble.opacity * 0.3}) 100%)`,
-              animation: `${bubbleFloat} ${bubble.duration}s ease-in-out infinite`, // Changed to ease-in-out for smoother movement
-              animationDelay: `${bubble.delay}s`,
-              filter: 'blur(1.5px)',
-              boxShadow: `inset 0 0 15px rgba(180, 30, 30, 0.3), 0 0 25px rgba(180, 30, 30, 0.15)`,
-            }}
-          />
-        ))}
-      </Box>
 
       {/* MODIFIED TOP BRANDS HERO SECTION - DARKER RED */}
       {/* MODIFIED TOP BRANDS HERO SECTION - CLEAN BACKGROUND IMAGE */}
@@ -338,6 +287,7 @@ const Laptops = () => {
                   animationDelay: `${index * 0.2}s`, // Staggered animation
                   position: 'relative',
                   zIndex: 2,
+                  willChange: 'transform',
                   cursor: 'pointer', // Added cursor pointer
                   '&:hover': {
                     boxShadow: `0 20px 50px ${brand.color}40`, // Brand color shadow on hover

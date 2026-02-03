@@ -274,6 +274,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 30% 30%, rgba(33, 150, 243, 0.08), rgba(33, 150, 243, 0.02))',
           animation: 'bubbleFloatLarge 25s ease-in-out infinite',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -287,6 +288,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 60% 40%, rgba(76, 175, 80, 0.06), rgba(76, 175, 80, 0.01))',
           animation: 'bubbleFloatMedium 30s ease-in-out infinite 5s',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -666,7 +668,7 @@ const SecondHand = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
