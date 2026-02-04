@@ -55,24 +55,43 @@ const HomePage = () => {
   ];
 
   // Array of background images - your image first, then others
-  const backgroundImages = [
-    'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Your image first - ADDED SLASH
-    'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Laptop workspace
-    'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Laptop repair
-    'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D', // Modern laptops
-    'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80', // Tech workspace
+  // Array of hero slides with images and corresponding quotes
+  const heroSlides = [
+    {
+      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Explore our New Premium Laptops'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      title: 'New & Certified Pre-Owned Premium Laptops.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      title: 'Expert Repair Services'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D',
+      title: 'Premium Performance, Perfected.'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      title: 'Premium Laptops & Expert Repair Services'
+    },
+    {
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Pre-Owned)'
+    }
   ];
 
   useEffect(() => {
     // Auto-rotate images every 3 seconds
     const interval = setInterval(() => {
-      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % backgroundImages.length);
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % heroSlides.length);
     }, 3000);
 
     // Clear interval on component unmount
     return () => clearInterval(interval);
-  }, [backgroundImages.length]);
+  }, [heroSlides.length]);
 
   return (
     <Box sx={{ overflowX: 'hidden' }}>
@@ -101,7 +120,7 @@ const HomePage = () => {
           }}
         >
           {/* All background images stacked with opacity transitions */}
-          {backgroundImages.map((image, index) => (
+          {heroSlides.map((slide, index) => (
             <Box
               key={index}
               sx={{
@@ -110,7 +129,7 @@ const HomePage = () => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundImage: `url(${image})`,
+                backgroundImage: `url(${slide.image})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
@@ -161,15 +180,21 @@ const HomePage = () => {
             variant="h2"
             sx={{
               fontWeight: 700,
-              mb: 3,
+              mb: 1,
+              pt: 5,
               fontSize: { xs: '2rem', md: '3rem' },
               background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               textShadow: '0 2px 10px rgba(0,0,0,0.3)', // Added shadow for better contrast
+              minHeight: '3.6em', // Reserve height for 2 lines to prevent layout shift
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.5s ease-in-out', // Smooth transition for text
             }}
           >
-            Premium Laptops & Expert Repair Services
+            {heroSlides[currentImageIndex].title}
           </Typography>
           <Typography
             variant="h6"
@@ -229,7 +254,7 @@ const HomePage = () => {
             justifyContent="center"
             sx={{ mt: 4 }}
           >
-            {backgroundImages.map((_, index) => (
+            {heroSlides.map((_, index) => (
               <Box
                 key={index}
                 sx={{
