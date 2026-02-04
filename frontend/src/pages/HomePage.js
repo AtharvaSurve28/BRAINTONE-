@@ -340,7 +340,7 @@ const HomePage = () => {
             zIndex: 0,
           }
         }}>
-          {/* Rotating radial gradient - needs a separate div since we already used both pseudo-elements */}
+          {/* Static radial gradient to match "All about BRAINTONE" */}
           <Box sx={{
             position: 'absolute',
             top: '-50%',
@@ -348,11 +348,8 @@ const HomePage = () => {
             width: '200%',
             height: '200%',
             background: 'radial-gradient(circle, rgba(231,76,60,0.05) 0%, transparent 70%)',
-            animation: 'rotate 20s linear infinite',
             zIndex: 0,
-            willChange: 'transform',
           }} />
-
           <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1 }}>
             <Typography
               variant="h4"

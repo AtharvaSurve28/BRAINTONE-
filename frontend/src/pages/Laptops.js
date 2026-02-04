@@ -65,55 +65,64 @@ const Laptops = () => {
       name: 'DELL',
       image: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop',
       route: '/laptops/dell',
-      color: '#E2231A'
+      color: '#E2231A', // Dell Blue
+      logo: '/images/brand-logos/dell.png'
     },
     {
       name: 'HP',
       image: 'https://images.unsplash.com/photo-1663354027456-ce6a7e07d212?w=400&h=300&fit=crop',
       route: '/laptops/hp',
-      color: '#E2231A'
+      color: '#E2231A', // HP Blue
+      logo: '/images/brand-logos/hp.png'
     },
     {
       name: 'Lenovo',
       image: 'https://images.unsplash.com/photo-1763162410742-1d0097cea556?w=400&h=300&fit=crop',
       route: '/laptops/lenovo',
-      color: '#E2231A'
+      color: '#E2231A', // Lenovo Red
+      logo: '/images/brand-logos/lenovo.png'
     },
     {
       name: 'ASUS',
       image: 'https://images.unsplash.com/photo-1698512475058-7975102960b6?w=400&h=300&fit=crop',
       route: '/laptops/asus',
-      color: '#E2231A'
+      color: '#E2231A', // Asus Blue
+      logo: '/images/brand-logos/asus.png'
     },
     {
       name: 'Acer',
       image: 'https://images.unsplash.com/photo-1525972183131-2f5c48254ec4?w=400&h=300&fit=crop',
       route: '/laptops/acer',
-      color: '#E2231A'
+      color: '#E2231A', // Acer Green
+      logo: '/images/brand-logos/acer.png'
     },
     {
       name: 'Apple',
       image: 'https://images.unsplash.com/photo-1658124974726-d96bc44783cf?w=400&h=300&fit=crop',
       route: '/laptops/apple',
-      color: '#E2231A'
+      color: '#E2231A', // Apple Grey
+      logo: '/images/brand-logos/apple-icon.png'
     },
     {
       name: 'MSI',
       image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop', // Changed to MSI laptop image
       route: '/laptops/msi',
-      color: '#E2231A' // MSI red color
+      color: '#E2231A', // MSI red color
+      logo: '/images/brand-logos/msi.png'
     },
     {
       name: 'Samsung Galaxy',
       image: 'https://images.unsplash.com/photo-1522202222206-b75023c48f4f?w=400&h=300&fit=crop', // Changed to Samsung laptop image
       route: '/laptops/samsung',
-      color: '#E2231A' // Samsung blue color
+      color: '#E2231A', // Samsung blue color
+      logo: '/images/brand-logos/samsung.png'
     },
     {
       name: 'Microsoft',
       image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=400&h=300&fit=crop',
       route: '/laptops/microsoft',
-      color: '#E2231A'
+      color: '#E2231A', // Microsoft Orange
+      logo: '/images/brand-logos/microsoft.png'
     }
   ];
 
@@ -301,6 +310,10 @@ const Laptops = () => {
                       color: brand.color, // Brand color text on hover
                       transform: 'scale(1.05)',
                     },
+                    '& .brand-logo': {
+                      transform: 'scale(1.1)',
+                      filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
+                    },
                     '& .explore-text': {
                       opacity: 1,
                       transform: 'translateY(0)',
@@ -381,7 +394,7 @@ const Laptops = () => {
                   />
                 </Box>
 
-                {/* Brand Name */}
+                {/* Brand Name or Logo */}
                 <CardContent
                   sx={{
                     textAlign: 'center',
@@ -394,22 +407,40 @@ const Laptops = () => {
                     justifyContent: 'center',
                     position: 'relative',
                     zIndex: 2,
+                    minHeight: '120px', // Ensure consistent height
                   }}
                 >
-                  <Typography
-                    variant="h5"
-                    className="brand-name"
-                    sx={{
-                      fontWeight: 800,
-                      color: '#333333',
-                      fontSize: '1.8rem',
-                      transition: 'all 0.4s ease',
-                      letterSpacing: '-0.5px',
-                      textShadow: '0 2px 4px rgba(0,0,0,0.1)',
-                    }}
-                  >
-                    {brand.name}
-                  </Typography>
+                  {brand.logo ? (
+                    <Box
+                      component="img"
+                      src={brand.logo}
+                      alt={`${brand.name} logo`}
+                      className="brand-logo"
+                      sx={{
+                        maxWidth: brand.name === 'Lenovo' ? '160px' : (brand.name === 'Apple' ? '190px' : (brand.name === 'MSI' ? '300px' : (['ASUS', 'Samsung Galaxy', 'Microsoft'].includes(brand.name) ? '260px' : '220px'))),
+                        maxHeight: brand.name === 'Lenovo' ? '60px' : (brand.name === 'Apple' ? '80px' : (brand.name === 'MSI' ? '140px' : (['ASUS', 'Samsung Galaxy', 'Microsoft'].includes(brand.name) ? '120px' : '90px'))),
+                        width: 'auto',
+                        height: 'auto',
+                        objectFit: 'contain',
+                        transition: 'all 0.4s ease',
+                      }}
+                    />
+                  ) : (
+                    <Typography
+                      variant="h5"
+                      className="brand-name"
+                      sx={{
+                        fontWeight: 800,
+                        color: '#333333',
+                        fontSize: '1.8rem',
+                        transition: 'all 0.4s ease',
+                        letterSpacing: '-0.5px',
+                        textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                      }}
+                    >
+                      {brand.name}
+                    </Typography>
+                  )}
                 </CardContent>
               </Card>
             </Grid>
