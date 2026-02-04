@@ -3,17 +3,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { CssBaseline, ThemeProvider, createTheme, Box, Fade } from '@mui/material';
 import HomePage from './pages/HomePage';
 import Laptops from './pages/Laptops';
-
-// Import all brand components
-import Dell from './pages/Dell';
-import HP from './pages/HP';
-import Lenovo from './pages/Lenovo';
-import Asus from './pages/Asus';
-import Acer from './pages/Acer';
-import Apple from './pages/Apple';
-import MSI from './pages/MSI';
-import Samsung from './pages/Samsung';
-import Microsoft from './pages/Microsoft';
+import DynamicBrandTemplate from './components/DynamicBrandTemplate';
 
 import SecondHand from './pages/SecondHand';
 import Accessories from './pages/Accessories';
@@ -56,16 +46,8 @@ function AnimatedRoutes() {
           <Route path="/" element={<HomePage />} />
           <Route path="/laptops" element={<Laptops />} />
 
-          {/* Laptop Brand Routes */}
-          <Route path="/laptops/dell" element={<Dell />} />
-          <Route path="/laptops/hp" element={<HP />} />
-          <Route path="/laptops/lenovo" element={<Lenovo />} />
-          <Route path="/laptops/asus" element={<Asus />} />
-          <Route path="/laptops/acer" element={<Acer />} />
-          <Route path="/laptops/apple" element={<Apple />} />
-          <Route path="/laptops/msi" element={<MSI />} />
-          <Route path="/laptops/samsung" element={<Samsung />} />
-          <Route path="/laptops/microsoft" element={<Microsoft />} />
+          {/* Dynamic Laptop Brand Route */}
+          <Route path="/laptops/:brandId" element={<DynamicBrandTemplate />} />
 
           <Route path="/second-hand" element={<SecondHand />} />
           <Route path="/pre-owned-laptops" element={<SecondHand />} />
