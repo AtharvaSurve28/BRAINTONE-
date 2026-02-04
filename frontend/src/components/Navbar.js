@@ -168,7 +168,7 @@ export default function Navbar() {
               <ListItemIcon sx={{ minWidth: 32 }}>
                 <Box
                   component="img"
-                  src="/images/apple-icon.png"
+                  src="/images/brand-logos/apple-icon.png"
                   alt="Apple"
                   sx={{ width: 18, height: 18, objectFit: 'contain' }}
                 />
@@ -430,7 +430,7 @@ export default function Navbar() {
                       <MenuItem component={Link} to="/mac-accessories" onClick={() => setAccessoriesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
                         <Box
                           component="img"
-                          src="/images/apple-icon.png"
+                          src="/images/brand-logos/apple-icon.png"
                           alt="Apple"
                           sx={{ mr: 1.5, width: 18, height: 18, objectFit: 'contain', mt: -0.2 }}
                         />

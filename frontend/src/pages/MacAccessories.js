@@ -180,12 +180,13 @@ const MacAccessories = () => {
                             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2, mb: { xs: 2, md: 3 } }}>
                                 <Box
                                     component="img"
-                                    src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg"
+                                    src="/images/brand-logos/apple-icon.png"
                                     alt="Apple"
                                     sx={{
-                                        width: { xs: 45, md: 60 },
-                                        height: { xs: 45, md: 60 },
-                                        objectFit: 'contain'
+                                        width: { xs: 40, md: 55 },
+                                        height: { xs: 40, md: 55 },
+                                        objectFit: 'contain',
+                                        filter: 'brightness(0) invert(1)' // Make it white since the background is dark
                                     }}
                                 />
                                 <Typography

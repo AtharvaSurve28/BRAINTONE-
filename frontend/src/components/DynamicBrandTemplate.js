@@ -24,7 +24,7 @@ import {
   DialogActions,
   IconButton
 } from '@mui/material';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { keyframes } from '@emotion/react';
 import {
   Memory,
@@ -677,7 +677,10 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
   );
 };
 
-const DynamicBrandTemplate = ({ brandId }) => {
+const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
+  const { brandId: urlBrandId } = useParams();
+  const brandId = propBrandId || urlBrandId;
+
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   const [selectedSeries, setSelectedSeries] = useState('');
