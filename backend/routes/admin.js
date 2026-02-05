@@ -1,9 +1,12 @@
 const express = require('express');
+const multer = require('multer');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
 const Admin = require('../models/Admin');
 const { authMiddleware, JWT_SECRET: AuthSecret } = require('../middleware/auth');
 const laptopController = require('../controllers/laptopController');
+const upload = require('../middleware/upload');
+
 const Laptop = require('../models/Laptop');
 
 // Use exported secret or fallback to env var
@@ -64,10 +67,34 @@ router.get('/laptops', authMiddleware, laptopController.getAllLaptops);
 router.get('/laptops/:id', authMiddleware, laptopController.getLaptopById);
 
 // Create new laptop
-router.post('/laptops', authMiddleware, laptopController.createLaptop);
+router.post('/laptops', authMiddleware, (req, res, next) => {
+  upload.array('images', 4)(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      console.error('Multer error:', err);
+      return res.status(400).json({ message: `Upload error: ${err.message}` });
+    } else if (err) {
+      console.error('Unknown upload error:', err);
+      return res.status(400).json({ message: err });
+    }
+    next();
+  });
+}, laptopController.createLaptop);
+
 
 // Update laptop
-router.put('/laptops/:id', authMiddleware, laptopController.updateLaptop);
+router.put('/laptops/:id', authMiddleware, (req, res, next) => {
+  upload.array('images', 4)(req, res, (err) => {
+    if (err instanceof multer.MulterError) {
+      console.error('Multer error:', err);
+      return res.status(400).json({ message: `Upload error: ${err.message}` });
+    } else if (err) {
+      console.error('Unknown upload error:', err);
+      return res.status(400).json({ message: err });
+    }
+    next();
+  });
+}, laptopController.updateLaptop);
+
 
 // Delete laptop
 router.delete('/laptops/:id', authMiddleware, laptopController.deleteLaptop);
