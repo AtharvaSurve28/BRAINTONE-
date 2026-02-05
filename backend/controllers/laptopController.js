@@ -25,8 +25,28 @@ exports.getLaptopById = async (req, res) => {
 
 // Create laptop
 exports.createLaptop = async (req, res) => {
-  const laptop = new Laptop(req.body);
   try {
+    const laptopData = { ...req.body };
+
+
+    // Handle image uploads
+    if (req.files && req.files.length > 0) {
+      laptopData.images = req.files.map(file => `/uploads/${file.filename}`);
+      laptopData.image = laptopData.images[0]; // Synchronize singular image field
+    }
+
+    // Handle specs and other arrays if sent as strings (via FormData)
+    if (typeof laptopData.specs === 'string') {
+      try {
+        laptopData.specs = JSON.parse(laptopData.specs);
+      } catch (e) {
+        laptopData.specs = laptopData.specs.split(',').map(s => s.trim()).filter(Boolean);
+      }
+    }
+
+    if (laptopData.price) laptopData.price = Number(laptopData.price);
+
+    const laptop = new Laptop(laptopData);
     const newLaptop = await laptop.save();
     res.status(201).json(newLaptop);
   } catch (error) {
@@ -37,9 +57,33 @@ exports.createLaptop = async (req, res) => {
 // Update laptop
 exports.updateLaptop = async (req, res) => {
   try {
+    console.log('--- Update Laptop Request ---');
+    console.log('ID:', req.params.id);
+    console.log('Files:', req.files);
+    const laptopData = { ...req.body };
+
+
+    // Handle image uploads
+    if (req.files && req.files.length > 0) {
+      const newImages = req.files.map(file => `/uploads/${file.filename}`);
+      laptopData.images = newImages;
+      laptopData.image = newImages[0]; // Synchronize singular image field
+    }
+
+    // Handle specs if sent as strings
+    if (typeof laptopData.specs === 'string') {
+      try {
+        laptopData.specs = JSON.parse(laptopData.specs);
+      } catch (e) {
+        laptopData.specs = laptopData.specs.split(',').map(s => s.trim()).filter(Boolean);
+      }
+    }
+
+    if (laptopData.price) laptopData.price = Number(laptopData.price);
+
     const laptop = await Laptop.findByIdAndUpdate(
       req.params.id,
-      req.body,
+      laptopData,
       { new: true }
     );
     if (!laptop) {

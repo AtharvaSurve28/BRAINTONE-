@@ -202,8 +202,26 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const [activeImage, setActiveImage] = useState(0);
+
+  // Reset active image when laptop changes
+  useEffect(() => {
+    setActiveImage(0);
+  }, [laptop]);
 
   if (!laptop) return null;
+
+  const getImagePath = (img) => {
+    if (!img) return '/placeholder.png';
+    return img.startsWith('http') ? img : `${API_BASE_URL}${img}`;
+  };
+
+  const images = (Array.isArray(laptop.images) && laptop.images.length > 0)
+    ? laptop.images.filter(Boolean).map(getImagePath)
+    : [getImagePath(laptop.image)];
+
+  // DEBUG: console.log('Modal Laptop:', laptop);
+  // DEBUG: console.log('Resolved Images:', images);
 
   const storeLocations = [
     {
@@ -216,7 +234,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
     {
       name: "Vile Parle Store",
       address: "1st Floor, Prime Mall, F92/96, Alfa Market, Road, Naypada, Irla, Vile Parle West, Mumbai, Maharashtra 400056",
-      phone: "092233 33357",
+      phone: "092233 333357",
       googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai",
       timings: "11:00 AM - 7:00 PM (Monday to Sunday)" // Updated timing
     }
@@ -303,6 +321,71 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
 
       <DialogContent dividers sx={{ p: 0, overflowY: 'auto' }}>
         <Box sx={{ p: { xs: 2, md: 3 } }}>
+          {/* Multi-Image Gallery */}
+          <Box sx={{ mb: 4, display: 'flex', flexDirection: { xs: 'column', md: 'row' }, gap: 3 }}>
+            {/* Thumbnails Sidebar */}
+            <Box sx={{
+              display: 'flex',
+              flexDirection: { xs: 'row', md: 'column' },
+              gap: 2,
+              order: { xs: 2, md: 1 },
+              justifyContent: { xs: 'center', md: 'flex-start' }
+            }}>
+              {images.map((img, index) => (
+                <Box
+                  key={index}
+                  onMouseEnter={() => setActiveImage(index)}
+                  sx={{
+                    width: 80,
+                    height: 80,
+                    borderRadius: 2,
+                    border: `2px solid ${activeImage === index ? (category?.color || '#3B82F6') : '#eee'}`,
+                    padding: '4px',
+                    cursor: 'pointer',
+                    bgcolor: '#fff',
+                    transition: 'all 0.2s ease',
+                    '&:hover': {
+                      borderColor: category?.color || '#3B82F6',
+                      transform: 'scale(1.05)'
+                    }
+                  }}
+                >
+                  <Box
+                    component="img"
+                    src={img}
+                    alt={`${laptop.name} thumb ${index + 1}`}
+                    sx={{ width: '100%', height: '100%', objectFit: 'contain' }}
+                  />
+                </Box>
+              ))}
+            </Box>
+
+            {/* Main Image Display */}
+            <Box sx={{
+              flex: 1,
+              height: { xs: 300, md: 450 },
+              bgcolor: '#fff',
+              borderRadius: 3,
+              border: '1px solid #eee',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              p: 2,
+              order: { xs: 1, md: 2 }
+            }}>
+              <Box
+                component="img"
+                src={images[activeImage]}
+                alt={laptop.name}
+                sx={{
+                  maxWidth: '100%',
+                  maxHeight: '100%',
+                  objectFit: 'contain',
+                  transition: 'opacity 0.3s ease'
+                }}
+              />
+            </Box>
+          </Box>
           {/* Price and Category */}
           <Box sx={{ mb: 4 }}>
             <Typography variant="h4" sx={{
@@ -862,7 +945,11 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
               >
                 <CardMedia
                   component="img"
-                  image={laptop.image}
+                  image={
+                    Array.isArray(laptop.images) && laptop.images.length > 0
+                      ? (laptop.images[0].startsWith('http') ? laptop.images[0] : `${API_BASE_URL}${laptop.images[0]}`)
+                      : (laptop.image && laptop.image.startsWith('http') ? laptop.image : `${API_BASE_URL}${laptop.image || '/placeholder.png'}`)
+                  }
                   alt={laptop.name}
                   sx={{
                     height: 160,

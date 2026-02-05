@@ -27,9 +27,8 @@ const processLaptopsIntoSeries = (laptops, seriesStructure) => {
 
     if (series[categoryKey]) {
       series[categoryKey].push({
+        ...laptop,
         id: laptop._id?.toString() || 'temp-id',
-        name: laptop.name || 'Unknown Laptop',
-        types: [laptop.category || 'general'],
         price: laptop.price ? `₹${laptop.price.toLocaleString()}` : '₹Price not set',
         specs: [
           laptop.processor,
@@ -38,8 +37,7 @@ const processLaptopsIntoSeries = (laptops, seriesStructure) => {
           laptop.display,
           laptop.graphics
         ].filter(Boolean),
-        image: laptop.images?.[0] || 'https://via.placeholder.com/400x300',
-        bestFor: laptop.bestFor || 'General Use',
+        image: laptop.images?.[0] || laptop.image || 'https://via.placeholder.com/400x300',
         includedIn: [laptop.category || 'general']
       });
     }
@@ -440,9 +438,7 @@ router.get('/brand/:brandId', async (req, res) => {
     }
 
     // Get laptops from database with optimized query
-    const laptops = await Laptop.find({ brand: brandId })
-      .select('name series category price processor ram storage display graphics images bestFor')
-      .lean();
+    const laptops = await Laptop.find({ brand: brandId }).lean();
     console.log(`Found ${laptops.length} ${brandId.toUpperCase()} laptops`);
 
     // Get series structure for this brand

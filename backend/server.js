@@ -1,17 +1,23 @@
 const express = require('express');
+const fs = require('fs');
 const cors = require('cors');
+
 require('dotenv').config();
 
 const connectDB = require('./config/db');
 
 const app = express();
 
+const path = require('path');
+
+// Connect to MongoDB
+connectDB();
+
 // Middleware
 app.use(cors());
 app.use(express.json());
 
-// Connect to MongoDB
-connectDB();
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Import Routes
 const laptopRoutes = require('./routes/laptops');
@@ -24,6 +30,16 @@ app.use('/api/admin', adminRoutes);
 // Test Route
 app.get('/', (req, res) => {
   res.send('BRAINTONE API is running...');
+});
+
+// Global Error Handler
+app.use((err, req, res, next) => {
+  const errorLog = `!!! ERROR !!! ${new Date().toISOString()}\n` +
+    `Message: ${err.message}\n` +
+    `Stack: ${err.stack}\n`;
+  try { fs.appendFileSync(debugPath, errorLog); } catch (e) { }
+  console.error('SERVER ERROR:', err);
+  res.status(500).json({ message: 'Internal Server Error', error: err.message });
 });
 
 const PORT = process.env.PORT || 5000;

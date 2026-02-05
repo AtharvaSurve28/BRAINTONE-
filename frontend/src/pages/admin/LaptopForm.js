@@ -12,10 +12,13 @@ import {
   Grid,
   Alert,
   CircularProgress,
-  Chip
+  Chip,
+  IconButton
 } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import SaveIcon from '@mui/icons-material/Save';
+import CloseIcon from '@mui/icons-material/Close';
+
 
 const LaptopForm = () => {
   const { id } = useParams();
@@ -43,6 +46,9 @@ const LaptopForm = () => {
   const [fetching, setFetching] = useState(isEdit);
   const [error, setError] = useState('');
   const [success, setSuccess] = useState('');
+  const [selectedFiles, setSelectedFiles] = useState([]);
+  const [previews, setPreviews] = useState([]);
+
 
   const brands = ['dell', 'hp', 'lenovo', 'asus', 'acer', 'apple', 'msi', 'samsung', 'microsoft'];
   const categories = ['entry', 'mid-range', 'consumer', 'commercial', 'gaming', 'premium'];
@@ -63,6 +69,10 @@ const LaptopForm = () => {
     if (isEdit) {
       fetchLaptop();
     }
+    return () => {
+      // Clean up previews
+      previews.forEach(url => URL.revokeObjectURL(url));
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
@@ -86,10 +96,14 @@ const LaptopForm = () => {
       // Convert arrays to strings for form
       setFormData({
         ...laptop,
-        images: Array.isArray(laptop.images) ? laptop.images.join(', ') : laptop.images || '',
+        images: Array.isArray(laptop.images) ? laptop.images : [], // Keep as array for editing check
         specs: Array.isArray(laptop.specs) ? laptop.specs.join(', ') : laptop.specs || '',
         price: laptop.price || '',
       });
+
+      if (Array.isArray(laptop.images)) {
+        setPreviews(laptop.images.map(img => img.startsWith('http') ? img : `${API_BASE_URL}${img}`));
+      }
     } catch (err) {
       setError('Failed to fetch laptop');
     } finally {
@@ -105,6 +119,48 @@ const LaptopForm = () => {
     }));
   };
 
+  const handleFileChange = (e) => {
+    const files = Array.from(e.target.files);
+
+    // We want to allow adding more files until we hit 4 total
+    const totalCurrent = previews.length;
+    const remaining = 4 - totalCurrent;
+
+    if (remaining <= 0) {
+      setError('Maximum 4 images allowed');
+      return;
+    }
+
+    const filesToAdd = files.slice(0, remaining);
+    setSelectedFiles(prev => [...prev, ...filesToAdd]);
+
+    // Create new previews
+    const newPreviews = filesToAdd.map(file => URL.createObjectURL(file));
+    setPreviews(prev => [...prev, ...newPreviews]);
+  };
+
+  const removeImage = (index) => {
+    const previewToRemove = previews[index];
+
+    if (previewToRemove.startsWith('http')) {
+      // It's an existing image from server
+      setFormData(prev => ({
+        ...prev,
+        images: prev.images.filter((_, i) => i !== index)
+      }));
+      setPreviews(prev => prev.filter((_, i) => i !== index));
+    } else {
+      // It's a newly selected local file
+      // Need to find index in selectedFiles
+      const existingCount = previews.filter((p, i) => i < index && p.startsWith('http')).length;
+      const fileIndex = index - existingCount;
+
+      URL.revokeObjectURL(previewToRemove);
+      setPreviews(prev => prev.filter((_, i) => i !== index));
+      setSelectedFiles(prev => prev.filter((_, i) => i !== fileIndex));
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -114,13 +170,25 @@ const LaptopForm = () => {
     try {
       const token = localStorage.getItem('adminToken');
 
-      // Convert form data to API format
-      const submitData = {
-        ...formData,
-        price: Number(formData.price),
-        images: formData.images.split(',').map(url => url.trim()).filter(Boolean),
-        specs: formData.specs.split(',').map(spec => spec.trim()).filter(Boolean),
-      };
+      const formDataToSend = new FormData();
+
+      // Append all text fields
+      Object.keys(formData).forEach(key => {
+        if (key === 'images') return; // Handled below
+        if (key === 'specs') {
+          const specsArray = formData.specs.split(',').map(spec => spec.trim()).filter(Boolean);
+          formDataToSend.append('specs', JSON.stringify(specsArray));
+        } else {
+          formDataToSend.append(key, formData[key]);
+        }
+      });
+
+      // Append files
+      if (selectedFiles.length > 0) {
+        selectedFiles.forEach(file => {
+          formDataToSend.append('images', file);
+        });
+      }
 
       const url = isEdit ? `${API_BASE_URL}/api/admin/laptops/${id}` : `${API_BASE_URL}/api/admin/laptops`;
       const method = isEdit ? 'PUT' : 'POST';
@@ -128,10 +196,9 @@ const LaptopForm = () => {
       const response = await fetch(url, {
         method,
         headers: {
-          'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`,
         },
-        body: JSON.stringify(submitData),
+        body: formDataToSend,
       });
 
       if (response.status === 401) {
@@ -151,6 +218,7 @@ const LaptopForm = () => {
         setError(data.message || 'Failed to save laptop');
       }
     } catch (err) {
+      console.error('Submit error:', err);
       setError('Network error. Please try again.');
     } finally {
       setLoading(false);
@@ -196,16 +264,19 @@ const LaptopForm = () => {
 
           <form onSubmit={handleSubmit}>
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   select
                   label="Brand *"
                   name="brand"
-                  value={formData.brand}
+                  value={formData.brand || ''}
                   onChange={handleChange}
                   required
                 >
+                  <MenuItem value="">
+                    <em>Select Brand</em>
+                  </MenuItem>
                   {brands.map((brand) => (
                     <MenuItem key={brand} value={brand}>
                       {brand.toUpperCase()}
@@ -214,17 +285,20 @@ const LaptopForm = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   select
                   label="Series *"
                   name="series"
-                  value={formData.series}
+                  value={formData.series || ''}
                   onChange={handleChange}
                   required
                   disabled={!formData.brand}
                 >
+                  <MenuItem value="">
+                    <em>{formData.brand ? 'Select Series' : 'Select Brand First'}</em>
+                  </MenuItem>
                   {formData.brand && brandSeries[formData.brand]?.map((series) => (
                     <MenuItem key={series} value={series}>
                       {series}
@@ -233,16 +307,19 @@ const LaptopForm = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   select
                   label="Category *"
                   name="category"
-                  value={formData.category}
+                  value={formData.category || ''}
                   onChange={handleChange}
                   required
                 >
+                  <MenuItem value="">
+                    <em>Select Category</em>
+                  </MenuItem>
                   {categories.map((cat) => (
                     <MenuItem key={cat} value={cat}>
                       {cat}
@@ -251,7 +328,7 @@ const LaptopForm = () => {
                 </TextField>
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Price (₹) *"
@@ -263,7 +340,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   fullWidth
                   label="Laptop Name *"
@@ -274,7 +351,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Processor"
@@ -284,7 +361,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="RAM"
@@ -294,7 +371,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Storage"
@@ -304,7 +381,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Display"
@@ -314,7 +391,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   label="Graphics"
@@ -324,21 +401,24 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12} sm={6}>
+              <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
                   select
                   label="Condition"
                   name="condition"
-                  value={formData.condition}
+                  value={formData.condition || ''}
                   onChange={handleChange}
                 >
+                  <MenuItem value="">
+                    <em>Select Condition</em>
+                  </MenuItem>
                   <MenuItem value="new">New</MenuItem>
                   <MenuItem value="used">Used</MenuItem>
                 </TextField>
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <TextField
                   fullWidth
                   label="Best For"
@@ -349,20 +429,72 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
-                <TextField
+              <Grid size={12}>
+                <Typography variant="subtitle1" gutterBottom fontWeight="600">
+                  Laptop Photos (Max 4) *
+                </Typography>
+                <Button
+                  variant="outlined"
+                  component="label"
                   fullWidth
-                  label="Images (comma separated URLs)"
-                  name="images"
-                  value={formData.images}
-                  onChange={handleChange}
-                  multiline
-                  rows={2}
-                  placeholder="https://example.com/image1.jpg, https://example.com/image2.jpg"
-                />
+                  sx={{ py: 2, mb: 2, borderStyle: 'dashed' }}
+                >
+                  Upload Photos
+                  <input
+                    type="file"
+                    hidden
+                    multiple
+                    accept="image/*"
+                    onChange={handleFileChange}
+                  />
+                </Button>
+
+                {previews.length > 0 && (
+                  <Grid container spacing={2} sx={{ mb: 2 }}>
+                    {previews.map((url, index) => (
+                      <Grid size={{ xs: 6, sm: 4, md: 3 }} key={index}>
+                        <Paper
+                          sx={{
+                            height: 120,
+                            width: '100%',
+                            backgroundImage: `url(${url})`,
+                            backgroundSize: 'contain',
+                            backgroundRepeat: 'no-repeat',
+                            backgroundPosition: 'center',
+                            borderRadius: 2,
+                            border: '1px solid #ddd',
+                            position: 'relative',
+                            bgcolor: '#fff'
+                          }}
+                        >
+                          <IconButton
+                            size="small"
+                            onClick={() => removeImage(index)}
+                            sx={{
+                              position: 'absolute',
+                              top: 4,
+                              right: 4,
+                              bgcolor: 'rgba(255, 255, 255, 0.8)',
+                              '&:hover': {
+                                bgcolor: 'rgba(255, 0, 0, 0.1)',
+                                color: 'error.main'
+                              }
+                            }}
+                          >
+                            <CloseIcon fontSize="small" />
+                          </IconButton>
+                        </Paper>
+                      </Grid>
+                    ))}
+                  </Grid>
+                )}
+                <Typography variant="caption" color="textSecondary">
+                  {isEdit ? 'Uploading new photos will replace existing ones.' : 'Please upload clear photos of the laptop.'}
+                </Typography>
               </Grid>
 
-              <Grid item xs={12}>
+
+              <Grid size={12}>
                 <TextField
                   fullWidth
                   label="Specs (comma separated)"
@@ -375,7 +507,7 @@ const LaptopForm = () => {
                 />
               </Grid>
 
-              <Grid item xs={12}>
+              <Grid size={12}>
                 <Box sx={{ display: 'flex', gap: 2, justifyContent: 'flex-end' }}>
                   <Button
                     variant="outlined"
