@@ -367,7 +367,7 @@ export default function Navbar() {
             {/* Mobile: Logo + Hamburger */}
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <Box sx={{ ml: -4 }}>
+                <Box sx={{ ml: -2 }}>
                   <BrandLogo isMobile={true} />
                 </Box>
                 <IconButton
