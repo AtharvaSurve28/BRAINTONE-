@@ -31,7 +31,8 @@ exports.createLaptop = async (req, res) => {
 
     // Handle image uploads
     if (req.files && req.files.length > 0) {
-      laptopData.images = req.files.map(file => `/uploads/${file.filename}`);
+      // With Cloudinary, file.path is the full URL
+      laptopData.images = req.files.map(file => file.path);
       laptopData.image = laptopData.images[0]; // Synchronize singular image field
     }
 
@@ -65,7 +66,8 @@ exports.updateLaptop = async (req, res) => {
 
     // Handle image uploads
     if (req.files && req.files.length > 0) {
-      const newImages = req.files.map(file => `/uploads/${file.filename}`);
+      // With Cloudinary, file.path is the full URL
+      const newImages = req.files.map(file => file.path);
       laptopData.images = newImages;
       laptopData.image = newImages[0]; // Synchronize singular image field
     }
