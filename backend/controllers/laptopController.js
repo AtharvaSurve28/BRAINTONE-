@@ -64,12 +64,28 @@ exports.updateLaptop = async (req, res) => {
     const laptopData = { ...req.body };
 
 
-    // Handle image uploads
+    // Handle image updates (Merging old + new)
+    let finalImages = [];
+
+    // 1. Get existing images that are kept (sent as JSON string from frontend)
+    if (laptopData.existingImages) {
+      try {
+        finalImages = JSON.parse(laptopData.existingImages);
+      } catch (e) {
+        finalImages = Array.isArray(laptopData.existingImages) ? laptopData.existingImages : [laptopData.existingImages];
+      }
+    }
+
+    // 2. Add new uploads
     if (req.files && req.files.length > 0) {
-      // With Cloudinary, file.path is the full URL
       const newImages = req.files.map(file => file.path);
-      laptopData.images = newImages;
-      laptopData.image = newImages[0]; // Synchronize singular image field
+      finalImages = [...finalImages, ...newImages];
+    }
+
+    // 3. Update the data
+    if (finalImages.length > 0) {
+      laptopData.images = finalImages;
+      laptopData.image = finalImages[0];
     }
 
     // Handle specs if sent as strings
