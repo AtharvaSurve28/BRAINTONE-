@@ -44,6 +44,66 @@ const GoogleG = () => (
   </svg>
 );
 
+// Brand Logo Component
+const BrandLogo = ({ isScrolled, isMobile = false }) => (
+  <Box
+    component={Link}
+    to="/"
+    sx={{
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center', // Always center internal content for branding consistency
+      textDecoration: 'none',
+      transition: 'transform 0.3s ease',
+      '&:hover': { transform: 'scale(1.02)' },
+      width: 'fit-content'
+    }}
+  >
+    <Typography
+      variant="h4"
+      sx={{
+        fontWeight: 900,
+        color: '#ff0000',
+        lineHeight: 0.9,
+        letterSpacing: '-1.5px',
+        textShadow: '2px 2px 0px #000',
+        fontSize: isMobile ? '1.8rem' : '2.5rem',
+        fontFamily: "'Roboto', sans-serif"
+      }}
+    >
+      BRAINTONE
+    </Typography>
+    <Typography
+      sx={{
+        color: '#000',
+        fontWeight: 700,
+        fontSize: isMobile ? '0.45rem' : '0.62rem',
+        letterSpacing: isMobile ? '3px' : '4.8px',
+        mt: 0.5,
+        lineHeight: 1,
+        textTransform: 'uppercase',
+        width: '100%',
+        textAlign: 'center'
+      }}
+    >
+      TECHNOLOGY PVT. LTD.
+    </Typography>
+    <Typography
+      sx={{
+        color: '#444',
+        fontWeight: 600,
+        fontSize: isMobile ? '0.4rem' : '0.58rem',
+        mt: 0.3,
+        lineHeight: 1,
+        width: '100%',
+        textAlign: 'center'
+      }}
+    >
+      Multibranded Authorised Laptop Showroom
+    </Typography>
+  </Box>
+);
+
 export default function Navbar() {
   const location = useLocation();
   const theme = useTheme();
@@ -111,9 +171,7 @@ export default function Navbar() {
     <Box sx={{ width: 280, height: '100%', display: 'flex', flexDirection: 'column' }}>
       {/* Drawer Header */}
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #eee' }}>
-        <Typography variant="h6" component={Link} to="/" onClick={handleDrawerToggle} sx={{ fontWeight: 900, color: '#e74c3c', textDecoration: 'none' }}>
-          BRAINTONE
-        </Typography>
+        <BrandLogo isMobile={true} />
         {/* Removed redundant CloseIcon here as it's now handled by the main toggle button */}
       </Box>
 
@@ -250,15 +308,9 @@ export default function Navbar() {
         }}>
           <Container maxWidth="lg">
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Typography variant="h4" component={Link} to="/" sx={{
-                fontWeight: 900,
-                textDecoration: 'none',
-                color: '#e74c3c',
-                letterSpacing: '-1px',
-                ml: { xs: -1, sm: -4, md: -8 } // Responsive shift for logo
-              }}>
-                BRAINTONE
-              </Typography>
+              <Box sx={{ ml: { xs: 0, md: -6 } }}>
+                <BrandLogo isScrolled={isScrolled} />
+              </Box>
 
               <Stack direction="row" spacing={3} alignItems="center">
                 <Stack direction="row" spacing={1.5} alignItems="center">
@@ -315,15 +367,7 @@ export default function Navbar() {
             {/* Mobile: Logo + Hamburger */}
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <Typography variant="h5" component={Link} to="/" sx={{
-                  fontWeight: 900,
-                  textDecoration: 'none',
-                  color: '#e74c3c',
-                  letterSpacing: '-1px',
-                  ml: { xs: -1, sm: -4, md: -8 } // Responsive shift for logo
-                }}>
-                  BRAINTONE
-                </Typography>
+                <BrandLogo isMobile={true} />
                 <IconButton
                   onClick={handleDrawerToggle}
                   sx={{
