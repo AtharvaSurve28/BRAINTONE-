@@ -67,7 +67,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         lineHeight: 0.9,
         letterSpacing: '-1.5px',
         textShadow: '2px 2px 0px #000',
-        fontSize: isMobile ? '1.8rem' : '2.5rem',
+        fontSize: '2.2rem',
         fontFamily: "'Roboto', sans-serif"
       }}
     >
@@ -77,8 +77,8 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
       sx={{
         color: '#000',
         fontWeight: 700,
-        fontSize: isMobile ? '0.45rem' : '0.62rem',
-        letterSpacing: isMobile ? '3px' : '4.8px',
+        fontSize: '0.62rem',
+        letterSpacing: '4.8px',
         mt: 0.5,
         lineHeight: 1,
         textTransform: 'uppercase',
@@ -92,7 +92,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
       sx={{
         color: '#444',
         fontWeight: 600,
-        fontSize: isMobile ? '0.4rem' : '0.58rem',
+        fontSize: '0.58rem',
         mt: 0.3,
         lineHeight: 1,
         width: '100%',
@@ -367,7 +367,9 @@ export default function Navbar() {
             {/* Mobile: Logo + Hamburger */}
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <BrandLogo isMobile={true} />
+                <Box sx={{ ml: -4 }}>
+                  <BrandLogo isMobile={true} />
+                </Box>
                 <IconButton
                   onClick={handleDrawerToggle}
                   sx={{
