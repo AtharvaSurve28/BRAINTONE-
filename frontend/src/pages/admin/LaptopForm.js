@@ -122,9 +122,9 @@ const LaptopForm = () => {
   const handleFileChange = (e) => {
     const files = Array.from(e.target.files);
 
-    // We want to allow adding more files until we hit 4 total
-    const totalCurrent = previews.length;
-    const remaining = 4 - totalCurrent;
+    // Check total limit (existing + newly selected)
+    const currentTotal = previews.length;
+    const remaining = 4 - currentTotal;
 
     if (remaining <= 0) {
       setError('Maximum 4 images allowed');
@@ -132,32 +132,42 @@ const LaptopForm = () => {
     }
 
     const filesToAdd = files.slice(0, remaining);
-    setSelectedFiles(prev => [...prev, ...filesToAdd]);
 
-    // Create new previews
-    const newPreviews = filesToAdd.map(file => URL.createObjectURL(file));
-    setPreviews(prev => [...prev, ...newPreviews]);
+    // Important: We store the file objects in an array that matches the order in previews
+    // To make removal easier, let's keep track which preview is a file
+    const newPreviews = filesToAdd.map(file => ({
+      url: URL.createObjectURL(file),
+      file: file
+    }));
+
+    setPreviews(prev => [...prev, ...newPreviews.map(p => p.url)]);
+    setSelectedFiles(prev => [...prev, ...filesToAdd]);
   };
 
   const removeImage = (index) => {
     const previewToRemove = previews[index];
 
-    if (previewToRemove.startsWith('http')) {
-      // It's an existing image from server
+    // Revoke object URL if it's a local one
+    if (previewToRemove.startsWith('blob:')) {
+      URL.revokeObjectURL(previewToRemove);
+
+      // Calculate which file in selectedFiles to remove
+      // It's the Nth blob in the previews array
+      const blobIndexBefore = previews.slice(0, index).filter(p => p.startsWith('blob:')).length;
+      setSelectedFiles(prev => prev.filter((_, i) => i !== blobIndexBefore));
+    }
+
+    setPreviews(prev => prev.filter((_, i) => i !== index));
+
+    // Also remove from formData.images if it was an existing server image
+    if (!previewToRemove.startsWith('blob:')) {
       setFormData(prev => ({
         ...prev,
-        images: prev.images.filter((_, i) => i !== index)
+        images: Array.isArray(prev.images) ? prev.images.filter(img => {
+          const fullUrl = img.startsWith('http') ? img : `${API_BASE_URL}${img}`;
+          return fullUrl !== previewToRemove;
+        }) : []
       }));
-      setPreviews(prev => prev.filter((_, i) => i !== index));
-    } else {
-      // It's a newly selected local file
-      // Need to find index in selectedFiles
-      const existingCount = previews.filter((p, i) => i < index && p.startsWith('http')).length;
-      const fileIndex = index - existingCount;
-
-      URL.revokeObjectURL(previewToRemove);
-      setPreviews(prev => prev.filter((_, i) => i !== index));
-      setSelectedFiles(prev => prev.filter((_, i) => i !== fileIndex));
     }
   };
 
@@ -188,6 +198,15 @@ const LaptopForm = () => {
         selectedFiles.forEach(file => {
           formDataToSend.append('images', file);
         });
+      }
+
+      // Send the list of existing Cloudinary images we want to keep
+      if (isEdit) {
+        const existingImages = previews
+          .filter(p => !p.startsWith('blob:'))
+          .map(p => p.replace(API_BASE_URL, '')); // Strip base URL for DB consistency
+
+        formDataToSend.append('existingImages', JSON.stringify(existingImages));
       }
 
       const url = isEdit ? `${API_BASE_URL}/api/admin/laptops/${id}` : `${API_BASE_URL}/api/admin/laptops`;
