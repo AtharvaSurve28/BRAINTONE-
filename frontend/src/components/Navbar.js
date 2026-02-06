@@ -52,7 +52,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'flex-start', // Align to left so taglines don't start "before" the main text
+      alignItems: isMobile ? 'flex-start' : 'center',
       textDecoration: 'none',
       transition: 'transform 0.3s ease',
       '&:hover': { transform: 'scale(1.02)' },
@@ -68,7 +68,8 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         letterSpacing: '-1.5px',
         textShadow: '2px 2px 0px #000',
         fontSize: '2.2rem',
-        fontFamily: "'Roboto', sans-serif"
+        fontFamily: "'Roboto', sans-serif",
+        ml: -0.5 // Shift only the main brand name slightly left
       }}
     >
       BRAINTONE
@@ -78,12 +79,12 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         color: '#000',
         fontWeight: 700,
         fontSize: '0.62rem',
-        letterSpacing: '3.5px', // Slightly reduced for better mobile fit
+        letterSpacing: '3.5px',
         mt: 0.5,
         lineHeight: 1,
         textTransform: 'uppercase',
         width: '100%',
-        textAlign: 'left',
+        textAlign: isMobile ? 'left' : 'center',
         whiteSpace: 'nowrap'
       }}
     >
@@ -97,7 +98,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         mt: 0.3,
         lineHeight: 1,
         width: '100%',
-        textAlign: 'left',
+        textAlign: isMobile ? 'left' : 'center',
         whiteSpace: 'nowrap'
       }}
     >
@@ -310,7 +311,7 @@ export default function Navbar() {
         }}>
           <Container maxWidth="lg">
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Box>
+              <Box sx={{ ml: { xs: 0, md: -6 } }}>
                 <BrandLogo isScrolled={isScrolled} />
               </Box>
 
