@@ -52,7 +52,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center', // Always center internal content for branding consistency
+      alignItems: 'flex-start', // Align to left so taglines don't start "before" the main text
       textDecoration: 'none',
       transition: 'transform 0.3s ease',
       '&:hover': { transform: 'scale(1.02)' },
@@ -78,12 +78,13 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         color: '#000',
         fontWeight: 700,
         fontSize: '0.62rem',
-        letterSpacing: '4.8px',
+        letterSpacing: '3.5px', // Slightly reduced for better mobile fit
         mt: 0.5,
         lineHeight: 1,
         textTransform: 'uppercase',
         width: '100%',
-        textAlign: 'center'
+        textAlign: 'left',
+        whiteSpace: 'nowrap'
       }}
     >
       TECHNOLOGY PVT. LTD.
@@ -96,7 +97,8 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         mt: 0.3,
         lineHeight: 1,
         width: '100%',
-        textAlign: 'center'
+        textAlign: 'left',
+        whiteSpace: 'nowrap'
       }}
     >
       Multibranded Authorised Laptop Showroom
@@ -308,7 +310,7 @@ export default function Navbar() {
         }}>
           <Container maxWidth="lg">
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Box sx={{ ml: { xs: 0, md: -6 } }}>
+              <Box>
                 <BrandLogo isScrolled={isScrolled} />
               </Box>
 
@@ -367,7 +369,7 @@ export default function Navbar() {
             {/* Mobile: Logo + Hamburger */}
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <Box sx={{ ml: -2 }}>
+                <Box>
                   <BrandLogo isMobile={true} />
                 </Box>
                 <IconButton
