@@ -12,6 +12,7 @@ import RepairServices from './pages/RepairServices';
 import AboutUs from './pages/AboutUs';
 import Contact from './pages/Contact';
 import EWaste from './pages/EWaste';
+import Events from './pages/Events';
 
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
@@ -58,6 +59,7 @@ function AnimatedRoutes() {
           <Route path="/repair" element={<RepairServices />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/ewaste" element={<EWaste />} />
+          <Route path="/events" element={<Events />} />
           <Route path="/contact" element={<Contact />} />
 
           {/* Admin Routes */}

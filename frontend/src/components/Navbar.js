@@ -52,7 +52,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: 'center', // Always center internal content for branding consistency
+      alignItems: isMobile ? 'flex-start' : 'center',
       textDecoration: 'none',
       transition: 'transform 0.3s ease',
       '&:hover': { transform: 'scale(1.02)' },
@@ -67,8 +67,9 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         lineHeight: 0.9,
         letterSpacing: '-1.5px',
         textShadow: '2px 2px 0px #000',
-        fontSize: isMobile ? '1.8rem' : '2.5rem',
-        fontFamily: "'Roboto', sans-serif"
+        fontSize: '2.2rem',
+        fontFamily: "'Roboto', sans-serif",
+        ml: -0.5 // Shift only the main brand name slightly left
       }}
     >
       BRAINTONE
@@ -77,13 +78,14 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
       sx={{
         color: '#000',
         fontWeight: 700,
-        fontSize: isMobile ? '0.45rem' : '0.62rem',
-        letterSpacing: isMobile ? '3px' : '4.8px',
+        fontSize: '0.62rem',
+        letterSpacing: '3.5px',
         mt: 0.5,
         lineHeight: 1,
         textTransform: 'uppercase',
         width: '100%',
-        textAlign: 'center'
+        textAlign: isMobile ? 'left' : 'center',
+        whiteSpace: 'nowrap'
       }}
     >
       TECHNOLOGY PVT. LTD.
@@ -92,11 +94,12 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
       sx={{
         color: '#444',
         fontWeight: 600,
-        fontSize: isMobile ? '0.4rem' : '0.58rem',
+        fontSize: '0.58rem',
         mt: 0.3,
         lineHeight: 1,
         width: '100%',
-        textAlign: 'center'
+        textAlign: isMobile ? 'left' : 'center',
+        whiteSpace: 'nowrap'
       }}
     >
       Multibranded Authorised Laptop Showroom
@@ -241,6 +244,11 @@ export default function Navbar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
+          <ListItemButton component={NavLink} to="/events" onClick={handleDrawerToggle} selected={location.pathname === '/events'}>
+            <ListItemText primary="EVENTS" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
           <ListItemButton component={NavLink} to="/about" onClick={handleDrawerToggle} selected={location.pathname === '/about'}>
             <ListItemText primary="ABOUT US" primaryTypographyProps={{ fontWeight: 600 }} />
           </ListItemButton>
@@ -312,7 +320,7 @@ export default function Navbar() {
                 <BrandLogo isScrolled={isScrolled} />
               </Box>
 
-              <Stack direction="row" spacing={3} alignItems="center">
+              <Stack direction="row" spacing={3} alignItems="center" sx={{ ml: 'auto', mr: { xs: 0, md: -6 } }}>
                 <Stack direction="row" spacing={1.5} alignItems="center">
                   <Box sx={{ bgcolor: '#fff5f5', p: 1, borderRadius: '50%', display: 'flex' }}>
                     <PhoneIcon sx={{ color: '#e74c3c', fontSize: 20 }} />
@@ -367,7 +375,9 @@ export default function Navbar() {
             {/* Mobile: Logo + Hamburger */}
             {isMobile && (
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%' }}>
-                <BrandLogo isMobile={true} />
+                <Box>
+                  <BrandLogo isMobile={true} />
+                </Box>
                 <IconButton
                   onClick={handleDrawerToggle}
                   sx={{
@@ -483,11 +493,12 @@ export default function Navbar() {
                     </Menu>
                   </Box>
                   <Button component={NavLink} to="/ewaste" sx={navLinkSx(location.pathname === '/ewaste')}>E-WASTE</Button>
+                  <Button component={NavLink} to="/events" sx={navLinkSx(location.pathname === '/events')}>EVENTS</Button>
                   <Button component={NavLink} to="/about" sx={navLinkSx(location.pathname === '/about')}>ABOUT US</Button>
                   <Button component={NavLink} to="/contact" sx={navLinkSx(location.pathname === '/contact')}>CONTACT</Button>
                 </Box>
 
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="center" sx={{ ml: 'auto', mr: { xs: 0, md: -7 } }}>
                   <Button
                     variant="outlined"
                     href={socialLinks.google}
