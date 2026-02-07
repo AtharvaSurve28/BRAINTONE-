@@ -68,6 +68,8 @@ import {
   CalendarToday
 } from '@mui/icons-material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
 
@@ -88,6 +90,7 @@ const AboutUs = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState('');
   const [snackbarSeverity, setSnackbarSeverity] = useState('success');
+  const [currentAchievementIndex, setCurrentAchievementIndex] = useState(0);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
@@ -366,7 +369,7 @@ const AboutUs = () => {
                 textShadow: '0 4px 8px rgba(0,0,0,0.3)',
                 color: 'white',
               }}>
-                About Braintone Computers
+                About Braintone Technology
               </Typography>
 
               <Box sx={{
@@ -1761,7 +1764,6 @@ const AboutUs = () => {
       </Snackbar>
 
       {/* Our Journey Section */}
-      {/* Our Journey Section */}
       <FadeInSection>
         <Container maxWidth="md" sx={{ py: 10, position: 'relative', zIndex: 1 }}>
           <Typography variant="h3" align="center" sx={{
@@ -1854,6 +1856,220 @@ const AboutUs = () => {
             ))}
           </Box>
         </Container>
+      </FadeInSection>
+
+      {/* Our Achievements Section */}
+      <FadeInSection fullWidth>
+        <Box sx={{
+          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          py: 10,
+          position: 'relative',
+          overflow: 'hidden',
+        }}>
+          <Container maxWidth="lg">
+            <Typography variant="h3" align="center" sx={{
+              fontWeight: 800,
+              mb: 2,
+              color: '#2c3e50',
+              position: 'relative',
+              display: 'inline-block',
+              left: '50%',
+              transform: 'translateX(-50%)',
+              animation: 'fadeInUp 1s ease',
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                bottom: -10,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: 80,
+                height: 4,
+                background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
+                borderRadius: 2,
+              }
+            }}>
+              Our Achievements
+            </Typography>
+            <Typography variant="h6" align="center" sx={{
+              color: '#7f8c8d',
+              mb: 6,
+              fontWeight: 500,
+              animation: 'fadeInUp 1s ease 0.2s both'
+            }}>
+              Recognitions and awards that showcase our commitment to excellence
+            </Typography>
+
+            {/* Achievements Slider - Restored as "Small Box" */}
+            <Box sx={{
+              position: 'relative',
+              maxWidth: { xs: '100%', md: '1000px' }, // Responsive width
+              mx: 'auto',
+              mb: 4
+            }}>
+              {/* Slider Container */}
+              <Box sx={{
+                position: 'relative',
+                overflow: 'hidden',
+                borderRadius: '12px',
+                boxShadow: '0 15px 35px rgba(231, 76, 60, 0.2)',
+                bgcolor: '#ffffff',
+                border: '2px solid rgba(231, 76, 60, 0.1)',
+              }}>
+                {/* Achievement Images */}
+                <Box sx={{
+                  display: 'flex',
+                  transition: 'transform 0.5s ease-in-out',
+                  transform: `translateX(-${currentAchievementIndex * 100}%)`,
+                }}>
+                  {[
+                    {
+                      image: '/images/Achievements/Achievement1.jpeg',
+                      title: 'The 14th DQ Week Premier Partner League Awards 2012',
+                      description: 'BRAINTONE TECHNOLOGY has been awarded for BEST IT RETAILER SILVER AWARD'
+                    },
+                    {
+                      image: '/images/Achievements/Achievement2.jpeg',
+                      title: "2023 Nominated for India's 5000 Best MSME Awards",
+                      description: ''
+                    },
+                    {
+                      image: '/images/Achievements/Achievement3.jpeg',
+                      title: "2024 Nominated for India's 5000 Best MSME Awards",
+                      description: ''
+                    },
+                  ].map((achievement, index) => (
+                    <Box
+                      key={index}
+                      sx={{
+                        minWidth: '100%',
+                        width: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        p: 0, // Remove padding to let image cover box
+                      }}
+                    >
+                      <Box sx={{
+                        width: '100%',
+                        height: { xs: '300px', sm: '400px', md: '600px' }, // Responsive height
+                        position: 'relative'
+                      }}>
+                        <Box
+                          component="img"
+                          src={achievement.image}
+                          alt={`Achievement ${index + 1}`}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: { xs: index === 2 ? 'contain' : 'cover', md: 'cover' }, // Maintain full view for 3rd image on mobile
+                            display: 'block',
+                          }}
+                        />
+                      </Box>
+
+                      {/* Caption Area */}
+                      <Box sx={{ p: 3, textAlign: 'center', width: '100%' }}>
+                        <Typography variant="h6" sx={{
+                          fontWeight: 700,
+                          color: '#2c3e50',
+                          mb: 1,
+                          fontSize: { xs: '1rem', md: '1.25rem' } // Responsive font size
+                        }}>
+                          {achievement.title}
+                        </Typography>
+                        {achievement.description && (
+                          <Typography variant="body1" sx={{
+                            color: '#e74c3c',
+                            fontWeight: 600,
+                            fontSize: { xs: '0.875rem', md: '1rem' } // Responsive font size
+                          }}>
+                            {achievement.description}
+                          </Typography>
+                        )}
+                      </Box>
+                    </Box>
+                  ))}
+                </Box>
+
+                {/* Navigation Arrows */}
+                <IconButton
+                  onClick={() => setCurrentAchievementIndex((prev) =>
+                    prev === 0 ? 2 : prev - 1
+                  )}
+                  sx={{
+                    position: 'absolute',
+                    left: 10,
+                    top: { xs: '30%', md: '50%' }, // Adjust vertically based on height
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    color: '#e74c3c',
+                    '&:hover': {
+                      bgcolor: '#e74c3c',
+                      color: 'white',
+                      transform: 'translateY(-50%) scale(1.1)',
+                    },
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    zIndex: 2,
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  <ArrowBackIosIcon />
+                </IconButton>
+
+                <IconButton
+                  onClick={() => setCurrentAchievementIndex((prev) =>
+                    prev === 2 ? 0 : prev + 1
+                  )}
+                  sx={{
+                    position: 'absolute',
+                    right: 10,
+                    top: { xs: '30%', md: '50%' }, // Adjust vertically based on height
+                    transform: 'translateY(-50%)',
+                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    color: '#e74c3c',
+                    '&:hover': {
+                      bgcolor: '#e74c3c',
+                      color: 'white',
+                      transform: 'translateY(-50%) scale(1.1)',
+                    },
+                    boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
+                    zIndex: 2,
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  <ArrowForwardIosIcon />
+                </IconButton>
+              </Box>
+
+              {/* Dots Indicator */}
+              <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 1,
+                mt: 3,
+              }}>
+                {[0, 1, 2].map((index) => (
+                  <Box
+                    key={index}
+                    onClick={() => setCurrentAchievementIndex(index)}
+                    sx={{
+                      width: currentAchievementIndex === index ? 32 : 12,
+                      height: 12,
+                      borderRadius: '6px',
+                      bgcolor: currentAchievementIndex === index ? '#e74c3c' : 'rgba(231, 76, 60, 0.3)',
+                      cursor: 'pointer',
+                      transition: 'all 0.3s ease',
+                      '&:hover': {
+                        bgcolor: '#e74c3c',
+                        transform: 'scale(1.2)',
+                      },
+                    }}
+                  />
+                ))}
+              </Box>
+            </Box>
+          </Container>
+        </Box>
       </FadeInSection>
 
       {/* Meet Our Team Section */}

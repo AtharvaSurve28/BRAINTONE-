@@ -244,6 +244,11 @@ export default function Navbar() {
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
+          <ListItemButton component={NavLink} to="/events" onClick={handleDrawerToggle} selected={location.pathname === '/events'}>
+            <ListItemText primary="EVENTS" primaryTypographyProps={{ fontWeight: 600 }} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem disablePadding>
           <ListItemButton component={NavLink} to="/about" onClick={handleDrawerToggle} selected={location.pathname === '/about'}>
             <ListItemText primary="ABOUT US" primaryTypographyProps={{ fontWeight: 600 }} />
           </ListItemButton>
@@ -315,7 +320,7 @@ export default function Navbar() {
                 <BrandLogo isScrolled={isScrolled} />
               </Box>
 
-              <Stack direction="row" spacing={3} alignItems="center">
+              <Stack direction="row" spacing={3} alignItems="center" sx={{ ml: 'auto', mr: { xs: 0, md: -6 } }}>
                 <Stack direction="row" spacing={1.5} alignItems="center">
                   <Box sx={{ bgcolor: '#fff5f5', p: 1, borderRadius: '50%', display: 'flex' }}>
                     <PhoneIcon sx={{ color: '#e74c3c', fontSize: 20 }} />
@@ -488,11 +493,12 @@ export default function Navbar() {
                     </Menu>
                   </Box>
                   <Button component={NavLink} to="/ewaste" sx={navLinkSx(location.pathname === '/ewaste')}>E-WASTE</Button>
+                  <Button component={NavLink} to="/events" sx={navLinkSx(location.pathname === '/events')}>EVENTS</Button>
                   <Button component={NavLink} to="/about" sx={navLinkSx(location.pathname === '/about')}>ABOUT US</Button>
                   <Button component={NavLink} to="/contact" sx={navLinkSx(location.pathname === '/contact')}>CONTACT</Button>
                 </Box>
 
-                <Stack direction="row" spacing={1} alignItems="center">
+                <Stack direction="row" spacing={1} alignItems="center" sx={{ ml: 'auto', mr: { xs: 0, md: -7 } }}>
                   <Button
                     variant="outlined"
                     href={socialLinks.google}
