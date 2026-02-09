@@ -1181,6 +1181,7 @@ const HomePage = () => {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      pointerEvents: 'none',
                     }}>
                       <Typography
                         variant="h5"
@@ -1256,6 +1257,7 @@ const HomePage = () => {
                       color: 'white',
                       fontWeight: 'bold',
                       animation: 'float 3s ease-in-out infinite',
+                      pointerEvents: 'none',
                     }}>
                       <Typography variant="h6">✓</Typography>
                     </Box>
@@ -1273,6 +1275,7 @@ const HomePage = () => {
                       color: 'white',
                       fontWeight: 'bold',
                       animation: 'float 3s ease-in-out infinite 1s',
+                      pointerEvents: 'none',
                     }}>
                       <Typography variant="h6">+</Typography>
                     </Box>
