@@ -123,6 +123,8 @@ const HomePage = () => {
           {heroSlides.map((slide, index) => (
             <Box
               key={index}
+              role="img"
+              aria-label={`Hero slide ${index + 1}: ${slide.title}`}
               sx={{
                 position: 'absolute',
                 top: 0,
@@ -253,10 +255,15 @@ const HomePage = () => {
             spacing={1}
             justifyContent="center"
             sx={{ mt: 4 }}
+            role="tablist"
+            aria-label="Image slider navigation"
           >
             {heroSlides.map((_, index) => (
               <Box
                 key={index}
+                role="tab"
+                aria-selected={index === currentImageIndex}
+                aria-label={`Go to slide ${index + 1}`}
                 sx={{
                   width: 10,
                   height: 10,

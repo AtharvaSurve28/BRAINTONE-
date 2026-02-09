@@ -84,7 +84,7 @@ const Contact = () => {
       title: 'Facebook',
       value: 'Braintone Mumbai',
       color: '#4267B2',
-      link: 'https://facebook.com/braintone',
+      link: 'https://www.facebook.com/profile.php?id=61587490744034',
     },
     {
       icon: LinkedIn,

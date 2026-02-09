@@ -1,27 +1,28 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { CssBaseline, ThemeProvider, createTheme, Box, Fade } from '@mui/material';
-import HomePage from './pages/HomePage';
-import Laptops from './pages/Laptops';
-import DynamicBrandTemplate from './components/DynamicBrandTemplate';
+import { CssBaseline, ThemeProvider, createTheme, Box, Fade, CircularProgress } from '@mui/material';
 
-import SecondHand from './pages/SecondHand';
-import Accessories from './pages/Accessories';
-import MacAccessories from './pages/MacAccessories';
-import RepairServices from './pages/RepairServices';
-import AboutUs from './pages/AboutUs';
-import Contact from './pages/Contact';
-import EWaste from './pages/EWaste';
-import Events from './pages/Events';
+// Lazy load page components for better performance
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const Laptops = React.lazy(() => import('./pages/Laptops'));
+const DynamicBrandTemplate = React.lazy(() => import('./components/DynamicBrandTemplate'));
+const SecondHand = React.lazy(() => import('./pages/SecondHand'));
+const Accessories = React.lazy(() => import('./pages/Accessories'));
+const MacAccessories = React.lazy(() => import('./pages/MacAccessories'));
+const RepairServices = React.lazy(() => import('./pages/RepairServices'));
+const AboutUs = React.lazy(() => import('./pages/AboutUs'));
+const Contact = React.lazy(() => import('./pages/Contact'));
+const EWaste = React.lazy(() => import('./pages/EWaste'));
+const Events = React.lazy(() => import('./pages/Events'));
 
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
 import FloatingChatButton from './components/FloatingChatButton'; // Import the new component
 
-// Admin Pages
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import LaptopForm from './pages/admin/LaptopForm';
+// Admin Pages (Lazy Loaded)
+const AdminLogin = React.lazy(() => import('./pages/admin/AdminLogin'));
+const AdminDashboard = React.lazy(() => import('./pages/admin/AdminDashboard'));
+const LaptopForm = React.lazy(() => import('./pages/admin/LaptopForm'));
 
 import './App.css';
 
@@ -43,32 +44,38 @@ function AnimatedRoutes() {
   return (
     <Fade key={location.pathname} in timeout={350} appear>
       <Box>
-        <Routes location={location}>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/laptops" element={<Laptops />} />
+        <React.Suspense fallback={
+          <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '60vh' }}>
+            <CircularProgress color="primary" />
+          </Box>
+        }>
+          <Routes location={location}>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/laptops" element={<Laptops />} />
 
-          {/* Dynamic Laptop Brand Route */}
-          <Route path="/laptops/:brandId" element={<DynamicBrandTemplate />} />
+            {/* Dynamic Laptop Brand Route */}
+            <Route path="/laptops/:brandId" element={<DynamicBrandTemplate />} />
 
-          <Route path="/second-hand" element={<SecondHand />} />
-          <Route path="/pre-owned-laptops" element={<SecondHand />} />
-          <Route path="/services/pre-owned-laptops" element={<SecondHand />} />
-          <Route path="/accessories" element={<Accessories />} />
-          <Route path="/accessories/:category" element={<Accessories />} />
-          <Route path="/mac-accessories" element={<MacAccessories />} />
-          <Route path="/repair" element={<RepairServices />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/ewaste" element={<EWaste />} />
-          <Route path="/events" element={<Events />} />
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/second-hand" element={<SecondHand />} />
+            <Route path="/pre-owned-laptops" element={<SecondHand />} />
+            <Route path="/services/pre-owned-laptops" element={<SecondHand />} />
+            <Route path="/accessories" element={<Accessories />} />
+            <Route path="/accessories/:category" element={<Accessories />} />
+            <Route path="/mac-accessories" element={<MacAccessories />} />
+            <Route path="/repair" element={<RepairServices />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/ewaste" element={<EWaste />} />
+            <Route path="/events" element={<Events />} />
+            <Route path="/contact" element={<Contact />} />
 
-          {/* Admin Routes */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
-          <Route path="/admin/laptops/new" element={<LaptopForm />} />
-          <Route path="/admin/laptops/edit/:id" element={<LaptopForm />} />
+            {/* Admin Routes */}
+            <Route path="/admin/login" element={<AdminLogin />} />
+            <Route path="/admin/dashboard" element={<AdminDashboard />} />
+            <Route path="/admin/laptops/new" element={<LaptopForm />} />
+            <Route path="/admin/laptops/edit/:id" element={<LaptopForm />} />
 
-        </Routes>
+          </Routes>
+        </React.Suspense>
       </Box>
     </Fade>
   );

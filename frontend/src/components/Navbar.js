@@ -29,6 +29,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger Icon
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -130,6 +131,7 @@ export default function Navbar() {
     google: 'https://www.google.com/search?sca_esv=73a4869cd1a8b769&sxsrf=ANbL-n53pO9e7AARfsxU7U2lxF7vyY211A:1770028042373&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOb5BDM1sSnLuU9e_HlP3noJVzWMCW30sCXPvRZQ5-6Fe6oNwo6e5A8xVAwRMb3s6rhY32Tl5ZoFC_HTkjQUUAdOm85rbyv1UD6LXGo5M22zpUGUBUw%3D%3D&q=Braintone+Technology+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwij39SlzLqSAxU9TGwGHY0OIcsQ0bkNegQIIhAF&biw=1536&bih=737&dpr=2.5&aic=0',
     instagram: 'https://www.instagram.com/braintone.technology/',
     twitter: 'https://x.com/BraintoneL1707',
+    facebook: 'https://www.facebook.com/profile.php?id=61587490744034',
     linkedin: '#',
   };
 
@@ -273,10 +275,11 @@ export default function Navbar() {
           >
             Google Reviews
           </Button>
-          <Stack direction="row" spacing={1} justifyContent="center">
-            <IconButton size="small" href={socialLinks.instagram} target="_blank"><InstagramIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.twitter} target="_blank"><TwitterIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.linkedin} target="_blank"><LinkedInIcon /></IconButton>
+          <Stack direction="row" spacing={1} justifyContent="center" aria-label="Social links">
+            <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook"><FacebookIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram"><InstagramIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter"><TwitterIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn"><LinkedInIcon /></IconButton>
           </Stack>
 
           {/* Contact Info in Drawer */}
@@ -380,6 +383,7 @@ export default function Navbar() {
                 </Box>
                 <IconButton
                   onClick={handleDrawerToggle}
+                  aria-label="Toggle Navigation"
                   sx={{
                     color: mobileOpen ? '#e74c3c' : '#333',
                     transition: 'all 0.3s ease',
@@ -528,13 +532,16 @@ export default function Navbar() {
                     Google Reviews
                   </Button>
 
-                  <IconButton size="small" href={socialLinks.instagram} target="_blank" sx={{ color: '#333', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook" sx={{ color: '#333', '&:hover': { color: '#4267B2', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                    <FacebookIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: '#333', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <InstagramIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.twitter} target="_blank" sx={{ color: '#333', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: '#333', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <TwitterIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <LinkedInIcon fontSize="small" />
                   </IconButton>
                 </Stack>
