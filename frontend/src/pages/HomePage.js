@@ -880,7 +880,11 @@ const HomePage = () => {
                     <Box sx={{
                       position: 'relative',
                       width: '100%',
-                      height: { xs: 300, md: 400 },
+                      aspectRatio: '16 / 9',
+                      height: { xs: 'auto', md: 400 },
+                      bgcolor: 'rgba(0,0,0,0.05)', // Placeholder color
+                      borderRadius: 2,
+                      overflow: 'hidden'
                     }}>
                       <VideoInView
                         src="/videos/All_About_Braintone1.mp4"
@@ -924,7 +928,9 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                     borderRadius: 2,
                     overflow: 'hidden'
@@ -1140,8 +1146,10 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
                     borderRadius: 2,
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     overflow: 'hidden',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
                   }}>
@@ -1207,7 +1215,9 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                     borderRadius: 2,
                     overflow: 'hidden'
