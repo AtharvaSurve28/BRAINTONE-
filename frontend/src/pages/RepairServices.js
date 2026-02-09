@@ -25,6 +25,10 @@ import {
   Alert,
   Snackbar
 } from '@mui/material';
+import VideoInView from '../components/VideoInView';
+import FadeInSection from '../components/FadeInSection';
+import Navbar from '../components/Navbar';
+import Footer from '../components/Footer';
 import {
   Build,
   CheckCircle,
@@ -58,8 +62,6 @@ import {
 } from '@mui/icons-material';
 import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Link } from 'react-router-dom';
-import Footer from '../components/Footer';
-import FadeInSection from '../components/FadeInSection';
 
 const RepairServices = () => {
   const [detailsOpen, setDetailsOpen] = React.useState(false);
@@ -2234,23 +2236,19 @@ const RepairServices = () => {
               </Typography>
             </Box>
             <Box sx={{ maxWidth: 1000, mx: 'auto', borderRadius: 4, overflow: 'hidden', boxShadow: '0 0 40px rgba(255, 0, 0, 0.3)', position: 'relative' }}>
-              <Box
-                component="video"
-                autoPlay
+              <VideoInView
+                src="/videos/Repair_Video.mp4"
                 muted
                 loop
                 playsInline
-                preload="metadata"
-                controls
+                preload="none"
+                playOnClick={true}
                 sx={{
                   width: '100%',
                   display: 'block',
                   backgroundColor: '#000'
                 }}
-              >
-                <source src="/videos/Repair_Video.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-              </Box>
+              />
             </Box>
           </Container>
         </Box>

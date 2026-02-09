@@ -892,6 +892,7 @@ const HomePage = () => {
                         loop
                         playsInline
                         preload="none"
+                        playOnClick={true}
                         sx={{
                           width: '100%',
                           height: '100%',
@@ -940,7 +941,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1158,7 +1160,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1227,7 +1230,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
