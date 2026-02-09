@@ -50,6 +50,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
   <Box
     component={Link}
     to="/"
+    aria-label="BRAINTONE TECHNOLOGY - Home"
     sx={{
       display: 'flex',
       flexDirection: 'column',
@@ -177,7 +178,6 @@ export default function Navbar() {
       {/* Drawer Header */}
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #eee' }}>
         <BrandLogo isMobile={true} />
-        {/* Removed redundant CloseIcon here as it's now handled by the main toggle button */}
       </Box>
 
       {/* Drawer Links */}
@@ -203,11 +203,11 @@ export default function Navbar() {
               <ListItemText primary="New Laptops" />
             </ListItemButton>
             <ListItemButton component={Link} to="/services/pre-owned-laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><AutorenewIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><AutorenewIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="Pre-Owned Laptops" />
             </ListItemButton>
             <ListItemButton component={Link} to="/repair" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><BuildIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><BuildIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="Repair Services" />
             </ListItemButton>
           </List>
@@ -224,7 +224,7 @@ export default function Navbar() {
         {accessoriesExpanded && (
           <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
             <ListItemButton component={Link} to="/accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="All Laptop Accessories" />
             </ListItemButton>
             <ListItemButton component={Link} to="/mac-accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
@@ -338,7 +338,7 @@ export default function Navbar() {
                 <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon sx={{ color: '#e74c3c', fontSize: 18 }} />
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
                   <Box>
                     <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>FORT STORE</Typography>
                     <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sat: 11am-7pm</Typography>
@@ -348,7 +348,7 @@ export default function Navbar() {
                 <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon sx={{ color: '#e74c3c', fontSize: 18 }} />
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
                   <Box>
                     <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>VILE PARLE STORE</Typography>
                     <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sun: 11am-7pm</Typography>
@@ -437,13 +437,13 @@ export default function Navbar() {
                       transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                     >
                       <MenuItem component={Link} to="/laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <LaptopIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> New Laptops
+                        <LaptopIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> New Laptops
                       </MenuItem>
                       <MenuItem component={Link} to="/services/pre-owned-laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <AutorenewIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Pre-Owned Laptops
+                        <AutorenewIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Pre-Owned Laptops
                       </MenuItem>
                       <MenuItem component={Link} to="/repair" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <BuildIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Repair Services
+                        <BuildIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Repair Services
                       </MenuItem>
                     </Menu>
                   </Box>

@@ -24,6 +24,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import StarIcon from '@mui/icons-material/Star';
+import PlaceIcon from '@mui/icons-material/Place';
+import PhoneIcon from '@mui/icons-material/Phone';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
@@ -56,29 +58,30 @@ const HomePage = () => {
 
   // Array of background images - your image first, then others
   // Array of hero slides with images and corresponding quotes
+  // Optimized hero slides with WebP format and high-quality settings
   const heroSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&fm=webp',
       title: 'Explore our New Premium Laptops'
     },
     {
-      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'New & Certified Pre-Owned Premium Laptops.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'Expert Repair Services'
     },
     {
-      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D',
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&fm=webp',
       title: 'Premium Performance, Perfected.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&fm=webp',
       title: 'Premium Laptops & Expert Repair Services'
     },
     {
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Pre-Owned)'
     }
   ];
@@ -119,26 +122,19 @@ const HomePage = () => {
             zIndex: 0,
           }}
         >
-          {/* All background images stacked with opacity transitions */}
+          {/* Hero images with high fetchpriority for LCP and WebP support */}
           {heroSlides.map((slide, index) => (
             <Box
               key={index}
-              role="img"
-              aria-label={`Hero slide ${index + 1}: ${slide.title}`}
               sx={{
                 position: 'absolute',
                 top: 0,
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundImage: `url(${slide.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
                 opacity: index === currentImageIndex ? 1 : 0,
                 transition: 'opacity 1.5s ease-in-out',
-                transform: 'scale(1.05)', // Slight zoom for better coverage
-                // Less dark overlay for better visibility
+                overflow: 'hidden',
                 '&::before': {
                   content: '""',
                   position: 'absolute',
@@ -147,13 +143,30 @@ const HomePage = () => {
                   right: 0,
                   bottom: 0,
                   background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
+                  zIndex: 2,
                 },
               }}
-            />
+            >
+              <Box
+                component="img"
+                src={slide.image}
+                alt="" // Decorative since title is H1
+                fetchpriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transform: 'scale(1.05)',
+                  willChange: 'opacity, transform',
+                }}
+              />
+            </Box>
           ))}
 
-          {/* Animated gradient overlay - more subtle */}
+          {/* Animated gradient overlay */}
           <Box
+            aria-hidden="true"
             sx={{
               position: 'absolute',
               top: 0,
@@ -163,7 +176,7 @@ const HomePage = () => {
               background: 'linear-gradient(-45deg, rgba(74, 85, 104, 0.2), rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2), rgba(74, 85, 104, 0.2))',
               backgroundSize: '400% 400%',
               animation: 'gradient 15s ease infinite',
-              // More subtle highlights for better image visibility
+              zIndex: 1,
               '&::before': {
                 content: '""',
                 position: 'absolute',
@@ -179,21 +192,21 @@ const HomePage = () => {
 
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <Typography
-            variant="h2"
+            variant="h1"
             sx={{
-              fontWeight: 700,
+              fontWeight: 900,
               mb: 1,
               pt: 5,
-              fontSize: { xs: '2rem', md: '3rem' },
-              background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
+              fontSize: { xs: '2rem', md: '3.5rem' },
+              background: 'linear-gradient(135deg, #fff 30%, #f0f0f0 90%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              textShadow: '0 2px 10px rgba(0,0,0,0.3)', // Added shadow for better contrast
-              minHeight: '3.6em', // Reserve height for 2 lines to prevent layout shift
+              textShadow: '0 4px 15px rgba(0,0,0,0.4)',
+              minHeight: '2.5em',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.5s ease-in-out', // Smooth transition for text
+              transition: 'all 0.5s ease-in-out',
             }}
           >
             {heroSlides[currentImageIndex].title}
@@ -256,7 +269,7 @@ const HomePage = () => {
             justifyContent="center"
             sx={{ mt: 4 }}
             role="tablist"
-            aria-label="Image slider navigation"
+            aria-label="Hero Image slider navigation"
           >
             {heroSlides.map((_, index) => (
               <Box
@@ -264,6 +277,7 @@ const HomePage = () => {
                 role="tab"
                 aria-selected={index === currentImageIndex}
                 aria-label={`Go to slide ${index + 1}`}
+                tabIndex={0}
                 sx={{
                   width: 10,
                   height: 10,
@@ -278,6 +292,7 @@ const HomePage = () => {
                   }
                 }}
                 onClick={() => setCurrentImageIndex(index)}
+                onKeyPress={(e) => { if (e.key === 'Enter') setCurrentImageIndex(index); }}
               />
             ))}
           </Stack>
@@ -365,7 +380,7 @@ const HomePage = () => {
             <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ mb: 4 }}>
               {[
                 {
-                  icon: <LaptopIcon sx={{ fontSize: 40 }} />,
+                  icon: <LaptopIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
                   iconBg: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
                   iconColor: '#e74c3c',
                   title: 'New Laptops',
@@ -374,7 +389,7 @@ const HomePage = () => {
                   link: '/laptops',
                 },
                 {
-                  icon: <AutorenewIcon sx={{ fontSize: 40 }} />,
+                  icon: <AutorenewIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
                   iconBg: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
                   iconColor: '#2980b9',
                   title: 'Pre-Owned Laptops',
@@ -383,7 +398,7 @@ const HomePage = () => {
                   link: '/pre-owned-laptops',
                 },
                 {
-                  icon: <BuildIcon sx={{ fontSize: 40 }} />,
+                  icon: <BuildIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
                   iconBg: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
                   iconColor: '#27ae60',
                   title: 'Expert Laptop Repairs',
@@ -595,7 +610,7 @@ const HomePage = () => {
                       },
                     ].map((item, idx) => (
                       <Stack key={idx} direction="row" spacing={2}>
-                        <CheckCircleIcon sx={{ fontSize: 30, color: "#e74c3c" }} />
+                        <CheckCircleIcon aria-hidden="true" sx={{ fontSize: 30, color: "#e74c3c" }} />
                         <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.6 }}>
                           <strong>{item.title}</strong> {item.desc}
                         </Typography>
@@ -645,17 +660,17 @@ const HomePage = () => {
                   <Stack spacing={4}>
                     {[
                       {
-                        icon: <GroupIcon />,
+                        icon: <GroupIcon aria-hidden="true" />,
                         title: "Expert Team",
                         desc: "Experienced technicians and professionals."
                       },
                       {
-                        icon: <VerifiedUserIcon />,
+                        icon: <VerifiedUserIcon aria-hidden="true" />,
                         title: "Quality Assurance",
                         desc: "High-quality diagnostic tools and parts."
                       },
                       {
-                        icon: <HeadsetMicIcon />,
+                        icon: <HeadsetMicIcon aria-hidden="true" />,
                         title: "Support",
                         desc: "Transparent communication and service."
                       }
@@ -872,7 +887,7 @@ const HomePage = () => {
                         muted
                         loop
                         playsInline
-                        preload="metadata"
+                        preload="none"
                         sx={{
                           width: '100%',
                           height: '100%',
@@ -1525,11 +1540,16 @@ const HomePage = () => {
               </Box>
 
               {/* Slide Indicators */}
-              <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }}>
+              <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }} role="tablist" aria-label="Feedback slider navigation">
                 {feedbackImages.map((_, index) => (
                   <Box
                     key={index}
+                    role="tab"
+                    aria-selected={index === currentFeedbackIndex}
+                    aria-label={`Go to feedback ${index + 1}`}
+                    tabIndex={0}
                     onClick={() => setCurrentFeedbackIndex(index)}
+                    onKeyPress={(e) => { if (e.key === 'Enter') setCurrentFeedbackIndex(index); }}
                     sx={{
                       width: index === currentFeedbackIndex ? 24 : 8,
                       height: 8,
