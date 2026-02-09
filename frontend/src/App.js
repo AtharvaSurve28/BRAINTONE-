@@ -1,6 +1,10 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { CssBaseline, ThemeProvider, createTheme, Box, Fade, CircularProgress } from '@mui/material';
+import ScrollToTop from './ScrollToTop';
+import Navbar from './components/Navbar';
+import FloatingChatButton from './components/FloatingChatButton';
+import './App.css';
 
 // Lazy load page components for better performance
 const HomePage = React.lazy(() => import('./pages/HomePage'));
@@ -15,16 +19,10 @@ const Contact = React.lazy(() => import('./pages/Contact'));
 const EWaste = React.lazy(() => import('./pages/EWaste'));
 const Events = React.lazy(() => import('./pages/Events'));
 
-import ScrollToTop from './ScrollToTop';
-import Navbar from './components/Navbar';
-import FloatingChatButton from './components/FloatingChatButton'; // Import the new component
-
 // Admin Pages (Lazy Loaded)
 const AdminLogin = React.lazy(() => import('./pages/admin/AdminLogin'));
 const AdminDashboard = React.lazy(() => import('./pages/admin/AdminDashboard'));
 const LaptopForm = React.lazy(() => import('./pages/admin/LaptopForm'));
-
-import './App.css';
 
 const theme = createTheme({
   palette: {
