@@ -282,34 +282,6 @@ const HomePage = () => {
             ))}
           </Stack>
         </Container>
-
-        {/* Add CSS animations */}
-        <style>{`
-          /* Optimized Animations */
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-          @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          @keyframes zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-          }
-          @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
-          @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-          }
-        
-        `}</style>
       </Box>
 
       {/* Automatic Banner Slider */}
