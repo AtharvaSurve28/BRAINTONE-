@@ -377,135 +377,139 @@ const HomePage = () => {
               Whether you're looking for the latest models or a budget-friendly option, we have a laptop for every need and budget.
             </Typography>
 
-            <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ mb: 4 }}>
+            <Grid container spacing={4} sx={{ mb: 4, justifyContent: 'center', ml: { md: 2 } }} alignItems="stretch">
               {[
                 {
-                  icon: <LaptopIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                  iconColor: '#e74c3c',
-                  title: 'New Laptops',
-                  desc: 'Explore the latest technology from top brands. Powerful performance and pristine condition guaranteed.',
-                  cta: 'Shop New',
+                  title: 'NEW LAPTOPS',
+                  image: 'https://images.unsplash.com/photo-1763162139130-240507e9fad5?q=80&w=800&h=600&fit=crop',
                   link: '/laptops',
+                  color: '#e74c3c'
                 },
                 {
-                  icon: <AutorenewIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
-                  iconColor: '#2980b9',
-                  title: 'Pre-Owned Laptops',
-                  desc: 'Save big with quality refurbished laptops. Expertly restored and tested for reliability.',
-                  cta: 'Shop Pre-Owned',
+                  title: 'PRE-OWNED',
+                  image: 'https://images.unsplash.com/photo-1522202195465-df8a5f26fa15?q=80&w=800&h=600&fit=crop',
                   link: '/pre-owned-laptops',
+                  color: '#27ae60'
                 },
                 {
-                  icon: <BuildIcon aria-hidden="true" sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
-                  iconColor: '#27ae60',
-                  title: 'Expert Laptop Repairs',
-                  desc: 'Fast, reliable repairs by certified technicians. From hardware fixes to software solutions.',
-                  cta: 'Book a Repair',
+                  title: 'REPAIR SERVICES',
+                  image: 'https://images.unsplash.com/photo-1658240527554-9cf987b4de49?q=80&w=800&h=600&fit=crop',
                   link: '/repair',
+                  color: '#2980b9'
                 },
               ].map((card, idx) => (
-                <Box
-                  key={idx}
-                  component={Link}
-                  to={card.link}
-                  sx={{
-                    textDecoration: 'none',
-                    flex: 1,
-                    display: 'block',
-                  }}
-                >
-                  <Card
+                <Grid item xs={12} md={3.8} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Box
+                    component={Link}
+                    to={card.link}
                     sx={{
-                      p: 3,
-                      textAlign: 'center',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                      border: '1px solid #f0f0f0',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      borderRadius: 12,
-                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '4px',
-                        background: card.iconBg,
-                      },
-                      '&:hover': {
-                        transform: 'translateY(-4px) scale(1.02)',
-                        boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
-                        cursor: 'pointer',
-                        // Prevent jitter by extending the hover area downwards
-                        '&::after': {
-                          content: '""',
-                          position: 'absolute',
-                          top: '100%',
-                          left: 0,
-                          width: '100%',
-                          height: '24px',
-                        },
-                      },
+                      textDecoration: 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      width: '100%',
+                      maxWidth: '350px',
                     }}
                   >
-                    <Box
+                    <Paper
+                      elevation={0}
                       sx={{
-                        width: 70,
-                        height: 70,
-                        borderRadius: '50%',
-                        background: card.iconBg,
+                        p: 2,
+                        borderRadius: '24px',
+                        background: '#f8f9fa',
+                        border: '1px solid #eee',
+                        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                        overflow: 'hidden',
+                        height: '100%',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 2,
-                        color: card.iconColor,
-                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                      }}
-                    >
-                      {card.icon}
-                    </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1.5, fontSize: '1.1rem' }}>
-                      {card.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.6, minHeight: '60px', fontSize: '0.875rem' }}>
-                      {card.desc}
-                    </Typography>
-                    <Button
-                      component={Link}
-                      to={card.link}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      variant="contained"
-                      size="small"
-                      sx={{
-                        background: card.iconBg,
-                        color: card.iconColor,
                         '&:hover': {
-                          background: 'linear-gradient(135deg, #ddd, #fff)',
-                          transform: 'translateY(-2px)',
+                          transform: 'translateY(-10px)',
+                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                          borderColor: card.color,
                         },
-                        textTransform: 'none',
-                        fontWeight: 600,
-                        px: 3,
-                        py: 0.8,
-                        fontSize: '0.875rem',
-                        borderRadius: 8,
-                        transition: 'all 0.3s ease',
                       }}
                     >
-                      {card.cta}
-                    </Button>
-                  </Card>
-                </Box>
+                      {/* Image Container */}
+                      <Box
+                        sx={{
+                          width: '100%',
+                          aspectRatio: '4/3',
+                          borderRadius: '16px',
+                          overflow: 'hidden',
+                          mb: 3,
+                          boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={card.image}
+                          alt={card.title}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Box>
+
+                      {/* Brand Logo Integration */}
+                      <Box sx={{ textAlign: 'center', mb: 2 }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 900,
+                            color: '#1a1a1a',
+                            fontSize: '1.2rem',
+                            letterSpacing: '1px',
+                            mb: 0.5
+                          }}
+                        >
+                          BRAINTONE
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '0.6rem',
+                            fontWeight: 700,
+                            color: '#666',
+                            letterSpacing: '2px',
+                            textTransform: 'uppercase'
+                          }}
+                        >
+                          Premium Technology
+                        </Typography>
+                        <Box
+                          sx={{
+                            width: '40px',
+                            height: '2px',
+                            background: card.color,
+                            mx: 'auto',
+                            mt: 1,
+                            borderRadius: '1px'
+                          }}
+                        />
+                      </Box>
+
+                      {/* Title */}
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontWeight: 800,
+                          color: '#2d3748',
+                          mt: 'auto',
+                          mb: 2,
+                          fontSize: '1.4rem',
+                          textAlign: 'center',
+                          letterSpacing: '1px'
+                        }}
+                      >
+                        {card.title}
+                      </Typography>
+                    </Paper>
+                  </Box>
+                </Grid>
               ))}
-            </Stack>
+            </Grid>
           </Container>
         </Box>
       </FadeInSection>
