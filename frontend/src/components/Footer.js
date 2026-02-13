@@ -117,8 +117,8 @@ const Footer = ({ fullFooter = true }) => {
                                 </Typography>
                                 <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
                                     {[
-                                        { name: 'New Laptops', path: '/laptops' },
-                                        { name: 'Pre-owned Laptops', path: '/services/pre-owned-laptops' },
+                                        { name: 'Brand New Laptops', path: '/laptops' },
+                                        { name: 'Refurbished Laptops', path: '/services/refurbished-laptops' },
                                         { name: 'Repair Services', path: '/repair' },
                                         { name: 'All Laptop Accessories', path: '/accessories' },
                                         { name: 'Mac Accessories', path: '/mac-accessories' }

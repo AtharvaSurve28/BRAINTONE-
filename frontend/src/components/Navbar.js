@@ -125,7 +125,7 @@ export default function Navbar() {
   const servicesOpen = Boolean(servicesAnchorEl);
   const accessoriesOpen = Boolean(accessoriesAnchorEl);
 
-  const isServicesActive = ['/laptops', '/services/pre-owned-laptops', '/repair'].includes(location.pathname);
+  const isServicesActive = ['/laptops', '/services/refurbished-laptops', '/repair'].includes(location.pathname);
   const isAccessoriesActive = ['/accessories', '/mac-accessories'].includes(location.pathname);
 
   const socialLinks = {
@@ -200,11 +200,11 @@ export default function Navbar() {
           <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
             <ListItemButton component={Link} to="/laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
               <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon fontSize="small" color="primary" /></ListItemIcon>
-              <ListItemText primary="New Laptops" />
+              <ListItemText primary="Brand New Laptops" />
             </ListItemButton>
-            <ListItemButton component={Link} to="/services/pre-owned-laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><AutorenewIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
-              <ListItemText primary="Pre-Owned Laptops" />
+            <ListItemButton component={Link} to="/services/refurbished-laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
+              <AutorenewIcon sx={{ mr: 2, color: 'primary.main' }} />
+              <ListItemText primary="Refurbished Laptops" />
             </ListItemButton>
             <ListItemButton component={Link} to="/repair" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
               <ListItemIcon sx={{ minWidth: 32 }}><BuildIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
@@ -437,10 +437,10 @@ export default function Navbar() {
                       transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                     >
                       <MenuItem component={Link} to="/laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <LaptopIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> New Laptops
+                        <LaptopIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Brand New Laptops
                       </MenuItem>
-                      <MenuItem component={Link} to="/services/pre-owned-laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <AutorenewIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Pre-Owned Laptops
+                      <MenuItem component={Link} to="/services/refurbished-laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
+                        <AutorenewIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Refurbished Laptops
                       </MenuItem>
                       <MenuItem component={Link} to="/repair" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
                         <BuildIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Repair Services
