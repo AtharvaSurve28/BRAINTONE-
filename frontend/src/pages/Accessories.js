@@ -578,6 +578,7 @@ const Accessories = () => {
                       component="img"
                       image={accessory.image}
                       alt={accessory.name}
+                      loading={index < 6 ? "eager" : "lazy"}
                       className="accessory-image"
                       sx={{
                         width: '100%',

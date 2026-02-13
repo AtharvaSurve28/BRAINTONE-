@@ -381,6 +381,7 @@ const Laptops = () => {
                     component="img"
                     image={brand.image}
                     alt={brand.name}
+                    loading={index < 3 ? "eager" : "lazy"}
                     className="brand-image"
                     sx={{
                       width: '100%',
@@ -415,6 +416,7 @@ const Laptops = () => {
                       component="img"
                       src={brand.logo}
                       alt={`${brand.name} logo`}
+                      loading={index < 3 ? "eager" : "lazy"}
                       className="brand-logo"
                       sx={{
                         maxWidth: brand.name === 'Lenovo' ? '160px' : (brand.name === 'Apple' ? '190px' : (brand.name === 'MSI' ? '300px' : (['ASUS', 'Samsung Galaxy', 'Microsoft'].includes(brand.name) ? '260px' : '220px'))),

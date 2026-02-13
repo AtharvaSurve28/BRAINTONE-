@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Container, Typography, Divider, Grid, Stack, IconButton } from '@mui/material';
-import { Place, Phone, Instagram, Twitter, LinkedIn, Facebook } from '@mui/icons-material'; // Added social icons
+import { Place, Phone, Instagram, Twitter, LinkedIn, Facebook, WhatsApp } from '@mui/icons-material'; // Added social icons
 import { Link } from 'react-router-dom';
 
 const Footer = ({ fullFooter = true }) => {
@@ -245,6 +245,9 @@ const Footer = ({ fullFooter = true }) => {
                                     </Box>
                                     <Box component="a" href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn Profile" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#0077b5', transform: 'translateX(5px)' } }}>
                                         <LinkedIn aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> LinkedIn
+                                    </Box>
+                                    <Box component="a" href="https://wa.me/919082014406" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#25D366', transform: 'translateX(5px)' } }}>
+                                        <WhatsApp aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> WhatsApp
                                     </Box>
                                 </Stack>
                             </Grid>
