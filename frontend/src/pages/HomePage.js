@@ -741,7 +741,8 @@ const HomePage = () => {
         {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
         <FadeInSection fullWidth>
           <Box sx={{
-            py: { xs: 8, md: 15 },
+            pt: { xs: 4, md: 6 },
+            pb: { xs: 8, md: 15 },
             position: 'relative',
             overflow: 'hidden',
             '&::after': {
@@ -793,7 +794,7 @@ const HomePage = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                   alignItems: 'center',
                   gap: { xs: 4, md: 8 },
-                  mb: { xs: 8, md: 12 }
+                  mb: { xs: 4, md: 6 }
                 }}>
                   {/* Text Content - LEFT */}
                   <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
@@ -913,7 +914,7 @@ const HomePage = () => {
 
               {/* Divider */}
               <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
-                <Divider sx={{ my: { xs: 6, md: 8 } }} />
+                <Divider sx={{ my: { xs: 3, md: 4 } }} />
               </Box>
 
               {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
