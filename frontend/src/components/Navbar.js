@@ -32,6 +32,7 @@ import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger Icon
 import CloseIcon from '@mui/icons-material/Close';
+import WhatsAppIcon from '@mui/icons-material/WhatsApp';
 
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
@@ -54,7 +55,10 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     sx={{
       display: 'flex',
       flexDirection: 'column',
-      alignItems: isMobile ? 'flex-start' : 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: isMobile ? 'flex-start' : 'center', // Revert to center
+      textDecoration: 'none',
       textDecoration: 'none',
       transition: 'transform 0.3s ease',
       '&:hover': { transform: 'scale(1.02)' },
@@ -79,14 +83,14 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     <Typography
       sx={{
         color: '#000',
-        fontWeight: 700,
-        fontSize: '0.62rem',
-        letterSpacing: '3.5px',
-        mt: 0.5,
+        fontWeight: 600, // Slightly lighter weight for style
+        fontSize: '0.55rem', // Smaller size to fit inside width
+        letterSpacing: '1px', // Reduced spacing to keep it compact
+        mt: 0,
         lineHeight: 1,
         textTransform: 'uppercase',
         width: '100%',
-        textAlign: isMobile ? 'left' : 'center',
+        textAlign: isMobile ? 'left' : 'center', // Revert to center
         whiteSpace: 'nowrap'
       }}
     >
@@ -100,7 +104,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
         mt: 0.3,
         lineHeight: 1,
         width: '100%',
-        textAlign: isMobile ? 'left' : 'center',
+        textAlign: isMobile ? 'left' : 'center', // Revert to center
         whiteSpace: 'nowrap'
       }}
     >
@@ -134,6 +138,7 @@ export default function Navbar() {
     twitter: 'https://x.com/BraintoneL1707',
     facebook: 'https://www.facebook.com/profile.php?id=61587490744034',
     linkedin: '#',
+    whatsapp: 'https://wa.me/919082014406',
   };
 
   React.useEffect(() => {
@@ -280,6 +285,7 @@ export default function Navbar() {
             <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram"><InstagramIcon /></IconButton>
             <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter"><TwitterIcon /></IconButton>
             <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn"><LinkedInIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: '#25D366' }}><WhatsAppIcon /></IconButton>
           </Stack>
 
           {/* Contact Info in Drawer */}
@@ -319,7 +325,7 @@ export default function Navbar() {
         }}>
           <Container maxWidth="lg">
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <Box sx={{ ml: { xs: 0, md: -6 } }}>
+              <Box sx={{ ml: { xs: 0, md: -10 } }}> {/* Shifted more left */}
                 <BrandLogo isScrolled={isScrolled} />
               </Box>
 
@@ -399,7 +405,7 @@ export default function Navbar() {
             {/* Desktop: Full Menu */}
             {!isMobile && (
               <>
-                <Box sx={{ display: 'flex', flexGrow: 1, ml: { xs: 0, sm: -4, md: -8 } }}>
+                <Box sx={{ display: 'flex', flexGrow: 1, ml: { xs: 0, sm: -6, md: -12 } }}> {/* Shifted more left */}
                   <Button component={NavLink} to="/" end sx={navLinkSx(location.pathname === '/')}>HOME</Button>
                   <Box
                     onMouseEnter={(e) => setServicesAnchorEl(e.currentTarget)}
@@ -543,6 +549,9 @@ export default function Navbar() {
                   </IconButton>
                   <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <LinkedInIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: '#333', '&:hover': { color: '#25D366', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                    <WhatsAppIcon fontSize="small" />
                   </IconButton>
                 </Stack>
               </>
