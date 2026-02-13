@@ -180,14 +180,14 @@ const AboutUs = () => {
   const features = [
     {
       icon: <Laptop sx={{ fontSize: 40, color: '#e74c3c' }} />,
-      title: 'New Laptops',
+      title: 'Brand New Laptops',
       description: 'Latest models from top brands like Dell, HP, Lenovo, Asus, and Apple',
       color: '#ffecec'
     },
     {
       icon: <ShoppingCart sx={{ fontSize: 40, color: '#c0392b' }} />,
-      title: 'Pre-Owned Laptops',
-      description: 'Quality tested, certified pre-owned laptops with warranty',
+      title: 'Refurbished Laptops',
+      description: 'Quality tested, certified refurbished laptops with warranty',
       color: '#ffecec'
     },
     {
@@ -1077,7 +1077,7 @@ const AboutUs = () => {
                       color: '#2c3e50',
                       fontSize: '1.4rem'
                     }}>
-                      New Laptops
+                      Brand New Laptops
                     </Typography>
 
                     <Typography variant="body1" sx={{
@@ -1125,7 +1125,7 @@ const AboutUs = () => {
 
                 <Box
                   component="button"
-                  onClick={() => window.location.href = '/pre-owned-laptops'}
+                  onClick={() => window.location.href = '/refurbished-laptops'}
                   sx={{
                     p: 4,
                     height: '280px',
@@ -1184,7 +1184,7 @@ const AboutUs = () => {
                       color: '#2c3e50',
                       fontSize: '1.4rem'
                     }}>
-                      Pre-Owned Laptops
+                      Refurbished Laptops
                     </Typography>
 
                     <Typography variant="body1" sx={{
@@ -1193,7 +1193,7 @@ const AboutUs = () => {
                       fontSize: '1rem',
                       mb: 3
                     }}>
-                      Quality tested, certified pre-owned laptops with warranty
+                      Quality tested, certified refurbished laptops with warranty
                     </Typography>
 
                     <Stack spacing={1.5}>

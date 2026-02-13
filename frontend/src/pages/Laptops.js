@@ -486,7 +486,7 @@ const Laptops = () => {
               textShadow: '0 2px 4px rgba(0,0,0,0.1)',
             }}
           >
-            New Laptops & Desktops
+            Brand New Laptops & Desktops
           </Typography>
 
           <Typography

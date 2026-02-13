@@ -701,7 +701,7 @@ const SecondHand = () => {
                 animation: 'float 4s ease-in-out infinite',
               }}
             >
-              Certified Pre-Owned Laptops
+              Certified Refurbished Laptops
             </Typography>
 
             <Typography
@@ -891,7 +891,7 @@ const SecondHand = () => {
                   zIndex: 2,
                 }}
               >
-                Select a category to explore our certified pre-owned laptops
+                Select a category to explore our certified refurbished laptops
               </Typography>
 
               {/* First Row - 3 boxes horizontally */}
@@ -1187,7 +1187,7 @@ const SecondHand = () => {
                       {selectedCategory.warranty}
                     </Typography>
                     <Typography variant="body2" sx={{ mt: 1, opacity: 0.9 }}>
-                      All our certified pre-owned laptops come with a comprehensive 1-month warranty
+                      All our certified refurbished laptops come with a comprehensive 1-month warranty
                     </Typography>
                   </Box>
                 </Box>
@@ -1242,7 +1242,7 @@ const SecondHand = () => {
                     For Hands-On Experience Visit Our Stores
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
-                    See and feel the quality of our certified pre-owned laptops in person
+                    See and feel the quality of our certified refurbished laptops in person
                   </Typography>
 
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} justifyContent="center" sx={{ mb: 4 }}>

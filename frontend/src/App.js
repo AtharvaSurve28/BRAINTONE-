@@ -55,8 +55,8 @@ function AnimatedRoutes() {
             <Route path="/laptops/:brandId" element={<DynamicBrandTemplate />} />
 
             <Route path="/second-hand" element={<SecondHand />} />
-            <Route path="/pre-owned-laptops" element={<SecondHand />} />
-            <Route path="/services/pre-owned-laptops" element={<SecondHand />} />
+            <Route path="/refurbished-laptops" element={<SecondHand />} />
+            <Route path="/services/refurbished-laptops" element={<SecondHand />} />
             <Route path="/accessories" element={<Accessories />} />
             <Route path="/accessories/:category" element={<Accessories />} />
             <Route path="/mac-accessories" element={<MacAccessories />} />

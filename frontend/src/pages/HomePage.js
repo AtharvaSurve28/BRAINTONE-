@@ -66,7 +66,7 @@ const HomePage = () => {
     },
     {
       image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
-      title: 'New & Certified Pre-Owned Premium Laptops.'
+      title: 'Your Complete Laptop Solution'
     },
     {
       image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
@@ -74,15 +74,15 @@ const HomePage = () => {
     },
     {
       image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&fm=webp',
-      title: 'Premium Performance, Perfected.'
+      title: 'All Your Laptop Needs, One Trusted Place'
     },
     {
       image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&fm=webp',
-      title: 'Premium Laptops & Expert Repair Services'
+      title: 'Everything Your Laptop Needs — Under One Roof'
     },
     {
       image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
-      title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Pre-Owned)'
+      title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Refurbished)'
     }
   ];
 
@@ -223,7 +223,7 @@ const HomePage = () => {
               textShadow: '0 1px 5px rgba(0,0,0,0.3)', // Added shadow
             }}
           >
-            High-quality new and pre-owned laptops with expert repair services to meet all your needs
+            High-quality new and refurbished laptops with expert repair services to meet all your needs
           </Typography>
           <Button
             variant="contained"
@@ -366,7 +366,7 @@ const HomePage = () => {
                 }
               }}
             >
-              Find the Perfect Laptop
+              Find Your Perfect Laptop
             </Typography>
             <Typography
               variant="body1"
@@ -374,21 +374,21 @@ const HomePage = () => {
               color="text.secondary"
               sx={{ maxWidth: 700, mx: 'auto', mb: 6 }}
             >
-              Whether you're looking for the latest models or a budget-friendly option, we have a laptop for every need and budget.
+              Explore the latest models, unbeatable prices, and reliable performance — all in one place.
             </Typography>
 
             <Grid container spacing={4} sx={{ mb: 4, justifyContent: 'center', ml: { md: 2 } }} alignItems="stretch">
               {[
                 {
-                  title: 'NEW LAPTOPS',
+                  title: 'BRAND NEW LAPTOPS',
                   image: 'https://images.unsplash.com/photo-1763162139130-240507e9fad5?q=80&w=800&h=600&fit=crop',
                   link: '/laptops',
                   color: '#e74c3c'
                 },
                 {
-                  title: 'PRE-OWNED',
+                  title: 'REFURBISHED LAPTOPS',
                   image: 'https://images.unsplash.com/photo-1522202195465-df8a5f26fa15?q=80&w=800&h=600&fit=crop',
-                  link: '/pre-owned-laptops',
+                  link: '/refurbished-laptops',
                   color: '#27ae60'
                 },
                 {
@@ -602,7 +602,7 @@ const HomePage = () => {
                     {[
                       {
                         title: "Quality Products:",
-                        desc: "Carefully selected new and certified pre-owned laptops."
+                        desc: "Carefully selected new and certified refurbished laptops."
                       },
                       {
                         title: "Expert Repairs:",
@@ -665,18 +665,18 @@ const HomePage = () => {
                     {[
                       {
                         icon: <GroupIcon aria-hidden="true" />,
-                        title: "Expert Team",
-                        desc: "Experienced technicians and professionals."
+                        title: "Trusted",
+                        desc: "Your reliable partner for all laptop needs."
                       },
                       {
                         icon: <VerifiedUserIcon aria-hidden="true" />,
-                        title: "Quality Assurance",
-                        desc: "High-quality diagnostic tools and parts."
+                        title: "Proven",
+                        desc: "Track record of quality and customer satisfaction."
                       },
                       {
                         icon: <HeadsetMicIcon aria-hidden="true" />,
-                        title: "Support",
-                        desc: "Transparent communication and service."
+                        title: "Reliable",
+                        desc: "Consistent performance and dependable support."
                       }
                     ].map((item, idx) => (
                       <Stack key={idx} direction="row" spacing={2}>
@@ -873,7 +873,7 @@ const HomePage = () => {
                         transition: 'all 0.3s ease'
                       }}
                     >
-                      Shop New Laptops
+                      Shop Brand New Laptops
                     </Button>
                   </Box>
 
@@ -917,7 +917,7 @@ const HomePage = () => {
                 <Divider sx={{ my: { xs: 3, md: 4 } }} />
               </Box>
 
-              {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
+              {/* Section 2: Refurbished Laptops - Image Left, Text Right */}
               <Box sx={{
                 display: 'flex',
                 flexDirection: { xs: 'column', md: 'row' },
@@ -975,7 +975,7 @@ const HomePage = () => {
                       color: '#2c3e50'
                     }}
                   >
-                    Quality Pre-Owned Laptops
+                    Quality Refurbished Laptops
                   </Typography>
                   <Typography
                     variant="body1"
@@ -987,7 +987,7 @@ const HomePage = () => {
                     }}
                   >
                     Get the performance you need at a price you'll love with our extensive range
-                    of certified pre-owned laptops. Each device in our pre-owned collection undergoes
+                    of certified refurbished laptops. Each device in our refurbished collection undergoes
                     a rigorous 25-point inspection and refurbishment process to guarantee it meets
                     our exacting standards for quality and reliability.
                   </Typography>
@@ -1016,14 +1016,14 @@ const HomePage = () => {
                       fontSize: '1.05rem'
                     }}
                   >
-                    We offer certified pre-owned laptops from all major brands, including recent
-                    models with significant savings compared to new devices. Every pre-owned laptop
+                    We offer certified refurbished laptops from all major brands, including recent
+                    models with significant savings compared to new devices. Every refurbished laptop
                     comes with a minimum 6-month warranty, making it a smart, sustainable choice
                     that's good for both your wallet and the environment.
                   </Typography>
                   <Button
                     component={Link}
-                    to="/pre-owned-laptops"
+                    to="/refurbished-laptops"
                     variant="contained"
                     sx={{
                       bgcolor: '#e74c3c',
@@ -1042,7 +1042,7 @@ const HomePage = () => {
                       transition: 'all 0.3s ease'
                     }}
                   >
-                    Browse Pre-Owned
+                    Browse Refurbished
                   </Button>
                 </Box>
               </Box>
@@ -1677,8 +1677,8 @@ const HomePage = () => {
 
             {[
               [
-                { label: 'New Laptops', icon: LaptopIcon, to: '/laptops' },
-                { label: 'Pre-owned laptops', icon: AutorenewIcon, to: '/pre-owned-laptops' },
+                { label: 'Brand New Laptops', icon: LaptopIcon, to: '/laptops' },
+                { label: 'Refurbished laptops', icon: AutorenewIcon, to: '/refurbished-laptops' },
                 { label: 'Repair of Laptops', icon: BuildIcon, to: '/repair' }
               ],
               [
