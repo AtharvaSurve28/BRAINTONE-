@@ -57,6 +57,7 @@ const AdminDashboard = () => {
   const [error, setError] = useState('');
   const [deleteDialog, setDeleteDialog] = useState({ open: false, laptop: null });
   const [activeFilter, setActiveFilter] = useState('all');
+  const [activeBrandFilter, setActiveBrandFilter] = useState('all');
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -166,47 +167,56 @@ const AdminDashboard = () => {
   };
 
   const getBrandColor = (brand) => {
+    const b = brand?.toLowerCase();
     const colors = {
-      dell: '#E2231A',
+      dell: '#00618bff',
       hp: '#0096D6',
-      lenovo: '#E2231A',
-      asus: '#000000',
+      lenovo: '#E2231A', // Using Braintone Red for Lenovo as in original
+      asus: '#555555',
       acer: '#83B81A',
-      apple: '#000000',
-      msi: '#FF0000',
-      samsung: '#1428A0',
-      microsoft: '#0078D4',
-      unknown: '#666666'
+      apple: '#232323ff',
+      msi: '#E2231A',
+      samsung: '#6C5CE7',
+      microsoft: '#00AEEF',
+      unknown: '#999999'
     };
-    return colors[brand?.toLowerCase()] || colors.unknown;
+    return colors[b] || colors.unknown;
   };
 
   const getCategoryColor = (category) => {
+    const c = category?.toLowerCase();
     const colors = {
-      gaming: '#FF6B6B',
+      gaming: '#E2231A',
       business: '#4ECDC4',
       student: '#45B7D1',
-      premium: '#96CEB4',
-      'mid-range': '#6C5CE7', // Unified mid-range color
+      premium: '#83B81A',
+      'mid-range': '#6C5CE7',
+      commercial: '#555555',
+      consumer: '#555555',
+      entry: '#555555',
       budget: '#FFEAA7',
       workstation: '#DDA0DD',
       '2-in-1': '#98D8C8',
       ultrabook: '#FFA726'
     };
-    return colors[category?.toLowerCase()] || '#BDC3C7';
+    return colors[c] || '#999999';
   };
 
-  // Filter and normalize categories
-  const filteredLaptops = activeFilter === 'all'
-    ? laptops
-    : laptops.filter(laptop => {
-      let category = laptop.category || 'Uncategorized';
-      // Normalize to single mid-range category
-      if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
-        category = 'Mid-Range';
-      }
-      return category.toLowerCase() === activeFilter.toLowerCase();
-    });
+  // Filter by category and brand
+  const filteredLaptops = laptops.filter(laptop => {
+    // Category filtering
+    let category = laptop.category || 'Uncategorized';
+    if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
+      category = 'Mid-Range';
+    }
+    const categoryMatch = activeFilter === 'all' || category.toLowerCase() === activeFilter.toLowerCase();
+
+    // Brand filtering
+    const brand = laptop.brand || 'Unknown';
+    const brandMatch = activeBrandFilter === 'all' || brand.toLowerCase() === activeBrandFilter.toLowerCase();
+
+    return categoryMatch && brandMatch;
+  });
 
   if (loading) {
     return (
@@ -238,10 +248,20 @@ const AdminDashboard = () => {
       }
       categorySet.add(category);
     });
-    return Array.from(categorySet);
+    return Array.from(categorySet).sort();
+  };
+
+  // Get unique brands from laptops
+  const getUniqueBrands = () => {
+    const brandSet = new Set();
+    laptops.forEach(laptop => {
+      brandSet.add(laptop.brand || 'Unknown');
+    });
+    return Array.from(brandSet).sort();
   };
 
   const uniqueCategories = getUniqueCategories();
+  const uniqueBrands = getUniqueBrands();
 
   return (
     <Box sx={{
@@ -365,51 +385,112 @@ const AdminDashboard = () => {
 
         {/* Filter Chips with dark text */}
         <Paper sx={{ p: 2, mb: 3, borderRadius: 3 }}>
-          <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-            <Typography variant="subtitle1" sx={{ mr: 2, fontWeight: 600, color: 'text.primary' }}>
-              Filter by Category:
-            </Typography>
-            <Chip
-              label="All"
-              clickable
-              color={activeFilter === 'all' ? 'primary' : 'default'}
-              onClick={() => setActiveFilter('all')}
-              sx={{
-                fontWeight: activeFilter === 'all' ? 600 : 500,
-                backgroundColor: activeFilter === 'all' ? '#E2231A' : '#f5f5f5',
-                color: activeFilter === 'all' ? 'white' : '#333333',
-                '&:hover': {
-                  backgroundColor: activeFilter === 'all' ? '#c41e1a' : '#e0e0e0'
-                }
-              }}
-            />
-            {uniqueCategories.map(category => {
-              const isActive = activeFilter === category.toLowerCase();
-              const categoryColor = getCategoryColor(category);
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+            {/* Category Filters */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography variant="subtitle1" sx={{ mr: 2, fontWeight: 600, color: 'text.primary', minWidth: 140 }}>
+                Filter by Category:
+              </Typography>
+              <Chip
+                label="All"
+                clickable
+                color={activeFilter === 'all' ? 'primary' : 'default'}
+                onClick={() => setActiveFilter('all')}
+                sx={{
+                  fontWeight: activeFilter === 'all' ? 700 : 600,
+                  backgroundColor: activeFilter === 'all' ? '#E2231A' : alpha('#E2231A', 0.08),
+                  color: activeFilter === 'all' ? 'white' : '#E2231A',
+                  border: `1.5px solid ${activeFilter === 'all' ? '#E2231A' : alpha('#E2231A', 0.4)}`,
+                  '&:hover': {
+                    backgroundColor: activeFilter === 'all' ? '#c41e1a' : alpha('#E2231A', 0.15)
+                  }
+                }}
+              />
+              {uniqueCategories.map(category => {
+                const isActive = activeFilter === category.toLowerCase();
+                const categoryColor = getCategoryColor(category);
 
-              return (
-                <Chip
-                  key={category}
-                  label={category}
-                  clickable
-                  sx={{
-                    backgroundColor: isActive
-                      ? categoryColor
-                      : alpha(categoryColor, 0.15),
-                    color: isActive ? 'white' : '#333333', // Dark text for all categories
-                    fontWeight: isActive ? 600 : 500,
-                    border: `1px solid ${alpha(categoryColor, 0.3)}`,
-                    '&:hover': {
+                return (
+                  <Chip
+                    key={category}
+                    label={category}
+                    clickable
+                    sx={{
                       backgroundColor: isActive
                         ? categoryColor
-                        : alpha(categoryColor, 0.25),
-                      transform: 'translateY(-1px)'
-                    }
-                  }}
-                  onClick={() => setActiveFilter(category.toLowerCase())}
-                />
-              );
-            })}
+                        : alpha(categoryColor, 0.08),
+                      color: isActive ? 'white' : categoryColor,
+                      fontWeight: isActive ? 700 : 600,
+                      border: `1.5px solid ${alpha(categoryColor, 0.4)}`,
+                      px: 1,
+                      py: 0.5,
+                      '&:hover': {
+                        backgroundColor: isActive
+                          ? categoryColor
+                          : alpha(categoryColor, 0.15),
+                        transform: 'translateY(-1px)',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      },
+                      transition: 'all 0.2s ease'
+                    }}
+                    onClick={() => setActiveFilter(category.toLowerCase())}
+                  />
+                );
+              })}
+            </Box>
+
+            {/* Brand Filters */}
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
+              <Typography variant="subtitle1" sx={{ mr: 2, fontWeight: 600, color: 'text.primary', minWidth: 140 }}>
+                Filter by Brand:
+              </Typography>
+              <Chip
+                label="All"
+                clickable
+                color={activeBrandFilter === 'all' ? 'primary' : 'default'}
+                onClick={() => setActiveBrandFilter('all')}
+                sx={{
+                  fontWeight: activeBrandFilter === 'all' ? 700 : 600,
+                  backgroundColor: activeBrandFilter === 'all' ? '#E2231A' : alpha('#E2231A', 0.08),
+                  color: activeBrandFilter === 'all' ? 'white' : '#E2231A',
+                  border: `1.5px solid ${activeBrandFilter === 'all' ? '#E2231A' : alpha('#E2231A', 0.4)}`,
+                  '&:hover': {
+                    backgroundColor: activeBrandFilter === 'all' ? '#c41e1a' : alpha('#E2231A', 0.15)
+                  }
+                }}
+              />
+              {uniqueBrands.map(brand => {
+                const isActive = activeBrandFilter === brand.toLowerCase();
+                const brandColor = getBrandColor(brand);
+
+                return (
+                  <Chip
+                    key={brand}
+                    label={brand}
+                    clickable
+                    sx={{
+                      backgroundColor: isActive
+                        ? brandColor
+                        : alpha(brandColor, 0.08),
+                      color: isActive ? 'white' : brandColor,
+                      fontWeight: isActive ? 700 : 600,
+                      border: `1.5px solid ${alpha(brandColor, 0.4)}`,
+                      px: 1,
+                      py: 0.5,
+                      '&:hover': {
+                        backgroundColor: isActive
+                          ? brandColor
+                          : alpha(brandColor, 0.15),
+                        transform: 'translateY(-1px)',
+                        boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+                      },
+                      transition: 'all 0.2s ease'
+                    }}
+                    onClick={() => setActiveBrandFilter(brand.toLowerCase())}
+                  />
+                );
+              })}
+            </Box>
           </Box>
         </Paper>
 
@@ -434,7 +515,9 @@ const AdminDashboard = () => {
             </Typography>
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
               <Typography variant="body2" sx={{ opacity: 0.9 }}>
-                {activeFilter === 'all' ? 'All Categories' : `Filtered by: ${activeFilter}`}
+                {activeFilter === 'all' && activeBrandFilter === 'all'
+                  ? 'All Laptops'
+                  : `Filtered: ${activeFilter !== 'all' ? activeFilter : ''}${activeFilter !== 'all' && activeBrandFilter !== 'all' ? ' + ' : ''}${activeBrandFilter !== 'all' ? activeBrandFilter : ''}`}
               </Typography>
               <Chip
                 label={`${filteredLaptops.length} of ${laptops.length}`}
@@ -478,10 +561,13 @@ const AdminDashboard = () => {
                             ? 'Add your first laptop to get started!'
                             : `No laptops found in "${activeFilter}" category`}
                         </Typography>
-                        {activeFilter !== 'all' && (
+                        {(activeFilter !== 'all' || activeBrandFilter !== 'all') && (
                           <Button
                             variant="outlined"
-                            onClick={() => setActiveFilter('all')}
+                            onClick={() => {
+                              setActiveFilter('all');
+                              setActiveBrandFilter('all');
+                            }}
                             sx={{ mr: 2 }}
                           >
                             Show All Laptops

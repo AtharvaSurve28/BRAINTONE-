@@ -137,10 +137,16 @@ const BannerSlider = () => {
                         display: 'flex',
                         transform: `translateX(-${currentIndex * 100}%)`,
                         transition: 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)',
-                    }}>
+                    }}
+                        role="region"
+                        aria-label="Promotion slider"
+                    >
                         {banners.map((banner, index) => (
                             <Box
                                 key={banner.id}
+                                role="group"
+                                aria-roledescription="slide"
+                                aria-label={`Slide ${index + 1} of ${banners.length}: ${banner.title}`}
                                 sx={{
                                     minWidth: '100%',
                                     width: '100%',
@@ -236,7 +242,8 @@ const BannerSlider = () => {
                                     <Box
                                         component="img"
                                         src={banner.image}
-                                        alt={banner.title}
+                                        alt=""
+                                        loading="lazy"
                                         sx={{
                                             width: '100%',
                                             height: '100%',
@@ -253,6 +260,7 @@ const BannerSlider = () => {
                     {/* Navigation Buttons - Absolute positioned outside the sliding box */}
                     <IconButton
                         onClick={handlePrev}
+                        aria-label="Previous slide"
                         sx={{
                             position: 'absolute',
                             left: { xs: 10, md: 30 },
@@ -265,11 +273,12 @@ const BannerSlider = () => {
                             display: { xs: 'none', md: 'flex' }
                         }}
                     >
-                        <ArrowBackIosNewIcon fontSize="small" />
+                        <ArrowBackIosNewIcon aria-hidden="true" fontSize="small" />
                     </IconButton>
 
                     <IconButton
                         onClick={handleNext}
+                        aria-label="Next slide"
                         sx={{
                             position: 'absolute',
                             right: { xs: 10, md: 30 },
@@ -282,13 +291,15 @@ const BannerSlider = () => {
                             display: { xs: 'none', md: 'flex' }
                         }}
                     >
-                        <ArrowForwardIosIcon fontSize="small" />
+                        <ArrowForwardIosIcon aria-hidden="true" fontSize="small" />
                     </IconButton>
 
                     {/* Dots Indicator */}
                     <Stack
                         direction="row"
                         spacing={1}
+                        role="tablist"
+                        aria-label="Slide selection"
                         sx={{
                             position: 'absolute',
                             bottom: { xs: 15, md: 20 },
@@ -302,7 +313,12 @@ const BannerSlider = () => {
                         {banners.map((_, idx) => (
                             <Box
                                 key={idx}
+                                role="tab"
+                                aria-selected={idx === currentIndex}
+                                aria-label={`Go to slide ${idx + 1}`}
+                                tabIndex={0}
                                 onClick={() => setCurrentIndex(idx)}
+                                onKeyPress={(e) => { if (e.key === 'Enter') setCurrentIndex(idx); }}
                                 sx={{
                                     width: idx === currentIndex ? 24 : 8, // Elongate active dot
                                     height: 8,

@@ -1,12 +1,13 @@
 import React from 'react';
 import { Box, Container, Typography, Divider, Grid, Stack, IconButton } from '@mui/material';
-import { Place, Phone, Instagram, Twitter, LinkedIn } from '@mui/icons-material'; // Added social icons
+import { Place, Phone, Instagram, Twitter, LinkedIn, Facebook } from '@mui/icons-material'; // Added social icons
 import { Link } from 'react-router-dom';
 
 const Footer = ({ fullFooter = true }) => {
     return (
         <Box
             component="footer"
+            role="contentinfo"
             sx={{
                 bgcolor: '#2d2d2d', // Lighter black
                 color: '#ffffff',
@@ -233,14 +234,17 @@ const Footer = ({ fullFooter = true }) => {
                                     Contact Us
                                 </Typography>
                                 <Stack spacing={1} alignItems={{ xs: 'center', md: 'flex-start' }}>
-                                    <Box component="a" href="https://www.instagram.com/braintone.technology/" target="_blank" rel="noopener noreferrer" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#E4405F', transform: 'translateX(5px)' } }}>
-                                        <Instagram sx={{ mr: 1, fontSize: 20 }} /> Instagram
+                                    <Box component="a" href="https://www.facebook.com/profile.php?id=61587490744034" target="_blank" rel="noopener noreferrer" aria-label="Visit our Facebook Profile" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#4267B2', transform: 'translateX(5px)' } }}>
+                                        <Facebook aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> Facebook
                                     </Box>
-                                    <Box component="a" href="https://x.com/BraintoneL1707" target="_blank" rel="noopener noreferrer" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#1DA1F2', transform: 'translateX(5px)' } }}>
-                                        <Twitter sx={{ mr: 1, fontSize: 20 }} /> Twitter
+                                    <Box component="a" href="https://www.instagram.com/braintone.technology/" target="_blank" rel="noopener noreferrer" aria-label="Visit our Instagram Profile" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#E4405F', transform: 'translateX(5px)' } }}>
+                                        <Instagram aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> Instagram
                                     </Box>
-                                    <Box component="a" href="#" target="_blank" rel="noopener noreferrer" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#0077b5', transform: 'translateX(5px)' } }}>
-                                        <LinkedIn sx={{ mr: 1, fontSize: 20 }} /> LinkedIn
+                                    <Box component="a" href="https://x.com/BraintoneL1707" target="_blank" rel="noopener noreferrer" aria-label="Visit our Twitter Profile" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#1DA1F2', transform: 'translateX(5px)' } }}>
+                                        <Twitter aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> Twitter
+                                    </Box>
+                                    <Box component="a" href="#" target="_blank" rel="noopener noreferrer" aria-label="Visit our LinkedIn Profile" sx={{ display: 'flex', alignItems: 'center', justifyContent: { xs: 'center', md: 'flex-start' }, textDecoration: 'none', color: '#e0e0e0', transition: '0.2s', '&:hover': { color: '#0077b5', transform: 'translateX(5px)' } }}>
+                                        <LinkedIn aria-hidden="true" sx={{ mr: 1, fontSize: 20 }} /> LinkedIn
                                     </Box>
                                 </Stack>
                             </Grid>
@@ -305,12 +309,6 @@ const Footer = ({ fullFooter = true }) => {
                 </Box>
             </Container>
 
-            <style jsx="true">{`
-        @keyframes shimmer {
-          0% { background-position: -200% 0; }
-          100% { background-position: 200% 0; }
-        }
-      `}</style>
         </Box>
     );
 };

@@ -29,6 +29,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import AutorenewIcon from '@mui/icons-material/Autorenew';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import TwitterIcon from '@mui/icons-material/Twitter';
+import FacebookIcon from '@mui/icons-material/Facebook';
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger Icon
 import CloseIcon from '@mui/icons-material/Close';
 
@@ -49,6 +50,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
   <Box
     component={Link}
     to="/"
+    aria-label="BRAINTONE TECHNOLOGY - Home"
     sx={{
       display: 'flex',
       flexDirection: 'column',
@@ -130,6 +132,7 @@ export default function Navbar() {
     google: 'https://www.google.com/search?sca_esv=73a4869cd1a8b769&sxsrf=ANbL-n53pO9e7AARfsxU7U2lxF7vyY211A:1770028042373&si=AL3DRZEsmMGCryMMFSHJ3StBhOdZ2-6yYkXd_doETEE1OR-qOb5BDM1sSnLuU9e_HlP3noJVzWMCW30sCXPvRZQ5-6Fe6oNwo6e5A8xVAwRMb3s6rhY32Tl5ZoFC_HTkjQUUAdOm85rbyv1UD6LXGo5M22zpUGUBUw%3D%3D&q=Braintone+Technology+Pvt+Ltd+Reviews&sa=X&ved=2ahUKEwij39SlzLqSAxU9TGwGHY0OIcsQ0bkNegQIIhAF&biw=1536&bih=737&dpr=2.5&aic=0',
     instagram: 'https://www.instagram.com/braintone.technology/',
     twitter: 'https://x.com/BraintoneL1707',
+    facebook: 'https://www.facebook.com/profile.php?id=61587490744034',
     linkedin: '#',
   };
 
@@ -175,7 +178,6 @@ export default function Navbar() {
       {/* Drawer Header */}
       <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #eee' }}>
         <BrandLogo isMobile={true} />
-        {/* Removed redundant CloseIcon here as it's now handled by the main toggle button */}
       </Box>
 
       {/* Drawer Links */}
@@ -201,11 +203,11 @@ export default function Navbar() {
               <ListItemText primary="New Laptops" />
             </ListItemButton>
             <ListItemButton component={Link} to="/services/pre-owned-laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><AutorenewIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><AutorenewIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="Pre-Owned Laptops" />
             </ListItemButton>
             <ListItemButton component={Link} to="/repair" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><BuildIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><BuildIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="Repair Services" />
             </ListItemButton>
           </List>
@@ -222,7 +224,7 @@ export default function Navbar() {
         {accessoriesExpanded && (
           <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
             <ListItemButton component={Link} to="/accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
-              <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon fontSize="small" color="primary" /></ListItemIcon>
+              <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="All Laptop Accessories" />
             </ListItemButton>
             <ListItemButton component={Link} to="/mac-accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
@@ -273,10 +275,11 @@ export default function Navbar() {
           >
             Google Reviews
           </Button>
-          <Stack direction="row" spacing={1} justifyContent="center">
-            <IconButton size="small" href={socialLinks.instagram} target="_blank"><InstagramIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.twitter} target="_blank"><TwitterIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.linkedin} target="_blank"><LinkedInIcon /></IconButton>
+          <Stack direction="row" spacing={1} justifyContent="center" aria-label="Social links">
+            <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook"><FacebookIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram"><InstagramIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter"><TwitterIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn"><LinkedInIcon /></IconButton>
           </Stack>
 
           {/* Contact Info in Drawer */}
@@ -335,7 +338,7 @@ export default function Navbar() {
                 <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon sx={{ color: '#e74c3c', fontSize: 18 }} />
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
                   <Box>
                     <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>FORT STORE</Typography>
                     <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sat: 11am-7pm</Typography>
@@ -345,7 +348,7 @@ export default function Navbar() {
                 <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon sx={{ color: '#e74c3c', fontSize: 18 }} />
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
                   <Box>
                     <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>VILE PARLE STORE</Typography>
                     <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sun: 11am-7pm</Typography>
@@ -380,6 +383,7 @@ export default function Navbar() {
                 </Box>
                 <IconButton
                   onClick={handleDrawerToggle}
+                  aria-label="Toggle Navigation"
                   sx={{
                     color: mobileOpen ? '#e74c3c' : '#333',
                     transition: 'all 0.3s ease',
@@ -433,13 +437,13 @@ export default function Navbar() {
                       transformOrigin={{ vertical: 'top', horizontal: 'left' }}
                     >
                       <MenuItem component={Link} to="/laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <LaptopIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> New Laptops
+                        <LaptopIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> New Laptops
                       </MenuItem>
                       <MenuItem component={Link} to="/services/pre-owned-laptops" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <AutorenewIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Pre-Owned Laptops
+                        <AutorenewIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Pre-Owned Laptops
                       </MenuItem>
                       <MenuItem component={Link} to="/repair" onClick={() => setServicesAnchorEl(null)} sx={{ py: 1.8, fontSize: '0.85rem', fontWeight: 600 }}>
-                        <BuildIcon sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Repair Services
+                        <BuildIcon aria-hidden="true" sx={{ mr: 1.5, fontSize: 18, color: '#e74c3c' }} /> Repair Services
                       </MenuItem>
                     </Menu>
                   </Box>
@@ -528,13 +532,16 @@ export default function Navbar() {
                     Google Reviews
                   </Button>
 
-                  <IconButton size="small" href={socialLinks.instagram} target="_blank" sx={{ color: '#333', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook" sx={{ color: '#333', '&:hover': { color: '#4267B2', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                    <FacebookIcon fontSize="small" />
+                  </IconButton>
+                  <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: '#333', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <InstagramIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.twitter} target="_blank" sx={{ color: '#333', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: '#333', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <TwitterIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <LinkedInIcon fontSize="small" />
                   </IconButton>
                 </Stack>

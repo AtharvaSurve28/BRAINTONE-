@@ -24,6 +24,8 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import StarIcon from '@mui/icons-material/Star';
+import PlaceIcon from '@mui/icons-material/Place';
+import PhoneIcon from '@mui/icons-material/Phone';
 import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
@@ -56,29 +58,30 @@ const HomePage = () => {
 
   // Array of background images - your image first, then others
   // Array of hero slides with images and corresponding quotes
+  // Optimized hero slides with WebP format and high-quality settings
   const heroSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&fm=webp',
       title: 'Explore our New Premium Laptops'
     },
     {
-      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'New & Certified Pre-Owned Premium Laptops.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'Expert Repair Services'
     },
     {
-      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&q=80&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1pY3Jvc29mdCUyMGxhcHRvcHN8ZW58MHx8MHx8fDA%3D',
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&fm=webp',
       title: 'Premium Performance, Perfected.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&fm=webp',
       title: 'Premium Laptops & Expert Repair Services'
     },
     {
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80',
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
       title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Pre-Owned)'
     }
   ];
@@ -119,7 +122,7 @@ const HomePage = () => {
             zIndex: 0,
           }}
         >
-          {/* All background images stacked with opacity transitions */}
+          {/* Hero images with high fetchpriority for LCP and WebP support */}
           {heroSlides.map((slide, index) => (
             <Box
               key={index}
@@ -129,14 +132,9 @@ const HomePage = () => {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                backgroundImage: `url(${slide.image})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
                 opacity: index === currentImageIndex ? 1 : 0,
                 transition: 'opacity 1.5s ease-in-out',
-                transform: 'scale(1.05)', // Slight zoom for better coverage
-                // Less dark overlay for better visibility
+                overflow: 'hidden',
                 '&::before': {
                   content: '""',
                   position: 'absolute',
@@ -145,13 +143,30 @@ const HomePage = () => {
                   right: 0,
                   bottom: 0,
                   background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
+                  zIndex: 2,
                 },
               }}
-            />
+            >
+              <Box
+                component="img"
+                src={slide.image}
+                alt="" // Decorative since title is H1
+                fetchpriority={index === 0 ? "high" : "auto"}
+                loading={index === 0 ? "eager" : "lazy"}
+                sx={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  transform: 'scale(1.05)',
+                  willChange: 'opacity, transform',
+                }}
+              />
+            </Box>
           ))}
 
-          {/* Animated gradient overlay - more subtle */}
+          {/* Animated gradient overlay */}
           <Box
+            aria-hidden="true"
             sx={{
               position: 'absolute',
               top: 0,
@@ -161,7 +176,7 @@ const HomePage = () => {
               background: 'linear-gradient(-45deg, rgba(74, 85, 104, 0.2), rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2), rgba(74, 85, 104, 0.2))',
               backgroundSize: '400% 400%',
               animation: 'gradient 15s ease infinite',
-              // More subtle highlights for better image visibility
+              zIndex: 1,
               '&::before': {
                 content: '""',
                 position: 'absolute',
@@ -177,21 +192,21 @@ const HomePage = () => {
 
         <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
           <Typography
-            variant="h2"
+            variant="h1"
             sx={{
-              fontWeight: 700,
+              fontWeight: 900,
               mb: 1,
               pt: 5,
-              fontSize: { xs: '2rem', md: '3rem' },
-              background: 'linear-gradient(45deg, #fff 30%, #e0e0e0 90%)',
+              fontSize: { xs: '2rem', md: '3.5rem' },
+              background: 'linear-gradient(135deg, #fff 30%, #f0f0f0 90%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
-              textShadow: '0 2px 10px rgba(0,0,0,0.3)', // Added shadow for better contrast
-              minHeight: '3.6em', // Reserve height for 2 lines to prevent layout shift
+              textShadow: '0 4px 15px rgba(0,0,0,0.4)',
+              minHeight: '2.5em',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.5s ease-in-out', // Smooth transition for text
+              transition: 'all 0.5s ease-in-out',
             }}
           >
             {heroSlides[currentImageIndex].title}
@@ -253,10 +268,16 @@ const HomePage = () => {
             spacing={1}
             justifyContent="center"
             sx={{ mt: 4 }}
+            role="tablist"
+            aria-label="Hero Image slider navigation"
           >
             {heroSlides.map((_, index) => (
               <Box
                 key={index}
+                role="tab"
+                aria-selected={index === currentImageIndex}
+                aria-label={`Go to slide ${index + 1}`}
+                tabIndex={0}
                 sx={{
                   width: 10,
                   height: 10,
@@ -271,38 +292,11 @@ const HomePage = () => {
                   }
                 }}
                 onClick={() => setCurrentImageIndex(index)}
+                onKeyPress={(e) => { if (e.key === 'Enter') setCurrentImageIndex(index); }}
               />
             ))}
           </Stack>
         </Container>
-
-        {/* Add CSS animations */}
-        <style>{`
-          /* Optimized Animations */
-          @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-          }
-          @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-          }
-          @keyframes zoom {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.1); }
-          }
-          @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-          }
-          @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-            20%, 40%, 60%, 80% { transform: translateX(5px); }
-          }
-        
-        `}</style>
       </Box>
 
       {/* Automatic Banner Slider */}
@@ -383,135 +377,139 @@ const HomePage = () => {
               Whether you're looking for the latest models or a budget-friendly option, we have a laptop for every need and budget.
             </Typography>
 
-            <Stack direction={{ xs: 'column', md: 'row' }} spacing={4} sx={{ mb: 4 }}>
+            <Grid container spacing={4} sx={{ mb: 4, justifyContent: 'center', ml: { md: 2 } }} alignItems="stretch">
               {[
                 {
-                  icon: <LaptopIcon sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
-                  iconColor: '#e74c3c',
-                  title: 'New Laptops',
-                  desc: 'Explore the latest technology from top brands. Powerful performance and pristine condition guaranteed.',
-                  cta: 'Shop New',
+                  title: 'NEW LAPTOPS',
+                  image: 'https://images.unsplash.com/photo-1763162139130-240507e9fad5?q=80&w=800&h=600&fit=crop',
                   link: '/laptops',
+                  color: '#e74c3c'
                 },
                 {
-                  icon: <AutorenewIcon sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
-                  iconColor: '#2980b9',
-                  title: 'Pre-Owned Laptops',
-                  desc: 'Save big with quality refurbished laptops. Expertly restored and tested for reliability.',
-                  cta: 'Shop Pre-Owned',
+                  title: 'PRE-OWNED',
+                  image: 'https://images.unsplash.com/photo-1522202195465-df8a5f26fa15?q=80&w=800&h=600&fit=crop',
                   link: '/pre-owned-laptops',
+                  color: '#27ae60'
                 },
                 {
-                  icon: <BuildIcon sx={{ fontSize: 40 }} />,
-                  iconBg: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
-                  iconColor: '#27ae60',
-                  title: 'Expert Laptop Repairs',
-                  desc: 'Fast, reliable repairs by certified technicians. From hardware fixes to software solutions.',
-                  cta: 'Book a Repair',
+                  title: 'REPAIR SERVICES',
+                  image: 'https://images.unsplash.com/photo-1658240527554-9cf987b4de49?q=80&w=800&h=600&fit=crop',
                   link: '/repair',
+                  color: '#2980b9'
                 },
               ].map((card, idx) => (
-                <Box
-                  key={idx}
-                  component={Link}
-                  to={card.link}
-                  sx={{
-                    textDecoration: 'none',
-                    flex: 1,
-                    display: 'block',
-                  }}
-                >
-                  <Card
+                <Grid item xs={12} md={3.8} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Box
+                    component={Link}
+                    to={card.link}
                     sx={{
-                      p: 3,
-                      textAlign: 'center',
-                      boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
-                      border: '1px solid #f0f0f0',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      borderRadius: 12,
-                      background: 'linear-gradient(145deg, #ffffff, #f8f9fa)',
-                      position: 'relative',
-                      overflow: 'hidden',
-                      '&::before': {
-                        content: '""',
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        height: '4px',
-                        background: card.iconBg,
-                      },
-                      '&:hover': {
-                        transform: 'translateY(-4px) scale(1.02)',
-                        boxShadow: '0 12px 24px rgba(0,0,0,0.15)',
-                        cursor: 'pointer',
-                        // Prevent jitter by extending the hover area downwards
-                        '&::after': {
-                          content: '""',
-                          position: 'absolute',
-                          top: '100%',
-                          left: 0,
-                          width: '100%',
-                          height: '24px',
-                        },
-                      },
+                      textDecoration: 'none',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      width: '100%',
+                      maxWidth: '350px',
                     }}
                   >
-                    <Box
+                    <Paper
+                      elevation={0}
                       sx={{
-                        width: 70,
-                        height: 70,
-                        borderRadius: '50%',
-                        background: card.iconBg,
+                        p: 2,
+                        borderRadius: '24px',
+                        background: '#f8f9fa',
+                        border: '1px solid #eee',
+                        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                        overflow: 'hidden',
+                        height: '100%',
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        justifyContent: 'center',
-                        mx: 'auto',
-                        mb: 2,
-                        color: card.iconColor,
-                        boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
-                      }}
-                    >
-                      {card.icon}
-                    </Box>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 1.5, fontSize: '1.1rem' }}>
-                      {card.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary" sx={{ mb: 2.5, lineHeight: 1.6, minHeight: '60px', fontSize: '0.875rem' }}>
-                      {card.desc}
-                    </Typography>
-                    <Button
-                      component={Link}
-                      to={card.link}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                      }}
-                      variant="contained"
-                      size="small"
-                      sx={{
-                        background: card.iconBg,
-                        color: card.iconColor,
                         '&:hover': {
-                          background: 'linear-gradient(135deg, #ddd, #fff)',
-                          transform: 'translateY(-2px)',
+                          transform: 'translateY(-10px)',
+                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                          borderColor: card.color,
                         },
-                        textTransform: 'none',
-                        fontWeight: 600,
-                        px: 3,
-                        py: 0.8,
-                        fontSize: '0.875rem',
-                        borderRadius: 8,
-                        transition: 'all 0.3s ease',
                       }}
                     >
-                      {card.cta}
-                    </Button>
-                  </Card>
-                </Box>
+                      {/* Image Container */}
+                      <Box
+                        sx={{
+                          width: '100%',
+                          aspectRatio: '4/3',
+                          borderRadius: '16px',
+                          overflow: 'hidden',
+                          mb: 3,
+                          boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
+                        }}
+                      >
+                        <Box
+                          component="img"
+                          src={card.image}
+                          alt={card.title}
+                          sx={{
+                            width: '100%',
+                            height: '100%',
+                            objectFit: 'cover',
+                          }}
+                        />
+                      </Box>
+
+                      {/* Brand Logo Integration */}
+                      <Box sx={{ textAlign: 'center', mb: 2 }}>
+                        <Typography
+                          variant="h6"
+                          sx={{
+                            fontWeight: 900,
+                            color: '#1a1a1a',
+                            fontSize: '1.2rem',
+                            letterSpacing: '1px',
+                            mb: 0.5
+                          }}
+                        >
+                          BRAINTONE
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '0.6rem',
+                            fontWeight: 700,
+                            color: '#666',
+                            letterSpacing: '2px',
+                            textTransform: 'uppercase'
+                          }}
+                        >
+                          Premium Technology
+                        </Typography>
+                        <Box
+                          sx={{
+                            width: '40px',
+                            height: '2px',
+                            background: card.color,
+                            mx: 'auto',
+                            mt: 1,
+                            borderRadius: '1px'
+                          }}
+                        />
+                      </Box>
+
+                      {/* Title */}
+                      <Typography
+                        variant="h5"
+                        sx={{
+                          fontWeight: 800,
+                          color: '#2d3748',
+                          mt: 'auto',
+                          mb: 2,
+                          fontSize: '1.4rem',
+                          textAlign: 'center',
+                          letterSpacing: '1px'
+                        }}
+                      >
+                        {card.title}
+                      </Typography>
+                    </Paper>
+                  </Box>
+                </Grid>
               ))}
-            </Stack>
+            </Grid>
           </Container>
         </Box>
       </FadeInSection>
@@ -616,7 +614,7 @@ const HomePage = () => {
                       },
                     ].map((item, idx) => (
                       <Stack key={idx} direction="row" spacing={2}>
-                        <CheckCircleIcon sx={{ fontSize: 30, color: "#e74c3c" }} />
+                        <CheckCircleIcon aria-hidden="true" sx={{ fontSize: 30, color: "#e74c3c" }} />
                         <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.6 }}>
                           <strong>{item.title}</strong> {item.desc}
                         </Typography>
@@ -666,17 +664,17 @@ const HomePage = () => {
                   <Stack spacing={4}>
                     {[
                       {
-                        icon: <GroupIcon />,
+                        icon: <GroupIcon aria-hidden="true" />,
                         title: "Expert Team",
                         desc: "Experienced technicians and professionals."
                       },
                       {
-                        icon: <VerifiedUserIcon />,
+                        icon: <VerifiedUserIcon aria-hidden="true" />,
                         title: "Quality Assurance",
                         desc: "High-quality diagnostic tools and parts."
                       },
                       {
-                        icon: <HeadsetMicIcon />,
+                        icon: <HeadsetMicIcon aria-hidden="true" />,
                         title: "Support",
                         desc: "Transparent communication and service."
                       }
@@ -743,7 +741,8 @@ const HomePage = () => {
         {/* All About BRAINTONE - WITH AUTO MOTION EFFECTS */}
         <FadeInSection fullWidth>
           <Box sx={{
-            py: { xs: 8, md: 15 },
+            pt: { xs: 4, md: 6 },
+            pb: { xs: 8, md: 15 },
             position: 'relative',
             overflow: 'hidden',
             '&::after': {
@@ -795,7 +794,7 @@ const HomePage = () => {
                   flexDirection: { xs: 'column', md: 'row' },
                   alignItems: 'center',
                   gap: { xs: 4, md: 8 },
-                  mb: { xs: 8, md: 12 }
+                  mb: { xs: 4, md: 6 }
                 }}>
                   {/* Text Content - LEFT */}
                   <Box sx={{ flex: 1, minHeight: { md: 400 } }}>
@@ -886,14 +885,19 @@ const HomePage = () => {
                     <Box sx={{
                       position: 'relative',
                       width: '100%',
-                      height: { xs: 300, md: 400 },
+                      aspectRatio: '16 / 9',
+                      height: { xs: 'auto', md: 400 },
+                      bgcolor: 'rgba(0,0,0,0.05)', // Placeholder color
+                      borderRadius: 2,
+                      overflow: 'hidden'
                     }}>
                       <VideoInView
                         src="/videos/All_About_Braintone1.mp4"
                         muted
                         loop
                         playsInline
-                        preload="metadata"
+                        preload="none"
+                        playOnClick={true}
                         sx={{
                           width: '100%',
                           height: '100%',
@@ -910,7 +914,7 @@ const HomePage = () => {
 
               {/* Divider */}
               <Box sx={{ background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' }}>
-                <Divider sx={{ my: { xs: 6, md: 8 } }} />
+                <Divider sx={{ my: { xs: 3, md: 4 } }} />
               </Box>
 
               {/* Section 2: Pre-Owned Laptops - Image Left, Text Right */}
@@ -930,7 +934,9 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                     borderRadius: 2,
                     overflow: 'hidden'
@@ -940,7 +946,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1146,8 +1153,10 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
                     borderRadius: 2,
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     overflow: 'hidden',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)'
                   }}>
@@ -1156,7 +1165,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1176,6 +1186,7 @@ const HomePage = () => {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
+                      pointerEvents: 'none',
                     }}>
                       <Typography
                         variant="h5"
@@ -1213,7 +1224,9 @@ const HomePage = () => {
                   <Box sx={{
                     position: 'relative',
                     width: '100%',
-                    height: { xs: 300, md: 400 },
+                    aspectRatio: '16 / 9',
+                    height: { xs: 'auto', md: 400 },
+                    bgcolor: 'rgba(0,0,0,0.05)',
                     boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
                     borderRadius: 2,
                     overflow: 'hidden'
@@ -1223,7 +1236,8 @@ const HomePage = () => {
                       muted
                       loop
                       playsInline
-                      preload="metadata"
+                      preload="none"
+                      playOnClick={true}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1248,6 +1262,7 @@ const HomePage = () => {
                       color: 'white',
                       fontWeight: 'bold',
                       animation: 'float 3s ease-in-out infinite',
+                      pointerEvents: 'none',
                     }}>
                       <Typography variant="h6">✓</Typography>
                     </Box>
@@ -1265,6 +1280,7 @@ const HomePage = () => {
                       color: 'white',
                       fontWeight: 'bold',
                       animation: 'float 3s ease-in-out infinite 1s',
+                      pointerEvents: 'none',
                     }}>
                       <Typography variant="h6">+</Typography>
                     </Box>
@@ -1546,11 +1562,16 @@ const HomePage = () => {
               </Box>
 
               {/* Slide Indicators */}
-              <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }}>
+              <Stack direction="row" spacing={1} justifyContent="center" sx={{ mb: 4 }} role="tablist" aria-label="Feedback slider navigation">
                 {feedbackImages.map((_, index) => (
                   <Box
                     key={index}
+                    role="tab"
+                    aria-selected={index === currentFeedbackIndex}
+                    aria-label={`Go to feedback ${index + 1}`}
+                    tabIndex={0}
                     onClick={() => setCurrentFeedbackIndex(index)}
+                    onKeyPress={(e) => { if (e.key === 'Enter') setCurrentFeedbackIndex(index); }}
                     sx={{
                       width: index === currentFeedbackIndex ? 24 : 8,
                       height: 8,
