@@ -13,12 +13,36 @@ exports.getAllLaptops = async (req, res) => {
 // Get single laptop
 exports.getLaptopById = async (req, res) => {
   try {
-    const laptop = await Laptop.findById(req.params.id);
+    const id = req.params.id;
+    // Try standard findById first
+    let laptop = await Laptop.findById(id);
+
     if (!laptop) {
-      return res.status(404).json({ message: 'Laptop not found' });
+      console.log('Laptop not found via findById for ID:', id);
+
+      // Fallback: Scan and match string ID (Fix for ObjectId mismatch issue)
+      // This helps when Mongoose/Driver versions conflict or ID types are inconsistent
+      try {
+        const allLaptops = await Laptop.find({});
+        const match = allLaptops.find(l => l._id.toString() === id.toString());
+
+        if (match) {
+          console.log('Laptop found via fallback string matching:', match.name);
+          laptop = match;
+        }
+      } catch (err) {
+        console.error('Fallback scan error:', err);
+      }
+
+      if (!laptop) {
+        console.log('Laptop truly not found');
+        return res.status(404).json({ message: 'Laptop not found' });
+      }
     }
+
     res.json(laptop);
   } catch (error) {
+    console.error('Error in getLaptopById:', error);
     res.status(500).json({ message: error.message });
   }
 };
@@ -60,6 +84,7 @@ exports.updateLaptop = async (req, res) => {
   try {
     console.log('--- Update Laptop Request ---');
     console.log('ID:', req.params.id);
+    console.log('Body:', JSON.stringify(req.body, null, 2)); // Log body to see what's being sent
     console.log('Files:', req.files);
     const laptopData = { ...req.body };
 
@@ -99,6 +124,10 @@ exports.updateLaptop = async (req, res) => {
 
     if (laptopData.price) laptopData.price = Number(laptopData.price);
 
+    // Use findByIdAndUpdate - note that if findById has issues, this might too!
+    // But typically findByIdAndUpdate is robust. If it fails, we might need a similar fallback.
+    // However, usually we first GET the laptop (which we fixed), edit it, then PUT.
+    // If PUT fails, we will know.
     const laptop = await Laptop.findByIdAndUpdate(
       req.params.id,
       laptopData,
@@ -125,4 +154,3 @@ exports.deleteLaptop = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-

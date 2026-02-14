@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 
 const laptopSchema = new mongoose.Schema({
   // REQUIRED FIELDS:
+  // REQUIRED FIELDS:
   brand: { type: String, required: true },
-  series: { type: String, required: true },
-  category: { type: String, required: true },
   name: { type: String, required: true },
-  price: { type: Number, required: true },
+
+  // OPTIONAL FIELDS:
+  series: { type: String },
+  category: { type: String },
+  price: { type: Number },
 
   // OPTIONAL BUT IMPORTANT:
   processor: String,

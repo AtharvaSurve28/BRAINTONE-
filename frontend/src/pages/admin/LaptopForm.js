@@ -78,6 +78,7 @@ const LaptopForm = () => {
 
   const fetchLaptop = async () => {
     try {
+      console.log('Fetching laptop details for ID:', id);
       const token = localStorage.getItem('adminToken');
       const response = await fetch(`${API_BASE_URL}/api/admin/laptops/${id}`, {
         headers: {
@@ -85,13 +86,21 @@ const LaptopForm = () => {
         },
       });
 
+      console.log('Fetch response status:', response.status);
+
       if (response.status === 401) {
         localStorage.removeItem('adminToken');
         navigate('/admin/login');
         return;
       }
 
+      if (!response.ok) {
+        const errData = await response.json();
+        throw new Error(errData.message || 'Failed to fetch laptop details');
+      }
+
       const laptop = await response.json();
+      console.log('Fetched laptop data:', laptop);
 
       // Convert arrays to strings for form
       setFormData({
@@ -105,7 +114,8 @@ const LaptopForm = () => {
         setPreviews(laptop.images.map(img => img.startsWith('http') ? img : `${API_BASE_URL}${img}`));
       }
     } catch (err) {
-      setError('Failed to fetch laptop');
+      console.error('Error fetching laptop:', err);
+      setError(err.message || 'Failed to fetch laptop');
     } finally {
       setFetching(false);
     }
@@ -308,11 +318,10 @@ const LaptopForm = () => {
                 <TextField
                   fullWidth
                   select
-                  label="Series *"
+                  label="Series"
                   name="series"
                   value={formData.series || ''}
                   onChange={handleChange}
-                  required
                   disabled={!formData.brand}
                 >
                   <MenuItem value="">
@@ -330,11 +339,10 @@ const LaptopForm = () => {
                 <TextField
                   fullWidth
                   select
-                  label="Category *"
+                  label="Category"
                   name="category"
                   value={formData.category || ''}
                   onChange={handleChange}
-                  required
                 >
                   <MenuItem value="">
                     <em>Select Category</em>
@@ -350,12 +358,11 @@ const LaptopForm = () => {
               <Grid size={{ xs: 12, sm: 6 }}>
                 <TextField
                   fullWidth
-                  label="Price (₹) *"
+                  label="Price (₹)"
                   name="price"
                   type="number"
                   value={formData.price}
                   onChange={handleChange}
-                  required
                 />
               </Grid>
 
@@ -450,7 +457,7 @@ const LaptopForm = () => {
 
               <Grid size={12}>
                 <Typography variant="subtitle1" gutterBottom fontWeight="600">
-                  Laptop Photos (Max 4) *
+                  Laptop Photos (Max 4)
                 </Typography>
                 <Button
                   variant="outlined"
