@@ -586,6 +586,9 @@ const AdminDashboard = () => {
                   </TableRow>
                 ) : (
                   filteredLaptops.map((laptop) => {
+                    // Debug log
+                    // console.log('Rendering laptop row:', laptop?.name, laptop?._id);
+
                     // Normalize category for display
                     let displayCategory = laptop.category || 'Uncategorized';
                     if (displayCategory.toLowerCase().includes('mid') || displayCategory.toLowerCase().includes('mid-range')) {
