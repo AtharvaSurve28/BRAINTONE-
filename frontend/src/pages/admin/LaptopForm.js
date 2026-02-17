@@ -28,7 +28,7 @@ const LaptopForm = () => {
   const [formData, setFormData] = useState({
     brand: '',
     series: '',
-    category: '',
+    category: [],
     name: '',
     price: '',
     processor: '',
@@ -78,15 +78,12 @@ const LaptopForm = () => {
 
   const fetchLaptop = async () => {
     try {
-      console.log('Fetching laptop details for ID:', id);
       const token = localStorage.getItem('adminToken');
       const response = await fetch(`${API_BASE_URL}/api/admin/laptops/${id}`, {
         headers: {
           'Authorization': `Bearer ${token}`,
         },
       });
-
-      console.log('Fetch response status:', response.status);
 
       if (response.status === 401) {
         localStorage.removeItem('adminToken');
@@ -100,13 +97,13 @@ const LaptopForm = () => {
       }
 
       const laptop = await response.json();
-      console.log('Fetched laptop data:', laptop);
 
       // Convert arrays to strings for form
       setFormData({
         ...laptop,
         images: Array.isArray(laptop.images) ? laptop.images : [], // Keep as array for editing check
         specs: Array.isArray(laptop.specs) ? laptop.specs.join(', ') : laptop.specs || '',
+        category: Array.isArray(laptop.category) ? laptop.category : (laptop.category ? [laptop.category] : []),
         price: laptop.price || '',
       });
 
@@ -198,6 +195,8 @@ const LaptopForm = () => {
         if (key === 'specs') {
           const specsArray = formData.specs.split(',').map(spec => spec.trim()).filter(Boolean);
           formDataToSend.append('specs', JSON.stringify(specsArray));
+        } else if (key === 'category') {
+          formDataToSend.append('category', JSON.stringify(formData.category));
         } else {
           formDataToSend.append(key, formData[key]);
         }
@@ -244,7 +243,10 @@ const LaptopForm = () => {
           navigate('/admin/dashboard');
         }, 1500);
       } else {
-        setError(data.message || 'Failed to save laptop');
+        const errorMessage = typeof data.message === 'object'
+          ? JSON.stringify(data.message)
+          : (data.message || 'Failed to save laptop');
+        setError(errorMessage);
       }
     } catch (err) {
       console.error('Submit error:', err);
@@ -341,11 +343,21 @@ const LaptopForm = () => {
                   select
                   label="Category"
                   name="category"
-                  value={formData.category || ''}
+                  value={formData.category} // Ensure it is an array
                   onChange={handleChange}
+                  SelectProps={{
+                    multiple: true,
+                    renderValue: (selected) => (
+                      <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                        {selected.map((value) => (
+                          <Chip key={value} label={value} size="small" />
+                        ))}
+                      </Box>
+                    ),
+                  }}
                 >
-                  <MenuItem value="">
-                    <em>Select Category</em>
+                  <MenuItem value="" disabled>
+                    <em>Select Categories</em>
                   </MenuItem>
                   {categories.map((cat) => (
                     <MenuItem key={cat} value={cat}>

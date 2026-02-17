@@ -74,7 +74,7 @@ router.post('/laptops', authMiddleware, (req, res, next) => {
       return res.status(400).json({ message: `Upload error: ${err.message}` });
     } else if (err) {
       console.error('Unknown upload error:', err);
-      return res.status(400).json({ message: err });
+      return res.status(400).json({ message: err.message || 'Unknown upload error' });
     }
     next();
   });
@@ -89,7 +89,7 @@ router.put('/laptops/:id', authMiddleware, (req, res, next) => {
       return res.status(400).json({ message: `Upload error: ${err.message}` });
     } else if (err) {
       console.error('Unknown upload error:', err);
-      return res.status(400).json({ message: err });
+      return res.status(400).json({ message: err.message || 'Unknown upload error' });
     }
     next();
   });

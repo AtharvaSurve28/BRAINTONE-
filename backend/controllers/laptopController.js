@@ -69,6 +69,20 @@ exports.createLaptop = async (req, res) => {
       }
     }
 
+    // Handle category parsing
+    if (laptopData.category) {
+      if (typeof laptopData.category === 'string') {
+        try {
+          const parsed = JSON.parse(laptopData.category);
+          laptopData.category = Array.isArray(parsed) ? parsed : [laptopData.category];
+        } catch (e) {
+          laptopData.category = laptopData.category.split(',').map(s => s.trim()).filter(Boolean);
+        }
+      } else if (!Array.isArray(laptopData.category)) {
+        laptopData.category = [laptopData.category];
+      }
+    }
+
     if (laptopData.price) laptopData.price = Number(laptopData.price);
 
     const laptop = new Laptop(laptopData);
@@ -122,23 +136,38 @@ exports.updateLaptop = async (req, res) => {
       }
     }
 
+    // Handle category parsing
+    if (laptopData.category) {
+      if (typeof laptopData.category === 'string') {
+        try {
+          const parsed = JSON.parse(laptopData.category);
+          laptopData.category = Array.isArray(parsed) ? parsed : [laptopData.category];
+        } catch (e) {
+          laptopData.category = laptopData.category.split(',').map(s => s.trim()).filter(Boolean);
+        }
+      } else if (!Array.isArray(laptopData.category)) {
+        laptopData.category = [laptopData.category];
+      }
+    }
+
     if (laptopData.price) laptopData.price = Number(laptopData.price);
 
     // Use findByIdAndUpdate - note that if findById has issues, this might too!
     // But typically findByIdAndUpdate is robust. If it fails, we might need a similar fallback.
     // However, usually we first GET the laptop (which we fixed), edit it, then PUT.
     // If PUT fails, we will know.
-    const laptop = await Laptop.findByIdAndUpdate(
+    const updatedLaptop = await Laptop.findByIdAndUpdate(
       req.params.id,
       laptopData,
       { new: true }
     );
-    if (!laptop) {
+    if (!updatedLaptop) {
       return res.status(404).json({ message: 'Laptop not found' });
     }
-    res.json(laptop);
+    res.json(updatedLaptop);
   } catch (error) {
-    res.status(400).json({ message: error.message });
+    console.error('Error updating laptop:', error);
+    res.status(500).json({ message: error.message });
   }
 };
 

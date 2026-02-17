@@ -78,15 +78,19 @@ const AdminDashboard = () => {
     let topLaptop = laptops[0];
 
     laptops.forEach(laptop => {
-      // Normalize categories - combine all mid-range variations into one
-      let category = laptop.category || 'Uncategorized';
+      // Normalize categories - handle array or string
+      const cats = Array.isArray(laptop.category)
+        ? laptop.category
+        : (laptop.category ? [laptop.category] : ['Uncategorized']);
 
-      // Combine all mid-range variations
-      if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
-        category = 'Mid-Range';
-      }
-
-      categories[category] = (categories[category] || 0) + 1;
+      cats.forEach(c => {
+        let category = c;
+        // Combine all mid-range variations
+        if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
+          category = 'Mid-Range';
+        }
+        categories[category] = (categories[category] || 0) + 1;
+      });
 
       // Brands
       const brand = laptop.brand || 'Unknown';
@@ -205,11 +209,18 @@ const AdminDashboard = () => {
   // Filter by category and brand
   const filteredLaptops = laptops.filter(laptop => {
     // Category filtering
-    let category = laptop.category || 'Uncategorized';
-    if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
-      category = 'Mid-Range';
-    }
-    const categoryMatch = activeFilter === 'all' || category.toLowerCase() === activeFilter.toLowerCase();
+    const laptopCategories = Array.isArray(laptop.category)
+      ? laptop.category
+      : (laptop.category ? [laptop.category] : ['Uncategorized']);
+
+    // Check if any of the laptop's categories match the active filter
+    const categoryMatch = activeFilter === 'all' || laptopCategories.some(c => {
+      let normalized = c;
+      if (normalized.toLowerCase().includes('mid') || normalized.toLowerCase().includes('mid-range')) {
+        normalized = 'Mid-Range';
+      }
+      return normalized.toLowerCase() === activeFilter.toLowerCase();
+    });
 
     // Brand filtering
     const brand = laptop.brand || 'Unknown';
@@ -241,12 +252,18 @@ const AdminDashboard = () => {
   const getUniqueCategories = () => {
     const categorySet = new Set();
     laptops.forEach(laptop => {
-      let category = laptop.category || 'Uncategorized';
-      // Normalize mid-range categories
-      if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
-        category = 'Mid-Range';
-      }
-      categorySet.add(category);
+      const cats = Array.isArray(laptop.category)
+        ? laptop.category
+        : (laptop.category ? [laptop.category] : ['Uncategorized']);
+
+      cats.forEach(c => {
+        let category = c;
+        // Normalize mid-range categories
+        if (category.toLowerCase().includes('mid') || category.toLowerCase().includes('mid-range')) {
+          category = 'Mid-Range';
+        }
+        categorySet.add(category);
+      });
     });
     return Array.from(categorySet).sort();
   };
@@ -586,15 +603,6 @@ const AdminDashboard = () => {
                   </TableRow>
                 ) : (
                   filteredLaptops.map((laptop) => {
-                    // Debug log
-                    // console.log('Rendering laptop row:', laptop?.name, laptop?._id);
-
-                    // Normalize category for display
-                    let displayCategory = laptop.category || 'Uncategorized';
-                    if (displayCategory.toLowerCase().includes('mid') || displayCategory.toLowerCase().includes('mid-range')) {
-                      displayCategory = 'Mid-Range';
-                    }
-
                     return (
                       <TableRow
                         key={laptop._id}
@@ -628,16 +636,35 @@ const AdminDashboard = () => {
                           </Box>
                         </TableCell>
                         <TableCell>
-                          <Chip
-                            label={displayCategory}
-                            size="small"
-                            sx={{
-                              backgroundColor: alpha(getCategoryColor(displayCategory), 0.15),
-                              color: '#333333', // Dark text for category chips
-                              fontWeight: 500,
-                              border: `1px solid ${alpha(getCategoryColor(displayCategory), 0.3)}`
-                            }}
-                          />
+                          {(() => {
+                            const cats = Array.isArray(laptop.category)
+                              ? laptop.category
+                              : (laptop.category ? [laptop.category] : ['Uncategorized']);
+
+                            return (
+                              <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
+                                {cats.map((cat, idx) => {
+                                  let displayCategory = cat;
+                                  if (displayCategory.toLowerCase().includes('mid') || displayCategory.toLowerCase().includes('mid-range')) {
+                                    displayCategory = 'Mid-Range';
+                                  }
+                                  return (
+                                    <Chip
+                                      key={idx}
+                                      label={displayCategory}
+                                      size="small"
+                                      sx={{
+                                        backgroundColor: alpha(getCategoryColor(displayCategory), 0.15),
+                                        color: '#333333',
+                                        fontWeight: 500,
+                                        border: `1px solid ${alpha(getCategoryColor(displayCategory), 0.3)}`
+                                      }}
+                                    />
+                                  );
+                                })}
+                              </Box>
+                            );
+                          })()}
                         </TableCell>
                         <TableCell>
                           <Typography variant="body2" fontWeight={600} color="#333333">
@@ -795,7 +822,7 @@ const AdminDashboard = () => {
           </DialogActions>
         </Dialog>
       </Container>
-    </Box>
+    </Box >
   );
 };
 

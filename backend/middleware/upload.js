@@ -14,7 +14,7 @@ const storage = new CloudinaryStorage({
     cloudinary: cloudinary,
     params: {
         folder: 'braintone_laptops',
-        allowed_formats: ['jpg', 'png', 'jpeg', 'webp'],
+        allowed_formats: ['jpg', 'png', 'jpeg', 'webp', 'avif'],
         transformation: [{ width: 1000, height: 1000, crop: 'limit' }]
     },
 });
