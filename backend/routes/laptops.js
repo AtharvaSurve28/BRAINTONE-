@@ -153,6 +153,14 @@ const brandSeriesStructures = {
       logoColor: '#DC2626',
       categories: ['Gaming'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'aio',
+      displayName: 'All in One (AIO)',
+      description: 'Space-saving desktop computers with powerful performance and sleek design.',
+      logoColor: '#0096D6',
+      categories: ['Entry Level', 'Mid-Range', 'Consumer', 'Commercial', 'Premium'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
 
@@ -205,6 +213,14 @@ const brandSeriesStructures = {
       logoColor: '#E2231A',
       categories: ['Entry Level', 'Commercial'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'aio',
+      displayName: 'All in One (AIO)',
+      description: 'Stylish all-in-one desktops for home and office with space-saving design.',
+      logoColor: '#E2231A',
+      categories: ['Entry Level', 'Mid-Range', 'Consumer', 'Commercial'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
 
@@ -248,6 +264,14 @@ const brandSeriesStructures = {
       description: 'Professional laptops designed for content creators with color-accurate displays.',
       logoColor: '#000000',
       categories: ['Premium'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'aio',
+      displayName: 'All in One (AIO)',
+      description: 'Powerful all-in-one desktops with stunning displays for work and play.',
+      logoColor: '#000000',
+      categories: ['Consumer', 'Commercial', 'Premium'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
