@@ -55,9 +55,9 @@ const LaptopForm = () => {
 
   const brandSeries = {
     dell: ['inspiron', 'vostro', 'latitude', 'xps', 'gseries', 'alienware'],
-    hp: ['15s', 'pavilion', 'envy', 'probook', 'omen', 'victus', 'gseries'],
-    lenovo: ['ideapad', 'thinkpad', 'legion', 'loq', 'thinkbook', 'vseries', 'yoga'],
-    asus: ['vivobook', 'zenbook', 'rog', 'tuf', 'proart'],
+    hp: ['15s', 'pavilion', 'envy', 'probook', 'omen', 'victus', 'gseries', 'aio'],
+    lenovo: ['ideapad', 'thinkpad', 'legion', 'loq', 'thinkbook', 'vseries', 'yoga', 'aio'],
+    asus: ['vivobook', 'zenbook', 'rog', 'tuf', 'proart', 'aio'],
     acer: ['aspire', 'swift', 'predator', 'nitro', 'travelmate'],
     apple: ['macbookair', 'macbookpro'],
     msi: ['katana', 'gseries', 'victor', 'raider', 'titan'],
@@ -454,6 +454,50 @@ const LaptopForm = () => {
                   <MenuItem value="new">New</MenuItem>
                   <MenuItem value="used">Used</MenuItem>
                 </TextField>
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Warranty"
+                  name="warranty"
+                  value={formData.warranty}
+                  onChange={handleChange}
+                  placeholder="e.g., 1 Year On-site"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Keyboard"
+                  name="keyboard"
+                  value={formData.keyboard}
+                  onChange={handleChange}
+                  placeholder="e.g., Backlit, RGB"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Laptop Color"
+                  name="color"
+                  value={formData.color}
+                  onChange={handleChange}
+                  placeholder="e.g., Silver, Carbon Black"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Operating System"
+                  name="os"
+                  value={formData.os}
+                  onChange={handleChange}
+                  placeholder="e.g., Windows 11 Home"
+                />
               </Grid>
 
               <Grid size={12}>
