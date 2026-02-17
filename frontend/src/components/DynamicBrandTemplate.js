@@ -433,8 +433,101 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
               ⚙️ Key Specifications
             </Typography>
             <Grid container spacing={2}>
+              {/* Prioritize New structured fields */}
+              {laptop.os && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>OS:</strong> {laptop.os}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.processor && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Processor:</strong> {laptop.processor}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.ram && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>RAM:</strong> {laptop.ram}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.storage && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Storage:</strong> {laptop.storage}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.graphics && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Graphics:</strong> {laptop.graphics}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.display && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Display:</strong> {laptop.display}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.keyboard && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Keyboard:</strong> {laptop.keyboard}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.color && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Color:</strong> {laptop.color}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+              {laptop.warranty && (
+                <Grid item xs={12} sm={6}>
+                  <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 1.5, p: 1.5, borderRadius: 1, backgroundColor: alpha('#000000', 0.01), height: '100%' }}>
+                    <CheckCircle sx={{ fontSize: '1.2rem', color: category?.color || '#3B82F6', flexShrink: 0, mt: 0.25 }} />
+                    <Typography variant="body1" sx={{ lineHeight: 1.4, fontSize: { xs: '0.9rem', md: '1rem' } }}>
+                      <strong>Warranty:</strong> {laptop.warranty}
+                    </Typography>
+                  </Box>
+                </Grid>
+              )}
+
+              {/* Remaining generic specs */}
               {laptop.specs?.map((spec, index) => (
-                <Grid item xs={12} sm={6} key={index}>
+                <Grid item xs={12} sm={6} key={`spec-${index}`}>
                   <Box sx={{
                     display: 'flex',
                     alignItems: 'flex-start',

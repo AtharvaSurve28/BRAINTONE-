@@ -456,6 +456,50 @@ const LaptopForm = () => {
                 </TextField>
               </Grid>
 
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Warranty"
+                  name="warranty"
+                  value={formData.warranty}
+                  onChange={handleChange}
+                  placeholder="e.g., 1 Year On-site"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Keyboard"
+                  name="keyboard"
+                  value={formData.keyboard}
+                  onChange={handleChange}
+                  placeholder="e.g., Backlit, RGB"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Laptop Color"
+                  name="color"
+                  value={formData.color}
+                  onChange={handleChange}
+                  placeholder="e.g., Silver, Carbon Black"
+                />
+              </Grid>
+
+              <Grid size={{ xs: 12, sm: 6 }}>
+                <TextField
+                  fullWidth
+                  label="Operating System"
+                  name="os"
+                  value={formData.os}
+                  onChange={handleChange}
+                  placeholder="e.g., Windows 11 Home"
+                />
+              </Grid>
+
               <Grid size={12}>
                 <TextField
                   fullWidth

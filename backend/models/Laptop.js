@@ -21,6 +21,10 @@ const laptopSchema = new mongoose.Schema({
   images: [String],
   bestFor: String,
   condition: { type: String, default: 'new' },
+  warranty: String,
+  keyboard: String,
+  color: String,
+  os: String,
   specs: [String]
 }, { timestamps: true });
 
