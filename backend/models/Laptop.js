@@ -9,7 +9,7 @@ const laptopSchema = new mongoose.Schema({
 
   // OPTIONAL FIELDS:
   series: { type: String },
-  category: { type: String },
+  category: { type: [String] },
   price: { type: Number },
 
   // OPTIONAL BUT IMPORTANT:

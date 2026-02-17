@@ -782,7 +782,6 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
   const fetchBrandData = async () => {
     try {
       setLoading(true);
-      console.log(`Fetching ${brandId} data...`);
       const response = await fetch(`${API_BASE_URL}/api/laptops/brand/${brandId}`);
 
       if (!response.ok) {
@@ -790,8 +789,6 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
       }
 
       const data = await response.json();
-
-      console.log('API Response:', data);
 
       if (data.success) {
         setBrandData(data);

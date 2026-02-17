@@ -23,24 +23,31 @@ const processLaptopsIntoSeries = (laptops, seriesStructure) => {
     const series = seriesStructure.find(s => s.name === laptop.series?.toLowerCase());
     if (!series) return;
 
-    const categoryKey = mapCategoryToKey(laptop.category);
+    // Handle both array and string categories for backward compatibility
+    const categories = Array.isArray(laptop.category)
+      ? laptop.category
+      : (laptop.category ? [laptop.category] : []);
 
-    if (series[categoryKey]) {
-      series[categoryKey].push({
-        ...laptop,
-        id: laptop._id?.toString() || 'temp-id',
-        price: laptop.price ? `₹${laptop.price.toLocaleString()}` : '₹Price not set',
-        specs: [
-          laptop.processor,
-          laptop.ram,
-          laptop.storage,
-          laptop.display,
-          laptop.graphics
-        ].filter(Boolean),
-        image: laptop.images?.[0] || laptop.image || 'https://via.placeholder.com/400x300',
-        includedIn: [laptop.category || 'general']
-      });
-    }
+    categories.forEach(cat => {
+      const categoryKey = mapCategoryToKey(cat);
+
+      if (series[categoryKey]) {
+        series[categoryKey].push({
+          ...laptop,
+          id: laptop._id?.toString() || 'temp-id',
+          price: laptop.price ? `₹${laptop.price.toLocaleString()}` : '₹Price not set',
+          specs: [
+            laptop.processor,
+            laptop.ram,
+            laptop.storage,
+            laptop.display,
+            laptop.graphics
+          ].filter(Boolean),
+          image: laptop.images?.[0] || laptop.image || 'https://via.placeholder.com/400x300',
+          includedIn: categories
+        });
+      }
+    });
   });
 };
 
@@ -427,7 +434,6 @@ const brandNames = {
 router.get('/brand/:brandId', async (req, res) => {
   try {
     const brandId = req.params.brandId.toLowerCase();
-    console.log(`Fetching ${brandId.toUpperCase()} laptops...`);
 
     // Check if brand is supported
     if (!brandSeriesStructures[brandId]) {
@@ -439,7 +445,6 @@ router.get('/brand/:brandId', async (req, res) => {
 
     // Get laptops from database with optimized query
     const laptops = await Laptop.find({ brand: brandId }).lean();
-    console.log(`Found ${laptops.length} ${brandId.toUpperCase()} laptops`);
 
     // Get series structure for this brand
     const seriesStructure = JSON.parse(JSON.stringify(brandSeriesStructures[brandId]));
