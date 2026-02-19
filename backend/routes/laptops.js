@@ -101,6 +101,22 @@ const brandSeriesStructures = {
       logoColor: '#10B981',
       categories: ['Gaming', 'Premium'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'dc',
+      displayName: 'DC',
+      description: 'Reliable laptops for daily productivity and entertainment.',
+      logoColor: '#007DB8',
+      categories: ['Entry Level', 'Mid-Range', 'Consumer', 'Commercial'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'db',
+      displayName: 'DB',
+      description: 'Durable laptops designed for business and professional use.',
+      logoColor: '#1E3A8A',
+      categories: ['Entry Level', 'Mid-Range', 'Commercial'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }
   ],
 
@@ -259,8 +275,8 @@ const brandSeriesStructures = {
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
-      name: 'proart',
-      displayName: 'ProArt',
+      name: 'creator nb',
+      displayName: 'Creator NB',
       description: 'Professional laptops designed for content creators with color-accurate displays.',
       logoColor: '#000000',
       categories: ['Premium'],
