@@ -275,8 +275,8 @@ const brandSeriesStructures = {
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
-      name: 'proart',
-      displayName: 'ProArt',
+      name: 'creator nb',
+      displayName: 'Creator NB',
       description: 'Professional laptops designed for content creators with color-accurate displays.',
       logoColor: '#000000',
       categories: ['Premium'],
