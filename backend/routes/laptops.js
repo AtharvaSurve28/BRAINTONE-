@@ -283,6 +283,14 @@ const brandSeriesStructures = {
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
+      name: 'expertbook',
+      displayName: 'ExpertBook',
+      description: 'Business-focused laptops with advanced security, durability, and professional features.',
+      logoColor: '#000000',
+      categories: ['Commercial', 'Premium', 'Mid-Range'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
       name: 'aio',
       displayName: 'All in One (AIO)',
       description: 'Powerful all-in-one desktops with stunning displays for work and play.',
