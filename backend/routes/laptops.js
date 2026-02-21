@@ -171,6 +171,14 @@ const brandSeriesStructures = {
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
+      name: 'omnibook',
+      displayName: 'OmniBook',
+      description: 'Premium AI-powered laptops designed for the future of work and productivity.',
+      logoColor: '#0096D6',
+      categories: ['Premium', 'Commercial', 'Consumer'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
       name: 'aio',
       displayName: 'All in One (AIO)',
       description: 'Space-saving desktop computers with powerful performance and sleek design.',

@@ -55,7 +55,7 @@ const LaptopForm = () => {
 
   const brandSeries = {
     dell: ['inspiron', 'vostro', 'latitude', 'xps', 'gseries', 'alienware', 'dc', 'db'],
-    hp: ['15s', 'pavilion', 'envy', 'probook', 'omen', 'victus', 'gseries', 'aio'],
+    hp: ['15s', 'pavilion', 'envy', 'probook', 'omen', 'victus', 'omnibook', 'gseries', 'aio'],
     lenovo: ['ideapad', 'thinkpad', 'legion', 'loq', 'thinkbook', 'vseries', 'yoga', 'aio'],
     asus: ['vivobook', 'zenbook', 'rog', 'tuf', 'expertbook', 'creator nb', 'aio'],
     acer: ['aspire', 'swift', 'predator', 'nitro', 'travelmate'],
