@@ -383,19 +383,83 @@ const brandSeriesStructures = {
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
+      name: 'stealth',
+      displayName: 'Stealth',
+      description: 'Thin and light gaming laptops with premium aesthetics and high-end performance.',
+      logoColor: '#FF0000',
+      categories: ['Gaming', 'Premium', 'Consumer'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'vector',
+      displayName: 'Vector',
+      description: 'High-performance gaming laptops designed for power users and competitive play.',
+      logoColor: '#FF0000',
+      categories: ['Gaming', 'Premium'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'crosshair',
+      displayName: 'Crosshair',
+      description: 'Gaming laptops optimized for shooters and competitive eSports titles.',
+      logoColor: '#FF0000',
+      categories: ['Gaming'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'summit',
+      displayName: 'Summit',
+      description: 'Premium business laptops with elegant design, security, and powerful productivity features.',
+      logoColor: '#000000',
+      categories: ['Commercial', 'Premium'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'prestige',
+      displayName: 'Prestige',
+      description: 'Stylish and slim laptops for content creators and business professionals on the move.',
+      logoColor: '#000000',
+      categories: ['Premium', 'Consumer', 'Commercial'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'thin',
+      displayName: 'Thin',
+      description: 'Budget-friendly, ultra-portable gaming and productivity laptops.',
+      logoColor: '#FF0000',
+      categories: ['Gaming', 'Consumer', 'Entry Level'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'modern',
+      displayName: 'Modern',
+      description: 'Versatile and stylish laptops designed for everyday productivity and students.',
+      logoColor: '#000000',
+      categories: ['Consumer', 'Entry Level', 'Mid-Range'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'venture',
+      displayName: 'Venture',
+      description: 'Professional laptops built for business efficiency and reliable performance.',
+      logoColor: '#000000',
+      categories: ['Commercial', 'Mid-Range'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
+      name: 'cyborg',
+      displayName: 'Cyborg',
+      description: 'Futuristic gaming laptops with unique translucent design and solid performance.',
+      logoColor: '#FF0000',
+      categories: ['Gaming', 'Mid-Range'],
+      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
+    },
+    {
       name: 'gseries',
       displayName: 'G',
       description: 'Gaming laptops with powerful graphics and high refresh displays.',
       logoColor: '#FF0000',
       categories: ['Gaming', 'Premium', 'consumer', 'Mid-Range'],
-      entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
-    },
-    {
-      name: 'victor',
-      displayName: 'Victor',
-      description: 'Ultra-thin gaming laptops with premium design and powerful performance.',
-      logoColor: '#FF0000',
-      categories: ['Gaming', 'Premium'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     },
     {
@@ -409,8 +473,8 @@ const brandSeriesStructures = {
     {
       name: 'titan',
       displayName: 'Titan',
-      description: 'Professional laptops designed for content creators with color-accurate displays.',
-      logoColor: '#000000',
+      description: 'Extreme performance laptops for the most demanding gaming and creative workloads.',
+      logoColor: '#FF0000',
       categories: ['Premium', 'Gaming'],
       entryLevel: [], midrange: [], consumer: [], commercial: [], gaming: [], premium: []
     }

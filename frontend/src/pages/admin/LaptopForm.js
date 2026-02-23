@@ -60,7 +60,7 @@ const LaptopForm = () => {
     asus: ['vivobook', 'zenbook', 'rog', 'tuf', 'expertbook', 'creator nb', 'aio'],
     acer: ['aspire', 'swift', 'predator', 'nitro', 'travelmate'],
     apple: ['macbookair', 'macbookpro'],
-    msi: ['katana', 'gseries', 'victor', 'raider', 'titan'],
+    msi: ['katana', 'stealth', 'vector', 'crosshair', 'summit', 'prestige', 'thin', 'modern', 'venture', 'cyborg', 'gseries', 'raider', 'titan'],
     samsung: ['galaxybook', 'galaxybookpro', 'galaxybook2in1'],
     microsoft: ['surfacepro', 'surfacelaptop', 'surface go']
   };
