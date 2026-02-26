@@ -87,6 +87,22 @@ exports.createLaptop = async (req, res) => {
 
     const laptop = new Laptop(laptopData);
     const newLaptop = await laptop.save();
+
+    // Propagate images to all laptops of the same brand
+    if (newLaptop.images && newLaptop.images.length > 0) {
+      const brandRegex = new RegExp(`^${newLaptop.brand}$`, 'i');
+      const updateResult = await Laptop.updateMany(
+        { brand: brandRegex },
+        {
+          $set: {
+            images: newLaptop.images,
+            image: newLaptop.image
+          }
+        }
+      );
+      console.log(`Propagated images to brand: ${newLaptop.brand}. Modified ${updateResult.modifiedCount} laptops.`);
+    }
+
     res.status(201).json(newLaptop);
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -164,6 +180,22 @@ exports.updateLaptop = async (req, res) => {
     if (!updatedLaptop) {
       return res.status(404).json({ message: 'Laptop not found' });
     }
+
+    // Propagate images to all laptops of the same brand
+    if (updatedLaptop.images && updatedLaptop.images.length > 0) {
+      const brandRegex = new RegExp(`^${updatedLaptop.brand}$`, 'i');
+      const updateResult = await Laptop.updateMany(
+        { brand: brandRegex },
+        {
+          $set: {
+            images: updatedLaptop.images,
+            image: updatedLaptop.image
+          }
+        }
+      );
+      console.log(`Propagated images to brand: ${updatedLaptop.brand}. Modified ${updateResult.modifiedCount} laptops.`);
+    }
+
     res.json(updatedLaptop);
   } catch (error) {
     console.error('Error updating laptop:', error);

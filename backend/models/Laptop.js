@@ -19,6 +19,7 @@ const laptopSchema = new mongoose.Schema({
   display: String,
   graphics: String,
   images: [String],
+  image: String,
   bestFor: String,
   condition: { type: String, default: 'new' },
   warranty: String,
