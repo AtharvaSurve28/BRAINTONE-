@@ -24,23 +24,23 @@ const Contact = () => {
     {
       icon: MailOutline,
       title: 'Email',
-      value: 'info@braintone.com',
+      value: 'shital@braintoneindia.com',
       color: '#e74c3c',
-      link: 'mailto:info@braintone.com',
+      link: 'mailto:shital@braintoneindia.com',
     },
     {
       icon: Phone,
       title: 'Phone (Fort)',
-      value: '+91 81697 98826',
+      value: '+91 9820119113',
       color: '#c0392b',
-      link: 'tel:+918169798826',
+      link: 'tel:+919820119113',
     },
     {
       icon: Phone,
       title: 'Phone (Vile Parle)',
-      value: '+91 92233 33357',
+      value: '+91 9819401313',
       color: '#8B0000',
-      link: 'tel:+919223333357',
+      link: 'tel:+919819401313',
     },
     {
       icon: LocationOn,
@@ -405,10 +405,11 @@ const Contact = () => {
                 Braintone Laptop Services
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-                1st Floor, 17A, Bahubali Bldg, Flora Fountain
+                Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 <br />
+                Showroom: Ground floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai-400001
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-                Phone: 081697 98826
+                Phone: +91 9820119113
               </Typography>
               <Typography variant="caption" sx={{
                 color: '#e74c3c',
@@ -479,10 +480,10 @@ const Contact = () => {
                 Braintone Laptop Services
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-                1st Floor, Prime Mall, Irla, Vile Parle West
+                Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)
               </Typography>
               <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-                Phone: 092233 33357
+                Phone: +91 9819401313
               </Typography>
               <Typography variant="caption" sx={{
                 color: '#c0392b',

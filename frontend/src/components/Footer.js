@@ -169,7 +169,12 @@ const Footer = ({ fullFooter = true }) => {
                                             }}
                                             onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai', '_blank')}
                                         >
-                                            1st Floor, 17A, Bahubali Bldg, Flora Fountain, Fort, Mumbai 400001
+                                            <strong>Head office:</strong> 10/E, 1st floor, 17A, <br />
+                                            Patel building / Bahubali building, <br />
+                                            Horniman circle, Fort, Mumbai - 400001 <br />
+                                            <strong>Showroom:</strong> Ground floor, 17A, <br />
+                                            Patel building / Bahubali building, <br />
+                                            Fort, Mumbai - 400001
                                         </Typography>
                                     </Box>
 
@@ -189,7 +194,9 @@ const Footer = ({ fullFooter = true }) => {
                                             }}
                                             onClick={() => window.open('https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai', '_blank')}
                                         >
-                                            1st Floor, Prime Mall, Irla, Vile Parle West, Mumbai 400056
+                                            <strong>Showroom:</strong> Prime Mall, 1st Floor, <br />
+                                            Off:no 92/96, Irla Road, <br />
+                                            Vile parle(w)
                                         </Typography>
                                     </Box>
                                 </Stack>
@@ -221,8 +228,9 @@ const Footer = ({ fullFooter = true }) => {
                                         <Typography variant="subtitle2" sx={{ color: '#e0e0e0', mb: 0.5 }}>
                                             Contact No.
                                         </Typography>
-                                        <Typography variant="body2" sx={{ color: '#e0e0e0' }}>
-                                            9821212912 / 9892001640
+                                        <Typography variant="body2" sx={{ color: '#e0e0e0', lineHeight: 1.6 }}>
+                                            +91 9820119113 / +91 9819401313 <br />
+                                            +91 9320522227 / +91 9869148656
                                         </Typography>
                                     </Box>
                                 </Stack>

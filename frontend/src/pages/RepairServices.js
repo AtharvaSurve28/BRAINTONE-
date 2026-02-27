@@ -650,10 +650,11 @@ const RepairServices = () => {
               Fort Store
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
-              1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001
+              Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 <br />
+              Showroom: Ground floor, 17A, Patel building / Bahubali building, Cawasji patel street, Horniman circle, Fort, Mumbai-400001
             </Typography>
             <Typography variant="body2" sx={{ fontWeight: 700 }}>
-              Phone: 081697 98826
+              Phone: +91 9820119113
             </Typography>
           </Box>
 
@@ -662,10 +663,10 @@ const RepairServices = () => {
               Vile Parle Store
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', mb: 0.5 }}>
-              1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056
+              Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)
             </Typography>
             <Typography variant="body2" sx={{ fontWeight: 700 }}>
-              Phone: 092233 33357
+              Phone: +91 9819401313
             </Typography>
           </Box>
         </DialogContent>

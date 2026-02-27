@@ -239,11 +239,11 @@ const AboutUs = () => {
     }
   ];
 
-  const fortAddress = "1st Floor, 17A, Bahubali Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Vardhman Chambers, Kala Ghoda, Fort, Mumbai, Maharashtra 400001";
-  const fortPhone = "081697 98826";
+  const fortAddress = "Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 | Showroom: Ground floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai-400001";
+  const fortPhone = "+91 9820119113";
 
-  const villeParleAddress = "1st Floor, Prime Mall, F92/96, Alfa Market, Road, Navpada, Irla, Vile Parle West, Mumbai, Maharashtra 400056";
-  const villeParlePhone = "092233 33357";
+  const villeParleAddress = "Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)";
+  const villeParlePhone = "+91 9819401313";
 
   const reasonsToBuy = [
     {

@@ -141,7 +141,7 @@ export default function Navbar() {
     twitter: 'https://x.com/BraintoneL1707',
     facebook: 'https://www.facebook.com/profile.php?id=61587490744034',
     linkedin: '#',
-    whatsapp: 'https://wa.me/919082014406',
+    whatsapp: 'https://wa.me/919820119113',
   };
 
   const { mode, toggleTheme } = useThemeContext();
@@ -305,7 +305,7 @@ export default function Navbar() {
           <Stack spacing={1}>
             <Stack direction="row" spacing={1} alignItems="center">
               <PhoneIcon fontSize="small" sx={{ color: 'text.secondary' }} />
-              <Typography variant="body2" sx={{ color: 'text.primary' }}>9821212912 / 9892001640</Typography>
+              <Typography variant="body2" sx={{ color: 'text.primary' }}>+91 9820119113 / +91 9819401313</Typography>
             </Stack>
             <Stack direction="row" spacing={1} alignItems="center">
               <AccessTimeIcon fontSize="small" sx={{ color: 'text.secondary' }} />
@@ -352,8 +352,8 @@ export default function Navbar() {
                   </Box>
                   <Box>
                     <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: 'brandRed.main', mb: -0.5 }}>CALL US</Typography>
-                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>81697 98826</Typography>
-                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>90366 51639</Typography>
+                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>+91 9820119113</Typography>
+                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>+91 9819401313</Typography>
                   </Box>
                 </Stack>
 

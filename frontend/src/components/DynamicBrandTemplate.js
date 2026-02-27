@@ -175,15 +175,15 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
   const storeLocations = [
     {
       name: "Fort Store",
-      address: "1st Floor, 17A, Bahubai Bldg, Flora Fountain, 10/E, Cawasji Patel St, next to Varithman Chambers, Kali Ghoda, Fort, Mumbai, Maharashtra 400001",
-      phone: "081697 98826",
+      address: "Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Fort, Mumbai - 400001 | \nShowroom: Ground floor, 17A, Patel building / Bahubali building, Fort, Mumbai-400001",
+      phone: "+91 9820119113",
       googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai",
       timings: "11:00 AM - 7:00 PM (Monday to Saturday)"
     },
     {
       name: "Vile Parle Store",
-      address: "1st Floor, Prime Mall, F92/96, Alfa Market, Road, Naypada, Irla, Vile Parle West, Mumbai, Maharashtra 400056",
-      phone: "092233 333357",
+      address: "Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)",
+      phone: "+91 9819401313",
       googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai",
       timings: "11:00 AM - 7:00 PM (Monday to Sunday)" // Updated timing
     }
