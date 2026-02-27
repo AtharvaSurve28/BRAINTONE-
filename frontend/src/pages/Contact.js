@@ -98,7 +98,7 @@ const Contact = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      bgcolor: '#fafafa',
+      bgcolor: 'background.default',
       position: 'relative',
       overflow: 'hidden',
     }}>
@@ -213,7 +213,7 @@ const Contact = () => {
             sx={{
               fontWeight: 800,
               mb: 6,
-              color: '#8B0000',
+              color: 'brandRed.main',
               position: 'relative',
               '&::after': {
                 content: '""',
@@ -248,8 +248,8 @@ const Contact = () => {
                   flexDirection: 'column',
                   justifyContent: 'center',
                   alignItems: 'center',
-                  background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: '0 8px 25px rgba(231, 76, 60, 0.15)',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 8px 25px rgba(0, 0, 0, 0.4)' : '0 8px 25px rgba(231, 76, 60, 0.15)',
                   transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                   textDecoration: 'none',
                   cursor: info.link ? 'pointer' : 'default',
@@ -269,8 +269,8 @@ const Contact = () => {
                   },
                   '&:hover': info.link ? {
                     transform: 'translateY(-12px) scale(1.05)',
-                    boxShadow: '0 20px 40px rgba(231, 76, 60, 0.25)',
-                    background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                    boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 20px 40px rgba(0, 0, 0, 0.6)' : '0 20px 40px rgba(231, 76, 60, 0.25)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
                     border: '2px solid rgba(231, 76, 60, 0.3)',
                     animation: 'none',
                   } : {},
@@ -294,10 +294,10 @@ const Contact = () => {
                 >
                   <info.icon sx={{ fontSize: 32, color: 'white' }} />
                 </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: '#8B0000' }}>
+                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: 'brandRed.main' }}>
                   {info.title}
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
+                <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
                   {info.value}
                 </Typography>
                 {info.mapsLabel && (
@@ -360,8 +360,8 @@ const Contact = () => {
                 textAlign: 'center',
                 height: '280px',
                 width: '420px',
-                background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                boxShadow: '0 12px 35px rgba(231, 76, 60, 0.2)',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(231, 76, 60, 0.2)',
                 border: '2px solid rgba(231, 76, 60, 0.2)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -384,8 +384,8 @@ const Contact = () => {
                 },
                 '&:hover': {
                   transform: 'translateY(-15px) scale(1.05)',
-                  boxShadow: '0 25px 50px rgba(231, 76, 60, 0.35)',
-                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(231, 76, 60, 0.35)',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
                   border: '2px solid rgba(231, 76, 60, 0.4)',
                   animation: 'none',
                 },
@@ -404,10 +404,10 @@ const Contact = () => {
               <Typography variant="h6" sx={{ color: '#e74c3c', mb: 1, fontWeight: 600 }}>
                 Braintone Laptop Services
               </Typography>
-              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
                 1st Floor, 17A, Bahubali Bldg, Flora Fountain
               </Typography>
-              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
                 Phone: 081697 98826
               </Typography>
               <Typography variant="caption" sx={{
@@ -434,8 +434,8 @@ const Contact = () => {
                 textAlign: 'center',
                 height: '280px',
                 width: '420px',
-                background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                boxShadow: '0 12px 35px rgba(192, 57, 43, 0.2)',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(192, 57, 43, 0.2)',
                 border: '2px solid rgba(192, 57, 43, 0.2)',
                 display: 'flex',
                 flexDirection: 'column',
@@ -458,8 +458,8 @@ const Contact = () => {
                 },
                 '&:hover': {
                   transform: 'translateY(-15px) scale(1.05)',
-                  boxShadow: '0 25px 50px rgba(192, 57, 43, 0.35)',
-                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(192, 57, 43, 0.35)',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
                   border: '2px solid rgba(192, 57, 43, 0.4)',
                   animation: 'none',
                 },
@@ -478,10 +478,10 @@ const Contact = () => {
               <Typography variant="h6" sx={{ color: '#c0392b', mb: 1, fontWeight: 600 }}>
                 Braintone Laptop Services
               </Typography>
-              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 1 }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
                 1st Floor, Prime Mall, Irla, Vile Parle West
               </Typography>
-              <Typography variant="body1" sx={{ color: '#5d5d5d', mb: 3 }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
                 Phone: 092233 33357
               </Typography>
               <Typography variant="caption" sx={{

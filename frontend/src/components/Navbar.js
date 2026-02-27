@@ -33,8 +33,11 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import MenuIcon from '@mui/icons-material/Menu'; // Hamburger Icon
 import CloseIcon from '@mui/icons-material/Close';
 import WhatsAppIcon from '@mui/icons-material/WhatsApp';
+import Brightness4Icon from '@mui/icons-material/Brightness4';
+import Brightness7Icon from '@mui/icons-material/Brightness7';
 
 import { Link, NavLink, useLocation } from 'react-router-dom';
+import { useThemeContext } from '../context/ThemeContext';
 
 // Official Google "G" SVG Component
 const GoogleG = () => (
@@ -82,7 +85,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     </Typography>
     <Typography
       sx={{
-        color: '#000',
+        color: 'text.primary',
         fontWeight: 600, // Slightly lighter weight for style
         fontSize: '0.55rem', // Smaller size to fit inside width
         letterSpacing: '1px', // Reduced spacing to keep it compact
@@ -98,7 +101,7 @@ const BrandLogo = ({ isScrolled, isMobile = false }) => (
     </Typography>
     <Typography
       sx={{
-        color: '#444',
+        color: 'text.secondary',
         fontWeight: 600,
         fontSize: '0.58rem',
         mt: 0.3,
@@ -141,6 +144,8 @@ export default function Navbar() {
     whatsapp: 'https://wa.me/919082014406',
   };
 
+  const { mode, toggleTheme } = useThemeContext();
+
   React.useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -150,7 +155,7 @@ export default function Navbar() {
   }, []);
 
   const navLinkSx = (isActive) => ({
-    color: isActive ? '#e74c3c' : '#111',
+    color: isActive ? theme.palette.brandRed.main : theme.palette.text.primary,
     fontWeight: 700,
     fontSize: '0.85rem',
     letterSpacing: '0.5px',
@@ -159,7 +164,7 @@ export default function Navbar() {
     borderRadius: 0,
     position: 'relative',
     transition: 'color 0.3s ease',
-    '&:hover': { color: '#e74c3c', backgroundColor: 'transparent' },
+    '&:hover': { color: theme.palette.brandRed.main, backgroundColor: 'transparent' },
     '&::after': {
       content: '""',
       position: 'absolute',
@@ -180,8 +185,7 @@ export default function Navbar() {
   // --- MOBILE DRAWER CONTENT ---
   const drawerContent = (
     <Box sx={{ width: 280, height: '100%', display: 'flex', flexDirection: 'column' }}>
-      {/* Drawer Header */}
-      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #eee' }}>
+      <Box sx={{ p: 2, display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid divider' }}>
         <BrandLogo isMobile={true} />
       </Box>
 
@@ -202,7 +206,7 @@ export default function Navbar() {
         </ListItem>
 
         {servicesExpanded && (
-          <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
+          <List component="div" disablePadding sx={{ bgcolor: 'action.hover' }}>
             <ListItemButton component={Link} to="/laptops" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
               <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="Brand New Laptops" />
@@ -227,7 +231,7 @@ export default function Navbar() {
         </ListItem>
 
         {accessoriesExpanded && (
-          <List component="div" disablePadding sx={{ bgcolor: 'rgba(0,0,0,0.02)' }}>
+          <List component="div" disablePadding sx={{ bgcolor: 'action.hover' }}>
             <ListItemButton component={Link} to="/accessories" onClick={handleDrawerToggle} sx={{ pl: 4 }}>
               <ListItemIcon sx={{ minWidth: 32 }}><LaptopIcon aria-hidden="true" fontSize="small" color="primary" /></ListItemIcon>
               <ListItemText primary="All Laptop Accessories" />
@@ -238,7 +242,7 @@ export default function Navbar() {
                   component="img"
                   src="/images/brand-logos/apple-icon.png"
                   alt="Apple"
-                  sx={{ width: 18, height: 18, objectFit: 'contain' }}
+                  sx={{ width: 18, height: 18, objectFit: 'contain', filter: mode === 'dark' ? 'invert(1)' : 'none' }}
                 />
               </ListItemIcon>
               <ListItemText primary="Mac Accessories" />
@@ -268,7 +272,7 @@ export default function Navbar() {
       </List>
 
       {/* Drawer Footer Info */}
-      <Box sx={{ p: 2, bgcolor: '#f9f9f9', borderTop: '1px solid #eee' }}>
+      <Box sx={{ p: 2, bgcolor: 'background.paper', borderTop: '1px solid divider' }}>
         <Stack spacing={2}>
           <Button
             variant="outlined"
@@ -276,27 +280,36 @@ export default function Navbar() {
             target="_blank"
             fullWidth
             startIcon={<GoogleG />}
-            sx={{ textTransform: 'none', fontWeight: 600 }}
+            sx={{
+              textTransform: 'none',
+              fontWeight: 600,
+              color: 'text.primary',
+              borderColor: 'divider',
+              '&:hover': {
+                borderColor: 'brandRed.main',
+                bgcolor: 'action.hover'
+              }
+            }}
           >
             Google Reviews
           </Button>
           <Stack direction="row" spacing={1} justifyContent="center" aria-label="Social links">
-            <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook"><FacebookIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram"><InstagramIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter"><TwitterIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn"><LinkedInIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook" sx={{ color: 'text.primary' }}><FacebookIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: 'text.primary' }}><InstagramIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: 'text.primary' }}><TwitterIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: 'text.primary' }}><LinkedInIcon /></IconButton>
             <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: '#25D366' }}><WhatsAppIcon /></IconButton>
           </Stack>
 
           {/* Contact Info in Drawer */}
           <Stack spacing={1}>
             <Stack direction="row" spacing={1} alignItems="center">
-              <PhoneIcon fontSize="small" color="action" />
-              <Typography variant="body2">9821212912 / 9892001640</Typography>
+              <PhoneIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+              <Typography variant="body2" sx={{ color: 'text.primary' }}>9821212912 / 9892001640</Typography>
             </Stack>
             <Stack direction="row" spacing={1} alignItems="center">
-              <AccessTimeIcon fontSize="small" color="action" />
-              <Typography variant="body2">Mon-Sat: 11am-7pm</Typography>
+              <AccessTimeIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+              <Typography variant="body2" sx={{ color: 'text.primary' }}>Mon-Sat: 11am-7pm</Typography>
             </Stack>
           </Stack>
         </Stack>
@@ -318,10 +331,13 @@ export default function Navbar() {
       {!isMobile && (
         <Box sx={{
           py: 2,
-          borderBottom: '1px solid rgba(0,0,0,0.05)',
-          bgcolor: isScrolled ? 'rgba(255, 255, 255, 0.85)' : '#ffffff',
+          borderBottom: '1px solid',
+          borderColor: 'divider',
+          bgcolor: isScrolled
+            ? (theme.palette.mode === 'dark' ? 'rgba(18, 18, 18, 0.95)' : 'rgba(255, 255, 255, 0.85)')
+            : 'background.default',
           backdropFilter: isScrolled ? 'blur(10px)' : 'none',
-          transition: 'background-color 0.4s ease, backdrop-filter 0.4s ease',
+          transition: 'all 0.4s ease',
         }}>
           <Container maxWidth="lg">
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -331,33 +347,33 @@ export default function Navbar() {
 
               <Stack direction="row" spacing={3} alignItems="center" sx={{ ml: 'auto', mr: { xs: 0, md: -6 } }}>
                 <Stack direction="row" spacing={1.5} alignItems="center">
-                  <Box sx={{ bgcolor: '#fff5f5', p: 1, borderRadius: '50%', display: 'flex' }}>
-                    <PhoneIcon sx={{ color: '#e74c3c', fontSize: 20 }} />
+                  <Box sx={{ bgcolor: 'action.hover', p: 1, borderRadius: '50%', display: 'flex' }}>
+                    <PhoneIcon sx={{ color: 'brandRed.main', fontSize: 20 }} />
                   </Box>
                   <Box>
-                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c', mb: -0.5 }}>CALL US</Typography>
-                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600 }}>81697 98826</Typography>
-                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600 }}>90366 51639</Typography>
-                  </Box>
-                </Stack>
-
-                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
-
-                <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
-                  <Box>
-                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>FORT STORE</Typography>
-                    <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sat: 11am-7pm</Typography>
+                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: 'brandRed.main', mb: -0.5 }}>CALL US</Typography>
+                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>81697 98826</Typography>
+                    <Typography sx={{ fontSize: '0.85rem', fontWeight: 600, color: 'text.primary' }}>90366 51639</Typography>
                   </Box>
                 </Stack>
 
                 <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
-                  <AccessTimeIcon aria-hidden="true" sx={{ color: '#e74c3c', fontSize: 18 }} />
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: 'brandRed.main', fontSize: 18 }} />
                   <Box>
-                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: '#e74c3c' }}>VILE PARLE STORE</Typography>
-                    <Typography sx={{ fontSize: '0.8rem', color: '#444' }}>Mon-Sun: 11am-7pm</Typography>
+                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: 'brandRed.main' }}>FORT STORE</Typography>
+                    <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary' }}>Mon-Sat: 11am-7pm</Typography>
+                  </Box>
+                </Stack>
+
+                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
+
+                <Stack direction="row" spacing={1} alignItems="center">
+                  <AccessTimeIcon aria-hidden="true" sx={{ color: 'brandRed.main', fontSize: 18 }} />
+                  <Box>
+                    <Typography sx={{ fontSize: '0.7rem', fontWeight: 800, color: 'brandRed.main' }}>VILE PARLE STORE</Typography>
+                    <Typography sx={{ fontSize: '0.8rem', color: 'text.secondary' }}>Mon-Sun: 11am-7pm</Typography>
                   </Box>
                 </Stack>
               </Stack>
@@ -371,7 +387,9 @@ export default function Navbar() {
         position="static"
         elevation={isScrolled ? 4 : 0}
         sx={{
-          bgcolor: isScrolled ? 'rgba(255, 255, 255, 0.75)' : '#ffffff',
+          bgcolor: isScrolled
+            ? (theme.palette.mode === 'dark' ? 'rgba(30, 30, 30, 0.85)' : 'rgba(255, 255, 255, 0.75)')
+            : 'background.paper',
           backdropFilter: isScrolled ? 'blur(15px)' : 'none',
           borderBottom: '1px solid rgba(0,0,0,0.05)',
           transition: 'all 0.4s ease',
@@ -387,18 +405,27 @@ export default function Navbar() {
                 <Box>
                   <BrandLogo isMobile={true} />
                 </Box>
-                <IconButton
-                  onClick={handleDrawerToggle}
-                  aria-label="Toggle Navigation"
-                  sx={{
-                    color: mobileOpen ? '#e74c3c' : '#333',
-                    transition: 'all 0.3s ease',
-                    zIndex: theme.zIndex.appBar + 3,
-                    position: 'relative',
-                  }}
-                >
-                  {mobileOpen ? <CloseIcon /> : <MenuIcon />}
-                </IconButton>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                  <IconButton
+                    onClick={toggleTheme}
+                    sx={{ color: mode === 'dark' ? '#ffcc00' : '#555' }}
+                    aria-label="Toggle theme"
+                  >
+                    {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
+                  </IconButton>
+                  <IconButton
+                    onClick={handleDrawerToggle}
+                    aria-label="Toggle Navigation"
+                    sx={{
+                      color: mobileOpen ? 'brandRed.main' : 'text.primary',
+                      transition: 'all 0.3s ease',
+                      zIndex: theme.zIndex.appBar + 3,
+                      position: 'relative',
+                    }}
+                  >
+                    {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+                  </IconButton>
+                </Box>
               </Box>
             )}
 
@@ -433,10 +460,11 @@ export default function Navbar() {
                           pointerEvents: 'auto',
                           minWidth: 220,
                           borderRadius: '0 0 8px 8px',
-                          bgcolor: 'rgba(255, 255, 255, 0.95)',
+                          bgcolor: 'background.paper',
                           backdropFilter: 'blur(10px)',
                           boxShadow: '0 15px 30px -5px rgba(0,0,0,0.15)',
-                          border: '1px solid rgba(0,0,0,0.05)'
+                          border: '1px solid',
+                          borderColor: 'divider'
                         }
                       }}
                       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
@@ -479,10 +507,11 @@ export default function Navbar() {
                           pointerEvents: 'auto',
                           minWidth: 240,
                           borderRadius: '0 0 8px 8px',
-                          bgcolor: 'rgba(255, 255, 255, 0.95)',
+                          bgcolor: 'background.paper',
                           backdropFilter: 'blur(10px)',
                           boxShadow: '0 15px 30px -5px rgba(0,0,0,0.15)',
-                          border: '1px solid rgba(0,0,0,0.05)'
+                          border: '1px solid',
+                          borderColor: 'divider'
                         }
                       }}
                       anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
@@ -522,36 +551,42 @@ export default function Navbar() {
                       fontSize: '0.75rem',
                       fontWeight: 700,
                       textTransform: 'none',
-                      borderColor: 'rgba(0,0,0,0.15)',
-                      color: '#3c4043',
-                      backgroundColor: '#ffffff',
+                      borderColor: 'divider',
+                      color: 'text.primary',
+                      backgroundColor: 'background.paper',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        borderColor: '#4285F4',
-                        color: '#4285F4',
-                        backgroundColor: '#ffffff',
+                        borderColor: 'brandRed.main',
+                        color: 'brandRed.main',
+                        backgroundColor: 'background.paper',
                         transform: 'translateY(-2px)',
-                        boxShadow: '0 4px 8px rgba(66, 133, 244, 0.1)',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
                       }
                     }}
                   >
                     Google Reviews
                   </Button>
 
-                  <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook" sx={{ color: '#333', '&:hover': { color: '#4267B2', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.facebook} target="_blank" aria-label="Facebook" sx={{ color: 'text.primary', '&:hover': { color: '#4267B2', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <FacebookIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: '#333', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: 'text.primary', '&:hover': { color: '#E4405F', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <InstagramIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: '#333', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: 'text.primary', '&:hover': { color: '#000', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <TwitterIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: '#333', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: 'text.primary', '&:hover': { color: '#0077b5', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <LinkedInIcon fontSize="small" />
                   </IconButton>
-                  <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: '#333', '&:hover': { color: '#25D366', transform: 'scale(1.1)' }, transition: '0.2s' }}>
+                  <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: theme.palette.text.primary, '&:hover': { color: '#25D366', transform: 'scale(1.1)' }, transition: '0.2s' }}>
                     <WhatsAppIcon fontSize="small" />
+                  </IconButton>
+
+                  <Divider orientation="vertical" flexItem sx={{ height: 24, alignSelf: 'center', mx: 1, borderColor: 'rgba(0,0,0,0.1)' }} />
+
+                  <IconButton onClick={toggleTheme} color="inherit" id="dark-mode-toggle">
+                    {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
                   </IconButton>
                 </Stack>
               </>

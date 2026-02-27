@@ -436,7 +436,7 @@ const SecondHand = () => {
           borderRadius: '12px',
           position: 'relative',
           zIndex: 2,
-          backgroundColor: 'rgba(255, 255, 255, 0.95)',
+          backgroundColor: 'background.paper',
           backdropFilter: 'blur(4px)',
           '@keyframes float': {
             '0%': {
@@ -831,7 +831,7 @@ const SecondHand = () => {
       {/* Main Content with Bubble Background */}
       <Box sx={{
         position: 'relative',
-        bgcolor: 'white',
+        bgcolor: 'background.default',
         minHeight: '100vh',
         overflow: 'hidden',
       }}>
@@ -859,7 +859,6 @@ const SecondHand = () => {
                 textAlign="center"
                 gutterBottom
                 fontWeight="bold"
-                color="#8B0000"
                 sx={{
                   mb: 2,
                   fontSize: { xs: '2.25rem', md: '3rem' },
@@ -1195,7 +1194,7 @@ const SecondHand = () => {
                 {/* Contact Us Button Section */}
                 <Divider sx={{ my: { xs: 3, sm: 5 } }} />
                 <Box sx={{ textAlign: 'center', mb: 4 }}>
-                  <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h6" : "h5"} gutterBottom fontWeight="bold" color="brandRed.main">
                     Want to Know More?
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
@@ -1238,7 +1237,7 @@ const SecondHand = () => {
                 {/* Store Visit Section with Google Maps Links */}
                 <Divider sx={{ my: 5 }} />
                 <Box sx={{ textAlign: 'center' }}>
-                  <Typography variant={isMobile ? "h5" : "h4"} gutterBottom fontWeight="bold" color="#8B0000">
+                  <Typography variant={isMobile ? "h5" : "h4"} gutterBottom fontWeight="bold" color="brandRed.main">
                     For Hands-On Experience Visit Our Stores
                   </Typography>
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3, maxWidth: 600, mx: 'auto' }}>
@@ -1285,7 +1284,7 @@ const SecondHand = () => {
                     sx={{
                       px: 6,
                       py: 1.5,
-                      bgcolor: '#8B0000',
+                      bgcolor: 'brandRed.main',
                       color: 'white',
                       fontWeight: 'bold',
                       '&:hover': {

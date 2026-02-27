@@ -4,6 +4,7 @@ import { CssBaseline, ThemeProvider, createTheme, Box, Fade, CircularProgress } 
 import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
 import FloatingChatButton from './components/FloatingChatButton';
+import { ThemeContextProvider } from './context/ThemeContext';
 import './App.css';
 
 // Lazy load page components for better performance
@@ -24,17 +25,6 @@ const AdminLogin = React.lazy(() => import('./pages/admin/AdminLogin'));
 const AdminDashboard = React.lazy(() => import('./pages/admin/AdminDashboard'));
 const LaptopForm = React.lazy(() => import('./pages/admin/LaptopForm'));
 
-const theme = createTheme({
-  palette: {
-    primary: { main: '#1565c0' },
-    secondary: { main: '#26a69a' },
-    background: { default: '#f4f6f8' },
-  },
-  typography: {
-    fontFamily: 'Roboto, "Segoe UI", sans-serif',
-    h3: { fontWeight: 700 },
-  },
-});
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -97,12 +87,12 @@ function AppContent() {
 
 function App() {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeContextProvider>
       <CssBaseline />
       <Router>
         <AppContent />
       </Router>
-    </ThemeProvider>
+    </ThemeContextProvider>
   );
 }
 

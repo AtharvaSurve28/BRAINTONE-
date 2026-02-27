@@ -265,7 +265,7 @@ const LaptopForm = () => {
   }
 
   return (
-    <Box sx={{ minHeight: '100vh', backgroundColor: '#f5f5f5', py: 4 }}>
+    <Box sx={{ minHeight: '100vh', backgroundColor: 'background.default', py: 4 }}>
       <Container maxWidth="md">
         <Paper sx={{ p: 4 }}>
           <Box sx={{ display: 'flex', alignItems: 'center', mb: 3 }}>
@@ -546,7 +546,7 @@ const LaptopForm = () => {
                             borderRadius: 2,
                             border: '1px solid #ddd',
                             position: 'relative',
-                            bgcolor: '#fff'
+                            bgcolor: 'background.paper'
                           }}
                         >
                           <IconButton

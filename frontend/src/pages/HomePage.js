@@ -351,7 +351,7 @@ const HomePage = () => {
               sx={{
                 fontWeight: 700,
                 mb: 1.5,
-                color: '#2d3748',
+                color: 'text.primary',
                 position: 'relative',
                 '&::after': {
                   content: '""',
@@ -371,7 +371,7 @@ const HomePage = () => {
             <Typography
               variant="body1"
               align="center"
-              color="text.secondary"
+              color="text.primary"
               sx={{ maxWidth: 700, mx: 'auto', mb: 6 }}
             >
               Explore the latest models, unbeatable prices, and reliable performance — all in one place.
@@ -415,8 +415,9 @@ const HomePage = () => {
                       sx={{
                         p: 2,
                         borderRadius: '24px',
-                        background: '#f8f9fa',
-                        border: '1px solid #eee',
+                        background: 'background.paper',
+                        border: '1px solid',
+                        borderColor: 'divider',
                         transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                         overflow: 'hidden',
                         height: '100%',
@@ -459,7 +460,7 @@ const HomePage = () => {
                           variant="h6"
                           sx={{
                             fontWeight: 900,
-                            color: '#1a1a1a',
+                            color: 'text.primary',
                             fontSize: '1.2rem',
                             letterSpacing: '1px',
                             mb: 0.5
@@ -471,7 +472,7 @@ const HomePage = () => {
                           sx={{
                             fontSize: '0.6rem',
                             fontWeight: 700,
-                            color: '#666',
+                            color: 'text.secondary',
                             letterSpacing: '2px',
                             textTransform: 'uppercase'
                           }}
@@ -495,7 +496,7 @@ const HomePage = () => {
                         variant="h5"
                         sx={{
                           fontWeight: 800,
-                          color: '#2d3748',
+                          color: 'text.primary',
                           mt: 'auto',
                           mb: 2,
                           fontSize: '1.4rem',
@@ -575,7 +576,7 @@ const HomePage = () => {
                     sx={{
                       fontWeight: 800,
                       mb: 3,
-                      color: "#1a1a1a",
+                      color: "text.primary",
                     }}
                   >
                     Your One-Stop Shop for Laptop Needs
@@ -585,7 +586,7 @@ const HomePage = () => {
                   <Typography
                     variant="body1"
                     sx={{
-                      color: "#555",
+                      color: "text.secondary",
                       mb: 4,
                       lineHeight: 1.8,
                       maxWidth: "500px",
@@ -615,7 +616,7 @@ const HomePage = () => {
                     ].map((item, idx) => (
                       <Stack key={idx} direction="row" spacing={2}>
                         <CheckCircleIcon aria-hidden="true" sx={{ fontSize: 30, color: "#e74c3c" }} />
-                        <Typography variant="body1" sx={{ color: "#444", lineHeight: 1.6 }}>
+                        <Typography variant="body1" sx={{ color: "text.primary", lineHeight: 1.6 }}>
                           <strong>{item.title}</strong> {item.desc}
                         </Typography>
                       </Stack>
@@ -699,7 +700,7 @@ const HomePage = () => {
                           <Typography variant="h6" sx={{ fontWeight: 700 }}>
                             {item.title}
                           </Typography>
-                          <Typography variant="body2" sx={{ color: "#555" }}>
+                          <Typography variant="body2" sx={{ color: "text.secondary" }}>
                             {item.desc}
                           </Typography>
                         </Box>
@@ -764,14 +765,14 @@ const HomePage = () => {
                     fontWeight: 700,
                     mb: 3,
                     fontSize: { xs: '2rem', md: '2.5rem' },
-                    color: '#2c3e50'
+                    color: 'text.primary'
                   }}
                 >
                   All about <span style={{ color: '#e74c3c' }}>BRAINTONE</span>
                 </Typography>
                 <Typography
                   variant="subtitle1"
-                  color="text.secondary"
+                  color="text.primary"
                   sx={{
                     fontSize: '1.1rem',
                     lineHeight: 1.8,
@@ -805,14 +806,14 @@ const HomePage = () => {
                         mb: 3,
                         fontSize: { xs: '1.75rem', md: '2.25rem' },
                         lineHeight: 1.2,
-                        color: '#2c3e50'
+                        color: 'text.primary'
                       }}
                     >
                       Explore Our New Laptop Collection
                     </Typography>
                     <Typography
                       variant="body1"
-                      color="text.secondary"
+                      color="text.primary"
                       sx={{
                         mb: 3,
                         lineHeight: 1.8,
@@ -826,7 +827,7 @@ const HomePage = () => {
                     </Typography>
                     <Typography
                       variant="body1"
-                      color="text.secondary"
+                      color="text.primary"
                       sx={{
                         mb: 3,
                         lineHeight: 1.8,
@@ -841,7 +842,7 @@ const HomePage = () => {
                     </Typography>
                     <Typography
                       variant="body1"
-                      color="text.secondary"
+                      color="text.primary"
                       sx={{
                         mb: 4,
                         lineHeight: 1.8,
@@ -972,14 +973,14 @@ const HomePage = () => {
                       mb: 3,
                       fontSize: { xs: '1.75rem', md: '2.25rem' },
                       lineHeight: 1.2,
-                      color: '#2c3e50'
+                      color: 'text.primary'
                     }}
                   >
                     Quality Refurbished Laptops
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -993,7 +994,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -1009,7 +1010,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 4,
                       lineHeight: 1.8,
@@ -1069,14 +1070,14 @@ const HomePage = () => {
                       mb: 3,
                       fontSize: { xs: '1.75rem', md: '2.25rem' },
                       lineHeight: 1.2,
-                      color: '#2c3e50'
+                      color: 'text.primary'
                     }}
                   >
                     Expert Laptop Repair Services
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -1090,7 +1091,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -1108,7 +1109,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 4,
                       lineHeight: 1.8,
@@ -1300,14 +1301,14 @@ const HomePage = () => {
                       mb: 3,
                       fontSize: { xs: '1.75rem', md: '2.25rem' },
                       lineHeight: 1.2,
-                      color: '#2c3e50'
+                      color: 'text.primary'
                     }}
                   >
                     Maximize Your Laptop's Life & Performance
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -1320,7 +1321,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 3,
                       lineHeight: 1.8,
@@ -1338,7 +1339,7 @@ const HomePage = () => {
                   </Typography>
                   <Typography
                     variant="body1"
-                    color="text.secondary"
+                    color="text.primary"
                     sx={{
                       mb: 4,
                       lineHeight: 1.8,
@@ -1429,7 +1430,7 @@ const HomePage = () => {
                     fontWeight: 700,
                     mb: 1,
                     fontSize: { xs: '2rem', md: '2.5rem' },
-                    color: '#2c3e50'
+                    color: 'text.primary'
                   }}
                 >
                   Our Clients Feedback
@@ -1444,7 +1445,7 @@ const HomePage = () => {
 
                 <Typography
                   variant="subtitle1"
-                  color="text.secondary"
+                  color="text.primary"
                   sx={{
                     fontSize: '1.1rem',
                     lineHeight: 1.6,

@@ -134,7 +134,7 @@ const Laptops = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'background.default',
       overflow: 'hidden',
       position: 'relative',
     }}>
@@ -286,7 +286,7 @@ const Laptops = () => {
                   height: 420,
                   display: 'flex',
                   flexDirection: 'column',
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'background.default',
                   borderRadius: 3,
                   boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)', // Darker red shadow
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -335,7 +335,7 @@ const Laptops = () => {
                 {/* Image Container */}
                 <Box
                   sx={{
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    backgroundColor: 'background.paper',
                     p: 0,
                     height: 250,
                     position: 'relative',
@@ -399,7 +399,7 @@ const Laptops = () => {
                 <CardContent
                   sx={{
                     textAlign: 'center',
-                    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                    backgroundColor: 'background.paper',
                     py: 4,
                     px: 3,
                     flexGrow: 1,
@@ -433,7 +433,7 @@ const Laptops = () => {
                       className="brand-name"
                       sx={{
                         fontWeight: 800,
-                        color: '#333333',
+                        color: 'text.primary',
                         fontSize: '1.8rem',
                         transition: 'all 0.4s ease',
                         letterSpacing: '-0.5px',
@@ -455,8 +455,9 @@ const Laptops = () => {
           mt: 10,
           p: 6,
           borderRadius: 3,
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          border: '2px solid rgba(139, 0, 0, 0.3)', // Darker red border
+          backgroundColor: 'background.paper',
+          border: '2px solid',
+          borderColor: 'divider',
           position: 'relative',
           overflow: 'hidden',
           maxWidth: '800px',
@@ -479,7 +480,7 @@ const Laptops = () => {
           <Typography
             variant="h4"
             sx={{
-              color: '#8B0000', // Darker red
+              color: 'brandRed.main', // Red
               fontWeight: 800,
               mb: 3,
               fontSize: '2.2rem',
@@ -494,7 +495,7 @@ const Laptops = () => {
           <Typography
             variant="body1"
             sx={{
-              color: '#555',
+              color: 'text.primary',
               maxWidth: '600px',
               mx: 'auto',
               fontSize: '1.1rem',

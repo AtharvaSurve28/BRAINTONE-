@@ -73,7 +73,7 @@ const EWaste = () => {
     };
 
     return (
-        <Box sx={{ bgcolor: '#fff', minHeight: '100vh', overflowX: 'hidden' }}>
+        <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', overflowX: 'hidden' }}>
             {/* Hero Section */}
             <Box
                 sx={{
@@ -150,7 +150,7 @@ const EWaste = () => {
                                 variant="h2"
                                 sx={{
                                     fontWeight: 900,
-                                    color: '#003366',
+                                    color: 'text.primary',
                                     mb: 2,
                                     lineHeight: { xs: 1.2, md: 1.1 },
                                     fontSize: { xs: '2.2rem', md: '3.2rem' },
@@ -166,7 +166,7 @@ const EWaste = () => {
                                 variant="body1"
                                 sx={{
                                     fontSize: '1.15rem',
-                                    color: '#444',
+                                    color: 'text.primary',
                                     lineHeight: 1.6,
                                     mb: 3,
                                     fontWeight: 500
@@ -181,7 +181,7 @@ const EWaste = () => {
                                 variant="body2"
                                 sx={{
                                     fontSize: '1.05rem',
-                                    color: '#666',
+                                    color: 'text.primary',
                                     lineHeight: 1.7,
                                     mb: 4
                                 }}
@@ -196,7 +196,7 @@ const EWaste = () => {
             </Container>
 
             {/* ITAD Services Section */}
-            <Box sx={{ bgcolor: '#f8f9fa', py: { xs: 10, md: 15 }, borderTop: '1px solid #eee', position: 'relative' }}>
+            <Box sx={{ bgcolor: 'background.paper', py: { xs: 10, md: 15 }, borderTop: '1px solid divider', position: 'relative' }}>
                 {/* Small Centered Red Divider */}
                 <Box
                     sx={{
@@ -217,7 +217,7 @@ const EWaste = () => {
                             variant="h3"
                             sx={{
                                 fontWeight: 800,
-                                color: '#003366',
+                                color: (theme) => theme.palette.mode === 'dark' ? 'text.primary' : '#003366',
                                 mb: 6,
                                 textAlign: 'center',
                                 fontSize: { xs: '2rem', md: '3.5rem' }
@@ -236,7 +236,7 @@ const EWaste = () => {
                                     borderRadius: '20px',
                                     overflow: 'hidden',
                                     boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                                    bgcolor: '#fff',
+                                    bgcolor: 'background.paper',
                                     mx: 'auto',
                                     maxWidth: '1000px'
                                 }}
@@ -295,7 +295,7 @@ const EWaste = () => {
                                                     alignItems: 'flex-start',
                                                     p: 3,
                                                     borderRadius: '12px',
-                                                    bgcolor: 'white',
+                                                    bgcolor: 'background.paper',
                                                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
                                                     border: '1px solid #e0e0e0',
                                                     borderLeft: '5px solid #e74c3c',
@@ -303,7 +303,7 @@ const EWaste = () => {
                                                     '&:hover': {
                                                         boxShadow: '0 8px 25px rgba(231, 76, 60, 0.15)',
                                                         transform: 'translateX(5px)',
-                                                        borderLeft: '5px solid #003366'
+                                                        borderLeft: (theme) => `5px solid ${theme.palette.mode === 'dark' ? theme.palette.primary.light : '#003366'}`
                                                     }
                                                 }}
                                             >
@@ -320,7 +320,7 @@ const EWaste = () => {
                                                     sx={{
                                                         fontSize: '1.2rem',
                                                         fontWeight: 600,
-                                                        color: '#2c3e50',
+                                                        color: 'text.primary',
                                                         lineHeight: 1.5,
                                                         flex: 1
                                                     }}
@@ -344,7 +344,7 @@ const EWaste = () => {
                                                     alignItems: 'flex-start',
                                                     p: 3,
                                                     borderRadius: '12px',
-                                                    bgcolor: 'white',
+                                                    bgcolor: 'background.paper',
                                                     boxShadow: '0 4px 15px rgba(0,0,0,0.08)',
                                                     border: '1px solid #e0e0e0',
                                                     borderLeft: '5px solid #e74c3c',
@@ -352,7 +352,7 @@ const EWaste = () => {
                                                     '&:hover': {
                                                         boxShadow: '0 8px 25px rgba(231, 76, 60, 0.15)',
                                                         transform: 'translateX(5px)',
-                                                        borderLeft: '5px solid #003366'
+                                                        borderLeft: (theme) => `5px solid ${theme.palette.mode === 'dark' ? theme.palette.primary.light : '#003366'}`
                                                     }
                                                 }}
                                             >
@@ -369,7 +369,7 @@ const EWaste = () => {
                                                     sx={{
                                                         fontSize: '1.2rem',
                                                         fontWeight: 600,
-                                                        color: '#2c3e50',
+                                                        color: 'text.primary',
                                                         lineHeight: 1.5,
                                                         flex: 1
                                                     }}
@@ -386,7 +386,7 @@ const EWaste = () => {
                 </FadeInSection>
             </Box>
             {/* Contact Form Section */}
-            <Box sx={{ bgcolor: '#fff', py: { xs: 8, md: 12 }, borderTop: '1px solid #eee', position: 'relative' }}>
+            <Box sx={{ bgcolor: 'background.default', py: { xs: 8, md: 12 }, borderTop: '1px solid divider', position: 'relative' }}>
                 {/* Small Centered Red Divider */}
                 <Box
                     sx={{
@@ -405,7 +405,7 @@ const EWaste = () => {
                         variant="h3"
                         sx={{
                             fontWeight: 800,
-                            color: '#003366',
+                            color: (theme) => theme.palette.mode === 'dark' ? 'text.primary' : '#003366',
                             mb: 6,
                             textAlign: 'center',
                             fontSize: { xs: '2rem', md: '3rem' }
@@ -419,7 +419,7 @@ const EWaste = () => {
                         <Grid container spacing={4} justifyContent="center">
                             {/* Row 1: Name & Email */}
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Name <span style={{ color: '#e74c3c' }}>*</span>
                                 </Typography>
                                 <TextField
@@ -432,7 +432,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }
@@ -441,7 +441,7 @@ const EWaste = () => {
                                 />
                             </Grid>
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Email <span style={{ color: '#e74c3c' }}>*</span>
                                 </Typography>
                                 <TextField
@@ -454,7 +454,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }
@@ -465,7 +465,7 @@ const EWaste = () => {
 
                             {/* Row 2: Mobile & Product Category */}
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Mobile Number <span style={{ color: '#e74c3c' }}>*</span>
                                 </Typography>
                                 <TextField
@@ -478,7 +478,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }
@@ -487,7 +487,7 @@ const EWaste = () => {
                                 />
                             </Grid>
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Product Category
                                 </Typography>
                                 <FormControl fullWidth>
@@ -499,7 +499,7 @@ const EWaste = () => {
                                         onChange={handleChange}
                                         sx={{
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& .MuiOutlinedInput-notchedOutline': { borderColor: '#eee' },
                                             '&:hover .MuiOutlinedInput-notchedOutline': { borderColor: '#e0e0e0' }
@@ -521,7 +521,7 @@ const EWaste = () => {
 
                             {/* Row 3: Brand Name & City */}
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Brand Name
                                 </Typography>
                                 <TextField
@@ -534,7 +534,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }
@@ -543,7 +543,7 @@ const EWaste = () => {
                                 />
                             </Grid>
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     City
                                 </Typography>
                                 <TextField
@@ -556,7 +556,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }
@@ -567,7 +567,7 @@ const EWaste = () => {
 
                             {/* Row 4: Quantity */}
                             <Grid item xs={12} md={6} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'stretch' } }}>
-                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: '#444', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
+                                <Typography variant="subtitle2" sx={{ fontWeight: 600, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' }, width: '100%' }}>
                                     Quantity
                                 </Typography>
                                 <TextField
@@ -581,7 +581,7 @@ const EWaste = () => {
                                     sx={{
                                         '& .MuiOutlinedInput-root': {
                                             borderRadius: '10px',
-                                            bgcolor: 'white',
+                                            bgcolor: 'background.paper',
                                             boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
                                             '& fieldset': { borderColor: '#eee' },
                                             '&:hover fieldset': { borderColor: '#e0e0e0' }

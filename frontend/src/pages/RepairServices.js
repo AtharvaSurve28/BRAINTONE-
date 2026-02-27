@@ -342,8 +342,8 @@ const RepairServices = () => {
   return (
     <Box sx={{
       overflowX: 'hidden',
-      bgcolor: '#f8f9fa',
-      background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)'
+      bgcolor: 'background.default',
+      transition: 'all 0.4s ease',
     }}>
       {/* Personal Repair Service Modal */}
       <Modal
@@ -388,7 +388,7 @@ const RepairServices = () => {
 
           {/* Modal Content */}
           <Box sx={{ p: 4 }}>
-            <Typography variant="body1" sx={{ mb: 4, color: '#7f8c8d', textAlign: 'center' }}>
+            <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary', textAlign: 'center' }}>
               Fill out the form below to schedule a repair service for your laptop.
               Our technician will contact you to confirm the details.
             </Typography>
@@ -951,7 +951,7 @@ const RepairServices = () => {
                   fontWeight: 700,
                   mb: 2,
                   fontSize: { xs: '2rem', md: '2.8rem' },
-                  color: '#1a365d',
+                  color: 'text.primary',
                   position: 'relative',
                   display: 'inline-block',
                   textShadow: '0 2px 4px rgba(0,0,0,0.1)',
@@ -963,7 +963,7 @@ const RepairServices = () => {
               <Typography
                 variant="h5"
                 sx={{
-                  color: '#666',
+                  color: 'text.primary',
                   mb: 2,
                   fontSize: '1.3rem',
                   maxWidth: 700,
@@ -993,7 +993,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1032,7 +1032,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(231,76,60,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1044,7 +1044,7 @@ const RepairServices = () => {
                   <Typography variant="h5" sx={{
                     fontWeight: 700,
                     mb: 2,
-                    color: '#1a365d',
+                    color: 'text.primary',
                     textAlign: 'center',
                     fontSize: '1.4rem',
                     transition: 'color 0.3s ease',
@@ -1056,7 +1056,7 @@ const RepairServices = () => {
                   </Typography>
 
                   <Typography variant="body1" sx={{
-                    color: '#666',
+                    color: 'text.primary',
                     mb: 3,
                     textAlign: 'center',
                     fontSize: '0.95rem',
@@ -1076,7 +1076,7 @@ const RepairServices = () => {
                         mb: 1.5,
                       }}>
                         <CheckCircle sx={{ color: '#e74c3c', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1112,7 +1112,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1142,11 +1142,11 @@ const RepairServices = () => {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#2980b9',
+                    color: 'text.primary',
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(52,152,219,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1155,11 +1155,11 @@ const RepairServices = () => {
                     <Keyboard sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Keyboard Repair
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Sticky keys, broken keys, or keyboard not responding? We fit or replace laptop keyboards.
                   </Typography>
 
@@ -1167,7 +1167,7 @@ const RepairServices = () => {
                     {['Individual key replacement', 'Full keyboard replacement', 'Liquid damage cleaning', 'Keyboard not detected issues'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#2980b9', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1203,7 +1203,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1237,7 +1237,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(46,204,113,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1246,11 +1246,11 @@ const RepairServices = () => {
                     <BatteryChargingFull sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Battery Replacement
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Battery draining fast or not charging? We install genuine replacement batteries.
                   </Typography>
 
@@ -1258,7 +1258,7 @@ const RepairServices = () => {
                     {['Original battery replacement', 'Charging port repair', 'Power adapter issues', 'Battery health diagnostics'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#27ae60', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1294,7 +1294,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1328,7 +1328,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(155,89,182,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1337,11 +1337,11 @@ const RepairServices = () => {
                     <Storage sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Hard Drive & SSD
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Upgrade to faster SSD or recover data from failing hard drives.
                   </Typography>
 
@@ -1349,7 +1349,7 @@ const RepairServices = () => {
                     {['HDD to SSD upgrade', 'Data recovery services', 'Storage capacity upgrade', 'System cloning & backup'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#8e44ad', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1385,7 +1385,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1419,7 +1419,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(243,156,18,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1428,11 +1428,11 @@ const RepairServices = () => {
                     <Memory sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     RAM Upgrade
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Boost your laptop's performance with RAM upgrade and optimization.
                   </Typography>
 
@@ -1440,7 +1440,7 @@ const RepairServices = () => {
                     {['Memory upgrade (4GB to 32GB)', 'RAM compatibility check', 'Performance optimization', 'System speed improvement'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#f39c12', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1476,7 +1476,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1510,7 +1510,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(0,188,212,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1519,11 +1519,11 @@ const RepairServices = () => {
                     <ThermostatAuto sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Overheating Issues
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Laptop running hot? We clean fans, replace thermal paste, and fix cooling issues.
                   </Typography>
 
@@ -1531,7 +1531,7 @@ const RepairServices = () => {
                     {['Fan cleaning & replacement', 'Thermal paste reapplication', 'Ventilation system cleaning', 'Heat sink repair'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#00bcd4', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1567,7 +1567,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1601,7 +1601,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(233,30,99,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1610,11 +1610,11 @@ const RepairServices = () => {
                     <Computer sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Software & OS Issues
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Windows or software problems? We handle OS installation, virus removal, and updates.
                   </Typography>
 
@@ -1622,7 +1622,7 @@ const RepairServices = () => {
                     {['OS Installation (Windows/Linux)', 'Virus & malware removal', 'Software troubleshooting', 'Driver updates'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#e91e63', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1658,7 +1658,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1692,7 +1692,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(63,81,181,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1701,11 +1701,11 @@ const RepairServices = () => {
                     <CircuitBoard sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Motherboard Repair
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Complex motherboard issues? Our experts diagnose and repair chip-level problems.
                   </Typography>
 
@@ -1713,7 +1713,7 @@ const RepairServices = () => {
                     {['Chip-level repair', 'BIOS chip programming', 'Power circuit repair', 'Component replacement'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#3f51b5', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1749,7 +1749,7 @@ const RepairServices = () => {
                 borderRadius: 3,
                 boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
                 border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: '#ffffff',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
                 overflow: 'hidden',
                 position: 'relative',
                 transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -1783,7 +1783,7 @@ const RepairServices = () => {
                     mb: 3,
                     mx: 'auto',
                     boxShadow: '0 8px 25px rgba(0,150,136,0.2)',
-                    border: '3px solid #fff',
+                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
                     transition: 'transform 0.3s ease',
                     '&:hover': {
                       transform: 'scale(1.05) rotate(5deg)',
@@ -1792,11 +1792,11 @@ const RepairServices = () => {
                     <WaterDrop sx={{ fontSize: 36 }} />
                   </Box>
 
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: '#1a365d', textAlign: 'center', fontSize: '1.4rem' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
                     Liquid Damage Repair
                   </Typography>
 
-                  <Typography variant="body1" sx={{ color: '#666', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
                     Spilled water or coffee on your laptop? Quick action can save your device.
                   </Typography>
 
@@ -1804,7 +1804,7 @@ const RepairServices = () => {
                     {['Emergency liquid damage repair', 'Component cleaning & drying', 'Corrosion removal', 'Data recovery attempts'].map((item, idx) => (
                       <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
                         <CheckCircle sx={{ color: '#009688', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: '#555', fontSize: '0.9rem' }}>{item}</Typography>
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
                       </Box>
                     ))}
                   </Box>
@@ -1997,7 +1997,7 @@ const RepairServices = () => {
                   fontWeight: 700,
                   mb: 2,
                   fontSize: { xs: '2rem', md: '2.8rem' },
-                  color: '#1a365d',
+                  color: 'text.primary',
                   position: 'relative',
                   display: 'inline-block',
                   '&::after': {
@@ -2018,7 +2018,7 @@ const RepairServices = () => {
               <Typography
                 variant="h5"
                 sx={{
-                  color: '#666',
+                  color: 'text.primary',
                   mb: 2,
                   fontSize: '1.3rem',
                   maxWidth: 700,
@@ -2095,7 +2095,7 @@ const RepairServices = () => {
                           fontWeight: 700,
                           fontSize: '1.5rem',
                           boxShadow: '0 8px 20px rgba(231,76,60,0.3)',
-                          border: '4px solid #fff',
+                          border: (theme) => theme.palette.mode === 'dark' ? '4px solid #1e1e1e' : '4px solid #fff',
                           position: 'relative',
                           '&::before': {
                             content: '""',
@@ -2132,7 +2132,7 @@ const RepairServices = () => {
                       sx={{
                         fontWeight: 700,
                         mb: 2,
-                        color: '#1a365d',
+                        color: 'text.primary',
                         fontSize: '1.2rem',
                         minHeight: '3rem',
                         display: 'flex',
@@ -2147,7 +2147,7 @@ const RepairServices = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        color: '#666',
+                        color: 'text.primary',
                         fontSize: '0.95rem',
                         lineHeight: 1.6
                       }}
@@ -2258,12 +2258,12 @@ const RepairServices = () => {
       <FadeInSection fullWidth>
         <Box sx={{
           py: 10,
-          background: '#fff5f5',
+          background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : '#fff5f5',
           position: 'relative',
         }}>
           <Container maxWidth="lg">
             <Box sx={{ textAlign: 'center', mb: 8 }}>
-              <Typography variant="h2" sx={{ fontWeight: 700, mb: 3, fontSize: { xs: '2rem', md: '2.8rem' }, color: '#2d3748' }}>
+              <Typography variant="h2" sx={{ fontWeight: 700, mb: 3, fontSize: { xs: '2rem', md: '2.8rem' }, color: 'text.primary' }}>
                 Why Choose Our Repair Service?
               </Typography>
             </Box>
@@ -2273,8 +2273,8 @@ const RepairServices = () => {
                   <Box sx={{ width: 80, height: 80, borderRadius: '50%', background: 'rgba(231, 76, 60, 0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#e74c3c', mb: 2, mx: 'auto' }}>
                     {item.icon}
                   </Box>
-                  <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: '#2d3748' }}>{item.title}</Typography>
-                  <Typography variant="body2" sx={{ color: '#718096' }}>{item.description}</Typography>
+                  <Typography variant="h6" sx={{ fontWeight: 600, mb: 1, color: 'text.primary' }}>{item.title}</Typography>
+                  <Typography variant="body2" sx={{ color: 'text.secondary' }}>{item.description}</Typography>
                 </Box>
               ))}
             </Box>

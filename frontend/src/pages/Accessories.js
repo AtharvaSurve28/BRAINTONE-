@@ -362,7 +362,7 @@ const Accessories = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      backgroundColor: '#ffffff',
+      backgroundColor: 'background.default',
       overflow: 'hidden',
       position: 'relative',
     }}>
@@ -503,7 +503,7 @@ const Accessories = () => {
                     height: 420,
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundColor: '#ffffff',
+                    backgroundColor: 'background.default',
                     borderRadius: 3,
                     boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
@@ -532,7 +532,7 @@ const Accessories = () => {
                   {/* Image Container - EXACT SAME as laptops */}
                   <Box
                     sx={{
-                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      backgroundColor: 'background.paper',
                       p: 0,
                       height: 250,
                       position: 'relative',
@@ -596,7 +596,7 @@ const Accessories = () => {
                   <CardContent
                     sx={{
                       textAlign: 'center',
-                      backgroundColor: 'rgba(255, 255, 255, 0.95)',
+                      backgroundColor: 'background.paper',
                       py: 3,
                       px: 3,
                       flexGrow: 1,
@@ -623,7 +623,7 @@ const Accessories = () => {
                       className="accessory-name"
                       sx={{
                         fontWeight: 800,
-                        color: '#333333',
+                        color: 'text.primary',
                         fontSize: '1.8rem',
                         transition: 'all 0.4s ease',
                         letterSpacing: '-0.5px',
@@ -638,7 +638,7 @@ const Accessories = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        color: '#666',
+                        color: 'text.secondary',
                         fontSize: '0.95rem',
                         lineHeight: 1.5,
                         mb: 2,

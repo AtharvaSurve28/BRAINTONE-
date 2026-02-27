@@ -326,7 +326,7 @@ const AboutUs = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      bgcolor: '#fafafa',
+      bgcolor: 'background.default',
       overflow: 'hidden',
       position: 'relative',
       '&::before': {
@@ -417,7 +417,7 @@ const AboutUs = () => {
                   p: { xs: 1.5, sm: 3 },
                   boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
                   transition: 'all 0.3s ease',
-                  background: 'linear-gradient(135deg, #fff5f5 0%, #ffecec 100%)',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                   border: '2px solid',
                   borderImage: 'linear-gradient(45deg, #e74c3c, #c0392b, #e74c3c) 1',
                   position: 'relative',
@@ -447,7 +447,7 @@ const AboutUs = () => {
                     {stat.value}
                   </Typography>
                   <Typography variant="body2" sx={{
-                    color: '#7f8c8d',
+                    color: 'text.primary',
                     fontWeight: 600,
                     fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' }
                   }}>
@@ -486,7 +486,7 @@ const AboutUs = () => {
                   textTransform: 'none',
                   fontWeight: 600,
                   fontSize: { xs: '14px', sm: '16px' },
-                  color: '#7f8c8d',
+                  color: 'text.primary',
                   minWidth: { xs: 'auto', sm: 160 },
                   px: { xs: 2, sm: 3 },
                   '&.Mui-selected': {
@@ -527,7 +527,7 @@ const AboutUs = () => {
             <Card sx={{
               p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
               borderRadius: 3,
               position: 'relative',
@@ -570,7 +570,7 @@ const AboutUs = () => {
                     mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
-                    color: '#34495e',
+                    color: 'text.primary',
                     textAlign: 'justify'
                   }}>
                     <strong>Braintone Technology Pvt Ltd.</strong> was formed in Mumbai in 1998. We are a company providing
@@ -583,7 +583,7 @@ const AboutUs = () => {
                     mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
-                    color: '#34495e',
+                    color: 'text.primary',
                     textAlign: 'justify'
                   }}>
                     Braintone understands the complexities of a business's infrastructure and how vital it is to the
@@ -600,7 +600,7 @@ const AboutUs = () => {
                       mb: 2,
                       lineHeight: 1.8,
                       fontSize: '1.1rem',
-                      color: '#34495e',
+                      color: 'text.primary',
                       textAlign: 'justify'
                     }}>
                       Our certified professionals are the best in their field, with extensive experience implementing
@@ -635,7 +635,7 @@ const AboutUs = () => {
                     mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
-                    color: '#34495e',
+                    color: 'text.primary',
                     textAlign: 'justify',
                     fontStyle: 'italic',
                     borderLeft: '4px solid #e74c3c',
@@ -676,7 +676,7 @@ const AboutUs = () => {
                     <Typography variant="body1" sx={{
                       lineHeight: 1.8,
                       fontSize: '1rem',
-                      color: '#34495e',
+                      color: 'text.primary',
                       textAlign: 'justify'
                     }}>
                       Our special blend of software, hardware and systems people helps to ensure projects arrive
@@ -694,7 +694,7 @@ const AboutUs = () => {
             <Card sx={{
               p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
               borderRadius: 3,
               position: 'relative',
@@ -756,7 +756,7 @@ const AboutUs = () => {
                     mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
-                    color: '#34495e',
+                    color: 'text.primary',
                     textAlign: 'justify'
                   }}>
                     To become India's most trusted and comprehensive technology partner, recognized for excellence
@@ -769,7 +769,7 @@ const AboutUs = () => {
                     mb: 3,
                     lineHeight: 1.8,
                     fontSize: '1.1rem',
-                    color: '#34495e',
+                    color: 'text.primary',
                     textAlign: 'justify'
                   }}>
                     By 2030, we aim to expand our footprint across India while maintaining the personalized
@@ -811,7 +811,7 @@ const AboutUs = () => {
             <Card sx={{
               p: { xs: 2, sm: 4, md: 6 },
               boxShadow: '0 15px 35px rgba(231, 76, 60, 0.15)',
-              background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+              background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
               border: '1px solid rgba(231, 76, 60, 0.1)',
               borderRadius: 3,
               position: 'relative',
@@ -844,11 +844,11 @@ const AboutUs = () => {
                   }}>
                     <Star sx={{ fontSize: 32, color: 'white' }} />
                   </Box>
-                  <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
+                  <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                     11 Reasons to Choose Braintone
                   </Typography>
                 </Box>
-                <Typography variant="h6" sx={{ color: '#7f8c8d', fontWeight: 400, mb: 4 }}>
+                <Typography variant="h6" sx={{ color: 'text.secondary', fontWeight: 400, mb: 4 }}>
                   Discover why thousands of customers trust Braintone for their technology needs
                 </Typography>
               </Box>
@@ -869,7 +869,7 @@ const AboutUs = () => {
                       maxHeight: '180px',
                       display: 'flex',
                       flexDirection: 'column',
-                      background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #2d1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
                       border: '1px solid rgba(231, 76, 60, 0.2)',
                       borderRadius: '8px',
@@ -914,7 +914,7 @@ const AboutUs = () => {
                     </Box>
 
                     <Typography variant="body2" sx={{
-                      color: '#7f8c8d',
+                      color: 'text.primary',
                       lineHeight: 1.5,
                       fontSize: '0.85rem',
                       flex: 1,
@@ -950,7 +950,7 @@ const AboutUs = () => {
                 <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#3498db' }}>
                   Complete Business Systems
                 </Typography>
-                <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6 }}>
+                <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.6 }}>
                   Complete Business Systems prides itself on the high technical ability of its staff.
                   We maintain a full complement of skills to allow even the most demanding project to be undertaken.
                   Our expertise covers everything from basic workstations to complex enterprise network solutions.
@@ -964,7 +964,7 @@ const AboutUs = () => {
       {/* What We Offer Section */}
       <FadeInSection fullWidth>
         <Box sx={{
-          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(180deg, #121212 0%, #1a1a1a 50%, #121212 100%)' : 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
           py: 10,
           position: 'relative',
           overflow: 'hidden',
@@ -973,7 +973,7 @@ const AboutUs = () => {
             <Typography variant="h3" align="center" sx={{
               fontWeight: 800,
               mb: 2,
-              color: '#2c3e50',
+              color: 'text.primary',
               position: 'relative',
               display: 'inline-block',
               left: '50%',
@@ -994,7 +994,7 @@ const AboutUs = () => {
               Our Comprehensive Services
             </Typography>
             <Typography variant="h6" align="center" sx={{
-              color: '#7f8c8d',
+              color: 'text.primary',
               mb: 6,
               fontWeight: 500,
               animation: 'fadeInUp 1s ease 0.2s both'
@@ -1028,7 +1028,7 @@ const AboutUs = () => {
                     alignItems: 'flex-start',
                     justifyContent: 'space-between',
                     textAlign: 'left',
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
                     boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
                     borderRadius: '12px',
@@ -1056,12 +1056,12 @@ const AboutUs = () => {
                       width: 80,
                       height: 80,
                       borderRadius: '50%',
-                      background: '#ffecec',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.1)' : '#ffecec',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                      border: '3px solid white',
+                      border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid white',
                       animation: 'pulse 3s ease-in-out infinite',
                       transition: 'all 0.3s ease',
                       mb: 3,
@@ -1074,14 +1074,14 @@ const AboutUs = () => {
                     <Typography variant="h5" sx={{
                       fontWeight: 700,
                       mb: 1.5,
-                      color: '#2c3e50',
+                      color: 'text.primary',
                       fontSize: '1.4rem'
                     }}>
                       Brand New Laptops
                     </Typography>
 
                     <Typography variant="body1" sx={{
-                      color: '#7f8c8d',
+                      color: 'text.primary',
                       lineHeight: 1.6,
                       fontSize: '1rem',
                       mb: 3
@@ -1090,13 +1090,13 @@ const AboutUs = () => {
                     </Typography>
 
                     <Stack spacing={1.5}>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Latest models from top brands
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Official warranty & support
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Custom configurations available
                       </Typography>
                     </Stack>
@@ -1135,7 +1135,7 @@ const AboutUs = () => {
                     alignItems: 'flex-start',
                     justifyContent: 'space-between',
                     textAlign: 'left',
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
                     boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
                     borderRadius: '12px',
@@ -1163,12 +1163,12 @@ const AboutUs = () => {
                       width: 80,
                       height: 80,
                       borderRadius: '50%',
-                      background: '#ffecec',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.1)' : '#ffecec',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                      border: '3px solid white',
+                      border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid white',
                       animation: 'pulse 3s ease-in-out infinite',
                       transition: 'all 0.3s ease',
                       mb: 3,
@@ -1181,14 +1181,14 @@ const AboutUs = () => {
                     <Typography variant="h5" sx={{
                       fontWeight: 700,
                       mb: 1.5,
-                      color: '#2c3e50',
+                      color: 'text.primary',
                       fontSize: '1.4rem'
                     }}>
                       Refurbished Laptops
                     </Typography>
 
                     <Typography variant="body1" sx={{
-                      color: '#7f8c8d',
+                      color: 'text.primary',
                       lineHeight: 1.6,
                       fontSize: '1rem',
                       mb: 3
@@ -1197,13 +1197,13 @@ const AboutUs = () => {
                     </Typography>
 
                     <Stack spacing={1.5}>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Thorough quality testing
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> 6-month warranty included
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Budget-friendly options
                       </Typography>
                     </Stack>
@@ -1251,7 +1251,7 @@ const AboutUs = () => {
                     alignItems: 'flex-start',
                     justifyContent: 'space-between',
                     textAlign: 'left',
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
                     boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
                     borderRadius: '12px',
@@ -1279,12 +1279,12 @@ const AboutUs = () => {
                       width: 80,
                       height: 80,
                       borderRadius: '50%',
-                      background: '#ffecec',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.1)' : '#ffecec',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                      border: '3px solid white',
+                      border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid white',
                       animation: 'pulse 3s ease-in-out infinite',
                       transition: 'all 0.3s ease',
                       mb: 3,
@@ -1297,14 +1297,14 @@ const AboutUs = () => {
                     <Typography variant="h5" sx={{
                       fontWeight: 700,
                       mb: 1.5,
-                      color: '#2c3e50',
+                      color: 'text.primary',
                       fontSize: '1.4rem'
                     }}>
                       Repair Services
                     </Typography>
 
                     <Typography variant="body1" sx={{
-                      color: '#7f8c8d',
+                      color: 'text.primary',
                       lineHeight: 1.6,
                       fontSize: '1rem',
                       mb: 3
@@ -1313,13 +1313,13 @@ const AboutUs = () => {
                     </Typography>
 
                     <Stack spacing={1.5}>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> All brands & models
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Genuine parts only
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Same-day service available
                       </Typography>
                     </Stack>
@@ -1359,7 +1359,7 @@ const AboutUs = () => {
                     alignItems: 'flex-start',
                     justifyContent: 'space-between',
                     textAlign: 'left',
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
                     boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
                     borderRadius: '12px',
@@ -1387,12 +1387,12 @@ const AboutUs = () => {
                       width: 80,
                       height: 80,
                       borderRadius: '50%',
-                      background: '#ffecec',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.1)' : '#ffecec',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                      border: '3px solid white',
+                      border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid white',
                       animation: 'pulse 3s ease-in-out infinite',
                       transition: 'all 0.3s ease',
                       mb: 3,
@@ -1405,14 +1405,14 @@ const AboutUs = () => {
                     <Typography variant="h5" sx={{
                       fontWeight: 700,
                       mb: 1.5,
-                      color: '#2c3e50',
+                      color: 'text.primary',
                       fontSize: '1.4rem'
                     }}>
                       Doorstep Service
                     </Typography>
 
                     <Typography variant="body1" sx={{
-                      color: '#7f8c8d',
+                      color: 'text.primary',
                       lineHeight: 1.6,
                       fontSize: '1rem',
                       mb: 3
@@ -1421,13 +1421,13 @@ const AboutUs = () => {
                     </Typography>
 
                     <Stack spacing={1.5}>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Cash on Delivery available for all services
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Across Mumbai
                       </Typography>
-                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1 }}>
+                      <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1, color: 'text.primary' }}>
                         <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} /> Safe & insured handling
                       </Typography>
                     </Stack>
@@ -1516,7 +1516,7 @@ const AboutUs = () => {
               textAlign: 'center'
             }}>
               <Typography variant="body2" sx={{
-                color: '#25D366',
+                color: 'text.primary',
                 fontWeight: 600,
                 display: 'flex',
                 alignItems: 'center',
@@ -1673,7 +1673,7 @@ const AboutUs = () => {
             <Box sx={{
               mt: 4,
               p: 3,
-              bgcolor: '#ffecec',
+              bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.15)' : '#ffecec',
               borderRadius: '8px',
               mb: 4
             }}>
@@ -1685,15 +1685,15 @@ const AboutUs = () => {
                 ⚡ What happens next?
               </Typography>
               <Stack spacing={1.5}>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
                   <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
                   Submit this form
                 </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
                   <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
                   We'll contact you on WhatsApp (90820 14406) to confirm
                 </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
+                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
                   <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
                   Free pickup scheduled from your address
                 </Typography>
@@ -1777,7 +1777,7 @@ const AboutUs = () => {
             Our 26+ Year Journey
           </Typography>
           <Typography variant="h6" align="center" sx={{
-            color: '#7f8c8d',
+            color: 'text.primary',
             mb: 6,
             fontWeight: 500,
             animation: 'fadeInUp 1s ease 0.2s both'
@@ -1818,7 +1818,7 @@ const AboutUs = () => {
                   height: 20,
                   borderRadius: '50%',
                   background: 'linear-gradient(135deg, #e74c3c, #ff6b6b)',
-                  border: '4px solid white',
+                  border: (theme) => theme.palette.mode === 'dark' ? '4px solid #1a1a1a' : '4px solid white',
                   boxShadow: '0 0 0 4px rgba(231, 76, 60, 0.2)',
                   position: 'relative',
                   zIndex: 3, // Higher than everything
@@ -1831,7 +1831,7 @@ const AboutUs = () => {
                     p: 3,
                     boxShadow: '0 8px 20px rgba(231, 76, 60, 0.15)',
                     transition: 'all 0.3s ease',
-                    background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                     border: '1px solid rgba(231, 76, 60, 0.1)',
                     flex: 1,
                     position: 'relative',
@@ -1845,7 +1845,7 @@ const AboutUs = () => {
                   <Typography variant="h6" sx={{ color: '#e74c3c', fontWeight: 700, mb: 1 }}>
                     {milestone.year}
                   </Typography>
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: '#2c3e50' }}>
+                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>
                     {milestone.event}
                   </Typography>
                   <Typography variant="body1" sx={{ color: '#7f8c8d' }}>
@@ -1861,7 +1861,7 @@ const AboutUs = () => {
       {/* Our Achievements Section */}
       <FadeInSection fullWidth>
         <Box sx={{
-          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(180deg, #121212 0%, #1a1a1a 50%, #121212 100%)' : 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
           py: 10,
           position: 'relative',
           overflow: 'hidden',
@@ -1870,7 +1870,7 @@ const AboutUs = () => {
             <Typography variant="h3" align="center" sx={{
               fontWeight: 800,
               mb: 2,
-              color: '#2c3e50',
+              color: 'text.primary',
               position: 'relative',
               display: 'inline-block',
               left: '50%',
@@ -1891,7 +1891,7 @@ const AboutUs = () => {
               Our Achievements
             </Typography>
             <Typography variant="h6" align="center" sx={{
-              color: '#7f8c8d',
+              color: 'text.primary',
               mb: 6,
               fontWeight: 500,
               animation: 'fadeInUp 1s ease 0.2s both'
@@ -1912,8 +1912,8 @@ const AboutUs = () => {
                 overflow: 'hidden',
                 borderRadius: '12px',
                 boxShadow: '0 15px 35px rgba(231, 76, 60, 0.2)',
-                bgcolor: '#ffffff',
-                border: '2px solid rgba(231, 76, 60, 0.1)',
+                bgcolor: 'background.paper',
+                border: (theme) => theme.palette.mode === 'dark' ? '2px solid rgba(255,255,255,0.1)' : '2px solid rgba(231, 76, 60, 0.1)',
               }}>
                 {/* Achievement Images */}
                 <Box sx={{
@@ -1971,7 +1971,7 @@ const AboutUs = () => {
                       <Box sx={{ p: 3, textAlign: 'center', width: '100%' }}>
                         <Typography variant="h6" sx={{
                           fontWeight: 700,
-                          color: '#2c3e50',
+                          color: 'text.primary',
                           mb: 1,
                           fontSize: { xs: '1rem', md: '1.25rem' } // Responsive font size
                         }}>
@@ -2001,7 +2001,7 @@ const AboutUs = () => {
                     left: 10,
                     top: { xs: '30%', md: '50%' }, // Adjust vertically based on height
                     transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255, 255, 255, 0.9)',
                     color: '#e74c3c',
                     '&:hover': {
                       bgcolor: '#e74c3c',
@@ -2025,7 +2025,7 @@ const AboutUs = () => {
                     right: 10,
                     top: { xs: '30%', md: '50%' }, // Adjust vertically based on height
                     transform: 'translateY(-50%)',
-                    bgcolor: 'rgba(255, 255, 255, 0.9)',
+                    bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(0,0,0,0.6)' : 'rgba(255, 255, 255, 0.9)',
                     color: '#e74c3c',
                     '&:hover': {
                       bgcolor: '#e74c3c',
@@ -2075,7 +2075,7 @@ const AboutUs = () => {
       {/* Meet Our Team Section */}
       <FadeInSection fullWidth>
         <Box sx={{
-          background: 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
+          background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(180deg, #121212 0%, #1a1a1a 50%, #121212 100%)' : 'linear-gradient(180deg, #ffffff 0%, #fff5f5 50%, #ffffff 100%)',
           py: 10,
           position: 'relative',
           overflow: 'hidden',
@@ -2084,7 +2084,7 @@ const AboutUs = () => {
             <Typography variant="h3" align="center" sx={{
               fontWeight: 800,
               mb: 2,
-              color: '#2c3e50',
+              color: 'text.primary',
               position: 'relative',
               display: 'inline-block',
               left: '50%',
@@ -2105,7 +2105,7 @@ const AboutUs = () => {
               Meet Our Expert Team
             </Typography>
             <Typography variant="h6" align="center" sx={{
-              color: '#7f8c8d',
+              color: 'text.primary',
               mb: 6,
               fontWeight: 500,
               animation: 'fadeInUp 1s ease 0.2s both'
@@ -2138,7 +2138,7 @@ const AboutUs = () => {
                       flexDirection: 'column',
                       alignItems: 'center',
                       textAlign: 'center',
-                      background: 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                       border: '1px solid rgba(231, 76, 60, 0.1)',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.1)',
                       borderRadius: '12px',
@@ -2164,9 +2164,9 @@ const AboutUs = () => {
                       mb: 3,
                       overflow: 'hidden',
                       borderRadius: '50%',
-                      border: '3px solid white',
+                      border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid white',
                       boxShadow: '0 8px 20px rgba(231, 76, 60, 0.3)',
-                      background: '#ffecec',
+                      background: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.1)' : '#ffecec',
                     }}>
                       <img
                         src={member.image}
@@ -2201,7 +2201,7 @@ const AboutUs = () => {
                       <Typography variant="h5" sx={{
                         fontWeight: 700,
                         mb: 1,
-                        color: '#2c3e50',
+                        color: 'text.primary',
                         fontSize: '1.2rem',
                         lineHeight: 1.3
                       }}>
@@ -2220,7 +2220,7 @@ const AboutUs = () => {
                       </Typography>
 
                       <Typography variant="body2" sx={{
-                        color: '#7f8c8d',
+                        color: 'text.primary',
                         lineHeight: 1.6,
                         fontSize: '0.9rem',
                         flex: 1
@@ -2255,7 +2255,7 @@ const AboutUs = () => {
               <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#e74c3c' }}>
                 Our Team Philosophy
               </Typography>
-              <Typography variant="body1" sx={{ color: '#34495e', lineHeight: 1.6, mb: 2 }}>
+              <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.6, mb: 2 }}>
                 Each member of our team brings unique expertise and dedication to providing exceptional service.
                 With a combined experience of over 80 years in the technology industry, we're committed to
                 delivering solutions that exceed your expectations.

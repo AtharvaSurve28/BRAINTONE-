@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import API_BASE_URL from '../apiConfig';
 import {
   Box,
@@ -77,33 +77,33 @@ const getBrandName = (brandId) => {
 };
 
 // Get brand accent color for series tabs
-const getBrandAccentColor = (brandId) => {
+const getBrandAccentColor = (brandId, theme) => {
   const brandColors = {
-    'dell': '#007DB8', // Dell blue
-    'hp': '#0096D6', // HP blue
-    'lenovo': '#E2231A', // Lenovo red
-    'asus': '#B71C1C', // ASUS red (from gradient)
-    'acer': '#83B81A', // Acer green
-    'apple': '#000000', // Apple black
-    'msi': '#FF0000', // MSI red
-    'samsung': '#1428A0', // Samsung blue
-    'microsoft': '#0078D4' // Microsoft blue
+    'dell': theme.palette.mode === 'dark' ? '#33abff' : '#007DB8',
+    'hp': theme.palette.mode === 'dark' ? '#33b5f7' : '#0096D6',
+    'lenovo': '#E2231A',
+    'asus': '#B71C1C',
+    'acer': theme.palette.mode === 'dark' ? '#aed581' : '#83B81A',
+    'apple': theme.palette.mode === 'dark' ? '#ffffff' : '#000000',
+    'msi': '#FF0000',
+    'samsung': theme.palette.mode === 'dark' ? '#3f51b5' : '#1428A0',
+    'microsoft': theme.palette.mode === 'dark' ? '#4dabf5' : '#0078D4'
   };
   return brandColors[brandId] || '#007DB8';
 };
 
 // Brand-specific colors for hero header
-const getBrandColors = (brandId) => {
+const getBrandColors = (brandId, theme) => {
   const brandColors = {
     'dell': {
       gradient: 'linear-gradient(135deg, #007DB8 0%, #005A8A 50%, #003B5C 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #90E0EF, #FFFFFF)',
-      accentColor: '#007DB8'
+      accentColor: theme.palette.mode === 'dark' ? '#33abff' : '#007DB8'
     },
     'hp': {
       gradient: 'linear-gradient(135deg, #0096D6 0%, #0077B3 50%, #005A8A 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)',
-      accentColor: '#0096D6'
+      accentColor: theme.palette.mode === 'dark' ? '#33b5f7' : '#0096D6'
     },
     'lenovo': {
       gradient: 'linear-gradient(135deg, #E2231A 0%, #B71C1C 50%, #8B0000 100%)',
@@ -118,12 +118,12 @@ const getBrandColors = (brandId) => {
     'acer': {
       gradient: 'linear-gradient(135deg, #83B81A 0%, #6A9A15 50%, #4A6B0F 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #E8F5E9, #FFFFFF)',
-      accentColor: '#83B81A'
+      accentColor: theme.palette.mode === 'dark' ? '#aed581' : '#83B81A'
     },
     'apple': {
       gradient: 'linear-gradient(135deg, #000000 0%, #1A1A1A 50%, #2D2D2D 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #E0E0E0, #FFFFFF)',
-      accentColor: '#000000'
+      accentColor: theme.palette.mode === 'dark' ? '#ffffff' : '#000000'
     },
     'msi': {
       gradient: 'linear-gradient(135deg, #FF0000 0%, #CC0000 50%, #990000 100%)',
@@ -133,68 +133,17 @@ const getBrandColors = (brandId) => {
     'samsung': {
       gradient: 'linear-gradient(135deg, #1428A0 0%, #0F1F7A 50%, #0A1554 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #C5CAE9, #FFFFFF)',
-      accentColor: '#1428A0'
+      accentColor: theme.palette.mode === 'dark' ? '#3f51b5' : '#1428A0'
     },
     'microsoft': {
       gradient: 'linear-gradient(135deg, #0078D4 0%, #005A9E 50%, #003D6B 100%)',
       textGradient: 'linear-gradient(90deg, #FFFFFF, #B3E5FC, #FFFFFF)',
-      accentColor: '#0078D4'
+      accentColor: theme.palette.mode === 'dark' ? '#4dabf5' : '#0078D4'
     }
   };
   return brandColors[brandId] || brandColors['dell'];
 };
 
-// Category definitions
-const categories = [
-  {
-    name: 'Entry Level',
-    description: 'Basic performance, essential tasks. Price: ₹10,000-32,000',
-    icon: <School />,
-    color: '#3B82F6',
-    priceRange: '₹10,000-32,000',
-    key: 'entryLevel'
-  },
-  {
-    name: 'Mid-Range',
-    description: 'Balanced performance for work & media. Price: ₹33,000-50,000',
-    icon: <DisplaySettings />,
-    color: '#800000',
-    priceRange: '₹33,000-50,000',
-    key: 'midrange'
-  },
-  {
-    name: 'Consumer',
-    description: 'Design, multimedia, portability for personal use.',
-    icon: <Monitor />,
-    color: '#10B981',
-    priceRange: '₹33,000-70,000',
-    key: 'consumer'
-  },
-  {
-    name: 'Commercial',
-    description: 'Security, durability for business use.',
-    icon: <Business />,
-    color: '#6366F1',
-    priceRange: '₹33,000-70,000',
-    key: 'commercial'
-  },
-  {
-    name: 'Gaming',
-    description: 'High-performance GPU, high-refresh displays. Price: ₹51,000+',
-    icon: <VideogameAsset />,
-    color: '#EF4444',
-    priceRange: '₹51,000+',
-    key: 'gaming'
-  },
-  {
-    name: 'Premium',
-    description: 'Top-tier performance, best displays, premium build. Price: ₹70,000+',
-    icon: <WorkspacePremium />,
-    color: '#F59E0B',
-    priceRange: '₹70,000+',
-    key: 'premium'
-  }
-];
 
 // Laptop Details Modal Component
 // Complete Updated LaptopDetailsModal Component
@@ -254,19 +203,19 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
       icon: <LocalShipping />,
       title: "Free Delivery",
       description: "Free delivery within Mumbai for orders above ₹10,000",
-      color: "#3B82F6"
+      color: theme.palette.mode === 'dark' ? '#60a5fa' : '#3B82F6'
     },
     {
       icon: <SupportAgent />,
       title: "24/7 Support",
       description: "Technical support available round the clock",
-      color: "#10B981"
+      color: theme.palette.mode === 'dark' ? '#34d399' : '#10B981'
     },
     {
       icon: <VerifiedUser />,
       title: "Genuine Warranty",
       description: "All laptops come with manufacturer warranty",
-      color: "#F59E0B"
+      color: theme.palette.mode === 'dark' ? '#fbbf24' : '#F59E0B'
     }
   ];
 
@@ -339,10 +288,11 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
                     width: 80,
                     height: 80,
                     borderRadius: 2,
-                    border: `2px solid ${activeImage === index ? (category?.color || '#3B82F6') : '#eee'}`,
+                    border: activeImage === index ? `2px solid ${category?.color || '#3B82F6'}` : '2px solid transparent',
+                    borderColor: activeImage === index ? (category?.color || '#3B82F6') : 'divider',
                     padding: '4px',
                     cursor: 'pointer',
-                    bgcolor: '#fff',
+                    bgcolor: 'background.paper',
                     transition: 'all 0.2s ease',
                     '&:hover': {
                       borderColor: category?.color || '#3B82F6',
@@ -364,9 +314,10 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
             <Box sx={{
               flex: 1,
               height: { xs: 300, md: 450 },
-              bgcolor: '#fff',
+              bgcolor: 'background.paper',
               borderRadius: 3,
-              border: '1px solid #eee',
+              border: '1px solid',
+              borderColor: 'divider',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -428,7 +379,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
           </Box>
 
           {/* Key Specifications */}
-          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: alpha('#000000', 0.02) }}>
+          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: 'action.hover' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
               ⚙️ Key Specifications
             </Typography>
@@ -553,7 +504,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
           </Paper>
 
           {/* Features */}
-          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: alpha('#000000', 0.02) }}>
+          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: 'action.hover' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
               ✨ What's Included
             </Typography>
@@ -585,7 +536,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
           </Paper>
 
           {/* Services - Three horizontal boxes */}
-          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: alpha('#000000', 0.02) }}>
+          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, mb: 4, backgroundColor: 'action.hover' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
               🛡️ Our Services
             </Typography>
@@ -645,7 +596,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
 
           {/* Store Locations - Clickable for Google Maps */}
           {/* Store Locations - FIXED: Equal height boxes with CSS Grid */}
-          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, backgroundColor: alpha('#000000', 0.02) }}>
+          <Paper elevation={0} sx={{ p: { xs: 2, md: 3 }, backgroundColor: 'action.hover' }}>
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 3, display: 'flex', alignItems: 'center', gap: 1 }}>
               🏪 Visit Our Stores
             </Typography>
@@ -763,7 +714,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
                     gap: 1.5,
                     flexShrink: 0,
                     pt: 1,
-                    borderTop: `1px solid ${alpha('#000000', 0.1)}`
+                    borderTop: (theme) => `1px solid ${theme.palette.divider}`
                   }}>
                     <Phone sx={{
                       color: category?.color || '#3B82F6',
@@ -867,6 +818,58 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedLaptop, setSelectedLaptop] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState(null);
+
+  // Category definitions with theme-aware colors
+  const categories = useMemo(() => [
+    {
+      name: 'Entry Level',
+      description: 'Basic performance, essential tasks. Price: ₹10,000-32,000',
+      icon: <School />,
+      color: theme.palette.mode === 'dark' ? '#60a5fa' : '#3B82F6',
+      priceRange: '₹10,000-32,000',
+      key: 'entryLevel'
+    },
+    {
+      name: 'Mid-Range',
+      description: 'Balanced performance for work & media. Price: ₹33,000-50,000',
+      icon: <DisplaySettings />,
+      color: theme.palette.mode === 'dark' ? '#ff5252' : '#800000',
+      priceRange: '₹33,000-50,000',
+      key: 'midrange'
+    },
+    {
+      name: 'Consumer',
+      description: 'Design, multimedia, portability for personal use.',
+      icon: <Monitor />,
+      color: theme.palette.mode === 'dark' ? '#34d399' : '#10B981',
+      priceRange: '₹33,000-70,000',
+      key: 'consumer'
+    },
+    {
+      name: 'Commercial',
+      description: 'Security, durability for business use.',
+      icon: <Business />,
+      color: theme.palette.mode === 'dark' ? '#818cf8' : '#6366F1',
+      priceRange: '₹33,000-70,000',
+      key: 'commercial'
+    },
+    {
+      name: 'Gaming',
+      description: 'High-performance GPU, high-refresh displays. Price: ₹51,000+',
+      icon: <VideogameAsset />,
+      color: '#EF4444',
+      priceRange: '₹51,000+',
+      key: 'gaming'
+    },
+    {
+      name: 'Premium',
+      description: 'Top-tier performance, best displays, premium build. Price: ₹70,000+',
+      icon: <WorkspacePremium />,
+      color: theme.palette.mode === 'dark' ? '#fbbf24' : '#F59E0B',
+      priceRange: '₹70,000+',
+      key: 'premium'
+    }
+  ], [theme.palette.mode]);
 
   useEffect(() => {
     fetchBrandData();
@@ -982,14 +985,14 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                 {category.name} Laptops
                 <Typography component="span" variant="h6" sx={{
                   fontWeight: 600,
-                  color: 'text.secondary',
+                  color: 'text.primary',
                   ml: 1
                 }}>
                   ({laptops.length} models)
                 </Typography>
               </Typography>
               <Typography variant="body1" sx={{
-                color: 'text.secondary',
+                color: 'text.primary',
                 fontSize: '1.1rem'
               }}>
                 {category.description} | Price range: {category.priceRange}
@@ -1019,16 +1022,17 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                   flexDirection: 'column',
                   borderRadius: 2,
                   overflow: 'hidden',
-                  border: `1px solid ${alpha('#e0e0e0', 0.8)}`,
+                  border: '1px solid',
+                  borderColor: 'divider',
                   transition: 'all 0.3s ease',
                   boxSizing: 'border-box',
                   minWidth: 0,
                   maxWidth: '100%',
                   minHeight: 480,
-                  backgroundColor: '#ffffff',
+                  backgroundColor: 'background.paper',
                   '&:hover': {
                     transform: 'translateY(-8px)',
-                    boxShadow: `0 12px 28px ${alpha(category.color, 0.15)}`,
+                    boxShadow: (theme) => `0 12px 28px ${alpha(category.color, theme.palette.mode === 'dark' ? 0.3 : 0.15)}`,
                     borderColor: alpha(category.color, 0.3)
                   }
                 }}
@@ -1063,7 +1067,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                       fontSize: '1rem',
                       lineHeight: 1.3,
                       mb: 0.5,
-                      color: '#1a1a1a'
+                      color: 'text.primary'
                     }}>
                       {laptop.name}
                     </Typography>
@@ -1107,7 +1111,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                         key={specIndex}
                         variant="body2"
                         sx={{
-                          color: '#666666',
+                          color: 'text.primary',
                           mb: 0.75,
                           fontSize: '0.85rem',
                           display: 'flex',
@@ -1206,13 +1210,13 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
     );
   };
 
-  const brandColors = getBrandColors(brandId);
-  const brandAccentColor = getBrandAccentColor(brandId);
+  const brandColors = getBrandColors(brandId, theme);
+  const brandAccentColor = getBrandAccentColor(brandId, theme);
 
   return (
     <Box sx={{
       minHeight: '100vh',
-      backgroundColor: '#f9fafb',
+      backgroundColor: 'background.default',
       overflow: 'hidden'
     }}>
       {/* Hero Header - BRAND SPECIFIC */}
@@ -1269,10 +1273,10 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
       {/* Main Content */}
       <Container maxWidth="lg" sx={{
         py: 6,
-        backgroundColor: '#ffffff',
+        backgroundColor: 'background.paper',
         borderRadius: 3,
         mt: -3,
-        boxShadow: '0 4px 20px rgba(0, 0, 0, 0.08)',
+        boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 4px 20px rgba(0, 0, 0, 0.4)' : '0 4px 20px rgba(0, 0, 0, 0.08)',
         position: 'relative',
         zIndex: 1
       }}>
@@ -1295,8 +1299,9 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                 sx={{
                   borderRadius: 2,
                   p: 1,
-                  backgroundColor: '#f8f9fa',
-                  border: '1px solid #e9ecef'
+                  backgroundColor: 'background.default',
+                  border: '1px solid',
+                  borderColor: 'divider'
                 }}
               >
                 <Tabs
@@ -1322,7 +1327,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                       padding: '8px 20px',
                       transition: 'all 0.2s ease',
                       borderBottom: '3px solid transparent',
-                      color: '#000000', // DEFAULT: All tabs are dark black
+                      color: 'text.primary', // DEFAULT: All tabs use theme primary
                       '&:hover': {
                         backgroundColor: alpha(brandAccentColor, 0.05),
                         borderBottom: `3px solid ${alpha(brandAccentColor, 0.2)}`,
@@ -1369,9 +1374,9 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
               mb: 6,
               p: { xs: 2, md: 4 }, // Reduced padding on mobile
               borderRadius: 2,
-              backgroundColor: '#f8f9fa',
+              backgroundColor: 'background.default',
               borderLeft: `4px solid ${brandAccentColor}`,
-              boxShadow: '0 2px 8px rgba(0,0,0,0.05)'
+              boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 2px 8px rgba(0,0,0,0.3)' : '0 2px 8px rgba(0,0,0,0.05)'
             }}>
               <Typography variant="h3" sx={{
                 fontWeight: 800,
@@ -1382,7 +1387,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                 {selectedSeriesData.displayName || selectedSeries}
               </Typography>
               <Typography variant="body1" sx={{
-                color: '#495057',
+                color: 'text.primary',
                 fontSize: { xs: '1rem', md: '1.1rem' },
                 lineHeight: 1.6,
                 mb: 2
@@ -1402,7 +1407,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
               >
                 <Typography variant="body2" sx={{
                   fontWeight: 600,
-                  color: '#000000',
+                  color: 'text.primary',
                   mr: { xs: 0, sm: 1 },
                   mb: { xs: 1, sm: 0 }, // Margin bottom on mobile
                   whiteSpace: 'nowrap'
@@ -1521,11 +1526,12 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                     mb: 2,
                     p: 2,
                     borderRadius: 2,
-                    backgroundColor: alpha('#f9fafb', 0.8),
-                    border: `1px solid ${alpha('#e5e7eb', 0.8)}`,
+                    backgroundColor: 'background.paper',
+                    border: '1px solid',
+                    borderColor: 'divider',
                     transition: 'all 0.3s ease',
                     '&:hover': {
-                      backgroundColor: '#ffffff',
+                      backgroundColor: 'background.default',
                       borderColor: alpha(category.color, 0.3),
                       transform: 'translateY(-2px)',
                       boxShadow: `0 4px 12px ${alpha(category.color, 0.1)}`
@@ -1546,7 +1552,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                       {category.icon}
                     </Box>
                     <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: '#111827' }}>
+                      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'text.primary' }}>
                         {category.name}
                       </Typography>
                       <Typography variant="caption" sx={{

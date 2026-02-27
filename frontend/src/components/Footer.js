@@ -9,13 +9,13 @@ const Footer = ({ fullFooter = true }) => {
             component="footer"
             role="contentinfo"
             sx={{
-                bgcolor: '#2d2d2d', // Lighter black
+                bgcolor: (theme) => theme.palette.mode === 'dark' ? '#121212' : '#2d2d2d',
                 color: '#ffffff',
                 pt: fullFooter ? 8 : 10,
                 pb: fullFooter ? 3 : 8,
                 position: 'relative',
                 overflow: 'hidden',
-                borderTop: '4px solid #e74c3c',
+                borderTop: (theme) => `4px solid ${theme.palette.brandRed.main}`,
                 '&::before': {
                     content: '""',
                     position: 'absolute',
@@ -23,7 +23,7 @@ const Footer = ({ fullFooter = true }) => {
                     left: 0,
                     right: 0,
                     height: '4px',
-                    background: 'linear-gradient(90deg, #e74c3c, #3498db, #2ecc71, #e74c3c)',
+                    background: (theme) => `linear-gradient(90deg, ${theme.palette.brandRed.main}, #3498db, #2ecc71, ${theme.palette.brandRed.main})`,
                     backgroundSize: '300% 100%',
                     animation: 'shimmer 4s infinite linear',
                 },
@@ -40,7 +40,7 @@ const Footer = ({ fullFooter = true }) => {
                                     fontWeight: 800,
                                     textShadow: '0 2px 10px rgba(0,0,0,0.3)',
                                     mb: 2,
-                                    color: '#e74c3c', // Brand Red
+                                    color: 'brandRed.main',
                                     fontSize: { xs: '2rem', md: '3rem' },
                                 }}
                             >
@@ -292,7 +292,7 @@ const Footer = ({ fullFooter = true }) => {
                         sx={{
                             fontWeight: 900,
                             mb: 1,
-                            color: '#e74c3c', // Brand Red
+                            color: 'brandRed.main',
                             letterSpacing: '2px',
                             display: 'inline-block',
                             fontSize: { xs: '2.5rem', md: '3rem' } // Explicitly bigger

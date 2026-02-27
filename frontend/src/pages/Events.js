@@ -6,7 +6,7 @@ import FadeInSection from '../components/FadeInSection';
 
 const Events = () => {
     return (
-        <Box sx={{ bgcolor: '#f8f9fa', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+        <Box sx={{ bgcolor: 'background.default', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
             {/* Hero Section */}
             <FadeInSection fullWidth>
                 <Box
@@ -114,7 +114,7 @@ const Events = () => {
                             sx={{
                                 mb: { xs: 8, md: 12 },
                                 pb: { xs: 8, md: 12 },
-                                borderBottom: index < 4 ? '1px solid rgba(0, 0, 0, 0.2)' : 'none', // Slightly darker border
+                                borderBottom: index < 4 ? '1px solid divider' : 'none', // Slightly darker border
                             }}
                         >
                             <Box sx={{
@@ -131,7 +131,7 @@ const Events = () => {
                                             fontWeight: 700,
                                             mb: 3,
                                             fontSize: { xs: '1.75rem', md: '2.25rem' },
-                                            color: '#2c3e50',
+                                            color: 'text.primary',
                                             position: 'relative',
                                             '&::after': {
                                                 content: '""',
@@ -148,7 +148,7 @@ const Events = () => {
                                     </Typography>
                                     <Typography
                                         variant="body1"
-                                        color="text.secondary"
+                                        color="text.primary"
                                         sx={{
                                             lineHeight: 1.8,
                                             fontSize: '1.1rem',
