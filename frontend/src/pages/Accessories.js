@@ -60,19 +60,6 @@ const floatAnimation = keyframes`
 `;
 
 // SLOWER Bubble animation for background - SAME as laptops
-const bubbleFloat = keyframes`
-  0% {
-    transform: translateY(0) rotate(0deg);
-    opacity: 0.4;
-  }
-  50% {
-    opacity: 0.7;
-  }
-  100% {
-    transform: translateY(-100vh) rotate(180deg);
-    opacity: 0;
-  }
-`;
 
 const Accessories = () => {
   const [openModal, setOpenModal] = useState(false);
@@ -99,7 +86,7 @@ const Accessories = () => {
       id: 1,
       name: 'Laptop Battery',
       description: 'Original & compatible replacement batteries',
-      image: 'https://lapgadgets.in/wp-content/uploads/2024/02/Compatible-Battery-for-Dell-Latitude-E5540.webp?w=400&h=300&fit=crop',
+      image: '/images/accessories/Battery.jpg',
       color: '#E2231A',
       startingPrice: '₹1,500',
       specs: [
@@ -118,7 +105,7 @@ const Accessories = () => {
       id: 2,
       name: 'Laptop Chargers',
       description: 'Genuine & universal charging solutions',
-      image: 'https://laptopgallery.co.in/wp-content/uploads/2021/06/111-2.jpg?w=400&h=300&fit=crop',
+      image: '/images/accessories/Laptop-Charger.png',
       color: '#E2231A',
       startingPrice: '₹800',
       specs: [
@@ -137,7 +124,7 @@ const Accessories = () => {
       id: 3,
       name: 'Cooling Fan',
       description: 'Laptop cooling pads & vacuum coolers',
-      image: 'https://www.level1.com/media/catalog/product/cache/5dd1050e303ccd126a15d8279a1aa7f2/2/5/25dad2276d80e2517732922f27aff51fc50be6e5_THYIA02B_V1_product_01_high_1.jpg?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1769085795297-b45cc8c92f5b?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
       color: '#E2231A',
       startingPrice: '₹900',
       specs: [
@@ -175,7 +162,7 @@ const Accessories = () => {
       id: 5,
       name: 'Laptop Skins',
       description: 'Premium vinyl skins for protection & style',
-      image: 'https://www.wrapcart.com/cdn/shop/files/17_ce3f0362-2e3c-4ce7-9b3c-6afba5cce721.jpg?v=1732617626&w=400&h=300&fit=crop',
+      image: 'https://i.pinimg.com/1200x/c4/72/88/c47288d7a8a5dcce07a643146b1d30e0.jpg',
       color: '#E2231A',
       startingPrice: '₹600',
       specs: [
@@ -194,7 +181,7 @@ const Accessories = () => {
       id: 6,
       name: 'Hard Shell Covers',
       description: 'Durable hard covers for MacBooks',
-      image: 'https://i5.walmartimages.com/seo/Case-MacBook-Air-15-Inch-2024-2023-Model-A3114-A2941-M3-M2-Chip-Touch-ID-Laptop-Hard-Shell-Cover-Fold-Kickstand-Keyboard-Skin-Screen-Protector-Camera_b44b8ffc-989e-4ca8-ba10-6296b067abd1.8088c012601f3545892580c6b1bdcaa1.jpeg?w=400&h=300&fit=crop',
+      image: '/images/accessories/Hardshell.jpg',
       color: '#E2231A',
       startingPrice: '₹1,800',
       specs: [
@@ -341,23 +328,7 @@ const Accessories = () => {
     handleCloseModal();
   };
 
-  // Generate bubbles for the background - EXACTLY SAME as laptops
-  const generateBubbles = () => {
-    const bubbles = [];
-    for (let i = 0; i < 20; i++) {
-      bubbles.push({
-        id: i,
-        size: Math.random() * 35 + 15,
-        left: Math.random() * 100,
-        duration: Math.random() * 25 + 20,
-        delay: Math.random() * 15,
-        opacity: Math.random() * 0.3 + 0.1,
-      });
-    }
-    return bubbles;
-  };
 
-  const bubbles = generateBubbles();
 
   return (
     <Box sx={{
@@ -366,39 +337,6 @@ const Accessories = () => {
       overflow: 'hidden',
       position: 'relative',
     }}>
-      {/* Animated Bubbles Background - EXACTLY SAME as laptops */}
-      <Box sx={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        bottom: 0,
-        pointerEvents: 'none',
-        zIndex: 0,
-        overflow: 'hidden',
-      }}>
-        {bubbles.map((bubble) => (
-          <Box
-            key={bubble.id}
-            sx={{
-              position: 'absolute',
-              left: `${bubble.left}%`,
-              bottom: '-50px',
-              width: `${bubble.size}px`,
-              height: `${bubble.size}px`,
-              borderRadius: '50%',
-              background: `radial-gradient(circle at 30% 30%, 
-                rgba(255, 120, 120, ${bubble.opacity}) 0%, 
-                rgba(180, 30, 30, ${bubble.opacity * 0.6}) 60%, 
-                rgba(140, 10, 10, ${bubble.opacity * 0.3}) 100%)`,
-              animation: `${bubbleFloat} ${bubble.duration}s ease-in-out infinite`,
-              animationDelay: `${bubble.delay}s`,
-              filter: 'blur(1.5px)',
-              boxShadow: `inset 0 0 15px rgba(180, 30, 30, 0.3), 0 0 25px rgba(180, 30, 30, 0.15)`,
-            }}
-          />
-        ))}
-      </Box>
 
       {/* HERO SECTION - EXACT SAME STRUCTURE as laptops */}
       <FadeInSection fullWidth>
@@ -495,12 +433,25 @@ const Accessories = () => {
           {/* Accessories Grid - EXACT SAME as laptops grid */}
           <Grid container spacing={4} justifyContent="center" alignItems="stretch">
             {accessories.map((accessory, index) => (
-              <Grid item xs={12} sm={6} md={4} key={accessory.id} sx={{ display: 'flex' }}>
+              <Grid
+                item
+                xs={12}
+                sm={6}
+                md={4}
+                key={accessory.id}
+                sx={{
+                  display: 'flex',
+                  transform: [4, 5].includes(accessory.id) ? { xs: 'none', sm: 'translateX(-20px)' } : 'none',
+                  transition: 'transform 0.3s ease'
+                }}
+              >
                 <Card
                   onClick={() => handleOpenModal(accessory)}
                   sx={{
-                    width: '100%',
+                    width: accessory.id === 2 ? { xs: '100%', sm: '120%' } : '100%',
                     height: 420,
+                    maxHeight: 420, // STRICT: Force height
+                    margin: accessory.id === 2 ? '0 auto' : '0',
                     display: 'flex',
                     flexDirection: 'column',
                     backgroundColor: 'background.default',
@@ -508,7 +459,7 @@ const Accessories = () => {
                     boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     border: `2px solid ${accessory.color}20`,
-                    overflow: 'hidden',
+                    overflow: 'hidden', // STRICT: Hide any overflowing content/images
                     animation: `${bounceAnimation} 2s ease-in-out infinite`,
                     animationDelay: `${index * 0.2}s`,
                     position: 'relative',

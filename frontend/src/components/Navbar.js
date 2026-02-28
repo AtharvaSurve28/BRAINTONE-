@@ -141,7 +141,7 @@ export default function Navbar() {
     twitter: 'https://x.com/BraintoneL1707',
     facebook: 'https://www.facebook.com/profile.php?id=61587490744034',
     linkedin: '#',
-    whatsapp: 'https://wa.me/919820119113',
+    whatsapp: 'https://wa.me/919082014406',
   };
 
   const { mode, toggleTheme } = useThemeContext();

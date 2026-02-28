@@ -348,7 +348,7 @@ const Contact = () => {
             Visit Our Stores
           </Typography>
 
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', mb: 8 }}>
+          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', alignItems: 'stretch', mb: 8 }}>
             {/* Fort Location Card */}
             <Card
               component="a"
@@ -358,8 +358,10 @@ const Contact = () => {
               sx={{
                 p: 4,
                 textAlign: 'center',
-                height: '280px',
+                minHeight: '380px',
                 width: '420px',
+                flex: '1 1 420px',
+                maxWidth: '500px',
                 background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                 boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(231, 76, 60, 0.2)',
                 border: '2px solid rgba(231, 76, 60, 0.2)',
@@ -433,8 +435,10 @@ const Contact = () => {
               sx={{
                 p: 4,
                 textAlign: 'center',
-                height: '280px',
+                minHeight: '380px',
                 width: '420px',
+                flex: '1 1 420px',
+                maxWidth: '500px',
                 background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
                 boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(192, 57, 43, 0.2)',
                 border: '2px solid rgba(192, 57, 43, 0.2)',
