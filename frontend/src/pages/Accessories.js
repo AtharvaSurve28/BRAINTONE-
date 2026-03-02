@@ -181,7 +181,7 @@ const Accessories = () => {
       id: 6,
       name: 'Hard Shell Covers',
       description: 'Durable hard covers for MacBooks',
-      image: '/images/accessories/Hardshell.jpg',
+      image: 'https://uzbl.com/cdn/shop/files/Rugged-protective-hard-shell-clear-transparent-case-Lenovo-chromebook-500e-gen-1.png?v=1749742904&width=1024',
       color: '#E2231A',
       startingPrice: '₹1,800',
       specs: [
