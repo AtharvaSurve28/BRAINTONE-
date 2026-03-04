@@ -1287,7 +1287,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
               <Typography variant="h6" sx={{
                 fontWeight: 700,
                 mb: 3,
-                color: '#000000',
+                color: 'text.primary',
                 fontSize: '1.1rem',
                 letterSpacing: '0.5px'
               }}>
@@ -1380,7 +1380,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
             }}>
               <Typography variant="h3" sx={{
                 fontWeight: 800,
-                color: '#000000',
+                color: 'text.primary',
                 mb: 1.5,
                 fontSize: { xs: '1.75rem', md: '2.5rem' } // Smaller font on mobile
               }}>
@@ -1439,10 +1439,10 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                         label={category}
                         size="medium"
                         sx={{
-                          backgroundColor: alpha('#000000', 0.05),
-                          color: '#000000',
+                          backgroundColor: theme.palette.mode === 'dark' ? alpha('#ffffff', 0.1) : alpha('#000000', 0.05),
+                          color: 'text.primary',
                           fontWeight: 600,
-                          border: `1px solid ${alpha('#000000', 0.2)}`
+                          border: `1px solid ${theme.palette.mode === 'dark' ? alpha('#ffffff', 0.2) : alpha('#000000', 0.2)}`
                         }}
                       />
                     );
@@ -1513,7 +1513,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
             <Typography variant="h5" sx={{
               fontWeight: 700,
               mb: 6,
-              color: '#1f2937'
+              color: 'text.primary'
             }}>
               Category Guide
             </Typography>

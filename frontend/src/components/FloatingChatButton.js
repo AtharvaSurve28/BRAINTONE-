@@ -324,33 +324,7 @@ const FloatingChatButton = () => {
 
             {/* Modal Content */}
             <Box sx={{ p: { xs: 3, md: 4 } }}>
-              {/* WhatsApp Notification */}
-              <Box
-                sx={{
-                  mb: 4,
-                  p: 2,
-                  bgcolor: 'rgba(37, 211, 102, 0.1)',
-                  borderRadius: '8px',
-                  textAlign: 'center',
-                  border: '1px solid rgba(37, 211, 102, 0.3)',
-                }}
-              >
-                <Typography
-                  variant="body2"
-                  sx={{
-                    color: '#25D366',
-                    fontWeight: 600,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: 1,
-                    flexWrap: 'wrap',
-                  }}
-                >
-                  <WhatsAppIcon sx={{ fontSize: 20 }} />
-                  Your appointment request will be sent to BRAINTONE WhatsApp: +91 90820 14406
-                </Typography>
-              </Box>
+
 
               <form onSubmit={handleSubmit}>
                 {/* Customer Details Section */}
@@ -555,49 +529,7 @@ const FloatingChatButton = () => {
                   />
                 </Box>
 
-                {/* Instructions */}
-                <Box
-                  sx={{
-                    mt: 4,
-                    p: 3,
-                    bgcolor: '#ffecec',
-                    borderRadius: '8px',
-                    mb: 4,
-                  }}
-                >
-                  <Typography
-                    variant="body2"
-                    sx={{
-                      mb: 2,
-                      color: '#e74c3c',
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: 1,
-                    }}
-                  >
-                    <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                    How it works:
-                  </Typography>
-                  <Stack spacing={1.5}>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      1. Fill out this form with your details
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      2. Click "Send to WhatsApp" button
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      3. WhatsApp will open with your message to BRAINTONE
-                    </Typography>
-                    <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                      <CheckCircleIcon sx={{ fontSize: 16, color: '#27ae60' }} />
-                      4. Just press send and we'll contact you shortly
-                    </Typography>
-                  </Stack>
-                </Box>
+
 
                 {/* Action Buttons */}
                 <Box

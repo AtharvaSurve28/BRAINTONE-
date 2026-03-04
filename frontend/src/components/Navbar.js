@@ -286,7 +286,8 @@ export default function Navbar() {
               color: 'text.primary',
               borderColor: 'divider',
               '&:hover': {
-                borderColor: 'brandRed.main',
+                borderColor: '#0077b5',
+                color: '#0077b5',
                 bgcolor: 'action.hover'
               }
             }}
@@ -556,8 +557,8 @@ export default function Navbar() {
                       backgroundColor: 'background.paper',
                       transition: 'all 0.3s ease',
                       '&:hover': {
-                        borderColor: 'brandRed.main',
-                        color: 'brandRed.main',
+                        borderColor: '#0077b5',
+                        color: '#0077b5',
                         backgroundColor: 'background.paper',
                         transform: 'translateY(-2px)',
                         boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',

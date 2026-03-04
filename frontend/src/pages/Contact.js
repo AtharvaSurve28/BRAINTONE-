@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Box,
   Container,
   Typography,
   Card,
+  TextField,
+  Button,
+  Grid,
+  Stack,
+  InputAdornment,
+  Alert,
+  Snackbar,
+  useTheme,
 } from '@mui/material';
 import {
   MailOutline,
@@ -13,13 +21,15 @@ import {
   Twitter,
   LinkedIn,
   Facebook,
+  Person,
+  Home,
 } from '@mui/icons-material';
-import Place from '@mui/icons-material/Place';
 import AccessTime from '@mui/icons-material/AccessTime';
 import Footer from '../components/Footer';
 import FadeInSection from '../components/FadeInSection';
 
 const Contact = () => {
+  const theme = useTheme();
   const contactInfo = [
     {
       icon: MailOutline,
@@ -95,6 +105,54 @@ const Contact = () => {
     },
   ];
 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    address: '',
+    message: '',
+  });
+
+  const [snackbar, setSnackbar] = useState({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleCloseSnackbar = () => {
+    setSnackbar(prev => ({ ...prev, open: false }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    // WhatsApp logic
+    const BUSINESS_NUMBER = "919082014406";
+    const text = `*📋 NEW CONTACT REQUEST - BRAINTONE*%0A%0A*👤 DETAILS:*%0A• *Name:* ${formData.name}%0A• *Email:* ${formData.email}%0A• *Phone:* ${formData.phone}%0A• *Address:* ${formData.address}%0A%0A*💬 MESSAGE:*%0A${formData.message || 'No message provided'}`;
+    const whatsappUrl = `https://wa.me/${BUSINESS_NUMBER}?text=${text}`;
+
+    window.open(whatsappUrl, '_blank');
+
+    setSnackbar({
+      open: true,
+      message: 'Opening WhatsApp to send your request...',
+      severity: 'success'
+    });
+
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      address: '',
+      message: '',
+    });
+  };
+
   return (
     <Box sx={{
       minHeight: '100vh',
@@ -147,6 +205,7 @@ const Contact = () => {
             py: 12,
             textAlign: 'center',
             overflow: 'hidden',
+            minHeight: { xs: '300px', md: '450px' },
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -154,10 +213,11 @@ const Contact = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundImage: 'url("https://www.shutterstock.com/image-photo/customer-service-call-center-contact-600nw-2493101023.jpg")',
+              backgroundImage: 'url("https://images.unsplash.com/photo-1740560051533-3acef26ace95?q=80&w=2340&auto=format,compress&fit=crop")',
               backgroundSize: 'cover',
+              backgroundPosition: 'center', // Makes image adjustable/centered
               backgroundRepeat: 'no-repeat',
-              filter: 'brightness(0.6)',
+              filter: 'brightness(0.55)', // Slightly adjusted for clarity
               zIndex: 0,
             }
           }}
@@ -327,202 +387,146 @@ const Contact = () => {
         </Container>
       </FadeInSection>
 
-      {/* Store Locations Section */}
+      {/* Connect with Us Section */}
       <FadeInSection>
-        <Container maxWidth="lg" sx={{ py: 4, position: 'relative', zIndex: 1 }}>
-          <Typography
-            variant="h3"
-            align="center"
-            sx={{
-              fontWeight: 800,
-              mb: 6,
-              color: '#c0392b',
-              position: 'relative',
-              '&::after': {
-                content: '""',
-                position: 'absolute',
-                bottom: '-10px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                width: '120px',
-                height: '4px',
-                background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                borderRadius: '2px',
-              }
-            }}
-          >
-            Visit Our Stores
-          </Typography>
+        <Container maxWidth="md" sx={{ py: 8, position: 'relative', zIndex: 1 }}>
+          <Box sx={{ mb: 6, textAlign: 'center' }}>
+            <Typography
+              variant="h2"
+              sx={{
+                fontWeight: 800,
+                color: 'text.primary',
+                mb: 1,
+                letterSpacing: '-1px',
+                fontSize: { xs: '2.5rem', md: '3.5rem' },
+                textAlign: 'center'
+              }}
+            >
+              Leave Us a Message
+            </Typography>
+            <Box sx={{ width: '60px', height: '6px', bgcolor: '#e74c3c', borderRadius: '2px', mx: 'auto' }} />
+          </Box>
 
-          <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', alignItems: 'stretch', mb: 8 }}>
-            {/* Fort Location Card */}
-            <Box sx={{
-              flex: '1 1 420px',
-              maxWidth: '500px',
-              width: '420px',
-              '&:hover .location-card': {
-                transform: 'translateY(-10px) scale(1.02)',
-                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(231, 76, 60, 0.35)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                border: '2px solid rgba(231, 76, 60, 0.4)',
-                animationPlayState: 'paused',
-              },
-            }}>
-              <Card
-                className="location-card"
-                component="a"
-                href="https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  p: 3,
-                  textAlign: 'center',
-                  minHeight: '300px',
-                  width: '100%',
-                  height: '100%',
-                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(231, 76, 60, 0.2)',
-                  border: '2px solid rgba(231, 76, 60, 0.2)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  animation: 'bounce 3s ease-in-out infinite',
-                  animationDelay: '0.2s',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                  },
-                }}
-              >
-                <Place sx={{
-                  fontSize: 40,
-                  color: '#e74c3c',
-                  mb: 1.5,
-                  animation: 'float 3s ease-in-out infinite',
-                  animationDelay: '0.5s',
-                }} />
-                <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, color: '#8B0000', fontSize: '1.5rem' }}>
-                  Fort Location
-                </Typography>
-                <Typography sx={{ color: '#e74c3c', mb: 0.5, fontWeight: 700, fontSize: '1rem' }}>
-                  Braintone Laptop Services
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', mb: 1, fontSize: '0.85rem', lineHeight: 1.4 }}>
-                  Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 <br />
-                  Showroom: Ground floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai-400001
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.9rem', fontWeight: 600 }}>
-                  Phone: +91 9820119113
-                </Typography>
-                <Typography variant="caption" sx={{
-                  color: '#e74c3c',
-                  fontWeight: 800,
-                  backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                  px: 2,
-                  py: 1,
-                  borderRadius: 2,
-                  animation: 'shadowPulse 2s infinite',
-                  fontSize: '0.75rem'
-                }}>
-                  📍 Click to open in Google Maps
-                </Typography>
-              </Card>
-            </Box>
-
-            <Box sx={{
-              flex: '1 1 420px',
-              maxWidth: '500px',
-              width: '420px',
-              '&:hover .location-card': {
-                transform: 'translateY(-10px) scale(1.02)',
-                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(192, 57, 43, 0.35)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                border: '2px solid rgba(192, 57, 43, 0.4)',
-                animationPlayState: 'paused',
-              },
-            }}>
-              <Card
-                className="location-card"
-                component="a"
-                href="https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai"
-                target="_blank"
-                rel="noopener noreferrer"
-                sx={{
-                  p: 3,
-                  textAlign: 'center',
-                  minHeight: '300px',
-                  width: '100%',
-                  height: '100%',
-                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(192, 57, 43, 0.2)',
-                  border: '2px solid rgba(192, 57, 43, 0.2)',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  textDecoration: 'none',
-                  cursor: 'pointer',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  animation: 'bounce 3s ease-in-out infinite',
-                  animationDelay: '0.5s',
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: 'linear-gradient(90deg, #c0392b, #8B0000)',
-                  },
-                }}
-              >
-                <Place sx={{
-                  fontSize: 40,
-                  color: '#c0392b',
-                  mb: 1.5,
-                  animation: 'float 3s ease-in-out infinite',
-                  animationDelay: '0.8s',
-                }} />
-                <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, color: '#8B0000', fontSize: '1.5rem' }}>
-                  Vile Parle Location
-                </Typography>
-                <Typography sx={{ color: '#c0392b', mb: 0.5, fontWeight: 700, fontSize: '1rem' }}>
-                  Braintone Laptop Services
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', mb: 1, fontSize: '0.85rem', lineHeight: 1.4 }}>
-                  Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)
-                </Typography>
-                <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.9rem', fontWeight: 600 }}>
-                  Phone: +91 9819401313
-                </Typography>
-                <Typography variant="caption" sx={{
-                  color: '#c0392b',
-                  fontWeight: 800,
-                  backgroundColor: 'rgba(192, 57, 43, 0.1)',
-                  px: 2,
-                  py: 1,
-                  borderRadius: 2,
-                  animation: 'shadowPulse 2s infinite',
-                  fontSize: '0.75rem'
-                }}>
-                  📍 Click to open in Google Maps
-                </Typography>
-              </Card>
-            </Box>
+          <Box sx={{ mt: 4 }}>
+            <form onSubmit={handleSubmit}>
+              <Grid container spacing={5}>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Name *"
+                    name="name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    variant="standard"
+                    sx={{
+                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Email *"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    variant="standard"
+                    sx={{
+                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Phone Number *"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    variant="standard"
+                    sx={{
+                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Address *"
+                    name="address"
+                    value={formData.address}
+                    onChange={handleChange}
+                    required
+                    variant="standard"
+                    sx={{
+                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    fullWidth
+                    label="Message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    multiline
+                    rows={4}
+                    variant="outlined"
+                    sx={{
+                      mt: 2,
+                      '& .MuiOutlinedInput-root': {
+                        bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+                        borderRadius: '8px'
+                      }
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sx={{ mt: 2 }}>
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    size="large"
+                    sx={{
+                      px: 6,
+                      py: 1.5,
+                      borderRadius: '8px',
+                      background: 'linear-gradient(135deg, #e74c3c 0%, #c0392b 100%)',
+                      fontSize: '1rem',
+                      fontWeight: 700,
+                      textTransform: 'none',
+                      '&:hover': {
+                        background: 'linear-gradient(135deg, #c0392b 0%, #8B0000 100%)',
+                      }
+                    }}
+                  >
+                    Send Message
+                  </Button>
+                </Grid>
+              </Grid>
+            </form>
           </Box>
         </Container>
       </FadeInSection>
+
+      <Snackbar
+        open={snackbar.open}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+      >
+        <Alert onClose={handleCloseSnackbar} severity={snackbar.severity} sx={{ width: '100%' }}>
+          {snackbar.message}
+        </Alert>
+      </Snackbar>
 
       <Box>
         <Footer fullFooter={false} />
