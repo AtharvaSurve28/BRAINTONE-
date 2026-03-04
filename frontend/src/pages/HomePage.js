@@ -1686,24 +1686,28 @@ const HomePage = () => {
               Ready to find your next laptop?
             </Typography>
 
-            <Grid container spacing={{ xs: 1.5, sm: 3 }} sx={{ justifyContent: 'center' }}>
+            <Grid container spacing={2} sx={{
+              justifyContent: 'center',
+              flexDirection: { xs: 'column', md: 'row' },
+              alignItems: 'center'
+            }}>
               {[
                 { label: 'Brand New Laptops', icon: LaptopIcon, to: '/laptops' },
                 { label: 'Refurbished laptops', icon: AutorenewIcon, to: '/refurbished-laptops' },
+                { label: 'Laptop Accessories', icon: ComputerIcon, to: '/accessories' },
                 { label: 'Repair of Laptops', icon: BuildIcon, to: '/repair' },
                 { label: 'Video Games', icon: StoreIcon, to: '/contact' },
-                { label: 'Laptop Accessories', icon: ComputerIcon, to: '/accessories' },
                 { label: 'And much more...', icon: StoreIcon, to: '/contact' }
               ].map((item, idx) => (
-                <Grid item xs={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Grid item xs={12} sm={12} md={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Box
                     component={Link}
                     to={item.to}
                     sx={{
                       width: '100%',
-                      maxWidth: 380,
-                      ml: [0, 3].includes(idx) ? { xs: 0, md: 4 } : 0, // Only shift right on larger screens
-                      height: { xs: 110, sm: 100 }, // Slightly reduced mobile height
+                      maxWidth: { xs: '100%', sm: 380 }, // Allow full width on mobile
+                      ml: [0, 3].includes(idx) ? { xs: 0, md: 4 } : 0,
+                      height: { xs: 90, sm: 100 }, // Slightly taller on mobile for better touch target
                       borderRadius: 2,
                       cursor: 'pointer',
                       textDecoration: 'none',
@@ -1713,12 +1717,12 @@ const HomePage = () => {
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                       display: 'flex',
-                      flexDirection: { xs: 'column', sm: 'row' },
+                      flexDirection: 'row',
                       alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: { xs: 0.5, sm: 3 },
-                      p: { xs: 1, sm: 3 },
-                      textAlign: 'center',
+                      justifyContent: 'flex-start',
+                      gap: { xs: 2.5, sm: 3 },
+                      p: { xs: 2.5, sm: 3 },
+                      textAlign: 'left',
                       position: 'relative',
                       overflow: 'hidden',
                       '&::before': {

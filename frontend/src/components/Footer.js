@@ -75,17 +75,24 @@ const Footer = ({ fullFooter = true }) => {
                                 borderTop: '1px solid rgba(255, 255, 255, 0.1)',
                                 display: 'flex',
                                 flexWrap: 'nowrap',
-                                justifyContent: 'center',
+                                justifyContent: { xs: 'flex-start', md: 'center' },
                                 alignItems: 'center',
-                                gap: { xs: 2, md: 4 },
+                                gap: { xs: 3, md: 4 }, // Increased gap for mobile swipe clarity
                                 position: 'relative',
-                                pb: 6, // Space for the line below
-                                pl: { xs: 2, md: 18 }, // Reduced mobile padding to prevent cut-off
-                                pr: { xs: 2, md: 10 },
-                                overflowX: 'auto',
+                                pb: 6,
+                                pl: { xs: 6, md: 18 }, // Shifted right as requested
+                                pr: { xs: 4, md: 10 },
+                                overflowX: 'scroll',
+                                cursor: 'grab',
+                                touchAction: 'pan-x', // Explicitly allow horizontal touch swipe
+                                WebkitOverflowScrolling: 'touch', // Smooth momentum scroll on iOS
+                                userSelect: 'none', // Prevent image selection during swipe
+                                '&:active': { cursor: 'grabbing' },
                                 '&::-webkit-scrollbar': { display: 'none' }, // Hide scrollbar for clean look
                                 msOverflowStyle: 'none',
                                 scrollbarWidth: 'none',
+                                borderBottom: { xs: '1.5px solid rgba(255, 255, 255, 0.3)', md: 'none' }, // Continuous border under logos for mobile
+                                boxShadow: { xs: 'none', md: '0 5px 15px rgba(255, 255, 255, 0.1)' },
                             }}
                         >
                             {[
@@ -106,7 +113,7 @@ const Footer = ({ fullFooter = true }) => {
                                     alt={brand.name}
                                     sx={{
                                         height: {
-                                            xs: brand.name === 'MSI' ? 75 : brand.name === 'Asus' ? 65 : ['Acer', 'Microsoft'].includes(brand.name) ? 55 : 40,
+                                            xs: brand.name === 'MSI' ? 85 : brand.name === 'Asus' ? 75 : ['Acer', 'Microsoft'].includes(brand.name) ? 65 : 55,
                                             md: brand.name === 'MSI' ? 100 : brand.name === 'Asus' ? 90 : ['Acer', 'Microsoft'].includes(brand.name) ? 70 : 50
                                         },
                                         width: 'auto',
@@ -123,19 +130,37 @@ const Footer = ({ fullFooter = true }) => {
                                 />
                             ))}
 
-                            {/* Short horizontal line under logos */}
+                            {/* Short horizontal line under logos - DESKTOP ONLY */}
                             <Box sx={{
+                                display: { xs: 'none', md: 'block' },
                                 position: 'absolute',
                                 bottom: 0,
                                 left: '50%',
                                 transform: 'translateX(-50%)',
-                                width: '90%', // Significantly longer line
+                                width: '90%',
                                 maxWidth: '1000px',
-                                height: '1.5px', // Bright white line
+                                height: '1.5px',
                                 bgcolor: 'rgba(255, 255, 255, 0.4)',
-                                boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)', // Subtle glow
+                                boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)',
                             }} />
                         </Box>
+
+                        {/* Swipe Indicator for Mobile */}
+                        <Typography
+                            variant="caption"
+                            sx={{
+                                display: { xs: 'block', md: 'none' },
+                                textAlign: 'center',
+                                color: 'rgba(255, 255, 255, 0.5)',
+                                fontStyle: 'italic',
+                                fontSize: '0.75rem',
+                                mt: -4,
+                                mb: 4,
+                                letterSpacing: '1px'
+                            }}
+                        >
+                            swipe &larr; &rarr;
+                        </Typography>
 
                         {/* NEW 5-COLUMN COMPACT LAYOUT */}
                         <Grid container spacing={2} direction={{ xs: 'column', md: 'row' }} sx={{ mb: 6, textAlign: { xs: 'center', md: 'left' }, alignItems: { xs: 'center', md: 'flex-start' } }} justifyContent="space-between">
