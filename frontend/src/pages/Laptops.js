@@ -278,9 +278,40 @@ const Laptops = () => {
         {/* Brands Grid - All boxes continuously bouncing */}
         <Grid container spacing={4} justifyContent="center">
           {brands.map((brand, index) => (
-            <Grid item xs={12} sm={6} md={4} key={index} sx={{ display: 'flex' }}>
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              md={4}
+              key={index}
+              sx={{
+                display: 'flex',
+                '&:hover .brand-card': {
+                  boxShadow: `0 20px 50px ${brand.color}40`,
+                  transform: 'translateY(-10px) scale(1.02)',
+                  borderColor: brand.color,
+                  animationPlayState: 'paused',
+                  '& .brand-image': {
+                    transform: 'scale(1.15)',
+                  },
+                  '& .brand-name': {
+                    color: brand.color,
+                    transform: 'scale(1.05)',
+                  },
+                  '& .brand-logo': {
+                    transform: 'scale(1.1)',
+                    filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
+                  },
+                  '& .explore-text': {
+                    opacity: 1,
+                    transform: 'translateY(0)',
+                  }
+                }
+              }}
+            >
               <Card
-                onClick={() => handleBrandClick(brand.route)} // Added onClick handler
+                className="brand-card"
+                onClick={() => handleBrandClick(brand.route)}
                 sx={{
                   width: '100%',
                   height: 420,
@@ -288,37 +319,16 @@ const Laptops = () => {
                   flexDirection: 'column',
                   backgroundColor: 'background.default',
                   borderRadius: 3,
-                  boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)', // Darker red shadow
+                  boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  border: `2px solid ${brand.color}20`, // Brand color with transparency
+                  border: `2px solid ${brand.color}20`,
                   overflow: 'hidden',
                   animation: `${bounceAnimation} 2s ease-in-out infinite`,
-                  animationDelay: `${index * 0.2}s`, // Staggered animation
+                  animationDelay: `${index * 0.2}s`,
                   position: 'relative',
                   zIndex: 2,
                   willChange: 'transform',
-                  cursor: 'pointer', // Added cursor pointer
-                  '&:hover': {
-                    boxShadow: `0 20px 50px ${brand.color}40`, // Brand color shadow on hover
-                    transform: 'translateY(-15px) scale(1.05)',
-                    borderColor: brand.color, // Brand color on hover
-                    animationPlayState: 'paused', // Pause animation on hover
-                    '& .brand-image': {
-                      transform: 'scale(1.15)',
-                    },
-                    '& .brand-name': {
-                      color: brand.color, // Brand color text on hover
-                      transform: 'scale(1.05)',
-                    },
-                    '& .brand-logo': {
-                      transform: 'scale(1.1)',
-                      filter: 'drop-shadow(0 4px 6px rgba(0,0,0,0.1))'
-                    },
-                    '& .explore-text': {
-                      opacity: 1,
-                      transform: 'translateY(0)',
-                    }
-                  },
+                  cursor: 'pointer',
                   '&::before': {
                     content: '""',
                     position: 'absolute',

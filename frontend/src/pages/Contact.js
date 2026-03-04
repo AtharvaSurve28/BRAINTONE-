@@ -233,89 +233,95 @@ const Contact = () => {
 
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center' }}>
             {contactInfo.map((info, index) => (
-              <Card
+              <Box
                 key={index}
-                component={info.link ? "a" : "div"}
-                href={info.link}
-                target={info.link ? "_blank" : undefined}
-                rel={info.link ? "noopener noreferrer" : undefined}
                 sx={{
-                  p: 4,
-                  textAlign: 'center',
-                  height: '220px',
-                  width: '280px',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 8px 25px rgba(0, 0, 0, 0.4)' : '0 8px 25px rgba(231, 76, 60, 0.15)',
-                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                  textDecoration: 'none',
-                  cursor: info.link ? 'pointer' : 'default',
-                  border: '2px solid rgba(231, 76, 60, 0.15)',
-                  position: 'relative',
-                  overflow: 'hidden',
-                  animation: 'bounce 3s ease-in-out infinite',
-                  animationDelay: `${index * 0.3}s`,
-                  '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: `linear-gradient(90deg, ${info.color}, ${info.color}80)`,
-                  },
-                  '&:hover': info.link ? {
-                    transform: 'translateY(-12px) scale(1.05)',
+                  '&:hover .contact-card': info.link ? {
+                    transform: 'translateY(-10px) scale(1.02)',
                     boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 20px 40px rgba(0, 0, 0, 0.6)' : '0 20px 40px rgba(231, 76, 60, 0.25)',
                     background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
                     border: '2px solid rgba(231, 76, 60, 0.3)',
-                    animation: 'none',
+                    animationPlayState: 'paused',
                   } : {},
                 }}
               >
-                <Box
+                <Card
+                  className="contact-card"
+                  component={info.link ? "a" : "div"}
+                  href={info.link}
+                  target={info.link ? "_blank" : undefined}
+                  rel={info.link ? "noopener noreferrer" : undefined}
                   sx={{
-                    width: 70,
-                    height: 70,
-                    borderRadius: '16px',
-                    background: `linear-gradient(135deg, ${info.color} 0%, ${info.color}DD 100%)`,
+                    p: 4,
+                    textAlign: 'center',
+                    height: '220px',
+                    width: '280px',
                     display: 'flex',
-                    alignItems: 'center',
+                    flexDirection: 'column',
                     justifyContent: 'center',
-                    mx: 'auto',
-                    mb: 2,
-                    boxShadow: `0 6px 20px ${info.color}50`,
-                    animation: 'float 3s ease-in-out infinite',
-                    animationDelay: `${index * 0.5}s`,
+                    alignItems: 'center',
+                    background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                    boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 8px 25px rgba(0, 0, 0, 0.4)' : '0 8px 25px rgba(231, 76, 60, 0.15)',
+                    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    textDecoration: 'none',
+                    cursor: info.link ? 'pointer' : 'default',
+                    border: '2px solid rgba(231, 76, 60, 0.15)',
+                    position: 'relative',
+                    overflow: 'hidden',
+                    animation: 'bounce 3s ease-in-out infinite',
+                    animationDelay: `${index * 0.3}s`,
+                    '&::before': {
+                      content: '""',
+                      position: 'absolute',
+                      top: 0,
+                      left: 0,
+                      right: 0,
+                      height: '4px',
+                      background: `linear-gradient(90deg, ${info.color}, ${info.color}80)`,
+                    },
                   }}
                 >
-                  <info.icon sx={{ fontSize: 32, color: 'white' }} />
-                </Box>
-                <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: 'brandRed.main' }}>
-                  {info.title}
-                </Typography>
-                <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-                  {info.value}
-                </Typography>
-                {info.mapsLabel && (
-                  <Typography variant="caption" sx={{
-                    color: '#e74c3c',
-                    mt: 1,
-                    fontWeight: 700,
-                    fontSize: '0.8rem',
-                    backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                    px: 1.5,
-                    py: 0.5,
-                    borderRadius: 1,
-                    animation: 'shadowPulse 2s infinite',
-                  }}>
-                    {info.mapsLabel}
+                  <Box
+                    sx={{
+                      width: 70,
+                      height: 70,
+                      borderRadius: '16px',
+                      background: `linear-gradient(135deg, ${info.color} 0%, ${info.color}DD 100%)`,
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      mx: 'auto',
+                      mb: 2,
+                      boxShadow: `0 6px 20px ${info.color}50`,
+                      animation: 'float 3s ease-in-out infinite',
+                      animationDelay: `${index * 0.5}s`,
+                    }}
+                  >
+                    <info.icon sx={{ fontSize: 32, color: 'white' }} />
+                  </Box>
+                  <Typography variant="h6" sx={{ fontWeight: 700, mb: 1, color: 'brandRed.main' }}>
+                    {info.title}
                   </Typography>
-                )}
-              </Card>
+                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
+                    {info.value}
+                  </Typography>
+                  {info.mapsLabel && (
+                    <Typography variant="caption" sx={{
+                      color: '#e74c3c',
+                      mt: 1,
+                      fontWeight: 700,
+                      fontSize: '0.8rem',
+                      backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                      px: 1.5,
+                      py: 0.5,
+                      borderRadius: 1,
+                      animation: 'shadowPulse 2s infinite',
+                    }}>
+                      {info.mapsLabel}
+                    </Typography>
+                  )}
+                </Card>
+              </Box>
             ))}
           </Box>
         </Container>
@@ -350,157 +356,170 @@ const Contact = () => {
 
           <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 4, justifyContent: 'center', alignItems: 'stretch', mb: 8 }}>
             {/* Fort Location Card */}
-            <Card
-              component="a"
-              href="https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                p: 4,
-                textAlign: 'center',
-                minHeight: '380px',
-                width: '420px',
-                flex: '1 1 420px',
-                maxWidth: '500px',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(231, 76, 60, 0.2)',
-                border: '2px solid rgba(231, 76, 60, 0.2)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textDecoration: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                position: 'relative',
-                overflow: 'hidden',
-                animation: 'bounce 3s ease-in-out infinite',
-                animationDelay: '0.2s',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
-                },
-                '&:hover': {
-                  transform: 'translateY(-15px) scale(1.05)',
-                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(231, 76, 60, 0.35)',
-                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                  border: '2px solid rgba(231, 76, 60, 0.4)',
-                  animation: 'none',
-                },
-              }}
-            >
-              <Place sx={{
-                fontSize: 56,
-                color: '#e74c3c',
-                mb: 2,
-                animation: 'float 3s ease-in-out infinite',
-                animationDelay: '0.5s',
-              }} />
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
-                Fort Location
-              </Typography>
-              <Typography variant="h6" sx={{ color: '#e74c3c', mb: 1, fontWeight: 600 }}>
-                Braintone Laptop Services
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-                Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 <br />
-                Showroom: Ground floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai-400001
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-                Phone: +91 9820119113
-              </Typography>
-              <Typography variant="caption" sx={{
-                color: '#e74c3c',
-                fontWeight: 800,
-                backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                px: 2,
-                py: 1,
-                borderRadius: 2,
-                animation: 'shadowPulse 2s infinite',
-              }}>
-                📍 Click to open in Google Maps
-              </Typography>
-            </Card>
+            <Box sx={{
+              flex: '1 1 420px',
+              maxWidth: '500px',
+              width: '420px',
+              '&:hover .location-card': {
+                transform: 'translateY(-10px) scale(1.02)',
+                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(231, 76, 60, 0.35)',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                border: '2px solid rgba(231, 76, 60, 0.4)',
+                animationPlayState: 'paused',
+              },
+            }}>
+              <Card
+                className="location-card"
+                component="a"
+                href="https://www.google.com/maps/search/?api=1&query=Braintone+17A+Bahubali+Building+Flora+Fountain+Fort+Mumbai"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  p: 3,
+                  textAlign: 'center',
+                  minHeight: '300px',
+                  width: '100%',
+                  height: '100%',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(231, 76, 60, 0.2)',
+                  border: '2px solid rgba(231, 76, 60, 0.2)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  animation: 'bounce 3s ease-in-out infinite',
+                  animationDelay: '0.2s',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
+                  },
+                }}
+              >
+                <Place sx={{
+                  fontSize: 40,
+                  color: '#e74c3c',
+                  mb: 1.5,
+                  animation: 'float 3s ease-in-out infinite',
+                  animationDelay: '0.5s',
+                }} />
+                <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, color: '#8B0000', fontSize: '1.5rem' }}>
+                  Fort Location
+                </Typography>
+                <Typography sx={{ color: '#e74c3c', mb: 0.5, fontWeight: 700, fontSize: '1rem' }}>
+                  Braintone Laptop Services
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 1, fontSize: '0.85rem', lineHeight: 1.4 }}>
+                  Head office: 10/E, 1st floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai - 400001 <br />
+                  Showroom: Ground floor, 17A, Patel building / Bahubali building, Next to Oye kake or Opp Raju Chai Cawasji patel street, Horniman circle, Fort, Mumbai-400001
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.9rem', fontWeight: 600 }}>
+                  Phone: +91 9820119113
+                </Typography>
+                <Typography variant="caption" sx={{
+                  color: '#e74c3c',
+                  fontWeight: 800,
+                  backgroundColor: 'rgba(231, 76, 60, 0.1)',
+                  px: 2,
+                  py: 1,
+                  borderRadius: 2,
+                  animation: 'shadowPulse 2s infinite',
+                  fontSize: '0.75rem'
+                }}>
+                  📍 Click to open in Google Maps
+                </Typography>
+              </Card>
+            </Box>
 
-            {/* Vile Parle Location Card */}
-            <Card
-              component="a"
-              href="https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai"
-              target="_blank"
-              rel="noopener noreferrer"
-              sx={{
-                p: 4,
-                textAlign: 'center',
-                minHeight: '380px',
-                width: '420px',
-                flex: '1 1 420px',
-                maxWidth: '500px',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
-                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(192, 57, 43, 0.2)',
-                border: '2px solid rgba(192, 57, 43, 0.2)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                textDecoration: 'none',
-                cursor: 'pointer',
-                transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
-                position: 'relative',
-                overflow: 'hidden',
-                animation: 'bounce 3s ease-in-out infinite',
-                animationDelay: '0.5s',
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #c0392b, #8B0000)',
-                },
-                '&:hover': {
-                  transform: 'translateY(-15px) scale(1.05)',
-                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(192, 57, 43, 0.35)',
-                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
-                  border: '2px solid rgba(192, 57, 43, 0.4)',
-                  animation: 'none',
-                },
-              }}
-            >
-              <Place sx={{
-                fontSize: 56,
-                color: '#c0392b',
-                mb: 2,
-                animation: 'float 3s ease-in-out infinite',
-                animationDelay: '0.8s',
-              }} />
-              <Typography variant="h4" sx={{ fontWeight: 800, mb: 2, color: '#8B0000' }}>
-                Vile Parle Location
-              </Typography>
-              <Typography variant="h6" sx={{ color: '#c0392b', mb: 1, fontWeight: 600 }}>
-                Braintone Laptop Services
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 1 }}>
-                Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)
-              </Typography>
-              <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3 }}>
-                Phone: +91 9819401313
-              </Typography>
-              <Typography variant="caption" sx={{
-                color: '#c0392b',
-                fontWeight: 800,
-                backgroundColor: 'rgba(192, 57, 43, 0.1)',
-                px: 2,
-                py: 1,
-                borderRadius: 2,
-                animation: 'shadowPulse 2s infinite',
-              }}>
-                📍 Click to open in Google Maps
-              </Typography>
-            </Card>
+            <Box sx={{
+              flex: '1 1 420px',
+              maxWidth: '500px',
+              width: '420px',
+              '&:hover .location-card': {
+                transform: 'translateY(-10px) scale(1.02)',
+                boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 25px 50px rgba(0, 0, 0, 0.6)' : '0 25px 50px rgba(192, 57, 43, 0.35)',
+                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #262626 0%, #333333 100%)' : 'linear-gradient(135deg, #fff5f5 0%, #ffeaea 100%)',
+                border: '2px solid rgba(192, 57, 43, 0.4)',
+                animationPlayState: 'paused',
+              },
+            }}>
+              <Card
+                className="location-card"
+                component="a"
+                href="https://www.google.com/maps/search/?api=1&query=Braintone+Laptop+Services+Prime+Mall+Irla+Vile+Parle+West+Mumbai"
+                target="_blank"
+                rel="noopener noreferrer"
+                sx={{
+                  p: 3,
+                  textAlign: 'center',
+                  minHeight: '300px',
+                  width: '100%',
+                  height: '100%',
+                  background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
+                  boxShadow: (theme) => theme.palette.mode === 'dark' ? '0 12px 35px rgba(0, 0, 0, 0.4)' : '0 12px 35px rgba(192, 57, 43, 0.2)',
+                  border: '2px solid rgba(192, 57, 43, 0.2)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                  position: 'relative',
+                  overflow: 'hidden',
+                  animation: 'bounce 3s ease-in-out infinite',
+                  animationDelay: '0.5s',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    height: '4px',
+                    background: 'linear-gradient(90deg, #c0392b, #8B0000)',
+                  },
+                }}
+              >
+                <Place sx={{
+                  fontSize: 40,
+                  color: '#c0392b',
+                  mb: 1.5,
+                  animation: 'float 3s ease-in-out infinite',
+                  animationDelay: '0.8s',
+                }} />
+                <Typography variant="h5" sx={{ fontWeight: 800, mb: 1, color: '#8B0000', fontSize: '1.5rem' }}>
+                  Vile Parle Location
+                </Typography>
+                <Typography sx={{ color: '#c0392b', mb: 0.5, fontWeight: 700, fontSize: '1rem' }}>
+                  Braintone Laptop Services
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 1, fontSize: '0.85rem', lineHeight: 1.4 }}>
+                  Showroom: Prime Mall, 1st Floor, Off:no 92/96, opp To Alfa no. 1, Irla Road, Vile parle(w)
+                </Typography>
+                <Typography sx={{ color: 'text.secondary', mb: 2, fontSize: '0.9rem', fontWeight: 600 }}>
+                  Phone: +91 9819401313
+                </Typography>
+                <Typography variant="caption" sx={{
+                  color: '#c0392b',
+                  fontWeight: 800,
+                  backgroundColor: 'rgba(192, 57, 43, 0.1)',
+                  px: 2,
+                  py: 1,
+                  borderRadius: 2,
+                  animation: 'shadowPulse 2s infinite',
+                  fontSize: '0.75rem'
+                }}>
+                  📍 Click to open in Google Maps
+                </Typography>
+              </Card>
+            </Box>
           </Box>
         </Container>
       </FadeInSection>

@@ -398,7 +398,21 @@ const HomePage = () => {
                   color: '#2980b9'
                 },
               ].map((card, idx) => (
-                <Grid item xs={12} md={3.8} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
+                <Grid
+                  item
+                  xs={12}
+                  md={3.8}
+                  key={idx}
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    '&:hover .perfect-laptop-paper': {
+                      transform: 'translateY(-10px)',
+                      boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
+                      borderColor: card.color,
+                    }
+                  }}
+                >
                   <Box
                     component={Link}
                     to={card.link}
@@ -411,6 +425,7 @@ const HomePage = () => {
                     }}
                   >
                     <Paper
+                      className="perfect-laptop-paper"
                       elevation={0}
                       sx={{
                         p: 2,
@@ -424,11 +439,6 @@ const HomePage = () => {
                         display: 'flex',
                         flexDirection: 'column',
                         alignItems: 'center',
-                        '&:hover': {
-                          transform: 'translateY(-10px)',
-                          boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                          borderColor: card.color,
-                        },
                       }}
                     >
                       {/* Image Container */}
@@ -862,7 +872,7 @@ const HomePage = () => {
                         color: '#fff',
                         '&:hover': {
                           bgcolor: '#c0392b',
-                          transform: 'translateY(-2px)'
+                          boxShadow: '0 4px 12px rgba(231, 76, 60, 0.4)',
                         },
                         textTransform: 'none',
                         fontWeight: 600,
@@ -1676,111 +1686,100 @@ const HomePage = () => {
               Ready to find your next laptop?
             </Typography>
 
-            {[
-              [
+            <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
+              {[
                 { label: 'Brand New Laptops', icon: LaptopIcon, to: '/laptops' },
                 { label: 'Refurbished laptops', icon: AutorenewIcon, to: '/refurbished-laptops' },
-                { label: 'Repair of Laptops', icon: BuildIcon, to: '/repair' }
-              ],
-              [
+                { label: 'Repair of Laptops', icon: BuildIcon, to: '/repair' },
                 { label: 'Video Games', icon: StoreIcon, to: '/contact' },
                 { label: 'Laptop Accessories', icon: ComputerIcon, to: '/accessories' },
                 { label: 'And much more...', icon: StoreIcon, to: '/contact' }
-              ]
-            ].map((row, rowIndex) => (
-              <Grid container spacing={4} key={rowIndex} sx={{ mb: rowIndex === 0 ? 4 : 0, justifyContent: 'center' }}>
-                {row.map((item, idx) => (
-                  <Grid item xs={12} sm={6} md={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Box
-                      component={Link}
-                      to={item.to}
-                      sx={{
+              ].map((item, idx) => (
+                <Grid item xs={4} key={idx} sx={{ display: 'flex', justifyContent: 'center' }}>
+                  <Box
+                    component={Link}
+                    to={item.to}
+                    sx={{
+                      width: '100%',
+                      maxWidth: 380,
+                      ml: [0, 3].includes(idx) ? { xs: 2, md: 4 } : 0, // Shift first column (two boxes) a bit right
+                      height: { xs: 130, sm: 100 }, // taller on mobile for vertical stack
+                      borderRadius: 2,
+                      cursor: 'pointer',
+                      textDecoration: 'none',
+                      transition: 'all 0.3s',
+                      backdropFilter: 'blur(10px)',
+                      backgroundColor: 'rgba(255, 255, 255, 0.15)',
+                      border: '1px solid rgba(255, 255, 255, 0.3)',
+                      boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
+                      display: 'flex',
+                      flexDirection: { xs: 'column', sm: 'row' }, // stack on mobile
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: { xs: 1, sm: 3 },
+                      p: { xs: 1.5, sm: 3 },
+                      textAlign: 'center',
+                      position: 'relative', // Restore for animation
+                      overflow: 'hidden',   // Restore for animation
+                      '&::before': {
+                        content: '""',
+                        position: 'absolute',
+                        top: 0,
+                        left: '-100%',
                         width: '100%',
-                        maxWidth: 380,
-                        height: 100,
-                        borderRadius: 2,
-                        cursor: 'pointer',
-                        textDecoration: 'none',
-                        transition: 'all 0.3s',
-                        backdropFilter: 'blur(10px)',
-                        backgroundColor: 'rgba(255, 255, 255, 0.15)',
-                        border: '1px solid rgba(255, 255, 255, 0.3)',
-                        boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'flex-start',
-                        gap: 3,
-                        p: 3,
-                        position: 'relative',
-                        overflow: 'hidden',
+                        height: '100%',
+                        background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
+                        transition: 'left 0.5s',
+                      },
+                      '&:hover': {
+                        backgroundColor: 'rgba(231, 76, 60, 0.3)',
+                        borderColor: '#e74c3c',
+                        boxShadow: '0 15px 40px rgba(231, 76, 60, 0.4)',
                         '&::before': {
-                          content: '""',
-                          position: 'absolute',
-                          top: 0,
-                          left: '-100%',
-                          width: '100%',
-                          height: '100%',
-                          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent)',
-                          transition: 'left 0.5s',
-                        },
-                        '&:hover::before': {
                           left: '100%',
                         },
-                        '&:hover': {
-                          transform: 'translateY(-4px) scale(1.02)',
-                          backgroundColor: 'rgba(231, 76, 60, 0.3)',
-                          borderColor: '#e74c3c',
-                          boxShadow: '0 15px 40px rgba(231, 76, 60, 0.4)',
-                          // Prevent jitter by extending the hover area downwards
-                          '&::after': {
-                            content: '""',
-                            position: 'absolute',
-                            top: '100%',
-                            left: 0,
-                            width: '100%',
-                            height: '24px',
-                          },
-                        },
+                      },
+                    }}
+                  >
+                    <Box sx={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      width: { xs: 40, sm: 50 }, // smaller icons on mobile
+                      flexShrink: 0,
+                      position: 'relative',
+                      '&::after': {
+                        content: '""',
+                        position: 'absolute',
+                        top: -5,
+                        left: -5,
+                        right: -5,
+                        bottom: -5,
+                        borderRadius: '50%',
+                        background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)',
+                      }
+                    }}>
+                      <item.icon sx={{ fontSize: { xs: 28, sm: 36 }, color: '#fff', position: 'relative', zIndex: 1 }} />
+                    </Box>
+
+                    <Typography
+                      variant="h6"
+                      sx={{
+                        fontWeight: 600,
+                        fontSize: { xs: '0.85rem', sm: '1.1rem' }, // smaller text on mobile
+                        color: '#fff',
+                        textShadow: '0 1px 3px rgba(0,0,0,0.5)',
+                        flex: 1,
+                        textAlign: 'center',
+                        lineHeight: 1.2
                       }}
                     >
-                      <Box sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: 50,
-                        position: 'relative',
-                        '&::after': {
-                          content: '""',
-                          position: 'absolute',
-                          top: -5,
-                          left: -5,
-                          right: -5,
-                          bottom: -5,
-                          borderRadius: '50%',
-                          background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)',
-                        }
-                      }}>
-                        <item.icon sx={{ fontSize: 36, color: '#fff', position: 'relative', zIndex: 1 }} />
-                      </Box>
-
-                      <Typography
-                        variant="h6"
-                        sx={{
-                          fontWeight: 600,
-                          fontSize: '1.1rem',
-                          color: '#fff',
-                          textShadow: '0 1px 3px rgba(0,0,0,0.5)',
-                          flex: 1,
-                          textAlign: 'left'
-                        }}
-                      >
-                        {item.label}
-                      </Typography>
-                    </Box>
-                  </Grid>
-                ))}
-              </Grid>
-            ))}
+                      {item.label}
+                    </Typography>
+                  </Box>
+                </Grid>
+              ))}
+            </Grid>
           </Container>
         </Box>
       </FadeInSection>

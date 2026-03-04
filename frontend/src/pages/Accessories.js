@@ -442,10 +442,24 @@ const Accessories = () => {
                 sx={{
                   display: 'flex',
                   transform: [4, 5].includes(accessory.id) ? { xs: 'none', sm: 'translateX(-20px)' } : 'none',
-                  transition: 'transform 0.3s ease'
+                  transition: 'transform 0.3s ease',
+                  '&:hover .accessory-card': {
+                    boxShadow: `0 20px 50px ${accessory.color}40`,
+                    transform: 'translateY(-10px) scale(1.02)',
+                    borderColor: accessory.color,
+                    animationPlayState: 'paused',
+                    '& .accessory-image': {
+                      transform: 'scale(1.15)',
+                    },
+                    '& .accessory-name': {
+                      color: accessory.color,
+                      transform: 'scale(1.05)',
+                    }
+                  }
                 }}
               >
                 <Card
+                  className="accessory-card"
                   onClick={() => handleOpenModal(accessory)}
                   sx={{
                     width: accessory.id === 2 ? { xs: '100%', sm: '120%' } : '100%',
@@ -465,19 +479,6 @@ const Accessories = () => {
                     position: 'relative',
                     zIndex: 2,
                     cursor: 'pointer',
-                    '&:hover': {
-                      boxShadow: `0 20px 50px ${accessory.color}40`,
-                      transform: 'translateY(-15px) scale(1.05)',
-                      borderColor: accessory.color,
-                      animationPlayState: 'paused',
-                      '& .accessory-image': {
-                        transform: 'scale(1.15)',
-                      },
-                      '& .accessory-name': {
-                        color: accessory.color,
-                        transform: 'scale(1.05)',
-                      }
-                    }
                   }}
                 >
                   {/* Image Container - EXACT SAME as laptops */}

@@ -313,7 +313,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
             {/* Main Image Display */}
             <Box sx={{
               flex: 1,
-              height: { xs: 300, md: 450 },
+              height: { xs: 200, md: 350 }, // Reduced from 300/450
               bgcolor: 'background.paper',
               borderRadius: 3,
               border: '1px solid',
@@ -321,7 +321,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              p: 2,
+              p: 4, // Increased padding to make image look smaller
               order: { xs: 1, md: 2 }
             }}>
               <Box

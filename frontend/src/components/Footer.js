@@ -9,26 +9,26 @@ const Footer = ({ fullFooter = true }) => {
             component="footer"
             role="contentinfo"
             sx={{
-                bgcolor: (theme) => theme.palette.mode === 'dark' ? '#121212' : '#2d2d2d',
+                bgcolor: '#000000',
                 color: '#ffffff',
                 pt: fullFooter ? 8 : 10,
                 pb: fullFooter ? 3 : 8,
                 position: 'relative',
                 overflow: 'hidden',
-                borderTop: (theme) => `4px solid ${theme.palette.brandRed.main}`,
-                '&::before': {
-                    content: '""',
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    height: '4px',
-                    background: (theme) => `linear-gradient(90deg, ${theme.palette.brandRed.main}, #3498db, #2ecc71, ${theme.palette.brandRed.main})`,
-                    backgroundSize: '300% 100%',
-                    animation: 'shimmer 4s infinite linear',
-                },
             }}
         >
+            {/* Short horizontal line for dark mode */}
+            <Box sx={{
+                position: 'absolute',
+                top: 0,
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '100px', // Short width
+                height: '1px',
+                bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'transparent',
+                display: (theme) => theme.palette.mode === 'dark' ? 'block' : 'none',
+            }} />
+
             <Container maxWidth="lg">
                 {fullFooter && (
                     <>
@@ -67,44 +67,74 @@ const Footer = ({ fullFooter = true }) => {
                         </Box>
 
                         {/* Visit Us Banner */}
+                        {/* Brand Logos Section */}
                         <Box
                             sx={{
-                                mb: 8,
-                                backgroundColor: 'rgba(231, 76, 60, 0.1)',
-                                borderRadius: 2,
-                                p: 3,
-                                textAlign: 'center',
-                                border: '1px solid rgba(231, 76, 60, 0.2)',
-                                transition: 'all 0.3s ease',
-                                '&:hover': {
-                                    backgroundColor: 'rgba(231, 76, 60, 0.15)',
-                                    transform: 'translateY(-2px)',
-                                },
+                                mb: 6,
+                                py: 4,
+                                borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+                                display: 'flex',
+                                flexWrap: 'nowrap',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                gap: { xs: 2, md: 4 },
+                                position: 'relative',
+                                pb: 6, // Space for the line below
+                                pl: { xs: 8, md: 18 }, // Increased left padding to shift logos right
+                                pr: { xs: 4, md: 10 },
+                                overflowX: 'auto',
+                                '&::-webkit-scrollbar': { display: 'none' }, // Hide scrollbar for clean look
+                                msOverflowStyle: 'none',
+                                scrollbarWidth: 'none',
                             }}
                         >
-                            <Typography
-                                variant="h4"
-                                sx={{
-                                    color: '#ffffff',
-                                    fontWeight: 700,
-                                    mb: 1.5,
-                                    fontSize: { xs: '1.5rem', md: '2rem' },
-                                }}
-                            >
-                                Visit Us for Complete IT Solutions
-                            </Typography>
-                            <Typography
-                                variant="h6"
-                                sx={{
-                                    color: '#b0b0b0',
-                                    fontWeight: 400,
-                                    fontSize: { xs: '0.9rem', md: '1.2rem' },
-                                    maxWidth: '800px',
-                                    mx: 'auto',
-                                }}
-                            >
-                                Walk into our store for IT hardware, network setup, repair services and expert consultation.
-                            </Typography>
+                            {[
+                                { name: 'Apple', src: '/images/brand-logos/apple-icon.png' },
+                                { name: 'Dell', src: '/images/brand-logos/dell.png' },
+                                { name: 'HP', src: '/images/brand-logos/hp.png' },
+                                { name: 'Lenovo', src: '/images/brand-logos/lenovo.png' },
+                                { name: 'Asus', src: '/images/brand-logos/asus.png' },
+                                { name: 'Acer', src: '/images/brand-logos/acer.png' },
+                                { name: 'Microsoft', src: '/images/brand-logos/microsoft.png' },
+                                { name: 'Samsung', src: '/images/brand-logos/samsung.png' },
+                                { name: 'MSI', src: '/images/brand-logos/msi.png' },
+                            ].map((brand) => (
+                                <Box
+                                    key={brand.name}
+                                    component="img"
+                                    src={brand.src}
+                                    alt={brand.name}
+                                    sx={{
+                                        height: {
+                                            xs: brand.name === 'MSI' ? 75 : brand.name === 'Asus' ? 65 : ['Acer', 'Microsoft'].includes(brand.name) ? 55 : 40,
+                                            md: brand.name === 'MSI' ? 100 : brand.name === 'Asus' ? 90 : ['Acer', 'Microsoft'].includes(brand.name) ? 70 : 50
+                                        },
+                                        width: 'auto',
+                                        flexShrink: 0, // Prevent shrinking
+                                        ml: brand.name === 'MSI' ? { xs: 2, md: 4 } : 0, // Shift MSI a bit right to balance
+                                        filter: ['Apple', 'Asus'].includes(brand.name) ? 'brightness(0) invert(1)' : 'none',
+                                        opacity: 0.9,
+                                        transition: 'all 0.3s ease',
+                                        '&:hover': {
+                                            opacity: 1,
+                                            transform: 'scale(1.1)',
+                                        },
+                                    }}
+                                />
+                            ))}
+
+                            {/* Short horizontal line under logos */}
+                            <Box sx={{
+                                position: 'absolute',
+                                bottom: 0,
+                                left: '50%',
+                                transform: 'translateX(-50%)',
+                                width: '90%', // Significantly longer line
+                                maxWidth: '1000px',
+                                height: '1.5px', // Bright white line
+                                bgcolor: 'rgba(255, 255, 255, 0.4)',
+                                boxShadow: '0 0 10px rgba(255, 255, 255, 0.2)', // Subtle glow
+                            }} />
                         </Box>
 
                         {/* NEW 5-COLUMN COMPACT LAYOUT */}
