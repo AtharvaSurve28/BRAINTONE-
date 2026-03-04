@@ -321,7 +321,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              p: 4, // Increased padding to make image look smaller
+              p: { xs: 2, md: 4 }, // Responsive padding
               order: { xs: 1, md: 2 }
             }}>
               <Box

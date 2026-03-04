@@ -1686,7 +1686,7 @@ const HomePage = () => {
               Ready to find your next laptop?
             </Typography>
 
-            <Grid container spacing={3} sx={{ justifyContent: 'center' }}>
+            <Grid container spacing={{ xs: 1.5, sm: 3 }} sx={{ justifyContent: 'center' }}>
               {[
                 { label: 'Brand New Laptops', icon: LaptopIcon, to: '/laptops' },
                 { label: 'Refurbished laptops', icon: AutorenewIcon, to: '/refurbished-laptops' },
@@ -1702,8 +1702,8 @@ const HomePage = () => {
                     sx={{
                       width: '100%',
                       maxWidth: 380,
-                      ml: [0, 3].includes(idx) ? { xs: 2, md: 4 } : 0, // Shift first column (two boxes) a bit right
-                      height: { xs: 130, sm: 100 }, // taller on mobile for vertical stack
+                      ml: [0, 3].includes(idx) ? { xs: 0, md: 4 } : 0, // Only shift right on larger screens
+                      height: { xs: 110, sm: 100 }, // Slightly reduced mobile height
                       borderRadius: 2,
                       cursor: 'pointer',
                       textDecoration: 'none',
@@ -1713,14 +1713,14 @@ const HomePage = () => {
                       border: '1px solid rgba(255, 255, 255, 0.3)',
                       boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
                       display: 'flex',
-                      flexDirection: { xs: 'column', sm: 'row' }, // stack on mobile
+                      flexDirection: { xs: 'column', sm: 'row' },
                       alignItems: 'center',
                       justifyContent: 'center',
-                      gap: { xs: 1, sm: 3 },
-                      p: { xs: 1.5, sm: 3 },
+                      gap: { xs: 0.5, sm: 3 },
+                      p: { xs: 1, sm: 3 },
                       textAlign: 'center',
-                      position: 'relative', // Restore for animation
-                      overflow: 'hidden',   // Restore for animation
+                      position: 'relative',
+                      overflow: 'hidden',
                       '&::before': {
                         content: '""',
                         position: 'absolute',
@@ -1745,7 +1745,7 @@ const HomePage = () => {
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      width: { xs: 40, sm: 50 }, // smaller icons on mobile
+                      width: { xs: 35, sm: 50 },
                       flexShrink: 0,
                       position: 'relative',
                       '&::after': {
@@ -1759,19 +1759,19 @@ const HomePage = () => {
                         background: 'radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%)',
                       }
                     }}>
-                      <item.icon sx={{ fontSize: { xs: 28, sm: 36 }, color: '#fff', position: 'relative', zIndex: 1 }} />
+                      <item.icon sx={{ fontSize: { xs: 24, sm: 36 }, color: '#fff', position: 'relative', zIndex: 1 }} />
                     </Box>
 
                     <Typography
                       variant="h6"
                       sx={{
                         fontWeight: 600,
-                        fontSize: { xs: '0.85rem', sm: '1.1rem' }, // smaller text on mobile
+                        fontSize: { xs: '0.7rem', sm: '1.1rem' },
                         color: '#fff',
                         textShadow: '0 1px 3px rgba(0,0,0,0.5)',
                         flex: 1,
                         textAlign: 'center',
-                        lineHeight: 1.2
+                        lineHeight: 1.1
                       }}
                     >
                       {item.label}

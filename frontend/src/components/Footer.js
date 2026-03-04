@@ -80,8 +80,8 @@ const Footer = ({ fullFooter = true }) => {
                                 gap: { xs: 2, md: 4 },
                                 position: 'relative',
                                 pb: 6, // Space for the line below
-                                pl: { xs: 8, md: 18 }, // Increased left padding to shift logos right
-                                pr: { xs: 4, md: 10 },
+                                pl: { xs: 2, md: 18 }, // Reduced mobile padding to prevent cut-off
+                                pr: { xs: 2, md: 10 },
                                 overflowX: 'auto',
                                 '&::-webkit-scrollbar': { display: 'none' }, // Hide scrollbar for clean look
                                 msOverflowStyle: 'none',
