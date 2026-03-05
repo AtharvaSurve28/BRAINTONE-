@@ -39,6 +39,7 @@ const FloatingChatButton = () => {
     phone: '',
     address: '',
     appointmentDate: '',
+    selectedTimeSlot: '', // 'Morning' or 'Afternoon'
     appointmentTime: '',
     message: '',
   });
@@ -86,6 +87,7 @@ const FloatingChatButton = () => {
       phone: '',
       address: '',
       appointmentDate: '',
+      selectedTimeSlot: '',
       appointmentTime: '',
       message: '',
     });
@@ -123,6 +125,47 @@ const FloatingChatButton = () => {
       return;
     }
 
+    // Validate Preferred Time range (11 AM - 7 PM)
+    if (!formData.selectedTimeSlot) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Please select a time slot (Morning or Afternoon)');
+      setSnackbarOpen(true);
+      return;
+    }
+
+    const validateTime = (timeStr, slot) => {
+      if (!timeStr) return true; // Optional field in this form
+      const timeRegex = /^(1[0-2]|[1-9]):([0-5][0-9])\s*(AM|PM|am|pm)$/;
+      const match = timeStr.match(timeRegex);
+      if (!match) return false;
+
+      let hours = parseInt(match[1]);
+      const minutes = parseInt(match[2]);
+      const period = match[3].toUpperCase();
+
+      if (period === 'PM' && hours !== 12) hours += 12;
+      if (period === 'AM' && hours === 12) hours = 0;
+
+      const timeInMinutes = hours * 60 + minutes;
+
+      if (slot === 'Morning') {
+        const startMinutes = 11 * 60; // 11:00 AM
+        const endMinutes = 12 * 60;   // 12:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      } else {
+        const startMinutes = 12 * 60; // 12:00 PM
+        const endMinutes = 19 * 60;   // 07:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      }
+    };
+
+    if (formData.appointmentTime && !validateTime(formData.appointmentTime, formData.selectedTimeSlot)) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage(`Time must be in the ${formData.selectedTimeSlot} slot (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'})`);
+      setSnackbarOpen(true);
+      return;
+    }
+
     // Format the message for WhatsApp
     const whatsappMessage = `*📋 NEW APPOINTMENT REQUEST - BRAINTONE*%0A%0A
 *👤 CUSTOMER DETAILS:*%0A
@@ -132,6 +175,7 @@ const FloatingChatButton = () => {
 • *Address:* ${formData.address || 'Not provided'}%0A%0A
 *📅 APPOINTMENT DETAILS:*%0A
 • *Date:* ${formData.appointmentDate || 'Not specified'}%0A
+• *Slot:* ${formData.selectedTimeSlot || 'Not specified'}%0A
 • *Time:* ${formData.appointmentTime || 'Not specified'}%0A%0A
 *💬 MESSAGE:*%0A${formData.message || 'No additional message'}%0A%0A
 *🕒 Submitted:* ${new Date().toLocaleString()}`;
@@ -429,7 +473,6 @@ const FloatingChatButton = () => {
                   </Stack>
                 </Box>
 
-                {/* Appointment Details Section */}
                 <Box sx={{ mb: 4 }}>
                   <Typography
                     variant="h6"
@@ -448,39 +491,92 @@ const FloatingChatButton = () => {
                     Appointment Details
                   </Typography>
 
-                  <Grid container spacing={3}>
-                    <Grid item xs={12} sm={6}>
+                  <Stack spacing={3}>
+                    <TextField
+                      fullWidth
+                      label="Preferred Date"
+                      name="appointmentDate"
+                      type="date"
+                      value={formData.appointmentDate}
+                      onChange={handleChange}
+                      variant="outlined"
+                      InputLabelProps={{ shrink: true }}
+                      InputProps={{
+                        startAdornment: (
+                          <InputAdornment position="start">
+                            <CalendarTodayIcon sx={{ color: '#e74c3c' }} />
+                          </InputAdornment>
+                        ),
+                      }}
+                      inputProps={{
+                        min: getTodayDate(),
+                      }}
+                    />
+
+                    <Box>
+                      <Typography variant="subtitle1" sx={{ mb: 1.5, fontWeight: 600, color: '#e74c3c' }}>
+                        Select Time Slot *
+                      </Typography>
+                      <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, mb: 3 }}>
+                        <Box
+                          onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Morning' }))}
+                          sx={{
+                            flex: 1,
+                            p: { xs: 1, sm: 2 },
+                            border: '2px solid',
+                            borderColor: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'divider',
+                            borderRadius: '12px',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            bgcolor: formData.selectedTimeSlot === 'Morning' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                            transition: '0.3s',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center'
+                          }}
+                        >
+                          <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.85rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'text.primary' }}>
+                            Morning
+                          </Typography>
+                          <Typography variant="caption" sx={{ fontSize: { xs: '0.6rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                            11 AM - 12 PM
+                          </Typography>
+                        </Box>
+                        <Box
+                          onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Afternoon' }))}
+                          sx={{
+                            flex: 1,
+                            p: { xs: 1, sm: 2 },
+                            border: '2px solid',
+                            borderColor: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'divider',
+                            borderRadius: '12px',
+                            textAlign: 'center',
+                            cursor: 'pointer',
+                            bgcolor: formData.selectedTimeSlot === 'Afternoon' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                            transition: '0.3s',
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center'
+                          }}
+                        >
+                          <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.85rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'text.primary' }}>
+                            Afternoon
+                          </Typography>
+                          <Typography variant="caption" sx={{ fontSize: { xs: '0.6rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                            12 PM - 7 PM
+                          </Typography>
+                        </Box>
+                      </Box>
+
                       <TextField
                         fullWidth
-                        label="Preferred Date"
-                        name="appointmentDate"
-                        type="date"
-                        value={formData.appointmentDate}
-                        onChange={handleChange}
-                        variant="outlined"
-                        InputLabelProps={{ shrink: true }}
-                        InputProps={{
-                          startAdornment: (
-                            <InputAdornment position="start">
-                              <CalendarTodayIcon sx={{ color: '#e74c3c' }} />
-                            </InputAdornment>
-                          ),
-                        }}
-                        inputProps={{
-                          min: getTodayDate(),
-                        }}
-                      />
-                    </Grid>
-                    <Grid item xs={12} sm={6}>
-                      <TextField
-                        fullWidth
-                        label="Preferred Time"
+                        label={`Preferred Time (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'})`}
                         name="appointmentTime"
-                        type="time"
                         value={formData.appointmentTime}
                         onChange={handleChange}
                         variant="outlined"
-                        InputLabelProps={{ shrink: true }}
+                        placeholder="e.g. 11:30 AM"
+                        disabled={!formData.selectedTimeSlot}
                         InputProps={{
                           startAdornment: (
                             <InputAdornment position="start">
@@ -489,8 +585,8 @@ const FloatingChatButton = () => {
                           ),
                         }}
                       />
-                    </Grid>
-                  </Grid>
+                    </Box>
+                  </Stack>
                 </Box>
 
                 {/* Message Section */}

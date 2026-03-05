@@ -77,6 +77,7 @@ const RepairServices = () => {
     laptopModel: '',
     laptopIssue: '',
     preferredDate: '',
+    selectedTimeSlot: '', // 'Morning' or 'Afternoon'
     preferredTime: '',
   });
 
@@ -108,6 +109,7 @@ const RepairServices = () => {
       laptopModel: '',
       laptopIssue: '',
       preferredDate: '',
+      selectedTimeSlot: '',
       preferredTime: '',
     });
   };
@@ -128,12 +130,53 @@ const RepairServices = () => {
     e.preventDefault();
 
     // Validate required fields
-    if (!formData.name || !formData.mobile || !formData.address || !formData.laptopIssue) {
+    if (!formData.name || !formData.mobile || !formData.address || !formData.laptopIssue || !formData.preferredTime) {
       setSnackbarSeverity('error');
-      setSnackbarMessage('Please fill in all required fields: Name, Mobile, Address, and Laptop Issue');
+      setSnackbarMessage('Please fill in all required fields');
       setSnackbarOpen(true);
       return;
     }
+
+    // Validate Preferred Time range (11 AM - 7 PM)
+    if (!formData.selectedTimeSlot) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage('Please select a time slot (Morning or Afternoon)');
+      setSnackbarOpen(true);
+      return;
+    }
+
+    const validateTime = (timeStr, slot) => {
+      const timeRegex = /^(1[0-2]|[1-9]):([0-5][0-9])\s*(AM|PM|am|pm)$/;
+      const match = timeStr.match(timeRegex);
+      if (!match) return false;
+
+      let hours = parseInt(match[1]);
+      const minutes = parseInt(match[2]);
+      const period = match[3].toUpperCase();
+
+      if (period === 'PM' && hours !== 12) hours += 12;
+      if (period === 'AM' && hours === 12) hours = 0;
+
+      const timeInMinutes = hours * 60 + minutes;
+
+      if (slot === 'Morning') {
+        const startMinutes = 11 * 60; // 11:00 AM
+        const endMinutes = 12 * 60;   // 12:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      } else {
+        const startMinutes = 12 * 60; // 12:00 PM
+        const endMinutes = 19 * 60;   // 07:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      }
+    };
+
+    if (!validateTime(formData.preferredTime, formData.selectedTimeSlot)) {
+      setSnackbarSeverity('error');
+      setSnackbarMessage(`Time must be in the ${formData.selectedTimeSlot} slot (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'})`);
+      setSnackbarOpen(true);
+      return;
+    }
+
 
     // Prepare WhatsApp message
     const whatsappNumber = "9082014406";
@@ -150,6 +193,7 @@ const RepairServices = () => {
 • *Issue:* ${formData.laptopIssue}%0A%0A
 *📅 Pickup Preferences:*%0A
 • *Date:* ${formData.preferredDate || 'Not specified'}%0A
+• *Slot:* ${formData.selectedTimeSlot || 'Not specified'}%0A
 • *Time:* ${formData.preferredTime || 'Not specified'}`;
 
     // Create WhatsApp URL
@@ -393,30 +437,7 @@ const RepairServices = () => {
               Our technician will contact you to confirm the details.
             </Typography>
 
-            {/* Display WhatsApp Number */}
-            <Box sx={{
-              mb: 4,
-              p: 2,
-              bgcolor: 'rgba(37, 211, 102, 0.1)',
-              borderRadius: '8px',
-              textAlign: 'center'
-            }}>
-              <Typography variant="body2" sx={{
-                color: '#25D366',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 1
-              }}>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
-                  alt="WhatsApp"
-                  style={{ width: '20px', height: '20px' }}
-                />
-                Your request will be sent to WhatsApp: 90820 14406
-              </Typography>
-            </Box>
+            {/* Removed WhatsApp Number Display */}
 
             {/* Customer Details */}
             <Box sx={{ mb: 4 }}>
@@ -544,47 +565,77 @@ const RepairServices = () => {
                   InputLabelProps={{ shrink: true }}
                 />
 
-                <TextField
-                  fullWidth
-                  label="Preferred Time"
-                  name="preferredTime"
-                  value={formData.preferredTime}
-                  onChange={handleFormChange}
-                  variant="outlined"
-                />
+                <Typography variant="subtitle1" sx={{ mb: 1.5, fontWeight: 600, color: 'text.primary' }}>
+                  Select Time Slot *
+                </Typography>
+                <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, mb: 3 }}>
+                  <Box
+                    onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Morning' }))}
+                    sx={{
+                      flex: 1,
+                      p: { xs: 1, sm: 2 },
+                      border: '2px solid',
+                      borderColor: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'divider',
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      cursor: 'pointer',
+                      bgcolor: formData.selectedTimeSlot === 'Morning' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                      transition: '0.3s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'text.primary' }}>
+                      Morning
+                    </Typography>
+                    <Typography variant="caption" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                      11 AM - 12 PM
+                    </Typography>
+                  </Box>
+                  <Box
+                    onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Afternoon' }))}
+                    sx={{
+                      flex: 1,
+                      p: { xs: 1, sm: 2 },
+                      border: '2px solid',
+                      borderColor: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'divider',
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      cursor: 'pointer',
+                      bgcolor: formData.selectedTimeSlot === 'Afternoon' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                      transition: '0.3s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'text.primary' }}>
+                      Afternoon
+                    </Typography>
+                    <Typography variant="caption" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                      12 PM - 7 PM
+                    </Typography>
+                  </Box>
+                </Box>
+
+                <Stack spacing={3}>
+                  <TextField
+                    fullWidth
+                    label={`Exact Time (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'}) *`}
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleFormChange}
+                    required
+                    variant="outlined"
+                    placeholder="e.g. 11:30 AM"
+                    disabled={!formData.selectedTimeSlot}
+                  />
+                </Stack>
               </Stack>
             </Box>
 
-            {/* Terms and WhatsApp Button */}
-            <Box sx={{
-              mt: 4,
-              p: 3,
-              bgcolor: '#ffecec',
-              borderRadius: '8px',
-              mb: 4
-            }}>
-              <Typography variant="body2" sx={{
-                mb: 2,
-                color: '#e74c3c',
-                fontWeight: 600
-              }}>
-                ⚡ What happens next?
-              </Typography>
-              <Stack spacing={1.5}>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  Submit this form
-                </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  We'll contact you on WhatsApp (90820 14406) to confirm
-                </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5 }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  Schedule repair at your preferred time
-                </Typography>
-              </Stack>
-            </Box>
+            {/* Removed Terms and WhatsApp Button section */}
 
             {/* Submit Button */}
             <Box sx={{
@@ -2239,10 +2290,10 @@ const RepairServices = () => {
             <Box sx={{ maxWidth: 1000, mx: 'auto', borderRadius: 4, overflow: 'hidden', boxShadow: '0 0 40px rgba(255, 0, 0, 0.3)', position: 'relative' }}>
               <VideoInView
                 src="/videos/Repair_Video.mp4"
+                poster="https://images.ctfassets.net/16nm6vz43ids/7g9t8d7WaVz7BM1L9RmrCl/9f42265945660d42d58111bf3e169aab/Repair_or_replace_laptop.png?fm=webp&q=65"
                 muted
                 loop
                 playsInline
-                preload="none"
                 playOnClick={true}
                 sx={{
                   width: '100%',

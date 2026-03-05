@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Box } from '@mui/material';
+import { Box, IconButton, Slider, Stack, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import PauseIcon from '@mui/icons-material/Pause';
+import Replay5Icon from '@mui/icons-material/Replay5';
+import Forward5Icon from '@mui/icons-material/Forward5';
+import FullscreenIcon from '@mui/icons-material/Fullscreen';
+import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 
 /**
  * VideoInView Component - Performance & UX Refined
@@ -15,12 +20,16 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
  * 3. First-Frame Preview: Shows the video content once loaded (no black screen).
  * 4. Aesthetic Design: Glassmorphism play button with thin circle.
  */
-const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
+const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props }) => {
     const videoRef = useRef(null);
-    const stopTimerRef = useRef(null);
     const [isIntersecting, setIsIntersecting] = useState(false);
     const [hasLoaded, setHasLoaded] = useState(false);
     const [isPlaying, setIsPlaying] = useState(false);
+    const [currentTime, setCurrentTime] = useState(0);
+    const [duration, setDuration] = useState(0);
+    const [showControls, setShowControls] = useState(false);
+    const [isFullscreen, setIsFullscreen] = useState(false);
+    const containerRef = useRef(null);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -42,13 +51,17 @@ const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
             observer.observe(videoRef.current);
         }
 
+        const handleFullscreenChange = () => {
+            setIsFullscreen(!!document.fullscreenElement);
+        };
+
+        document.addEventListener('fullscreenchange', handleFullscreenChange);
+
         return () => {
             if (videoRef.current) {
                 observer.unobserve(videoRef.current);
             }
-            if (stopTimerRef.current) {
-                clearTimeout(stopTimerRef.current);
-            }
+            document.removeEventListener('fullscreenchange', handleFullscreenChange);
         };
     }, []);
 
@@ -60,32 +73,93 @@ const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
         }
     }, [isIntersecting, hasLoaded, playOnClick]);
 
+    useEffect(() => {
+        const video = videoRef.current;
+        if (!video) return;
+
+        const updateTime = () => setCurrentTime(video.currentTime);
+        const updateDuration = () => setDuration(video.duration);
+
+        video.addEventListener('timeupdate', updateTime);
+        video.addEventListener('loadedmetadata', updateDuration);
+
+        return () => {
+            video.removeEventListener('timeupdate', updateTime);
+            video.removeEventListener('loadedmetadata', updateDuration);
+        };
+    }, [hasLoaded]);
+
     const handlePlay = () => {
         setIsPlaying(true);
         if (videoRef.current) {
             videoRef.current.play().catch(console.error);
-
-            // Set 8s Auto-Stop
-            if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
-            stopTimerRef.current = setTimeout(() => {
-                handleStop();
-            }, 8000);
         }
     };
 
     const handleStop = () => {
         setIsPlaying(false);
-        if (stopTimerRef.current) clearTimeout(stopTimerRef.current);
-
         if (videoRef.current) {
             videoRef.current.pause();
-            videoRef.current.currentTime = 0; // Reset to beginning for next play
+        }
+    };
+
+    const handleSeek = (event, newValue) => {
+        if (videoRef.current) {
+            videoRef.current.currentTime = newValue;
+            setCurrentTime(newValue);
+        }
+    };
+
+    const handleBack5 = (e) => {
+        e.stopPropagation();
+        if (videoRef.current) {
+            videoRef.current.currentTime = Math.max(0, videoRef.current.currentTime - 5);
+        }
+    };
+
+    const handleForward5 = (e) => {
+        e.stopPropagation();
+        if (videoRef.current) {
+            videoRef.current.currentTime = Math.min(duration, videoRef.current.currentTime + 5);
+        }
+    };
+
+    const toggleFullscreen = (e) => {
+        e.stopPropagation();
+        if (!containerRef.current) return;
+
+        if (!document.fullscreenElement) {
+            containerRef.current.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable full-screen mode: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    };
+
+    const formatTime = (time) => {
+        const minutes = Math.floor(time / 60);
+        const seconds = Math.floor(time % 60);
+        return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+    };
+
+    const clickTimeout = useRef(null);
+
+    const handleClick = (e) => {
+        if (clickTimeout.current) {
+            clearTimeout(clickTimeout.current);
+            clickTimeout.current = null;
+            toggleFullscreen(e);
+        } else {
+            clickTimeout.current = setTimeout(() => {
+                handleToggle(e);
+                clickTimeout.current = null;
+            }, 300); // 300ms window for double-click
         }
     };
 
     const handleToggle = (e) => {
         if (!playOnClick) return;
-        e.stopPropagation();
         if (isPlaying) {
             handleStop();
         } else {
@@ -95,21 +169,23 @@ const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
 
     return (
         <Box
+            ref={containerRef}
             sx={{
                 position: 'relative',
                 width: '100%',
-                height: '100%',
+                height: isFullscreen ? '100vh' : '100%',
                 bgcolor: '#000',
                 cursor: playOnClick ? 'pointer' : 'default',
-                borderRadius: 2,
+                borderRadius: isFullscreen ? 0 : 2,
                 overflow: 'hidden'
             }}
-            onClick={handleToggle}
+            onClick={handleClick}
         >
             <Box
                 component="video"
                 ref={videoRef}
                 src={hasLoaded ? finalSrc : undefined}
+                poster={poster}
                 {...props}
                 preload={hasLoaded ? "metadata" : "none"}
                 sx={{
@@ -121,26 +197,33 @@ const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
                 }}
             />
 
-            {/* Play Button Overlay - Aesthetic matching user request */}
-            {playOnClick && !isPlaying && (
-                <Box
-                    sx={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        display: 'flex',
-                        justifyContent: 'center',
-                        alignItems: 'center',
-                        zIndex: 2,
-                        backgroundColor: 'rgba(0,0,0,0.1)',
-                    }}
-                >
+            {/* UI Overlays */}
+            <Box
+                sx={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 2,
+                    backgroundColor: showControls || !isPlaying ? 'rgba(0,0,0,0.3)' : 'transparent',
+                    transition: 'background-color 0.3s ease',
+                    opacity: showControls || !isPlaying ? 1 : 0,
+                    pointerEvents: 'none' // Allow clicks to pass through to the main container
+                }}
+                onMouseEnter={() => setShowControls(true)}
+                onMouseLeave={() => setShowControls(false)}
+            >
+                {/* Big Play/Pause Button in Center */}
+                {(!isPlaying || showControls) && (
                     <Box
                         sx={{
-                            width: 100,
-                            height: 100,
+                            width: 80,
+                            height: 80,
                             borderRadius: '50%',
                             border: '1px solid rgba(255,255,255,0.4)',
                             backgroundColor: 'rgba(255,255,255,0.05)',
@@ -148,17 +231,75 @@ const VideoInView = ({ src: finalSrc, sx, playOnClick = false, ...props }) => {
                             justifyContent: 'center',
                             alignItems: 'center',
                             transition: 'all 0.3s ease',
-                            '&:hover': {
-                                transform: 'scale(1.1)',
-                                border: '1px solid rgba(255,255,255,0.8)',
-                                backgroundColor: 'rgba(255,255,255,0.15)',
-                            }
+                            mb: 2,
+                            pointerEvents: 'auto' // Re-enable pointer events for the button itself if clickable directly? 
+                            // Actually, keeping pointer-events: none on parent is safer for the "click anywhere" request.
                         }}
                     >
-                        <PlayArrowIcon sx={{ fontSize: 50, color: 'white' }} />
+                        {isPlaying ? (
+                            <PauseIcon sx={{ fontSize: 40, color: 'white' }} />
+                        ) : (
+                            <PlayArrowIcon sx={{ fontSize: 40, color: 'white' }} />
+                        )}
                     </Box>
+                )}
+
+                {/* Bottom Control Bar */}
+                <Box
+                    sx={{
+                        position: 'absolute',
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        p: 2,
+                        background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
+                        transform: showControls ? 'translateY(0)' : 'translateY(100%)',
+                        transition: 'transform 0.3s ease',
+                    }}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <Stack direction="row" spacing={2} alignItems="center">
+                        <IconButton onClick={handleBack5} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                            <Replay5Icon />
+                        </IconButton>
+
+                        <Typography sx={{ color: 'white', fontSize: '0.8rem', minWidth: 40 }}>
+                            {formatTime(currentTime)}
+                        </Typography>
+
+                        <Slider
+                            size="small"
+                            value={currentTime}
+                            max={duration || 100}
+                            onChange={handleSeek}
+                            sx={{
+                                color: '#e74c3c',
+                                '& .MuiSlider-thumb': {
+                                    width: 12,
+                                    height: 12,
+                                    transition: '0.3s ease-in-out',
+                                    '&:before': { boxShadow: 'none' },
+                                    '&:hover, &.Mui-focusVisible': {
+                                        boxShadow: '0 0 0 8px rgba(231, 76, 60, 0.16)',
+                                    },
+                                },
+                            }}
+                        />
+
+                        <Typography sx={{ color: 'white', fontSize: '0.8rem', minWidth: 40 }}>
+                            {formatTime(duration)}
+                        </Typography>
+
+                        <IconButton onClick={handleForward5} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                            <Forward5Icon />
+                        </IconButton>
+
+                        <IconButton onClick={toggleFullscreen} sx={{ color: 'white', '&:hover': { bgcolor: 'rgba(255,255,255,0.1)' } }}>
+                            {isFullscreen ? <FullscreenExitIcon /> : <FullscreenIcon />}
+                        </IconButton>
+                    </Stack>
                 </Box>
-            )}
+            </Box>
         </Box>
     );
 };

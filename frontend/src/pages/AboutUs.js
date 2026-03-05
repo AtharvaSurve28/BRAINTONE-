@@ -108,12 +108,53 @@ const AboutUs = () => {
 
   const handleSubmit = () => {
     // Validate form
-    if (!formData.name || !formData.mobile || !formData.address || !formData.laptopIssue) {
+    if (!formData.name || !formData.mobile || !formData.address || !formData.laptopIssue || !formData.preferredTime) {
       setSnackbarMessage('Please fill all required fields');
       setSnackbarSeverity('error');
       setSnackbarOpen(true);
       return;
     }
+
+    // Validate Preferred Time range (11 AM - 7 PM)
+    if (!formData.selectedTimeSlot) {
+      setSnackbarMessage('Please select a time slot (Morning or Afternoon)');
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      return;
+    }
+
+    const validateTime = (timeStr, slot) => {
+      const timeRegex = /^(1[0-2]|[1-9]):([0-5][0-9])\s*(AM|PM|am|pm)$/;
+      const match = timeStr.match(timeRegex);
+      if (!match) return false;
+
+      let hours = parseInt(match[1]);
+      const minutes = parseInt(match[2]);
+      const period = match[3].toUpperCase();
+
+      if (period === 'PM' && hours !== 12) hours += 12;
+      if (period === 'AM' && hours === 12) hours = 0;
+
+      const timeInMinutes = hours * 60 + minutes;
+
+      if (slot === 'Morning') {
+        const startMinutes = 11 * 60; // 11:00 AM
+        const endMinutes = 12 * 60;   // 12:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      } else {
+        const startMinutes = 12 * 60; // 12:00 PM
+        const endMinutes = 19 * 60;   // 07:00 PM
+        return timeInMinutes >= startMinutes && timeInMinutes <= endMinutes;
+      }
+    };
+
+    if (!validateTime(formData.preferredTime, formData.selectedTimeSlot)) {
+      setSnackbarMessage(`Time must be in the ${formData.selectedTimeSlot} slot (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'})`);
+      setSnackbarSeverity('error');
+      setSnackbarOpen(true);
+      return;
+    }
+
 
     // WhatsApp message format
     const whatsappMessage = `*Doorstep Service Request - Braintone Computers*
@@ -130,7 +171,8 @@ const AboutUs = () => {
 
 *Pickup Preferences:*
 📅 Date: ${formData.preferredDate || 'Flexible'}
-⏰ Time: ${formData.preferredTime || 'Flexible'}
+⏰ Slot: ${formData.selectedTimeSlot}
+⏰ Exact Time: ${formData.preferredTime}
 
 *Request Type:* Doorstep Pickup & Repair Service
 *Service Area:* Mumbai
@@ -158,6 +200,7 @@ const AboutUs = () => {
       laptopBrand: '',
       laptopModel: '',
       preferredDate: '',
+      selectedTimeSlot: '', // 'Morning' or 'Afternoon'
       preferredTime: ''
     });
   };
@@ -168,6 +211,17 @@ const AboutUs = () => {
 
   const handleCloseModal = () => {
     setDoorstepModalOpen(false);
+    setFormData({
+      name: '',
+      mobile: '',
+      address: '',
+      laptopIssue: '',
+      laptopBrand: '',
+      laptopModel: '',
+      preferredDate: '',
+      selectedTimeSlot: '',
+      preferredTime: ''
+    });
   };
 
   const stats = [
@@ -411,10 +465,16 @@ const AboutUs = () => {
         <Container maxWidth="lg" sx={{ mt: -6, mb: 8, position: 'relative', zIndex: 1, px: { xs: 2, sm: 3 } }}>
           <Grid container spacing={{ xs: 2, md: 3 }} justifyContent="center">
             {stats.map((stat, index) => (
-              <Grid item xs={6} sm={3} key={index}>
+              <Grid item xs={6} sm={3} key={index} sx={{ display: 'flex' }}>
                 <Card sx={{
                   textAlign: 'center',
-                  p: { xs: 1.5, sm: 3 },
+                  p: { xs: 2, sm: 3 },
+                  width: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  minHeight: { xs: '160px', sm: '200px' },
                   boxShadow: '0 8px 25px rgba(231, 76, 60, 0.2)',
                   transition: 'all 0.3s ease',
                   background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1e1e1e 0%, #262626 100%)' : 'linear-gradient(135deg, #ffffff 0%, #fff5f5 100%)',
@@ -442,14 +502,15 @@ const AboutUs = () => {
                     fontWeight: 800,
                     mb: 0.5,
                     color: '#e74c3c',
-                    fontSize: { xs: '1.2rem', sm: '1.8rem', md: '2.2rem' }
+                    fontSize: { xs: '1.2rem', sm: '1.5rem', md: '2.2rem' }
                   }}>
                     {stat.value}
                   </Typography>
                   <Typography variant="body2" sx={{
                     color: 'text.primary',
                     fontWeight: 600,
-                    fontSize: { xs: '0.7rem', sm: '0.8rem', md: '0.9rem' }
+                    fontSize: { xs: '0.75rem', sm: '0.8rem', md: '0.9rem' },
+                    lineHeight: 1.2
                   }}>
                     {stat.label}
                   </Typography>
@@ -510,7 +571,7 @@ const AboutUs = () => {
                 sx={{
                   display: 'block',
                   textAlign: 'center',
-                  color: 'rgba(0, 0, 0, 0.5)',
+                  color: (theme) => theme.palette.mode === 'dark' ? 'rgba(255, 255, 255, 0.5)' : 'rgba(0, 0, 0, 0.5)',
                   mt: 0.5,
                   fontWeight: 500,
                   fontSize: '0.7rem',
@@ -561,7 +622,7 @@ const AboutUs = () => {
                     }}>
                       <Business sx={{ fontSize: 32, color: 'white' }} />
                     </Box>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                       Company Overview
                     </Typography>
                   </Box>
@@ -670,7 +731,7 @@ const AboutUs = () => {
                   </Box>
 
                   <Box sx={{ mt: 4 }}>
-                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: '#2c3e50' }}>
+                    <Typography variant="h6" sx={{ fontWeight: 700, mb: 2, color: 'text.primary' }}>
                       Technical Expertise
                     </Typography>
                     <Typography variant="body1" sx={{
@@ -748,7 +809,7 @@ const AboutUs = () => {
                     }}>
                       <Visibility sx={{ fontSize: 32, color: 'white' }} />
                     </Box>
-                    <Typography variant="h3" sx={{ fontWeight: 800, color: '#2c3e50', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
+                    <Typography variant="h3" sx={{ fontWeight: 800, color: 'text.primary', fontSize: { xs: '1.5rem', sm: '2rem', md: '3rem' } }}>
                       Our Vision
                     </Typography>
                   </Box>
@@ -1502,35 +1563,12 @@ const AboutUs = () => {
 
           {/* Modal Content */}
           <Box sx={{ p: 4 }}>
-            <Typography variant="body1" sx={{ mb: 4, color: '#7f8c8d', textAlign: 'center' }}>
+            <Typography variant="body1" sx={{ mb: 4, color: 'text.secondary', textAlign: 'center' }}>
               Fill out the form below to schedule a free pickup for your laptop repair.
               Our technician will contact you to confirm the details.
             </Typography>
 
-            {/* Display WhatsApp Number */}
-            <Box sx={{
-              mb: 4,
-              p: 2,
-              bgcolor: 'rgba(37, 211, 102, 0.1)',
-              borderRadius: '8px',
-              textAlign: 'center'
-            }}>
-              <Typography variant="body2" sx={{
-                color: 'text.primary',
-                fontWeight: 600,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: 1
-              }}>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
-                  alt="WhatsApp"
-                  style={{ width: '20px', height: '20px' }}
-                />
-                Your request will be sent to WhatsApp: 90820 14406
-              </Typography>
-            </Box>
+            {/* Removed WhatsApp Number Display */}
 
             {/* Customer Details */}
             <Box sx={{ mb: 4 }}>
@@ -1658,47 +1696,77 @@ const AboutUs = () => {
                   InputLabelProps={{ shrink: true }}
                 />
 
-                <TextField
-                  fullWidth
-                  label="Preferred Time"
-                  name="preferredTime"
-                  value={formData.preferredTime}
-                  onChange={handleFormChange}
-                  variant="outlined"
-                />
+                <Typography variant="subtitle1" sx={{ mb: 1.5, fontWeight: 600, color: 'text.primary' }}>
+                  Select Time Slot *
+                </Typography>
+                <Box sx={{ display: 'flex', gap: { xs: 1, sm: 2 }, mb: 3 }}>
+                  <Box
+                    onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Morning' }))}
+                    sx={{
+                      flex: 1,
+                      p: { xs: 1, sm: 2 },
+                      border: '2px solid',
+                      borderColor: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'divider',
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      cursor: 'pointer',
+                      bgcolor: formData.selectedTimeSlot === 'Morning' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                      transition: '0.3s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Morning' ? '#e74c3c' : 'text.primary' }}>
+                      Morning
+                    </Typography>
+                    <Typography variant="caption" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                      11 AM - 12 PM
+                    </Typography>
+                  </Box>
+                  <Box
+                    onClick={() => setFormData(prev => ({ ...prev, selectedTimeSlot: 'Afternoon' }))}
+                    sx={{
+                      flex: 1,
+                      p: { xs: 1, sm: 2 },
+                      border: '2px solid',
+                      borderColor: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'divider',
+                      borderRadius: '12px',
+                      textAlign: 'center',
+                      cursor: 'pointer',
+                      bgcolor: formData.selectedTimeSlot === 'Afternoon' ? 'rgba(231, 76, 60, 0.05)' : 'transparent',
+                      transition: '0.3s',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'center'
+                    }}
+                  >
+                    <Typography variant="body1" sx={{ fontWeight: 700, fontSize: { xs: '0.9rem', sm: '1rem' }, color: formData.selectedTimeSlot === 'Afternoon' ? '#e74c3c' : 'text.primary' }}>
+                      Afternoon
+                    </Typography>
+                    <Typography variant="caption" sx={{ fontSize: { xs: '0.65rem', sm: '0.75rem' }, color: 'text.secondary', whiteSpace: 'nowrap' }}>
+                      12 PM - 7 PM
+                    </Typography>
+                  </Box>
+                </Box>
+
+                <Stack spacing={3}>
+                  <TextField
+                    fullWidth
+                    label={`Exact Time (${formData.selectedTimeSlot === 'Morning' ? '11 AM - 12 PM' : '12 PM - 7 PM'}) *`}
+                    name="preferredTime"
+                    value={formData.preferredTime}
+                    onChange={handleFormChange}
+                    required
+                    variant="outlined"
+                    placeholder="e.g. 11:30 AM"
+                    disabled={!formData.selectedTimeSlot}
+                  />
+                </Stack>
               </Stack>
             </Box>
 
-            {/* Terms and WhatsApp Button */}
-            <Box sx={{
-              mt: 4,
-              p: 3,
-              bgcolor: (theme) => theme.palette.mode === 'dark' ? 'rgba(231, 76, 60, 0.15)' : '#ffecec',
-              borderRadius: '8px',
-              mb: 4
-            }}>
-              <Typography variant="body2" sx={{
-                mb: 2,
-                color: '#e74c3c',
-                fontWeight: 600
-              }}>
-                ⚡ What happens next?
-              </Typography>
-              <Stack spacing={1.5}>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  Submit this form
-                </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  We'll contact you on WhatsApp (90820 14406) to confirm
-                </Typography>
-                <Typography variant="body2" sx={{ display: 'flex', alignItems: 'center', gap: 1.5, color: 'text.primary' }}>
-                  <CheckCircle sx={{ fontSize: 16, color: '#27ae60' }} />
-                  Free pickup scheduled from your address
-                </Typography>
-              </Stack>
-            </Box>
+            {/* Removed Terms and WhatsApp Button section */}
 
             {/* Submit Button */}
             <Box sx={{
@@ -1736,7 +1804,7 @@ const AboutUs = () => {
                   fontWeight: 700,
                 }}
               >
-                Send to 90820 14406
+                Send to Braintone WhatsApp
               </Button>
             </Box>
           </Box>
@@ -1848,7 +1916,7 @@ const AboutUs = () => {
                   <Typography variant="h5" sx={{ fontWeight: 700, mb: 1, color: 'text.primary' }}>
                     {milestone.event}
                   </Typography>
-                  <Typography variant="body1" sx={{ color: '#7f8c8d' }}>
+                  <Typography variant="body1" sx={{ color: 'text.secondary' }}>
                     {milestone.description}
                   </Typography>
                 </Card>

@@ -299,7 +299,7 @@ export default function Navbar() {
             <IconButton size="small" href={socialLinks.instagram} target="_blank" aria-label="Instagram" sx={{ color: 'text.primary' }}><InstagramIcon /></IconButton>
             <IconButton size="small" href={socialLinks.twitter} target="_blank" aria-label="Twitter" sx={{ color: 'text.primary' }}><TwitterIcon /></IconButton>
             <IconButton size="small" href={socialLinks.linkedin} target="_blank" aria-label="LinkedIn" sx={{ color: 'text.primary' }}><LinkedInIcon /></IconButton>
-            <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: '#25D366' }}><WhatsAppIcon /></IconButton>
+            <IconButton size="small" href={socialLinks.whatsapp} target="_blank" aria-label="WhatsApp" sx={{ color: 'text.primary' }}><WhatsAppIcon /></IconButton>
           </Stack>
 
           {/* Contact Info in Drawer */}
@@ -358,7 +358,7 @@ export default function Navbar() {
                   </Box>
                 </Stack>
 
-                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
+                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
                   <AccessTimeIcon aria-hidden="true" sx={{ color: 'brandRed.main', fontSize: 18 }} />
@@ -368,7 +368,7 @@ export default function Navbar() {
                   </Box>
                 </Stack>
 
-                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: 'rgba(0,0,0,0.1)' }} />
+                <Divider orientation="vertical" flexItem sx={{ height: 40, alignSelf: 'center', borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }} />
 
                 <Stack direction="row" spacing={1} alignItems="center">
                   <AccessTimeIcon aria-hidden="true" sx={{ color: 'brandRed.main', fontSize: 18 }} />
@@ -418,13 +418,46 @@ export default function Navbar() {
                     onClick={handleDrawerToggle}
                     aria-label="Toggle Navigation"
                     sx={{
-                      color: mobileOpen ? 'brandRed.main' : 'text.primary',
-                      transition: 'all 0.3s ease',
+                      width: 40,
+                      height: 40,
+                      color: 'text.primary',
                       zIndex: theme.zIndex.appBar + 3,
                       position: 'relative',
                     }}
                   >
-                    {mobileOpen ? <CloseIcon /> : <MenuIcon />}
+                    <Box
+                      sx={{
+                        width: 24,
+                        height: 18,
+                        position: 'relative',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        '& span': {
+                          display: 'block',
+                          width: '100%',
+                          height: '2px',
+                          bgcolor: mobileOpen ? '#e74c3c' : 'text.primary',
+                          borderRadius: '2px',
+                          transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+                          transformOrigin: 'left center',
+                        },
+                        '& span:nth-of-type(1)': {
+                          transform: mobileOpen ? 'rotate(45deg) translate(2px, -2px)' : 'none',
+                        },
+                        '& span:nth-of-type(2)': {
+                          opacity: mobileOpen ? 0 : 1,
+                          width: mobileOpen ? 0 : '100%',
+                        },
+                        '& span:nth-of-type(3)': {
+                          transform: mobileOpen ? 'rotate(-45deg) translate(2px, 2px)' : 'none',
+                        },
+                      }}
+                    >
+                      <span />
+                      <span />
+                      <span />
+                    </Box>
                   </IconButton>
                 </Box>
               </Box>
@@ -584,7 +617,7 @@ export default function Navbar() {
                     <WhatsAppIcon fontSize="small" />
                   </IconButton>
 
-                  <Divider orientation="vertical" flexItem sx={{ height: 24, alignSelf: 'center', mx: 1, borderColor: 'rgba(0,0,0,0.1)' }} />
+                  <Divider orientation="vertical" flexItem sx={{ height: 24, alignSelf: 'center', mx: 1, borderColor: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.1)' }} />
 
                   <IconButton onClick={toggleTheme} color="inherit" id="dark-mode-toggle">
                     {mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
