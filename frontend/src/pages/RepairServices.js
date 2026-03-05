@@ -796,7 +796,7 @@ const RepairServices = () => {
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
-            filter: 'brightness(0.6)',
+            filter: 'brightness(0.85)',
             zIndex: 0,
             transform: 'scale(1.05)',
           },
@@ -1008,6 +1008,17 @@ const RepairServices = () => {
                   display: 'inline-block',
                   textShadow: '0 2px 4px rgba(0,0,0,0.1)',
                   animation: 'fadeInUp 1s ease',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -10,
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: 80,
+                    height: 4,
+                    background: 'linear-gradient(90deg, #e74c3c, #c0392b)',
+                    borderRadius: 2,
+                  }
                 }}
               >
                 Our Repair Services
@@ -2243,24 +2254,6 @@ const RepairServices = () => {
         </Box>
       </FadeInSection>
 
-      {/* DIVIDER BORDER */}
-      <Box sx={{
-        width: '100%',
-        height: '3px',
-        background: 'linear-gradient(90deg, transparent, #e74c3c 20%, #3498db 50%, #e74c3c 80%, transparent)',
-        position: 'relative',
-        overflow: 'hidden',
-        '&::after': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          left: '-100%',
-          width: '100%',
-          height: '100%',
-          background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent)',
-          animation: 'dividerShimmer 2s infinite linear',
-        }
-      }} />
 
       {/* VIDEO SECTION */}
       <FadeInSection fullWidth>

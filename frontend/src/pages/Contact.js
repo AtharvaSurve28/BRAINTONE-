@@ -202,10 +202,10 @@ const Contact = () => {
           sx={{
             position: 'relative',
             color: 'white',
-            py: 12,
+            py: { xs: 8, md: 10 },
             textAlign: 'center',
             overflow: 'hidden',
-            minHeight: { xs: '300px', md: '450px' },
+            minHeight: { xs: '250px', md: '380px' },
             '&::before': {
               content: '""',
               position: 'absolute',
@@ -217,7 +217,7 @@ const Contact = () => {
               backgroundSize: 'cover',
               backgroundPosition: 'center', // Makes image adjustable/centered
               backgroundRepeat: 'no-repeat',
-              filter: 'brightness(0.55)', // Slightly adjusted for clarity
+              filter: 'brightness(0.75)', // Increased brightness for clarity
               zIndex: 0,
             }
           }}
