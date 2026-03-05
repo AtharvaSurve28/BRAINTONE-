@@ -409,88 +409,132 @@ const Contact = () => {
 
           <Box sx={{ mt: 4 }}>
             <form onSubmit={handleSubmit}>
-              <Grid container spacing={5}>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Name *"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleChange}
-                    required
-                    variant="standard"
-                    sx={{
-                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
-                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
-                    }}
-                  />
+              <Grid container spacing={5} justifyContent="center">
+                <Grid item xs={12} sm={10} md={8} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ width: '100%', maxWidth: { xs: '320px', sm: '100%' } }}>
+                    <Typography variant="body1" sx={{ fontWeight: 700, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' } }}>
+                      Name <span style={{ color: '#e74c3c' }}>*</span>
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      variant="standard"
+                      placeholder="Enter your name"
+                      sx={{
+                        '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                        '& .MuiInput-input': {
+                          textAlign: { xs: 'center', md: 'left' },
+                          fontSize: '1.1rem'
+                        }
+                      }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Email *"
-                    name="email"
-                    type="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    variant="standard"
-                    sx={{
-                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
-                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
-                    }}
-                  />
+
+                <Grid item xs={12} sm={10} md={8} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ width: '100%', maxWidth: { xs: '320px', sm: '100%' } }}>
+                    <Typography variant="body1" sx={{ fontWeight: 700, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' } }}>
+                      Email <span style={{ color: '#e74c3c' }}>*</span>
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      name="email"
+                      type="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      variant="standard"
+                      placeholder="Enter your email"
+                      sx={{
+                        '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                        '& .MuiInput-input': {
+                          textAlign: { xs: 'center', md: 'left' },
+                          fontSize: '1.1rem'
+                        }
+                      }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Phone Number *"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    variant="standard"
-                    sx={{
-                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
-                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
-                    }}
-                  />
+
+                <Grid item xs={12} sm={10} md={8} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ width: '100%', maxWidth: { xs: '320px', sm: '100%' } }}>
+                    <Typography variant="body1" sx={{ fontWeight: 700, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' } }}>
+                      Phone Number <span style={{ color: '#e74c3c' }}>*</span>
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      required
+                      variant="standard"
+                      placeholder="Enter your phone number"
+                      sx={{
+                        '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                        '& .MuiInput-input': {
+                          textAlign: { xs: 'center', md: 'left' },
+                          fontSize: '1.1rem'
+                        }
+                      }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Address *"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                    variant="standard"
-                    sx={{
-                      '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
-                      '& .MuiInputLabel-root': { fontSize: '1.1rem', color: 'text.secondary' }
-                    }}
-                  />
+
+                <Grid item xs={12} sm={10} md={8} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ width: '100%', maxWidth: { xs: '320px', sm: '100%' } }}>
+                    <Typography variant="body1" sx={{ fontWeight: 700, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' } }}>
+                      Address <span style={{ color: '#e74c3c' }}>*</span>
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      name="address"
+                      value={formData.address}
+                      onChange={handleChange}
+                      required
+                      variant="standard"
+                      placeholder="Enter your address"
+                      sx={{
+                        '& .MuiInput-underline:before': { borderBottomColor: 'rgba(0,0,0,0.1)' },
+                        '& .MuiInput-input': {
+                          textAlign: { xs: 'center', md: 'left' },
+                          fontSize: '1.1rem'
+                        }
+                      }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={12}>
-                  <TextField
-                    fullWidth
-                    label="Message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    multiline
-                    rows={4}
-                    variant="outlined"
-                    sx={{
-                      mt: 2,
-                      '& .MuiOutlinedInput-root': {
-                        bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
-                        borderRadius: '8px'
-                      }
-                    }}
-                  />
+
+                <Grid item xs={12} sm={10} md={8} sx={{ display: 'flex', flexDirection: 'column', alignItems: { xs: 'center', md: 'flex-start' } }}>
+                  <Box sx={{ width: '100%', maxWidth: { xs: '320px', sm: '100%' } }}>
+                    <Typography variant="body1" sx={{ fontWeight: 700, mb: 1, color: 'text.primary', textAlign: { xs: 'center', md: 'left' } }}>
+                      Message
+                    </Typography>
+                    <TextField
+                      fullWidth
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      multiline
+                      rows={4}
+                      variant="outlined"
+                      placeholder="Write your message here..."
+                      sx={{
+                        mt: 1,
+                        '& .MuiOutlinedInput-root': {
+                          bgcolor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.02)',
+                          borderRadius: '8px',
+                          '& textarea': {
+                            textAlign: { xs: 'center', md: 'left' }
+                          }
+                        }
+                      }}
+                    />
+                  </Box>
                 </Grid>
-                <Grid item xs={12} sx={{ mt: 2 }}>
+                <Grid item xs={12} sx={{ mt: 2, textAlign: { xs: 'center', md: 'left' } }}>
                   <Button
                     type="submit"
                     variant="contained"
@@ -503,6 +547,10 @@ const Contact = () => {
                       fontSize: '1rem',
                       fontWeight: 700,
                       textTransform: 'none',
+                      width: { xs: '100%', sm: 'auto' }, // Full width on extra small, auto on small and up
+                      maxWidth: '300px', // Prevent button from being too wide on mobile
+                      mx: 'auto', // Center button
+                      display: 'block', // Required for mx: auto to work
                       '&:hover': {
                         background: 'linear-gradient(135deg, #c0392b 0%, #8B0000 100%)',
                       }

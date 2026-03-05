@@ -158,7 +158,7 @@ const Laptops = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'url(https://www.electronicsbazaar.com/pub/media/magefan_blog/image_322.png)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1627634777217-c864268db30c?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 25%',
           backgroundRepeat: 'no-repeat',
