@@ -632,8 +632,9 @@ const Accessories = () => {
           mb: 10,
           p: 6,
           borderRadius: 3,
-          backgroundColor: 'rgba(255, 255, 255, 0.9)',
-          border: '2px solid rgba(139, 0, 0, 0.3)',
+          backgroundColor: 'background.paper',
+          border: '2px solid',
+          borderColor: 'divider',
           position: 'relative',
           overflow: 'hidden',
           maxWidth: '800px',
@@ -656,7 +657,7 @@ const Accessories = () => {
           <Typography
             variant="h4"
             sx={{
-              color: '#8B0000',
+              color: 'brandRed.main',
               fontWeight: 800,
               mb: 3,
               fontSize: '2.2rem',
@@ -671,7 +672,7 @@ const Accessories = () => {
           <Typography
             variant="body1"
             sx={{
-              color: '#555',
+              color: 'text.primary',
               maxWidth: '600px',
               mx: 'auto',
               fontSize: '1.1rem',
@@ -696,15 +697,23 @@ const Accessories = () => {
               fontWeight: 700,
               textTransform: 'none',
               borderRadius: 2,
-              background: 'linear-gradient(45deg, #8B0000 30%, #A52A2A 90%)',
-              boxShadow: '0 8px 25px rgba(139, 0, 0, 0.4)',
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(45deg, #e74c3c 30%, #ff7675 90%)'
+                : 'linear-gradient(45deg, #8B0000 30%, #A52A2A 90%)',
+              boxShadow: theme.palette.mode === 'dark'
+                ? '0 8px 25px rgba(231, 76, 60, 0.4)'
+                : '0 8px 25px rgba(139, 0, 0, 0.4)',
               position: 'relative',
               zIndex: 2,
               animation: `${bounceAnimation} 3s ease-in-out infinite`,
               '&:hover': {
-                background: 'linear-gradient(45deg, #600000 30%, #8B0000 90%)',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(45deg, #d63031 30%, #e74c3c 90%)'
+                  : 'linear-gradient(45deg, #600000 30%, #8B0000 90%)',
                 transform: 'translateY(-3px)',
-                boxShadow: '0 12px 30px rgba(139, 0, 0, 0.5)'
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 12px 30px rgba(231, 76, 60, 0.5)'
+                  : '0 12px 30px rgba(139, 0, 0, 0.5)'
               }
             }}
           >

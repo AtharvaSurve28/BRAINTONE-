@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Divider } from '@mui/material';
+import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Divider, useTheme } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import { keyframes } from '@emotion/react';
 import { ArrowForward } from '@mui/icons-material';
@@ -58,6 +58,7 @@ const bubbleFloat = keyframes`
 `;
 
 const Laptops = () => {
+  const theme = useTheme();
   const navigate = useNavigate(); // Added useNavigate hook
 
   const brands = [
@@ -530,15 +531,23 @@ const Laptops = () => {
               fontWeight: 700,
               textTransform: 'none',
               borderRadius: 2,
-              background: 'linear-gradient(45deg, #8B0000 30%, #A52A2A 90%)', // Darker red gradient
-              boxShadow: '0 8px 25px rgba(139, 0, 0, 0.4)',
+              background: theme.palette.mode === 'dark'
+                ? 'linear-gradient(45deg, #e74c3c 30%, #ff7675 90%)'
+                : 'linear-gradient(45deg, #8B0000 30%, #A52A2A 90%)',
+              boxShadow: theme.palette.mode === 'dark'
+                ? '0 8px 25px rgba(231, 76, 60, 0.4)'
+                : '0 8px 25px rgba(139, 0, 0, 0.4)',
               position: 'relative',
               zIndex: 2,
               animation: `${bounceAnimation} 3s ease-in-out infinite`,
               '&:hover': {
-                background: 'linear-gradient(45deg, #600000 30%, #8B0000 90%)',
+                background: theme.palette.mode === 'dark'
+                  ? 'linear-gradient(45deg, #d63031 30%, #e74c3c 90%)'
+                  : 'linear-gradient(45deg, #600000 30%, #8B0000 90%)',
                 transform: 'translateY(-3px)',
-                boxShadow: '0 12px 30px rgba(139, 0, 0, 0.5)'
+                boxShadow: theme.palette.mode === 'dark'
+                  ? '0 12px 30px rgba(231, 76, 60, 0.5)'
+                  : '0 12px 30px rgba(139, 0, 0, 0.5)'
               }
             }}
           >
