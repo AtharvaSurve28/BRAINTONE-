@@ -714,7 +714,7 @@ const MacAccessories = () => {
                                         <Typography variant="h6" sx={{ fontWeight: 800, color: '#e74c3c', fontSize: { xs: '1.1rem', sm: '1.25rem' }, mb: 0.5 }}>
                                             Fort Location
                                         </Typography>
-                                        <Typography variant="body2" sx={{ color: '#424245', lineHeight: 1.4, mb: 1.5, fontSize: { xs: '0.85rem', sm: '0.95rem' } }}>
+                                        <Typography variant="body2" sx={{ color: '#ffffff', lineHeight: 1.4, mb: 1.5, fontSize: { xs: '0.85rem', sm: '0.95rem' } }}>
                                             1st Floor, 17A, Bahubali Bldg, Flora Fountain, Fort, Mumbai
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: '#e74c3c', fontWeight: 700, fontSize: '0.85rem' }}>
@@ -746,7 +746,7 @@ const MacAccessories = () => {
                                         <Typography variant="h6" sx={{ fontWeight: 800, color: '#0071e3', fontSize: { xs: '1.1rem', sm: '1.25rem' }, mb: 0.5 }}>
                                             Vile Parle Location
                                         </Typography>
-                                        <Typography variant="body2" sx={{ color: '#424245', lineHeight: 1.4, mb: 1.5, fontSize: { xs: '0.85rem', sm: '0.95rem' } }}>
+                                        <Typography variant="body2" sx={{ color: '#ffffff', lineHeight: 1.4, mb: 1.5, fontSize: { xs: '0.85rem', sm: '0.95rem' } }}>
                                             1st Floor, Prime Mall, Irla, Vile Parle West, Mumbai
                                         </Typography>
                                         <Typography variant="body2" sx={{ color: '#0071e3', fontWeight: 700, fontSize: '0.85rem' }}>

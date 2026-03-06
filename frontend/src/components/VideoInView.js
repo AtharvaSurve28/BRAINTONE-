@@ -20,7 +20,18 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
  * 3. First-Frame Preview: Shows the video content once loaded (no black screen).
  * 4. Aesthetic Design: Glassmorphism play button with thin circle.
  */
-const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props }) => {
+const VideoInView = ({
+    src,
+    poster,
+    muted = true,
+    loop = true,
+    playsInline = true,
+    playOnClick = false,
+    showControlsOnHover = false,
+    autoStopDelay = null,
+    sx = {},
+    ...props
+}) => {
     const videoRef = useRef(null);
     const [isIntersecting, setIsIntersecting] = useState(false);
     const [hasLoaded, setHasLoaded] = useState(false);
@@ -88,6 +99,19 @@ const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props 
             video.removeEventListener('loadedmetadata', updateDuration);
         };
     }, [hasLoaded]);
+
+    // Auto-stop timer
+    useEffect(() => {
+        let timer;
+        if (isPlaying && autoStopDelay) {
+            timer = setTimeout(() => {
+                handleStop();
+            }, autoStopDelay);
+        }
+        return () => {
+            if (timer) clearTimeout(timer);
+        };
+    }, [isPlaying, autoStopDelay]);
 
     const handlePlay = () => {
         setIsPlaying(true);
@@ -180,11 +204,13 @@ const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props 
                 overflow: 'hidden'
             }}
             onClick={handleClick}
+            onMouseEnter={() => showControlsOnHover && setShowControls(true)}
+            onMouseLeave={() => showControlsOnHover && setShowControls(false)}
         >
             <Box
                 component="video"
                 ref={videoRef}
-                src={hasLoaded ? finalSrc : undefined}
+                src={hasLoaded ? src : undefined}
                 poster={poster}
                 {...props}
                 preload={hasLoaded ? "metadata" : "none"}
@@ -215,8 +241,6 @@ const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props 
                     opacity: showControls || !isPlaying ? 1 : 0,
                     pointerEvents: 'none' // Allow clicks to pass through to the main container
                 }}
-                onMouseEnter={() => setShowControls(true)}
-                onMouseLeave={() => setShowControls(false)}
             >
                 {/* Big Play/Pause Button in Center */}
                 {(!isPlaying || showControls) && (
@@ -232,8 +256,7 @@ const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props 
                             alignItems: 'center',
                             transition: 'all 0.3s ease',
                             mb: 2,
-                            pointerEvents: 'auto' // Re-enable pointer events for the button itself if clickable directly? 
-                            // Actually, keeping pointer-events: none on parent is safer for the "click anywhere" request.
+                            pointerEvents: 'auto'
                         }}
                     >
                         {isPlaying ? (
@@ -255,6 +278,7 @@ const VideoInView = ({ src: finalSrc, poster, sx, playOnClick = false, ...props 
                         background: 'linear-gradient(transparent, rgba(0,0,0,0.8))',
                         transform: showControls ? 'translateY(0)' : 'translateY(100%)',
                         transition: 'transform 0.3s ease',
+                        pointerEvents: 'auto',
                     }}
                     onClick={(e) => e.stopPropagation()}
                 >

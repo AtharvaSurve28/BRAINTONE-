@@ -2288,6 +2288,7 @@ const RepairServices = () => {
                 loop
                 playsInline
                 playOnClick={true}
+                showControlsOnHover={true}
                 sx={{
                   width: '100%',
                   display: 'block',

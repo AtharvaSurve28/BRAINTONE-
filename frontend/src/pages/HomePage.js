@@ -909,6 +909,7 @@ const HomePage = () => {
                         playsInline
                         preload="none"
                         playOnClick={true}
+                        autoStopDelay={8500}
                         sx={{
                           width: '100%',
                           height: '100%',
@@ -959,6 +960,7 @@ const HomePage = () => {
                       playsInline
                       preload="none"
                       playOnClick={true}
+                      autoStopDelay={8500}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1178,6 +1180,7 @@ const HomePage = () => {
                       playsInline
                       preload="none"
                       playOnClick={true}
+                      autoStopDelay={8500}
                       sx={{
                         width: '100%',
                         height: '100%',
@@ -1249,6 +1252,7 @@ const HomePage = () => {
                       playsInline
                       preload="none"
                       playOnClick={true}
+                      autoStopDelay={8500}
                       sx={{
                         width: '100%',
                         height: '100%',
