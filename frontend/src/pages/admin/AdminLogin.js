@@ -21,6 +21,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import VisibilityOffIcon from '@mui/icons-material/VisibilityOff';
 import SecurityIcon from '@mui/icons-material/Security';
 
+const warningMessages = [
+  "⚠️ Note: Do not share credentials with anyone.",
+  "⚠️ Warning: Restricted access only.",
+  "⚠️ Security: Log out after each session.",
+  "⚠️ Alert: Unauthorized access is prohibited."
+];
+
 const AdminLogin = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -34,13 +41,6 @@ const AdminLogin = () => {
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   const navigate = useNavigate();
-
-  const warningMessages = [
-    "⚠️ Note: Do not share credentials with anyone.",
-    "⚠️ Warning: Restricted access only.",
-    "⚠️ Security: Log out after each session.",
-    "⚠️ Alert: Unauthorized access is prohibited."
-  ];
 
   // Typing/Erasing Effect for Warning
   useEffect(() => {
@@ -71,7 +71,7 @@ const AdminLogin = () => {
     }, typingSpeed);
 
     return () => clearTimeout(timer);
-  }, [warningText, isDeleting, loopNum, typingSpeed, warningMessages]);
+  }, [warningText, isDeleting, loopNum, typingSpeed]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
