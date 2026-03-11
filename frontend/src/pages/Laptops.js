@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Divider, useTheme } from '@mui/material';
+import { Box, Container, Typography, Grid, Card, CardMedia, CardContent, Button, Divider, useTheme, alpha } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom'; // Added useNavigate
 import { keyframes } from '@emotion/react';
 import { ArrowForward } from '@mui/icons-material';
@@ -318,11 +318,11 @@ const Laptops = () => {
                   height: 420,
                   display: 'flex',
                   flexDirection: 'column',
-                  backgroundColor: 'background.default',
+                  backgroundColor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.default',
                   borderRadius: 3,
-                  boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
+                  boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.5)' : '0 4px 30px rgba(139, 0, 0, 0.15)',
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                  border: `2px solid ${brand.color}20`,
+                  border: `2px solid ${theme.palette.mode === 'dark' ? alpha(brand.color, 0.3) : alpha(brand.color, 0.2)}`,
                   overflow: 'hidden',
                   animation: `${bounceAnimation} 2s ease-in-out infinite`,
                   animationDelay: `${index * 0.2}s`,
@@ -346,7 +346,7 @@ const Laptops = () => {
                 {/* Image Container */}
                 <Box
                   sx={{
-                    backgroundColor: 'background.paper',
+                    backgroundColor: theme.palette.mode === 'dark' ? alpha('#1a1a1a', 0.5) : 'background.paper',
                     p: 0,
                     height: 250,
                     position: 'relative',
@@ -410,7 +410,7 @@ const Laptops = () => {
                 <CardContent
                   sx={{
                     textAlign: 'center',
-                    backgroundColor: 'background.paper',
+                    backgroundColor: theme.palette.mode === 'dark' ? 'transparent' : 'background.paper',
                     py: 4,
                     px: 3,
                     flexGrow: 1,
@@ -444,11 +444,11 @@ const Laptops = () => {
                       className="brand-name"
                       sx={{
                         fontWeight: 800,
-                        color: 'text.primary',
+                        color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                         fontSize: '1.8rem',
                         transition: 'all 0.4s ease',
                         letterSpacing: '-0.5px',
-                        textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                        textShadow: theme.palette.mode === 'dark' ? '0 2px 8px rgba(0,0,0,0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
                       }}
                     >
                       {brand.name}

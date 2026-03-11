@@ -70,9 +70,7 @@ const SecondHand = () => {
       description: 'For Students & Basic Computing',
       startingPrice: '₹13,000',
       icon: <SchoolIcon />,
-      color: '#2196F3', // Blue
-      bgColor: '#2196F3',
-      textColor: '#ffffff',
+      color: '#3498db', // Blue (swapped)
       specs: [
         'Intel Core i3 / AMD Ryzen 3',
         '4GB - 8GB RAM',
@@ -91,9 +89,7 @@ const SecondHand = () => {
       description: 'For Home & Personal Use',
       startingPrice: '₹23,000',
       icon: <PeopleIcon />,
-      color: '#4CAF50', // Green
-      bgColor: '#4CAF50',
-      textColor: '#ffffff',
+      color: '#2ecc71', // Green (swapped)
       specs: [
         'Intel Core i5 / AMD Ryzen 5',
         '8GB - 16GB RAM',
@@ -112,9 +108,7 @@ const SecondHand = () => {
       description: 'For Professionals & Creators',
       startingPrice: '₹28,000',
       icon: <SpeedIcon />,
-      color: '#FFEB3B', // Light Yellow
-      bgColor: '#FFF9C4',
-      textColor: '#212121',
+      color: '#f1c40f', // Yellow
       specs: [
         'Intel Core i7 / AMD Ryzen 7',
         '16GB RAM',
@@ -133,9 +127,7 @@ const SecondHand = () => {
       description: 'For Business & Corporate',
       startingPrice: '₹30,000',
       icon: <BusinessIcon />,
-      color: '#9C27B0', // Purple
-      bgColor: '#9C27B0',
-      textColor: '#ffffff',
+      color: '#9b59b6', // Purple
       specs: [
         'Intel Core i5/i7 vPro',
         '8GB - 32GB RAM',
@@ -154,9 +146,7 @@ const SecondHand = () => {
       description: 'For Gamers & High Performance',
       startingPrice: '₹35,000',
       icon: <VideogameAssetIcon />,
-      color: '#F44336', // Red
-      bgColor: '#F44336',
-      textColor: '#ffffff',
+      color: '#e74c3c', // Red
       specs: [
         'Intel Core i7/i9 / AMD Ryzen 7/9',
         '16GB - 32GB RAM',
@@ -175,9 +165,7 @@ const SecondHand = () => {
       description: 'For Executives & Luxury',
       startingPrice: '₹50,000',
       icon: <DiamondIcon />,
-      color: '#B8860B', // Dark Golden
-      bgColor: '#FFD700',
-      textColor: '#212121',
+      color: '#f39c12', // Orange
       specs: [
         'Latest Intel/AMD Processors',
         '16GB - 64GB RAM',
@@ -189,48 +177,6 @@ const SecondHand = () => {
       bestFor: 'Executives, Creative Professionals, Tech Enthusiasts',
       brands: 'Apple MacBook, Dell XPS, Microsoft Surface, HP Spectre',
       warranty: '1 Month Warranty',
-    },
-    {
-      id: 7,
-      title: 'Demo Units',
-      description: 'Used for demonstrations, as good as new',
-      startingPrice: '₹25,000',
-      icon: <MonitorIcon />,
-      color: '#E91E63', // Pink
-      bgColor: '#FCE4EC',
-      textColor: '#212121',
-      specs: [
-        'Latest Generation Processors',
-        '8GB - 16GB RAM',
-        '256GB - 512GB SSD',
-        'Pristine Condition',
-        'Full Brand Warranty (Varies)',
-        'Original Box & Accessories',
-      ],
-      bestFor: 'Users looking for brand new experience at Lower Price',
-      brands: 'All Leading Brands',
-      warranty: 'Full Support & Warranty',
-    },
-    {
-      id: 8,
-      title: 'Display Units',
-      description: 'Ex-Display store models, Great value',
-      startingPrice: '₹20,000',
-      icon: <ImportantDevicesIcon />,
-      color: '#FF5722', // Deep Orange
-      bgColor: '#FBE9E7',
-      textColor: '#212121',
-      specs: [
-        'High-End Specifications',
-        'Minor Cosmetic Imperfections',
-        'Fully Tested & Certified',
-        'Excellent Reliability',
-        'Highly Competitive Pricing',
-        'Latest Tech for Less',
-      ],
-      bestFor: 'Budget conscious buyers wanting High-End Tech',
-      brands: 'Major Brand Store Models',
-      warranty: 'Certified Performance',
     },
   ];
 
@@ -409,239 +355,139 @@ const SecondHand = () => {
     </Box>
   );
 
-  const CategoryCard = ({ category }) => (
-    <Box sx={{
-      position: 'relative',
-      width: '100%',
-      maxWidth: '400px',
-      height: '340px',
-      '&:hover .category-card': {
-        transform: 'translateY(-12px)',
-        boxShadow: 8,
-        animation: 'none',
-      },
-    }}>
-      <Card
-        className="category-card"
+  const CategoryBar = ({ category }) => (
+    <Box
+      onClick={() => handleOpenModal(category)}
+      sx={{
+        position: 'relative',
+        width: '100%',
+        mb: { xs: 3, md: 4 },
+        cursor: 'pointer',
+        transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+        '&:hover': {
+          transform: { xs: 'none', md: 'translateX(15px) scale(1.02)' },
+        },
+      }}
+    >
+      <Box
         sx={{
-          height: '320px',
-          width: '100%',
-          minWidth: '300px',
-          display: 'flex',
-          flexDirection: 'column',
-          animation: 'float 3s ease-in-out infinite',
-          transition: 'transform 0.3s, box-shadow 0.3s',
-          border: `3px solid ${category.color}40`,
-          overflow: 'hidden',
-          borderRadius: '12px',
           position: 'relative',
-          zIndex: 2,
-          backgroundColor: 'background.paper',
-          backdropFilter: 'blur(4px)',
-          '@keyframes float': {
-            '0%': {
-              transform: 'translateY(0px)',
-            },
-            '50%': {
-              transform: 'translateY(-10px)',
-            },
-            '100%': {
-              transform: 'translateY(0px)',
-            },
+          bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'white',
+          minHeight: { xs: 'auto', md: '130px' },
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: { xs: 'column', md: 'row' },
+          boxShadow: theme.palette.mode === 'dark' ? '0 8px 30px rgba(0,0,0,0.4)' : '0 8px 30px rgba(0,0,0,0.06)',
+          clipPath: {
+            xs: 'none',
+            md: 'polygon(1.5% 0%, 98.5% 0%, 100% 100%, 0% 100%)'
           },
+          borderLeft: `8px solid ${category.color}`,
+          p: { xs: 2.5, md: 0 },
+          overflow: 'hidden',
+          transition: 'background-color 0.3s ease'
         }}
       >
-        <CardActionArea
-          onClick={() => handleOpenModal(category)}
+        {/* Color Accent Skewed Corner */}
+        <Box
           sx={{
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '25px',
             height: '100%',
-            p: 0,
-          }}
-        >
-          {/* Color bar at top */}
-          <Box sx={{
-            height: '10px',
-            width: '100%',
             bgcolor: category.color,
-            position: 'relative',
-            zIndex: 2,
-          }} />
+            clipPath: 'polygon(0 0, 100% 0, 0 100%)',
+            display: { xs: 'none', md: 'block' }
+          }}
+        />
 
-          <CardContent sx={{
-            p: 4,
-            textAlign: 'center',
-            flexGrow: 1,
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            height: '100%',
-            position: 'relative',
-            zIndex: 2,
-          }}>
-            {/* Icon and Title Section */}
-            <Box>
-              <Box sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                mb: 3,
+        {/* Content Section */}
+        <Box sx={{
+          pl: { xs: 0, md: 8 },
+          pr: { xs: 0, md: 4 },
+          flexGrow: 1,
+          textAlign: { xs: 'center', md: 'left' },
+          width: '100%'
+        }}>
+          <Typography
+            variant="h3"
+            sx={{
+              fontWeight: 900,
+              color: theme.palette.mode === 'dark' ? '#fff' : '#111',
+              lineHeight: 1.1,
+              fontSize: { xs: '1.5rem', md: '2.5rem' },
+              fontStyle: 'italic',
+              textTransform: 'uppercase'
+            }}
+          >
+            {category.title}
+          </Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : '#555',
+              fontWeight: 600,
+              mt: { xs: 0.5, md: 1 },
+              fontStyle: 'italic',
+              fontSize: { xs: '0.9rem', md: '1.2rem' }
+            }}
+          >
+            {category.description}
+          </Typography>
+        </Box>
+
+        {/* Price Section */}
+        <Box sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: { xs: 1, md: 3 },
+          pr: { xs: 0, md: 8 },
+          mt: { xs: 2, md: 0 },
+          textAlign: { xs: 'center', md: 'right' },
+          width: { xs: '100%', md: 'auto' },
+          justifyContent: { xs: 'center', md: 'flex-end' },
+          borderTop: { xs: `1px solid ${alpha(category.color, 0.1)}`, md: 'none' },
+          pt: { xs: 2, md: 0 }
+        }}>
+          <Box>
+            <Typography
+              variant="caption"
+              sx={{
+                color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.5)' : '#999',
+                fontWeight: 700,
+                letterSpacing: '1.5px',
+                display: 'block',
+                mb: 0.5,
+                fontSize: { xs: '0.7rem', md: '0.8rem' }
+              }}
+            >
+              STARTING AT
+            </Typography>
+            <Typography
+              variant="h3"
+              sx={{
                 color: category.color,
-                position: 'relative',
-                '& svg': {
-                  fontSize: '3.5rem',
-                  animation: 'pulse 2s infinite',
-                  position: 'relative',
-                  zIndex: 2,
-                },
-                '&::before': {
-                  content: '""',
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '80px',
-                  height: '80px',
-                  background: `radial-gradient(circle, ${alpha(category.color, 0.1)} 0%, transparent 70%)`,
-                  borderRadius: '50%',
-                  animation: 'ripple 3s ease-out infinite',
-                  zIndex: 1,
-                  '@keyframes ripple': {
-                    '0%': {
-                      transform: 'translate(-50%, -50%) scale(0.8)',
-                      opacity: 0.7,
-                    },
-                    '100%': {
-                      transform: 'translate(-50%, -50%) scale(1.2)',
-                      opacity: 0,
-                    },
-                  },
-                },
-                '@keyframes pulse': {
-                  '0%': {
-                    transform: 'scale(1)',
-                  },
-                  '50%': {
-                    transform: 'scale(1.1)',
-                  },
-                  '100%': {
-                    transform: 'scale(1)',
-                  },
-                }
-              }}>
-                {category.icon}
-              </Box>
-              <Typography
-                variant="h5"
-                component="h2"
-                gutterBottom
-                fontWeight="bold"
-                sx={{
-                  minHeight: '72px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  lineHeight: 1.3,
-                  fontSize: { xs: '1.25rem', md: '1.5rem' },
-                  position: 'relative',
-                  zIndex: 2,
-                }}
-              >
-                {category.title}
-              </Typography>
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                gutterBottom
-                sx={{
-                  fontSize: '1rem',
-                  position: 'relative',
-                  zIndex: 2,
-                }}
-              >
-                {category.description}
-              </Typography>
-            </Box>
-
-            {/* Price Section */}
-            <Box sx={{
-              mt: 'auto',
-              pt: 2,
-              position: 'relative',
-              zIndex: 2,
-            }}>
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                gutterBottom
-                sx={{ fontSize: '1rem' }}
-              >
-                Starting from
-              </Typography>
-              <Typography
-                variant="h4"
-                fontWeight="bold"
-                sx={{
-                  color: category.color,
-                  fontSize: { xs: '1.75rem', md: '2rem' },
-                  animation: 'priceGlow 2s ease-in-out infinite',
-                  textShadow: `0 2px 4px ${alpha(category.color, 0.2)}`,
-                  '@keyframes priceGlow': {
-                    '0%, 100%': {
-                      textShadow: `0 2px 4px ${alpha(category.color, 0.2)}`,
-                    },
-                    '50%': {
-                      textShadow: `0 4px 8px ${alpha(category.color, 0.4)}`,
-                    },
-                  }
-                }}
-              >
-                {category.startingPrice}
-              </Typography>
-
-              {/* 1 Month Warranty Badge */}
-              <Box
-                sx={{
-                  mt: 2,
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  gap: 0.5,
-                  px: 2,
-                  py: 0.5,
-                  backgroundColor: alpha(category.color, 0.1),
-                  borderRadius: '20px',
-                  border: `1px solid ${alpha(category.color, 0.3)}`,
-                  animation: 'warrantyPulse 3s ease-in-out infinite',
-                  '@keyframes warrantyPulse': {
-                    '0%, 100%': {
-                      boxShadow: `0 0 0 0 ${alpha(category.color, 0.3)}`,
-                    },
-                    '50%': {
-                      boxShadow: `0 0 0 3px ${alpha(category.color, 0.1)}`,
-                    },
-                  }
-                }}
-              >
-                <CheckCircleIcon
-                  sx={{
-                    fontSize: '0.9rem',
-                    color: category.color,
-                  }}
-                />
-                <Typography
-                  variant="caption"
-                  fontWeight="bold"
-                  sx={{ color: category.color }}
-                >
-                  {category.warranty}
-                </Typography>
-              </Box>
-            </Box>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+                fontWeight: 900,
+                fontSize: { xs: '1.8rem', md: '3rem' }
+              }}
+            >
+              {category.startingPrice}
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              color: category.color,
+              fontSize: '3rem',
+              fontWeight: 900,
+              display: { xs: 'none', md: 'block' },
+              lineHeight: 1
+            }}
+          >
+            ›
+          </Box>
+        </Box>
+      </Box>
     </Box>
   );
 
@@ -865,6 +711,19 @@ const SecondHand = () => {
                   animation: 'titleGlow 3s ease-in-out infinite',
                   position: 'relative',
                   zIndex: 2,
+                  display: 'inline-block',
+                  left: '50%',
+                  transform: 'translateX(-50%)',
+                  '&::after': {
+                    content: '""',
+                    position: 'absolute',
+                    bottom: -8,
+                    left: '25%',
+                    width: '50%',
+                    height: '3px',
+                    bgcolor: '#e74c3c',
+                    borderRadius: '2px'
+                  },
                   '@keyframes titleGlow': {
                     '0%, 100%': {
                       textShadow: '0 0 10px rgba(139, 0, 0, 0.3)',
@@ -893,60 +752,16 @@ const SecondHand = () => {
                 Select a category to explore our certified refurbished laptops
               </Typography>
 
-              {/* First Row - 3 boxes horizontally */}
-              <Grid
-                container
-                spacing={4}
-                sx={{
-                  mb: 6,
-                  justifyContent: 'center',
-                  position: 'relative',
-                  zIndex: 2,
-                }}
-              >
-                {categories.slice(0, 3).map((category, index) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    key={category.id}
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <CategoryCard category={category} />
-                  </Grid>
+              <Box sx={{
+                maxWidth: '1200px',
+                mx: 'auto',
+                position: 'relative',
+                zIndex: 2,
+              }}>
+                {categories.map((category) => (
+                  <CategoryBar key={category.id} category={category} />
                 ))}
-              </Grid>
-
-              {/* Second Row - 3 boxes horizontally */}
-              <Grid
-                container
-                spacing={4}
-                sx={{
-                  justifyContent: 'center',
-                  position: 'relative',
-                  zIndex: 2,
-                }}
-              >
-                {categories.slice(3, 6).map((category, index) => (
-                  <Grid
-                    item
-                    xs={12}
-                    sm={6}
-                    md={4}
-                    key={category.id}
-                    sx={{
-                      display: 'flex',
-                      justifyContent: 'center',
-                    }}
-                  >
-                    <CategoryCard category={category} />
-                  </Grid>
-                ))}
-              </Grid>
+              </Box>
             </Box>
           </FadeInSection>
         </Container>

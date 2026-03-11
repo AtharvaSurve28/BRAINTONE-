@@ -464,16 +464,16 @@ const Accessories = () => {
                   sx={{
                     width: accessory.id === 2 ? { xs: '100%', sm: '120%' } : '100%',
                     height: 420,
-                    maxHeight: 420, // STRICT: Force height
+                    maxHeight: 420,
                     margin: accessory.id === 2 ? '0 auto' : '0',
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundColor: 'background.default',
+                    backgroundColor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.default',
                     borderRadius: 3,
-                    boxShadow: '0 4px 30px rgba(139, 0, 0, 0.15)',
+                    boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.5)' : '0 4px 30px rgba(139, 0, 0, 0.15)',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
-                    border: `2px solid ${accessory.color}20`,
-                    overflow: 'hidden', // STRICT: Hide any overflowing content/images
+                    border: `2px solid ${theme.palette.mode === 'dark' ? alpha(accessory.color, 0.3) : alpha(accessory.color, 0.2)}`,
+                    overflow: 'hidden',
                     animation: `${bounceAnimation} 2s ease-in-out infinite`,
                     animationDelay: `${index * 0.2}s`,
                     position: 'relative',
@@ -548,7 +548,7 @@ const Accessories = () => {
                   <CardContent
                     sx={{
                       textAlign: 'center',
-                      backgroundColor: 'background.paper',
+                      backgroundColor: theme.palette.mode === 'dark' ? 'transparent' : 'background.paper',
                       py: 3,
                       px: 3,
                       flexGrow: 1,
@@ -575,11 +575,11 @@ const Accessories = () => {
                       className="accessory-name"
                       sx={{
                         fontWeight: 800,
-                        color: 'text.primary',
+                        color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                         fontSize: '1.8rem',
                         transition: 'all 0.4s ease',
                         letterSpacing: '-0.5px',
-                        textShadow: '0 2px 4px rgba(0,0,0,0.1)',
+                        textShadow: theme.palette.mode === 'dark' ? '0 2px 8px rgba(0,0,0,0.5)' : '0 2px 4px rgba(0,0,0,0.1)',
                         mb: 1,
                       }}
                     >
@@ -590,7 +590,7 @@ const Accessories = () => {
                     <Typography
                       variant="body2"
                       sx={{
-                        color: 'text.secondary',
+                        color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : 'text.secondary',
                         fontSize: '0.95rem',
                         lineHeight: 1.5,
                         mb: 2,
