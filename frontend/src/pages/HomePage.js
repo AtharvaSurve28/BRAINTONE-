@@ -1714,10 +1714,12 @@ const HomePage = () => {
                     component={Link}
                     to={item.to}
                     sx={{
-                      width: '100%',
-                      maxWidth: { xs: '100%', sm: 380 }, // Allow full width on mobile
+                      width: { xs: '340px', sm: '100%' },
+                      maxWidth: { xs: '340px', sm: 380 },
                       ml: [0, 3].includes(idx) ? { xs: 0, md: 4 } : 0,
-                      height: { xs: 90, sm: 100 }, // Slightly taller on mobile for better touch target
+                      height: { xs: 100, sm: 100 },
+                      minHeight: { xs: 100, sm: 100 },
+                      display: 'flex',
                       borderRadius: 2,
                       cursor: 'pointer',
                       textDecoration: 'none',
@@ -1780,12 +1782,12 @@ const HomePage = () => {
                       variant="h6"
                       sx={{
                         fontWeight: 600,
-                        fontSize: { xs: '0.7rem', sm: '1.1rem' },
+                        fontSize: { xs: '0.9rem', sm: '1.1rem' },
                         color: '#fff',
                         textShadow: '0 1px 3px rgba(0,0,0,0.5)',
                         flex: 1,
                         textAlign: 'center',
-                        lineHeight: 1.1
+                        lineHeight: 1.2
                       }}
                     >
                       {item.label}
@@ -1796,7 +1798,7 @@ const HomePage = () => {
             </Grid>
           </Container>
         </Box>
-      </FadeInSection>
+      </FadeInSection >
 
       <Footer fullFooter={true} />
     </Box >
