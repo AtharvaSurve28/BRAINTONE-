@@ -13,6 +13,7 @@ import {
     Chip,
     useMediaQuery,
     useTheme,
+    alpha,
 } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
@@ -313,7 +314,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "MacBook Air Essential" })}
                                         sx={{
-                                            bgcolor: 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320, // Restore width constraint
@@ -323,12 +324,13 @@ const MacAccessories = () => {
                                             cursor: 'pointer',
                                             overflow: 'hidden',
                                             transition: 'all 0.3s ease',
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                                            boxShadow: theme.palette.mode === 'dark' ? '0 8px 30px rgba(0,0,0,0.4)' : '0 4px 20px rgba(0,0,0,0.05)',
                                             margin: '0 auto',
-                                            border: '1px solid divider',
+                                            border: '1px solid',
+                                            borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'divider',
                                             '&:hover': {
                                                 transform: 'translateY(-8px)',
-                                                boxShadow: '0 12px 30px rgba(0,0,0,0.1)'
+                                                boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.6)' : '0 12px 30px rgba(0,0,0,0.1)'
                                             }
                                         }}
                                     >
@@ -340,7 +342,7 @@ const MacAccessories = () => {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                bgcolor: 'background.paper',
+                                                bgcolor: theme.palette.mode === 'dark' ? alpha('#1a1a1a', 0.5) : 'background.paper',
                                                 overflow: 'hidden',
                                                 p: 2
                                             }}
@@ -378,7 +380,7 @@ const MacAccessories = () => {
                                                 variant="h6"
                                                 sx={{
                                                     fontWeight: 700,
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                                                     fontSize: '1.05rem',
                                                     lineHeight: 1.3,
                                                     display: '-webkit-box',
@@ -397,7 +399,7 @@ const MacAccessories = () => {
                                             <Typography
                                                 variant="body2"
                                                 sx={{
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : 'text.primary',
                                                     fontSize: '0.85rem',
                                                     lineHeight: 1.4,
                                                     display: '-webkit-box',
@@ -426,7 +428,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "MacBook Pro Performance" })}
                                         sx={{
-                                            bgcolor: 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320, // Restore width constraint
@@ -436,12 +438,13 @@ const MacAccessories = () => {
                                             cursor: 'pointer',
                                             overflow: 'hidden',
                                             transition: 'all 0.3s ease',
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                                            boxShadow: theme.palette.mode === 'dark' ? '0 8px 30px rgba(0,0,0,0.4)' : '0 4px 20px rgba(0,0,0,0.05)',
                                             margin: '0 auto',
-                                            border: '1px solid rgba(0,0,0,0.03)',
+                                            border: '1px solid',
+                                            borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.03)',
                                             '&:hover': {
                                                 transform: 'translateY(-8px)',
-                                                boxShadow: '0 12px 30px rgba(0,0,0,0.1)'
+                                                boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.6)' : '0 12px 30px rgba(0,0,0,0.1)'
                                             }
                                         }}
                                     >
@@ -453,7 +456,7 @@ const MacAccessories = () => {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                bgcolor: 'background.paper',
+                                                bgcolor: theme.palette.mode === 'dark' ? alpha('#1a1a1a', 0.5) : 'background.paper',
                                                 overflow: 'hidden',
                                                 p: 2
                                             }}
@@ -491,7 +494,7 @@ const MacAccessories = () => {
                                                 variant="h6"
                                                 sx={{
                                                     fontWeight: 700,
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                                                     fontSize: '1.05rem',
                                                     lineHeight: 1.3,
                                                     display: '-webkit-box',
@@ -510,7 +513,7 @@ const MacAccessories = () => {
                                             <Typography
                                                 variant="body2"
                                                 sx={{
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : 'text.primary',
                                                     fontSize: '0.85rem',
                                                     lineHeight: 1.4,
                                                     display: '-webkit-box',
@@ -539,7 +542,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "iMac Essential" })}
                                         sx={{
-                                            bgcolor: 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320,
@@ -549,12 +552,13 @@ const MacAccessories = () => {
                                             cursor: 'pointer',
                                             overflow: 'hidden',
                                             transition: 'all 0.3s ease',
-                                            boxShadow: '0 4px 20px rgba(0,0,0,0.05)',
+                                            boxShadow: theme.palette.mode === 'dark' ? '0 8px 30px rgba(0,0,0,0.4)' : '0 4px 20px rgba(0,0,0,0.05)',
                                             margin: '0 auto',
-                                            border: '1px solid rgba(0,0,0,0.03)',
+                                            border: '1px solid',
+                                            borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.03)',
                                             '&:hover': {
                                                 transform: 'translateY(-8px)',
-                                                boxShadow: '0 12px 30px rgba(0,0,0,0.1)'
+                                                boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.6)' : '0 12px 30px rgba(0,0,0,0.1)'
                                             }
                                         }}
                                     >
@@ -566,7 +570,7 @@ const MacAccessories = () => {
                                                 display: 'flex',
                                                 alignItems: 'center',
                                                 justifyContent: 'center',
-                                                bgcolor: 'background.paper',
+                                                bgcolor: theme.palette.mode === 'dark' ? alpha('#1a1a1a', 0.5) : 'background.paper',
                                                 overflow: 'hidden',
                                                 p: 2
                                             }}
@@ -604,7 +608,7 @@ const MacAccessories = () => {
                                                 variant="h6"
                                                 sx={{
                                                     fontWeight: 700,
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                                                     fontSize: '1.05rem',
                                                     lineHeight: 1.3,
                                                     display: '-webkit-box',
@@ -623,7 +627,7 @@ const MacAccessories = () => {
                                             <Typography
                                                 variant="body2"
                                                 sx={{
-                                                    color: 'text.primary',
+                                                    color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : 'text.primary',
                                                     fontSize: '0.85rem',
                                                     lineHeight: 1.4,
                                                     display: '-webkit-box',

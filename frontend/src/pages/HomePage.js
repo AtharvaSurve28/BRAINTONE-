@@ -10,6 +10,8 @@ import {
   Divider,
   IconButton,
   Card,
+  useTheme,
+  alpha,
 } from '@mui/material';
 import ComputerIcon from '@mui/icons-material/Computer';
 import LaptopIcon from '@mui/icons-material/Laptop';
@@ -34,6 +36,7 @@ import VideoInView from '../components/VideoInView';
 
 
 const HomePage = () => {
+  const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [currentFeedbackIndex, setCurrentFeedbackIndex] = useState(0);
 
@@ -430,9 +433,9 @@ const HomePage = () => {
                       sx={{
                         p: 2,
                         borderRadius: '24px',
-                        background: 'background.paper',
+                        background: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
                         border: '1px solid',
-                        borderColor: 'divider',
+                        borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'divider',
                         transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                         overflow: 'hidden',
                         height: '100%',
@@ -449,7 +452,8 @@ const HomePage = () => {
                           borderRadius: '16px',
                           overflow: 'hidden',
                           mb: 3,
-                          boxShadow: '0 8px 16px rgba(0,0,0,0.05)',
+                          bgcolor: theme.palette.mode === 'dark' ? alpha('#1a1a1a', 0.5) : 'transparent',
+                          boxShadow: theme.palette.mode === 'dark' ? '0 8px 16px rgba(0,0,0,0.4)' : '0 8px 16px rgba(0,0,0,0.05)',
                         }}
                       >
                         <Box
@@ -470,7 +474,7 @@ const HomePage = () => {
                           variant="h6"
                           sx={{
                             fontWeight: 900,
-                            color: 'text.primary',
+                            color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                             fontSize: '1.2rem',
                             letterSpacing: '1px',
                             mb: 0.5
@@ -482,7 +486,7 @@ const HomePage = () => {
                           sx={{
                             fontSize: '0.6rem',
                             fontWeight: 700,
-                            color: 'text.secondary',
+                            color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : 'text.secondary',
                             letterSpacing: '2px',
                             textTransform: 'uppercase'
                           }}
@@ -506,7 +510,7 @@ const HomePage = () => {
                         variant="h5"
                         sx={{
                           fontWeight: 800,
-                          color: 'text.primary',
+                          color: theme.palette.mode === 'dark' ? '#fff' : 'text.primary',
                           mt: 'auto',
                           mb: 2,
                           fontSize: '1.4rem',
@@ -656,8 +660,10 @@ const HomePage = () => {
                     width: "100%",
                     maxWidth: "500px",
                     minHeight: 450,
-                    boxShadow: "0px 10px 25px rgba(0,0,0,0.1)",
+                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                    boxShadow: theme.palette.mode === 'dark' ? '0px 10px 40px rgba(0,0,0,0.6)' : "0px 10px 25px rgba(0,0,0,0.1)",
                     mt: -1, // Nudge up to align perfectly with text
+                    border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : 'none',
                   }}
                 >
                   <Typography
@@ -707,10 +713,10 @@ const HomePage = () => {
                         </Box>
 
                         <Box>
-                          <Typography variant="h6" sx={{ fontWeight: 700 }}>
+                          <Typography variant="h6" sx={{ fontWeight: 700, color: theme.palette.mode === 'dark' ? '#fff' : 'inherit' }}>
                             {item.title}
                           </Typography>
-                          <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                          <Typography variant="body2" sx={{ color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : "text.secondary" }}>
                             {item.desc}
                           </Typography>
                         </Box>

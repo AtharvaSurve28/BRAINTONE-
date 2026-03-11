@@ -21,9 +21,11 @@ import {
   DialogActions,
   Modal,
   IconButton,
-  TextField,
   Alert,
-  Snackbar
+  Snackbar,
+  TextField,
+  useTheme,
+  alpha
 } from '@mui/material';
 import VideoInView from '../components/VideoInView';
 import FadeInSection from '../components/FadeInSection';
@@ -64,6 +66,7 @@ import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { Link } from 'react-router-dom';
 
 const RepairServices = () => {
+  const theme = useTheme();
   const [detailsOpen, setDetailsOpen] = React.useState(false);
   const [personalRepairModalOpen, setPersonalRepairModalOpen] = React.useState(false);
   const [selectedServiceTitle, setSelectedServiceTitle] = React.useState('');
@@ -1050,852 +1053,119 @@ const RepairServices = () => {
               },
               gap: 4,
             }}>
-              {/* Box 1: Screen Replacement */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(231,76,60,0.25)',
-                  borderColor: 'rgba(231, 76, 60, 0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-                }} />
-
-                <Box sx={{
-                  p: 4,
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                }}>
+              {repairServices.map((service, index) => (
+                <Card
+                  key={index}
+                  onClick={() => openDetails(service.title)}
+                  sx={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    borderRadius: '24px',
+                    overflow: 'hidden',
+                    cursor: 'pointer',
+                    transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    border: '1px solid',
+                    borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
+                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'white',
+                    '&:hover': {
+                      transform: 'translateY(-15px)',
+                      boxShadow: theme.palette.mode === 'dark' ? `0 20px 40px ${alpha(service.color, 0.3)}` : `0 20px 40px ${alpha(service.color, 0.15)}`,
+                      borderColor: service.color,
+                    }
+                  }}
+                >
                   <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #ffecec 0%, #ffcccc 100%)',
+                    p: 4,
+                    background: theme.palette.mode === 'dark' ? `linear-gradient(135deg, ${alpha(service.color, 0.1)} 0%, ${alpha(service.color, 0.05)} 100%)` : 'white',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#e74c3c',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(231,76,60,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
+                    position: 'relative',
+                    '&::after': {
+                      content: '""',
+                      position: 'absolute',
+                      bottom: 0,
+                      left: '10%',
+                      width: '80%',
+                      height: '4px',
+                      background: service.color,
+                      borderRadius: '2px',
+                      opacity: 0.6
                     }
                   }}>
-                    <ScreenRotation sx={{ fontSize: 36 }} />
+                    <Box sx={{
+                      color: service.color,
+                      bgcolor: 'white',
+                      p: 2,
+                      borderRadius: '16px',
+                      display: 'flex',
+                      boxShadow: '0 8px 16px rgba(0,0,0,0.1)',
+                      transform: 'scale(1.2)'
+                    }}>
+                      {service.icon}
+                    </Box>
                   </Box>
 
-                  <Typography variant="h5" sx={{
-                    fontWeight: 700,
-                    mb: 2,
-                    color: 'text.primary',
-                    textAlign: 'center',
-                    fontSize: '1.4rem',
-                    transition: 'color 0.3s ease',
-                    '&:hover': {
-                      color: '#e74c3c',
-                    }
-                  }}>
-                    Screen Replacement
-                  </Typography>
+                  <CardContent sx={{ p: 4, flexGrow: 1, textAlign: 'center' }}>
+                    <Typography variant="h5" sx={{
+                      fontWeight: 800,
+                      mb: 2,
+                      color: theme.palette.mode === 'dark' ? '#fff' : '#2d3436',
+                      transition: 'color 0.3s ease'
+                    }}>
+                      {service.title}
+                    </Typography>
+                    <Typography variant="body2" sx={{
+                      color: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.7)' : '#636e72',
+                      lineHeight: 1.7,
+                      mb: 3,
+                      fontSize: '0.95rem'
+                    }}>
+                      {service.description}
+                    </Typography>
 
-                  <Typography variant="body1" sx={{
-                    color: 'text.primary',
-                    mb: 3,
-                    textAlign: 'center',
-                    fontSize: '0.95rem',
-                    lineHeight: 1.6,
-                  }}>
-                    Cracked or damaged screen? We replace LCD, LED, and touch screens for all laptop brands.
-                  </Typography>
+                    <Box sx={{
+                      display: 'flex',
+                      flexWrap: 'wrap',
+                      gap: 1,
+                      justifyContent: 'center',
+                      mb: 3
+                    }}>
+                      {service.features.map((feature, i) => (
+                        <Chip
+                          key={i}
+                          label={feature}
+                          size="small"
+                          sx={{
+                            bgcolor: theme.palette.mode === 'dark' ? alpha(service.color, 0.1) : alpha(service.color, 0.05),
+                            color: theme.palette.mode === 'dark' ? alpha('#fff', 0.8) : service.color,
+                            fontWeight: 600,
+                            fontSize: '0.7rem',
+                            border: `1px solid ${alpha(service.color, 0.2)}`
+                          }}
+                        />
+                      ))}
+                    </Box>
 
-                  <Box sx={{
-                    flexGrow: 1,
-                    mb: 3,
-                  }}>
-                    {['Broken LCD/LED screens', 'Touchscreen digitizer repair', 'Display flickering issues', 'Dead pixels and backlight problems'].map((item, idx) => (
-                      <Box key={idx} sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        mb: 1.5,
-                      }}>
-                        <CheckCircle sx={{ color: '#e74c3c', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Screen Replacement')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #e74c3c, #ff6b6b)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #c0392b, #e74c3c)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(231,76,60,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 2: Keyboard Repair */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.1s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(52,152,219,0.25)',
-                  borderColor: 'rgba(52,152,219,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #2980b9, #3498db)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: 'text.primary',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(52,152,219,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <Keyboard sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Keyboard Repair
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Sticky keys, broken keys, or keyboard not responding? We fit or replace laptop keyboards.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Individual key replacement', 'Full keyboard replacement', 'Liquid damage cleaning', 'Keyboard not detected issues'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#2980b9', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Keyboard Repair')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #2980b9, #3498db)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #1f6394, #2980b9)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(52,152,219,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 3: Battery Replacement */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.2s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(46,204,113,0.25)',
-                  borderColor: 'rgba(46,204,113,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #27ae60, #2ecc71)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#27ae60',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(46,204,113,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <BatteryChargingFull sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Battery Replacement
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Battery draining fast or not charging? We install genuine replacement batteries.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Original battery replacement', 'Charging port repair', 'Power adapter issues', 'Battery health diagnostics'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#27ae60', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Battery Replacement')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #27ae60, #2ecc71)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #219653, #27ae60)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(46,204,113,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 4: Hard Drive & SSD */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.3s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(155,89,182,0.25)',
-                  borderColor: 'rgba(155,89,182,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #8e44ad, #9b59b6)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#8e44ad',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(155,89,182,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <Storage sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Hard Drive & SSD
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Upgrade to faster SSD or recover data from failing hard drives.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['HDD to SSD upgrade', 'Data recovery services', 'Storage capacity upgrade', 'System cloning & backup'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#8e44ad', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Hard Drive & SSD')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #8e44ad, #9b59b6)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #7d3c98, #8e44ad)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(155,89,182,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 5: RAM Upgrade */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.4s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(243,156,18,0.25)',
-                  borderColor: 'rgba(243,156,18,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #f39c12, #f1c40f)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#f39c12',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(243,156,18,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <Memory sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    RAM Upgrade
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Boost your laptop's performance with RAM upgrade and optimization.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Memory upgrade (4GB to 32GB)', 'RAM compatibility check', 'Performance optimization', 'System speed improvement'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#f39c12', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('RAM Upgrade')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #f39c12, #f1c40f)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #d68910, #f39c12)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(243,156,18,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 6: Overheating Issues */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.5s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(0,188,212,0.25)',
-                  borderColor: 'rgba(0,188,212,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #00bcd4, #00ced1)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e0f7fa 0%, #b2ebf2 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#00bcd4',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(0,188,212,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <ThermostatAuto sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Overheating Issues
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Laptop running hot? We clean fans, replace thermal paste, and fix cooling issues.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Fan cleaning & replacement', 'Thermal paste reapplication', 'Ventilation system cleaning', 'Heat sink repair'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#00bcd4', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Overheating Issues')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #00bcd4, #00ced1)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #00acc1, #00bcd4)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(0,188,212,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 7: Software & OS Issues */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.6s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(233,30,99,0.25)',
-                  borderColor: 'rgba(233,30,99,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #e91e63, #ff4081)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#e91e63',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(233,30,99,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <Computer sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Software & OS Issues
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Windows or software problems? We handle OS installation, virus removal, and updates.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['OS Installation (Windows/Linux)', 'Virus & malware removal', 'Software troubleshooting', 'Driver updates'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#e91e63', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Software & OS Issues')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #e91e63, #ff4081)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #c2185b, #e91e63)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(233,30,99,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 8: Motherboard Repair */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.7s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(63,81,181,0.25)',
-                  borderColor: 'rgba(63,81,181,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #3f51b5, #5c6bc0)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e8eaf6 0%, #c5cae9 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#3f51b5',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(63,81,181,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <CircuitBoard sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Motherboard Repair
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Complex motherboard issues? Our experts diagnose and repair chip-level problems.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Chip-level repair', 'BIOS chip programming', 'Power circuit repair', 'Component replacement'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#3f51b5', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Motherboard Repair')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #3f51b5, #5c6bc0)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #303f9f, #3f51b5)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(63,81,181,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
-
-              {/* Box 9: Liquid Damage Repair */}
-              <Box sx={{
-                height: '520px',
-                borderRadius: 3,
-                boxShadow: '0 8px 30px rgba(0,0,0,0.08)',
-                border: '1px solid rgba(231, 76, 60, 0.1)',
-                background: (theme) => theme.palette.mode === 'dark' ? 'linear-gradient(135deg, #1a1a1a 0%, #262626 100%)' : '#ffffff',
-                overflow: 'hidden',
-                position: 'relative',
-                transition: 'all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
-                animation: 'cardBounce 3s ease-in-out infinite 0.8s',
-                transform: 'scale(1)',
-                '&:hover': {
-                  transform: 'translateY(-8px) scale(1.03)',
-                  boxShadow: '0 20px 50px rgba(0,150,136,0.25)',
-                  borderColor: 'rgba(0,150,136,0.3)',
-                }
-              }}>
-                <Box sx={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  right: 0,
-                  height: '4px',
-                  background: 'linear-gradient(90deg, #009688, #26a69a)',
-                }} />
-
-                <Box sx={{ p: 4, height: '100%', display: 'flex', flexDirection: 'column' }}>
-                  <Box sx={{
-                    width: 80,
-                    height: 80,
-                    borderRadius: '50%',
-                    background: 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#009688',
-                    mb: 3,
-                    mx: 'auto',
-                    boxShadow: '0 8px 25px rgba(0,150,136,0.2)',
-                    border: (theme) => theme.palette.mode === 'dark' ? '3px solid rgba(255,255,255,0.1)' : '3px solid #fff',
-                    transition: 'transform 0.3s ease',
-                    '&:hover': {
-                      transform: 'scale(1.05) rotate(5deg)',
-                    }
-                  }}>
-                    <WaterDrop sx={{ fontSize: 36 }} />
-                  </Box>
-
-                  <Typography variant="h5" sx={{ fontWeight: 700, mb: 2, color: 'text.primary', textAlign: 'center', fontSize: '1.4rem' }}>
-                    Liquid Damage Repair
-                  </Typography>
-
-                  <Typography variant="body1" sx={{ color: 'text.secondary', mb: 3, textAlign: 'center', fontSize: '0.95rem' }}>
-                    Spilled water or coffee on your laptop? Quick action can save your device.
-                  </Typography>
-
-                  <Box sx={{ flexGrow: 1, mb: 3 }}>
-                    {['Emergency liquid damage repair', 'Component cleaning & drying', 'Corrosion removal', 'Data recovery attempts'].map((item, idx) => (
-                      <Box key={idx} sx={{ display: 'flex', alignItems: 'center', mb: 1.5 }}>
-                        <CheckCircle sx={{ color: '#009688', fontSize: 20, mr: 2 }} />
-                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.9rem' }}>{item}</Typography>
-                      </Box>
-                    ))}
-                  </Box>
-
-                  <Button
-                    variant="contained"
-                    fullWidth
-                    onClick={() => openDetails('Liquid Damage Repair')}
-                    sx={{
-                      background: 'linear-gradient(90deg, #009688, #26a69a)',
-                      color: '#fff',
-                      fontWeight: 600,
-                      py: 1.5,
-                      borderRadius: 2,
-                      textTransform: 'none',
-                      fontSize: '1rem',
-                      transition: 'all 0.3s ease',
-                      '&:hover': {
-                        background: 'linear-gradient(90deg, #00796b, #009688)',
-                        transform: 'translateY(-2px)',
-                        boxShadow: '0 8px 20px rgba(0,150,136,0.3)',
-                      }
-                    }}
-                  >
-                    View Details
-                  </Button>
-                </Box>
-              </Box>
+                    <Button
+                      variant="text"
+                      endIcon={<ArrowForward />}
+                      sx={{
+                        color: service.color,
+                        fontWeight: 700,
+                        '&:hover': {
+                          bgcolor: 'transparent',
+                          transform: 'translateX(5px)',
+                          transition: 'all 0.3s ease'
+                        }
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </CardContent>
+                </Card>
+              ))}
             </Box>
           </Container>
         </Box>
@@ -1997,7 +1267,7 @@ const RepairServices = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)',
+            background: theme.palette.mode === 'dark' ? 'linear-gradient(135deg, rgba(231,76,60,0.03) 0%, rgba(52,152,219,0.03) 100%)' : 'white',
             zIndex: 0,
           },
         }}>
@@ -2304,7 +1574,7 @@ const RepairServices = () => {
       <FadeInSection fullWidth>
         <Box sx={{
           py: 10,
-          background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : '#fff5f5',
+          background: (theme) => theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.03)' : '#fff',
           position: 'relative',
         }}>
           <Container maxWidth="lg">
