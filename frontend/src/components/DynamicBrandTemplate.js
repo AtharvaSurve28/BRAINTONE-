@@ -345,7 +345,7 @@ const LaptopDetailsModal = ({ open, onClose, laptop, category, brandId }) => {
               mb: 1,
               fontSize: { xs: '1.75rem', md: '2rem' }
             }}>
-              {laptop.price}
+              {laptop.price && laptop.price.toString().toLowerCase().includes('not set') ? '' : laptop.price}
             </Typography>
             <Box sx={{ display: 'flex', gap: 1, alignItems: 'center', flexWrap: 'wrap' }}>
               <Chip
@@ -1076,7 +1076,7 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
                       color: category.color,
                       fontSize: '1.25rem'
                     }}>
-                      {laptop.price}
+                      {laptop.price && laptop.price.toString().toLowerCase().includes('not set') ? '' : laptop.price}
                     </Typography>
                   </Box>
 
@@ -1503,88 +1503,6 @@ const DynamicBrandTemplate = ({ brandId: propBrandId }) => {
           .filter((category) => (selectedSeriesData[category.key] || []).length > 0)
           .map((category) => renderCategorySection(category))}
 
-        {/* Legend Explanation */}
-        <FadeInSection>
-          <Box sx={{
-            mt: 12,
-            pt: 8,
-            borderTop: `1px solid ${alpha('#000000', 0.1)}`
-          }}>
-            <Typography variant="h5" sx={{
-              fontWeight: 700,
-              mb: 6,
-              color: 'text.primary'
-            }}>
-              Category Guide
-            </Typography>
-            <Grid container spacing={3}>
-              {categories.map((category) => (
-                <Grid item xs={12} sm={6} md={4} key={category.name}>
-                  <Box sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    mb: 2,
-                    p: 2,
-                    borderRadius: 2,
-                    backgroundColor: 'background.paper',
-                    border: '1px solid',
-                    borderColor: 'divider',
-                    transition: 'all 0.3s ease',
-                    '&:hover': {
-                      backgroundColor: 'background.default',
-                      borderColor: alpha(category.color, 0.3),
-                      transform: 'translateY(-2px)',
-                      boxShadow: `0 4px 12px ${alpha(category.color, 0.1)}`
-                    }
-                  }}>
-                    <Box sx={{
-                      width: 40,
-                      height: 40,
-                      borderRadius: 2,
-                      backgroundColor: alpha(category.color, 0.1),
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      mr: 2,
-                      color: category.color,
-                      border: `1px solid ${alpha(category.color, 0.2)}`
-                    }}>
-                      {category.icon}
-                    </Box>
-                    <Box>
-                      <Typography variant="subtitle1" sx={{ fontWeight: 700, color: 'text.primary' }}>
-                        {category.name}
-                      </Typography>
-                      <Typography variant="caption" sx={{
-                        color: '#6b7280',
-                        display: 'block'
-                      }}>
-                        {category.description}
-                      </Typography>
-                      <Typography variant="caption" sx={{
-                        color: category.color,
-                        fontWeight: 600,
-                        display: 'block',
-                        mt: 0.5
-                      }}>
-                        {category.priceRange}
-                      </Typography>
-                    </Box>
-                  </Box>
-                </Grid>
-              ))}
-            </Grid>
-            <Typography variant="body2" sx={{
-              mt: 6,
-              color: '#6b7280',
-              fontStyle: 'italic',
-              textAlign: 'center',
-              px: 2
-            }}>
-              Laptops may appear in multiple categories based on their specifications and suitability for different use cases.
-            </Typography>
-          </Box>
-        </FadeInSection>
       </Container>
 
       {/* Laptop Details Modal Popup */}

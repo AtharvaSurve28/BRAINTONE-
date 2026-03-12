@@ -5,6 +5,7 @@ import ScrollToTop from './ScrollToTop';
 import Navbar from './components/Navbar';
 import FloatingChatButton from './components/FloatingChatButton';
 import { ThemeContextProvider } from './context/ThemeContext';
+import { Analytics } from '@vercel/analytics/react';
 import './App.css';
 
 // Lazy load page components for better performance
@@ -91,6 +92,7 @@ function App() {
       <CssBaseline />
       <Router>
         <AppContent />
+        <Analytics />
       </Router>
     </ThemeContextProvider>
   );
