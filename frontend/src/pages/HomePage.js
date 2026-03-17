@@ -433,7 +433,7 @@ const HomePage = () => {
                       sx={{
                         p: 2,
                         borderRadius: '24px',
-                        background: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                        background: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.paper',
                         border: '1px solid',
                         borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'divider',
                         transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
@@ -660,7 +660,7 @@ const HomePage = () => {
                     width: "100%",
                     maxWidth: "500px",
                     minHeight: 450,
-                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.paper',
                     boxShadow: theme.palette.mode === 'dark' ? '0px 10px 40px rgba(0,0,0,0.6)' : "0px 10px 25px rgba(0,0,0,0.1)",
                     mt: -1, // Nudge up to align perfectly with text
                     border: theme.palette.mode === 'dark' ? '1px solid rgba(255,255,255,0.1)' : 'none',
