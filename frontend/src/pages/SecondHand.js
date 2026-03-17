@@ -372,7 +372,7 @@ const SecondHand = () => {
       <Box
         sx={{
           position: 'relative',
-          bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'white',
+          bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'white',
           minHeight: { xs: 'auto', md: '130px' },
           display: 'flex',
           alignItems: 'center',

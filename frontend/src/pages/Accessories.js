@@ -468,7 +468,7 @@ const Accessories = () => {
                     margin: accessory.id === 2 ? '0 auto' : '0',
                     display: 'flex',
                     flexDirection: 'column',
-                    backgroundColor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.default',
+                    backgroundColor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.default',
                     borderRadius: 3,
                     boxShadow: theme.palette.mode === 'dark' ? '0 12px 40px rgba(0,0,0,0.5)' : '0 4px 30px rgba(139, 0, 0, 0.15)',
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',

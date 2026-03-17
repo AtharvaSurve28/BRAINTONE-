@@ -314,7 +314,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "MacBook Air Essential" })}
                                         sx={{
-                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320, // Restore width constraint
@@ -428,7 +428,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "MacBook Pro Performance" })}
                                         sx={{
-                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320, // Restore width constraint
@@ -542,7 +542,7 @@ const MacAccessories = () => {
                                     <Box
                                         onClick={() => handleOpenModal({ ...item, title: "iMac Essential" })}
                                         sx={{
-                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'background.paper',
+                                            bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'background.paper',
                                             borderRadius: 4,
                                             width: '100%',
                                             maxWidth: 320,

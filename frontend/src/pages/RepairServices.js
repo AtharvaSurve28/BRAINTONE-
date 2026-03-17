@@ -1067,7 +1067,7 @@ const RepairServices = () => {
                     transition: 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
                     border: '1px solid',
                     borderColor: theme.palette.mode === 'dark' ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)',
-                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2c3e50', 0.8) : 'white',
+                    bgcolor: theme.palette.mode === 'dark' ? alpha('#2a2a2a', 0.8) : 'white',
                     '&:hover': {
                       transform: 'translateY(-15px)',
                       boxShadow: theme.palette.mode === 'dark' ? `0 20px 40px ${alpha(service.color, 0.3)}` : `0 20px 40px ${alpha(service.color, 0.15)}`,
