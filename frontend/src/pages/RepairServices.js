@@ -149,13 +149,13 @@ const RepairServices = () => {
     }
 
     const validateTime = (timeStr, slot) => {
-      const timeRegex = /^(1[0-2]|[1-9]):([0-5][0-9])\s*(AM|PM|am|pm)$/;
+      const timeRegex = /^(0?[1-9]|1[0-2])(:([0-5][0-9]))?\s*(AM|PM|am|pm)$/i;
       const match = timeStr.match(timeRegex);
       if (!match) return false;
 
       let hours = parseInt(match[1]);
-      const minutes = parseInt(match[2]);
-      const period = match[3].toUpperCase();
+      const minutes = match[3] ? parseInt(match[3]) : 0;
+      const period = match[4].toUpperCase();
 
       if (period === 'PM' && hours !== 12) hours += 12;
       if (period === 'AM' && hours === 12) hours = 0;
