@@ -544,7 +544,8 @@ const LaptopForm = () => {
                             backgroundRepeat: 'no-repeat',
                             backgroundPosition: 'center',
                             borderRadius: 2,
-                            border: '1px solid #ddd',
+                            border: '1px solid',
+                            borderColor: 'divider',
                             position: 'relative',
                             bgcolor: 'background.paper'
                           }}

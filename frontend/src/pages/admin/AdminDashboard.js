@@ -236,7 +236,7 @@ const AdminDashboard = () => {
         justifyContent: 'center',
         alignItems: 'center',
         minHeight: '100vh',
-        background: 'linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)'
+        background: theme.palette.mode === 'dark' ? '#121212' : 'linear-gradient(135deg, #f5f5f5 0%, #fafafa 100%)'
       }}>
         <Box sx={{ textAlign: 'center' }}>
           <CircularProgress size={60} thickness={4} sx={{ color: '#E2231A', mb: 3 }} />
@@ -283,7 +283,7 @@ const AdminDashboard = () => {
   return (
     <Box sx={{
       minHeight: '100vh',
-      background: 'linear-gradient(135deg, #f8f0f0 0%, #fef0f0 100%)',
+      background: theme.palette.mode === 'dark' ? '#121212' : 'linear-gradient(135deg, #f8f0f0 0%, #fef0f0 100%)',
       pb: 6
     }}>
       {/* Header */}
@@ -339,11 +339,11 @@ const AdminDashboard = () => {
                 startIcon={<AddIcon />}
                 onClick={() => navigate('/admin/laptops/new')}
                 sx={{
-                  backgroundColor: 'white',
-                  color: '#E2231A',
+                  backgroundColor: theme.palette.mode === 'dark' ? '#333' : 'white',
+                  color: theme.palette.mode === 'dark' ? 'white' : '#E2231A',
                   fontWeight: 600,
                   '&:hover': {
-                    backgroundColor: '#f5f5f5'
+                    backgroundColor: theme.palette.mode === 'dark' ? '#444' : '#f5f5f5'
                   }
                 }}
               >
@@ -401,7 +401,7 @@ const AdminDashboard = () => {
         )}
 
         {/* Filter Chips with dark text */}
-        <Paper sx={{ p: 2, mb: 3, borderRadius: 3 }}>
+        <Paper sx={{ p: 2, mb: 3, borderRadius: 3, backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#ffffff' }}>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             {/* Category Filters */}
             <Box sx={{ display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
@@ -436,7 +436,7 @@ const AdminDashboard = () => {
                       backgroundColor: isActive
                         ? categoryColor
                         : alpha(categoryColor, 0.08),
-                      color: isActive ? 'white' : categoryColor,
+                      color: theme.palette.mode === 'dark' ? 'white' : (isActive ? 'white' : categoryColor),
                       fontWeight: isActive ? 700 : 600,
                       border: `1.5px solid ${alpha(categoryColor, 0.4)}`,
                       px: 1,
@@ -489,7 +489,7 @@ const AdminDashboard = () => {
                       backgroundColor: isActive
                         ? brandColor
                         : alpha(brandColor, 0.08),
-                      color: isActive ? 'white' : brandColor,
+                      color: theme.palette.mode === 'dark' ? 'white' : (isActive ? 'white' : brandColor),
                       fontWeight: isActive ? 700 : 600,
                       border: `1.5px solid ${alpha(brandColor, 0.4)}`,
                       px: 1,
@@ -516,7 +516,8 @@ const AdminDashboard = () => {
           borderRadius: 3,
           overflow: 'hidden',
           boxShadow: '0 8px 32px rgba(0,0,0,0.08)',
-          position: 'relative'
+          position: 'relative',
+          backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#ffffff'
         }}>
           <Box sx={{
             p: 3,
@@ -548,12 +549,12 @@ const AdminDashboard = () => {
             <Table>
               <TableHead>
                 <TableRow sx={{
-                  backgroundColor: '#fafafa',
+                  backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#fafafa',
                   '& th': {
                     fontWeight: 600,
                     fontSize: '0.875rem',
-                    borderBottom: '2px solid #eee',
-                    color: '#333333'
+                    borderBottom: `2px solid ${theme.palette.mode === 'dark' ? '#333' : '#eee'}`,
+                    color: 'text.primary'
                   }
                 }}>
                   <TableCell>Brand</TableCell>
@@ -608,7 +609,7 @@ const AdminDashboard = () => {
                         key={laptop._id}
                         hover
                         sx={{
-                          '&:hover': { backgroundColor: '#f9f9f9' },
+                          '&:hover': { backgroundColor: theme.palette.mode === 'dark' ? '#333' : '#f9f9f9' },
                           transition: 'background-color 0.2s'
                         }}
                       >
@@ -620,17 +621,17 @@ const AdminDashboard = () => {
                               borderRadius: '50%',
                               backgroundColor: getBrandColor(laptop.brand)
                             }} />
-                            <Typography variant="body2" fontWeight={500} color="#333333">
+                            <Typography variant="body2" fontWeight={500} color="text.primary">
                               {laptop.brand || 'Unknown'}
                             </Typography>
                           </Box>
                         </TableCell>
                         <TableCell>
                           <Box>
-                            <Typography variant="body2" fontWeight={500} color="#333333">
+                            <Typography variant="body2" fontWeight={500} color="text.primary">
                               {laptop.name || 'Unnamed'}
                             </Typography>
-                            <Typography variant="caption" color="#666666">
+                            <Typography variant="caption" color="text.secondary">
                               {laptop.series || 'No series'}
                             </Typography>
                           </Box>
@@ -655,7 +656,7 @@ const AdminDashboard = () => {
                                       size="small"
                                       sx={{
                                         backgroundColor: alpha(getCategoryColor(displayCategory), 0.15),
-                                        color: '#333333',
+                                        color: theme.palette.mode === 'dark' ? 'white' : '#333333',
                                         fontWeight: 500,
                                         border: `1px solid ${alpha(getCategoryColor(displayCategory), 0.3)}`
                                       }}
@@ -667,13 +668,13 @@ const AdminDashboard = () => {
                           })()}
                         </TableCell>
                         <TableCell>
-                          <Typography variant="body2" fontWeight={600} color="#333333">
+                          <Typography variant="body2" fontWeight={600} color="text.primary">
                             ₹{laptop.price?.toLocaleString() || '0'}
                           </Typography>
                         </TableCell>
                         <TableCell sx={{ maxWidth: 200 }}>
                           <Tooltip title={laptop.processor || 'N/A'} arrow>
-                            <Typography variant="body2" noWrap color="#333333">
+                            <Typography variant="body2" noWrap color="text.primary">
                               {laptop.processor || 'Not specified'}
                             </Typography>
                           </Tooltip>
@@ -717,8 +718,8 @@ const AdminDashboard = () => {
 
         {/* Brand Distribution */}
         {Object.keys(stats.brands).length > 0 && (
-          <Paper sx={{ p: 3, mt: 3, borderRadius: 3 }}>
-            <Typography variant="h6" gutterBottom fontWeight={600} color="#333333">
+          <Paper sx={{ p: 3, mt: 3, borderRadius: 3, backgroundColor: theme.palette.mode === 'dark' ? '#2a2a2a' : '#ffffff' }}>
+            <Typography variant="h6" gutterBottom fontWeight={600} color="text.primary">
               Brand Distribution
             </Typography>
             <Grid container spacing={2}>
@@ -747,10 +748,10 @@ const AdminDashboard = () => {
                       </Typography>
                     </Box>
                     <Box>
-                      <Typography variant="body2" fontWeight={600} color="#333333">
+                      <Typography variant="body2" fontWeight={600} color="text.primary">
                         {brand}
                       </Typography>
-                      <Typography variant="body2" color="#666666">
+                      <Typography variant="body2" color="text.secondary">
                         {count} {count === 1 ? 'laptop' : 'laptops'}
                       </Typography>
                     </Box>
@@ -770,10 +771,10 @@ const AdminDashboard = () => {
           }}
         >
           <DialogTitle sx={{
-            backgroundColor: '#fafafa',
-            borderBottom: '1px solid #eee',
+            backgroundColor: theme.palette.mode === 'dark' ? '#1e1e1e' : '#fafafa',
+            borderBottom: `1px solid ${theme.palette.mode === 'dark' ? '#333' : '#eee'}`,
             fontWeight: 600,
-            color: '#333333'
+            color: 'text.primary'
           }}>
             <WarningIcon sx={{ mr: 1, color: '#E2231A', verticalAlign: 'middle' }} />
             Confirm Deletion
@@ -789,10 +790,10 @@ const AdminDashboard = () => {
               }}>
                 <DeleteIcon sx={{ color: '#E2231A', fontSize: 30 }} />
               </Avatar>
-              <Typography variant="h6" gutterBottom color="#333333">
+              <Typography variant="h6" gutterBottom color="text.primary">
                 Delete "{deleteDialog.laptop?.name}"?
               </Typography>
-              <Typography variant="body2" color="#666666" paragraph>
+              <Typography variant="body2" color="text.secondary" paragraph>
                 This action will permanently remove the laptop from your inventory.
                 This cannot be undone.
               </Typography>
@@ -802,8 +803,8 @@ const AdminDashboard = () => {
             <Button
               onClick={() => setDeleteDialog({ open: false, laptop: null })}
               sx={{
-                color: '#666666',
-                '&:hover': { backgroundColor: '#f5f5f5' }
+                color: 'text.secondary',
+                '&:hover': { backgroundColor: theme.palette.mode === 'dark' ? '#333' : '#f5f5f5' }
               }}
             >
               Cancel

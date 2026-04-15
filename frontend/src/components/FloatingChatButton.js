@@ -135,15 +135,17 @@ const FloatingChatButton = () => {
 
     const validateTime = (timeStr, slot) => {
       if (!timeStr) return true; // Optional field in this form
-      const timeRegex = /^(0?[1-9]|1[0-2])(:([0-5][0-9]))?\s*(AM|PM|am|pm)$/i;
-      const match = timeStr.match(timeRegex);
+      const cleanTime = timeStr.trim().toLowerCase();
+      // Match something like "15:00", "3 pm", "03:00pm", "12.30 pm"
+      const timeRegex = /^([0-2]?[0-9])(?:[:.]([0-5][0-9]))?\s*(am|pm)?$/i;
+      const match = cleanTime.match(timeRegex);
       if (!match) return false;
 
       let hours = parseInt(match[1]);
-      const minutes = match[3] ? parseInt(match[3]) : 0;
-      const period = match[4].toUpperCase();
+      const minutes = match[2] ? parseInt(match[2]) : 0;
+      const period = match[3] ? match[3].toUpperCase() : null;
 
-      if (period === 'PM' && hours !== 12) hours += 12;
+      if (period === 'PM' && hours < 12) hours += 12;
       if (period === 'AM' && hours === 12) hours = 0;
 
       const timeInMinutes = hours * 60 + minutes;

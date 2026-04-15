@@ -13,7 +13,8 @@ import {
   Checkbox,
   FormControlLabel,
   InputAdornment,
-  IconButton
+  IconButton,
+  useTheme
 } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
 import PersonIcon from '@mui/icons-material/Person';
@@ -41,6 +42,8 @@ const AdminLogin = () => {
   const [typingSpeed, setTypingSpeed] = useState(100);
 
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isDark = theme.palette.mode === 'dark';
 
   // Typing/Erasing Effect for Warning
   useEffect(() => {
@@ -110,7 +113,7 @@ const AdminLogin = () => {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: 'linear-gradient(-45deg, #f8f0f0, #fff5f5, #fef0f0, #ffeaea)',
+        background: isDark ? 'linear-gradient(-45deg, #121212, #1a1a1a, #222, #111)' : 'linear-gradient(-45deg, #f8f0f0, #fff5f5, #fef0f0, #ffeaea)',
         backgroundSize: '400% 400%',
         animation: 'gradientShift 8s ease infinite',
         py: 2,
@@ -183,7 +186,7 @@ const AdminLogin = () => {
           sx={{
             p: 4,
             borderRadius: 3,
-            backgroundColor: '#ffffff',
+            backgroundColor: isDark ? '#2a2a2a' : '#ffffff',
             boxShadow: '0 8px 32px rgba(226, 35, 26, 0.15)',
             border: '1px solid rgba(226, 35, 26, 0.15)',
             position: 'relative',
@@ -294,7 +297,7 @@ const AdminLogin = () => {
                 autoComplete="username"
                 sx={{
                   '& .MuiOutlinedInput-root': {
-                    backgroundColor: '#fefafa',
+                    backgroundColor: isDark ? '#2a2a2a' : '#fefafa',
                     borderRadius: 2,
                     height: '48px',
                     '&:hover fieldset': {
@@ -329,7 +332,7 @@ const AdminLogin = () => {
                 autoComplete="current-password"
                 sx={{
                   '& .MuiOutlinedInput-root': {
-                    backgroundColor: '#fefafa',
+                    backgroundColor: isDark ? '#2a2a2a' : '#fefafa',
                     borderRadius: 2,
                     height: '48px',
                     '&:hover fieldset': {
@@ -427,7 +430,7 @@ const AdminLogin = () => {
 
           {/* Footer Note */}
           <Box sx={{ mt: 3, pt: 2.5, borderTop: '1px solid rgba(0,0,0,0.08)' }}>
-            <Typography variant="caption" align="center" sx={{ color: '#9e9e9e', fontSize: '0.75rem' }}>
+            <Typography variant="caption" align="center" sx={{ color: 'text.secondary', fontSize: '0.75rem' }}>
               By logging in, you agree to our{' '}
               <Box
                 component="span"
