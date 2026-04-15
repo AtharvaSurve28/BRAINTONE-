@@ -10,8 +10,11 @@ import EastIcon from '@mui/icons-material/East';
 import GroupAddIcon from '@mui/icons-material/GroupAdd'; // Invite
 import PlaceIcon from '@mui/icons-material/Place';
 import CloseIcon from '@mui/icons-material/Close';
+import { useTheme } from '@mui/material/styles';
 
 const BannerSlider = () => {
+    const theme = useTheme();
+    const isDark = theme.palette.mode === 'dark';
     const [currentIndex, setCurrentIndex] = useState(0);
     const [open, setOpen] = useState(false);
     const [selectedBanner, setSelectedBanner] = useState(null);
@@ -365,7 +368,7 @@ const BannerSlider = () => {
                                 {selectedBanner.modalDesc}
                             </Typography>
 
-                            <Typography variant="body2" sx={{ fontStyle: 'italic', mb: 3, color: '#64748b' }}>
+                            <Typography variant="body2" sx={{ fontStyle: 'italic', mb: 3, color: isDark ? '#94a3b8' : '#64748b' }}>
                                 For more details on eligibility and rates, please visit one of our stores.
                             </Typography>
 
@@ -443,7 +446,15 @@ const BannerSlider = () => {
                             </Stack>
                         </DialogContent>
                         <DialogActions sx={{ p: 2, pt: 1 }}>
-                            <Button onClick={handleClose} variant="contained" sx={{ bgcolor: '#0f172a', textTransform: 'none', borderRadius: 2 }}>
+                            <Button onClick={handleClose} variant="contained" sx={{ 
+                                bgcolor: isDark ? '#475569' : '#0f172a', 
+                                color: '#ffffff',
+                                '&:hover': {
+                                    bgcolor: isDark ? '#64748b' : '#1e293b'
+                                },
+                                textTransform: 'none', 
+                                borderRadius: 2 
+                            }}>
                                 Close details
                             </Button>
                         </DialogActions>

@@ -597,7 +597,8 @@ const EWaste = () => {
                                     size="large"
                                     onClick={handleSubmit}
                                     sx={{
-                                        bgcolor: '#003366',
+                                        bgcolor: (theme) => theme.palette.mode === 'dark' ? '#2563eb' : '#003366',
+                                        color: '#ffffff',
                                         px: 6,
                                         py: 1.5,
                                         fontSize: '1rem',
