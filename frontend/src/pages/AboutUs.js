@@ -272,25 +272,25 @@ const AboutUs = () => {
     {
       name: 'Rajesh Sharma',
       role: 'Founder & CEO',
-      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=300&h=300&q=70',
       description: 'Started Braintone in 1998 with a vision to provide quality computers at affordable prices'
     },
     {
       name: 'Priya Patel',
       role: 'Operations Head',
-      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=300&h=300&q=70',
       description: '20+ years experience in computer hardware and customer service management'
     },
     {
       name: 'Amit Kumar',
       role: 'Technical Director',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&h=300&q=70',
       description: 'Certified laptop repair specialist with expertise in chip-level repairs'
     },
     {
       name: 'Neha Singh',
       role: 'Sales Manager',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=400&h=400&fit=crop',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?auto=format&fit=crop&w=300&h=300&q=70',
       description: 'Helps customers choose the perfect laptop for their needs and budget'
     }
   ];
@@ -410,7 +410,7 @@ const AboutUs = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200")',
+            backgroundImage: 'url("https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1200&q=70")',
             backgroundSize: 'cover',
             backgroundRepeat: 'no-repeat',
             filter: 'brightness(0.6)',
@@ -720,7 +720,7 @@ const AboutUs = () => {
                     height: '100%'
                   }}>
                     <img
-                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&h=400&fit=crop"
+                      src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=600&h=400&q=70"
                       alt="Company Overview"
                       style={{
                         width: '100%',
@@ -784,7 +784,7 @@ const AboutUs = () => {
                     height: '100%'
                   }}>
                     <img
-                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+                      src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=600&h=400&q=70"
                       alt="Our Vision"
                       style={{
                         width: '100%',

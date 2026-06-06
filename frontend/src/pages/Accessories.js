@@ -124,7 +124,7 @@ const Accessories = () => {
       id: 3,
       name: 'Cooling Fan',
       description: 'Laptop cooling pads & vacuum coolers',
-      image: 'https://images.unsplash.com/photo-1769085795297-b45cc8c92f5b?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+      image: 'https://images.unsplash.com/photo-1769085795297-b45cc8c92f5b?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹900',
       specs: [
@@ -143,7 +143,7 @@ const Accessories = () => {
       id: 4,
       name: 'Gaming Mouse',
       description: 'High-precision gaming & productivity mice',
-      image: 'https://images.unsplash.com/photo-1651599732956-88af9a1f2810?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1651599732956-88af9a1f2810?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹1,200',
       specs: [
@@ -200,7 +200,7 @@ const Accessories = () => {
       id: 7,
       name: 'Keyboard Guards',
       description: 'Silicone keyboard protectors',
-      image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1541140532154-b024d705b90a?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹400',
       specs: [
@@ -220,7 +220,7 @@ const Accessories = () => {
       id: 8,
       name: 'Laptop Bags',
       description: 'Exclusive designer laptop bags',
-      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹2,500',
       specs: [
@@ -239,7 +239,7 @@ const Accessories = () => {
       id: 9,
       name: 'Laptop Sleeves',
       description: 'Slim protective sleeves',
-      image: 'https://images.unsplash.com/photo-1689757855413-9e366c2011f1?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1689757855413-9e366c2011f1?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹800',
       specs: [
@@ -259,7 +259,7 @@ const Accessories = () => {
       id: 10,
       name: 'Laptop Stands',
       description: 'Ergonomic adjustable stands',
-      image: 'https://plus.unsplash.com/premium_photo-1683736986821-e4662912a70d?w=400&h=300&fit=crop',
+      image: 'https://plus.unsplash.com/premium_photo-1683736986821-e4662912a70d?auto=format&fit=crop&w=400&h=300&q=70',
       color: '#E2231A',
       startingPrice: '₹1,500',
       specs: [
@@ -358,7 +358,7 @@ const Accessories = () => {
               left: 0,
               right: 0,
               bottom: 0,
-              backgroundImage: 'url(https://images.unsplash.com/photo-1595388709985-ad3748c82710?q=80&w=2338&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+              backgroundImage: 'url(https://images.unsplash.com/photo-1595388709985-ad3748c82710?auto=format&fit=crop&w=1200&q=70)',
               backgroundSize: 'cover',
               backgroundPosition: 'center',
               filter: 'brightness(0.7)',
@@ -391,6 +391,7 @@ const Accessories = () => {
                 lineHeight: 1.1,
                 mb: 2,
                 animation: `${floatAnimation} 4s ease-in-out infinite`,
+                willChange: 'transform',
               }}
             >
               Premium Accessories
@@ -474,10 +475,9 @@ const Accessories = () => {
                     transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                     border: `2px solid ${theme.palette.mode === 'dark' ? alpha(accessory.color, 0.3) : alpha(accessory.color, 0.2)}`,
                     overflow: 'hidden',
-                    animation: `${bounceAnimation} 2s ease-in-out infinite`,
-                    animationDelay: `${index * 0.2}s`,
                     position: 'relative',
                     zIndex: 2,
+                    willChange: 'transform',
                     cursor: 'pointer',
                   }}
                 >
@@ -643,6 +643,7 @@ const Accessories = () => {
           boxShadow: '0 20px 40px rgba(139, 0, 0, 0.15)',
           zIndex: 2,
           animation: `${floatAnimation} 4s ease-in-out infinite`,
+          willChange: 'transform',
           '&::before': {
             content: '""',
             position: 'absolute',

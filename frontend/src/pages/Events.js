@@ -17,7 +17,7 @@ const Events = () => {
                         alignItems: 'center',
                         justifyContent: 'center',
                         overflow: 'hidden',
-                        backgroundImage: 'url(https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=2224&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+                        backgroundImage: 'url(https://images.unsplash.com/photo-1505373877841-8d25f7d46678?auto=format&fit=crop&w=1200&q=70)',
                         backgroundSize: 'cover',
                         backgroundPosition: 'center',
                         color: 'white',
@@ -94,7 +94,7 @@ const Events = () => {
                     {
                         title: "E-Sports",
                         description: "Dive into the electrifying world of competitive gaming at our premier E-Sports tournaments. Watch top-tier teams clash in popular titles, showcasing strategy, reflexes, and teamwork. Whether you're a seasoned pro or a passionate fan, experience the intensity of live matches, meet fellow gamers, and witness the future of digital sports unfold.",
-                        image: "https://images.unsplash.com/photo-1762028895490-5b777a1f6165?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        image: "https://images.unsplash.com/photo-1762028895490-5b777a1f6165?auto=format&fit=crop&w=600&h=400&q=70"
                     },
                     {
                         title: "Product Launch Gala",

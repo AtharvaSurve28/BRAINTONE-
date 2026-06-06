@@ -248,6 +248,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 40% 60%, rgba(255, 235, 59, 0.05), rgba(255, 235, 59, 0))',
           animation: 'bubbleFloatLarge 28s ease-in-out infinite 10s',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -261,6 +262,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 70% 30%, rgba(156, 39, 176, 0.04), rgba(156, 39, 176, 0))',
           animation: 'bubbleFloatSmall 20s ease-in-out infinite 3s',
           filter: 'blur(1px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -274,6 +276,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 30% 70%, rgba(244, 67, 54, 0.07), rgba(244, 67, 54, 0.01))',
           animation: 'bubbleFloatMedium 35s ease-in-out infinite 7s',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -287,6 +290,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 50% 50%, rgba(255, 215, 0, 0.04), rgba(255, 215, 0, 0))',
           animation: 'bubbleFloatSmall 22s ease-in-out infinite 12s',
           filter: 'blur(1px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -300,6 +304,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 20% 80%, rgba(33, 150, 243, 0.03), rgba(33, 150, 243, 0))',
           animation: 'bubbleFloatLarge 32s ease-in-out infinite 15s',
           filter: 'blur(2px)',
+          willChange: 'transform',
         }}
       />
       <Box
@@ -313,6 +318,7 @@ const SecondHand = () => {
           background: 'radial-gradient(circle at 80% 20%, rgba(76, 175, 80, 0.03), rgba(76, 175, 80, 0))',
           animation: 'bubbleFloatSmall 18s ease-in-out infinite 8s',
           filter: 'blur(1px)',
+          willChange: 'transform',
         }}
       />
       <style>
@@ -514,7 +520,7 @@ const SecondHand = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            backgroundImage: 'url(https://images.unsplash.com/photo-1650820497643-84dfad23d039?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            backgroundImage: 'url(https://images.unsplash.com/photo-1650820497643-84dfad23d039?auto=format&fit=crop&w=1200&q=70)',
             backgroundSize: 'cover',
             backgroundPosition: 'center 25%',
             backgroundRepeat: 'no-repeat',
