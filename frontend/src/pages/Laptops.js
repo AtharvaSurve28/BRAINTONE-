@@ -64,63 +64,63 @@ const Laptops = () => {
   const brands = [
     {
       name: 'DELL',
-      image: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1593642532744-d377ab507dc8?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/dell',
       color: '#E2231A', // Dell Blue
       logo: '/images/brand-logos/dell.png'
     },
     {
       name: 'HP',
-      image: 'https://images.unsplash.com/photo-1663354027456-ce6a7e07d212?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1663354027456-ce6a7e07d212?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/hp',
       color: '#E2231A', // HP Blue
       logo: '/images/brand-logos/hp.png'
     },
     {
       name: 'Lenovo',
-      image: 'https://images.unsplash.com/photo-1763162410742-1d0097cea556?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1763162410742-1d0097cea556?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/lenovo',
       color: '#E2231A', // Lenovo Red
       logo: '/images/brand-logos/lenovo.png'
     },
     {
       name: 'ASUS',
-      image: 'https://images.unsplash.com/photo-1698512475058-7975102960b6?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1698512475058-7975102960b6?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/asus',
       color: '#E2231A', // Asus Blue
       logo: '/images/brand-logos/asus.png'
     },
     {
       name: 'Acer',
-      image: 'https://images.unsplash.com/photo-1525972183131-2f5c48254ec4?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1525972183131-2f5c48254ec4?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/acer',
       color: '#E2231A', // Acer Green
       logo: '/images/brand-logos/acer.png'
     },
     {
       name: 'Apple',
-      image: 'https://images.unsplash.com/photo-1658124974726-d96bc44783cf?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1658124974726-d96bc44783cf?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/apple',
       color: '#E2231A', // Apple Grey
       logo: '/images/brand-logos/apple-icon.png'
     },
     {
       name: 'MSI',
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=400&h=300&fit=crop', // Changed to MSI laptop image
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=400&h=300&q=70', // Changed to MSI laptop image
       route: '/laptops/msi',
       color: '#E2231A', // MSI red color
       logo: '/images/brand-logos/msi.png'
     },
     {
       name: 'Samsung Galaxy',
-      image: 'https://images.unsplash.com/photo-1522202222206-b75023c48f4f?w=400&h=300&fit=crop', // Changed to Samsung laptop image
+      image: 'https://images.unsplash.com/photo-1522202222206-b75023c48f4f?auto=format&fit=crop&w=400&h=300&q=70', // Changed to Samsung laptop image
       route: '/laptops/samsung',
       color: '#E2231A', // Samsung blue color
       logo: '/images/brand-logos/samsung.png'
     },
     {
       name: 'Microsoft',
-      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=400&h=300&fit=crop',
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?auto=format&fit=crop&w=400&h=300&q=70',
       route: '/laptops/microsoft',
       color: '#E2231A', // Microsoft Orange
       logo: '/images/brand-logos/microsoft.png'
@@ -159,7 +159,7 @@ const Laptops = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: 'url(https://images.unsplash.com/photo-1627634777217-c864268db30c?q=80&w=2340&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+          backgroundImage: 'url(https://images.unsplash.com/photo-1627634777217-c864268db30c?auto=format&fit=crop&w=1200&q=70)',
           backgroundSize: 'cover',
           backgroundPosition: 'center 25%',
           backgroundRepeat: 'no-repeat',
@@ -194,6 +194,7 @@ const Laptops = () => {
               lineHeight: 1.1,
               mb: 2,
               animation: `${floatAnimation} 4s ease-in-out infinite`,
+            willChange: 'transform',
             }}
           >
             Our Top Brands
@@ -242,6 +243,7 @@ const Laptops = () => {
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255, 215, 0, 0.15) 0%, transparent 70%)',
           animation: `${floatAnimation} 6s ease-in-out infinite`,
+          willChange: 'transform',
           zIndex: 1,
           filter: 'blur(2px)',
         }} />
@@ -255,6 +257,7 @@ const Laptops = () => {
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%)',
           animation: `${floatAnimation} 7s ease-in-out infinite 2s`,
+          willChange: 'transform',
           zIndex: 1,
           filter: 'blur(1px)',
         }} />
@@ -269,6 +272,7 @@ const Laptops = () => {
           borderRadius: '50%',
           background: 'radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%)',
           animation: `${floatAnimation} 5s ease-in-out infinite 1.5s`,
+          willChange: 'transform',
           zIndex: 1,
           filter: 'blur(1px)',
         }} />
@@ -324,8 +328,6 @@ const Laptops = () => {
                   transition: 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)',
                   border: `2px solid ${theme.palette.mode === 'dark' ? alpha(brand.color, 0.3) : alpha(brand.color, 0.2)}`,
                   overflow: 'hidden',
-                  animation: `${bounceAnimation} 2s ease-in-out infinite`,
-                  animationDelay: `${index * 0.2}s`,
                   position: 'relative',
                   zIndex: 2,
                   willChange: 'transform',

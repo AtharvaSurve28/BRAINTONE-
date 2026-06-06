@@ -64,27 +64,27 @@ const HomePage = () => {
   // Optimized hero slides with WebP format and high-quality settings
   const heroSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?q=80&w=1200&auto=format&fit=crop&fm=webp',
+      image: 'https://images.unsplash.com/photo-1455894127589-22f75500213a?auto=format&fit=crop&w=1200&q=70',
       title: 'Explore our New Premium Laptops'
     },
     {
-      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
+      image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=1200&q=70',
       title: 'Your Complete Laptop Solution'
     },
     {
-      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
+      image: 'https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&w=1200&q=70',
       title: 'Expert Repair Services'
     },
     {
-      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?w=1200&auto=format&fit=crop&fm=webp',
+      image: 'https://images.unsplash.com/photo-1724960996767-3c9e73b23060?auto=format&fit=crop&w=1200&q=70',
       title: 'All Your Laptop Needs, One Trusted Place'
     },
     {
-      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?q=80&w=1200&auto=format&fit=crop&fm=webp',
+      image: 'https://images.unsplash.com/photo-1515343480029-43cdfe6b6aae?auto=format&fit=crop&w=1200&q=70',
       title: 'Everything Your Laptop Needs — Under One Roof'
     },
     {
-      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&fm=webp',
+      image: 'https://images.unsplash.com/photo-1593640408182-31c70c8268f5?auto=format&fit=crop&w=1200&q=70',
       title: 'Elevate Your Work. Not Your Budget. (Premium Laptops, New & Refurbished)'
     }
   ];
@@ -155,7 +155,7 @@ const HomePage = () => {
                 src={slide.image}
                 alt="" // Decorative since title is H1
                 fetchpriority={index === 0 ? "high" : "auto"}
-                loading={index === 0 ? "eager" : "lazy"}
+                loading="eager"
                 sx={{
                   width: '100%',
                   height: '100%',
@@ -384,19 +384,19 @@ const HomePage = () => {
               {[
                 {
                   title: 'BRAND NEW LAPTOPS',
-                  image: 'https://images.unsplash.com/photo-1763162139130-240507e9fad5?q=80&w=800&h=600&fit=crop',
+                  image: 'https://images.unsplash.com/photo-1763162139130-240507e9fad5?auto=format&fit=crop&w=600&q=70',
                   link: '/laptops',
                   color: '#e74c3c'
                 },
                 {
                   title: 'REFURBISHED LAPTOPS',
-                  image: 'https://images.unsplash.com/photo-1522202195465-df8a5f26fa15?q=80&w=800&h=600&fit=crop',
+                  image: 'https://images.unsplash.com/photo-1522202195465-df8a5f26fa15?auto=format&fit=crop&w=600&q=70',
                   link: '/refurbished-laptops',
                   color: '#27ae60'
                 },
                 {
                   title: 'REPAIR SERVICES',
-                  image: 'https://images.unsplash.com/photo-1658240527554-9cf987b4de49?q=80&w=800&h=600&fit=crop',
+                  image: 'https://images.unsplash.com/photo-1658240527554-9cf987b4de49?auto=format&fit=crop&w=600&q=70',
                   link: '/repair',
                   color: '#2980b9'
                 },
@@ -1669,7 +1669,7 @@ const HomePage = () => {
             left: 0,
             right: 0,
             bottom: 0,
-            background: 'url(https://plus.unsplash.com/premium_photo-1726804906019-20ac68ddec1b?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)',
+            background: 'url(https://plus.unsplash.com/premium_photo-1726804906019-20ac68ddec1b?auto=format&fit=crop&w=1200&q=70)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',

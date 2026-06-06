@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 const EWaste = () => {
     const [currentImage, setCurrentImage] = useState(0);
     const itadImages = [
-        "https://plus.unsplash.com/premium_photo-1769853836754-edc6199a3bad?q=80&w=2410&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://plus.unsplash.com/premium_photo-1769853836754-edc6199a3bad?auto=format&fit=crop&w=1000&q=70",
         "https://images.pexels.com/photos/19285776/pexels-photo-19285776.jpeg",
         "https://images.pexels.com/photos/207580/pexels-photo-207580.jpeg"
     ];
@@ -136,7 +136,7 @@ const EWaste = () => {
                         >
                             <Box
                                 component="img"
-                                src="https://images.unsplash.com/photo-1746013189357-e17986c93fb2?q=80&w=3870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                src="https://images.unsplash.com/photo-1746013189357-e17986c93fb2?auto=format&fit=crop&w=600&h=600&q=70"
                                 alt="E-waste Impact"
                                 sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
