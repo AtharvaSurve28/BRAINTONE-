@@ -37,8 +37,8 @@ import FadeInSection from '../components/FadeInSection';
 
 // Animations - EXACTLY SAME as laptops page
 const shimmer = keyframes`
-  0% { background-position: 0% 0%; }
-  100% { background-position: 400% 0%; }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 `;
 
 const bounceAnimation = keyframes`
@@ -372,8 +372,6 @@ const Accessories = () => {
               right: 0,
               height: '5px',
               background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-              backgroundSize: '400% 100%',
-              animation: `${shimmer} 6s linear infinite`,
               zIndex: 1,
             }
           }}
@@ -404,7 +402,6 @@ const Accessories = () => {
               backgroundSize: '300% 100%',
               mx: 'auto',
               mb: 3,
-              animation: `${shimmer} 4s linear infinite`,
               borderRadius: '2px',
             }} />
 
@@ -530,7 +527,9 @@ const Accessories = () => {
                       component="img"
                       image={accessory.image}
                       alt={accessory.name}
-                      loading={index < 6 ? "eager" : "lazy"}
+                      width={400}
+                      height={300}
+                      loading={index < 3 ? "eager" : "lazy"}
                       className="accessory-image"
                       sx={{
                         width: '100%',

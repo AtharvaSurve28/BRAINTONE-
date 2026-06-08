@@ -40,8 +40,6 @@ const Events = () => {
                             right: 0,
                             height: '4px',
                             background: 'linear-gradient(90deg, #e74c3c, #3498db, #e74c3c)',
-                            backgroundSize: '200% 100%',
-                            animation: 'shimmer 3s linear infinite',
                             zIndex: 2,
                         }
                     }}
@@ -180,6 +178,9 @@ const Events = () => {
                                             component="img"
                                             src={event.image}
                                             alt={event.title}
+                                            width={600}
+                                            height={400}
+                                            loading="lazy"
                                             sx={{
                                                 width: '100%',
                                                 height: '100%',

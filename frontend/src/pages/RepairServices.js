@@ -811,10 +811,7 @@ const RepairServices = () => {
             bottom: 0,
             left: 0,
             right: 0,
-            height: '4px',
             background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-            backgroundSize: '400% 100%',
-            animation: 'shimmer 6s linear infinite',
             zIndex: 1,
           }
         }}>
@@ -845,7 +842,6 @@ const RepairServices = () => {
               backgroundSize: '300% 100%',
               mx: 'auto',
               mb: 3.5,
-              animation: 'shimmer 4s linear infinite',
               borderRadius: '2px',
             }} />
 
@@ -1229,9 +1225,8 @@ const RepairServices = () => {
     }
 
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
-      70% { box-shadow: 0 0 0 10px rgba(231, 76, 60, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0); }
+      0% { transform: scale(1); opacity: 0.6; }
+      100% { transform: scale(1.3); opacity: 0; }
     }
 
     @keyframes shimmerRed {
@@ -1319,7 +1314,6 @@ const RepairServices = () => {
                 linear-gradient(rgba(231,76,60,0.02) 1px, transparent 1px)
               `,
               backgroundSize: '40px 40px',
-              animation: 'gridMove 25s linear infinite',
               opacity: 0.4,
             }} />
           </Box>

@@ -138,6 +138,9 @@ const EWaste = () => {
                                 component="img"
                                 src="https://images.unsplash.com/photo-1746013189357-e17986c93fb2?auto=format&fit=crop&w=600&h=600&q=70"
                                 alt="E-waste Impact"
+                                width={600}
+                                height={600}
+                                loading="lazy"
                                 sx={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                         </Box>
@@ -247,6 +250,9 @@ const EWaste = () => {
                                         component="img"
                                         src={img}
                                         alt={`ITAD Service ${index + 1}`}
+                                        width={1000}
+                                        height={400}
+                                        loading={index === 0 ? "eager" : "lazy"}
                                         sx={{
                                             position: 'absolute',
                                             top: 0,
