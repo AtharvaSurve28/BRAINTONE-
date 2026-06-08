@@ -126,48 +126,55 @@ const HomePage = () => {
           }}
         >
           {/* Hero images with high fetchpriority for LCP and WebP support */}
-          {heroSlides.map((slide, index) => (
-            <Box
-              key={index}
-              sx={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
-                opacity: index === currentImageIndex ? 1 : 0,
-                transition: 'opacity 1.5s ease-in-out',
-                overflow: 'hidden',
-                '&::before': {
-                  content: '""',
+          {heroSlides.map((slide, index) => {
+            const shouldRender = index === 0 || index === currentImageIndex || index === (currentImageIndex + 1) % heroSlides.length;
+            return (
+              <Box
+                key={index}
+                sx={{
                   position: 'absolute',
                   top: 0,
                   left: 0,
                   right: 0,
                   bottom: 0,
-                  background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
-                  zIndex: 2,
-                },
-              }}
-            >
-              <Box
-                component="img"
-                src={slide.image}
-                alt="" // Decorative since title is H1
-                fetchpriority={index === 0 ? "high" : "auto"}
-                loading="eager"
-                sx={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  transform: 'scale(1.05)',
-                  willChange: 'opacity, transform',
+                  opacity: index === currentImageIndex ? 1 : 0,
+                  transition: 'opacity 1.5s ease-in-out',
+                  overflow: 'hidden',
+                  '&::before': {
+                    content: '""',
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    right: 0,
+                    bottom: 0,
+                    background: 'linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.4) 100%)',
+                    zIndex: 2,
+                  },
                 }}
-              />
-            </Box>
-          ))}
+              >
+                {shouldRender && (
+                  <Box
+                    component="img"
+                    src={slide.image}
+                    alt="" // Decorative since title is H1
+                    width={1200}
+                    height={800}
+                    fetchpriority={index === 0 ? "high" : "auto"}
+                    loading={index === 0 ? "eager" : "lazy"}
+                    sx={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                      transform: 'scale(1.05)',
+                      willChange: 'opacity, transform',
+                    }}
+                  />
+                )}
+              </Box>
+            );
+          })}
 
-          {/* Animated gradient overlay */}
+          {/* Static gradient overlay (disabled non-composited animation) */}
           <Box
             aria-hidden="true"
             sx={{
@@ -178,7 +185,6 @@ const HomePage = () => {
               bottom: 0,
               background: 'linear-gradient(-45deg, rgba(74, 85, 104, 0.2), rgba(45, 55, 72, 0.2), rgba(26, 32, 44, 0.2), rgba(74, 85, 104, 0.2))',
               backgroundSize: '400% 400%',
-              animation: 'gradient 15s ease infinite',
               zIndex: 1,
               '&::before': {
                 content: '""',
@@ -460,6 +466,9 @@ const HomePage = () => {
                           component="img"
                           src={card.image}
                           alt={card.title}
+                          width={600}
+                          height={450}
+                          loading="lazy"
                           sx={{
                             width: '100%',
                             height: '100%',
@@ -1552,6 +1561,9 @@ const HomePage = () => {
                           component="img"
                           src={img}
                           alt={`Feedback ${index + 1}`}
+                          width={600}
+                          height={450}
+                          loading="lazy"
                           sx={{
                             width: '100%',
                             height: '100%',

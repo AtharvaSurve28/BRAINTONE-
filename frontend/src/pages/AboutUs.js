@@ -1796,6 +1796,8 @@ const AboutUs = () => {
                 startIcon={<img
                   src="https://cdn-icons-png.flaticon.com/512/220/220236.png"
                   alt="WhatsApp"
+                  width="20"
+                  height="20"
                   style={{ width: '20px', height: '20px', filter: 'brightness(0) invert(1)' }}
                 />}
                 sx={{
@@ -2028,6 +2030,9 @@ const AboutUs = () => {
                           component="img"
                           src={achievement.image}
                           alt={`Achievement ${index + 1}`}
+                          width={800}
+                          height={600}
+                          loading="lazy"
                           sx={{
                             width: '100%',
                             height: '100%',

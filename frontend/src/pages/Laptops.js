@@ -7,20 +7,8 @@ import Footer from '../components/Footer';
 
 // Animations
 const shimmer = keyframes`
-  0% { background-position: 0% 0%; }
-  100% { background-position: 400% 0%; }
-`;
-
-const gradientText = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-`;
-
-const gradientButton = keyframes`
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 `;
 
 // Modified bounce animation - continuous bouncing for all boxes
@@ -175,8 +163,6 @@ const Laptops = () => {
           right: 0,
           height: '5px',
           background: 'linear-gradient(90deg, #FF0000, #FF6B6B, #FF0000, #FF6B6B)',
-          backgroundSize: '400% 100%',
-          animation: `${shimmer} 6s linear infinite`,
           zIndex: 1,
         }
       }}>
@@ -207,7 +193,6 @@ const Laptops = () => {
             backgroundSize: '300% 100%',
             mx: 'auto',
             mb: 3,
-            animation: `${shimmer} 4s linear infinite`,
             borderRadius: '2px',
           }} />
 
@@ -394,6 +379,8 @@ const Laptops = () => {
                     component="img"
                     image={brand.image}
                     alt={brand.name}
+                    width={400}
+                    height={300}
                     loading={index < 3 ? "eager" : "lazy"}
                     className="brand-image"
                     sx={{
@@ -429,6 +416,8 @@ const Laptops = () => {
                       component="img"
                       src={brand.logo}
                       alt={`${brand.name} logo`}
+                      width={brand.name === 'Lenovo' ? 160 : (brand.name === 'Apple' ? 190 : (brand.name === 'MSI' ? 300 : (['ASUS', 'Samsung Galaxy', 'Microsoft'].includes(brand.name) ? 260 : 220)))}
+                      height={brand.name === 'Lenovo' ? 60 : (brand.name === 'Apple' ? 80 : (brand.name === 'MSI' ? 140 : (['ASUS', 'Samsung Galaxy', 'Microsoft'].includes(brand.name) ? 120 : 90)))}
                       loading={index < 3 ? "eager" : "lazy"}
                       className="brand-logo"
                       sx={{
